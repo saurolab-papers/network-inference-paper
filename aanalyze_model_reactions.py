@@ -159,7 +159,8 @@ for i, each in enumerate(model_files):
             in_list_dist[j] = str(in_list[j]) + ':' + str(in_list_dist[j])
         # print('in', sorted(in_list_dist))
         # print('in', in_dict)
-        print(each.split('\\')[1].split('.')[0], in_dict)
+
+        print(each.split('\\')[1].split('.')[0], in_dict, out_dict)
 
         # print(each1, nbs, nfs, nfs + nbs, model.getNumReactions())
         # quit()
