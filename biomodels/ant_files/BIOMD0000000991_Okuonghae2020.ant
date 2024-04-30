@@ -1,0 +1,136 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_exposed_to_asymptopmatic(k1, k2, substrate)
+  k1*k2*substrate;
+end
+
+Rate_Law_for_exposed_to_asymptopmatic is "Rate Law for exposed_to_asymptopmatic"
+
+function Rate_Law_for_exposed_to_symptomatic(k1, k2, substrate)
+  k1*(1 - k2)*substrate;
+end
+
+Rate_Law_for_exposed_to_symptomatic is "Rate Law for exposed_to_symptomatic"
+
+
+model *Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria()
+
+  // Compartments and Species:
+  compartment Lagos;
+  species susceptible in Lagos, exposed in Lagos, asymptomatic in Lagos, symptomatic in Lagos;
+  species detected in Lagos, recovered in Lagos, deceased in Lagos, $total_pop in Lagos;
+  species detected_cumulative in Lagos;
+
+  // Assignment Rules:
+  total_pop := asymptomatic + detected + exposed + recovered + susceptible + symptomatic;
+  lam := transmission_rate_effective*(1 - eps)*(1 - delta)*(alpha*asymptomatic + symptomatic)/(total_pop - detected);
+
+  // Reactions:
+  susceptible_to_exposed: susceptible => exposed; Lagos*lam*susceptible;
+  exposed_to_symptomatic: exposed => symptomatic; Lagos*Rate_Law_for_exposed_to_symptomatic(sigma, nu, exposed);
+  exposed_to_asymptopmatic: exposed => asymptomatic; Lagos*Rate_Law_for_exposed_to_asymptopmatic(sigma, nu, exposed);
+  symptomatic_to_detected: symptomatic => detected + detected_cumulative; Lagos*psi*symptomatic;
+  asymptomatic_to_detected: asymptomatic => detected + detected_cumulative; Lagos*theta*asymptomatic;
+  symptomatic_to_recovered: symptomatic => recovered; Lagos*gamma_0*symptomatic;
+  asymptomatic_to_recovered: asymptomatic => recovered; Lagos*gamma_a*asymptomatic;
+  detected_to_recovered: detected => recovered; Lagos*gamma_i*detected;
+  symptomatic_to_deceased: symptomatic => deceased; Lagos*d_0*symptomatic;
+  detected_to_deceased: detected => deceased; Lagos*d_D*detected;
+
+  // Species initializations:
+  susceptible = 14367982/Lagos;
+  exposed = exposed_start;
+  asymptomatic = asymptomatic_start;
+  symptomatic = symptomatic_start;
+  detected = 1/Lagos;
+  recovered = 0;
+  deceased = 0;
+  detected_cumulative = 1/Lagos;
+
+  // Compartment initializations:
+  Lagos = 1;
+
+  // Variable initializations:
+  exposed_start = 441;
+  asymptomatic_start = 188;
+  symptomatic_start = 212;
+  transmission_rate_effective = 0.4236;
+  gamma_a = 0.13978;
+  gamma_a has unit_0;
+  gamma_0 = 0.13978;
+  gamma_0 has unit_0;
+  gamma_i = 1/15;
+  gamma_i has unit_0;
+  psi = 0.0135;
+  psi has unit_0;
+  theta = 1.8999*10^-12;
+  theta has unit_0;
+  d_0 = 0.015;
+  d_0 has unit_0;
+  d_D = 0.015;
+  d_D has unit_0;
+  sigma = 1/5.2;
+  sigma has unit_0;
+  nu = 0.5;
+  nu has unit_0;
+  alpha = 0.5;
+  alpha has unit_0;
+  eps = 0;
+  delta = 0;
+
+  // Other declarations:
+  var lam;
+  const Lagos, exposed_start, asymptomatic_start, symptomatic_start, transmission_rate_effective;
+  const gamma_a, gamma_0, gamma_i, psi, theta, d_0, d_D, sigma, nu, alpha;
+  const eps, delta;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = 86400 second;
+  unit substance = item;
+  unit unit_0 = 1 / 86400 second;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "1/d";
+
+  // CV terms:
+  Lagos parthood "http://identifiers.org/ncit/C16917"
+  susceptible identity "http://identifiers.org/ido/0000514"
+  exposed identity "http://identifiers.org/ido/0000514"
+  exposed property "http://identifiers.org/ido/0000597"
+  asymptomatic identity "http://identifiers.org/ido/0000511"
+  asymptomatic identity "http://identifiers.org/ncit/C171133"
+  asymptomatic property "http://identifiers.org/ido/0000569"
+  symptomatic identity "http://identifiers.org/ncit/C171133"
+  symptomatic identity "http://identifiers.org/ido/0000511"
+  symptomatic property "http://identifiers.org/ido/0000573"
+  detected identity "http://identifiers.org/ido/0000511"
+  detected property "http://identifiers.org/ncit/C16210"
+  recovered property "http://identifiers.org/ido/0000621"
+  deceased identity "http://identifiers.org/ncit/C28554"
+  susceptible_to_exposed identity "http://identifiers.org/ido/0000597"
+  susceptible_to_exposed identity "http://identifiers.org/ncit/C171133"
+  exposed_to_symptomatic identity "http://identifiers.org/ncit/C128320"
+  exposed_to_symptomatic identity "http://identifiers.org/ncit/C168447"
+  exposed_to_asymptopmatic identity "http://identifiers.org/ncit/C168121"
+  exposed_to_asymptopmatic identity "http://identifiers.org/ncit/C128320"
+  symptomatic_to_detected identity "http://identifiers.org/ncit/C16210"
+  asymptomatic_to_detected identity "http://identifiers.org/ncit/C16210"
+  symptomatic_to_recovered identity "http://identifiers.org/ncit/C25746"
+  asymptomatic_to_recovered identity "http://identifiers.org/ncit/C25746"
+  detected_to_recovered identity "http://identifiers.org/ncit/C25746"
+  symptomatic_to_deceased identity "http://identifiers.org/ncit/C28554"
+  detected_to_deceased identity "http://identifiers.org/ncit/C28554"
+end
+
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria is "Okuonghae2020 - SEAIR model of COVID-19 transmission in Lagos, Nigeria"
+
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria description "http://identifiers.org/pubmed/32834593"
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria model_entity_is "http://identifiers.org/biomodels.db/MODEL2102180001",
+                                                                                       "http://identifiers.org/biomodels.db/BIOMD0000000991"
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria identity "http://identifiers.org/doid/DOID:0080600"
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria taxon "http://identifiers.org/taxonomy/2697049",
+                                                                             "http://identifiers.org/taxonomy/9606"
+Okuonghae2020___SEAIR_model_of_COVID_19_transmission_in_Lagos__Nigeria property "http://identifiers.org/mamo/MAMO_0000028"

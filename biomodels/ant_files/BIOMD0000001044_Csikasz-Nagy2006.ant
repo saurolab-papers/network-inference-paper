@@ -1,0 +1,621 @@
+// Created by libAntimony v2.13.2
+function Mass_Action_1(k1, S1)
+  k1*S1;
+end
+
+Mass_Action_1 is "Mass_Action_1"
+
+function MichaelisMenten(M1, J1, k1, S1)
+  k1*S1*M1/(J1 + S1);
+end
+
+MichaelisMenten is "Michaelis-Menten"
+
+function Function_for_Synthesis_of_MPF(Vsb, cell)
+  Vsb/cell;
+end
+
+Function_for_Synthesis_of_MPF is "Function for Synthesis of MPF"
+
+function Function_for_Deg__of_MPF(CycB, Vdb, cell)
+  Mass_Action_1(Vdb, CycB)/cell;
+end
+
+Function_for_Deg__of_MPF is "Function for Deg. of MPF"
+
+function Function_for_activation_of_MPF_from_pB_by_Cdc25(V25, cell, pB)
+  Mass_Action_1(V25, pB)/cell;
+end
+
+Function_for_activation_of_MPF_from_pB_by_Cdc25 is "Function for activation of MPF from pB by Cdc25"
+
+function Function_for_inactivation_of_MPFby_Wee1(CycB, Vwee, cell)
+  Mass_Action_1(Vwee, CycB)/cell;
+end
+
+Function_for_inactivation_of_MPFby_Wee1 is "Function for inactivation of MPFby Wee1"
+
+function Function_for_dissoc1(BCKI, cell, kdissb)
+  Mass_Action_1(kdissb, BCKI)/cell;
+end
+
+Function_for_dissoc1 is "Function for dissoc1"
+
+function Function_for_deg__of_pB(Vdb, cell, pB)
+  Mass_Action_1(Vdb, pB)/cell;
+end
+
+Function_for_deg__of_pB is "Function for deg. of pB"
+
+function GK(A1, A2, A3, A4)
+  2*A4*A1/((A2 - A1) + A3*A2 + A4*A1 + (((A2 - A1) + A3*A2 + A4*A1)^2 - 4*(A2 - A1)*A4*A1)^(1/2));
+end
+
+GK is "GK"
+
+function Mass_Action_2(k1, S1, S2)
+  k1*S1*S2;
+end
+
+Mass_Action_2 is "Mass_Action_2"
+
+function Function_for_assoc__of_pB_with_CKI(CKI, cell, kassb, pB)
+  Mass_Action_2(kassb, pB, CKI)/cell;
+end
+
+Function_for_assoc__of_pB_with_CKI is "Function for assoc. of pB with CKI"
+
+function Function_for_dissoc2(cell, kdissb, pBCKI)
+  Mass_Action_1(kdissb, pBCKI)/cell;
+end
+
+Function_for_dissoc2 is "Function for dissoc2"
+
+function Function_for_Cdc25_action(V25, cell, pBCKI)
+  Mass_Action_1(V25, pBCKI)/cell;
+end
+
+Function_for_Cdc25_action is "Function for Cdc25 action"
+
+function Function_for_Wee1_action(BCKI, Vwee, cell)
+  Mass_Action_1(Vwee, BCKI)/cell;
+end
+
+Function_for_Wee1_action is "Function for Wee1 action"
+
+function Function_for_Deg__of_CycB_moeity__in_BCKI(BCKI, Vdb, cell)
+  Mass_Action_1(Vdb, BCKI)/cell;
+end
+
+Function_for_Deg__of_CycB_moeity__in_BCKI is "Function for Deg. of CycB moeity  in BCKI"
+
+function Function_for_Deg__of_CKI_moeity_in_BCKI(BCKI, Vdi, cell)
+  Mass_Action_1(Vdi, BCKI)/cell;
+end
+
+Function_for_Deg__of_CKI_moeity_in_BCKI is "Function for Deg. of CKI moeity in BCKI"
+
+function Function_for_Deg__of_pB_moeity_in_pBCKI(Vdb, cell, pBCKI)
+  Mass_Action_1(Vdb, pBCKI)/cell;
+end
+
+Function_for_Deg__of_pB_moeity_in_pBCKI is "Function for Deg. of pB moeity in pBCKI"
+
+function Function_for_Deg__of_CKI_moeity_in_pBCKI(Vdi, cell, pBCKI)
+  Mass_Action_1(Vdi, pBCKI)/cell;
+end
+
+Function_for_Deg__of_CKI_moeity_in_pBCKI is "Function for Deg. of CKI moeity in pBCKI"
+
+function Function_for_Synthesis_of_CKI(Vsi, cell)
+  Vsi/cell;
+end
+
+Function_for_Synthesis_of_CKI is "Function for Synthesis of CKI"
+
+function Function_for_Deg__of_CKI(CKI, Vdi, cell)
+  Mass_Action_1(Vdi, CKI)/cell;
+end
+
+Function_for_Deg__of_CKI is "Function for Deg. of CKI"
+
+function Function_for_Assoc__of_CKI_with_CycA(CKI, CycA, cell, kassa)
+  Mass_Action_2(kassa, CKI, CycA)/cell;
+end
+
+Function_for_Assoc__of_CKI_with_CycA is "Function for Assoc. of CKI with CycA"
+
+function Function_for_dissoc3(TriA, cell, kdissa)
+  Mass_Action_1(kdissa, TriA)/cell;
+end
+
+Function_for_dissoc3 is "Function for dissoc3"
+
+function Function_for_Deg__of_CKI_moeity_in_TriA(TriA, Vdi, cell)
+  Mass_Action_1(Vdi, TriA)/cell;
+end
+
+Function_for_Deg__of_CKI_moeity_in_TriA is "Function for Deg. of CKI moeity in TriA"
+
+function Function_for_Deg__of_CycA_moeity_in_TriA(TriA, Vda, cell)
+  Mass_Action_1(Vda, TriA)/cell;
+end
+
+Function_for_Deg__of_CycA_moeity_in_TriA is "Function for Deg. of CycA moeity in TriA"
+
+function Function_for_Assoc__of_CKI_with_CycE(CKI, CycE, cell, kasse)
+  Mass_Action_2(kasse, CKI, CycE)/cell;
+end
+
+Function_for_Assoc__of_CKI_with_CycE is "Function for Assoc. of CKI with CycE"
+
+function Function_for_dissoc4(TriE, cell, kdisse)
+  Mass_Action_1(kdisse, TriE)/cell;
+end
+
+Function_for_dissoc4 is "Function for dissoc4"
+
+function Function_for_Deg__of_CKI_moeity_in_TriE(TriE, Vdi, cell)
+  Mass_Action_1(Vdi, TriE)/cell;
+end
+
+Function_for_Deg__of_CKI_moeity_in_TriE is "Function for Deg. of CKI moeity in TriE"
+
+function Function_for_Deg__of_CycE_moeity_in_TriE(TriE, Vde, cell)
+  Mass_Action_1(Vde, TriE)/cell;
+end
+
+Function_for_Deg__of_CycE_moeity_in_TriE is "Function for Deg. of CycE moeity in TriE"
+
+function Function_for_Synthesis_of_CycA_by_TFE(Vsa, cell)
+  Vsa/cell;
+end
+
+Function_for_Synthesis_of_CycA_by_TFE is "Function for Synthesis of CycA by TFE"
+
+function Function_for_Deg__of_CycA(CycA, Vda, cell)
+  Mass_Action_1(Vda, CycA)/cell;
+end
+
+Function_for_Deg__of_CycA is "Function for Deg. of CycA"
+
+function Function_for_Synthesis_of_CycE_by_TFE(Vse, cell)
+  Vse/cell;
+end
+
+Function_for_Synthesis_of_CycE_by_TFE is "Function for Synthesis of CycE by TFE"
+
+function Function_for_Deg__of_CycE(CycE, Vde, cell)
+  Mass_Action_1(Vde, CycE)/cell;
+end
+
+Function_for_Deg__of_CycE is "Function for Deg. of CycE"
+
+function Function_for_activation_of_APCP(APC, CycB, Jaie, cell, kaie)
+  MichaelisMenten(CycB, Jaie, kaie, APC)/cell;
+end
+
+Function_for_activation_of_APCP is "Function for activation of APCP"
+
+function Function_for_inactivation1(APCP, Jiie, cell, kiie)
+  MichaelisMenten(1, Jiie, kiie, APCP)/cell;
+end
+
+Function_for_inactivation1 is "Function for inactivation1"
+
+function Function_for_Deg__of_Cdc20i(Cdc20i, cell, kd20)
+  Mass_Action_1(kd20, Cdc20i)/cell;
+end
+
+Function_for_Deg__of_Cdc20i is "Function for Deg. of Cdc20i"
+
+function Function_for_activation_of_Cdc20i(APCP, Cdc20i, Ja20, cell, ka20)
+  MichaelisMenten(APCP, Ja20, ka20, Cdc20i)/cell;
+end
+
+Function_for_activation_of_Cdc20i is "Function for activation of Cdc20i"
+
+function Function_for_inactivation2(Cdc20A, Ji20, cell, ki20)
+  MichaelisMenten(1, Ji20, ki20, Cdc20A)/cell;
+end
+
+Function_for_inactivation2 is "Function for inactivation2"
+
+function Function_for_degradation(Cdc20A, cell, kd20)
+  Mass_Action_1(kd20, Cdc20A)/cell;
+end
+
+Function_for_degradation is "Function for degradation"
+
+function Function_for_activation_of_Cdh1(Cdh1i, Jah1, Vah1, cell)
+  MichaelisMenten(Vah1, Jah1, 1, Cdh1i)/cell;
+end
+
+Function_for_activation_of_Cdh1 is "Function for activation of Cdh1"
+
+function Function_for_inactivation__of_Cdh1(Cdh1, Jih1, Vih1, cell)
+  MichaelisMenten(Vih1, Jih1, 1, Cdh1)/cell;
+end
+
+Function_for_inactivation__of_Cdh1 is "Function for inactivation  of Cdh1"
+
+function Mass_Action_0(k1)
+  k1;
+end
+
+Mass_Action_0 is "Mass_Action_0"
+
+function Function_for_Mass_accumulation(Mass, MaxMass, cell, mu)
+  Mass_Action_0(mu*Mass*(1 - Mass/MaxMass))/cell;
+end
+
+Function_for_Mass_accumulation is "Function for Mass accumulation"
+
+function Function_for_assoc__of_MPF_with_CKI(CKI, CycB, cell, kassb)
+  Mass_Action_2(kassb, CycB, CKI)/cell;
+end
+
+Function_for_assoc__of_MPF_with_CKI is "Function for assoc. of MPF with CKI"
+
+function Function_for_Synthesis_of_Cdc20i(CycB, J20, cell, ks20a, ks20b, n20)
+  Mass_Action_0(ks20a + ks20b*CycB^n20/(J20^n20 + CycB^n20))/cell;
+end
+
+Function_for_Synthesis_of_Cdc20i is "Function for Synthesis of Cdc20i"
+
+
+model *Csikasz_Nagy2006___Mammalian_Cell_Cycle_model()
+
+  // Compartments and Species:
+  compartment cell;
+  species $APC in cell, APCP in cell, BCKI in cell, $Cdc14 in cell, Cdc20A in cell;
+  species Cdc20i in cell, $Cdc20T in cell, $Cdc25P in cell, CycB in cell;
+  species Cdh1 in cell, $Cdh1i in cell, CKI in cell, $CKIT in cell, pBCKI in cell;
+  species TriA in cell, TriE in cell, CycA in cell, $CycAT in cell, $CycBT in cell;
+  species pB in cell, $CycD in cell, Mass in cell, CycE in cell, $CycET in cell;
+  species $preMPF in cell, $TFB in cell, $TFE in cell, $TFI in cell, $TriB in cell;
+  species $Wee1 in cell;
+
+  // Assignment Rules:
+  APC := APCT - APCP;
+  Cdc14 := Cdc20A;
+  Cdc20T := Cdc20i + Cdc20A;
+  Cdc25P := GK(ka25a + ka25b*CycB, ki25a + ki25b*Cdc14, Ja25, Ji25);
+  Cdh1i := Cdh1T - Cdh1;
+  CKIT := CKI + BCKI + pBCKI + TriA + TriE;
+  CycAT := CycA + TriA;
+  CycBT := CycB + pB + BCKI + pBCKI;
+  CycD := CycD0*Mass;
+  CycET := CycE + TriE;
+  preMPF := pB + pBCKI;
+  TFB := GK(kafb*CycB, kifb, Jafb, Jifb);
+  TFE := GK(Vatf, Vitf, Jatf, Jitf);
+  Vatf := katf + katfa*CycA + katfe*CycE + katfd*CycD;
+  Vitf := kitf + kitfa*CycA + kitfb*CycB;
+  TFI := GK(kafi*Cdc14, kifi + kifib*CycB, Jafi, Jifi);
+  TriB := BCKI + pBCKI;
+  Wee1 := GK(kaweea + kaweeb*Cdc14, kiweea + kiweeb*CycB, Jawee, Jiwee);
+  V25 := k25a + k25b*Cdc25P;
+  Vah1 := kah1a + kah1b*Cdc14;
+  Vda := kdaa + (kdab + kdac)*Cdc20A + kdac*Cdc20i;
+  Vdb := kdb + kdbh*Cdh1 + kdbc*Cdc20A;
+  Vde := kde + kdee*CycE + kdea*CycA + kdeb*CycB;
+  Vdi := (kdi + kdia*CycA + kdib*CycB + kdie*CycE + kdid*CycD)/(1 + k14di*Cdc14);
+  Vih1 := kih1 + kih1a*CycA + kih1b*CycB + kih1e*CycE + kih1d*CycD;
+  Vsa := (ksaa + ksab*TFE)*Mass;
+  Vsb := (ksba + ksbb*TFB)*Mass;
+  Vse := (ksea + kseb*TFE)*Mass;
+  Vsi := ksia + ksib*TFI;
+  Vwee := kweea + kweeb*Wee1;
+
+  // Reactions:
+  Mass_accumulation:  => Mass; cell*Function_for_Mass_accumulation(Mass, MaxMass, cell, mu);
+  Synthesis_of_MPF:  => CycB; cell*Function_for_Synthesis_of_MPF(Vsb, cell);
+  Deg_of_MPF: CycB => ; cell*Function_for_Deg__of_MPF(CycB, Vdb, cell);
+  activation_of_MPF_from_pB_by_Cdc25: pB => CycB; cell*Function_for_activation_of_MPF_from_pB_by_Cdc25(V25, cell, pB);
+  inactivation_of_MPFby_Wee1: CycB => pB; cell*Function_for_inactivation_of_MPFby_Wee1(CycB, Vwee, cell);
+  assoc_of_MPF_with_CKI: CycB + CKI => BCKI; cell*Function_for_assoc__of_MPF_with_CKI(CKI, CycB, cell, kassb);
+  dissoc_1: BCKI => CycB + CKI; cell*Function_for_dissoc1(BCKI, cell, kdissb);
+  deg_of_pB: pB => ; cell*Function_for_deg__of_pB(Vdb, cell, pB);
+  assoc_of_pB_with_CKI: pB + CKI => pBCKI; cell*Function_for_assoc__of_pB_with_CKI(CKI, cell, kassb, pB);
+  dissoc_2: pBCKI => pB + CKI; cell*Function_for_dissoc2(cell, kdissb, pBCKI);
+  Cdc25_action: pBCKI => BCKI; cell*Function_for_Cdc25_action(V25, cell, pBCKI);
+  Wee1_action: BCKI => pBCKI; cell*Function_for_Wee1_action(BCKI, Vwee, cell);
+  Deg_of_CycB_moeity__in_BCKI: BCKI => CKI; cell*Function_for_Deg__of_CycB_moeity__in_BCKI(BCKI, Vdb, cell);
+  Deg_of_CKI_moeity_in_BCKI: BCKI => CycB; cell*Function_for_Deg__of_CKI_moeity_in_BCKI(BCKI, Vdi, cell);
+  Deg_of_pB_moeity_in_pBCKI: pBCKI => CKI; cell*Function_for_Deg__of_pB_moeity_in_pBCKI(Vdb, cell, pBCKI);
+  Deg_of_CKI_moeity_in_pBCKI: pBCKI => pB; cell*Function_for_Deg__of_CKI_moeity_in_pBCKI(Vdi, cell, pBCKI);
+  Synthesis_of_CKI:  => CKI; cell*Function_for_Synthesis_of_CKI(Vsi, cell);
+  Deg_of_CKI: CKI => ; cell*Function_for_Deg__of_CKI(CKI, Vdi, cell);
+  Assoc_of_CKI_with_CycA: CKI + CycA => TriA; cell*Function_for_Assoc__of_CKI_with_CycA(CKI, CycA, cell, kassa);
+  dissoc_3: TriA => CKI + CycA; cell*Function_for_dissoc3(TriA, cell, kdissa);
+  Deg_of_CKI_moeity_in_TriA: TriA => CycA; cell*Function_for_Deg__of_CKI_moeity_in_TriA(TriA, Vdi, cell);
+  Deg_of_CycA_moeity_in_TriA: TriA => CKI; cell*Function_for_Deg__of_CycA_moeity_in_TriA(TriA, Vda, cell);
+  Assoc_of_CKI_with_CycE: CKI + CycE => TriE; cell*Function_for_Assoc__of_CKI_with_CycE(CKI, CycE, cell, kasse);
+  dissoc_4: TriE => CKI + CycE; cell*Function_for_dissoc4(TriE, cell, kdisse);
+  Deg_of_CKI_moeity_in_TriE: TriE => CycE; cell*Function_for_Deg__of_CKI_moeity_in_TriE(TriE, Vdi, cell);
+  Deg_of_CycE_moeity_in_TriE: TriE => CKI; cell*Function_for_Deg__of_CycE_moeity_in_TriE(TriE, Vde, cell);
+  Synthesis_of_CycA_by_TFE:  => CycA; cell*Function_for_Synthesis_of_CycA_by_TFE(Vsa, cell);
+  Deg_of_CycA: CycA => ; cell*Function_for_Deg__of_CycA(CycA, Vda, cell);
+  Synthesis_of_CycE_by_TFE:  => CycE; cell*Function_for_Synthesis_of_CycE_by_TFE(Vse, cell);
+  Deg_of_CycE: CycE => ; cell*Function_for_Deg__of_CycE(CycE, Vde, cell);
+  activation_of_APCP: $APC => APCP; cell*Function_for_activation_of_APCP(APC, CycB, Jaie, cell, kaie);
+  inactivation_1: APCP => $APC; cell*Function_for_inactivation1(APCP, Jiie, cell, kiie);
+  Synthesis_of_Cdc20i:  => Cdc20i; cell*Function_for_Synthesis_of_Cdc20i(CycB, J20, cell, ks20a, ks20b, n20);
+  Deg_of_Cdc20i: Cdc20i => ; cell*Function_for_Deg__of_Cdc20i(Cdc20i, cell, kd20);
+  activation_of_Cdc20i: Cdc20i => Cdc20A; cell*Function_for_activation_of_Cdc20i(APCP, Cdc20i, Ja20, cell, ka20);
+  inactivation_2: Cdc20A => Cdc20i; cell*Function_for_inactivation2(Cdc20A, Ji20, cell, ki20);
+  degradation: Cdc20A => ; cell*Function_for_degradation(Cdc20A, cell, kd20);
+  activation_of_Cdh1: $Cdh1i => Cdh1; cell*Function_for_activation_of_Cdh1(Cdh1i, Jah1, Vah1, cell);
+  inactivation__of_Cdh1: Cdh1 => $Cdh1i; cell*Function_for_inactivation__of_Cdh1(Cdh1, Jih1, Vih1, cell);
+
+  // Events:
+  Event: at 0 after (CycB - KEZ) < 0: Mass = 0.5*Mass;
+
+  // Species initializations:
+  APCP = 0.671626567840576/cell;
+  BCKI = 0;
+  Cdc20A = 0.660586714744568/cell;
+  Cdc20i = 0.018553527072072/cell;
+  CycB = 0.166841372847557/cell;
+  Cdh1 = 0.99923574924469/cell;
+  CKI = 0.295407682657242/cell;
+  pBCKI = 0;
+  TriA = 0.017153799533844/cell;
+  TriE = 0.311726331710815/cell;
+  CycA = 0.00994044542312622/cell;
+  pB = 0.00981487054377794/cell;
+  Mass = 0.587108433246615/cell;
+  CycE = 0.077605128288269/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  APCT = 1;
+  ka25a = 0;
+  ka25b = 1;
+  ki25a = 0.3;
+  ki25b = 0;
+  Ja25 = 0.1;
+  Ji25 = 0.1;
+  Cdh1T = 1;
+  CycD0 = 0.05;
+  kafb = 1;
+  kifb = 0.1;
+  Jafb = 0.1;
+  Jifb = 0.1;
+  Jatf = 0.01;
+  Jitf = 0.01;
+  kafi = 88;
+  kifi = 88;
+  kifib = 88;
+  Jafi = 88;
+  Jifi = 88;
+  kaweea = 0.3;
+  kaweeb = 0;
+  kiweea = 0;
+  kiweeb = 1;
+  Jawee = 0.05;
+  Jiwee = 0.05;
+  KEZ = 0.2;
+  k25a = 0.01;
+  k25b = 5;
+  kah1a = 0.18;
+  kah1b = 3.5;
+  katf = 0;
+  katfa = 0.3;
+  katfe = 0.5;
+  katfd = 3;
+  kdaa = 0.02;
+  kdab = 2;
+  kdac = 0;
+  kdb = 0.005;
+  kdbh = 2;
+  kdbc = 0.1;
+  kde = 0.01;
+  kdee = 0.1;
+  kdea = 0.5;
+  kdeb = 0.5;
+  kdi = 0.8;
+  kdia = 5;
+  kdib = 5;
+  kdie = 5;
+  kdid = 0;
+  k14di = 0;
+  kih1 = 0;
+  kih1a = 0.2;
+  kih1b = 1;
+  kih1e = 0.1;
+  kih1d = 0;
+  kitf = 0.25;
+  kitfa = 0.1;
+  kitfb = 0.1;
+  ksaa = 0;
+  ksab = 0.025;
+  ksba = 0.01;
+  ksbb = 0.03;
+  ksea = 0.01;
+  kseb = 0.18;
+  ksia = 1.8;
+  ksib = 0;
+  kweea = 0.02;
+  kweeb = 0.2;
+  J20 = 1;
+  Ja20 = 0.005;
+  Jah1 = 0.01;
+  Jaie = 0.01;
+  Ji20 = 0.005;
+  Jih1 = 0.01;
+  Jiie = 0.01;
+  ka20 = 0.5;
+  kaie = 0.07;
+  kassa = 25;
+  kassb = 0;
+  kasse = 50;
+  kd20 = 0.15;
+  kdissa = 1;
+  kdissb = 0;
+  kdisse = 1;
+  ki20 = 0.25;
+  kiie = 0.18;
+  ks20b = 0.15;
+  ks20a = 0;
+  MaxMass = 10000;
+  mu = 0.005;
+  n20 = 1;
+
+  // Other declarations:
+  var Vatf, Vitf, V25, Vah1, Vda, Vdb, Vde, Vdi, Vih1, Vsa, Vsb, Vse, Vsi;
+  var Vwee;
+  const cell, APCT, ka25a, ka25b, ki25a, ki25b, Ja25, Ji25, Cdh1T, CycD0;
+  const kafb, kifb, Jafb, Jifb, Jatf, Jitf, kafi, kifi, kifib, Jafi, Jifi;
+  const kaweea, kaweeb, kiweea, kiweeb, Jawee, Jiwee, KEZ, k25a, k25b, kah1a;
+  const kah1b, katf, katfa, katfe, katfd, kdaa, kdab, kdac, kdb, kdbh, kdbc;
+  const kde, kdee, kdea, kdeb, kdi, kdia, kdib, kdie, kdid, k14di, kih1, kih1a;
+  const kih1b, kih1e, kih1d, kitf, kitfa, kitfb, ksaa, ksab, ksba, ksbb, ksea;
+  const kseb, ksia, ksib, kweea, kweeb, J20, Ja20, Jah1, Jaie, Ji20, Jih1;
+  const Jiie, ka20, kaie, kassa, kassb, kasse, kd20, kdissa, kdissb, kdisse;
+  const ki20, kiie, ks20b, ks20a, MaxMass, mu, n20;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  APCP is "APCp";
+  Cdc25P is "Cdc25p";
+  Mass_accumulation is "Mass accumulation";
+  Synthesis_of_MPF is "Synthesis of CycB";
+  Deg_of_MPF is "Deg. of MPF";
+  activation_of_MPF_from_pB_by_Cdc25 is "activation of MPF from pB by Cdc25";
+  inactivation_of_MPFby_Wee1 is "inactivation of MPFby Wee1";
+  assoc_of_MPF_with_CKI is "Assoc. of MPF with CKI";
+  dissoc_1 is "dissoc1 of BCKI";
+  deg_of_pB is "Deg. of pB";
+  assoc_of_pB_with_CKI is "Assoc. of pB with CKI";
+  dissoc_2 is "dissoc2 of pBCKI";
+  Cdc25_action is "Cdc25 action";
+  Wee1_action is "BCKI phosphophorylation by Wee1";
+  Deg_of_CycB_moeity__in_BCKI is "Deg. of CycB moeity  in BCKI";
+  Deg_of_CKI_moeity_in_BCKI is "Deg. of CKI moeity in BCKI";
+  Deg_of_pB_moeity_in_pBCKI is "Deg. of pB moeity in pBCKI";
+  Deg_of_CKI_moeity_in_pBCKI is "Deg. of CKI moeity in pBCKI";
+  Synthesis_of_CKI is "Synthesis of CKI";
+  Deg_of_CKI is "Deg. of CKI";
+  Assoc_of_CKI_with_CycA is "Assoc. of CKI with CycA";
+  dissoc_3 is "dissoc3 of TriA";
+  Deg_of_CKI_moeity_in_TriA is "Deg. of CKI moeity in TriA";
+  Deg_of_CycA_moeity_in_TriA is "Deg. of CycA moeity in TriA";
+  Assoc_of_CKI_with_CycE is "Assoc. of CKI with CycE";
+  dissoc_4 is "dissoc4 of TriE";
+  Deg_of_CKI_moeity_in_TriE is "Deg. of CKI moeity in TriE";
+  Deg_of_CycE_moeity_in_TriE is "Deg. of CycE moeity in TriE";
+  Synthesis_of_CycA_by_TFE is "Synthesis of CycA by TFE";
+  Deg_of_CycA is "Deg. of CycA";
+  Synthesis_of_CycE_by_TFE is "Synthesis of CycE by TFE";
+  Deg_of_CycE is "Deg. of CycE";
+  activation_of_APCP is "activation of APCP";
+  inactivation_1 is "inactivation of APCp";
+  Synthesis_of_Cdc20i is "Synthesis of Cdc20i";
+  Deg_of_Cdc20i is "Deg. of Cdc20i";
+  activation_of_Cdc20i is "activation of Cdc20i";
+  inactivation_2 is "inactivation of Cdc20A";
+  degradation is "Deg.of CDC20A";
+  activation_of_Cdh1 is "activation of Cdh1";
+  inactivation__of_Cdh1 is "inactivation  of Cdh1";
+
+  // CV terms:
+  cell identity "http://identifiers.org/ncit/C12958"
+  APC hypernym "http://identifiers.org/uniprot/Q9H1A4"
+  APCP hypernym "http://identifiers.org/uniprot/Q9H1A4"
+  APCP property "http://identifiers.org/pato/PATO:0002220"
+  BCKI hypernym "http://identifiers.org/uniprot/Q22197"
+  Cdc14 hypernym "http://identifiers.org/uniprot/Q00684"
+  Cdc20A identity "http://identifiers.org/uniprot/Q12834"
+  Cdc20A property "http://identifiers.org/ncit/NCIT:C45329"
+  Cdc20i identity "http://identifiers.org/uniprot/Q12834"
+  Cdc20i property "http://identifiers.org/ncit/C45422"
+  Cdc25P hypernym "http://identifiers.org/uniprot/P30304"
+  Cdc25P property "http://identifiers.org/pato/PATO:0002220"
+  CycB identity "http://identifiers.org/uniprot/P14635"
+  Cdh1 hypernym "http://identifiers.org/uniprot/Q9UM11"
+  Cdh1i hypernym "http://identifiers.org/uniprot/Q9UM11"
+  Cdh1i property "http://identifiers.org/ncit/C45422"
+  CKI hypernym "http://identifiers.org/uniprot/P46527"
+  CKIT hypernym "http://identifiers.org/uniprot/P46527"
+  pBCKI part "http://identifiers.org/uniprot/P06400"
+  pBCKI part "http://identifiers.org/uniprot/P46527"
+  TriA part "http://identifiers.org/uniprot/P46527"
+  TriA part "http://identifiers.org/uniprot/P20248"
+  TriE part "http://identifiers.org/uniprot/P24864"
+  TriE part "http://identifiers.org/uniprot/P46527"
+  CycA identity "http://identifiers.org/uniprot/P20248"
+  CycAT hypernym "http://identifiers.org/uniprot/P20248"
+  CycBT hypernym "http://identifiers.org/uniprot/P14635"
+  pB identity "http://identifiers.org/uniprot/P06400"
+  CycD identity "http://identifiers.org/uniprot/P24385"
+  Mass identity "http://identifiers.org/pato/PATO:0045030"
+  CycE identity "http://identifiers.org/uniprot/P24864"
+  CycET hypernym "http://identifiers.org/uniprot/P24864"
+  preMPF property "http://identifiers.org/uniprot/Q8NHZ8"
+  TFB homolog "http://identifiers.org/uniprot/Q5AFP3"
+  TFE homolog "http://identifiers.org/uniprot/Q01094"
+  TFI homolog "http://identifiers.org/uniprot/Q9UUB7"
+  TriB hypernym "http://identifiers.org/uniprot/P46527"
+  TriB hypernym "http://identifiers.org/uniprot/P06400"
+  Wee1 identity "http://identifiers.org/uniprot/P30291"
+  Mass_accumulation class "http://identifiers.org/ncit/NCIT:C16402"
+  Synthesis_of_MPF class "http://identifiers.org/sbo/SBO:0000393"
+  Deg_of_MPF class "http://identifiers.org/sbo/SBO:0000179"
+  activation_of_MPF_from_pB_by_Cdc25 class "http://identifiers.org/sbo/SBO:0000656"
+  inactivation_of_MPFby_Wee1 class "http://identifiers.org/sbo/SBO:0000665"
+  assoc_of_MPF_with_CKI class "http://identifiers.org/sbo/SBO:0000177"
+  dissoc_1 class "http://identifiers.org/sbo/SBO:0000180"
+  deg_of_pB class "http://identifiers.org/sbo/SBO:0000179"
+  assoc_of_pB_with_CKI class "http://identifiers.org/sbo/SBO:0000177"
+  dissoc_2 class "http://identifiers.org/sbo/SBO:0000180"
+  Cdc25_action class "http://identifiers.org/sbo/SBO:0000330"
+  Wee1_action class "http://identifiers.org/sbo/SBO:0000216"
+  Deg_of_CycB_moeity__in_BCKI class "http://identifiers.org/sbo/SBO:0000179"
+  Deg_of_CKI_moeity_in_BCKI class "http://identifiers.org/sbo/SBO:0000179"
+  Deg_of_pB_moeity_in_pBCKI class "http://identifiers.org/sbo/SBO:0000179"
+  Deg_of_CKI_moeity_in_pBCKI class "http://identifiers.org/sbo/SBO:0000179"
+  Synthesis_of_CKI class "http://identifiers.org/sbo/SBO:0000393"
+  Deg_of_CKI class "http://identifiers.org/sbo/SBO:0000179"
+  Assoc_of_CKI_with_CycA class "http://identifiers.org/sbo/SBO:0000177"
+  dissoc_3 class "http://identifiers.org/sbo/SBO:0000180"
+  Deg_of_CKI_moeity_in_TriA class "http://identifiers.org/sbo/SBO:0000179"
+  Deg_of_CycA_moeity_in_TriA class "http://identifiers.org/sbo/SBO:0000179"
+  Assoc_of_CKI_with_CycE class "http://identifiers.org/sbo/SBO:0000177"
+  dissoc_4 class "http://identifiers.org/sbo/SBO:0000180"
+  Deg_of_CKI_moeity_in_TriE class "http://identifiers.org/sbo/SBO:0000179"
+  Deg_of_CycE_moeity_in_TriE class "http://identifiers.org/sbo/SBO:0000179"
+  Synthesis_of_CycA_by_TFE class "http://identifiers.org/sbo/SBO:0000393"
+  Deg_of_CycA class "http://identifiers.org/sbo/SBO:0000179"
+  Synthesis_of_CycE_by_TFE class "http://identifiers.org/sbo/SBO:0000393"
+  Deg_of_CycE class "http://identifiers.org/sbo/SBO:0000179"
+  activation_of_APCP class "http://identifiers.org/sbo/SBO:0000216"
+  inactivation_1 class "http://identifiers.org/sbo/SBO:0000665"
+  Synthesis_of_Cdc20i class "http://identifiers.org/sbo/SBO:0000393"
+  Deg_of_Cdc20i class "http://identifiers.org/sbo/SBO:0000179"
+  activation_of_Cdc20i class "http://identifiers.org/sbo/SBO:0000656"
+  inactivation_2 class "http://identifiers.org/sbo/SBO:0000665"
+  degradation class "http://identifiers.org/sbo/SBO:0000179"
+  inactivation__of_Cdh1 class "http://identifiers.org/sbo/SBO:0000665"
+end
+
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model is "Csikasz-Nagy2006 - Mammalian Cell Cycle model"
+
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model description "http://identifiers.org/pubmed/16581849"
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model model_entity_is "http://identifiers.org/biomodels.db/MODEL3897771820",
+                                                              "http://identifiers.org/biomodels.db/BIOMD0000001044"
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model hypernym "http://identifiers.org/reactome/R-HSA-1640170"
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model container "http://identifiers.org/ncit/C12958"
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model taxon "http://identifiers.org/taxonomy/40674"
+Csikasz_Nagy2006___Mammalian_Cell_Cycle_model property "http://identifiers.org/go/GO:0007049",
+                                                       "http://identifiers.org/mamo/MAMO_0000046"

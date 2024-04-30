@@ -1,0 +1,57 @@
+// Created by libAntimony v2.13.2
+model *MODEL1304190001()
+
+  // Compartments and Species:
+  compartment Tissue;
+  species $H in Tissue, $T in Tissue, $E in Tissue, $I in Tissue;
+
+  // Rate Rules:
+  H' = H*(alpha1 - beta1*H - delta1*T) - sigma1*H*E;
+  T' = (T*(alpha3 - beta2*T) - gamma2*I*T) + sigma2*H*E;
+  E' = pi - theta*E;
+  I' = s + rho*I*T/(omega + T) - gamma3*I*T - mu*I - sigma3*I*E/(v + E);
+
+  // Species initializations:
+  H = 1/Tissue;
+  T = 1e-05/Tissue;
+  E = 2/Tissue;
+  I = 1.379310345/Tissue;
+
+  // Compartment initializations:
+  Tissue = 1;
+
+  // Variable initializations:
+  alpha1 = 0.7;
+  beta1 = 0.3;
+  delta1 = 1;
+  sigma1 = 1.2;
+  alpha3 = 1;
+  beta2 = 0.4;
+  gamma2 = 0.9;
+  sigma2 = 0.94;
+  s = 0.4;
+  rho = 0.2;
+  omega = 0.3;
+  gamma3 = 0.085;
+  mu = 0.29;
+  sigma3 = 0.3;
+  v = 0.4;
+  theta = 0.8;
+  alpha2 = 0.98;
+  pi_ = 0.3;
+
+  // Other declarations:
+  const Tissue, alpha1, beta1, delta1, sigma1, alpha3, beta2, gamma2, sigma2;
+  const s, rho, omega, gamma3, mu, sigma3, v, theta, alpha2, pi_;
+
+  // Display Names:
+  H is "normal cells";
+  T is "Tumour cells";
+  E is "17-beta estradiol";
+  I is "Immune cells";
+  pi_ is "pi";
+end
+
+MODEL1304190001 is "Mufudza2012 - Estrogen effect on the dynamics of breast cancer"
+
+MODEL1304190001 model_entity_is "urn:miriam:biomodels.db:MODEL1304190001"

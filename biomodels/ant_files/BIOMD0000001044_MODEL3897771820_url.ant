@@ -1,0 +1,307 @@
+// Created by libAntimony v2.13.2
+function BB(A1, A2, A3, A4)
+  (A2 - A1) + A3*A2 + A4*A1;
+end
+
+BB is "BB"
+
+function GK(A1, A2, A3, A4)
+  2*A4*A1/((A2 - A1) + A3*A2 + A4*A1 + root(2, ((A2 - A1) + A3*A2 + A4*A1)^2 - 4*(A2 - A1)*A4*A1));
+end
+
+GK is "GK"
+
+function MichaelisMenten(M1, J1, k1, S1)
+  k1*S1*M1/(J1 + S1);
+end
+
+MichaelisMenten is "Michaelis-Menten"
+
+function Mass_Action_2(k1, S1, S2)
+  k1*S1*S2;
+end
+
+Mass_Action_2 is "Mass_Action_2"
+
+function Mass_Action_1(k1, S1)
+  k1*S1;
+end
+
+Mass_Action_1 is "Mass_Action_1"
+
+function Mass_Action_0(k1)
+  k1;
+end
+
+Mass_Action_0 is "Mass_Action_0"
+
+
+model *MODEL3897771820()
+
+  // Compartments and Species:
+  compartment cell;
+  species $APC in cell, APCP in cell, BCKI in cell, $Cdc14 in cell, Cdc20A in cell;
+  species Cdc20i in cell, $Cdc20T in cell, $Cdc25P in cell, CycB in cell;
+  species Cdh1 in cell, $Cdh1i in cell, CKI in cell, $CKIT in cell, pBCKI in cell;
+  species TriA in cell, TriE in cell, CycA in cell, $CycAT in cell, $CycBT in cell;
+  species pB in cell, $CycD in cell, Mass in cell, CycE in cell, $CycET in cell;
+  species $preMPF in cell, $TFB in cell, $TFE in cell, $TFI in cell, $TriB in cell;
+  species $Wee1 in cell;
+
+  // Assignment Rules:
+  APC := APCT - APCP;
+  Cdc14 := Cdc20A;
+  Cdc20T := Cdc20i + Cdc20A;
+  Cdc25P := GK(ka25a + ka25b*CycB, ki25a + ki25b*Cdc14, Ja25, Ji25);
+  Cdh1i := Cdh1T - Cdh1;
+  CKIT := CKI + BCKI + pBCKI + TriA + TriE;
+  CycAT := CycA + TriA;
+  CycBT := CycB + pB + BCKI + pBCKI;
+  CycD := CycD0*Mass;
+  CycET := CycE + TriE;
+  preMPF := pB + pBCKI;
+  TFB := GK(kafb*CycB, kifb, Jafb, Jifb);
+  TFE := GK(Vatf, Vitf, Jatf, Jitf);
+  Vatf := katf + katfa*CycA + katfe*CycE + katfd*CycD;
+  Vitf := kitf + kitfa*CycA + kitfb*CycB;
+  TFI := GK(kafi*Cdc14, kifi + kifib*CycB, Jafi, Jifi);
+  TriB := BCKI + pBCKI;
+  Wee1 := GK(kaweea + kaweeb*Cdc14, kiweea + kiweeb*CycB, Jawee, Jiwee);
+  V25 := k25a + k25b*Cdc25P;
+  Vah1 := kah1a + kah1b*Cdc14;
+  Vda := kdaa + (kdab + kdac)*Cdc20A + kdac*Cdc20i;
+  Vdb := kdb + kdbh*Cdh1 + kdbc*Cdc20A;
+  Vde := kde + kdee*CycE + kdea*CycA + kdeb*CycB;
+  Vdi := (kdi + kdia*CycA + kdib*CycB + kdie*CycE + kdid*CycD)/(1 + k14di*Cdc14);
+  Vih1 := kih1 + kih1a*CycA + kih1b*CycB + kih1e*CycE + kih1d*CycD;
+  Vsa := (ksaa + ksab*TFE)*Mass;
+  Vsb := (ksba + ksbb*TFB)*Mass;
+  Vse := (ksea + kseb*TFE)*Mass;
+  Vsi := ksia + ksib*TFI;
+  Vwee := kweea + kweeb*Wee1;
+
+  // Reactions:
+  Mass_accumulation:  => Mass; Mass_Action_0(mu*Mass*(1 - Mass/MaxMass));
+  Synthesis_of_MPF:  => CycB; Vsb;
+  Deg_of_MPF: CycB => ; Mass_Action_1(Vdb, CycB);
+  activation_of_MPF_from_pB_by_Cdc25: pB => CycB; Mass_Action_1(V25, pB);
+  inactivation_of_MPFby_Wee1: CycB => pB; Mass_Action_1(Vwee, CycB);
+  assoc_of_MPF_with_CKI: CycB + CKI => BCKI; Mass_Action_2(kassb, CycB, CKI);
+  dissoc_1: BCKI => CycB + CKI; Mass_Action_1(kdissb, BCKI);
+  deg_of_pB: pB => ; Mass_Action_1(Vdb, pB);
+  assoc_of_pB_with_CKI: pB + CKI => pBCKI; Mass_Action_2(kassb, pB, CKI);
+  dissoc_2: pBCKI => pB + CKI; Mass_Action_1(kdissb, pBCKI);
+  Cdc25_action: pBCKI => BCKI; Mass_Action_1(V25, pBCKI);
+  Wee1_action: BCKI => pBCKI; Mass_Action_1(Vwee, BCKI);
+  Deg_of_CycB_moeity__in_BCKI: BCKI => CKI; Mass_Action_1(Vdb, BCKI);
+  Deg_of_CKI_moeity_in_BCKI: BCKI => CycB; Mass_Action_1(Vdi, BCKI);
+  Deg_of_pB_moeity_in_pBCKI: pBCKI => CKI; Mass_Action_1(Vdb, pBCKI);
+  Deg_of_CKI_moeity_in_pBCKI: pBCKI => pB; Mass_Action_1(Vdi, pBCKI);
+  Synthesis_of_CKI:  => CKI; Vsi;
+  Deg_of_CKI: CKI => ; Mass_Action_1(Vdi, CKI);
+  Assoc_of_CKI_with_CycA: CKI + CycA => TriA; Mass_Action_2(kassa, CKI, CycA);
+  dissoc_3: TriA => CKI + CycA; Mass_Action_1(kdissa, TriA);
+  Deg_of_CKI_moeity_in_TriA: TriA => CycA; Mass_Action_1(Vdi, TriA);
+  Deg_of_CycA_moeity_in_TriA: TriA => CKI; Mass_Action_1(Vda, TriA);
+  Assoc_of_CKI_with_CycE: CKI + CycE => TriE; Mass_Action_2(kasse, CKI, CycE);
+  dissoc_4: TriE => CKI + CycE; Mass_Action_1(kdisse, TriE);
+  Deg_of_CKI_moeity_in_TriE: TriE => CycE; Mass_Action_1(Vdi, TriE);
+  Deg_of_CycE_moeity_in_TriE: TriE => CKI; Mass_Action_1(Vde, TriE);
+  Synthesis_of_CycA_by_TFE:  => CycA; Vsa;
+  Deg_of_CycA: CycA => ; Mass_Action_1(Vda, CycA);
+  Synthesis_of_CycE_by_TFE:  => CycE; Vse;
+  Deg_of_CycE: CycE => ; Mass_Action_1(Vde, CycE);
+  activation_of_APCP: $APC => APCP; MichaelisMenten(CycB, Jaie, kaie, APC);
+  inactivation_1: APCP => $APC; MichaelisMenten(1, Jiie, kiie, APCP);
+  Synthesis_of_Cdc20i:  => Cdc20i; Mass_Action_0(ks20a + ks20b*CycB^n20/(J20^n20 + CycB^n20));
+  Deg_of_Cdc20i: Cdc20i => ; Mass_Action_1(kd20, Cdc20i);
+  activation_of_Cdc20i: Cdc20i => Cdc20A; MichaelisMenten(APCP, Ja20, ka20, Cdc20i);
+  inactivation_2: Cdc20A => Cdc20i; MichaelisMenten(1, Ji20, ki20, Cdc20A);
+  degradation: Cdc20A => ; Mass_Action_1(kd20, Cdc20A);
+  activation_of_Cdh1: $Cdh1i => Cdh1; MichaelisMenten(Vah1, Jah1, 1, Cdh1i);
+  inactivation__of_Cdh1: Cdh1 => $Cdh1i; MichaelisMenten(Vih1, Jih1, 1, Cdh1);
+
+  // Events:
+  _E0: at 0 after (CycB - KEZ) < 0: Mass = 0.5*Mass;
+
+  // Species initializations:
+  APCP = 0.671626567840576/cell;
+  BCKI = 0;
+  Cdc20A = 0.660586714744568/cell;
+  Cdc20i = 0.018553527072072/cell;
+  CycB = 0.166841372847557/cell;
+  Cdh1 = 0.99923574924469/cell;
+  CKI = 0.295407682657242/cell;
+  pBCKI = 0;
+  TriA = 0.017153799533844/cell;
+  TriE = 0.311726331710815/cell;
+  CycA = 0.00994044542312622/cell;
+  pB = 0.00981487054377794/cell;
+  Mass = 0.587108433246615/cell;
+  CycE = 0.077605128288269/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  APCT = 1;
+  ka25a = 0;
+  ka25b = 1;
+  ki25a = 0.3;
+  ki25b = 0;
+  Ja25 = 0.1;
+  Ji25 = 0.1;
+  Cdh1T = 1;
+  CycD0 = 0.05;
+  kafb = 1;
+  kifb = 0.1;
+  Jafb = 0.1;
+  Jifb = 0.1;
+  Jatf = 0.01;
+  Jitf = 0.01;
+  kafi = 88;
+  kifi = 88;
+  kifib = 88;
+  Jafi = 88;
+  Jifi = 88;
+  kaweea = 0.3;
+  kaweeb = 0;
+  kiweea = 0;
+  kiweeb = 1;
+  Jawee = 0.05;
+  Jiwee = 0.05;
+  KEZ = 0.2;
+  k25a = 0.01;
+  k25b = 5;
+  kah1a = 0.18;
+  kah1b = 3.5;
+  katf = 0;
+  katfa = 0.3;
+  katfe = 0.5;
+  katfd = 3;
+  kdaa = 0.02;
+  kdab = 2;
+  kdac = 0;
+  kdb = 0.005;
+  kdbh = 2;
+  kdbc = 0.1;
+  kde = 0.01;
+  kdee = 0.1;
+  kdea = 0.5;
+  kdeb = 0.5;
+  kdi = 0.8;
+  kdia = 5;
+  kdib = 5;
+  kdie = 5;
+  kdid = 0;
+  k14di = 0;
+  kih1 = 0;
+  kih1a = 0.2;
+  kih1b = 1;
+  kih1e = 0.1;
+  kih1d = 0;
+  kitf = 0.25;
+  kitfa = 0.1;
+  kitfb = 0.1;
+  ksaa = 0;
+  ksab = 0.025;
+  ksba = 0.01;
+  ksbb = 0.03;
+  ksea = 0.01;
+  kseb = 0.18;
+  ksia = 1.8;
+  ksib = 0;
+  kweea = 0.02;
+  kweeb = 0.2;
+  J20 = 1;
+  Ja20 = 0.005;
+  Jah1 = 0.01;
+  Jaie = 0.01;
+  Ji20 = 0.005;
+  Jih1 = 0.01;
+  Jiie = 0.01;
+  ka20 = 0.5;
+  kaie = 0.07;
+  kassa = 25;
+  kassb = 0;
+  kasse = 50;
+  kd20 = 0.15;
+  kdissa = 1;
+  kdissb = 0;
+  kdisse = 1;
+  ki20 = 0.25;
+  kiie = 0.18;
+  ks20b = 0.15;
+  ks20a = 0;
+  MaxMass = 10000;
+  mu = 0.004951;
+  n20 = 1;
+
+  // Other declarations:
+  var Vatf, Vitf, V25, Vah1, Vda, Vdb, Vde, Vdi, Vih1, Vsa, Vsb, Vse, Vsi;
+  var Vwee;
+  const cell, APCT, ka25a, ka25b, ki25a, ki25b, Ja25, Ji25, Cdh1T, CycD0;
+  const kafb, kifb, Jafb, Jifb, Jatf, Jitf, kafi, kifi, kifib, Jafi, Jifi;
+  const kaweea, kaweeb, kiweea, kiweeb, Jawee, Jiwee, KEZ, k25a, k25b, kah1a;
+  const kah1b, katf, katfa, katfe, katfd, kdaa, kdab, kdac, kdb, kdbh, kdbc;
+  const kde, kdee, kdea, kdeb, kdi, kdia, kdib, kdie, kdid, k14di, kih1, kih1a;
+  const kih1b, kih1e, kih1d, kitf, kitfa, kitfb, ksaa, ksab, ksba, ksbb, ksea;
+  const kseb, ksia, ksib, kweea, kweeb, J20, Ja20, Jah1, Jaie, Ji20, Jih1;
+  const Jiie, ka20, kaie, kassa, kassb, kasse, kd20, kdissa, kdissb, kdisse;
+  const ki20, kiie, ks20b, ks20a, MaxMass, mu, n20;
+
+  // Unit definitions:
+  unit substance = item;
+  unit volume = litre;
+  unit per6minute = 1 / 360 second;
+
+  // Display Names:
+  substance is "normalized subst";
+  volume is "normalized volume";
+  per6minute is "per6min";
+  Mass_accumulation is "Mass accumulation";
+  Synthesis_of_MPF is "Synthesis of MPF";
+  Deg_of_MPF is "Deg. of MPF";
+  activation_of_MPF_from_pB_by_Cdc25 is "activation of MPF from pB by Cdc25";
+  inactivation_of_MPFby_Wee1 is "inactivation of MPFby Wee1";
+  assoc_of_MPF_with_CKI is "assoc. of MPF with CKI";
+  dissoc_1 is "dissoc1";
+  deg_of_pB is "deg. of pB";
+  assoc_of_pB_with_CKI is "assoc. of pB with CKI";
+  dissoc_2 is "dissoc2";
+  Cdc25_action is "Cdc25 action";
+  Wee1_action is "Wee1 action";
+  Deg_of_CycB_moeity__in_BCKI is "Deg. of CycB moeity  in BCKI";
+  Deg_of_CKI_moeity_in_BCKI is "Deg. of CKI moeity in BCKI";
+  Deg_of_pB_moeity_in_pBCKI is "Deg. of pB moeity in pBCKI";
+  Deg_of_CKI_moeity_in_pBCKI is "Deg. of CKI moeity in pBCKI";
+  Synthesis_of_CKI is "Synthesis of CKI";
+  Deg_of_CKI is "Deg. of CKI";
+  Assoc_of_CKI_with_CycA is "Assoc. of CKI with CycA";
+  dissoc_3 is "dissoc3";
+  Deg_of_CKI_moeity_in_TriA is "Deg. of CKI moeity in TriA";
+  Deg_of_CycA_moeity_in_TriA is "Deg. of CycA moeity in TriA";
+  Assoc_of_CKI_with_CycE is "Assoc. of CKI with CycE";
+  dissoc_4 is "dissoc4";
+  Deg_of_CKI_moeity_in_TriE is "Deg. of CKI moeity in TriE";
+  Deg_of_CycE_moeity_in_TriE is "Deg. of CycE moeity in TriE";
+  Synthesis_of_CycA_by_TFE is "Synthesis of CycA by TFE";
+  Deg_of_CycA is "Deg. of CycA";
+  Synthesis_of_CycE_by_TFE is "Synthesis of CycE by TFE";
+  Deg_of_CycE is "Deg. of CycE";
+  activation_of_APCP is "activation of APCP";
+  inactivation_1 is "inactivation1";
+  Synthesis_of_Cdc20i is "Synthesis of Cdc20i";
+  Deg_of_Cdc20i is "Deg. of Cdc20i";
+  activation_of_Cdc20i is "activation of Cdc20i";
+  inactivation_2 is "inactivation2";
+  activation_of_Cdh1 is "activation of Cdh1";
+  inactivation__of_Cdh1 is "inactivation  of Cdh1";
+end
+
+MODEL3897771820 is "Csikasz-Nagy2006_Cell_Cycle"
+
+MODEL3897771820 model_entity_is "http://identifiers.org/biomodels.db/MODEL3897771820"
+MODEL3897771820 description "http://identifiers.org/pubmed/16581849"
+MODEL3897771820 hypernym "urn:miriam:obo.goGO:0007049"
+MODEL3897771820 taxon "http://identifiers.org/taxonomy/2759"

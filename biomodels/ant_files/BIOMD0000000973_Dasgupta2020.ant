@@ -1,0 +1,102 @@
+// Created by libAntimony v2.13.2
+function R2_flux(k2, p)
+  2*k2*p^2;
+end
+
+R2_flux is "R2_flux"
+
+function R3_flux(k_1, n)
+  k_1*n;
+end
+
+R3_flux is "R3_flux"
+
+function R4_flux(k2, p)
+  k2*p^2;
+end
+
+R4_flux is "R4_flux"
+
+function R5_flux(k_2, n)
+  k_2*n^2;
+end
+
+R5_flux is "R5_flux"
+
+function R1_flux(k1, n, p)
+  k1*n*p;
+end
+
+R1_flux is "R1_flux"
+
+
+model *Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation()
+
+  // Compartments and Species:
+  compartment Cell;
+  species P in Cell, N in Cell;
+
+  // Assignment Rules:
+  s := (ModelValue_6 - P)/N;
+
+  // Reactions:
+  R1: P => ; Cell*R1_flux(k1, N, P);
+  R2: P => ; Cell*R2_flux(k2, P);
+  R3:  => P; Cell*R3_flux(k_1, N);
+  R4:  => N; Cell*R4_flux(k2, P);
+  R5: N => ; Cell*R5_flux(k_2, N);
+  R6: N => ; Cell*k3*N;
+
+  // Species initializations:
+  P = 10000/Cell;
+  N = 0;
+
+  // Compartment initializations:
+  Cell = 1;
+
+  // Variable initializations:
+  k1 = 0.00021;
+  k2 = 7.5e-06;
+  k_1 = 6.6e-09;
+  k_2 = 0.03;
+  k3 = 1.16;
+  ModelValue_6 = p0;
+  p0 = 10000;
+
+  // Other declarations:
+  var s;
+  const Cell, k1, k2, k_1, k_2, k3, ModelValue_6, p0;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = second;
+  unit substance = mole;
+
+  // Display Names:
+  time_unit is "time";
+  ModelValue_6 is "Initial for p0";
+
+  // CV terms:
+  P hypernym "http://identifiers.org/ncit/C18106"
+  N hypernym "http://identifiers.org/ncit/C62344"
+  N property "http://identifiers.org/ncit/C18106"
+  R1 class "http://identifiers.org/ncit/C61470"
+  R2 class "http://identifiers.org/ncit/C62344"
+  R3 class "http://identifiers.org/sbo/SBO:0000180"
+  R4 class "http://identifiers.org/ncit/C62344"
+  R5 class "http://identifiers.org/sbo/SBO:0000180"
+  R6 class "http://identifiers.org/ncit/C62344"
+end
+
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation is "Dasgupta2020 - Reduced model of receptor clusturing and aggregation"
+
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation description "http://identifiers.org/pubmed/32604803"
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation model_entity_is "http://identifiers.org/biomodels.db/MODEL2011030002",
+                                                                                    "http://identifiers.org/biomodels.db/BIOMD0000000973"
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation container "http://identifiers.org/ncit/C77681"
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation taxon "http://identifiers.org/taxonomy/9606"
+Dasgupta2020___Reduced_model_of_receptor_clusturing_and_aggregation property "http://identifiers.org/go/GO:0007596",
+                                                                             "http://identifiers.org/go/GO:0070527",
+                                                                             "http://identifiers.org/mamo/MAMO_0000046"

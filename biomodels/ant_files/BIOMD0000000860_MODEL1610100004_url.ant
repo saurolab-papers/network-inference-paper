@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *MODEL1610100004()
+
+  // Compartments and Species:
+  compartment cell;
+  substanceOnly species miR in cell, TF1 in cell, TF1target_mRNA in cell;
+  substanceOnly species $Sink in cell;
+
+  // Reactions:
+  miR_synthesis: TF1 => TF1 + miR; ksynMiR*TF1;
+  miR_degradation: miR => $Sink; kdegMiR*miR;
+  TF1target_transcription: TF1 => TF1 + TF1target_mRNA; ksynTF1targetmRNA*TF1;
+  TF1target_mRNA_degradation: TF1target_mRNA => $Sink; kdegTF1targetmRNA*TF1target_mRNA;
+  TF1target_mRNA_degradation_via_MiR: TF1target_mRNA + miR => $Sink + miR; kdegTF1targetmRNAbyMiR*TF1target_mRNA*miR;
+
+  // Events:
+  ActivateSignal: at time > 3600: TF1 = 500;
+
+  // Species initializations:
+  miR = 0;
+  TF1 = 0;
+  TF1target_mRNA = 0;
+  Sink = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  kdegMiR = 0.0004;
+  kdegTF1targetmRNA = 0.001;
+  kdegTF1targetmRNAbyMiR = 5e-05;
+  ksynTF1targetmRNA = 0.004;
+  ksynMiR = 0.0002;
+
+  // Other declarations:
+  const cell, kdegMiR, kdegTF1targetmRNA, kdegTF1targetmRNAbyMiR, ksynTF1targetmRNA;
+  const ksynMiR;
+
+  // Unit definitions:
+  unit substance = item;
+end
+
+MODEL1610100004 is "Proctor2017- Role of microRNAs in osteoarthritis (Positive Feedforward Incoherent By MicroRNA)"
+
+MODEL1610100004 model_entity_is "http://identifiers.org/biomodels.db/MODEL1610100004"
+MODEL1610100004 description "http://identifiers.org/pubmed/29095952"

@@ -1,0 +1,78 @@
+// Created by libAntimony v2.13.2
+model *Wodarz1999_CTL_memory_response_HIV()
+
+  // Compartments and Species:
+  compartment COMpartment;
+
+  // Assignment Rules:
+  s := piecewise(1, time < 1, piecewise(1, time > 15, 0.0042));
+  log_y := log10(y*1)/log10(10);
+  log_w := log10(w*1)/log10(10);
+
+  // Rate Rules:
+  x' = lamda - (d*x + s*beta*x*y);
+  y' = s*beta*x*y - (a*y + p*y*z);
+  z' = c*q*y*w - h*z;
+  w' = c*x*y*w - (c*q*y*w + b*w);
+
+  // Compartment initializations:
+  COMpartment = 1;
+
+  // Variable initializations:
+  x = 10;
+  lamda = 1;
+  d = 0.1;
+  beta = 1.5;
+  y = 0.1;
+  a = 0.2;
+  p = 1;
+  z = 0;
+  w = 0.001;
+  c = 0.1;
+  q = 0.5;
+  b = 0.01;
+  h = 0.1;
+
+  // Other declarations:
+  var x, s, y, z, log_y, w, log_w;
+  const COMpartment, lamda, d, beta, a, p, c, q, b, h;
+
+  // Unit definitions:
+  unit time_unit = 86400 second;
+
+  // Display Names:
+  time_unit is "time";
+  COMpartment is "Patient";
+
+  // CV terms:
+  x hypernym "urn:miriam:ncit:C12537"
+  x property "urn:miriam:efo:0001460"
+  lamda hypernym "urn:miriam:sbo:SBO%3A0000610"
+  d encodement "urn:miriam:go:GO%3A0008219"
+  s encodement "urn:miriam:go:GO%3A0042493"
+  beta encodement "urn:miriam:efo:0000544"
+  y hypernym "urn:miriam:ncit:C12537"
+  y property "urn:miriam:efo:0000764"
+  a encodement "urn:miriam:sbo:SBO%3A0000179"
+  p encodement "urn:miriam:go:GO%3A0001909"
+  z hypernym "urn:miriam:bto:BTO%3A0000289"
+  z hypernym "urn:miriam:cl:CL%3A0000911"
+  w hypernym "urn:miriam:bto:BTO%3A0000289"
+  w property "urn:miriam:efo:0001651"
+  c encodement "urn:miriam:go:GO%3A0046651"
+  q encodement "urn:miriam:go:GO%3A0045065"
+  b encodement "urn:miriam:go:GO%3A0008219"
+  h encodement "urn:miriam:go:GO%3A0008219"
+end
+
+Wodarz1999_CTL_memory_response_HIV is "Wodarz1999 - Cytotoxic T lymphocyte memory response to HIV infection"
+
+Wodarz1999_CTL_memory_response_HIV model_entity_is "urn:miriam:biomodels.db:MODEL1006230062"
+Wodarz1999_CTL_memory_response_HIV model_entity_is "urn:miriam:biomodels.db:BIOMD0000000683"
+Wodarz1999_CTL_memory_response_HIV description "urn:miriam:pubmed:10588728"
+Wodarz1999_CTL_memory_response_HIV model_entity_is "urn:miriam:biomodels.db:MODEL1006230062"
+Wodarz1999_CTL_memory_response_HIV hypernym "urn:miriam:efo:0000764"
+Wodarz1999_CTL_memory_response_HIV container "urn:miriam:bto:BTO%3A0002417"
+Wodarz1999_CTL_memory_response_HIV taxon "urn:miriam:taxonomy:9606"
+Wodarz1999_CTL_memory_response_HIV description "urn:miriam:pubmed:10588728"
+Wodarz1999_CTL_memory_response_HIV hypernym "urn:miriam:go:GO%3A0046718"

@@ -1,0 +1,75 @@
+// Created by libAntimony v2.13.2
+model *MODEL1609100000()
+
+  // Compartments and Species:
+  compartment default;
+  species s3 in default, s5 in default, s8 in default, s4 in default;
+  substanceOnly species s1 in default, s2 in default, $s6 in default;
+
+  // Reactions:
+  k_golgi: $s6 => s1; s6*k_golgi_k3;
+  k_endo: s1 => s2; s1*k_endo_k1;
+  k_exo: s2 => s1; s2*k_exo_k2;
+  k_le: s2 => s3; s2*k_le_k6;
+  k_lys: s3 => s4; s3*k_lys_k7;
+  k_deg: s4 => s5; s4*k_deg_k8;
+  k_shed: s1 => s8; s1*k_shed_k4;
+
+  // Species initializations:
+  s1 = 0.1/default;
+  s2 = 0.4/default;
+  s3 = 0.4/default;
+  s5 = 0;
+  s6 = 0.155/default;
+  s8 = 0;
+  s4 = 0.85/default;
+
+  // Compartment initializations:
+  default = 1;
+  default has volume;
+
+  // Variable initializations:
+  k_golgi_k3 = 0.96;
+  k_golgi_k3 has substance;
+  k_endo_k1 = 0.025;
+  k_endo_k1 has substance;
+  k_exo_k2 = 0.075;
+  k_exo_k2 has substance;
+  k_le_k6 = 0.01;
+  k_le_k6 has substance;
+  k_lys_k7 = 0.01;
+  k_lys_k7 has substance;
+  k_deg_k8 = 0.005;
+  k_deg_k8 has substance;
+  k_shed_k4 = 0.1;
+  k_shed_k4 has substance;
+
+  // Other declarations:
+  const default;
+
+  // Unit definitions:
+  unit substance = mole;
+  unit volume = litre;
+  unit area = metre^2;
+  unit length = metre;
+  unit time_unit = second;
+
+  // Display Names:
+  time_unit is "time";
+  s1 is "HS surface";
+  s2 is "early endosome";
+  s3 is "late endosome";
+  s6 is "golgi";
+  s4 is "lysosome";
+  k_golgi is "k3";
+  k_endo is "k1";
+  k_exo is "k2";
+  k_le is "k6";
+  k_lys is "k7";
+  k_deg is "k8";
+  k_shed is "k4";
+end
+
+MODEL1609100000 is "Giantsos-Adams2013 - Growth of glycocalyx under shear stress conditions"
+
+MODEL1609100000 model_entity_is "http://identifiers.org/biomodels.db/MODEL1609100000"

@@ -1,0 +1,352 @@
+// Created by libAntimony v2.13.2
+function function_3(k1, k2, b, substrate)
+  (k1 + k2*b)*substrate;
+end
+
+function_3 is "function 3"
+
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+function function_16(kass_, MBF, NRM1t, MBFtot)
+  kass_*MBF*(NRM1t - (MBFtot - MBF));
+end
+
+function_16 is "function 16"
+
+function function_4(k, substrate, modifier)
+  k*substrate*modifier;
+end
+
+function_4 is "function 4"
+
+function function_15(kdis, MBFtot, MBF)
+  kdis*(MBFtot - MBF);
+end
+
+function_15 is "function 15"
+
+function function_7(k1, a, n, k2, k3)
+  k1 + k2*a^n/(k3^n + a^n);
+end
+
+function_7 is "function 7"
+
+function function_8(kdsic_, kdsic, Clb, Cln, Jsic1, Sic1t)
+  (kdsic_ + kdsic*Clb*(Cln + Clb)/(Jsic1 + Cln + Clb))*Sic1t;
+end
+
+function_8 is "function 8"
+
+function function_2(k, param)
+  k*param;
+end
+
+function_2 is "function 2"
+
+function function_10(kisbf, ClbM, SBF, Jsbf)
+  kisbf*ClbM*SBF/(Jsbf + SBF);
+end
+
+function_10 is "function 10"
+
+function function_9(kasbf_, kasbf, Cln, SBF, Jscbf)
+  (kasbf_ + kasbf*Cln)*(1 - SBF)/(Jscbf + 1 - SBF);
+end
+
+function_9 is "function 9"
+
+function function_13(kacdc14, Polo, Cdc14, Jcdc14)
+  kacdc14*Polo*(1 - Cdc14)/(Jcdc14 + 1 - Cdc14);
+end
+
+function_13 is "function 13"
+
+function function_14(kicdc14, Cdc14, Jcdc14)
+  kicdc14*Cdc14/(Jcdc14 + Cdc14);
+end
+
+function_14 is "function 14"
+
+function function_11(kacdh1_, kacdh1, Cdc14, Cdh1, Jcdh1)
+  (kacdh1_ + kacdh1*Cdc14)*(1 - Cdh1)/(Jcdh1 + 1 - Cdh1);
+end
+
+function_11 is "function 11"
+
+function function_1(k, modifier)
+  k*modifier;
+end
+
+function_1 is "function 1"
+
+function function_12(kicdh1_, Cln, kicdh1, Clb, Cdh1, Jcdh1)
+  (kicdh1_*Cln + kicdh1*Clb)*Cdh1/(Jcdh1 + Cdh1);
+end
+
+function_12 is "function 12"
+
+
+model *Novak2022___Mitotic_kinase_oscillation()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species Cln in compartment_, ClbSt in compartment_, MBF in compartment_;
+  species Nrm1t in compartment_, ClbMt in compartment_, Polo in compartment_;
+  species Sic1t in compartment_, SBF in compartment_, Cdh1 in compartment_;
+  species Cdc14 in compartment_;
+
+  // Assignment Rules:
+  MBFa := MBF*Cln/(ModelValue_14 + Cln);
+  Clbt := ClbSt + ClbMt + ModelValue_37;
+  BB := Sic1t + Clbt + ModelValue_31;
+  Sic1Clb := 2*Sic1t*Clbt/(BB + sqrt(BB^2 - 4*Sic1t*Clbt));
+  Clb := Clbt - Sic1Clb;
+  ClbM := (ClbMt + ModelValue_37)*(Clbt - Sic1Clb)/Clbt;
+  ClbS := ClbSt*(Clbt - Sic1Clb)/Clbt;
+
+  // Reactions:
+  Transcription_of_Cln:  => Cln; compartment_*function_1(kscln, SBF);
+  Autoregulation_of_Cln_synthesis: Cln => ; compartment_*kdcln*Cln;
+  Activation_by_MBF_of_ClbS_transcription:  => ClbSt; compartment_*function_2(ksclbs, MBFa);
+  Degradation_of_ClbS: ClbSt => ; compartment_*function_3(kdclbs, kdclbs_0, Cdh1, ClbSt);
+  Synthesis_of_MBF:  => MBF; compartment_*function_15(kdiss, MBFtot, MBF);
+  Transcriptional_repression_of_MBF_by_Nrm1t: MBF => ; compartment_*function_16(kass, MBF, Nrm1t, MBFtot);
+  Activation_of_Nrm1_transcription_by_MBF:  => Nrm1t; compartment_*function_2(ksnrm1, MBFa);
+  Degradation_of_Nrm1_by_APC_C_Cdh1_complex: Nrm1t => ; compartment_*function_4(kdnrm1, Nrm1t, Cdh1);
+  Autocatalytic_synthesis_of_ClbMt:  => ClbMt; compartment_*function_7(ksclbm, ClbM, n, ksclbm_0, Jclbm);
+  APC_C_Cdh1_dependent_degradation_of_M_phase_cyclins: ClbMt => ; compartment_*function_3(kdclbm, kdclbm_0, Cdh1, ClbMt);
+  Cdk1_dependent_synthesis_of_Polo_kinase:  => Polo; compartment_*function_2(kspolo, ClbM);
+  Cdh1_dependent_degradation_of_Polo: Polo => ; compartment_*function_3(kdpolo, kdpolo_0, Cdh1, Polo);
+  Constant_synthesis_of_Sic1:  => Sic1t; compartment_*Constant_flux__irreversible(kssic);
+  Sic1_phosphorylation_catalyzed_by_Clb_and_Cln_kinases_followed_by_Sic1_degradation: Sic1t => ; compartment_*function_8(kdsic, kdsic_0, Clb, Cln, Jsic1, Sic1t);
+  Activation_of_SBF_by_Cln:  => SBF; compartment_*function_9(kasbf, kasbf_0, Cln, SBF, jsbf);
+  Inhibition_of_SBF_by_Cdk1: SBF => ; compartment_*function_10(kisbf, ClbM, SBF, jsbf);
+  Activation_of_Cdh1_by_Cln:  => Cdh1; compartment_*function_11(kacdh1, kacdh1_0, Cdc14, Cdh1, Jcdh1);
+  Inhibition_of_Cdh1_Cdk1: Cdh1 => ; compartment_*function_12(kicdh1, Cln, kicdh1_0, Clb, Cdh1, Jcdh1);
+  Activation_of_Cdc14_by_Cln:  => Cdc14; compartment_*function_13(kacdc14, Polo, Cdc14, jcdc14);
+  Inhibition_of_Cdc14_by_Cdk1: Cdc14 => ; compartment_*function_14(kicdc14, Cdc14, jcdc14);
+
+  // Species initializations:
+  Cln = 0.1/compartment_;
+  ClbSt = 0.999999999999997/compartment_;
+  MBF = 0.05/compartment_;
+  Nrm1t = 0.509/compartment_;
+  ClbMt = 0.999999999999997/compartment_;
+  Polo = 0.249999999999999/compartment_;
+  Sic1t = 0;
+  SBF = 0.999999999999985/compartment_;
+  Cdh1 = 0;
+  Cdc14 = 0.1/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  kscln = 0.2;
+  kdcln = 0.2;
+  kasbf = 1;
+  kasbf_0 = 10;
+  kisbf = 25;
+  jsbf = 1;
+  ksclbs = 0.15;
+  kdclbs = 0.1;
+  kdclbs_0 = 0.05;
+  ksnrm1 = 0.05;
+  kdnrm1 = 0.1;
+  MBFtot = 0.5;
+  kass = 1;
+  kdiss = 0.001;
+  Jmbf = 0.01;
+  ksclbm = 0.01;
+  ksclbm_0 = 0.01;
+  kdclbm = 0.01;
+  kdclbm_0 = 1;
+  Jclbm = 0.05;
+  n = 2;
+  kspolo = 0.01;
+  kdpolo = 0.01;
+  kdpolo_0 = 1;
+  kacdc14 = 1;
+  kicdc14 = 0.25;
+  jcdc14 = 0.01;
+  kssic = 0.02;
+  kdsic = 0.01;
+  kdsic_0 = 2;
+  Jsic1 = 0.01;
+  Kdiss = 0.05;
+  kacdh1 = 1;
+  kacdh1_0 = 10;
+  kicdh1 = 0.2;
+  kicdh1_0 = 10;
+  Jcdh1 = 0.01;
+  ndClbM = 0;
+  ModelValue_14 = Jmbf;
+  ModelValue_37 = ndClbM;
+  ModelValue_31 = Kdiss;
+
+  // Other declarations:
+  var MBFa, Clbt, BB, Sic1Clb, Clb, ClbM, ClbS;
+  const compartment_, kscln, kdcln, kasbf, kasbf_0, kisbf, jsbf, ksclbs, kdclbs;
+  const kdclbs_0, ksnrm1, kdnrm1, MBFtot, kass, kdiss, Jmbf, ksclbm, ksclbm_0;
+  const kdclbm, kdclbm_0, Jclbm, n, kspolo, kdpolo, kdpolo_0, kacdc14, kicdc14;
+  const jcdc14, kssic, kdsic, kdsic_0, Jsic1, Kdiss, kacdh1, kacdh1_0, kicdh1;
+  const kicdh1_0, Jcdh1, ndClbM, ModelValue_14, ModelValue_37, ModelValue_31;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = 1 / dimensionless^-0;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  compartment_ is "compartment";
+  kasbf is "kasbf'";
+  kasbf_0 is "kasbf";
+  kdclbs is "kdclbs'";
+  kdclbs_0 is "kdclbs";
+  kass is "kass'";
+  kdiss is "kdiss'";
+  ksclbm is "ksclbm'";
+  ksclbm_0 is "ksclbm";
+  kdclbm is "kdclbm'";
+  kdclbm_0 is "kdclbm";
+  kdpolo is "kdpolo'";
+  kdpolo_0 is "kdpolo";
+  kssic is "kssic'";
+  kdsic is "kdsic'";
+  kdsic_0 is "kdsic";
+  kacdh1 is "kacdh1'";
+  kacdh1_0 is "kacdh1";
+  kicdh1 is "kicdh1'";
+  kicdh1_0 is "kicdh1";
+  ModelValue_14 is "Initial for Jmbf";
+  ModelValue_37 is "Initial for ndClbM";
+  ModelValue_31 is "Initial for Kdiss";
+  Transcription_of_Cln is "Transcription of Cln";
+  Autoregulation_of_Cln_synthesis is "Autoregulation of Cln synthesis";
+  Activation_by_MBF_of_ClbS_transcription is "Activation by MBF of ClbS transcription";
+  Degradation_of_ClbS is "Degradation of ClbS";
+  Synthesis_of_MBF is "Synthesis of MBF";
+  Transcriptional_repression_of_MBF_by_Nrm1t is "Transcriptional repression of MBF by Nrm1t";
+  Activation_of_Nrm1_transcription_by_MBF is "Activation of Nrm1 transcription by MBF";
+  Degradation_of_Nrm1_by_APC_C_Cdh1_complex is "Degradation of Nrm1 by APC/C-Cdh1 complex";
+  Autocatalytic_synthesis_of_ClbMt is "Autocatalytic synthesis of ClbMt";
+  APC_C_Cdh1_dependent_degradation_of_M_phase_cyclins is "APC/C-Cdh1 dependent degradation of M-phase cyclins";
+  Cdk1_dependent_synthesis_of_Polo_kinase is "Cdk1-dependent synthesis of Polo-kinase";
+  Cdh1_dependent_degradation_of_Polo is "Cdh1-dependent degradation of Polo";
+  Constant_synthesis_of_Sic1 is "Constant synthesis of Sic1";
+  Sic1_phosphorylation_catalyzed_by_Clb_and_Cln_kinases_followed_by_Sic1_degradation is "Sic1 phosphorylation catalyzed by Clb and Cln kinases followed by Sic1 degradation";
+  Activation_of_SBF_by_Cln is "Activation of SBF by Cln";
+  Inhibition_of_SBF_by_Cdk1 is "Inhibition of SBF by Cdk1";
+  Activation_of_Cdh1_by_Cln is "Activation of Cdh1 by Cln";
+  Inhibition_of_Cdh1_Cdk1 is "Inhibition of Cdh1 Cdk1";
+  Activation_of_Cdc14_by_Cln is "Activation of Cdc14 by Cln";
+  Inhibition_of_Cdc14_by_Cdk1 is "Inhibition of Cdc14 by Cdk1";
+
+  // CV terms:
+  Cln hypernym "http://identifiers.org/uniprot/P24867"
+  ClbSt hypernym "http://identifiers.org/uniprot/P30283"
+  MBF part "http://identifiers.org/uniprot/P09959"
+  MBF part "http://identifiers.org/uniprot/P39678"
+  MBF hypernym "http://identifiers.org/go/GO:0032991"
+  MBF hypernym "http://identifiers.org/ncit/C17207"
+  Nrm1t hypernym "http://identifiers.org/ncit/C18527"
+  ClbMt part "http://identifiers.org/uniprot/P24869"
+  ClbMt part "http://identifiers.org/uniprot/P00546"
+  ClbMt hypernym "http://identifiers.org/go/GO:0032991"
+  Polo container "http://identifiers.org/ncit/C28597"
+  Sic1t hypernym "http://identifiers.org/chebi/CHEBI:48706"
+  SBF hypernym "http://identifiers.org/ncit/C26199"
+  SBF hypernym "http://identifiers.org/go/GO:0032991"
+  Cdh1 hypernym "http://identifiers.org/chebi/CHEBI:48706"
+  Cdc14 hypernym "http://identifiers.org/uniprot/Q00684"
+  kscln hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdcln hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kasbf hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kasbf_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kisbf hypernym "http://identifiers.org/sbo/SBO:0000009"
+  jsbf hypernym "http://identifiers.org/sbo/SBO:0000009"
+  ksclbs hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdclbs hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdclbs_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  ksnrm1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdnrm1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  MBFtot hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kass hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdiss hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Jmbf hypernym "http://identifiers.org/sbo/SBO:0000009"
+  ksclbm hypernym "http://identifiers.org/sbo/SBO:0000009"
+  ksclbm_0 container "http://identifiers.org/sbo/SBO:0000009"
+  kdclbm hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdclbm_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Jclbm hypernym "http://identifiers.org/sbo/SBO:0000009"
+  n hypernym "http://identifiers.org/ncit/C67363"
+  kspolo hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdpolo hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdpolo_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kacdc14 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kicdc14 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  jcdc14 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kssic hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdsic hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kdsic_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Jsic1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Kdiss hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kacdh1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kacdh1_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kicdh1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  kicdh1_0 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Jcdh1 hypernym "http://identifiers.org/sbo/SBO:0000009"
+  ndClbM hypernym "http://identifiers.org/ncit/C67363"
+  MBFa hypernym "http://identifiers.org/sbo/SBO:0000009"
+  Clbt instance "http://identifiers.org/uniprot/K0KTK7"
+  Clbt instance "http://identifiers.org/uniprot/K0KCI4"
+  BB hypernym "http://identifiers.org/ncit/C67363"
+  Sic1Clb part "http://identifiers.org/uniprot/P11440"
+  Sic1Clb part "http://identifiers.org/uniprot/P14635"
+  Sic1Clb part "http://identifiers.org/uniprot/P38634"
+  Sic1Clb hypernym "http://identifiers.org/go/GO:0032991"
+  Clb hypernym "http://identifiers.org/uniprot/P14635"
+  ClbM part "http://identifiers.org/uniprot/P14635"
+  ClbM part "http://identifiers.org/uniprot/P11440"
+  ClbM hypernym "http://identifiers.org/go/GO:0032991"
+  ClbS part "http://identifiers.org/uniprot/P32943"
+  ClbS part "http://identifiers.org/uniprot/P43063"
+  ClbS hypernym "http://identifiers.org/go/GO:0032991"
+  Transcription_of_Cln hypernym "http://identifiers.org/go/GO:0009299"
+  Autoregulation_of_Cln_synthesis hypernym "http://identifiers.org/go/GO:1902893"
+  Activation_by_MBF_of_ClbS_transcription hypernym "http://identifiers.org/ncit/C17554"
+  Degradation_of_ClbS hypernym "http://identifiers.org/ncit/C61559"
+  Synthesis_of_MBF hypernym "http://identifiers.org/ncit/C61408"
+  Transcriptional_repression_of_MBF_by_Nrm1t hypernym "http://identifiers.org/ncit/C17554"
+  Activation_of_Nrm1_transcription_by_MBF hypernym "http://identifiers.org/ncit/C17554"
+  Degradation_of_Nrm1_by_APC_C_Cdh1_complex hypernym "http://identifiers.org/ncit/C61559"
+  Autocatalytic_synthesis_of_ClbMt hypernym "http://identifiers.org/ncit/C61408"
+  APC_C_Cdh1_dependent_degradation_of_M_phase_cyclins hypernym "http://identifiers.org/ncit/C61559"
+  Cdk1_dependent_synthesis_of_Polo_kinase hypernym "http://identifiers.org/ncit/C61408"
+  Cdh1_dependent_degradation_of_Polo hypernym "http://identifiers.org/ncit/C61559"
+  Constant_synthesis_of_Sic1 hypernym "http://identifiers.org/ncit/C61408"
+  Sic1_phosphorylation_catalyzed_by_Clb_and_Cln_kinases_followed_by_Sic1_degradation hypernym "http://identifiers.org/ncit/C61559"
+  Activation_of_SBF_by_Cln hypernym "http://identifiers.org/sbo/SBO:0000656"
+  Inhibition_of_SBF_by_Cdk1 hypernym "http://identifiers.org/sbo/SBO:0000169"
+  Activation_of_Cdh1_by_Cln hypernym "http://identifiers.org/sbo/SBO:0000656"
+  Inhibition_of_Cdh1_Cdk1 hypernym "http://identifiers.org/sbo/SBO:0000169"
+  Activation_of_Cdc14_by_Cln hypernym "http://identifiers.org/sbo/SBO:0000656"
+  Inhibition_of_Cdc14_by_Cdk1 hypernym "http://identifiers.org/sbo/SBO:0000169"
+end
+
+Novak2022___Mitotic_kinase_oscillation is "Novak2022 - Mitotic kinase oscillation"
+
+Novak2022___Mitotic_kinase_oscillation model_entity_is "http://identifiers.org/biomodels.db/MODEL2205190001",
+                                                       "http://identifiers.org/biomodels.db/BIOMD0000001058"
+Novak2022___Mitotic_kinase_oscillation container "http://identifiers.org/go/GO:0005737"
+Novak2022___Mitotic_kinase_oscillation taxon "http://identifiers.org/taxonomy/9606"
+Novak2022___Mitotic_kinase_oscillation description "http://identifiers.org/doi/10.1016/j.cub.2022.04.016"
+Novak2022___Mitotic_kinase_oscillation property "http://identifiers.org/go/GO:0055047",
+                                                "http://identifiers.org/mamo/MAMO_0000046"

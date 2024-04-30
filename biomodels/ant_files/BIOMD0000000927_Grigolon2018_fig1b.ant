@@ -1,0 +1,102 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction_auxin_induction(Sauxin, auxin, Tauxin)
+  Sauxin - auxin/Tauxin;
+end
+
+Rate_Law_for_reaction_auxin_induction is "Rate Law for reaction auxin induction"
+
+function Rate_Law_for_reaction_synthesis_of_IAA_along_with_natural_decay_of_IAA(SIAA, IAA, TIAA)
+  SIAA - IAA/TIAA;
+end
+
+Rate_Law_for_reaction_synthesis_of_IAA_along_with_natural_decay_of_IAA is "Rate Law for reaction synthesis of IAA"
+
+function Rate_Law_for_reaction_synthesis_of_ARF_along_with_natural_decay_of_ARF(SARF, ARF, TARF)
+  SARF - ARF/TARF;
+end
+
+Rate_Law_for_reaction_synthesis_of_ARF_along_with_natural_decay_of_ARF is "Rate Law for reaction synthesis of ARF"
+
+function Rate_Law_for_reaction_natural_decay_of_IAA(alpha, auxin, IAA)
+  alpha*auxin*IAA;
+end
+
+Rate_Law_for_reaction_natural_decay_of_IAA is "Rate Law for reaction natural decay of IAA"
+
+function Rate_Law_for_reaction_for__natural_decay_of_ARF(beta, IAA, ARF)
+  beta*IAA*ARF;
+end
+
+Rate_Law_for_reaction_for__natural_decay_of_ARF is "Rate Law for reaction for  natural decay of ARF"
+
+
+model *Grigolon2018_Responses_to_auxin_signals()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species auxin in compartment_, IAA in compartment_, ARF in compartment_;
+
+  // Reactions:
+  reaction_for_auxin_induction:  => auxin; compartment_*Rate_Law_for_reaction_auxin_induction(Sauxin, auxin, Tauxin);
+  reaction_for_synthesis_of_IAA_along_with_natural_decay_of_IAA:  => IAA; compartment_*Rate_Law_for_reaction_synthesis_of_IAA_along_with_natural_decay_of_IAA(SIAA, IAA, TIAA);
+  reaction_for_synthesis_of_ARF_along_with_natural_decay_of_ARF:  => ARF; compartment_*Rate_Law_for_reaction_synthesis_of_ARF_along_with_natural_decay_of_ARF(SARF, ARF, TARF);
+  reaction_for__natural_decay_of_ARF: ARF => ; compartment_*Rate_Law_for_reaction_for__natural_decay_of_ARF(beta, IAA, ARF);
+  reaction_natural_decay_of_IAA: IAA => ; compartment_*Rate_Law_for_reaction_natural_decay_of_IAA(alpha_no_reg, auxin, IAA);
+
+  // Species initializations:
+  auxin = 0.2/compartment_;
+  IAA = 0.0333299969972976/compartment_;
+  ARF = 49.9900030001007/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  Tauxin = 10;
+  TIAA = 333;
+  TARF = 2;
+  alpha_no_reg = 0.05;
+  alpha_reg = 150;
+  SIAA = 1;
+  SARF = 25;
+  beta = 0.003;
+  Sauxin = 0.02;
+
+  // Other declarations:
+  const compartment_, Tauxin, TIAA, TARF, alpha_no_reg, alpha_reg, SIAA, SARF;
+  const beta, Sauxin;
+
+  // Unit definitions:
+  unit volume = 1e-3 litre;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  compartment_ is "compartment";
+  reaction_for_auxin_induction is "reaction for auxin induction";
+  reaction_for_synthesis_of_IAA_along_with_natural_decay_of_IAA is "reaction for synthesis of IAA";
+  reaction_for_synthesis_of_ARF_along_with_natural_decay_of_ARF is "reaction for synthesis of ARF";
+  reaction_for__natural_decay_of_ARF is "reaction for  natural decay of ARF";
+  reaction_natural_decay_of_IAA is "reaction natural decay of IAA";
+
+  // CV terms:
+  auxin property "http://identifiers.org/efo/0005900"
+  IAA property "http://identifiers.org/chebi/CHEBI:16411"
+  ARF property "http://identifiers.org/pr/PR:000028506"
+  reaction_for_auxin_induction property "http://identifiers.org/eo/EO:0007074"
+  reaction_for_synthesis_of_IAA_along_with_natural_decay_of_IAA property "http://identifiers.org/ncit/C75947"
+  reaction_for_synthesis_of_IAA_along_with_natural_decay_of_IAA property "http://identifiers.org/ncit/C61367"
+  reaction_for_synthesis_of_ARF_along_with_natural_decay_of_ARF property "http://identifiers.org/ncit/C61367"
+  reaction_for__natural_decay_of_ARF property "http://identifiers.org/ncit/C75947"
+  reaction_natural_decay_of_IAA property "http://identifiers.org/ncit/C75947"
+end
+
+Grigolon2018_Responses_to_auxin_signals is "Grigolon2018-Responses to auxin signals"
+
+Grigolon2018_Responses_to_auxin_signals model_entity_is "http://identifiers.org/biomodels.db/MODEL1706070000",
+                                                        "http://identifiers.org/biomodels.db/BIOMD0000000927"
+Grigolon2018_Responses_to_auxin_signals container "http://identifiers.org/bto/BTO:0001481"
+Grigolon2018_Responses_to_auxin_signals taxon "http://identifiers.org/taxonomy/47299"
+Grigolon2018_Responses_to_auxin_signals description "http://identifiers.org/pubmed/29410878"
+Grigolon2018_Responses_to_auxin_signals property "http://identifiers.org/chebi/CHEBI:26158",
+                                                 "http://identifiers.org/omit/0011910",
+                                                 "http://identifiers.org/mamo/MAMO_0000046"

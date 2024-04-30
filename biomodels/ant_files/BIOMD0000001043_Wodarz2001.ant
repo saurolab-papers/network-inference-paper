@@ -1,0 +1,129 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_x_increase(r, x, y, k)
+  r*x*(1 - (x + y)/k);
+end
+
+Rate_Law_for_x_increase is "Rate Law for x increase"
+
+function Rate_Law_for_y_increase(s, y, x, k)
+  s*y*(1 - (x + y)/k);
+end
+
+Rate_Law_for_y_increase is "Rate Law for y increase"
+
+function Rate_Law_for_y_decrease(a, y, p_v, z_v)
+  a*y + p_v*y*z_v;
+end
+
+Rate_Law_for_y_decrease is "Rate Law for y decrease"
+
+function Rate_Law_for_x_to_y(beta, x, y)
+  beta*x*y;
+end
+
+Rate_Law_for_x_to_y is "Rate Law for x to y"
+
+function Rate_Law_for_z_v_increase(c_v, y, z_v)
+  c_v*y*z_v;
+end
+
+Rate_Law_for_z_v_increase is "Rate Law for z_v increase"
+
+
+model *Wodarz2001___Viruses_as_antitumor_weapons()
+
+  // Compartments and Species:
+  compartment Tumor_microenvironment;
+  species uninfected_tumor_cells in Tumor_microenvironment, infected_tumor_cells in Tumor_microenvironment;
+  species virus_specific_CTLs in Tumor_microenvironment, $overall_tumor_size in Tumor_microenvironment;
+
+  // Assignment Rules:
+  overall_tumor_size := uninfected_tumor_cells + infected_tumor_cells;
+
+  // Reactions:
+  uninfected_tumor_growth:  => uninfected_tumor_cells; Tumor_microenvironment*Rate_Law_for_x_increase(r, uninfected_tumor_cells, infected_tumor_cells, k);
+  uninfected_tumor_death: uninfected_tumor_cells => ; Tumor_microenvironment*d*uninfected_tumor_cells;
+  infected_tumor_growth:  => infected_tumor_cells; Tumor_microenvironment*Rate_Law_for_y_increase(s, infected_tumor_cells, uninfected_tumor_cells, k);
+  infected_tumor_death: infected_tumor_cells => ; Tumor_microenvironment*Rate_Law_for_y_decrease(a, infected_tumor_cells, p_v, virus_specific_CTLs);
+  tumor_infection: uninfected_tumor_cells => infected_tumor_cells; Tumor_microenvironment*Rate_Law_for_x_to_y(beta, uninfected_tumor_cells, infected_tumor_cells);
+  virus_specific_CTL_expansion:  => virus_specific_CTLs; Tumor_microenvironment*Rate_Law_for_z_v_increase(c_v, infected_tumor_cells, virus_specific_CTLs);
+  virus_specific_CTLs_decay: virus_specific_CTLs => ; Tumor_microenvironment*b*virus_specific_CTLs;
+
+  // Events:
+  virotherapy: at time == 20: virus_specific_CTLs = 0.001;
+
+  // Species initializations:
+  uninfected_tumor_cells = 0.01/Tumor_microenvironment;
+  infected_tumor_cells = 0.0001/Tumor_microenvironment;
+  virus_specific_CTLs = 0;
+
+  // Compartment initializations:
+  Tumor_microenvironment = 1;
+
+  // Variable initializations:
+  r = 0.5;
+  k = 17;
+  d = 0.1;
+  beta = 0.5;
+  s = 0;
+  a = 0.1;
+  p_v = 0;
+  c_v = 0;
+  b = 0;
+
+  // Other declarations:
+  const Tumor_microenvironment, r, k, d, beta, s, a, p_v, c_v, b;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = second;
+  unit substance = mole;
+
+  // Display Names:
+  time_unit is "time";
+  virus_specific_CTLs is "virus-specific_CTLs";
+  virus_specific_CTL_expansion is "virus-specific_CTL_expansion";
+  virus_specific_CTLs_decay is "virus-specific_CTLs_decay";
+
+  // CV terms:
+  Tumor_microenvironment hypernym "http://identifiers.org/ncit/C94498"
+  uninfected_tumor_cells hypernym "http://identifiers.org/cl/CL:0001063"
+  uninfected_tumor_cells property "http://identifiers.org/chebi/CHEBI:144829"
+  uninfected_tumor_cells property "http://identifiers.org/efo/0001460"
+  infected_tumor_cells hypernym "http://identifiers.org/cl/CL:0001063"
+  infected_tumor_cells hypernym "http://identifiers.org/bto/BTO:0000152"
+  infected_tumor_cells property "http://identifiers.org/chebi/CHEBI:144829"
+  virus_specific_CTLs hypernym "http://identifiers.org/ncit/C131870"
+  virus_specific_CTLs hypernym "http://identifiers.org/cl/CL:0000910"
+  overall_tumor_size hypernym "http://identifiers.org/cl/CL:0001063"
+  overall_tumor_size property "http://identifiers.org/chebi/CHEBI:144829"
+  uninfected_tumor_growth hypernym "http://identifiers.org/go/GO:0008283"
+  uninfected_tumor_growth hypernym "http://identifiers.org/sbo/SBO:0000393"
+  uninfected_tumor_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  uninfected_tumor_death hypernym "http://identifiers.org/go/GO:0008219"
+  infected_tumor_growth hypernym "http://identifiers.org/sbo/SBO:0000393"
+  infected_tumor_growth hypernym "http://identifiers.org/go/GO:0008283"
+  infected_tumor_death hypernym "http://identifiers.org/go/GO:0001906"
+  infected_tumor_death hypernym "http://identifiers.org/go/GO:0008219"
+  infected_tumor_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  tumor_infection hypernym "http://identifiers.org/ncit/C3439"
+  tumor_infection hypernym "http://identifiers.org/ido/0000586"
+  virus_specific_CTL_expansion hypernym "http://identifiers.org/go/GO:0042098"
+  virus_specific_CTL_expansion hypernym "http://identifiers.org/sbo/SBO:0000393"
+  virus_specific_CTLs_decay hypernym "http://identifiers.org/sbo/SBO:0000394"
+end
+
+Wodarz2001___Viruses_as_antitumor_weapons is "Wodarz2001 - Viruses as antitumor weapons"
+
+Wodarz2001___Viruses_as_antitumor_weapons model_entity_is "http://identifiers.org/biomodels.db/MODEL2109090001",
+                                                          "http://identifiers.org/biomodels.db/BIOMD0000001043"
+Wodarz2001___Viruses_as_antitumor_weapons propertyBearer "http://identifiers.org/ncit/C62713"
+Wodarz2001___Viruses_as_antitumor_weapons propertyBearer "http://identifiers.org/ncit/C15438"
+Wodarz2001___Viruses_as_antitumor_weapons taxon "http://identifiers.org/taxonomy/9606"
+Wodarz2001___Viruses_as_antitumor_weapons description "http://identifiers.org/pubmed/11309314"
+Wodarz2001___Viruses_as_antitumor_weapons property "http://identifiers.org/go/GO:0002837",
+                                                   "http://identifiers.org/doid/DOID:162",
+                                                   "http://identifiers.org/go/GO:0046730",
+                                                   "http://identifiers.org/mamo/MAMO_0000046"

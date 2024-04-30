@@ -1,0 +1,126 @@
+// Created by libAntimony v2.13.2
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+
+model *Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum()
+
+  // Compartments and Species:
+  compartment Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_three_compartment_model_compartment_1 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_three_compartment_model_compartment_2 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_three_compartment_model_compartment_3 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_4 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_5 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_6 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_7 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_8 in Dictyostelium_discoideum_AX2;
+  species FITC_Dextran_nine_compartment_model_compartment_9 in Dictyostelium_discoideum_AX2;
+
+  // Assignment Rules:
+  Total_FITC_Dextran := FITC_Dextran_three_compartment_model_compartment_1 + FITC_Dextran_three_compartment_model_compartment_2 + FITC_Dextran_three_compartment_model_compartment_3 + FITC_Dextran_nine_compartment_model_compartment_4 + FITC_Dextran_nine_compartment_model_compartment_5 + FITC_Dextran_nine_compartment_model_compartment_6 + FITC_Dextran_nine_compartment_model_compartment_7 + FITC_Dextran_nine_compartment_model_compartment_8 + FITC_Dextran_nine_compartment_model_compartment_9;
+
+  // Reactions:
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_1_and_2: FITC_Dextran_three_compartment_model_compartment_1 => FITC_Dextran_three_compartment_model_compartment_2; Dictyostelium_discoideum_AX2*lambda_compartment_1*FITC_Dextran_three_compartment_model_compartment_1;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_2_and_3: FITC_Dextran_three_compartment_model_compartment_2 => FITC_Dextran_three_compartment_model_compartment_3; Dictyostelium_discoideum_AX2*lambda_compartment_2*FITC_Dextran_three_compartment_model_compartment_2;
+  FITC_Dextran_efflux_rate: FITC_Dextran_nine_compartment_model_compartment_9 => ; Dictyostelium_discoideum_AX2*lambda_compartment_9*FITC_Dextran_nine_compartment_model_compartment_9;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_3_and_4: FITC_Dextran_three_compartment_model_compartment_3 => FITC_Dextran_nine_compartment_model_compartment_4; Dictyostelium_discoideum_AX2*lambda_compartment_3*FITC_Dextran_three_compartment_model_compartment_3;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_4_and_5: FITC_Dextran_nine_compartment_model_compartment_4 => FITC_Dextran_nine_compartment_model_compartment_5; Dictyostelium_discoideum_AX2*lambda_compartment_4*FITC_Dextran_nine_compartment_model_compartment_4;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_5_and_6: FITC_Dextran_nine_compartment_model_compartment_5 => FITC_Dextran_nine_compartment_model_compartment_6; Dictyostelium_discoideum_AX2*lambda_compartment_5*FITC_Dextran_nine_compartment_model_compartment_5;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_6_and_7: FITC_Dextran_nine_compartment_model_compartment_6 => FITC_Dextran_nine_compartment_model_compartment_7; Dictyostelium_discoideum_AX2*lambda_compartment_6*FITC_Dextran_nine_compartment_model_compartment_6;
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_7_and_8: FITC_Dextran_nine_compartment_model_compartment_7 => FITC_Dextran_nine_compartment_model_compartment_8; Dictyostelium_discoideum_AX2*lambda_compartment_7*FITC_Dextran_nine_compartment_model_compartment_7;
+  FITC_Dextran_influx_rate:  => FITC_Dextran_three_compartment_model_compartment_1; Dictyostelium_discoideum_AX2*Constant_flux__irreversible(mu);
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_8_and_9: FITC_Dextran_nine_compartment_model_compartment_8 => FITC_Dextran_nine_compartment_model_compartment_9; Dictyostelium_discoideum_AX2*lambda_compartment_8*FITC_Dextran_nine_compartment_model_compartment_8;
+
+  // Species initializations:
+  FITC_Dextran_three_compartment_model_compartment_1 = 0;
+  FITC_Dextran_three_compartment_model_compartment_2 = 0;
+  FITC_Dextran_three_compartment_model_compartment_3 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_4 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_5 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_6 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_7 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_8 = 0;
+  FITC_Dextran_nine_compartment_model_compartment_9 = 0;
+
+  // Compartment initializations:
+  Dictyostelium_discoideum_AX2 = 1;
+
+  // Variable initializations:
+  lambda_compartment_1 = 0.09;
+  lambda_compartment_2 = 0.127;
+  lambda_compartment_3 = 0.099;
+  lambda_compartment_4 = 0.09;
+  lambda_compartment_5 = 0.093;
+  lambda_compartment_6 = 0.098;
+  lambda_compartment_7 = 0.098;
+  lambda_compartment_8 = 0.111;
+  lambda_compartment_9 = 0.096;
+  mu = 6.8;
+
+  // Other declarations:
+  var Total_FITC_Dextran;
+  const Dictyostelium_discoideum_AX2, lambda_compartment_1, lambda_compartment_2;
+  const lambda_compartment_3, lambda_compartment_4, lambda_compartment_5;
+  const lambda_compartment_6, lambda_compartment_7, lambda_compartment_8;
+  const lambda_compartment_9, mu;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = 60 second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  Dictyostelium_discoideum_AX2 is "Dictyostelium discoideum AX2";
+  FITC_Dextran_three_compartment_model_compartment_1 is "FITC_Dextran_nine_compartment_model_compartment_1";
+  FITC_Dextran_three_compartment_model_compartment_2 is "FITC_Dextran_nine_compartment_model_compartment_2";
+  FITC_Dextran_three_compartment_model_compartment_3 is "FITC_Dextran_nine_compartment_model_compartment_3";
+
+  // CV terms:
+  Dictyostelium_discoideum_AX2 taxon "http://identifiers.org/taxonomy/366501"
+  FITC_Dextran_three_compartment_model_compartment_1 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_three_compartment_model_compartment_1 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_three_compartment_model_compartment_2 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_three_compartment_model_compartment_2 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_three_compartment_model_compartment_3 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_three_compartment_model_compartment_3 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_4 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_4 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_nine_compartment_model_compartment_5 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_nine_compartment_model_compartment_5 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_6 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_6 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_nine_compartment_model_compartment_7 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_7 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_nine_compartment_model_compartment_8 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_nine_compartment_model_compartment_8 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_9 part "http://identifiers.org/chebi/CHEBI:37926"
+  FITC_Dextran_nine_compartment_model_compartment_9 part "http://identifiers.org/chebi/CHEBI:52071"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_1_and_2 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_2_and_3 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_efflux_rate identity "http://identifiers.org/go/GO:0140352"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_3_and_4 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_4_and_5 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_5_and_6 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_6_and_7 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_7_and_8 identity "http://identifiers.org/go/GO:0098927"
+  FITC_Dextran_influx_rate identity "http://identifiers.org/go/GO:0098657"
+  FITC_Dextran_transfer_between_endo_lysosomal_compartments_8_and_9 identity "http://identifiers.org/go/GO:0098927"
+end
+
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum is "Aubry1995 - Nine-compartment model of fluid-phase endocytosis kinetics in Dictyostelium discoideum"
+
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum description "http://identifiers.org/doi/10.1007/BF00713556"
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum model_entity_is "http://identifiers.org/biomodels.db/MODEL2102100001",
+                                                                                                                   "http://identifiers.org/biomodels.db/BIOMD0000000987"
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum identity "http://identifiers.org/chebi/CHEBI:52083",
+                                                                                                            "http://identifiers.org/chebi/CHEBI:37926"
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum identity "http://identifiers.org/go/GO:0006897"
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum taxon "http://identifiers.org/taxonomy/366501"
+Aubry1995___Nine_compartment_model_of_fluid_phase_endocytosis_kinetics_in_Dictyostelium_discoideum property "http://identifiers.org/mamo/MAMO_0000046"

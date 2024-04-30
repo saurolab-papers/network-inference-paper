@@ -1,0 +1,260 @@
+// Created by libAntimony v2.13.2
+function function_for_R26(k, X1, X2, S1)
+  k*X1*X2*S1;
+end
+
+function_for_R26 is "function for R26"
+
+function function_for_transport(k, kv, S)
+  k*kv*S;
+end
+
+function_for_transport is "function for transport"
+
+function function_for_indirect_transport(x, kv, S)
+  x*kv*S;
+end
+
+function_for_indirect_transport is "function for indirect transport"
+
+function function_for_indirect_production(x, S)
+  x*S;
+end
+
+function_for_indirect_production is "function for indirect production"
+
+function function_for_R3(K3, X1, Substrate)
+  K3*X1*Substrate;
+end
+
+function_for_R3 is "function for R3"
+
+function function_for_substrateless_production(k, X1)
+  k*X1;
+end
+
+function_for_substrateless_production is "function for substrateless production"
+
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+
+model *benary2019___Controlling_NFKB_dynamics_by_B_TrCP()
+
+  // Compartments and Species:
+  compartment Cytosol, Nucleus;
+  species IKK_neutral in Cytosol, IKK_active in Cytosol, IKK_inact in Cytosol;
+  species IKKactive_IkB in Cytosol, IkB in Cytosol, IKKactive_IkB_NFKB in Cytosol;
+  species IkB_NFKB in Cytosol, NFKB in Cytosol, NFKB_nuc in Nucleus, IkB_nuc in Nucleus;
+  species IkB_NFKB_nuc in Nucleus, IkB_mRNA in Nucleus, A20_mRNA in Nucleus;
+  species A20 in Cytosol, $TNF in Cytosol, cgen_mRNA in Nucleus, b_TrCP in Cytosol;
+
+  // Assignment Rules:
+  TNF := TNF_R;
+  NFKB_total := IKKactive_IkB_NFKB + NFKB + IkB_NFKB + (1/ModelValue_1)*NFKB_nuc + (1/ModelValue_1)*IkB_NFKB_nuc;
+  IkB_mRNA_amp := IkB_mRNA*10000;
+  A20_mRNA_amp := A20_mRNA*10000;
+  cgen_mRNA_amp := cgen_mRNA*10000;
+  NFKB_nuc_actual := (1/ModelValue_1)*NFKB_nuc;
+
+  // Reactions:
+  IKKn_production:  => IKK_neutral; Cytosol*Constant_flux__irreversible(Kprod);
+  IKKn_degradation: IKK_neutral => ; Cytosol*Kdeg*IKK_neutral;
+  IKKn_activation: IKK_neutral => IKK_active; Cytosol*function_for_R3(k1, TNF, IKK_neutral);
+  NFKB_export: NFKB => ; Cytosol*i1*NFKB;
+  IkBn_NFKBn_binding: NFKB_nuc + IkB_nuc => IkB_NFKB_nuc; Nucleus*a1*NFKB_nuc*IkB_nuc;
+  IkB_NFKB_n_export: IkB_NFKB_nuc => ; Nucleus*function_for_transport(e2a, Kv, IkB_NFKB_nuc);
+  IkB_NFKB_binding: NFKB + IkB => IkB_NFKB; Cytosol*a1*NFKB*IkB;
+  IkB_degradation: IkB_NFKB => NFKB; Cytosol*c6a*IkB_NFKB;
+  IkBnuc_export: IkB_nuc => ; Nucleus*function_for_transport(e1a, Kv, IkB_nuc);
+  IkB_export: IkB => ; Cytosol*i1a*IkB;
+  IkB_transcription:  => IkB_mRNA; Nucleus*function_for_substrateless_production(c1a, NFKB_nuc);
+  IKKa_spon_inactivation: IKK_active => IKK_inact; Cytosol*k3*IKK_active;
+  IKKinact_degradation: IKK_inact => ; Cytosol*Kdeg*IKK_inact;
+  IKKa_degradation: IKK_active => ; Cytosol*Kdeg*IKK_active;
+  IKKa_IkB_binding: IKK_active + IkB => IKKactive_IkB; Cytosol*a2*IKK_active*IkB;
+  IKKa_IkBNFKB_binding: IKK_active + IkB_NFKB => IKKactive_IkB_NFKB; Cytosol*a3*IKK_active*IkB_NFKB;
+  IkBmRNA_degradation: IkB_mRNA => ; Nucleus*c3a*IkB_mRNA;
+  IkB_translation:  => IkB; function_for_substrateless_production(c4a, IkB_mRNA);
+  IkB_con_degradation: IkB => ; Cytosol*c5a*IkB;
+  A20_transcription:  => A20_mRNA; Nucleus*function_for_substrateless_production(c1, NFKB_nuc);
+  A20mRNA_degradation: A20_mRNA => ; Nucleus*c3*A20_mRNA;
+  A20_translation:  => A20; function_for_substrateless_production(c4, A20_mRNA);
+  A20_degradation: A20 => ; Cytosol*c5*A20;
+  IKKa_inactivation_1: IKK_active => IKK_inact; Cytosol*function_for_R26(k2, TNF, A20, IKK_active);
+  cgen_transcription:  => cgen_mRNA; Nucleus*function_for_substrateless_production(c1c, NFKB_nuc);
+  cgen_mRNA_degradation: cgen_mRNA => ; Nucleus*c3c*cgen_mRNA;
+  IkB_degradation_1: IKKactive_IkB_NFKB => IKK_active + NFKB; Cytosol*function_for_R3(t2, b_TrCP, IKKactive_IkB_NFKB);
+  IkB_degradation_2: IKKactive_IkB => IKK_active; Cytosol*function_for_R3(t1, b_TrCP, IKKactive_IkB);
+  NFKBc_induced_NFKBn_production:  => NFKB_nuc; function_for_indirect_transport(i1, Kv, NFKB);
+  IkBn_induced_IkBc_production:  => IkB; function_for_indirect_production(e1a, IkB_nuc);
+  IkBc_induced_IkBn_production:  => IkB_nuc; function_for_indirect_transport(i1a, Kv, IkB);
+  IkB_NFKB_n_induced_IkB_NFKBc_production:  => IkB_NFKB; function_for_indirect_production(e2a, IkB_NFKB_nuc);
+
+  // Events:
+  TNF_stimulation: at 0 after time > 6060: TNF_R = 1;
+
+  // Species initializations:
+  IKK_neutral = 199.999999987913/Cytosol;
+  IKK_active = 2.44263810567829e-26/Cytosol;
+  IKK_inact = 2.78889437354332e-25/Cytosol;
+  IKKactive_IkB = 1.17746437501971e-28/Cytosol;
+  IkB = 2.5066291758827/Cytosol;
+  IKKactive_IkB_NFKB = 1.41567842221093e-26/Cytosol;
+  IkB_NFKB = 59.209565891463/Cytosol;
+  NFKB = 0.31550547924599/Cytosol;
+  NFKB_nuc = 2.29576677664394/Nucleus;
+  IkB_nuc = 3.43573095552417/Nucleus;
+  IkB_NFKB_nuc = 0.0788763698117992/Nucleus;
+  IkB_mRNA = 0.00286970847085134/Nucleus;
+  A20_mRNA = 0.00286970847085134/Nucleus;
+  A20 = 4.78284745142474/Cytosol;
+  cgen_mRNA = 0.00286970847085134/Nucleus;
+  b_TrCP = 0.0001/Cytosol;
+
+  // Compartment initializations:
+  Cytosol = 1;
+  Nucleus = 1;
+
+  // Variable initializations:
+  TNF_R = 0;
+  ModelValue_1 = Kv;
+  Kv = 5;
+  a1 = 0.03;
+  a2 = 0.012;
+  t1 = 6;
+  a3 = 0.06;
+  t2 = 6;
+  c1a = 3e-05;
+  c3a = 0.024;
+  c4a = 30;
+  c5a = 0.006;
+  c6a = 0.0012;
+  c1 = 3e-05;
+  c3 = 0.024;
+  c4 = 30;
+  c5 = 0.018;
+  k1 = 0.15;
+  k2 = 0.006;
+  k3 = 0.09;
+  Kprod = 1.5;
+  Kdeg = 0.0075;
+  i1 = 0.15;
+  e2a = 0.6;
+  i1a = 0.06;
+  e1a = 0.03;
+  c1c = 3e-05;
+  c3c = 0.024;
+
+  // Other declarations:
+  var TNF_R, NFKB_total, IkB_mRNA_amp, A20_mRNA_amp, cgen_mRNA_amp, NFKB_nuc_actual;
+  const Cytosol, Nucleus, ModelValue_1, Kv, a1, a2, t1, a3, t2, c1a, c3a;
+  const c4a, c5a, c6a, c1, c3, c4, c5, k1, k2, k3, Kprod, Kdeg, i1, e2a, i1a;
+  const e1a, c1c, c3c;
+
+  // Unit definitions:
+  unit time_unit = 60 second;
+  unit substance = 1e-9 mole;
+
+  // Display Names:
+  time_unit is "time";
+  b_TrCP is "b-TrCP";
+  ModelValue_1 is "Initial for Kv";
+  a1 is "k12";
+  a2 is "k7";
+  t1 is "k8";
+  a3 is "k9";
+  t2 is "k10";
+  c1a is "k18";
+  c3a is "k19";
+  c4a is "k20";
+  c5a is "k21";
+  c6a is "k15";
+  c1 is "k22";
+  c3 is "k23";
+  c4 is "k24";
+  c5 is "k25";
+  k1 is "k3";
+  k2 is "k26";
+  k3 is "k4";
+  Kprod is "v1";
+  Kdeg is "k2";
+  i1 is "k11";
+  e2a is "k13";
+  i1a is "k17";
+  e1a is "k16";
+  c1c is "k27";
+  c3c is "k28";
+
+  // CV terms:
+  Cytosol identity "http://identifiers.org/go/GO:0005737"
+  Nucleus identity "http://identifiers.org/go/GO:0005634"
+  IKK_neutral homolog "http://identifiers.org/uniprot/Q60680"
+  IKK_active homolog "http://identifiers.org/uniprot/Q60680"
+  IKK_inact homolog "http://identifiers.org/uniprot/Q60680"
+  IKKactive_IkB part "http://identifiers.org/uniprot/Q9Z1E3"
+  IKKactive_IkB part "http://identifiers.org/uniprot/Q60680"
+  IkB identity "http://identifiers.org/uniprot/Q9Z1E3"
+  IKKactive_IkB_NFKB part "http://identifiers.org/uniprot/Q9Z1E3"
+  IKKactive_IkB_NFKB part "http://identifiers.org/uniprot/Q60680"
+  IKKactive_IkB_NFKB part "http://identifiers.org/uniprot/P25799"
+  IkB_NFKB part "http://identifiers.org/uniprot/P25799"
+  IkB_NFKB part "http://identifiers.org/uniprot/Q9Z1E3"
+  NFKB homolog "http://identifiers.org/uniprot/P25799"
+  NFKB_nuc homolog "http://identifiers.org/uniprot/P25799"
+  IkB_nuc hypernym "http://identifiers.org/uniprot/Q9Z1E3"
+  IkB_NFKB_nuc part "http://identifiers.org/uniprot/Q9Z1E3"
+  IkB_NFKB_nuc part "http://identifiers.org/uniprot/P25799"
+  IkB_mRNA encodement "http://identifiers.org/uniprot/Q9Z1E3"
+  A20_mRNA encodement "http://identifiers.org/uniprot/Q60769"
+  A20 identity "http://identifiers.org/uniprot/Q60769"
+  TNF identity "http://identifiers.org/uniprot/P06804"
+  b_TrCP identity "http://identifiers.org/uniprot/Q3ULA2"
+  IKKn_production class "http://identifiers.org/sbo/SBO:0000393"
+  IKKn_degradation property "http://identifiers.org/go/GO:0030163"
+  IKKn_activation property "http://identifiers.org/ncit/C64382"
+  NFKB_export property "http://identifiers.org/go/GO:0006606"
+  IkBn_NFKBn_binding property "http://identifiers.org/go/GO:0005515"
+  IkB_NFKB_n_export property "http://identifiers.org/go/GO:0006611"
+  IkB_NFKB_binding property "http://identifiers.org/go/GO:0005515"
+  IkB_degradation property "http://identifiers.org/go/GO:0030163"
+  IkBnuc_export property "http://identifiers.org/go/GO:0006611"
+  IkB_export property "http://identifiers.org/go/GO:0006606"
+  IkB_transcription identity "http://identifiers.org/go/GO:0006351"
+  IKKa_spon_inactivation class "http://identifiers.org/go/GO:0043687"
+  IKKinact_degradation property "http://identifiers.org/go/GO:0030163"
+  IKKa_degradation property "http://identifiers.org/go/GO:0030163"
+  IKKa_IkB_binding part "http://identifiers.org/go/GO:0005515"
+  IKKa_IkBNFKB_binding property "http://identifiers.org/go/GO:0005515"
+  IkBmRNA_degradation property "http://identifiers.org/go/GO:0006402"
+  IkB_translation identity "http://identifiers.org/go/GO:0006412"
+  IkB_con_degradation property "http://identifiers.org/go/GO:0030163"
+  A20_transcription identity "http://identifiers.org/go/GO:0006351"
+  A20mRNA_degradation part "http://identifiers.org/go/GO:0006402"
+  A20_translation identity "http://identifiers.org/go/GO:0006412"
+  A20_degradation property "http://identifiers.org/go/GO:0030163"
+  IKKa_inactivation_1 class "http://identifiers.org/go/GO:0043687"
+  cgen_transcription identity "http://identifiers.org/go/GO:0006351"
+  cgen_mRNA_degradation property "http://identifiers.org/go/GO:0006402"
+  IkB_degradation_1 part "http://identifiers.org/go/GO:0030163"
+  IkB_degradation_2 property "http://identifiers.org/go/GO:0030163"
+  NFKBc_induced_NFKBn_production property "http://identifiers.org/ncit/C18103"
+  IkBn_induced_IkBc_production part "http://identifiers.org/ncit/C18103"
+  IkBc_induced_IkBn_production property "http://identifiers.org/ncit/C18103"
+  IkB_NFKB_n_induced_IkB_NFKBc_production property "http://identifiers.org/ncit/C18103"
+end
+
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP is "Benary2019 - Controlling NFKB dynamics by B-TrCP"
+
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP description "http://identifiers.org/pubmed/31137887"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP model_entity_is "http://identifiers.org/biomodels.db/MODEL1908130003",
+                                                                 "http://identifiers.org/biomodels.db/BIOMD0000000794"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP parthood "http://identifiers.org/reactome/R-HSA-5676594"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP container "http://identifiers.org/ncit/C132890"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP property "http://identifiers.org/ncit/C39173"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP property "http://identifiers.org/go/GO:0034612"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP property "http://identifiers.org/mamo/MAMO_0000046"
+benary2019___Controlling_NFKB_dynamics_by_B_TrCP taxon "http://identifiers.org/taxonomy/10090"

@@ -1,0 +1,70 @@
+// Created by libAntimony v2.13.2
+model *Phillips2007_AscendingArousalSystem_SleepWakeDynamics()
+
+  // Compartments and Species:
+  compartment COMpartment;
+
+  // Assignment Rules:
+  Qv := Qmax/(1 + exp(-(Vv - theta)/sigma));
+  Qm := Qmax/(1 + exp(-(Vm - theta)/sigma));
+  D := v_vc*C + v_vh*H;
+  Qa := Qmax/(1 + exp(-(Va - theta)/sigma));
+  Va := Vao;
+  C := c0 + cos(omega*time);
+  omega := 2*pi/24;
+
+  // Rate Rules:
+  Vv' = (v_vm*Qm + D - Vv)/(tau_v/3600);
+  Vm' = (v_maQao + v_mv*Qv - Vm)/(tau_m/3600);
+  H' = (mu*Qm - H)/chi;
+
+  // Compartment initializations:
+  COMpartment = 1;
+  COMpartment has litre;
+
+  // Variable initializations:
+  Qmax = 100;
+  Vv = 0;
+  theta = 10;
+  sigma = 3;
+  v_vm = -1.9;
+  tau_v = 10;
+  Vao = 1;
+  Vm = 0;
+  v_maQao = 1;
+  v_mv = -1.9;
+  tau_m = 10;
+  H = 15;
+  mu = 3.6;
+  chi = 10.8;
+  v_vc = -6.3;
+  v_vh = 0.19;
+  c0 = 1;
+
+  // Other declarations:
+  var Qv, Vv, Qm, D, Qa, Va, Vm, H, C, omega;
+  const COMpartment, Qmax, theta, sigma, v_vm, tau_v, Vao, v_maQao, v_mv;
+  const tau_m, mu, chi, v_vc, v_vh, c0;
+
+  // Unit definitions:
+  unit mV = 1e-3 volt;
+  unit mV_second = 1e-3 volt * second;
+  unit hour = 3600 second;
+  unit per_hour = 1 / 3600 second;
+  unit nM = 1e-9 mole / litre;
+  unit nM_second = 1e-9 mole * second / litre;
+  unit mV_per_nM = 1e-3 volt * litre / 1e-9 mole;
+  unit per_second = 1 / second;
+  unit time_unit = 3600 second;
+
+  // Display Names:
+  time_unit is "time";
+end
+
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics is "Phillips2007_AscendingArousalSystem_SleepWakeDynamics"
+
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics model_entity_is "http://identifiers.org/biomodels.db/MODEL1006230025"
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics description "http://identifiers.org/pubmed/17440218"
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics taxon "http://identifiers.org/taxonomy/9606"
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics hypernym "http://identifiers.org/go/GO:0022410"
+Phillips2007_AscendingArousalSystem_SleepWakeDynamics container "http://identifiers.org/bto/BTO:0000146"

@@ -1,0 +1,89 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction(beta, S, I, N, epsilon)
+  (1 - epsilon)*beta*S*I/N;
+end
+
+Rate_Law_for_reaction is "Rate Law for reaction"
+
+
+model *Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa()
+
+  // Compartments and Species:
+  compartment South_Africa;
+  species Susceptible in South_Africa, Exposed in South_Africa, Infected in South_Africa;
+  species Recovered in South_Africa;
+
+  // Assignment Rules:
+  Cumulative_cases := Infected + Recovered;
+
+  // Reactions:
+  Susceptible_to_Exposed: Susceptible => Exposed; South_Africa*Rate_Law_for_reaction(beta, Susceptible, Infected, N, epsilon);
+  Exposed_to_Infected: Exposed => Infected; South_Africa*sigma*Exposed;
+  Infected_to_Recovered: Infected => Recovered; South_Africa*gamma_*Infected;
+
+  // Events:
+  Lockdown: at time > 23, persistent=false, fromTrigger=false: epsilon = Event_trigger*0.8031;
+
+  // Species initializations:
+  Susceptible = N;
+  Susceptible has substance_per_volume;
+  Exposed = 0;
+  Exposed has substance_per_volume;
+  Infected = 2/South_Africa;
+  Infected has substance_per_volume;
+  Recovered = 0;
+  Recovered has substance_per_volume;
+
+  // Compartment initializations:
+  South_Africa = 1;
+  South_Africa has volume;
+
+  // Variable initializations:
+  N = 36196938;
+  epsilon = 0;
+  Event_trigger = 1;
+  beta = 1.3;
+  sigma = 0.311;
+  gamma_ = 0.3389830508;
+
+  // Other declarations:
+  var epsilon, Cumulative_cases;
+  const South_Africa, N, Event_trigger, beta, sigma, gamma_;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = time_unit;
+  unit substance = item;
+  unit extent = substance;
+  unit substance_per_volume = item / 1e-3 litre;
+
+  // Display Names:
+  time_unit is "time";
+  gamma_ is "gamma";
+
+  // CV terms:
+  South_Africa identity "http://identifiers.org/ncit/C17151"
+  Susceptible identity "http://identifiers.org/ido/0000514"
+  Exposed identity "http://identifiers.org/ido/0000514"
+  Exposed identity "http://identifiers.org/ncit/C171133"
+  Exposed identity "http://identifiers.org/ido/0000597"
+  Infected identity "http://identifiers.org/ido/0000511"
+  Infected identity "http://identifiers.org/ncit/C171133"
+  Recovered property "http://identifiers.org/ido/0000621"
+  Susceptible_to_Exposed identity "http://identifiers.org/ido/0000597"
+  Exposed_to_Infected identity "http://identifiers.org/ncit/C128320"
+  Exposed_to_Infected identity "http://identifiers.org/ncit/C171133"
+  Infected_to_Recovered identity "http://identifiers.org/ncit/C25746"
+end
+
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa is "Mukandavire2020 - SEIR model of early COVID-19 transmission in South Africa"
+
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa description "http://identifiers.org/pubmed/32706790"
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa model_entity_is "http://identifiers.org/biomodels.db/MODEL2012010001",
+                                                                                            "http://identifiers.org/biomodels.db/BIOMD0000000978"
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa identity "http://identifiers.org/doid/DOID:0080600"
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa taxon "http://identifiers.org/taxonomy/2697049",
+                                                                                  "http://identifiers.org/taxonomy/9606"
+Mukandavire2020___SEIR_model_of_early_COVID_19_transmission_in_South_Africa property "http://identifiers.org/mamo/MAMO_0000028"

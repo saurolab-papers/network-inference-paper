@@ -1,0 +1,89 @@
+// Created by libAntimony v2.13.2
+model *MODEL1706070000()
+
+  // Compartments and Species:
+  compartment Cell;
+  species aux in Cell, IAAm in Cell, IAAp in Cell, ARF in Cell, $null in Cell;
+  species ARFIAA in Cell, ARF2 in Cell, auxTIR1 in Cell, auxTIR1IAA in Cell;
+  species TIR1 in Cell, IAAstar in Cell;
+
+  // Reactions:
+  auxin_production: $null -> aux; Sauxin;
+  auxin_degradation: aux -> $null; aux*muaux;
+  mRNA_production: $null -> IAAm; ARF*lambda1*(thetaARF*(ARF*thetaARF^-1 + ARF2*thetaARF2^-1 + ARFIAA*thetaARFIAA^-1 + 1))^-1;
+  mRNA_degradation: IAAm -> $null; IAAm*muIAAm;
+  IAA_degradation: IAAp -> $null; IAAp*muIAA;
+  mRNA_translation: IAAm -> IAAm + IAAp; delta*IAAm;
+  ARF2_formation: 2 ARF -> ARF2; ARF^2*qa;
+  ARF2_dissociation: ARF2 -> 2 ARF; ARF2*qd;
+  ARFIAA_formation: ARF + IAAp -> ARFIAA; ARF*IAAp*pa;
+  ARFIAA_dissociation: ARFIAA -> ARF + IAAp; ARFIAA*pd;
+  auxTIR1_formation: aux + TIR1 -> auxTIR1; aux*ka*TIR1;
+  auxTIR1_dissociation: auxTIR1 -> aux + TIR1; auxTIR1*kd;
+  auxTIR1IAA_formation: auxTIR1 + IAAp -> auxTIR1IAA; auxTIR1*IAAp*la;
+  auxTIR1IAA_dissociation: auxTIR1IAA -> auxTIR1 + IAAp; auxTIR1IAA*ld;
+  IAA_ubiquitination: auxTIR1IAA -> auxTIR1 + IAAstar; auxTIR1IAA*lm;
+  IAAstar_degradation: IAAstar -> $null; IAAstar*muIAAstar;
+
+  // Species initializations:
+  aux = 0;
+  aux has substance_per_volume;
+  IAAm = 0;
+  IAAm has substance_per_volume;
+  IAAp = 0;
+  IAAp has substance_per_volume;
+  ARF = 10/Cell;
+  ARF has substance_per_volume;
+  null = 0;
+  null has substance_per_volume;
+  ARFIAA = 0;
+  ARFIAA has substance_per_volume;
+  ARF2 = 0;
+  ARF2 has substance_per_volume;
+  auxTIR1 = 0;
+  auxTIR1 has substance_per_volume;
+  auxTIR1IAA = 0;
+  auxTIR1IAA has substance_per_volume;
+  TIR1 = 18.51/Cell;
+  TIR1 has substance_per_volume;
+  IAAstar = 0;
+  IAAstar has substance_per_volume;
+
+  // Compartment initializations:
+  Cell = 1;
+  Cell has volume;
+
+  // Variable initializations:
+  Sauxin = 0.02;
+  muaux = 0.1;
+  lambda1 = 0.48;
+  thetaARF = 100;
+  thetaARF2 = 100;
+  thetaARFIAA = 100;
+  muIAAm = 0.003;
+  muIAA = 0.003;
+  delta = 4;
+  qa = 0.5;
+  qd = 0.44;
+  pa = 1;
+  pd = 0.072;
+  ka = 0.00082;
+  kd = 0.33;
+  la = 5.75;
+  ld = 0.045;
+  lm = 0.9;
+  muIAAstar = 0.1;
+
+  // Other declarations:
+  const Cell, Sauxin, muaux, lambda1, thetaARF, thetaARF2, thetaARFIAA, muIAAm;
+  const muIAA, delta, qa, qd, pa, pd, ka, kd, la, ld, lm, muIAAstar;
+
+  // Unit definitions:
+  unit volume = litre;
+  unit substance = mole;
+  unit substance_per_volume = mole / litre;
+end
+
+MODEL1706070000 is "Grigolon2018 - Feedback Loop in ARF and IAA Response"
+
+MODEL1706070000 model_entity_is "http://identifiers.org/biomodels.db/MODEL1706070000"

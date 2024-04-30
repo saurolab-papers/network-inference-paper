@@ -1,0 +1,86 @@
+// Created by libAntimony v2.13.2
+model *model_0000001()
+
+  // Compartments and Species:
+  compartment plasma;
+  species T in plasma, T_i in plasma, V_I in plasma, V_NI in plasma;
+
+  // Assignment Rules:
+  HIV := V_I + V_NI;
+
+  // Reactions:
+  T_cell_source:  => T; lambda*plasma;
+  T_cell_loss: T => ; delta1*T*plasma;
+  infection: T => T_i; k*V_I*T*plasma;
+  T_i_lysis: T_i => ; delta*T_i*plasma;
+  T_lysis_infect:  => V_I; (1 - np)*N*delta*T_i*plasma;
+  T_lysis_noninf:  => V_NI; np*N*delta*T_i*plasma;
+  V_I_clearance: V_I -> ; c*V_I*plasma;
+  V_NI_clearance: V_NI => ; c*V_NI*plasma;
+
+  // Species initializations:
+  T = 180000/plasma;
+  T_i = 1675/plasma;
+  V_I = 134000/plasma;
+  V_NI = 0;
+
+  // Compartment initializations:
+  plasma = 1;
+
+  // Variable initializations:
+  k = 3.43e-08;
+  k has ml_per_item_day;
+  delta = 0.5;
+  delta has perday;
+  N = 480;
+  N has virions_per_cell;
+  c = 3;
+  c has perday;
+  np = 0.1;
+  np has dimensionless;
+  HIV has items_per_ml;
+  lambda = 10;
+  lambda has items_perml_d;
+  delta1 = 0.03;
+  delta1 has perday;
+
+  // Other declarations:
+  var HIV;
+  const plasma, k, delta, N, c, np, lambda, delta1;
+
+  // Unit definitions:
+  unit time_unit = 86400 second;
+  unit substance = item;
+  unit perday = 1 / 86400 second;
+  unit volume = 1e-3 litre;
+  unit items_per_ml = item / 1e-3 litre;
+  unit ml_per_item_day = 1e-3 litre / (86400 second * item);
+  unit virions_per_cell = dimensionless;
+  unit items_perml_d = item / (1e-3 litre * 86400 second);
+
+  // Display Names:
+  time_unit is "day";
+  substance is "items";
+  perday is "per day";
+  volume is "ml";
+  items_per_ml is "items per ml";
+  ml_per_item_day is "ml per (item*day)";
+  items_perml_d is "items per (ml*day)";
+  T_i is "T*";
+  T_cell_source is "creation of T-cells";
+  T_cell_loss is "loss of uninfected T-cell";
+  infection is "T-cell infection";
+  T_i_lysis is "infected T-cell lysis";
+  T_lysis_infect is "release of infectious virions on lysis";
+  T_lysis_noninf is "release of non infectious virions on lysis";
+  V_I_clearance is "clearance of infectious virions";
+  V_NI_clearance is "non-infect. virion clearance";
+end
+
+model_0000001 is "Nelson2000_HIV-1_general_model"
+
+model_0000001 model_entity_is "http://identifiers.org/biomodels.db/MODEL8268650277"
+model_0000001 description "http://identifiers.org/pubmed/10701304"
+model_0000001 taxon "http://identifiers.org/taxonomy/9606"
+model_0000001 hypernym "http://identifiers.org/go/GO:0042493",
+                       "http://identifiers.org/doid/DOID:526"

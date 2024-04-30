@@ -1,0 +1,109 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_Tumor_growth(rho, T)
+  rho*T^(4/5);
+end
+
+Rate_Law_for_Tumor_growth is "Rate Law for Tumor_growth"
+
+function Rate_Law_for_T_cell_mediated_tumor_cell_killing(xi, I, T, h_I, h_T)
+  xi*I*T/(1 + I/h_I + T/h_T);
+end
+
+Rate_Law_for_T_cell_mediated_tumor_cell_killing is "Rate Law for T_cell-mediated_tumor_cell_killing"
+
+function Rate_Law_for_Effector_T_cell_proliferation(p_s, S)
+  p_s*S;
+end
+
+Rate_Law_for_Effector_T_cell_proliferation is "Rate Law for Effector_T_cell_proliferation"
+
+function Rate_Law_for_Lymph_node_resident_T_cell_conversion(alpha, T, N)
+  alpha*(T/(10000000 + T))*N;
+end
+
+Rate_Law_for_Lymph_node_resident_T_cell_conversion is "Rate Law for Lymph_node-resident_T_cell_conversion"
+
+
+model *Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses()
+
+  // Compartments and Species:
+  compartment Tumor, Lymph_node;
+  species T in Tumor, I in Tumor, S in Lymph_node, N in Lymph_node;
+
+  // Reactions:
+  Tumor_growth:  => T; Tumor*Rate_Law_for_Tumor_growth(rho, T);
+  T_cell_mediated_tumor_cell_killing: T => ; Tumor*Rate_Law_for_T_cell_mediated_tumor_cell_killing(xi, I, T, h, h);
+  Lymph_node_resident_T_cell_migration: S => I; m_s*S;
+  Intratumoral_T_cell_death: I => ; Tumor*delta*I;
+  Lymph_node_resident_T_cell_conversion: N => S; Rate_Law_for_Lymph_node_resident_T_cell_conversion(alpha, T, N);
+  Effector_T_cell_proliferation:  => S; Lymph_node*Rate_Law_for_Effector_T_cell_proliferation(p_s, S);
+
+  // Species initializations:
+  T = 1/Tumor;
+  I = 0;
+  S = 0;
+  N = 1000000/Lymph_node;
+
+  // Compartment initializations:
+  Tumor = 1;
+  Lymph_node = 1;
+
+  // Variable initializations:
+  rho = 6;
+  xi = 0.035;
+  h = 571;
+  delta = 0.019;
+  alpha = 0.0025;
+  p_s = 1;
+  m_s = 1;
+
+  // Other declarations:
+  const Tumor, Lymph_node, rho, xi, h, delta, alpha, p_s, m_s;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = 86400 second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  T is "Tumor_cells";
+  I is "Intratumoral_T_cells";
+  S is "Specific_T_cells";
+  N is "Naive_T_cells";
+  T_cell_mediated_tumor_cell_killing is "T_cell-mediated_tumor_cell_killing";
+  Lymph_node_resident_T_cell_migration is "Lymph_node-resident_T_cell_migration";
+  Lymph_node_resident_T_cell_conversion is "Lymph_node-resident_T_cell_conversion";
+
+  // CV terms:
+  Tumor hypernym "http://identifiers.org/ncit/C98275"
+  Tumor property "http://identifiers.org/ncit/C94498"
+  Lymph_node hypernym "http://identifiers.org/bto/BTO:0000784"
+  T hypernym "http://identifiers.org/cl/CL:0001063"
+  I hypernym "http://identifiers.org/cl/CL:0000084"
+  I property "http://identifiers.org/ncit/C28036"
+  S hypernym "http://identifiers.org/cl/CL:0000911"
+  N hypernym "http://identifiers.org/cl/CL:0000898"
+  Tumor_growth hypernym "http://identifiers.org/sbo/SBO:0000393"
+  Tumor_growth hypernym "http://identifiers.org/go/GO:0008283"
+  T_cell_mediated_tumor_cell_killing hypernym "http://identifiers.org/go/GO:0001906"
+  T_cell_mediated_tumor_cell_killing hypernym "http://identifiers.org/sbo/SBO:0000394"
+  Lymph_node_resident_T_cell_migration hypernym "http://identifiers.org/go/GO:0072678"
+  Intratumoral_T_cell_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  Intratumoral_T_cell_death hypernym "http://identifiers.org/go/GO:0008219"
+  Lymph_node_resident_T_cell_conversion hypernym "http://identifiers.org/go/GO:0042110"
+  Effector_T_cell_proliferation hypernym "http://identifiers.org/go/GO:0042098"
+  Effector_T_cell_proliferation hypernym "http://identifiers.org/sbo/SBO:0000393"
+end
+
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses is "Creemers2021 - Tumor-immune dynamics and implications on immunotherapy responses"
+
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses model_entity_is "http://identifiers.org/biomodels.db/MODEL2107290001",
+                                                                                                 "http://identifiers.org/biomodels.db/BIOMD0000001022"
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses propertyBearer "http://identifiers.org/ncit/C15438"
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses taxon "http://identifiers.org/taxonomy/9606"
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses description "http://identifiers.org/pubmed/34059522"
+Creemers2021___Tumor_immune_dynamics_and_implications_on_immunotherapy_responses property "http://identifiers.org/go/GO:0002837",
+                                                                                          "http://identifiers.org/mamo/MAMO_0000046"

@@ -1,0 +1,69 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_Susceptible_to_Infected(beta, I, S)
+  beta*I*S;
+end
+
+Rate_Law_for_Susceptible_to_Infected is "Rate Law for Susceptible_to_Infected"
+
+
+model *Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease()
+
+  // Compartments and Species:
+  compartment New_York_1968_69;
+  species Infected in New_York_1968_69, Recovered in New_York_1968_69, Susceptible in New_York_1968_69;
+
+  // Reactions:
+  Susceptible_to_Infected: Susceptible => Infected; New_York_1968_69*Rate_Law_for_Susceptible_to_Infected(beta, Infected, Susceptible);
+  Infected_to_Recovered: Infected => Recovered; New_York_1968_69*k*Infected;
+
+  // Species initializations:
+  Infected = 1.27e-06/New_York_1968_69;
+  Recovered = 0;
+  Susceptible = 0.999999999999998/New_York_1968_69;
+
+  // Compartment initializations:
+  New_York_1968_69 = 1;
+
+  // Variable initializations:
+  beta = 0.5;
+  k = 0.33;
+
+  // Other declarations:
+  const New_York_1968_69, beta, k;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1 / dimensionless^-0;
+  unit time_unit = 86400 second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  New_York_1968_69 is "New York_1968_69";
+
+  // CV terms:
+  New_York_1968_69 hypernym "http://identifiers.org/ncit/C25632"
+  New_York_1968_69 hypernym "http://identifiers.org/ncit/C43468"
+  Infected hypernym "http://identifiers.org/ncit/C77737"
+  Infected hypernym "http://identifiers.org/ido/ido:0000511"
+  Recovered hypernym "http://identifiers.org/ncit/C77737"
+  Recovered hypernym "http://identifiers.org/ido/ido:0000592"
+  Susceptible hypernym "http://identifiers.org/ncit/C77737"
+  Susceptible hypernym "http://identifiers.org/ido/ido:0000514"
+  Susceptible_to_Infected hypernym "http://identifiers.org/ncit/C128320"
+  Susceptible_to_Infected hypernym "http://identifiers.org/ncit/C77737"
+  Infected_to_Recovered hypernym "http://identifiers.org/ncit/C25746"
+  Infected_to_Recovered hypernym "http://identifiers.org/ncit/C77737"
+end
+
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease is "Smith&Moore2004 - The SIR model for the spread of HongKong Flu"
+
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease model_entity_is "http://identifiers.org/biomodels.db/MODEL2201270001",
+                                                                      "http://identifiers.org/biomodels.db/BIOMD0000001045"
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease version "http://identifiers.org/doid/DOID:8469"
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease taxon "http://identifiers.org/taxonomy/506350"
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease taxon "http://identifiers.org/taxonomy/9606"
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease description "https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model"
+Smith_Moore2004___The_SIR_Model_for_Spread_of_Disease property "http://identifiers.org/ncit/C3439",
+                                                               "http://identifiers.org/mamo/MAMO_0000028"

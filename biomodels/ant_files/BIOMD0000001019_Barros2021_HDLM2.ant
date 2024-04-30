@@ -1,0 +1,129 @@
+// Created by libAntimony v2.13.2
+function function_for_indirect_stimulation(par, modifier)
+  par*modifier;
+end
+
+function_for_indirect_stimulation is "function for indirect stimulation"
+
+function function_for_R7(par, T, b)
+  par*T*(1 - b*T);
+end
+
+function_for_R7 is "function for R7"
+
+function function_for_R3_R5(par, T, Cm)
+  par*T*Cm;
+end
+
+function_for_R3_R5 is "function for R3_R5"
+
+
+model *Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species Cm in compartment_, Ct in compartment_, T in compartment_;
+
+  // Reactions:
+  R3_Cm_activation_into_Ct: Cm => Ct; compartment_*function_for_R3_R5(theta, T, Cm);
+  R6_Ct_expansion:  => Ct; compartment_*function_for_indirect_stimulation(phi, Ct);
+  R4_Ct_natural_death: Ct => ; compartment_*pi_*Ct;
+  R5_Ct_inhibiton_by_Tumor: Ct => ; compartment_*function_for_R3_R5(alpha, T, Ct);
+  R1_Cm_formation:  => Cm; compartment_*function_for_indirect_stimulation(epsilon, Ct);
+  R2_Cm_death: Cm => ; compartment_*mu*Cm;
+  R7_Tumor_proliferation:  => T; compartment_*function_for_R7(rho, T, beta);
+  R8_Tumor_death_by_Ct: T => ; compartment_*function_for_R3_R5(gamma_, Ct, T);
+
+  // Events:
+  event1: at time >= 45, persistent=false, fromTrigger=false: Ct = 2000000;
+  event2: at time >= 250, persistent=false, fromTrigger=false: T = 1000000;
+
+  // Species initializations:
+  Cm = 0;
+  Cm has substance_per_volume;
+  Ct = 0;
+  Ct has substance_per_volume;
+  T = 2000000/compartment_;
+  T has substance_per_volume;
+
+  // Compartment initializations:
+  compartment_ = 1;
+  compartment_ has volume;
+
+  // Variable initializations:
+  phi = 0.265;
+  phi has unit_0;
+  pi_ = 0.35;
+  pi_ has unit_0;
+  epsilon = 0.15;
+  epsilon has unit_0;
+  theta = 6e-06;
+  theta has unit_1;
+  alpha = 4.5e-08;
+  alpha has unit_1;
+  mu = 0.005;
+  mu has unit_0;
+  rho = 0.05650026;
+  rho has unit_0;
+  beta = 1.404029e-12;
+  beta has unit_2;
+  gamma_ = 3.715843e-06;
+  gamma_ has unit_1;
+
+  // Other declarations:
+  const compartment_, phi, pi_, epsilon, theta, alpha, mu, rho, beta, gamma_;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = time_unit;
+  unit substance = mole;
+  unit unit_0 = 1 / 86400 second;
+  unit unit_1 = 1 / 86400 second;
+  unit unit_2 = 1 / dimensionless^-0;
+  unit extent = substance;
+  unit substance_per_volume = mole / litre;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "1/d";
+  unit_1 is "cells/d";
+  unit_2 is "1/cells";
+  compartment_ is "compartment";
+  pi_ is "pi";
+  gamma_ is "gamma";
+  R3_Cm_activation_into_Ct is "R3_Cm activation into Ct";
+  R6_Ct_expansion is "R6_Ct expansion";
+  R4_Ct_natural_death is "R4_Ct natural death";
+  R5_Ct_inhibiton_by_Tumor is "R5_Ct inhibiton by Tumor";
+  R1_Cm_formation is "R1_Cm formation";
+  R2_Cm_death is "R2_Cm death";
+  R7_Tumor_proliferation is "R7_Tumor proliferation";
+  R8_Tumor_death_by_Ct is "R8_Tumor death by Ct";
+
+  // CV terms:
+  compartment_ property "http://identifiers.org/ncit/C94498"
+  Cm property "http://identifiers.org/bto/BTO:0003435"
+  Ct property "http://identifiers.org/ncit/C177284"
+  T property "http://identifiers.org/ncit/C9357"
+  R3_Cm_activation_into_Ct hypernym "http://identifiers.org/sbo/SBO:0000656"
+  R6_Ct_expansion hypernym "http://identifiers.org/ncit/C157211"
+  R4_Ct_natural_death hypernym "http://identifiers.org/go/GO:0008219"
+  R5_Ct_inhibiton_by_Tumor hypernym "http://identifiers.org/sbo/SBO:0000169"
+  R1_Cm_formation hypernym "http://identifiers.org/sbo/SBO:0000393"
+  R2_Cm_death hypernym "http://identifiers.org/go/GO:0008219"
+  R7_Tumor_proliferation hypernym "http://identifiers.org/ncit/C36294"
+  R8_Tumor_death_by_Ct hypernym "http://identifiers.org/go/GO:0008219"
+end
+
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line is "Barros2021 - CARTmath, Mathematical Model of CAR-T Immunotherapy in HDLM-2 cell line"
+
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line description "http://identifiers.org/pubmed/34208323"
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line model_entity_is "http://identifiers.org/biomodels.db/MODEL2107220001",
+                                                                                                     "http://identifiers.org/biomodels.db/BIOMD0000001019"
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line container "http://identifiers.org/bto/BTO:0004973"
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line taxon "http://identifiers.org/taxonomy/10095"
+Barros2021___CARTmath__Mathematical_Model_of_CAR_T_Immunotherapy_in_HDLM_2_cell_line property "http://identifiers.org/ncit/C15262",
+                                                                                              "http://identifiers.org/bto/BTO:0000782",
+                                                                                              "http://identifiers.org/mamo/MAMO_0000046"

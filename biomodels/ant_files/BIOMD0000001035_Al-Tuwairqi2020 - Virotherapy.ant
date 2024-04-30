@@ -1,0 +1,140 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_uninfected_tumor_cell_growth(r_1, x, y)
+  r_1*x*(1 - (x + y));
+end
+
+Rate_Law_for_uninfected_tumor_cell_growth is "Rate Law for uninfected_tumor_cell_growth"
+
+function Rate_Law_for_virus_killing_clearence(h_2, v, z, e)
+  h_2*v*z + e*v;
+end
+
+Rate_Law_for_virus_killing_clearence is "Rate Law for virus_killing/clearence"
+
+function Rate_Law_for_uninfected_tumor_cell_killing_death(h_1, x, z, d_1)
+  h_1*x*z + d_1*x;
+end
+
+Rate_Law_for_uninfected_tumor_cell_killing_death is "Rate Law for uninfected_tumor_cell_killing/death"
+
+function Rate_Law_for_immune_cell_proliferation(m_1, y, z, m_2, x)
+  m_1*y*z + m_2*x*z;
+end
+
+Rate_Law_for_immune_cell_proliferation is "Rate Law for immune_cell_proliferation"
+
+function Rate_Law_for_infected_tumor_cell_killing_death(c, y, z)
+  c*y*z + y;
+end
+
+Rate_Law_for_infected_tumor_cell_killing_death is "Rate Law for infected_tumor_cell_killing/death"
+
+function Rate_Law_for_virus_lytic_release(b, y)
+  b*y;
+end
+
+Rate_Law_for_virus_lytic_release is "Rate Law for virus_lytic_release"
+
+
+model *Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response()
+
+  // Compartments and Species:
+  compartment Whole_organism;
+  species uninfected_cancer_cells in Whole_organism, infected_cancer_cells in Whole_organism;
+  species free_virus in Whole_organism, immune_cells in Whole_organism;
+
+  // Reactions:
+  uninfected_cancer_cell_growth:  => uninfected_cancer_cells; Whole_organism*Rate_Law_for_uninfected_tumor_cell_growth(r_1, uninfected_cancer_cells, infected_cancer_cells);
+  cancer_cell_infection: uninfected_cancer_cells + free_virus => infected_cancer_cells; Whole_organism*a*uninfected_cancer_cells*free_virus;
+  uninfected_cancer_cell_killing_death: uninfected_cancer_cells => ; Whole_organism*Rate_Law_for_uninfected_tumor_cell_killing_death(h_1, uninfected_cancer_cells, immune_cells, d_1);
+  infected_cancer_cell_killing_death: infected_cancer_cells => ; Whole_organism*Rate_Law_for_infected_tumor_cell_killing_death(c, infected_cancer_cells, immune_cells);
+  virus_lytic_release:  => free_virus; Whole_organism*Rate_Law_for_virus_lytic_release(b, infected_cancer_cells);
+  virus_killing_clearence: free_virus => ; Whole_organism*Rate_Law_for_virus_killing_clearence(h_2, free_virus, immune_cells, e);
+  immune_cell_proliferation:  => immune_cells; Whole_organism*Rate_Law_for_immune_cell_proliferation(m_1, infected_cancer_cells, immune_cells, m_2, uninfected_cancer_cells);
+  immune_cell_clearence: immune_cells => ; Whole_organism*n*immune_cells;
+
+  // Species initializations:
+  uninfected_cancer_cells = 0.5/Whole_organism;
+  infected_cancer_cells = 0;
+  free_virus = 0.01/Whole_organism;
+  immune_cells = 0.01/Whole_organism;
+
+  // Compartment initializations:
+  Whole_organism = 1;
+
+  // Variable initializations:
+  r_1 = 0.36;
+  a = 0.5;
+  h_1 = 0.36;
+  d_1 = 0.1278;
+  c = 0.48;
+  h_2 = 0.16;
+  e = 0.2;
+  m_1 = 0.6;
+  m_2 = 0.29;
+  n = 0.16;
+  b = 2;
+
+  // Other declarations:
+  const Whole_organism, r_1, a, h_1, d_1, c, h_2, e, m_1, m_2, n, b;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = (1e-3 metre)^3;
+  unit time_unit = 3600e2 second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  uninfected_cancer_cell_killing_death is "uninfected_cancer_cell_killing/death";
+  infected_cancer_cell_killing_death is "infected_cancer_cell_killing/death";
+  virus_killing_clearence is "virus_killing/clearence";
+
+  // CV terms:
+  Whole_organism hypernym "http://identifiers.org/ncit/C13413"
+  Whole_organism property "http://identifiers.org/pato/PATO:0001993"
+  uninfected_cancer_cells hypernym "http://identifiers.org/cl/CL:0001063"
+  uninfected_cancer_cells property "http://identifiers.org/chebi/CHEBI:144829"
+  uninfected_cancer_cells property "http://identifiers.org/efo/0001460"
+  infected_cancer_cells hypernym "http://identifiers.org/cl/CL:0001063"
+  infected_cancer_cells hypernym "http://identifiers.org/bto/BTO:0000152"
+  infected_cancer_cells property "http://identifiers.org/chebi/CHEBI:144829"
+  free_virus hypernym "http://identifiers.org/ido/0000508"
+  free_virus hypernym "http://identifiers.org/ncit/C717"
+  immune_cells hypernym "http://identifiers.org/cl/CL:0000623"
+  immune_cells hypernym "http://identifiers.org/ncit/C132890"
+  immune_cells hypernym "http://identifiers.org/cl/CL:0000910"
+  uninfected_cancer_cell_growth hypernym "http://identifiers.org/sbo/SBO:0000393"
+  uninfected_cancer_cell_growth hypernym "http://identifiers.org/go/GO:0008283"
+  cancer_cell_infection hypernym "http://identifiers.org/ncit/C3439"
+  cancer_cell_infection hypernym "http://identifiers.org/ido/0000586"
+  uninfected_cancer_cell_killing_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  uninfected_cancer_cell_killing_death hypernym "http://identifiers.org/go/GO:0001906"
+  uninfected_cancer_cell_killing_death hypernym "http://identifiers.org/go/GO:0008219"
+  uninfected_cancer_cell_killing_death property "http://identifiers.org/ncit/C28373"
+  infected_cancer_cell_killing_death hypernym "http://identifiers.org/go/GO:0008219"
+  infected_cancer_cell_killing_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  infected_cancer_cell_killing_death hypernym "http://identifiers.org/go/GO:0001906"
+  virus_lytic_release hypernym "http://identifiers.org/go/GO:0044659"
+  virus_lytic_release hypernym "http://identifiers.org/sbo/SBO:0000393"
+  virus_killing_clearence hypernym "http://identifiers.org/sbo/SBO:0000394"
+  virus_killing_clearence hypernym "http://identifiers.org/ncit/C26011"
+  immune_cell_proliferation hypernym "http://identifiers.org/go/GO:0008283"
+  immune_cell_proliferation hypernym "http://identifiers.org/sbo/SBO:0000393"
+  immune_cell_clearence hypernym "http://identifiers.org/sbo/SBO:0000394"
+  immune_cell_clearence hypernym "http://identifiers.org/go/GO:0008219"
+end
+
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response is "Al-Tuwairqi2020 - Dynamics of cancer virotherapy with immune response"
+
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response model_entity_is "http://identifiers.org/biomodels.db/MODEL2108190004",
+                                                                                      "http://identifiers.org/biomodels.db/BIOMD0000001035"
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response propertyBearer "http://identifiers.org/ncit/C62713"
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response propertyBearer "http://identifiers.org/ncit/C15438"
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response taxon "http://identifiers.org/taxonomy/9606"
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response description "http://identifiers.org/doi/10.1186/s13662-020-02893-6"
+Al_Tuwairqi2020___Dynamics_of_cancer_virotherapy_with_immune_response property "http://identifiers.org/go/GO:0002837",
+                                                                               "http://identifiers.org/go/GO:0046730",
+                                                                               "http://identifiers.org/doid/DOID:162",
+                                                                               "http://identifiers.org/mamo/MAMO_0000046"

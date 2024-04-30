@@ -1,0 +1,474 @@
+// Created by libAntimony v2.13.2
+function Function_for_DmMa(default, dmi, p42, p43, p45)
+  (p45 + p42*dmi^2/(dmi^2 + p43^2))/default;
+end
+
+Function_for_DmMa is "Function for DmMa"
+
+function Function_for_GbGs(Gluc_b, Gluc_feed, Gluc_prod, Gluc_stor, default, ins_b, p1, p12, p36, p55, p57)
+  ((Gluc_feed^10/(Gluc_feed^10 + p1^10))*p12*Gluc_prod*default*p57^10/((Gluc_stor*default)^10 + p57^10))*ins_b*Gluc_b*p36^10/(p36^10 + p55^10);
+end
+
+Function_for_GbGs is "Function for GbGs"
+
+function Function_for_GpGb(Gluc_b, Gluc_prod, default, p37, p39, p50)
+  (p37 + p39*Gluc_prod*default)*(1/(1 + (Gluc_b/p50)^10));
+end
+
+Function_for_GpGb is "Function for GpGb"
+
+function Function_for_GpGs(Gluc_prod, Gluc_stor, default, p51, p55, p57, p62)
+  p51*Gluc_prod*default*(p57^10/((Gluc_stor*default)^10 + p57^10))*p62^10/(p62^10 + p55^10)/default;
+end
+
+Function_for_GpGs is "Function for GpGs"
+
+function Function_for_GsGb(Gluc_b, Gluc_feed, Gluc_stor, default, p1, p17, p35, p55, p63, p64, p65, p7)
+  (1/(1 + (Gluc_feed/p1)^10))*p17*(p7 - Gluc_b)*(Gluc_stor*default)^10/((Gluc_stor*default)^10 + p35^10) + ((1/(1 + (p64/p55)^10))*p65^10/(p65^10 + Gluc_b^10))*p63*(Gluc_stor*default)^10/((Gluc_stor*default)^10 + p35^10);
+end
+
+Function_for_GsGb is "Function for GsGb"
+
+function Function_for_GsGp(Gluc_feed, Gluc_stor, default, p35, p60, p61)
+  (p60*1/(1 + (Gluc_feed/p61)^5))*(Gluc_stor*default)^10/((Gluc_stor*default)^10 + p35^10)/default;
+end
+
+Function_for_GsGp is "Function for GsGp"
+
+function Function_for_KeKi(K_ECF, ins_b, p20, p21, p3, p33, p8, p9, pH)
+  ((p8 + p9*ins_b^8/(ins_b^8 + p3^8))*K_ECF^2/(K_ECF^2 + p33^2))*(1 + p21*pH^10/(pH^10 + p20^10));
+end
+
+Function_for_KeKi is "Function for KeKi"
+
+function Function_for_KeKs(K_ECF, dmi, p18)
+  p18*K_ECF*dmi;
+end
+
+Function_for_KeKs is "Function for KeKs"
+
+function Function_for_KeKt(K_ECF, K_git, K_tiss, default, p10, p15, p2, p25)
+  ((K_git*default)^10/((K_git*default)^10 + p15^10))*p25*K_ECF*(p2 - p10)^10/((K_tiss*default - p10)^10 + (p2 - p10)^10);
+end
+
+Function_for_KeKt is "Function for KeKt"
+
+function Function_for_KeKu(K_ECF, K_git, default, p13, p16, p22, p24, p53, p6)
+  (1 + p13*K_ECF^5/(K_ECF^5 + p24^5))*p6*K_git*default*(1 + p16*K_ECF^10/(K_ECF^10 + p22^10)) + p53*K_ECF;
+end
+
+Function_for_KeKu is "Function for KeKu"
+
+function Function_for_KeMi(K_ECF, p40, p52, p55)
+  p52*p55*K_ECF^10/(K_ECF^10 + p40^10);
+end
+
+Function_for_KeMi is "Function for KeMi"
+
+function Function_for_KfKg(K_feed, default, p30)
+  p30*K_feed/default;
+end
+
+Function_for_KfKg is "Function for KfKg"
+
+function Function_for_KgKe(K_git, default, p31)
+  p31*K_git*default;
+end
+
+Function_for_KgKe is "Function for KgKe"
+
+function Function_for_KiKe(K_ECF, K_ICF, p14, p19, p20, p23, p29, p5, pH)
+  ((1 + 1/(1 + (K_ECF/p29)^10))*p5*(1 + 1/(1 + (pH/p20)^10))*K_ICF^2/(K_ICF^2 + p23^2))*(1 + p19*K_ICF^2/(K_ICF^2 + p14^2));
+end
+
+Function_for_KiKe is "Function for KiKe"
+
+function Function_for_KsKg(K_sal, default, p32)
+  p32*K_sal*default/default;
+end
+
+Function_for_KsKg is "Function for KsKg"
+
+function Function_for_KtKe(K_ECF, K_git, K_tiss, default, p10, p15, p26, p27, p38)
+  (1/(1 + (K_git*default/p15)^10))*p26*(p27 - K_ECF)*(K_tiss*default - p10)^10/((K_tiss*default - p10)^10 + (p38*0.99 - p10)^10);
+end
+
+Function_for_KtKe is "Function for KtKe"
+
+function Function_for_MaSnk(default, met_act, p44)
+  p44*met_act*default/default;
+end
+
+Function_for_MaSnk is "Function for MaSnk"
+
+function Function_for_SnkGb(Gluc_b, Gluc_prod, default, p28, p47, p55, p58, p59, p66)
+  (Gluc_b^10/(Gluc_b^10 + p58^10))*(p28*Gluc_b + p59*Gluc_prod*default*exp(-p66*p55) + p55*p47);
+end
+
+Function_for_SnkGb is "Function for SnkGb"
+
+function Function_for_SnkIn(c2, ins_b, p41)
+  p41*ins_b/c2;
+end
+
+Function_for_SnkIn is "Function for SnkIn"
+
+function Function_for_SrcGb(Gluc_feed, c2, p48)
+  p48*Gluc_feed/c2;
+end
+
+Function_for_SrcGb is "Function for SrcGb"
+
+function Function_for_SrcGp(Gluc_feed, default, p48)
+  (1 - p48)*Gluc_feed/default;
+end
+
+Function_for_SrcGp is "Function for SrcGp"
+
+function Function_for_SrcIn(Gluc_b, c2, p49)
+  p49*Gluc_b/c2;
+end
+
+Function_for_SrcIn is "Function for SrcIn"
+
+
+model *MODEL1710230000()
+
+  // Compartments and Species:
+  compartment default, c1, c2;
+  species K_ECF in c2, K_ICF in c1, K_urin in default, K_tiss in default;
+  species K_sal in default, met_act in default, K_milk in default, $K_ECF_mmol in c2;
+  species $K_ICF_mmol in c1, K_git in default, Gluc_b in c2, ins_b in c2;
+  species Gluc_stor in default, Gluc_prod in default, $src_metact in default;
+  species $snk_metact in default, $src_Kgit in default, $src_Glucblood in c2;
+  species $s23 in default, $sa4_degraded in default, s24 in default, $src_insnew in c2;
+  species $snk_insnew in c2;
+
+  // Assignment Rules:
+  K_ECF_mmol := K_ECF/p34;
+  K_ICF_mmol := K_ICF/p34;
+  pH := 7.5 - met_act/40;
+  dmi := p54*487.5*(1 - sin(pi*time/12));
+  K_feed := p56*dmi;
+  Gluc_feed := p46*dmi;
+
+  // Reactions:
+  re20: 1 $src_metact => 1 met_act; default*Function_for_DmMa(default, dmi, p42, p43, p45);
+  re37: 1 Gluc_b => 1 Gluc_stor; Function_for_GbGs(Gluc_b, Gluc_feed, Gluc_prod, Gluc_stor, default, ins_b, p1, p12, p36, p55, p57);
+  re41: 1 Gluc_prod => 1 Gluc_b; Function_for_GpGb(Gluc_b, Gluc_prod, default, p37, p39, p50);
+  re39: 1 Gluc_prod => 1 Gluc_stor; default*Function_for_GpGs(Gluc_prod, Gluc_stor, default, p51, p55, p57, p62);
+  re38: 1 Gluc_stor => 1 Gluc_b; Function_for_GsGb(Gluc_b, Gluc_feed, Gluc_stor, default, p1, p17, p35, p55, p63, p64, p65, p7);
+  re43: 1 Gluc_stor => 1 Gluc_prod; default*Function_for_GsGp(Gluc_feed, Gluc_stor, default, p35, p60, p61);
+  re4: 1 K_ECF => 1 K_ICF; Function_for_KeKi(K_ECF, ins_b, p20, p21, p3, p33, p8, p9, pH);
+  re5: 1 K_ECF => 1 K_sal; Function_for_KeKs(K_ECF, dmi, p18);
+  re7: 1 K_ECF => 1 K_tiss; Function_for_KeKt(K_ECF, K_git, K_tiss, default, p10, p15, p2, p25);
+  re9: 1 K_ECF => 1 K_urin; Function_for_KeKu(K_ECF, K_git, default, p13, p16, p22, p24, p53, p6);
+  re35: 1 K_ECF => 1 K_milk; Function_for_KeMi(K_ECF, p40, p52, p55);
+  re6: 1 K_ECF => 1 $sa4_degraded; p4*K_ECF;
+  re34: 1 $src_Kgit => 1 K_git; default*Function_for_KfKg(K_feed, default, p30);
+  re10: 1 K_git => 1 K_ECF; Function_for_KgKe(K_git, default, p31);
+  re3: 1 K_ICF => 1 K_ECF; Function_for_KiKe(K_ECF, K_ICF, p14, p19, p20, p23, p29, p5, pH);
+  re11: 1 K_sal => 1 K_git; default*Function_for_KsKg(K_sal, default, p32);
+  re8: 1 K_tiss => 1 K_ECF; Function_for_KtKe(K_ECF, K_git, K_tiss, default, p10, p15, p26, p27, p38);
+  re21: 1 met_act => 1 $snk_metact; default*Function_for_MaSnk(default, met_act, p44);
+  re40: 1 Gluc_b => 1 s24; Function_for_SnkGb(Gluc_b, Gluc_prod, default, p28, p47, p55, p58, p59, p66);
+  re32: 1 ins_b => 1 $snk_insnew; c2*Function_for_SnkIn(c2, ins_b, p41);
+  re33: 1 $src_Glucblood => 1 Gluc_b; c2*Function_for_SrcGb(Gluc_feed, c2, p48);
+  re36: 1 $s23 => 1 Gluc_prod; default*Function_for_SrcGp(Gluc_feed, default, p48);
+  re31: 1 $src_insnew => 1 ins_b; c2*Function_for_SrcIn(Gluc_b, c2, p49);
+
+  // Species initializations:
+  K_ECF = 3.99311967315171/c2;
+  K_ICF = 9.15272511741428/c1;
+  K_urin = 0;
+  K_tiss = 1509.6/default;
+  K_sal = 4.53818901679345/default;
+  met_act = 6.24885128313371/default;
+  K_milk = 0;
+  K_git = 43.1365559451142/default;
+  Gluc_b = 12.4617153352196/c2;
+  ins_b = 498.255135583734/c2;
+  Gluc_stor = 3647.74674176755/default;
+  Gluc_prod = 34.0337183015116/default;
+  src_metact = 0;
+  snk_metact = 0;
+  src_Kgit = 0;
+  src_Glucblood = 0;
+  s23 = 0;
+  sa4_degraded = 0;
+  s24 = 0;
+  src_insnew = 0;
+  snk_insnew = 0;
+
+  // Compartment initializations:
+  default = 1;
+  default has volume;
+  c1 = 10.2;
+  c1 has volume;
+  c2 = 22.8;
+  c2 has volume;
+
+  // Variable initializations:
+  p34 = 0.0390983;
+  p34 has unit_0;
+  p3 = 22;
+  p3 has unit_0;
+  p4 = 0.0001783;
+  p4 has unit_0;
+  p5 = 0.563;
+  p5 has unit_0;
+  p6 = 0.051;
+  p6 has unit_0;
+  p8 = 0.5994;
+  p8 has unit_0;
+  p9 = 0.4016;
+  p9 has unit_0;
+  p13 = 6.08;
+  p13 has unit_0;
+  p14 = 0.15639932;
+  p14 has unit_0;
+  p15 = 32;
+  p15 has unit_0;
+  p16 = 10;
+  p16 has unit_0;
+  p18 = 0.0223;
+  p18 has unit_0;
+  p19 = 0.1373;
+  p19 has unit_0;
+  p20 = 7.38;
+  p20 has unit_0;
+  p21 = 0.1085;
+  p21 has unit_0;
+  p22 = 0.25;
+  p22 has unit_0;
+  p23 = 0.58649745;
+  p23 has unit_0;
+  p24 = 0.1962811466;
+  p24 has unit_0;
+  p25 = 6.6085;
+  p25 has unit_0;
+  p26 = 49.0279;
+  p26 has unit_0;
+  p27 = 0.232634885;
+  p27 has unit_0;
+  p29 = 0.11729949;
+  p29 has unit_0;
+  p30 = 0.95;
+  p30 has unit_0;
+  p31 = 0.353;
+  p31 has unit_0;
+  p32 = 1.31;
+  p32 has unit_0;
+  p33 = 0.07819966;
+  p33 has unit_0;
+  pH has unit_0;
+  p42 = 4.5;
+  p42 has unit_0;
+  p43 = 10;
+  p43 has unit_0;
+  p44 = 1.2;
+  p44 has unit_0;
+  p45 = 3;
+  p45 has unit_0;
+  p46 = 0.0854;
+  p46 has unit_0;
+  p48 = 0.08;
+  p48 has unit_0;
+  p49 = 800;
+  p49 has unit_0;
+  p41 = 20;
+  p41 has unit_0;
+  Pi = 3.14159265359;
+  Pi has unit_0;
+  dmi has unit_0;
+  p54 = 1;
+  p54 has unit_0;
+  K_feed has unit_0;
+  p56 = 0.01137;
+  p56 has unit_0;
+  Gluc_feed has unit_0;
+  p52 = 1.4;
+  p52 has unit_0;
+  p53 = 0.01;
+  p53 has unit_0;
+  p55 = 0;
+  p55 has unit_0;
+  p1 = 40.4;
+  p1 has unit_0;
+  p11 = 860;
+  p11 has unit_0;
+  p12 = 0.0105;
+  p12 has unit_0;
+  p17 = 16;
+  p17 has unit_0;
+  p28 = 25;
+  p28 has unit_0;
+  p37 = 0;
+  p37 has unit_0;
+  p39 = 30;
+  p39 has unit_0;
+  p50 = 0.4;
+  p50 has unit_0;
+  p7 = 0.925;
+  p7 has unit_0;
+  p51 = 0.1;
+  p51 has unit_0;
+  p57 = 3800;
+  p57 has unit_0;
+  p59 = 1;
+  p59 has unit_0;
+  p60 = 2;
+  p60 has unit_0;
+  p61 = 5;
+  p61 has unit_0;
+  p40 = 0.01;
+  p40 has unit_0;
+  p47 = 72;
+  p47 has unit_0;
+  p58 = 0.01;
+  p58 has unit_0;
+  p63 = 800;
+  p63 has unit_0;
+  p64 = 0.2;
+  p64 has unit_0;
+  p65 = 0.3;
+  p65 has unit_0;
+  p66 = 1.4;
+  p66 has unit_0;
+  p2 = 1600;
+  p2 has unit_0;
+  p10 = 1400;
+  p10 has unit_0;
+  p35 = 100;
+  p35 has unit_0;
+  p62 = 1;
+  p62 has unit_0;
+  p38 = 1509.6;
+  p38 has unit_0;
+  p36 = 1;
+  p36 has unit_0;
+  parameter_1 = 6.022140857e+23;
+  SpeciesReference = 1;
+  SpeciesReference_1 = 1;
+  SpeciesReference_2 = 1;
+  SpeciesReference_3 = 1;
+  SpeciesReference_6 = 1;
+  SpeciesReference_7 = 1;
+  SpeciesReference_8 = 1;
+  SpeciesReference_9 = 1;
+  SpeciesReference_10 = 1;
+  SpeciesReference_11 = 1;
+  SpeciesReference_12 = 1;
+  SpeciesReference_13 = 1;
+  SpeciesReference_14 = 1;
+  SpeciesReference_15 = 1;
+  SpeciesReference_17 = 1;
+  SpeciesReference_18 = 1;
+  SpeciesReference_19 = 1;
+  SpeciesReference_20 = 1;
+  SpeciesReference_22 = 1;
+  SpeciesReference_23 = 1;
+  SpeciesReference_25 = 1;
+  SpeciesReference_26 = 1;
+  SpeciesReference_27 = 1;
+  SpeciesReference_28 = 1;
+  SpeciesReference_29 = 1;
+  SpeciesReference_30 = 1;
+  SpeciesReference_31 = 1;
+  SpeciesReference_32 = 1;
+  SpeciesReference_33 = 1;
+  SpeciesReference_34 = 1;
+  SpeciesReference_35 = 1;
+  SpeciesReference_36 = 1;
+  SpeciesReference_37 = 1;
+  SpeciesReference_38 = 1;
+  SpeciesReference_40 = 1;
+  SpeciesReference_41 = 1;
+  SpeciesReference_42 = 1;
+  SpeciesReference_43 = 1;
+  SpeciesReference_45 = 1;
+  SpeciesReference_46 = 1;
+  SpeciesReference_47 = 1;
+  SpeciesReference_48 = 1;
+  SpeciesReference_49 = 1;
+  SpeciesReference_50 = 1;
+  SpeciesReference_51 = 1;
+  SpeciesReference_52 = 1;
+
+  // Other declarations:
+  var pH, dmi, K_feed, Gluc_feed;
+  const default, c1, c2, p34, p3, p4, p5, p6, p8, p9, p13, p14, p15, p16;
+  const p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p29, p30, p31, p32;
+  const p33, p42, p43, p44, p45, p46, p48, p49, p41, Pi, p54, p56, p52, p53;
+  const p55, p1, p11, p12, p17, p28, p37, p39, p50, p7, p51, p57, p59, p60;
+  const p61, p40, p47, p58, p63, p64, p65, p66, p2, p10, p35, p62, p38, p36;
+  const parameter_1;
+
+  // Unit definitions:
+  unit substance = mole;
+  unit volume = litre;
+  unit area = metre^2;
+  unit length = metre;
+  unit time_unit = 3600 second;
+  unit unit_0 = 1 / dimensionless^-0;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "1";
+  c1 is "intracell";
+  c2 is "extracell";
+  p34 is "con";
+  src_Glucblood is "src_Glucb";
+  s23 is "src_Gprod";
+  sa4_degraded is "snk_Kecf";
+  s24 is "Gluc_use";
+  src_insnew is "src_ins";
+  snk_insnew is "snk_ins";
+  p42 is "src_metact";
+  p43 is "T_src_metact";
+  p44 is "snc_metact";
+  p45 is "basic_metact";
+  p46 is "src_glucfeed";
+  p48 is "scale_blood_gluc";
+  p54 is "dmi_percentage";
+  p56 is "perctK_in_dmi";
+  p52 is "kmilk_content";
+  p53 is "basal_KeKu";
+  p55 is "Milk_in_l/h";
+  parameter_1 is "amount to particle factor";
+  re20 is "DmMa";
+  re37 is "GbGs";
+  re41 is "GpGb";
+  re39 is "GpGs";
+  re38 is "GsGb";
+  re43 is "GsGp";
+  re4 is "KeKi";
+  re5 is "KeKs";
+  re7 is "KeKt";
+  re9 is "KeKu";
+  re35 is "KeMi";
+  re6 is "KeR";
+  re34 is "KfKg";
+  re10 is "KgKe";
+  re3 is "KiKe";
+  re11 is "KsKg";
+  re8 is "KtKe";
+  re21 is "MaSnk";
+  re40 is "SnkGb";
+  re32 is "SnkIn";
+  re33 is "SrcGb";
+  re36 is "SrcGp";
+  re31 is "SrcIn";
+end
+
+MODEL1710230000 is "Potassium balance in lactating and non-lactating dairy cows"
+
+MODEL1710230000 instance "http://identifiers.org/biomodels.db/MODEL1710230000",
+                         "http://identifiers.org/taxonomy/9913",
+                         "http://identifiers.org/mamo/MAMO_0000046"
+MODEL1710230000 description "http://identifiers.org/mamo/MAMO_0000046",
+                            "http://identifiers.org/pubmed/28987591"
+MODEL1710230000 model_entity_is "http://identifiers.org/biomodels.db/MODEL1710230000",
+                                "http://identifiers.org/biomodels.db/BIOMD0000000849"
+MODEL1710230000 property "http://identifiers.org/biomodels.db/MODEL1710230000"
+MODEL1710230000 taxon "http://identifiers.org/taxonomy/9913"

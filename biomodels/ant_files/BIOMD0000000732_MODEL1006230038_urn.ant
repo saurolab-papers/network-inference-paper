@@ -1,0 +1,65 @@
+// Created by libAntimony v2.13.2
+model *Kirschner1998_Immunotherapy_Tumour()
+
+  // Compartments and Species:
+  compartment COMpartment;
+
+  // Rate Rules:
+  x' = (c*y - mu2*x) + p1*x*z/(g1 + z) + s1;
+  y' = r2*y*(1 - b*y) - a*x*y/(g2 + y);
+  z' = (p2*x*y/(g3 + y) - mu3*z) + s2;
+
+  // Compartment initializations:
+  COMpartment = 1;
+  COMpartment has litre;
+
+  // Variable initializations:
+  mu2 = 0.03;
+  mu2 has dimensionless;
+  c = 0.025;
+  c has dimensionless;
+  p1 = 0.1245;
+  p1 has dimensionless;
+  g1 = 2e-07;
+  g1 has dimensionless;
+  s1 = 0;
+  s1 has dimensionless;
+  x = 0;
+  x has dimensionless;
+  y = 1;
+  y has dimensionless;
+  z = 0;
+  z has dimensionless;
+  r2 = 0.18;
+  r2 has dimensionless;
+  b = 1e-09;
+  b has dimensionless;
+  a = 1;
+  a has dimensionless;
+  g2 = 100000;
+  g2 has dimensionless;
+  p2 = 5;
+  p2 has dimensionless;
+  g3 = 1000;
+  g3 has dimensionless;
+  mu3 = 10;
+  mu3 has dimensionless;
+  s2 = 0;
+  s2 has dimensionless;
+
+  // Other declarations:
+  var x, y, z;
+  const COMpartment, mu2, c, p1, g1, s1, r2, b, a, g2, p2, g3, mu3, s2;
+
+  // Unit definitions:
+  unit day = 86400 second;
+  unit first_order_rate_constant = 1 / 86400 second;
+  unit cells_per_microlitre = 1 / 1e-6 litre;
+  unit flux = 1 / (1e-6 litre * 86400 second);
+  unit micromolar = 1e-6 mole / litre;
+end
+
+Kirschner1998_Immunotherapy_Tumour is "Kirschner1998_Immunotherapy_Tumour"
+
+Kirschner1998_Immunotherapy_Tumour model_entity_is "urn:miriam:biomodels.db:MODEL1006230038"
+Kirschner1998_Immunotherapy_Tumour description "urn:miriam:pubmed:9785481"

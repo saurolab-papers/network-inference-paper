@@ -1,0 +1,147 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_Antiviral_response(Phi, F, I, k)
+  k*I + Phi*F*I;
+end
+
+Rate_Law_for_Antiviral_response is "Rate Law for Antiviral_response"
+
+function Rate_Law_for_Virus_release(p, I, f, _I_)
+  p*I + (1 - f)*p*_I_;
+end
+
+Rate_Law_for_Virus_release is "Rate Law for Virus_release"
+
+function Rate_Law_for_IFN_release(Pi, p, I, _I_)
+  Pi*p*(I + _I_);
+end
+
+Rate_Law_for_IFN_release is "Rate Law for IFN_release"
+
+function Rate_Law_for_Infection(Beta, V, T)
+  Beta*V*T;
+end
+
+Rate_Law_for_Infection is "Rate Law for Infection"
+
+function Rate_Law_for_Refractory_state(Phi, F, T, R, Rho)
+  Phi*F*T - Rho*R;
+end
+
+Rate_Law_for_Refractory_state is "Rate Law for Refractory_state"
+
+
+model *Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection()
+
+  // Compartments and Species:
+  compartment whole_organism;
+  species Target_cells in whole_organism, Infected_cells in whole_organism;
+  species Infected_cells_antiviral in whole_organism, Refractory_cells in whole_organism;
+  species Virions in whole_organism, IFN in whole_organism, $Fraction_target_cells_remaining in whole_organism;
+
+  // Assignment Rules:
+  Fraction_target_cells_remaining := Target_cells/Metabolite_0;
+
+  // Reactions:
+  Infection: Target_cells => Infected_cells; whole_organism*Rate_Law_for_Infection(Beta, Virions, Target_cells);
+  Refractory_state: Target_cells -> Refractory_cells; whole_organism*Rate_Law_for_Refractory_state(Phi, IFN, Target_cells, Refractory_cells, Rho);
+  Antiviral_response: Infected_cells => Infected_cells_antiviral; whole_organism*Rate_Law_for_Antiviral_response(Phi, IFN, Infected_cells, k);
+  Infected_cell_death: Infected_cells => ; whole_organism*Delta*Infected_cells;
+  Antiviral_infected_cell_death: Infected_cells_antiviral => ; whole_organism*Delta*Infected_cells_antiviral;
+  Virus_release:  => Virions; whole_organism*Rate_Law_for_Virus_release(p, Infected_cells, f, Infected_cells_antiviral);
+  IFN_release:  => IFN; whole_organism*Rate_Law_for_IFN_release(Pi, p, Infected_cells, Infected_cells_antiviral);
+  Virus_clearence: Virions => ; whole_organism*c*Virions;
+  IFN_clearence: IFN => ; whole_organism*c*IFN;
+
+  // Species initializations:
+  Target_cells = 400000000/whole_organism;
+  Infected_cells = 0;
+  Infected_cells_antiviral = 0;
+  Refractory_cells = 0;
+  Virions = 100/whole_organism;
+  IFN = 0;
+
+  // Compartment initializations:
+  whole_organism = 1;
+
+  // Variable initializations:
+  Metabolite_0 = Target_cells;
+  Beta = 5e-10;
+  Beta has unit_0;
+  Phi = 5e-10;
+  Phi has unit_0;
+  Rho = 1;
+  Rho has unit_1;
+  Delta = 4;
+  Delta has unit_1;
+  k = 2;
+  k has unit_1;
+  p = 2400;
+  p has unit_2;
+  f = 0.9;
+  c = 14;
+  c has unit_1;
+  Pi = 1;
+
+  // Other declarations:
+  const whole_organism, Metabolite_0, Beta, Phi, Rho, Delta, k, p, f, c, Pi;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = 86400 second;
+  unit substance = item;
+  unit unit_0 = 1e-2 metre / (86400 second * item);
+  unit unit_1 = 1 / 86400 second;
+  unit unit_2 = 1 / (86400 second * item);
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "cm/(#*d)";
+  unit_1 is "1/d";
+  unit_2 is "1/(#*d)";
+  Metabolite_0 is "Initial for Target_cells";
+
+  // CV terms:
+  whole_organism hypernym "http://identifiers.org/obi/OBI_0100026"
+  whole_organism property "http://identifiers.org/pato/PATO:0001993"
+  Target_cells hypernym "http://identifiers.org/cl/CL:0000000"
+  Target_cells property "http://identifiers.org/efo/0001460"
+  Infected_cells hypernym "http://identifiers.org/bto/BTO:0000152"
+  Infected_cells_antiviral hypernym "http://identifiers.org/bto/BTO:0000152"
+  Infected_cells_antiviral property "http://identifiers.org/ido/0000440"
+  Refractory_cells hypernym "http://identifiers.org/cl/CL:0000000"
+  Refractory_cells property "http://identifiers.org/efo/0001460"
+  Refractory_cells property "http://identifiers.org/mp/MP:0002409"
+  Virions hypernym "http://identifiers.org/ido/0000508"
+  IFN hypernym "http://identifiers.org/ncit/C20493"
+  Fraction_target_cells_remaining hypernym "http://identifiers.org/cl/CL:0000000"
+  Fraction_target_cells_remaining property "http://identifiers.org/efo/0001460"
+  Infection hypernym "http://identifiers.org/ido/0000586"
+  Refractory_state hypernym "http://identifiers.org/go/GO:0051607"
+  Refractory_state hypernym "http://identifiers.org/sbo/SBO:0000650"
+  Antiviral_response hypernym "http://identifiers.org/go/GO:0051607"
+  Infected_cell_death hypernym "http://identifiers.org/go/GO:0008219"
+  Infected_cell_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  Antiviral_infected_cell_death hypernym "http://identifiers.org/sbo/SBO:0000394"
+  Antiviral_infected_cell_death hypernym "http://identifiers.org/go/GO:0008219"
+  Virus_release hypernym "http://identifiers.org/go/GO:0019076"
+  Virus_release hypernym "http://identifiers.org/sbo/SBO:0000393"
+  IFN_release hypernym "http://identifiers.org/sbo/SBO:0000393"
+  IFN_release hypernym "http://identifiers.org/go/GO:0001816"
+  Virus_clearence hypernym "http://identifiers.org/sbo/SBO:0000394"
+  IFN_clearence hypernym "http://identifiers.org/sbo/SBO:0000394"
+end
+
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection is "Lavigne2021 - Non-spatial model of viral infection dynamics and interferon response of well-mixed viral infection"
+
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection model_entity_is "http://identifiers.org/biomodels.db/MODEL2107220003",
+                                                                                                                                  "http://identifiers.org/biomodels.db/BIOMD0000001021"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection propertyBearer "http://identifiers.org/go/GO:0140374"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection propertyBearer "http://identifiers.org/go/GO:0071345"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection propertyBearer "http://identifiers.org/go/GO:0019221"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection taxon "http://identifiers.org/taxonomy/9606"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection description "http://identifiers.org/pubmed/33622135"
+Lavigne2021___non_spatial_model_of_viral_infection_dynamics_and_interferon_response_of_well_mixed_viral_infection property "http://identifiers.org/go/GO:0038001",
+                                                                                                                           "http://identifiers.org/go/GO:0035425",
+                                                                                                                           "http://identifiers.org/mamo/MAMO_0000046"

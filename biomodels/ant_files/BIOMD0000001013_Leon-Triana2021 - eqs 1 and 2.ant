@@ -1,0 +1,117 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_tumour_growth(rho_T, T)
+  rho_T*T;
+end
+
+Rate_Law_for_tumour_growth is "Rate Law for tumour_growth"
+
+function Rate_Law_for_tumour_death(alpha_2, C, T)
+  alpha_2*C*T;
+end
+
+Rate_Law_for_tumour_death is "Rate Law for tumour_death"
+
+function Rate_Law_for_CAR_T_cell_proliferation(rho_C, C, T, g_T)
+  rho_C*C*T/(g_T + T);
+end
+
+Rate_Law_for_CAR_T_cell_proliferation is "Rate Law for CAR_T-cell_proliferation"
+
+function Rate_Law_for_CAR_T_cell_depletion(alpha_1, C, T, g_C, tao_C)
+  alpha_1*C*T/(g_C + C) + (1/tao_C)*C;
+end
+
+Rate_Law_for_CAR_T_cell_depletion is "Rate Law for CAR_T-cell_depletion"
+
+
+model *Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells()
+
+  // Compartments and Species:
+  compartment Solid_tumour;
+  species CAR_T_cells in Solid_tumour, Tumour_cells in Solid_tumour;
+
+  // Reactions:
+  CAR_T_cell_proliferation:  => CAR_T_cells; Solid_tumour*Rate_Law_for_CAR_T_cell_proliferation(rho_C, CAR_T_cells, Tumour_cells, g_T);
+  CAR_T_cell_depletion: CAR_T_cells => ; Solid_tumour*Rate_Law_for_CAR_T_cell_depletion(alpha_1, CAR_T_cells, Tumour_cells, g_C, tao_C);
+  tumour_growth:  => Tumour_cells; Solid_tumour*Rate_Law_for_tumour_growth(rho_T, Tumour_cells);
+  tumour_death: Tumour_cells => ; Solid_tumour*Rate_Law_for_tumour_death(alpha_2, CAR_T_cells, Tumour_cells);
+
+  // Species initializations:
+  CAR_T_cells = 400000000/Solid_tumour;
+  Tumour_cells = 6700000000/Solid_tumour;
+
+  // Compartment initializations:
+  Solid_tumour = 1;
+
+  // Variable initializations:
+  rho_C = 0.9;
+  rho_C has unit_0;
+  g_T = 10000000000;
+  g_T has unit_1;
+  alpha_1 = 0.04;
+  alpha_1 has unit_0;
+  g_C = 2000000000;
+  g_C has unit_1;
+  tao_C = 7;
+  tao_C has unit_2;
+  rho_T = 0.02;
+  rho_T has unit_0;
+  alpha_2 = 2.5e-10;
+  alpha_2 has unit_3;
+
+  // Other declarations:
+  const Solid_tumour, rho_C, g_T, alpha_1, g_C, tao_C, rho_T, alpha_2;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = 86400 second;
+  unit substance = item;
+  unit unit_0 = 1 / 86400 second;
+  unit unit_1 = item;
+  unit unit_2 = 86400 second;
+  unit unit_3 = 1 / 86400 second;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "1/d";
+  unit_1 is "#";
+  unit_2 is "d";
+  unit_3 is "1/(d)";
+  CAR_T_cells is "CAR_T-cells";
+  CAR_T_cell_proliferation is "CAR_T-cell_proliferation";
+  CAR_T_cell_depletion is "CAR_T-cell_depletion";
+
+  // CV terms:
+  Solid_tumour hypernym "http://identifiers.org/ncit/C9292"
+  Solid_tumour property "http://identifiers.org/ncit/C94498"
+  CAR_T_cells hypernym "http://identifiers.org/cl/CL:0000084"
+  CAR_T_cells hypernym "http://identifiers.org/ncit/C137999"
+  Tumour_cells hypernym "http://identifiers.org/cl/CL:0001063"
+  Tumour_cells hypernym "http://identifiers.org/bto/BTO:0006256"
+  Tumour_cells property "http://identifiers.org/chebi/CHEBI:144829"
+  CAR_T_cell_proliferation hypernym "http://identifiers.org/sbo/SBO:0000393"
+  CAR_T_cell_proliferation hypernym "http://identifiers.org/go/GO:0042098"
+  CAR_T_cell_depletion hypernym "http://identifiers.org/go/GO:0008219"
+  CAR_T_cell_depletion hypernym "http://identifiers.org/ncit/C175900"
+  CAR_T_cell_depletion hypernym "http://identifiers.org/sbo/SBO:0000179"
+  tumour_growth hypernym "http://identifiers.org/sbo/SBO:0000393"
+  tumour_growth hypernym "http://identifiers.org/ncit/C28378"
+  tumour_growth hypernym "http://identifiers.org/go/GO:0040007"
+  tumour_death hypernym "http://identifiers.org/go/GO:0008219"
+  tumour_death hypernym "http://identifiers.org/sbo/SBO:0000179"
+end
+
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells is "Leon-Triana2021 - Competition between tumour cells and single-target CAR T-cells"
+
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells model_entity_is "http://identifiers.org/biomodels.db/MODEL2107120003",
+                                                                                                 "http://identifiers.org/biomodels.db/BIOMD0000001013"
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells container "http://identifiers.org/ncit/C94498"
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells taxon "http://identifiers.org/taxonomy/9606"
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells description "http://identifiers.org/pubmed/33572301"
+Leon_Triana2021___Competition_between_tumour_cells_and_single_target_CAR_T_cells property "http://identifiers.org/doid/DOID:162",
+                                                                                          "http://identifiers.org/ncit/C15438",
+                                                                                          "http://identifiers.org/go/GO:0002837",
+                                                                                          "http://identifiers.org/ncit/C126102",
+                                                                                          "http://identifiers.org/mamo/MAMO_0000046"

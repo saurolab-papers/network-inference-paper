@@ -1,0 +1,76 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction(beta, S, I, alpha, R)
+  beta*S*I/(1 + alpha*R);
+end
+
+Rate_Law_for_reaction is "Rate Law for reaction"
+
+
+model *Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding()
+
+  // Compartments and Species:
+  compartment Country;
+  species Susceptible in Country, Infected in Country, Recovered in Country;
+
+  // Reactions:
+  Susceptible_to_Infected: Susceptible => Infected; Country*Rate_Law_for_reaction(beta, Susceptible, Infected, alpha, Recovered);
+  Infected_to_Recovered: Infected => Recovered; Country*Infected_to_Recovered_k1*Infected;
+
+  // Events:
+  Simulation_end: at 0 after time == 199: Uninfected = Susceptible, Epidemic_size = Recovered;
+
+  // Species initializations:
+  Susceptible = 0.999/Country;
+  Infected = 0.001/Country;
+  Recovered = 0;
+
+  // Compartment initializations:
+  Country = 1;
+
+  // Variable initializations:
+  Epidemic_size = 0;
+  Uninfected = 0;
+  alpha = 0;
+  beta = 0.25;
+  gamma_ = 0.1;
+  Infected_to_Recovered_k1 = 0.1;
+
+  // Other declarations:
+  var Epidemic_size, Uninfected;
+  const Country, alpha, beta, gamma_;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = 86400 second;
+  unit substance = item;
+
+  // Display Names:
+  time_unit is "time";
+  gamma_ is "gamma";
+
+  // CV terms:
+  Country hypernym "http://identifiers.org/ncit/C25464"
+  Susceptible hypernym "http://identifiers.org/ncit/C171133"
+  Susceptible hypernym "http://identifiers.org/ido/0000514"
+  Infected hypernym "http://identifiers.org/ncit/C171133"
+  Infected hypernym "http://identifiers.org/ido/0000511"
+  Recovered hypernym "http://identifiers.org/ido/0000621"
+  Recovered hypernym "http://identifiers.org/ncit/C171133"
+  Susceptible_to_Infected hypernym "http://identifiers.org/ncit/C171133"
+  Susceptible_to_Infected hypernym "http://identifiers.org/ncit/C128320"
+  Infected_to_Recovered hypernym "http://identifiers.org/ncit/C171133"
+  Infected_to_Recovered hypernym "http://identifiers.org/ncit/C25746"
+end
+
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding is "Weitz2020 - SIR model of COVID-19 transmission with shielding"
+
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding description "http://identifiers.org/pubmed/32382154"
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding model_entity_is "http://identifiers.org/biomodels.db/MODEL2009160002",
+                                                                              "http://identifiers.org/biomodels.db/BIOMD0000000963"
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding hypernym "http://identifiers.org/doid/DOID:0080600"
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding hypernym "http://identifiers.org/ido/0000503"
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding taxon "http://identifiers.org/taxonomy/9606",
+                                                                    "http://identifiers.org/taxonomy/2697049"
+Weitz2020___SIR_model_of_COVID_19_transmission_with_shielding property "http://identifiers.org/mamo/MAMO_0000028"

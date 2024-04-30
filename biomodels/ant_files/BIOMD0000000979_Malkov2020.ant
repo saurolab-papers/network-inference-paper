@@ -1,0 +1,92 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction(beta, S, N, I)
+  beta*S*I/N;
+end
+
+Rate_Law_for_reaction is "Rate Law for reaction"
+
+
+model *Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection()
+
+  // Compartments and Species:
+  compartment USA;
+  species Susceptible in USA, Total_population in USA, Recovered in USA, Exposed in USA;
+  species Infected in USA;
+
+  // Assignment Rules:
+  beta := gamma_*R_fixed;
+  Fraction_infected := Infected/Total_population;
+
+  // Reactions:
+  Susceptible_to_Exposed: Susceptible => Exposed; USA*Rate_Law_for_reaction(beta, Susceptible, Total_population, Infected);
+  Exposed_to_Infected: Exposed => Infected; USA*sigma*Exposed;
+  Infected_to_Recovered: Infected => Recovered; USA*gamma_*Infected;
+  Recovered_to_Susceptible__Reinfection: Recovered => Susceptible; USA*omega*Recovered;
+
+  // Species initializations:
+  Susceptible = Total_population - Recovered - Exposed - Infected;
+  Susceptible has substance_per_volume;
+  Total_population = 330052960/USA;
+  Total_population has substance_per_volume;
+  Recovered = 0;
+  Recovered has substance_per_volume;
+  Exposed = 14439817/USA;
+  Exposed has substance_per_volume;
+  Infected = 330052.96/USA;
+  Infected has substance_per_volume;
+
+  // Compartment initializations:
+  USA = 1;
+  USA has volume;
+
+  // Variable initializations:
+  gamma_ = 0.05556;
+  R_fixed = 3;
+  omega = 0.01667;
+  sigma = 0.19231;
+
+  // Other declarations:
+  var beta, Fraction_infected;
+  const USA, gamma_, R_fixed, omega, sigma;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = time_unit;
+  unit substance = item;
+  unit extent = substance;
+  unit substance_per_volume = item / 1e-3 litre;
+
+  // Display Names:
+  time_unit is "time";
+  gamma_ is "gamma";
+  Recovered_to_Susceptible__Reinfection is "Recovered_to_Susceptible_(Reinfection)";
+
+  // CV terms:
+  USA identity "http://identifiers.org/ncit/C17234"
+  Susceptible identity "http://identifiers.org/ido/0000514"
+  Recovered identity "http://identifiers.org/ido/0000514"
+  Recovered property "http://identifiers.org/ido/0000569"
+  Exposed identity "http://identifiers.org/ncit/C171133"
+  Exposed identity "http://identifiers.org/ido/0000514"
+  Exposed property "http://identifiers.org/ido/0000597"
+  Infected identity "http://identifiers.org/ido/0000511"
+  Infected identity "http://identifiers.org/ncit/C171133"
+  Susceptible_to_Exposed identity "http://identifiers.org/ido/0000597"
+  Susceptible_to_Exposed identity "http://identifiers.org/ncit/C171133"
+  Exposed_to_Infected identity "http://identifiers.org/ncit/C171133"
+  Infected_to_Recovered identity "http://identifiers.org/ncit/C25746"
+  Recovered_to_Susceptible__Reinfection identity "http://identifiers.org/ncit/C16710"
+  Recovered_to_Susceptible__Reinfection identity "http://identifiers.org/ncit/C25559"
+end
+
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection is "Malkov2020 - SEIRS model of COVID-19 transmission with reinfection"
+
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection description "http://identifiers.org/pubmed/32982082"
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection model_entity_is "http://identifiers.org/biomodels.db/MODEL2012040001",
+                                                                                   "http://identifiers.org/biomodels.db/BIOMD0000000979"
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection identity "http://identifiers.org/doid/DOID:0080600"
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection taxon "http://identifiers.org/taxonomy/9606",
+                                                                         "http://identifiers.org/taxonomy/2697049"
+Malkov2020___SEIRS_model_of_COVID_19_transmission_with_reinfection property "http://identifiers.org/mamo/MAMO_0000028"

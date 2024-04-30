@@ -1,0 +1,201 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction_for_Generation_of_thrombin_1_1(Factor_V, Prothrombin__II, Xa_L, q4a)
+  q4a*Xa_L*Prothrombin__II/(Factor_V + 1 + Prothrombin__II);
+end
+
+Rate_Law_for_reaction_for_Generation_of_thrombin_1_1 is "Rate Law for reaction for Generation of thrombin_1_1"
+
+function Rate_Law_for_reaction_for_production_of_V_1(Factor_V, Factor_Xa, Fibrinogen, Prothrombinase__Va_Xa, Thrombin__IIa, k2a, k2am, k2b)
+  k2a*Thrombin__IIa*Factor_V/(Factor_V + k2a*k2am*(1 + Fibrinogen)) + k2a*k2b*Factor_Xa*Factor_V/(Factor_V + 1 + Prothrombinase__Va_Xa);
+end
+
+Rate_Law_for_reaction_for_production_of_V_1 is "Rate Law for reaction for production of V_1"
+
+function Rate_Law_for_reaction_for_inactive_Xa__Xi__1(Factor_Xa, Prothrombinase__Va_Xa, k1b, k2a, k3b, q3a)
+  k1b*Factor_Xa + (k2a*k3b/q3a)*Prothrombinase__Va_Xa;
+end
+
+Rate_Law_for_reaction_for_inactive_Xa__Xi__1 is "Rate Law for reaction for inactive Xa (Xi)_1"
+
+function Rate_Law_for_reaction_for_formaation_of_prothrombinase_1(APC, Factor_Va, Factor_Xa, Prothrombinase__Va_Xa, k3a, k3c)
+  k3a*Factor_Xa*Factor_Va - k3c*k3a*APC*Prothrombinase__Va_Xa/(Prothrombinase__Va_Xa + 1);
+end
+
+Rate_Law_for_reaction_for_formaation_of_prothrombinase_1 is "Rate Law for reaction for formaation of prothrombinase_1"
+
+function Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_2_1(APC, Prothrombinase__Va_Xa, k3c, q3a)
+  k3c*q3a*APC*Prothrombinase__Va_Xa/(Prothrombinase__Va_Xa + 1);
+end
+
+Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_2_1 is "Rate Law for reaction for Inactivation of prothrombinase_2_1"
+
+function Rate_Law_for_reaction_for_generation_of_Xa_1(_Dunster2016___Nondimensional_Coagulation_Model, gamma1a, k1a)
+  k1a*gamma1a*exp(-gamma1a*_Dunster2016___Nondimensional_Coagulation_Model);
+end
+
+Rate_Law_for_reaction_for_generation_of_Xa_1 is "Rate Law for reaction for generation of Xa_1"
+
+function Rate_law_reaction_for_generation_of_Va_1(Factor_V, Factor_Va, Factor_Xa, Fibrinogen, Prothrombin__II, Prothrombinase__Va_Xa, Thrombin__IIa, k2am, k2b, k3b, q3a)
+  Thrombin__IIa*Factor_V/(Factor_V + k2am*(1 + Fibrinogen)) + k2b*Factor_Xa*Factor_V/(Factor_V + 1 + Prothrombin__II) + (k3b/q3a)*Prothrombinase__Va_Xa - Factor_Xa*Factor_Va;
+end
+
+Rate_law_reaction_for_generation_of_Va_1 is "Rate law reaction for generation of Va_1"
+
+function Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_1_1(Factor_Va, Factor_Xa, Prothrombinase__Va_Xa, k3b, q3a)
+  k3b*Prothrombinase__Va_Xa - q3a*Factor_Xa*Factor_Va;
+end
+
+Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_1_1 is "Rate Law for reaction for Inactivation of prothrombinase_1_1"
+
+function Rate_Law_for_reaction_for_thrombin_2_1(Thrombin__IIa)
+  Thrombin__IIa;
+end
+
+Rate_Law_for_reaction_for_thrombin_2_1 is "Rate Law for reaction for thrombin_2_1"
+
+function Rate_Law_for_reaction_for_Inactivation_of_Va(APC, Factor_Va)
+  APC*Factor_Va/(Factor_Va + 1);
+end
+
+Rate_Law_for_reaction_for_Inactivation_of_Va is "Rate Law for reaction for Inactivation of Va"
+
+function Rate_Law_for_reaction_for_thrombin_1_1(Prothrombin__II, Va_Xa_L, k4b, k4bm, q4a)
+  q4a*k4b*Va_Xa_L*Prothrombin__II/(q4a*(Prothrombin__II + k4bm));
+end
+
+Rate_Law_for_reaction_for_thrombin_1_1 is "Rate Law for reaction for thrombin_1_1"
+
+function Rate_Law_for_reaction_for_prothrombin_1(Prothrombin__II, Va_Xa_L, k4b, k4bm)
+  k4b*Va_Xa_L*Prothrombin__II/(Prothrombin__II + k4bm);
+end
+
+Rate_Law_for_reaction_for_prothrombin_1 is "Rate Law for reaction for prothrombin_1"
+
+
+model *Dunster2016___Nondimensional_Coagulation_Model()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species Factor_Xa in compartment_, Thrombin__IIa in compartment_, Factor_V in compartment_;
+  species Factor_Va in compartment_, APC in compartment_, VInactive in compartment_;
+  species Prothrombinase__Va_Xa in compartment_, Prothrombin__II in compartment_;
+  species $Xa_L in compartment_, $Va_Xa_L in compartment_, Protein_C in compartment_;
+  species Inactive_protein_C in compartment_, Fibrin in compartment_, Fibrinogen in compartment_;
+  species Inactive_Thrombin in compartment_, Factor_Xi in compartment_;
+
+  // Assignment Rules:
+  Xa_L := 0.5*(kx + Ix + Factor_Xa - ((kx + Ix + Factor_Xa)^2 - 4*Ix*Factor_Xa)^(1/2));
+  Va_Xa_L := 0.5*(kb + Ib + Prothrombinase__Va_Xa - ((kb + Ib + Prothrombinase__Va_Xa)^2 - 4*Ib*Prothrombinase__Va_Xa)^(1/2));
+  log_time := log10(time)/log10(10)/(log10(10)/log10(10));
+
+  // Reactions:
+  Reaction_for_Generation_of_Xa:  => Factor_Xa; compartment_*Rate_Law_for_reaction_for_generation_of_Xa_1(time, gamma1a, k1a);
+  Reaction_for_Generation_of_Va:  => Factor_Va; compartment_*Rate_law_reaction_for_generation_of_Va_1(Factor_V, Factor_Va, Factor_Xa, Fibrinogen, Prothrombin__II, Prothrombinase__Va_Xa, Thrombin__IIa, k2am, k2b, k3b, q3a);
+  Reaction_for_Inactivation_of_Xa: Factor_Xa => ; compartment_*k1b*Factor_Xa;
+  Reaction_for_Inactivation_of_Va: Factor_Va => VInactive; compartment_*Rate_Law_for_reaction_for_Inactivation_of_Va(APC, Factor_Va);
+  Reaction_for_Formation_of_Prothrombinase: Factor_Xa => ; compartment_*Rate_Law_for_reaction_for_formaation_of_prothrombinase_1(APC, Factor_Va, Factor_Xa, Prothrombinase__Va_Xa, k3a, k3c);
+  Reaction_for_Inactivation_of_prothrombinase_1: Prothrombinase__Va_Xa => ; compartment_*Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_1_1(Factor_Va, Factor_Xa, Prothrombinase__Va_Xa, k3b, q3a);
+  reaction_for_Inactivation_of_prothrombinase_2: Prothrombinase__Va_Xa => VInactive; compartment_*Rate_Law_for_reaction_for_Inactivation_of_prothrombinase_2_1(APC, Prothrombinase__Va_Xa, k3c, q3a);
+  reaction_for_Generation_of_thrombin: Prothrombin__II => Thrombin__IIa; compartment_*Rate_Law_for_reaction_for_Generation_of_thrombin_1_1(Factor_V, Prothrombin__II, Xa_L, q4a);
+  reaction_for_Generation_of_protein_C: Protein_C => APC; compartment_*k5a*Protein_C;
+  Reaction_for_Inactivation_of_protein_C: APC => Inactive_protein_C; compartment_*k5b*APC;
+  reaction_for_Generation_of__Fibrin: Fibrinogen => Fibrin; compartment_*k6*Fibrinogen;
+  Reaction_of_V_Inactivation: Factor_V => ; compartment_*Rate_Law_for_reaction_for_production_of_V_1(Factor_V, Factor_Xa, Fibrinogen, Prothrombinase__Va_Xa, Thrombin__IIa, k2a, k2am, k2b);
+  Reaction_for_Thrombin_Generation: Thrombin__IIa => Inactive_Thrombin; compartment_*Rate_Law_for_reaction_for_thrombin_2_1(Thrombin__IIa);
+  Reaction_for_Thrombin_Inactivation:  => Thrombin__IIa; compartment_*Rate_Law_for_reaction_for_thrombin_1_1(Prothrombin__II, Va_Xa_L, k4b, k4bm, q4a);
+  Reaction_for_Prothrombin_inactivation: Prothrombin__II => ; compartment_*Rate_Law_for_reaction_for_prothrombin_1(Prothrombin__II, Va_Xa_L, k4b, k4bm);
+  Reaction_for_Inactive_Xa:  => Factor_Xi; compartment_*Rate_Law_for_reaction_for_inactive_Xa__Xi__1(Factor_Xa, Prothrombinase__Va_Xa, k1b, k2a, k3b, q3a);
+
+  // Species initializations:
+  Factor_Xa = 0;
+  Thrombin__IIa = 0;
+  Factor_V = 3/compartment_;
+  Factor_Va = 0;
+  APC = 0;
+  VInactive = 0;
+  Prothrombinase__Va_Xa = 0;
+  Prothrombin__II = 17/compartment_;
+  Protein_C = 92/compartment_;
+  Inactive_protein_C = 0;
+  Fibrin = 0;
+  Fibrinogen = 5/compartment_;
+  Inactive_Thrombin = 0;
+  Factor_Xi = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  kx = 385;
+  Ix = 7.69;
+  kb = 0.0005;
+  Ib = 0.05;
+  k1a = 150;
+  gamma1a = 0.77;
+  k1b = 0.19;
+  k2a = 2;
+  k2am = 7.2;
+  k2b = 0.013;
+  k3a = 150;
+  q3a = 1;
+  k3b = 0.038;
+  k3c = 1;
+  k4a = 0.12;
+  q4a = 0.004;
+  k4b = 530;
+  k4bm = 3.6;
+  k5a = 0.0011;
+  k5b = 0.27;
+  k6 = 1500;
+
+  // Other declarations:
+  var log_time;
+  const compartment_, kx, Ix, kb, Ib, k1a, gamma1a, k1b, k2a, k2am, k2b, k3a;
+  const q3a, k3b, k3c, k4a, q4a, k4b, k4bm, k5a, k5b, k6;
+
+  // Unit definitions:
+  unit volume = 1e-3 litre;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  compartment_ is "compartment";
+  Factor_Xa is "Factor Xa";
+  Thrombin__IIa is "Thrombin (IIa)";
+  Factor_V is "Factor V";
+  Factor_Va is "Factor Va";
+  Prothrombinase__Va_Xa is "Prothrombinase (Va:Xa)";
+  Prothrombin__II is "Prothrombin (II)";
+  Xa_L is "Xa:L";
+  Va_Xa_L is "Va:Xa:L";
+  Protein_C is "Protein C";
+  Inactive_protein_C is "Inactive protein C";
+  Inactive_Thrombin is "Inactive Thrombin";
+  Factor_Xi is "Factor Xi";
+  Reaction_for_Generation_of_Xa is "Reaction for Generation of Xa";
+  Reaction_for_Generation_of_Va is "Reaction for Generation of Va";
+  Reaction_for_Inactivation_of_Xa is "Reaction for Inactivation of Xa";
+  Reaction_for_Inactivation_of_Va is "Reaction for Inactivation of Va";
+  Reaction_for_Formation_of_Prothrombinase is "Reaction for Formation of Prothrombinase";
+  Reaction_for_Inactivation_of_prothrombinase_1 is "Reaction for Inactivation of prothrombinase_1";
+  reaction_for_Inactivation_of_prothrombinase_2 is "reaction for Inactivation of prothrombinase_2";
+  reaction_for_Generation_of_thrombin is "reaction for Generation of thrombin";
+  reaction_for_Generation_of_protein_C is "reaction for Generation of protein C";
+  Reaction_for_Inactivation_of_protein_C is "Reaction for Inactivation of protein C";
+  reaction_for_Generation_of__Fibrin is "reaction for Generation of  Fibrin";
+  Reaction_of_V_Inactivation is "Reaction of V Inactivation";
+  Reaction_for_Thrombin_Generation is "Reaction for Thrombin Generation";
+  Reaction_for_Thrombin_Inactivation is "Reaction for Thrombin Inactivation";
+  Reaction_for_Prothrombin_inactivation is "Reaction for Prothrombin inactivation";
+  Reaction_for_Inactive_Xa is "Reaction for Inactive Xa production";
+end
+
+Dunster2016___Nondimensional_Coagulation_Model is "Dunster2016 - Nondimensional Coagulation Model"
+
+Dunster2016___Nondimensional_Coagulation_Model model_entity_is "http://identifiers.org/biomodels.db/MODEL1808140001",
+                                                               "http://identifiers.org/biomodels.db/BIOMD0000000925"
+Dunster2016___Nondimensional_Coagulation_Model identity "http://identifiers.org/biomodels.db/MODEL1808140001"
+Dunster2016___Nondimensional_Coagulation_Model hypernym "http://identifiers.org/go/GO:0007596"
+Dunster2016___Nondimensional_Coagulation_Model container "http://identifiers.org/bto/BTO:0000089"
+Dunster2016___Nondimensional_Coagulation_Model taxon "http://identifiers.org/taxonomy/9606"
+Dunster2016___Nondimensional_Coagulation_Model description "http://identifiers.org/doi/10.1093/imamat/hxw007"
+Dunster2016___Nondimensional_Coagulation_Model property "http://identifiers.org/mamo/MAMO_0000046"

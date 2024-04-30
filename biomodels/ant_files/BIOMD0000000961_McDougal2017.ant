@@ -1,0 +1,614 @@
+// Created by libAntimony v2.13.2
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+function Function_for_Triosephosphate_Isomerase(Kmf_tpi, Vf_tpi, c1, s67, switch_kashi)
+  (Vf_tpi*s67/(Kmf_tpi + s67))*switch_kashi/c1;
+end
+
+Function_for_Triosephosphate_Isomerase is "Function for Triosephosphate Isomerase"
+
+function Function_for_re48(K_up, Km_AMP_2, X_up, c1, f_up_eq, h, s35, s72, s73)
+  X_up*(K_up*s72 - s73*f_up_eq)/(1 + Km_AMP_2^h/s35^h)/c1;
+end
+
+Function_for_re48 is "Function for re48"
+
+function Function_for_re58(Km_G1P, Km_GBP, Kmf_GBPS, Kmr_GBPS, Vf_GBPS, Vr_GBPS, c1, s68, s69, s72, s79, switch_kashi)
+  ((Vf_GBPS*s68/(Kmf_GBPS*(1 + Km_G1P/s72)) - Vr_GBPS*s69/(Kmr_GBPS*(1 + Km_GBP/s79)))/(1 + s68/Kmf_GBPS + s69/Kmr_GBPS))*switch_kashi/c1;
+end
+
+Function_for_re58 is "Function for re58"
+
+function Function_for_Glyceraldehyde_3_Phosphate_Dehydrogenase(Km_NAD, Kmf_gapdh, Vf_gapdh, c1, s59, s62, switch_kashi)
+  (Vf_gapdh*s59/(Kmf_gapdh + s59)/(1 + Km_NAD/s62))*switch_kashi/c1;
+end
+
+Function_for_Glyceraldehyde_3_Phosphate_Dehydrogenase is "Function for Glyceraldehyde 3-Phosphate Dehydrogenase [1]"
+
+function Function_for_G6P_Dehydrogenase(c1, rateOf_re37, switch_kashi, v_PGI_ss)
+  (0.095*rateOf_re37/v_PGI_ss)*switch_kashi/c1;
+end
+
+Function_for_G6P_Dehydrogenase is "Function for G6P Dehydrogenase [1]"
+
+function Function_for_re60(PS_ec, s65, s82)
+  PS_ec*(s82 - s65);
+end
+
+Function_for_re60 is "Function for re60"
+
+function Function_for_Glycogen_Synthase_I_form(Km_AMP_2, Kmf_gs, Vf_gs, c1, h, s35, s73)
+  Vf_gs*s73/((Kmf_gs + s73)*(1 + Km_AMP_2^h/s35^h))/c1;
+end
+
+Function_for_Glycogen_Synthase_I_form is "Function for Glycogen Synthase I-form [1]"
+
+function Function_for_Lactate_Flux__in(Km, Vmax, s39)
+  Vmax*s39/(Km + s39);
+end
+
+Function_for_Lactate_Flux__in is "Function for Lactate Flux (in) [1]"
+
+function Function_for_re54(Kia_NADH, Km_DHAP, Km_NADH, c1, s63, s67, vf)
+  vf*s67*s63/(Kia_NADH*Km_DHAP + Km_DHAP*s63 + Km_NADH*s67 + s67*s63)/c1;
+end
+
+Function_for_re54 is "Function for re54"
+
+function Function_for_re59(c1, rateOf_re58)
+  rateOf_re58/c1;
+end
+
+Function_for_re59 is "Function for re59"
+
+function Function_for_re61(PS_ve, s81, s82)
+  PS_ve*(s81 - s82);
+end
+
+Function_for_re61 is "Function for re61"
+
+function Function_for_re22(H_active, K_Lac, X_Lac, c1, s38, s52)
+  X_Lac*((1/K_Lac)*s38*H_active - s52)/c1;
+end
+
+Function_for_re22 is "Function for re22"
+
+function Function_for_re62(c1, k_a, k_d, s65, s83, s84)
+  (k_a*s83*s65 - k_d*s84)/c1;
+end
+
+Function_for_re62 is "Function for re62"
+
+function Function_for_Phosphfructokinase(Km_ATP, Kmf_pfk, Vf_pfk, c1, s30, s58, switch_kashi)
+  (Vf_pfk*s58/(Kmf_pfk + s58)/(1 + Km_ATP/s30))*switch_kashi/c1;
+end
+
+Function_for_Phosphfructokinase is "Function for Phosphfructokinase [1]"
+
+function Function_for_re55(c1, rateOf_re54)
+  rateOf_re54/c1;
+end
+
+Function_for_re55 is "Function for re55"
+
+function Function_for_Adenylate_Kinase(K_AK, X_AK, c1, s30, s31, s35)
+  X_AK*(K_AK*s31*s31 - s35*s30)/c1;
+end
+
+Function_for_Adenylate_Kinase is "Function for Adenylate Kinase [1]"
+
+function Function_for_Phosphoglucomutase(Kmf_pgm, Kmr_pgm, Vf_pgm, Vr_pgm, c1, s57, s72, switch_GSGP)
+  ((Vf_pgm*s72/Kmf_pgm - Vr_pgm*s57/Kmr_pgm)/(1 + s72/Kmf_pgm + s57/Kmr_pgm))*switch_GSGP/c1;
+end
+
+Function_for_Phosphoglucomutase is "Function for Phosphoglucomutase [1]"
+
+function Function_for_Mitochondrial_Oxidation_of_Pyruvate(Km_ADP, Km_O2, c1, rateOf_re46, s31, s65)
+  rateOf_re46*(s31/(s31 + Km_ADP))*(s65/(s65 + Km_O2))/c1;
+end
+
+Function_for_Mitochondrial_Oxidation_of_Pyruvate is "Function for Mitochondrial Oxidation of Pyruvate"
+
+function Function_for_Hexokinase(Km_ATP, Kmf_hk, Kmr_hk, Vf_hk, Vr_hk, c1, s30, s56, s57, switch_kashi)
+  ((Vf_hk*s56/(Kmf_hk*(1 + Km_ATP/s30)) - Vr_hk*s57/Kmr_hk)/(1 + s56/Kmf_hk + s57/Kmr_hk))*switch_kashi/c1;
+end
+
+Function_for_Hexokinase is "Function for Hexokinase [1]"
+
+function Function_for_ATPase__ATP_Consumption(VR_cellcyto, X_atpase, c1, level, s30)
+  level*VR_cellcyto*X_atpase*(1/(1 + exp(-(s30 - 0.001)/0.0001)))/c1;
+end
+
+Function_for_ATPase__ATP_Consumption is "Function for ATPase (ATP Consumption)"
+
+function Function_for_Glycogen_Synthase_D_form(Km_AMP_2, Kmf_gs, Vf_gs, c1, h, s35, s73)
+  Vf_gs*s73/((Kmf_gs + s73)*(1 + Km_AMP_2^h/s35^h))/c1;
+end
+
+Function_for_Glycogen_Synthase_D_form is "Function for Glycogen Synthase D-form [1]"
+
+function Function_for_Fructose_bisphosphate_Aldolase(Kmf_fbp, Vf_fbp, c1, s66, switch_kashi)
+  (Vf_fbp*s66/(Kmf_fbp + s66))*switch_kashi/c1;
+end
+
+Function_for_Fructose_bisphosphate_Aldolase is "Function for Fructose-bisphosphate Aldolase [1]"
+
+function Function_for_Lactate_Flux__out(Km, Vmax, s38)
+  Vmax*s38/(Km + s38);
+end
+
+Function_for_Lactate_Flux__out is "Function for Lactate Flux (out) [1]"
+
+function Function_for_Phosphoglycerate_Mutase(Kmf_pgm, Kmr_pgm, Vf_pgm, Vr_pgm, c1, s69, s70, switch_kashi)
+  ((Vf_pgm*s69*(1/(1 + exp(-(s69 - 0.0001)/1e-5)))/Kmf_pgm - Vr_pgm*s70*(1/(1 + exp(-(s70 - 0.0001)/1e-5)))/Kmr_pgm)/(1 + s69/Kmf_pgm + s70/Kmr_pgm))*switch_kashi/c1;
+end
+
+Function_for_Phosphoglycerate_Mutase is "Function for Phosphoglycerate Mutase_1"
+
+function Function_for_Pyruvate_Kinase(Km_adp, Kmf_pk, Kmr_pk, Vf_pk, Vr_pk, c1, s31, s60, s61, switch_kashi)
+  ((Vf_pk*s60*(1/(1 + exp(-(s60 - 0.0001)/1e-5)))/(Kmf_pk*(1 + Km_adp/s31)) - Vr_pk*s61*(1/(1 + exp(-(s61 - 0.0001)/1e-5)))/Kmr_pk)/(1 + s60/Kmf_pk + s61/Kmr_pk))*switch_kashi/c1;
+end
+
+Function_for_Pyruvate_Kinase is "Function for Pyruvate Kinase_1"
+
+function Function_for_Glycogen_Phosphorylase(Km_AMP_2, Kmf_gp, Kmr_gp, Vf_gp, Vr_gp, c1, h, s35, s36, s72)
+  (Vf_gp*s36/Kmf_gp - Vr_gp*s72/Kmr_gp)/((1 + s36/Kmf_gp + s72/Kmr_gp)*(1 + Km_AMP_2^h/s35^h))/c1;
+end
+
+Function_for_Glycogen_Phosphorylase is "Function for Glycogen Phosphorylase [1]"
+
+function Function_for_Lactate_Dehydrogenase(Km_NADH, Kmf_ldh, Vf_ldh, c1, s61, s63, switch_LDH)
+  (Vf_ldh*s61/(Kmf_ldh + s61)/(1 + Km_NADH/s63))*switch_LDH/c1;
+end
+
+Function_for_Lactate_Dehydrogenase is "Function for Lactate Dehydrogenase [1]"
+
+function Function_for_Phosphoglycerate_Kinase(Km_adp, Km_atp, Kmf_pgk, Kmr_pgk, Vf_pgk, Vr_pgk, c1, s30, s31, s68, s69, switch_kashi)
+  ((Vf_pgk*s68*(1/(1 + exp(-(s68 - 0.0001)/1e-5)))/(Kmf_pgk*(1 + Km_adp/s31)) - Vr_pgk*s69*(1/(1 + exp(-(s69 - 0.0001)/1e-5)))/(Kmr_pgk*(1 + Km_atp/s30)))/(1 + s68/Kmf_pgk + s69/Kmr_pgk))*switch_kashi/c1;
+end
+
+Function_for_Phosphoglycerate_Kinase is "Function for Phosphoglycerate Kinase_1"
+
+function Function_for_Phosphoglucose_Isomerase__forward(Kmf_pgi, Kmr_pgi, Vf_pgi, Vr_pgi, c1, s57, s58, switch_kashi)
+  ((Vf_pgi*s57/Kmf_pgi - Vr_pgi*s58/Kmr_pgi)/(1 + s57/Kmf_pgi + s58/Kmr_pgi))*switch_kashi/c1;
+end
+
+Function_for_Phosphoglucose_Isomerase__forward is "Function for Phosphoglucose Isomerase (forward) [1]"
+
+function Function_for_Enolase(Kmf_eno, Kmr_eno, Vf_eno, Vr_eno, c1, s60, s70, switch_kashi)
+  ((Vf_eno*s70*(1/(1 + exp(-(s70 - 0.0001)/1e-5)))/Kmf_eno - Vr_eno*s60*(1/(1 + exp(-(s60 - 0.0001)/1e-5)))/Kmr_eno)/(1 + s70/Kmf_eno + s60/Kmr_eno))*switch_kashi/c1;
+end
+
+Function_for_Enolase is "Function for Enolase_1"
+
+
+model *McDougal2017___Metabolism_in_ischemic_cardiomyocytes()
+
+  // Compartments and Species:
+  compartment c1, c2, c3, default;
+  species s1 in c1, s2 in default, s7 in c1, s8 in default, $s22 in c1, s24 in c1;
+  species s25 in default, s26 in c1, s27 in default, s28 in c1, s29 in default;
+  species s30 in c1, s31 in c1, s32 in c1, s33 in c1, s34 in c1, s35 in c1;
+  species s36 in c1, s38 in c1, s52 in c1, s57 in c1, s58 in c1, s59 in c1;
+  species s60 in c1, s64 in c1, s66 in c1, s67 in c1, s68 in c1, s69 in c1;
+  species s70 in c1, s71 in c1, s72 in c1, s73 in c1, s74 in c1, s75 in c1;
+  species s76 in c1, s77 in c1, $s78 in c1, s61 in c1, s79 in c1, s82 in c2;
+  species s83 in c1, s84 in c1, s65 in c1, $s81 in c3, $s62 in c1, $s63 in c1;
+  species $s39 in default, $s56 in c1;
+
+  // Assignment Rules:
+  J_NHE := (1/60)*(((20.6092567224*s22^4 - 606.5562860276*s22^3) + 6701.065336577*s22^2 - 32930.5476482116*s22) + 60727.9345421164);
+  J_CHE := (1/60)*((-0.272561314*s22^4 + 12.313011154*s22^3 - 181.7704305807*s22^2) + 1108.6191429405*s22 - 2422.8396631585);
+  J_NHS := (1/60)*((2.3290050022*s22^3 - 45.1765173617*s22^2) + 286.7706982101*s22 - 592.1682240141);
+  J_AE := (1/60)*((-15.2266606471*s22^4 + 302.2590169999*s22^3 - 1823.1533057568*s22^2) + 1976.4960115099*s22 + 8383.533719598);
+  beta_i := -28*s22 + 222.6;
+  beta_CO2 := 2.3*HCO3_i;
+  HCO3_i := HCO3_o*10^(s22 - pH_o);
+  H_active := 1000*10^-s22;
+  rateOf_re15 := re15;
+  rateOf_re20 := re20;
+  rateOf_re37 := re37;
+  rateOf_re54 := re54;
+  rateOf_re46 := re46;
+  rateOf_re58 := re58;
+
+  // Reactions:
+  re15: $s39 => s38; Function_for_Lactate_Flux__in(Km_Lac_flux_in, Vmax_Lac_flux_in, s39);
+  re20: s38 => $s39; Function_for_Lactate_Flux__out(Km_Lac_flux_out, Vmax_Lac_flux_out, s38);
+  re37: s57 => s58; c1*Function_for_Phosphoglucose_Isomerase__forward(Kmf_pgi, Kmr_pgi, Vf_pgi, Vr_pgi, c1, s57, s58, switch_kashi);
+  re54: s67 + $s63 => s77 + $s62; c1*Function_for_re54(Kia_NADH, Km_DHAP, Km_NADH_re54, c1, s63, s67, re54_vf);
+  re46: s60 + s31 + s1 => s61 + s30; c1*Function_for_Pyruvate_Kinase(Km_ADP_pk, Kmf_pk, Kmr_pk, Vf_pk, Vr_pk, c1, s31, s60, s61, switch_kashi);
+  re58: s68 + s72 => s69 + s79; c1*Function_for_re58(Km_G1P, Km_GBP, Kmf_GBPS, Kmr_GBPS, Vf_GBPS, Vr_GBPS, c1, s68, s69, s72, s79, switch_kashi);
+  re2: s25 => s24; Constant_flux__irreversible(J_NHE);
+  re3: s25 => s24; Constant_flux__irreversible(J_NHS);
+  re4: s27 => s26; Constant_flux__irreversible(J_NHS);
+  re5: s26 => s27; Constant_flux__irreversible(J_AE);
+  re6: s29 => s28; Constant_flux__irreversible(J_AE);
+  re7: s29 => s28; Constant_flux__irreversible(J_CHE);
+  re8: s7 => s8; Constant_flux__irreversible(J_CHE);
+  re11: s30 => s31 + s32 + s1; c1*Function_for_ATPase__ATP_Consumption(VR_cellcyto, X_atpase, c1, level, s30);
+  re12: s31 + s33 => s30 + s34; c1*re12_k1*s31*s33;
+  re13: 2 s31 => s30 + s35; c1*Function_for_Adenylate_Kinase(K_AK, X_AK, c1, s30, s31, s35);
+  re16: s2 => s1; Constant_flux__irreversible(rateOf_re15);
+  re21: s1 => s2; Constant_flux__irreversible(rateOf_re20);
+  re22: s38 + s1 => s52; c1*Function_for_re22(H_active, K_Lac, X_Lac, c1, s38, s52);
+  re36: $s56 + s30 => s57 + s31 + s1; c1*Function_for_Hexokinase(Km_ATP_hk, Kmf_hk, Kmr_hk, Vf_hk, Vr_hk, c1, s30, s56, s57, switch_kashi);
+  re39: s58 + s30 => s66 + s31 + s1; c1*Function_for_Phosphfructokinase(Km_ATP_pfk, Kmf_pfk, Vf_pfk, c1, s30, s58, switch_kashi);
+  re40: s66 => s59 + s67; c1*Function_for_Fructose_bisphosphate_Aldolase(Kmf_fbp, Vf_fbp, c1, s66, switch_kashi);
+  re41: s67 => s59; c1*Function_for_Triosephosphate_Isomerase(Kmf_tpi, Vf_tpi, c1, s67, switch_kashi);
+  re42: s59 + $s62 + s32 => s68 + $s63 + s1; c1*Function_for_Glyceraldehyde_3_Phosphate_Dehydrogenase(Km_NAD, Kmf_gapdh, Vf_gapdh, c1, s59, s62, switch_kashi);
+  re43: s68 + s31 => s69 + s30; c1*Function_for_Phosphoglycerate_Kinase(Km_ADP_pgk, Km_ATP_pgk, Kmf_pgk, Kmr_pgk, Vf_pgk, Vr_pgk, c1, s30, s31, s68, s69, switch_kashi);
+  re44: s69 => s70; c1*Function_for_Phosphoglycerate_Mutase(Kmf_pglym, Kmr_pglym, Vf_pglym, Vr_pglym, c1, s69, s70, switch_kashi);
+  re45: s70 => s60 + s71; c1*Function_for_Enolase(Kmf_eno, Kmr_eno, Vf_eno, Vr_eno, c1, s60, s70, switch_kashi);
+  re47: s72 => s57; c1*Function_for_Phosphoglucomutase(Kmf_pgm, Kmr_pgm, Vf_pgm, Vr_pgm, c1, s57, s72, switch_GSGP);
+  re48: s72 + s74 => s73 + 2 s32; c1*Function_for_re48(K_up, Km_AMP_2, X_up, c1, f_up_eq, h, s35, s72, s73);
+  re49: s73 => s36 + s75; c1*Function_for_Glycogen_Synthase_D_form(Km_AMP_2, Kmf_gs_D_form, Vf_gs_D_form, c1, h, s35, s73);
+  re50: s36 + s32 => s72; c1*Function_for_Glycogen_Phosphorylase(Km_AMP_2, Kmf_gp, Kmr_gp, Vf_gp, Vr_gp, c1, h, s35, s36, s72);
+  re51: s61 + $s63 + s1 => s38 + $s62; c1*Function_for_Lactate_Dehydrogenase(Km_NADH, Kmf_ldh, Vf_ldh, c1, s61, s63, switch_LDH);
+  re52: s57 => s76 + s32; c1*Function_for_G6P_Dehydrogenase(c1, rateOf_re37, switch_kashi, v_PGI_ss);
+  re53: s73 => s36 + s75; c1*Function_for_Glycogen_Synthase_I_form(Km_AMP_2, Kmf_gs_I_form, Vf_gs_I_form, c1, h, s35, s73);
+  re55: s77 => $s78 + s32; c1*Function_for_re55(c1, rateOf_re54);
+  re56: 15 s31 + s61 + 3 s65 + 15 s32 + $s63 => 15 s30 + 3 s64 + $s62; c1*Function_for_Mitochondrial_Oxidation_of_Pyruvate(Km_ADP, Km_O2, c1, rateOf_re46, s31, s65);
+  re59: s79 => $s78 + 2 s32; c1*Function_for_re59(c1, rateOf_re58);
+  re60: s82 => s65; Function_for_re60(PS_ec, s65, s82);
+  re61: $s81 => s82; Function_for_re61(PS_ve, s81, s82);
+  re62: s83 + s65 => s84; c1*Function_for_re62(c1, k_a, k_d, s65, s83, s84);
+
+  // Events:
+  Hypoxia: at 0 after time > 100: s81 = lowO2;
+
+  // Species initializations:
+  s1 = 7.94e-05/c1;
+  s2 = 1e-12/default;
+  s7 = 1e-12/c1;
+  s8 = 1e-12/default;
+  s22 = 7.1;
+  s24 = 5/c1;
+  s25 = 1e-12/default;
+  s26 = 25/c1;
+  s27 = 1e-12/default;
+  s28 = 1e-12/c1;
+  s29 = 1e-12/default;
+  s30 = 7/c1;
+  s31 = 1e-12/c1;
+  s32 = 7/c1;
+  s33 = 25/c1;
+  s34 = 1e-12/c1;
+  s35 = 1e-05/c1;
+  s36 = 21.4/c1;
+  s38 = 0.683/c1;
+  s52 = 155.84/c1;
+  s57 = 0.169/c1;
+  s58 = 0.041/c1;
+  s59 = 0.00162/c1;
+  s60 = 0.013/c1;
+  s64 = 1e-12/c1;
+  s66 = 0.000678/c1;
+  s67 = 0.036/c1;
+  s68 = 0.000869/c1;
+  s69 = 0.071/c1;
+  s70 = 0.009/c1;
+  s71 = 1e-12/c1;
+  s72 = 0.02/c1;
+  s73 = 0.099/c1;
+  s74 = 0.194/c1;
+  s75 = 0.034/c1;
+  s76 = 1e-12/c1;
+  s77 = 0.158/c1;
+  s78 = 1e-12;
+  s61 = 0.055/c1;
+  s79 = 0.007/c1;
+  s82 = 0.031007043989376/c2;
+  s83 = 0.00543/c1;
+  s84 = 0.185/c1;
+  s65 = 0.110169/c1;
+  s81 = 0.132593;
+  s62 = 2.2565;
+  s63 = 0.7135;
+  s39 = 1.13;
+  s56 = 1.91;
+
+  // Compartment initializations:
+  c1 = 1;
+  c2 = 0.240633296;
+  c3 = 0.06842;
+  default = 1;
+
+  // Variable initializations:
+  lowO2 = 0.0175;
+  J_NHE has unit_0;
+  J_CHE has unit_0;
+  J_NHS has unit_0;
+  J_AE has unit_0;
+  beta_i has unit_1;
+  beta_CO2 has unit_1;
+  HCO3_i has unit_4;
+  H_active has unit_2;
+  pH_o = 7.4;
+  pH_o has unit_3;
+  HCO3_o = 23;
+  HCO3_o has unit_4;
+  switch_kashi = 1;
+  switch_kashi has unit_3;
+  h = 1.5;
+  h has unit_4;
+  Km_AMP_2 = 0.016;
+  Km_AMP_2 has unit_4;
+  switch_GSGP = 1;
+  switch_GSGP has unit_3;
+  switch_LDH = 1;
+  switch_LDH has unit_3;
+  level = 1;
+  level has unit_3;
+  K_AK = 1;
+  X_AK = 10000;
+  VR_cellcyto = 1.4703;
+  X_atpase = 0.39;
+  K_CK = 1660000;
+  X_CK = 10000;
+  Kmf_eno = 0.045;
+  Kmr_eno = 0.089;
+  Vf_eno = 1.85;
+  Vr_eno = 2;
+  Kmf_fbp = 0.038;
+  Vf_fbp = 0.991667;
+  Km_NAD = 0.058;
+  Kmf_gapdh = 0.042;
+  Vf_gapdh = 5.35;
+  Kmf_gp = 0.1;
+  Kmr_gp = 5;
+  Vf_gp = 0.781667;
+  Vr_gp = 55.8333;
+  Kmf_gs_I_form = 0.08;
+  Vf_gs_I_form = 0.146833;
+  Kmf_gs_D_form = 1.42;
+  Vf_gs_D_form = 0.146833;
+  Km_ATP_hk = 0.236;
+  Kmf_hk = 0.072;
+  Kmr_hk = 0.042;
+  Vf_hk = 0.55;
+  Vr_hk = 0.000106;
+  Km_NADH = 0.001;
+  Kmf_ldh = 0.125;
+  Vf_ldh = 23.9333;
+  Km_Lac_flux_in = 2.2;
+  Vmax_Lac_flux_in = 0.04817;
+  Km_Lac_flux_out = 6.92;
+  Vmax_Lac_flux_out = 0.1817;
+  Km_ADP = 0.00107;
+  Km_O2 = 0.00297;
+  Km_ATP_pfk = 0.127;
+  Kmf_pfk = 0.224;
+  Vf_pfk = 1.32833;
+  Kmf_pgm = 0.045;
+  Kmr_pgm = 0.67;
+  Vf_pgm = 1.93333;
+  Vr_pgm = 1.12;
+  Kmf_pgi = 0.425;
+  Kmr_pgi = 0.175;
+  Vf_pgi = 10.0667;
+  Vr_pgi = 9.6;
+  Km_ADP_pgk = 0.008;
+  Km_ATP_pgk = 0.565;
+  Kmf_pgk = 0.021;
+  Kmr_pgk = 0.51;
+  Vf_pgk = 251;
+  Vr_pgk = 15.9833;
+  Kmf_pglym = 0.145;
+  Kmr_pglym = 0.139;
+  Vf_pglym = 11.2333;
+  Vr_pglym = 48;
+  Km_ADP_pk = 0.00268;
+  Kmf_pk = 0.11;
+  Kmr_pk = 10;
+  Vf_pk = 9.43333;
+  Vr_pk = 0.00105;
+  K_Lac = 0.12589;
+  X_Lac = 10000;
+  K_up = 4.36;
+  X_up = 10000;
+  f_up_eq = 8808;
+  Kia_NADH = 0.00107;
+  Km_DHAP = 0.3;
+  Km_NADH_re54 = 0.00284;
+  Km_G1P = 0.008;
+  Km_GBP = 0.565;
+  Kmf_GBPS = 0.021;
+  Kmr_GBPS = 0.51;
+  Vf_GBPS = 10;
+  Vr_GBPS = 6;
+  PS_ec = 10;
+  PS_ve = 50;
+  k_a = 15400;
+  k_d = 60;
+  Kmf_tpi = 1.53;
+  Vf_tpi = 5.93333;
+  v_PGI_ss = 0.22;
+  re12_k1 = 0.1;
+  re54_vf = 20;
+
+  // Other declarations:
+  var J_NHE, J_CHE, J_NHS, J_AE, beta_i, beta_CO2, HCO3_i, H_active, rateOf_re15;
+  var rateOf_re20, rateOf_re37, rateOf_re54, rateOf_re46, rateOf_re58;
+  const c1, c2, c3, default, lowO2, pH_o, HCO3_o, switch_kashi, h, Km_AMP_2;
+  const switch_GSGP, switch_LDH, level, K_AK, X_AK, VR_cellcyto, X_atpase;
+  const K_CK, X_CK, Kmf_eno, Kmr_eno, Vf_eno, Vr_eno, Kmf_fbp, Vf_fbp, Km_NAD;
+  const Kmf_gapdh, Vf_gapdh, Kmf_gp, Kmr_gp, Vf_gp, Vr_gp, Kmf_gs_I_form;
+  const Vf_gs_I_form, Kmf_gs_D_form, Vf_gs_D_form, Km_ATP_hk, Kmf_hk, Kmr_hk;
+  const Vf_hk, Vr_hk, Km_NADH, Kmf_ldh, Vf_ldh, Km_Lac_flux_in, Vmax_Lac_flux_in;
+  const Km_Lac_flux_out, Vmax_Lac_flux_out, Km_ADP, Km_O2, Km_ATP_pfk, Kmf_pfk;
+  const Vf_pfk, Kmf_pgm, Kmr_pgm, Vf_pgm, Vr_pgm, Kmf_pgi, Kmr_pgi, Vf_pgi;
+  const Vr_pgi, Km_ADP_pgk, Km_ATP_pgk, Kmf_pgk, Kmr_pgk, Vf_pgk, Vr_pgk;
+  const Kmf_pglym, Kmr_pglym, Vf_pglym, Vr_pglym, Km_ADP_pk, Kmf_pk, Kmr_pk;
+  const Vf_pk, Vr_pk, K_Lac, X_Lac, K_up, X_up, f_up_eq, Kia_NADH, Km_DHAP;
+  const Km_NADH_re54, Km_G1P, Km_GBP, Kmf_GBPS, Kmr_GBPS, Vf_GBPS, Vr_GBPS;
+  const PS_ec, PS_ve, k_a, k_d, Kmf_tpi, Vf_tpi, v_PGI_ss;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = second;
+  unit substance = 1e-3 mole;
+  unit unit_0 = 1e-3 mole * litre * second;
+  unit unit_1 = 1e-3 mole * litre;
+  unit unit_2 = 1e-3 mole / litre;
+  unit unit_3 = 1 / dimensionless^-0;
+  unit unit_4 = 1e-3 mole;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "mmol*l*s";
+  unit_1 is "mmol*l";
+  unit_2 is "mmol/l";
+  unit_3 is "1";
+  unit_4 is "mmol";
+  c1 is "cell";
+  c2 is "extracellular";
+  c3 is "vessel";
+  s1 is "H_super__plus__endsuper__sub_i_endsub_";
+  s2 is "H_super__plus__endsuper__sub_o_endsub_";
+  s7 is "OH_super__minus__endsuper__sub_i_endsub_";
+  s8 is "OH_super__minus__endsuper__sub_o_endsub_";
+  s22 is "pH_sub_i_endsub_";
+  s24 is "Na_super__plus__endsuper__sub_i_endsub_";
+  s25 is "Na_super__plus__endsuper__sub_o_endsub_";
+  s26 is "HCO_sub_3_endsub__super__minus__endsuper__sub_i_endsub_";
+  s27 is "HCO_sub_3_endsub__super__minus__endsuper__sub_o_endsub_";
+  s28 is "Cl_super__minus__endsuper__sub_i_endsub_";
+  s29 is "Cl_super__minus__endsuper__sub_o_endsub_";
+  s30 is "ATP";
+  s31 is "ADP";
+  s32 is "P_sub_i_endsub_";
+  s33 is "CrP";
+  s34 is "Cr";
+  s35 is "AMP";
+  s36 is "Glycogen";
+  s38 is "L_super__minus__endsuper__sub_i_endsub_";
+  s52 is "Lactic Acid";
+  s57 is "G6P";
+  s58 is "F6P";
+  s59 is "GAP";
+  s60 is "PEP";
+  s64 is "CO_sub_2_endsub_";
+  s66 is "F16BP";
+  s67 is "DHAP";
+  s68 is "13BPG";
+  s69 is "3PG";
+  s70 is "2PG";
+  s71 is "H_sub_2_endsub_O";
+  s72 is "G1P";
+  s73 is "UDPG";
+  s74 is "UTP";
+  s75 is "UDP";
+  s76 is "6PGN";
+  s77 is "Glycerol-3-P";
+  s61 is "PYR";
+  s79 is "G16BP";
+  s82 is "O_sub_2,e_endsub";
+  s83 is "Mb";
+  s84 is "MbO_sub_2_endsub_";
+  s65 is "O_sub_2_endsub";
+  s81 is "O_sub_2,v_endsub";
+  s62 is "NAD";
+  s63 is "NADH";
+  s39 is "L_super__minus__endsuper__sub_o_endsub_";
+  s56 is "Glucose";
+  re15 is "Lactate Flux (in)";
+  re20 is "Lactate Flux (out)";
+  re37 is "Phosphoglucose Isomerase (forward)";
+  re46 is "Pyruvate Kinase";
+  re11 is "ATPase (ATP Consumption)";
+  re12 is "Creatine Kinase";
+  re13 is "Adenylate Kinase";
+  re16 is "co-Lactate Flux (in)";
+  re21 is "co-Lactate Flux (out)";
+  re36 is "Hexokinase";
+  re39 is "Phosphfructokinase";
+  re40 is "Fructose-bisphosphate Aldolase";
+  re41 is "Triosephosphate Isomerase";
+  re42 is "Glyceraldehyde 3-Phosphate Dehydrogenase";
+  re43 is "Phosphoglycerate Kinase";
+  re44 is "Phosphoglycerate Mutase";
+  re45 is "Enolase";
+  re47 is "Phosphoglucomutase";
+  re49 is "Glycogen Synthase D-form";
+  re50 is "Glycogen Phosphorylase";
+  re51 is "Lactate Dehydrogenase";
+  re52 is "G6P Dehydrogenase";
+  re53 is "Glycogen Synthase I-form";
+  re56 is "Mitochondrial Oxidation of Pyruvate";
+
+  // CV terms:
+  c1 hypernym "http://identifiers.org/ncit/C12508"
+  c1 hypernym "http://identifiers.org/ncit/C13002"
+  c2 hypernym "http://identifiers.org/go/GO:0005576"
+  c3 hypernym "http://identifiers.org/ncit/C12679"
+  s1 identity "http://identifiers.org/chebi/CHEBI:15378"
+  s2 identity "http://identifiers.org/chebi/CHEBI:15378"
+  s7 identity "http://identifiers.org/chebi/CHEBI:16234"
+  s8 identity "http://identifiers.org/chebi/CHEBI:16234"
+  s22 hypernym "http://identifiers.org/omit/0008003"
+  s24 identity "http://identifiers.org/chebi/CHEBI:29101"
+  s25 identity "http://identifiers.org/chebi/CHEBI:29101"
+  s26 identity "http://identifiers.org/chebi/CHEBI:17544"
+  s27 identity "http://identifiers.org/chebi/CHEBI:17544"
+  s28 identity "http://identifiers.org/chebi/CHEBI:17996"
+  s29 identity "http://identifiers.org/chebi/CHEBI:17996"
+  s30 identity "http://identifiers.org/chebi/CHEBI:15422"
+  s31 identity "http://identifiers.org/chebi/CHEBI:16761"
+  s32 identity "http://identifiers.org/chebi/CHEBI:24838"
+  s33 identity "http://identifiers.org/chebi/CHEBI:58092"
+  s34 identity "http://identifiers.org/chebi/CHEBI:16919"
+  s35 identity "http://identifiers.org/chebi/CHEBI:16027"
+  s36 identity "http://identifiers.org/chebi/CHEBI:28087"
+  s38 identity "http://identifiers.org/chebi/CHEBI:24996"
+  s52 hypernym "http://identifiers.org/chebi/CHEBI:28358"
+  s57 identity "http://identifiers.org/chebi/CHEBI:4170"
+  s58 identity "http://identifiers.org/chebi/CHEBI:88003"
+  s59 identity "http://identifiers.org/chebi/CHEBI:17138"
+  s60 identity "http://identifiers.org/chebi/CHEBI:18021"
+  s64 identity "http://identifiers.org/chebi/CHEBI:16526"
+  s66 version "http://identifiers.org/chebi/CHEBI:78682"
+  s67 identity "http://identifiers.org/chebi/CHEBI:16108"
+  s68 hypernym "http://identifiers.org/chebi/CHEBI:89363"
+  s69 identity "http://identifiers.org/chebi/CHEBI:57998"
+  s70 identity "http://identifiers.org/chebi/CHEBI:88350"
+  s71 identity "http://identifiers.org/chebi/CHEBI:15377"
+  s72 identity "http://identifiers.org/chebi/CHEBI:16077"
+  s73 identity "http://identifiers.org/chebi/CHEBI:18066"
+  s74 identity "http://identifiers.org/chebi/CHEBI:15713"
+  s75 identity "http://identifiers.org/chebi/CHEBI:17659"
+  s76 identity "http://identifiers.org/chebi/CHEBI:16938"
+  s77 identity "http://identifiers.org/chebi/CHEBI:15978"
+  s61 identity "http://identifiers.org/chebi/CHEBI:15361"
+  s79 identity "http://identifiers.org/chebi/CHEBI:17680"
+  s82 identity "http://identifiers.org/chebi/CHEBI:33263"
+  s83 identity "http://identifiers.org/chebi/CHEBI:7044"
+  s84 hypernym "http://identifiers.org/chebi/CHEBI:7044"
+  s65 identity "http://identifiers.org/chebi/CHEBI:33263"
+  s81 identity "http://identifiers.org/chebi/CHEBI:33263"
+  s62 identity "http://identifiers.org/chebi/CHEBI:13389"
+  s63 identity "http://identifiers.org/chebi/CHEBI:16908"
+  s39 identity "http://identifiers.org/chebi/CHEBI:24996"
+  s56 identity "http://identifiers.org/chebi/CHEBI:17234"
+end
+
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes is "McDougal2017 - Metabolism in ischemic cardiomyocytes"
+
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes description "http://identifiers.org/pubmed/28487363"
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes model_entity_is "http://identifiers.org/biomodels.db/MODEL1912160001",
+                                                                     "http://identifiers.org/biomodels.db/BIOMD0000000961"
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes identity "http://identifiers.org/biomodels.db/MODEL1912160001"
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes container "http://identifiers.org/cl/CL:0000746"
+McDougal2017___Metabolism_in_ischemic_cardiomyocytes property "http://identifiers.org/efo/0002687",
+                                                              "http://identifiers.org/efo/0003777",
+                                                              "http://identifiers.org/go/GO:0071456",
+                                                              "http://identifiers.org/go/GO:0006096",
+                                                              "http://identifiers.org/efo/1001375",
+                                                              "http://identifiers.org/go/GO:0046034",
+                                                              "http://identifiers.org/mamo/MAMO_0000003"

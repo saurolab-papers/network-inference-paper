@@ -1,0 +1,66 @@
+// Created by libAntimony v2.13.2
+model *Revilla2003_HIV1therapy()
+
+  // Compartments and Species:
+  compartment COMpartment;
+
+  // Rate Rules:
+  x' = 1*lamda - (d*x + 1*beta*x*v);
+  v' = k*y - u*v;
+  y' = 1*beta*x*v - (a*y + 1*alpha*w*y);
+  w' = c*z - q*w;
+  z' = 1*alpha*w*y - b*z;
+
+  // Compartment initializations:
+  COMpartment = 1;
+  COMpartment has litre;
+
+  // Variable initializations:
+  x = 3;
+  lamda = 2;
+  lamda has cell_per_mm3_day;
+  d = 0.01;
+  d has first_order_rate_constant;
+  beta = 0.004;
+  beta has mm3_per_vir_day;
+  v = 149;
+  y = 6;
+  a = 0.33;
+  a has first_order_rate_constant;
+  alpha = 0.004;
+  alpha has mm3_per_vir_day;
+  w = 1;
+  z = 0;
+  b = 2;
+  b has first_order_rate_constant;
+  k = 50;
+  k has vir_per_cell_day;
+  u = 2;
+  u has first_order_rate_constant;
+  c = 2000;
+  c has vir_per_cell_day;
+  q = 2;
+  q has first_order_rate_constant;
+
+  // Other declarations:
+  var x, v, y, w, z;
+  const COMpartment, lamda, d, beta, a, alpha, b, k, u, c, q;
+
+  // Unit definitions:
+  unit day = 86400 second;
+  unit first_order_rate_constant = 1 / 86400 second;
+  unit mm3 = (1e-3 metre)^3;
+  unit per_mm3 = 1 / (1e-3 metre)^3;
+  unit cell_per_mm3_day = 1 / ((1e-3 metre)^3 * 86400 second);
+  unit vir_per_cell_day = 1 / 86400 second;
+  unit mm3_per_vir_day = (1e-3 metre)^3 / 86400 second;
+  unit time_unit = 86400 second;
+
+  // Display Names:
+  time_unit is "time";
+end
+
+Revilla2003_HIV1therapy is "Revilla2003_HIV1therapy"
+
+Revilla2003_HIV1therapy model_entity_is "urn:miriam:biomodels.db:MODEL1006230047"
+Revilla2003_HIV1therapy description "urn:miriam:pubmed:12941536"

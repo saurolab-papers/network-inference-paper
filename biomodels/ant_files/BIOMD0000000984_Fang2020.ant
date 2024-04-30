@@ -1,0 +1,85 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_reaction(beta, S, I, N)
+  beta*S*I/N;
+end
+
+Rate_Law_for_reaction is "Rate Law for reaction"
+
+
+model *Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan()
+
+  // Compartments and Species:
+  compartment Wuhan;
+  species Susceptible in Wuhan, Total_population in Wuhan, Exposed in Wuhan;
+  species Infected in Wuhan, Recovered in Wuhan;
+
+  // Assignment Rules:
+  beta := k*beta_o;
+
+  // Reactions:
+  Susceptible_to_Exposed: Susceptible => Exposed; Wuhan*Rate_Law_for_reaction(beta, Susceptible, Infected, Total_population);
+  Exposed_to_Infected: Exposed => Infected; Wuhan*omega*Exposed;
+  Infected_to_Recovered: Infected => Recovered; Wuhan*gamma_*Infected;
+
+  // Species initializations:
+  Susceptible = Total_population - Exposed - Infected - Recovered;
+  Susceptible has substance_per_volume;
+  Total_population = 10000000/Wuhan;
+  Total_population has substance_per_volume;
+  Exposed = 0;
+  Exposed has substance_per_volume;
+  Infected = 1/Wuhan;
+  Infected has substance_per_volume;
+  Recovered = 0;
+  Recovered has substance_per_volume;
+
+  // Compartment initializations:
+  Wuhan = 1;
+  Wuhan has volume;
+
+  // Variable initializations:
+  beta_o = 0.1;
+  k = 10;
+  gamma_ = 0.097561;
+  omega = 0.142857;
+
+  // Other declarations:
+  var beta;
+  const Wuhan, beta_o, k, gamma_, omega;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = time_unit;
+  unit substance = item;
+  unit extent = substance;
+  unit substance_per_volume = item / 1e-3 litre;
+
+  // Display Names:
+  time_unit is "time";
+  gamma_ is "gamma";
+
+  // CV terms:
+  Wuhan parthood "http://identifiers.org/ncit/C16428"
+  Susceptible identity "http://identifiers.org/ido/0000514"
+  Exposed identity "http://identifiers.org/ido/0000514"
+  Exposed property "http://identifiers.org/ido/0000597"
+  Infected identity "http://identifiers.org/ido/0000511"
+  Infected identity "http://identifiers.org/ncit/C171133"
+  Recovered identity "http://identifiers.org/ido/0000621"
+  Susceptible_to_Exposed identity "http://identifiers.org/ido/0000597"
+  Exposed_to_Infected identity "http://identifiers.org/ncit/C128320"
+  Exposed_to_Infected identity "http://identifiers.org/ncit/C171133"
+  Infected_to_Recovered identity "http://identifiers.org/ncit/C25746"
+end
+
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan is "Fang2020 - SEIR model of COVID-19 transmission considering government interventions in Wuhan"
+
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan description "http://identifiers.org/pubmed/32141624"
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan model_entity_is "http://identifiers.org/biomodels.db/MODEL2101190001",
+                                                                                                             "http://identifiers.org/biomodels.db/BIOMD0000000984"
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan identity "http://identifiers.org/doid/DOID:0080600"
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan taxon "http://identifiers.org/taxonomy/2697049",
+                                                                                                   "http://identifiers.org/taxonomy/9606"
+Fang2020___SEIR_model_of_COVID_19_transmission_considering_government_interventions_in_Wuhan property "http://identifiers.org/mamo/MAMO_0000028"

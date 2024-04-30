@@ -1,0 +1,130 @@
+// Created by libAntimony v2.13.2
+function Function_for_k3(default, k3, s6)
+  s6*default*k3/default;
+end
+
+Function_for_k3 is "Function for k3"
+
+function Function_for_k1(default, k1, s1)
+  s1*default*k1/default;
+end
+
+Function_for_k1 is "Function for k1"
+
+function Function_for_k2(default, k2, s2)
+  s2*default*k2/default;
+end
+
+Function_for_k2 is "Function for k2"
+
+function Function_for_k6(default, k6, s2)
+  s2*default*k6/default;
+end
+
+Function_for_k6 is "Function for k6"
+
+function Function_for_k7(default, k7, s3)
+  s3*default*k7/default;
+end
+
+Function_for_k7 is "Function for k7"
+
+function Function_for_k8(default, k8, s4)
+  s4*default*k8/default;
+end
+
+Function_for_k8 is "Function for k8"
+
+function Function_for_k4(default, k4, s1)
+  s1*default*k4/default;
+end
+
+Function_for_k4 is "Function for k4"
+
+
+model *Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions()
+
+  // Compartments and Species:
+  compartment default;
+  species s1 in default, s2 in default, s3 in default, $s6 in default, s4 in default;
+  species release in default, shedding in default;
+
+  // Reactions:
+  k_golgi: $s6 => s1; default*Function_for_k3(default, k_golgi_k3, s6);
+  k_endo: s1 => s2; default*Function_for_k1(default, k_endo_k1, s1);
+  k_exo: s2 => s1; default*Function_for_k2(default, k_exo_k2, s2);
+  k_le: s2 => s3; default*Function_for_k6(default, k_le_k6, s2);
+  k_lys: s3 => s4; default*Function_for_k7(default, k_lys_k7, s3);
+  k_deg: s4 => release; default*Function_for_k8(default, k_deg_k8, s4);
+  k_shed: s1 => shedding; default*Function_for_k4(default, k_shed_k4, s1);
+
+  // Species initializations:
+  s1 = 0.1/default;
+  s2 = 0.4/default;
+  s3 = 0.4/default;
+  s6 = 0.05;
+  s4 = 1.23/default;
+  release = 0;
+  shedding = 0;
+
+  // Compartment initializations:
+  default = 1;
+
+  // Variable initializations:
+  k_golgi_k3 = 0.96;
+  k_endo_k1 = 0.05;
+  k_exo_k2 = 0.05;
+  k_le_k6 = 0.01;
+  k_lys_k7 = 0.01;
+  k_deg_k8 = 0.005;
+  k_shed_k4 = 0.033;
+
+  // Other declarations:
+  const default;
+
+  // Unit definitions:
+  unit time_unit = 3600 second;
+
+  // Display Names:
+  time_unit is "time";
+  s1 is "HS surface";
+  s2 is "early endosome";
+  s3 is "late endosome";
+  s6 is "golgi";
+  s4 is "lysosome";
+  k_golgi is "De novo HS production for Golgi aparatus";
+  k_endo is "HS exocytosis from recycling vesicles";
+  k_exo is "HS endocytosis";
+  k_le is "HS trafficking to late endosome";
+  k_lys is "HS trafficking to lysosome";
+  k_deg is "HS release from lysosome";
+  k_shed is "HS cell surface shedding";
+
+  // CV terms:
+  s1 identity "http://identifiers.org/ncit/C540"
+  s2 identity "http://identifiers.org/go/GO:0005769"
+  s3 identity "http://identifiers.org/go/GO:0005770"
+  s6 identity "http://identifiers.org/ncit/C13238"
+  s4 identity "http://identifiers.org/go/GO:0005764"
+  release property "http://identifiers.org/ncit/C42882"
+  k_golgi property "http://identifiers.org/ncit/C112927"
+  k_endo property "http://identifiers.org/ncit/C16568"
+  k_exo property "http://identifiers.org/ncit/C16544"
+  k_le property "http://identifiers.org/ncit/C48167"
+  k_lys property "http://identifiers.org/ncit/C48167"
+  k_deg property "http://identifiers.org/ncit/C42882"
+end
+
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions is "GiantsosAdams2013 - Growth of glycocalyx under static conditions"
+
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions instance "http://identifiers.org/mamo/MAMO_0000046",
+                                                                           "http://identifiers.org/biomodels.db/MODEL1609100000",
+                                                                           "http://identifiers.org/taxonomy/9606",
+                                                                           "http://identifiers.org/ncit/C540"
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions description "http://identifiers.org/ncit/C540",
+                                                                              "http://identifiers.org/pubmed/23805169"
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions model_entity_is "http://identifiers.org/biomodels.db/MODEL1609100000",
+                                                                                  "http://identifiers.org/biomodels.db/BIOMD0000000830"
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions property "http://identifiers.org/mamo/MAMO_0000046"
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions property "http://identifiers.org/biomodels.db/MODEL1609100000"
+Giantsos_Adams2013___Growth_of_glycocalyx_under_static_conditions taxon "http://identifiers.org/taxonomy/9606"

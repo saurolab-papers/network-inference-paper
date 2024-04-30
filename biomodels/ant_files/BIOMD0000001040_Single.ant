@@ -1,0 +1,63 @@
+// Created by libAntimony v2.13.2
+function Diffusion_to_RBC(k, x)
+  k*x;
+end
+
+Diffusion_to_RBC is "Diffusion to RBC"
+
+
+model *Metformin_partitioning_between_plasma_and_RBC_with_a_single_K_diffusion_transport_rate_coefficient()
+
+  // Compartments and Species:
+  compartment RBC;
+  species Mrbc in RBC;
+
+  // Assignment Rules:
+  Mpl := ModelValue_1*exp(ModelValue_4*time) - ModelValue_2*exp(ModelValue_3*time);
+  B := ModelValue_1;
+  Summary_flux_to_RBC := Vin - Vout;
+
+  // Reactions:
+  Vin:  => Mrbc; RBC*Diffusion_to_RBC(K, Mpl);
+  Vout: Mrbc => ; RBC*K*Mrbc;
+
+  // Species initializations:
+  Mrbc = 0;
+
+  // Compartment initializations:
+  RBC = 2198;
+
+  // Variable initializations:
+  ModelValue_1 = A;
+  ModelValue_4 = c;
+  ModelValue_2 = B;
+  ModelValue_3 = d;
+  A = 1242.79795390575;
+  d = -0.844820241465918;
+  c = -0.197523878546384;
+  K = 0.0445312568342959;
+
+  // Other declarations:
+  var Mpl, B, Summary_flux_to_RBC;
+  const RBC, ModelValue_1, ModelValue_4, ModelValue_2, ModelValue_3, A, d;
+  const c, K;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = 1e-3 litre;
+  unit time_unit = 3600e2 second;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  time_unit is "time";
+  ModelValue_1 is "Initial for A";
+  ModelValue_4 is "Initial for c";
+  ModelValue_2 is "Initial for B";
+  ModelValue_3 is "Initial for d";
+  Summary_flux_to_RBC is "Summary flux to RBC";
+end
+
+Metformin_partitioning_between_plasma_and_RBC_with_a_single_K_diffusion_transport_rate_coefficient is "Kurlovics2021 - metformin partitioning from plasma to RBC, single coefficient"
+
+Metformin_partitioning_between_plasma_and_RBC_with_a_single_K_diffusion_transport_rate_coefficient property "http://identifiers.org/mamo/MAMO_0000046"

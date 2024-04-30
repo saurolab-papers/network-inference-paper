@@ -1,0 +1,88 @@
+// Created by libAntimony v2.13.2
+function Function_for_mutation(myu_j, p_j)
+  myu_j*p_j;
+end
+
+Function_for_mutation is "Function for mutation"
+
+
+model *New_Model()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species p_0 in compartment_, p_1 in compartment_, p_2 in compartment_, p_3 in compartment_;
+  species p_4 in compartment_, p_5 in compartment_, p_6 in compartment_, p_7 in compartment_;
+  species p_8 in compartment_, $p in compartment_;
+
+  // Assignment Rules:
+  p := p_0 + p_1 + p_2 + p_3 + p_4 + p_5 + p_6 + p_7 + p_8;
+  myu := a*exp(b*time);
+
+  // Reactions:
+  mutation_1_2: p_1 => p_2; compartment_*Function_for_mutation(myu, p_1);
+  mutation_2_3: p_2 => p_3; compartment_*Function_for_mutation(myu, p_2);
+  mutation_3_4: p_3 => p_4; compartment_*Function_for_mutation(myu, p_3);
+  mutation_4_5: p_4 => p_5; compartment_*Function_for_mutation(myu, p_4);
+  mutation_5_6: p_5 => p_6; compartment_*Function_for_mutation(myu, p_5);
+  mutation_6_7: p_6 => p_7; compartment_*Function_for_mutation(myu, p_6);
+  mutation_7_8: p_7 => p_8; compartment_*Function_for_mutation(myu, p_7);
+  mutation_0_1: p_0 => p_1; compartment_*Function_for_mutation(myu, p_0);
+
+  // Species initializations:
+  p_0 = 1/compartment_;
+  p_1 = 0;
+  p_2 = 0;
+  p_3 = 0;
+  p_4 = 0;
+  p_5 = 0;
+  p_6 = 0;
+  p_7 = 0;
+  p_8 = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  a = 1e-06;
+  b = 3e-05;
+
+  // Other declarations:
+  var myu;
+  const compartment_, a, b;
+
+  // Unit definitions:
+  unit volume = 1e-3 litre;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  compartment_ is "compartment";
+  mutation_1_2 is "mutation 1-2";
+  mutation_2_3 is "mutation 2-3";
+  mutation_3_4 is "mutation 3-4";
+  mutation_4_5 is "mutation 4-5";
+  mutation_5_6 is "mutation 5-6";
+  mutation_6_7 is "mutation 6-7";
+  mutation_7_8 is "mutation 7-8";
+  mutation_0_1 is "mutation 0-1";
+
+  // CV terms:
+  compartment_ hypernym "http://identifiers.org/ncit/C13413"
+  p_0 hypernym "http://identifiers.org/efo/0000311"
+  p_1 hypernym "http://identifiers.org/efo/0000311"
+  p_2 hypernym "http://identifiers.org/efo/0000311"
+  p_3 hypernym "http://identifiers.org/efo/0000311"
+  p_4 hypernym "http://identifiers.org/efo/0000311"
+  p_5 hypernym "http://identifiers.org/efo/0000311"
+  p_6 hypernym "http://identifiers.org/efo/0000311"
+  p_7 hypernym "http://identifiers.org/efo/0000311"
+  p_8 hypernym "http://identifiers.org/efo/0000311"
+  p hypernym "http://identifiers.org/efo/0000311"
+end
+
+New_Model is "Sun2018 - Instantaneous mutation rate in cancer initiation and progression"
+
+New_Model property "http://identifiers.org/mamo/MAMO_0000046"
+New_Model property "http://identifiers.org/efo/0000311"
+New_Model property "http://identifiers.org/ncit/C94346"
+New_Model property "http://identifiers.org/vario/VariO:0139"
+New_Model description "http://identifiers.org/pubmed/30463617"

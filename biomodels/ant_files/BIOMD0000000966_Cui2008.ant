@@ -1,0 +1,138 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_R1_3(k, substrate, parameter)
+  k*substrate*parameter^2;
+end
+
+Rate_Law_for_R1_3 is "Rate Law for R1_3"
+
+function Rate_Law_for_R3(k1a, Dw, Py1)
+  k1a*Dw*Py1;
+end
+
+Rate_Law_for_R3 is "Rate Law for R3"
+
+
+model *Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli()
+
+  // Compartments and Species:
+  compartment Cell;
+  species Py in Cell, Py1 in Cell, Dw in Cell, Rw in Cell, Qw1 in Cell, Qw2 in Cell;
+  species Zn_2 in Cell;
+
+  // Reactions:
+  Formation_of_the_Zn4Zur_complex: Py => Py1; Cell*Rate_Law_for_R1_3(r3, Py, Zn);
+  Dissociation_of_Zn4Zur_complex: Py1 => Zn_2 + Py; Cell*r4*Py1;
+  Formation_of_DNA_binding_complex: Dw + Py1 => Qw2; Cell*Rate_Law_for_R3(k1a, Dw, Py1);
+  Disassociation_of_DNA_binding_complex: Qw2 => Dw + Py1; Cell*k_1*Qw2;
+  Formation_of_transcription_initiation_complex: Dw + Rw => Qw1; Cell*Rate_Law_for_R3(k2, Dw, Rw);
+  Disassociation_of_transcription_initiation_complex: Qw1 => Dw + Rw; Cell*k_2*Qw1;
+
+  // Species initializations:
+  Py = 25/Cell;
+  Py has unit_3;
+  Py1 = 0;
+  Py1 has unit_3;
+  Dw = 4/Cell;
+  Dw has unit_3;
+  Rw = 50/Cell;
+  Rw has unit_3;
+  Qw1 = 0;
+  Qw1 has unit_3;
+  Qw2 = 0;
+  Qw2 has unit_3;
+  Zn_2 = 1/Cell;
+  Zn_2 has unit_3;
+
+  // Compartment initializations:
+  Cell = 1;
+  Cell has volume;
+
+  // Variable initializations:
+  r3 = 44100000000;
+  r3 has unit_0;
+  r4 = 0.009;
+  r4 has unit_1;
+  k_1 = 0.9;
+  k_1 has unit_1;
+  k2 = 0.02;
+  k2 has unit_2;
+  k_2 = 0.3;
+  k_2 has unit_1;
+  Zn = 1e-05;
+  Zn has unit_3;
+  k1a = 1;
+  k1a has unit_2;
+
+  // Other declarations:
+  const Cell, r3, r4, k_1, k2, k_2, Zn, k1a;
+
+  // Unit definitions:
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit time_unit = time_unit;
+  unit substance = 1e-9 mole;
+  unit unit_0 = litre^2 / ((1e-9 mole)^2 * second);
+  unit unit_1 = 1 / second;
+  unit unit_2 = litre / (1e-9 mole * second);
+  unit unit_3 = 1e-9 mole / litre;
+  unit extent = substance;
+
+  // Display Names:
+  time_unit is "time";
+  unit_0 is "(l)�/((nmol)�*s)";
+  unit_1 is "1/s";
+  unit_2 is "l/(nmol*s)";
+  unit_3 is "nmol/l";
+  Zn_2 is "Zn^2";
+  Formation_of_the_Zn4Zur_complex is "Formation of the Zn4Zur complex";
+  Dissociation_of_Zn4Zur_complex is "Dissociation of Zn4Zur complex";
+  Formation_of_DNA_binding_complex is "Formation of DNA binding complex";
+  Disassociation_of_DNA_binding_complex is "Disassociation of DNA binding complex";
+  Formation_of_transcription_initiation_complex is "Formation of transcription initiation complex";
+  Disassociation_of_transcription_initiation_complex is "Disassociation of transcription initiation complex";
+
+  // CV terms:
+  Cell property "http://identifiers.org/ncit/C48694"
+  Py instance "http://identifiers.org/ncit/C19398",
+              "http://identifiers.org/ncit/C948"
+  Py instance "http://identifiers.org/uniprot/P0AC51"
+  Py property "http://identifiers.org/ncit/C19398"
+  Py1 instance "http://identifiers.org/ncit/C19398",
+               "http://identifiers.org/ncit/C948"
+  Py1 instance "http://identifiers.org/uniprot/P0AC51"
+  Py1 parthood "http://identifiers.org/ncit/C19398"
+  Dw origin "http://identifiers.org/ecogene/EG13132"
+  Rw identity "http://identifiers.org/ncit/C20076"
+  Qw1 origin "http://identifiers.org/ecogene/EG13132"
+  Qw1 instance "http://identifiers.org/go/GO:0006352"
+  Qw2 instance "http://identifiers.org/ncit/C19398",
+               "http://identifiers.org/uniprot/P0AC51"
+  Qw2 instance "http://identifiers.org/ncit/C449"
+  Qw2 instance "http://identifiers.org/ncit/C948"
+  Qw2 parthood "http://identifiers.org/ncit/C19398"
+  Zn_2 identity "http://identifiers.org/chebi/CHEBI:29105"
+  r3 property "http://identifiers.org/sbo/SBO:0000153"
+  r4 property "http://identifiers.org/sbo/SBO:0000156"
+  k_1 property "http://identifiers.org/sbo/SBO:0000156"
+  k2 property "http://identifiers.org/sbo/SBO:0000153"
+  k_2 property "http://identifiers.org/sbo/SBO:0000156"
+  k1a property "http://identifiers.org/sbo/SBO:0000153"
+  Formation_of_the_Zn4Zur_complex property "http://identifiers.org/ncit/C82888"
+  Dissociation_of_Zn4Zur_complex property "http://identifiers.org/ncit/C82888"
+  Formation_of_DNA_binding_complex property "http://identifiers.org/ncit/C82888"
+  Disassociation_of_DNA_binding_complex property "http://identifiers.org/ncit/C82888"
+  Formation_of_transcription_initiation_complex property "http://identifiers.org/ncit/C82888"
+  Disassociation_of_transcription_initiation_complex property "http://identifiers.org/ncit/C82888"
+end
+
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli is "Cui2008 - in vitro transcriptional response of zinc homeostasis system in Escherichia coli"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli description "http://identifiers.org/pubmed/18950480"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli model_entity_is "http://identifiers.org/biomodels.db/MODEL1172501439",
+                                                                                                           "http://identifiers.org/biomodels.db/BIOMD0000000966"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli identity "http://identifiers.org/biomodels.db/MODEL1172501439"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli hypernym "http://identifiers.org/go/GO:0055069"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli hypernym "http://identifiers.org/mamo/MAMO_0000046"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli taxon "http://identifiers.org/taxonomy/562"
+Cui2008___in_vitro_transcriptional_response_of_zinc_homeostasis_system_in_Escherichia_coli property "http://identifiers.org/ncit/C19077",
+                                                                                                    "http://identifiers.org/mamo/MAMO_0000046"
