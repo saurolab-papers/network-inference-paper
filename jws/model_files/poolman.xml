@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="poolman" name="poolman">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ADPch" compartment="default_compartment" initialConcentration="0.00149" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="ATPch" compartment="default_compartment" initialConcentration="0.49806" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="BPGAch" compartment="default_compartment" initialConcentration="0.14825" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="DHAPch" compartment="default_compartment" initialConcentration="0.29345" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="E4Pch" compartment="default_compartment" initialConcentration="0.41021" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="F6Pch" compartment="default_compartment" initialConcentration="1.36481" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="FBPch" compartment="default_compartment" initialConcentration="0.02776" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="G1Pch" compartment="default_compartment" initialConcentration="0.18206" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="G6Pch" compartment="default_compartment" initialConcentration="3.1396" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="GAPch" compartment="default_compartment" initialConcentration="0.01334" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="PGAch" compartment="default_compartment" initialConcentration="3.35479" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="Pich" compartment="default_compartment" initialConcentration="1.5662" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="R5Pch" compartment="default_compartment" initialConcentration="0.00599" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="Ru5Pch" compartment="default_compartment" initialConcentration="0.00235" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="RuBPch" compartment="default_compartment" initialConcentration="0.33644" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="S7Pch" compartment="default_compartment" initialConcentration="0.00541" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="SBPch" compartment="default_compartment" initialConcentration="1.56486" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="X5Pch" compartment="default_compartment" initialConcentration="0.00363" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="xCO2" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="xDHAPcyt" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_21" id="xGAPcyt" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_22" id="xNADPHch" compartment="default_compartment" initialConcentration="0.21" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_23" id="xNADPch" compartment="default_compartment" initialConcentration="0.29" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_24" id="xPGAcyt" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_25" id="xPicyt" compartment="default_compartment" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_26" id="xProtonch" compartment="default_compartment" initialConcentration="2.512e-05" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_27" id="xStarchch" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_28" id="EQMult" value="900000000" constant="false"/>
+      <parameter metaid="metaid_29" id="FBPasechKiF6P" value="0.7" constant="false"/>
+      <parameter metaid="metaid_30" id="FBPasechKiPi" value="12" constant="false"/>
+      <parameter metaid="metaid_31" id="FBPasechkm" value="0.03" constant="false"/>
+      <parameter metaid="metaid_32" id="FBPasechvm" value="200" constant="false"/>
+      <parameter metaid="metaid_33" id="LRkmADP" value="0.014" constant="false"/>
+      <parameter metaid="metaid_34" id="LRkmPi" value="0.3" constant="false"/>
+      <parameter metaid="metaid_35" id="LRvm" value="3500" constant="false"/>
+      <parameter metaid="metaid_36" id="PGAxpMult" value="0.5" constant="false"/>
+      <parameter metaid="metaid_37" id="RbcoKiFBP" value="0.04" constant="false"/>
+      <parameter metaid="metaid_38" id="RbcoKiNADPH" value="0.07" constant="false"/>
+      <parameter metaid="metaid_39" id="RbcoKiPGA" value="0.84" constant="false"/>
+      <parameter metaid="metaid_40" id="RbcoKiPi" value="0.9" constant="false"/>
+      <parameter metaid="metaid_41" id="RbcoKiSBP" value="0.075" constant="false"/>
+      <parameter metaid="metaid_42" id="Rbcokm" value="0.02" constant="false"/>
+      <parameter metaid="metaid_43" id="Rbcovm" value="340" constant="false"/>
+      <parameter metaid="metaid_44" id="Ru5PkchKiADP1" value="2.5" constant="false"/>
+      <parameter metaid="metaid_45" id="Ru5PkchKiADP2" value="0.4" constant="false"/>
+      <parameter metaid="metaid_46" id="Ru5PkchKiPGA" value="2" constant="false"/>
+      <parameter metaid="metaid_47" id="Ru5PkchKiPi" value="4" constant="false"/>
+      <parameter metaid="metaid_48" id="Ru5PkchKiRuBP" value="0.7" constant="false"/>
+      <parameter metaid="metaid_49" id="Ru5Pkchkm1" value="0.05" constant="false"/>
+      <parameter metaid="metaid_50" id="Ru5Pkchkm2" value="0.05" constant="false"/>
+      <parameter metaid="metaid_51" id="Ru5Pkchvm" value="10000" constant="false"/>
+      <parameter metaid="metaid_52" id="SBPasechKiPi" value="12" constant="false"/>
+      <parameter metaid="metaid_53" id="SBPasechkm" value="0.013" constant="false"/>
+      <parameter metaid="metaid_54" id="SBPasechvm" value="40" constant="false"/>
+      <parameter metaid="metaid_55" id="StPaseVm" value="40" constant="false"/>
+      <parameter metaid="metaid_56" id="StPasekiG1P" value="0.05" constant="false"/>
+      <parameter metaid="metaid_57" id="StPasekm" value="0.1" constant="false"/>
+      <parameter metaid="metaid_58" id="TPPiapkDHAPch" value="0.077" constant="false"/>
+      <parameter metaid="metaid_59" id="TPPiapkGAPch" value="0.075" constant="false"/>
+      <parameter metaid="metaid_60" id="TPPiapkPGAch" value="0.25" constant="false"/>
+      <parameter metaid="metaid_61" id="TPPiapkPich" value="0.63" constant="false"/>
+      <parameter metaid="metaid_62" id="TPPiapkPicyt" value="0.74" constant="false"/>
+      <parameter metaid="metaid_63" id="TPPiapvm" value="250" constant="false"/>
+      <parameter metaid="metaid_64" id="Vstsynch" value="40" constant="false"/>
+      <parameter metaid="metaid_65" id="q10" value="0.85" constant="false"/>
+      <parameter metaid="metaid_66" id="q11" value="0.4" constant="false"/>
+      <parameter metaid="metaid_67" id="q12" value="0.67" constant="false"/>
+      <parameter metaid="metaid_68" id="q14" value="2.3" constant="false"/>
+      <parameter metaid="metaid_69" id="q15" value="0.058" constant="false"/>
+      <parameter metaid="metaid_70" id="q2" value="0.00031" constant="false"/>
+      <parameter metaid="metaid_71" id="q3" value="16000000" constant="false"/>
+      <parameter metaid="metaid_72" id="q4" value="22" constant="false"/>
+      <parameter metaid="metaid_73" id="q5" value="7.1" constant="false"/>
+      <parameter metaid="metaid_74" id="q7" value="0.084" constant="false"/>
+      <parameter metaid="metaid_75" id="q8" value="13" constant="false"/>
+      <parameter metaid="metaid_76" id="stsynchKi" value="10" constant="false"/>
+      <parameter metaid="metaid_77" id="stsynchka1" value="0.1" constant="false"/>
+      <parameter metaid="metaid_78" id="stsynchka2" value="0.02" constant="false"/>
+      <parameter metaid="metaid_79" id="stsynchka3" value="0.02" constant="false"/>
+      <parameter metaid="metaid_80" id="stsynchkm1" value="0.08" constant="false"/>
+      <parameter metaid="metaid_81" id="stsynchkm2" value="0.08" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_90" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_82" species="G1Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_83" species="ATPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_84" species="ADPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_85" species="Pich" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_86" species="xStarchch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_87" species="PGAch"/>
+          <modifierSpeciesReference metaid="metaid_88" species="F6Pch"/>
+          <modifierSpeciesReference metaid="metaid_89" species="FBPch"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vstsynch </ci>
+                <ci> G1Pch </ci>
+                <ci> ATPch </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <ci> G1Pch </ci>
+                    <ci> stsynchkm1 </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> ADPch </ci>
+                      <ci> stsynchKi </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> ATPch </ci>
+                    <ci> stsynchkm2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> stsynchkm2 </ci>
+                    <ci> Pich </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> stsynchka1 </ci>
+                    <ci> PGAch </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> stsynchka2 </ci>
+                  <ci> F6Pch </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> stsynchka3 </ci>
+                  <ci> FBPch </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_94" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="SBPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_92" species="S7Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_93" species="Pich" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> SBPasechvm </ci>
+                <ci> SBPch </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> SBPch </ci>
+                <apply>
+                  <times/>
+                  <ci> SBPasechkm </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Pich </ci>
+                      <ci> SBPasechKiPi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="GAPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_96" species="S7Pch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_97" species="X5Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_98" species="R5Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> GAPch </ci>
+                  <ci> S7Pch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> X5Pch </ci>
+                    <ci> R5Pch </ci>
+                  </apply>
+                  <ci> q10 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_102" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_100" species="X5Pch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_101" species="Ru5Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <ci> X5Pch </ci>
+                <apply>
+                  <divide/>
+                  <ci> Ru5Pch </ci>
+                  <ci> q12 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_105" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_103" species="R5Pch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_104" species="Ru5Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <ci> R5Pch </ci>
+                <apply>
+                  <divide/>
+                  <ci> Ru5Pch </ci>
+                  <ci> q11 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_112" id="v_14" name="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_106" species="Ru5Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_107" species="ATPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="RuBPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_109" species="ADPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_110" species="PGAch"/>
+          <modifierSpeciesReference metaid="metaid_111" species="Pich"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Ru5Pkchvm </ci>
+                <ci> Ru5Pch </ci>
+                <ci> ATPch </ci>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> Ru5Pch </ci>
+                  <apply>
+                    <times/>
+                    <ci> Ru5Pkchkm1 </ci>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> PGAch </ci>
+                        <ci> Ru5PkchKiPGA </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> RuBPch </ci>
+                        <ci> Ru5PkchKiRuBP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> Pich </ci>
+                        <ci> Ru5PkchKiPi </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> ATPch </ci>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> ADPch </ci>
+                        <ci> Ru5PkchKiADP1 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> Ru5Pkchkm2 </ci>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> ADPch </ci>
+                        <ci> Ru5PkchKiADP2 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_120" id="v_15" name="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_113" species="xCO2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_114" species="RuBPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="PGAch" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_116" species="Pich"/>
+          <modifierSpeciesReference metaid="metaid_117" species="xNADPHch"/>
+          <modifierSpeciesReference metaid="metaid_118" species="FBPch"/>
+          <modifierSpeciesReference metaid="metaid_119" species="SBPch"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Rbcovm </ci>
+                <ci> RuBPch </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> RuBPch </ci>
+                <apply>
+                  <times/>
+                  <ci> Rbcokm </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> PGAch </ci>
+                      <ci> RbcoKiPGA </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> FBPch </ci>
+                      <ci> RbcoKiFBP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> SBPch </ci>
+                      <ci> RbcoKiSBP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> Pich </ci>
+                      <ci> RbcoKiPi </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> xNADPHch </ci>
+                      <ci> RbcoKiNADPH </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_121" species="PGAch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_122" species="ATPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="BPGAch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_124" species="ADPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> PGAch </ci>
+                  <ci> ATPch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> BPGAch </ci>
+                    <ci> ADPch </ci>
+                  </apply>
+                  <ci> q2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_132" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="BPGAch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_127" species="xNADPHch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_128" species="xProtonch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="xNADPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_130" species="GAPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_131" species="Pich" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> BPGAch </ci>
+                  <ci> xNADPHch </ci>
+                  <ci> xProtonch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> xNADPch </ci>
+                    <ci> GAPch </ci>
+                    <ci> Pich </ci>
+                  </apply>
+                  <ci> q3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="v_18" name="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_133" species="GAPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_134" species="xPicyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="Pich" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_136" species="xGAPcyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_137" species="DHAPch"/>
+          <modifierSpeciesReference metaid="metaid_138" species="PGAch"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> TPPiapvm </ci>
+                <ci> GAPch </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> TPPiapkGAPch </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> TPPiapkPicyt </ci>
+                        <ci> xPicyt </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <divide/>
+                        <ci> Pich </ci>
+                        <ci> TPPiapkPich </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> PGAch </ci>
+                        <ci> TPPiapkPGAch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> DHAPch </ci>
+                        <ci> TPPiapkDHAPch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> GAPch </ci>
+                        <ci> TPPiapkGAPch </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_146" id="v_19" name="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="PGAch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_141" species="xPicyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_142" species="Pich" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_143" species="xPGAcyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_144" species="DHAPch"/>
+          <modifierSpeciesReference metaid="metaid_145" species="GAPch"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> PGAxpMult </ci>
+                <ci> TPPiapvm </ci>
+                <ci> PGAch </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> TPPiapkPGAch </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> TPPiapkPicyt </ci>
+                        <ci> xPicyt </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <divide/>
+                        <ci> Pich </ci>
+                        <ci> TPPiapkPich </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> PGAch </ci>
+                        <ci> TPPiapkPGAch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> DHAPch </ci>
+                        <ci> TPPiapkDHAPch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> GAPch </ci>
+                        <ci> TPPiapkGAPch </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_150" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_147" species="xStarchch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_148" species="Pich" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_149" species="G1Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> StPaseVm </ci>
+                <ci> Pich </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Pich </ci>
+                <apply>
+                  <times/>
+                  <ci> StPasekm </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> G1Pch </ci>
+                      <ci> StPasekiG1P </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="v_20" name="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_151" species="DHAPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_152" species="xPicyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="Pich" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_154" species="xDHAPcyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_155" species="GAPch"/>
+          <modifierSpeciesReference metaid="metaid_156" species="PGAch"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> TPPiapvm </ci>
+                <ci> DHAPch </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> TPPiapkDHAPch </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> TPPiapkPicyt </ci>
+                        <ci> xPicyt </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <divide/>
+                        <ci> Pich </ci>
+                        <ci> TPPiapkPich </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> PGAch </ci>
+                        <ci> TPPiapkPGAch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> DHAPch </ci>
+                        <ci> TPPiapkDHAPch </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <ci> GAPch </ci>
+                        <ci> TPPiapkGAPch </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_158" species="ADPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_159" species="Pich" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_160" species="ATPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> LRvm </ci>
+                <ci> ADPch </ci>
+                <ci> Pich </ci>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> ADPch </ci>
+                  <ci> LRkmADP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> Pich </ci>
+                  <ci> LRkmPi </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_164" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="G6Pch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_163" species="G1Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <ci> G6Pch </ci>
+                <apply>
+                  <divide/>
+                  <ci> G1Pch </ci>
+                  <ci> q15 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_167" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_165" species="F6Pch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_166" species="G6Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <ci> F6Pch </ci>
+                <apply>
+                  <divide/>
+                  <ci> G6Pch </ci>
+                  <ci> q14 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_171" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_168" species="FBPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_169" species="F6Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_170" species="Pich" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> FBPasechvm </ci>
+                <ci> FBPch </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> FBPch </ci>
+                <apply>
+                  <times/>
+                  <ci> FBPasechkm </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> F6Pch </ci>
+                      <ci> FBPasechKiF6P </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> Pich </ci>
+                      <ci> FBPasechKiPi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_175" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_172" species="DHAPch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_173" species="GAPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_174" species="FBPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> DHAPch </ci>
+                  <ci> GAPch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> FBPch </ci>
+                  <ci> q5 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_178" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_176" species="GAPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_177" species="DHAPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <ci> GAPch </ci>
+                <apply>
+                  <divide/>
+                  <ci> DHAPch </ci>
+                  <ci> q4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="F6Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_180" species="GAPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_181" species="E4Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_182" species="X5Pch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> F6Pch </ci>
+                  <ci> GAPch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> E4Pch </ci>
+                    <ci> X5Pch </ci>
+                  </apply>
+                  <ci> q7 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_187" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="E4Pch" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_185" species="DHAPch" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="SBPch" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> EQMult </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> E4Pch </ci>
+                  <ci> DHAPch </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> SBPch </ci>
+                  <ci> q8 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

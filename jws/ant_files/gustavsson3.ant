@@ -1,0 +1,243 @@
+// Created by libAntimony v2.13.2
+model *gustavsson3()
+
+  // Compartments and Species:
+  species ACE, ACEo, AMP, ATP, BPG, ETOH, ETOHo, F16P, F6P, G3P, G6P, GLCi;
+  species NADH, P2G, P3G, PEP, PYR, TRIO;
+
+  // Assignment Rules:
+  ADP := 1*ADPSUM - 1*AMP - 1*ATP;
+  NAD := 1*NADSUM - 1*NADH;
+
+  // Reactions:
+  v_ACEt: ACE -> 6.34417 ACEo; kACEt*(ACE - ACEo);
+  v_ADH: ACE + NADH -> ETOH; -(VmADH*(NAD*ETOH - ACE*NADH/KeqADH)/(KiADHNAD*KmADHETOH*(1 + NAD/KiADHNAD + KmADHNADH*ACE/(KiADHNADH*KmADHACE) + KmADHNADH*NAD*ACE/(KiADHNAD*KiADHNADH*KmADHACE) + KmADHNAD*ETOH/(KiADHNAD*KmADHETOH) + NAD*ETOH/(KiADHNAD*KmADHETOH) + NAD*ACE*ETOH/(KiADHACE*KiADHNAD*KmADHETOH) + NADH/KiADHNADH + ACE*NADH/(KiADHNADH*KmADHACE) + KmADHNAD*ETOH*NADH/(KiADHNAD*KiADHNADH*KmADHETOH) + ACE*ETOH*NADH/(KiADHETOH*KiADHNADH*KmADHACE))));
+  v_AK:  -> AMP + ATP; VmAK*(ADP^2 - AMP*ATP/KeqAK);
+  v_ALD: F16P -> 2 TRIO; VmALD*(F16P - KeqTPI*TRIO^2/(KeqALD*(1 + KeqTPI)^2))/(KmALDF16P*(1 + F16P/KmALDF16P + TRIO/((1 + KeqTPI)*KmALDDHAP) + KeqTPI*TRIO/((1 + KeqTPI)*KmALDGAP) + KeqTPI*F16P*TRIO/((1 + KeqTPI)*KmALDF16P*KmALDGAPi) + KeqTPI*TRIO^2/((1 + KeqTPI)^2*KmALDDHAP*KmALDGAP)));
+  v_ATP: ATP -> ; KATPASE*ATP^nATP/(KmATP^nATP + ATP^nATP);
+  v_ENO: P2G -> PEP; VmENO*(P2G - PEP/KeqENO)/(KmENOP2G*(1 + P2G/KmENOP2G + PEP/KmENOPEP));
+  v_ETOH: ETOH -> 6.34417 ETOHo; kETOH*(ETOH - ETOHo);
+  v_FlowACEo: ACEo -> ; ACEo*piecewise(kLow, time < t1, kHigh);
+  v_FlowETOHo: ETOHo -> ; ETOHo*piecewise(kLow, time < t1, kHigh);
+  v_G3PA: G3P -> ; VmG3PA*G3P/(KmG3PAG3P*(1 + Phi/KmG3PAPhi)*(1 + G3P/KmG3PAG3P));
+  v_G3PDH: NADH + TRIO -> G3P; VmG3PDH*(-(NAD*G3P/KeqG3PDH) + NADH*TRIO/(1 + KeqTPI))/(KmG3PDHDHAP*KmG3PDHNADH*(1 + ADP/KmG3PDHADP + ATP/KmG3PDHATP + F16P/KmG3PDHF16P)*(1 + NAD/KmG3PDHNAD + NADH/KmG3PDHNADH)*(1 + G3P/KmG3PDHG3P + TRIO/((1 + KeqTPI)*KmG3PDHDHAP)));
+  v_GAPDH: TRIO -> BPG + NADH; (-(VmGAPDHf*BPG*NADH/(KeqGAPDH*KmGAPDHGAP*KmGAPDHNAD)) + KeqTPI*NAD*VmGAPDHf*TRIO/((1 + KeqTPI)*KmGAPDHGAP*KmGAPDHNAD))/((1 + NAD/KmGAPDHNAD + NADH/KmGAPDHNADH)*(1 + BPG/KmGAPDHBPG + KeqTPI*TRIO/((1 + KeqTPI)*KmGAPDHGAP)));
+  v_GLK: ATP + GLCi -> G6P; VmGLK*(-(ADP*G6P/KeqGLK) + ATP*GLCi)/(KmGLKATP*KmGLKGLCi*(1 + ADP/KmGLKADP + ATP/KmGLKATP)*(1 + G6P/KmGLKG6P + GLCi/KmGLKGLCi));
+  v_GLT:  -> GLCi; VmGLT*(GLCo - GLCi/KeqGLT)/(KmGLTGLCo*(1 + GLCo/KmGLTGLCo + GLCi/KmGLTGLCi + alpha*GLCo*GLCi/(KmGLTGLCi*KmGLTGLCo)));
+  v_GLYCO: ATP + G6P -> ; KGLYCOGEN*ATP*G6P;
+  v_LACTO: ACEo -> ; CN*kLACTO*ACEo;
+  v_PDC: PYR -> ACE; VmPDC*PYR^nPDC/(KmPDCPYR^nPDC*(1 + PYR^nPDC/KmPDCPYR^nPDC));
+  v_PFK: ATP + F6P -> F16P; gR*VmPFK*ATP*F6P*(1 + ATP/KmPFKATP + F6P/KmPFKF6P + gR*ATP*F6P/(KmPFKATP*KmPFKF6P))/(KmPFKATP*KmPFKF6P*(L0*(1 + CPFKAMP*AMP/KPFKAMP)^2*(1 + CiPFKATP*ATP/KiPFKATP)^2*(1 + CPFKATP*ATP/KmPFKATP)^2*(1 + CPFKF26BP*F26BP/KPFKF26BP + CPFKF16BP*F16P/KPFKF16BP)^2/((1 + AMP/KPFKAMP)^2*(1 + ATP/KiPFKATP)^2*(1 + F26BP/KPFKF26BP + F16P/KPFKF16BP)^2) + (1 + ATP/KmPFKATP + F6P/KmPFKF6P + gR*ATP*F6P/(KmPFKATP*KmPFKF6P))^2));
+  v_PGI: G6P -> F6P; VmPGI*(-(F6P/KeqPGI) + G6P)/(KmPGIG6P*(1 + F6P/KmPGIF6P + G6P/KmPGIG6P));
+  v_PGK: BPG -> ATP + P3G; VmPGK*(ADP*KeqPGK*BPG - ATP*P3G)/(KmPGKATP*KmPGKP3G*(1 + ADP/KmPGKADP + ATP/KmPGKATP)*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G));
+  v_PGM: P3G -> P2G; VmPGM*(-(P2G/KeqPGM) + P3G)/(KmPGMP3G*(1 + P2G/KmPGMP2G + P3G/KmPGMP3G));
+  v_PYK: PEP -> ATP + PYR; VmPYK*(ADP*PEP - ATP*PYR/KeqPYK)/(KmPYKADP*KmPYKPEP*(1 + ADP/KmPYKADP + ATP/KmPYKATP)*(1 + PEP/KmPYKPEP + PYR/KmPYKPYR));
+  v_SUC: 2 ACE + 4 ATP -> 3 NADH; KSUCC*ACE;
+  v_Treha: ATP + 2 G6P -> ; KTREHALOSE*ATP*G6P;
+
+  // Species initializations:
+  ACE = 0.00491971194758;
+  ACEo = 9.61478196947e-05;
+  AMP = 0.112292887337699;
+  ATP = 3.10706472894091;
+  BPG = 0.000121412524422;
+  ETOH = 0.204805142416991;
+  ETOHo = 0.000767372229724711;
+  F16P = 1.74354659779;
+  F6P = 0.813205406978;
+  G3P = 0.63072565062;
+  G6P = 3.18304549443;
+  GLCi = 0.0162842109834;
+  NADH = 0.384739353329729;
+  P2G = 0.00742210195811;
+  P3G = 0.0687817726035;
+  PEP = 0.00977955488489;
+  PYR = 1.39037827898;
+  TRIO = 1.50929922081;
+
+  // Variable initializations:
+  ADPSUM = 4.1;
+  CN = 5;
+  CPFKAMP = 0.0619066304454687;
+  CPFKATP = 4.11927102035743;
+  CPFKF16BP = 0.508729452985175;
+  CPFKF26BP = 0.0166446192764381;
+  CiPFKATP = 133.997614964125;
+  EXTERNAL = 0;
+  F26BP = 0.02;
+  GLCo = 20;
+  KATPASE = 7.66303093063402;
+  KGLYCOGEN = 0.657952839162031;
+  KPFKAMP = 0.0908240053852103;
+  KPFKF16BP = 0.0867303342326532;
+  KPFKF26BP = 0.000809438316573068;
+  KSUCC = 15.5243973118548;
+  KTREHALOSE = 0.35532683402403;
+  KeqADH = 6.9e-05;
+  KeqAK = 0.45;
+  KeqALD = 0.069;
+  KeqENO = 6.7;
+  KeqG3PDH = 4300;
+  KeqGAPDH = 0.00562639062770364;
+  KeqGLK = 3800;
+  KeqGLT = 1;
+  KeqPGI = 0.314;
+  KeqPGK = 3200;
+  KeqPGM = 0.19;
+  KeqPYK = 6500;
+  KeqTPI = 0.045;
+  KiADHACE = 1.10269434597499;
+  KiADHETOH = 87.5197712783722;
+  KiADHNAD = 0.994086925030065;
+  KiADHNADH = 0.0266112112630811;
+  KiPFKATP = 0.672261990665842;
+  KmADHACE = 1.08640493765421;
+  KmADHETOH = 17.873472130943;
+  KmADHNAD = 0.173151837494663;
+  KmADHNADH = 0.106028057123405;
+  KmALDDHAP = 2.35279569817395;
+  KmALDF16P = 0.289978616714069;
+  KmALDGAP = 2.03507983684522;
+  KmALDGAPi = 10.1050124140839;
+  KmATP = 0.226775365195371;
+  KmENOP2G = 0.0384298786845413;
+  KmENOPEP = 0.48718115014322;
+  KmG3PAG3P = 4.36779649390928;
+  KmG3PAPhi = 0.784145076398265;
+  KmG3PDHADP = 1.66742704847041;
+  KmG3PDHATP = 0.477041600990239;
+  KmG3PDHDHAP = 0.434945788250048;
+  KmG3PDHF16P = 5.39383791442381;
+  KmG3PDHG3P = 0.989904702292856;
+  KmG3PDHNAD = 0.864230959749687;
+  KmG3PDHNADH = 0.024866434215201;
+  KmGAPDHBPG = 0.0105501300482522;
+  KmGAPDHGAP = 0.126014064354562;
+  KmGAPDHNAD = 0.0877156866078506;
+  KmGAPDHNADH = 0.0560916256777303;
+  KmGLKADP = 0.263092658044569;
+  KmGLKATP = 0.122952862202984;
+  KmGLKG6P = 29.9047243861895;
+  KmGLKGLCi = 0.070544843764403;
+  KmGLTGLCi = 1.2601958510505;
+  KmGLTGLCo = 1.14781100891666;
+  KmPDCPYR = 2.71686030412305;
+  KmPFKATP = 0.639382516791221;
+  KmPFKF6P = 0.136442544726107;
+  KmPGIF6P = 0.288898425005336;
+  KmPGIG6P = 1.31111953478591;
+  KmPGKADP = 0.195235190263297;
+  KmPGKATP = 0.307178610015771;
+  KmPGKBPG = 0.0030168048178011;
+  KmPGKP3G = 0.515383408435942;
+  KmPGMP2G = 0.0816972711677167;
+  KmPGMP3G = 1.1653123960473;
+  KmPYKADP = 0.423287756657824;
+  KmPYKATP = 1.67932644936778;
+  KmPYKPEP = 0.114687461199323;
+  KmPYKPYR = 21.2875778903632;
+  L0 = 0.744428179041052;
+  NADSUM = 1;
+  Phi = 1.20470265921072;
+  VmADH = 329.310550256221;
+  VmAK = 121.224437231269;
+  VmALD = 115.755229155784;
+  VmENO = 276.012216851944;
+  VmG3PA = 86.2757401327597;
+  VmG3PDH = 59.6031618818127;
+  VmGAPDHf = 279.717235797774;
+  VmGLK = 229.681980633949;
+  VmGLT = 35.693357591446;
+  VmPDC = 209.10016696;
+  VmPFK = 127.540676183333;
+  VmPGI = 274.363965785613;
+  VmPGK = 797.96096752776;
+  VmPGM = 1591.55726747429;
+  VmPYK = 1223.18615050541;
+  alpha = 0.91;
+  gR = 3.47651271426468;
+  kACEt = 810.916939293049;
+  kETOH = 153.003196093028;
+  kHigh = 516190;
+  kLACTO = 0.0510010653643427;
+  kLow = 258095;
+  nATP = 1;
+  nPDC = 2.3801892387344;
+  t1 = 6.15;
+
+  // Other declarations:
+  var ADP, ADPSUM, CN, CPFKAMP, CPFKATP, CPFKF16BP, CPFKF26BP, CiPFKATP, EXTERNAL;
+  var F26BP, GLCo, KATPASE, KGLYCOGEN, KPFKAMP, KPFKF16BP, KPFKF26BP, KSUCC;
+  var KTREHALOSE, KeqADH, KeqAK, KeqALD, KeqENO, KeqG3PDH, KeqGAPDH, KeqGLK;
+  var KeqGLT, KeqPGI, KeqPGK, KeqPGM, KeqPYK, KeqTPI, KiADHACE, KiADHETOH;
+  var KiADHNAD, KiADHNADH, KiPFKATP, KmADHACE, KmADHETOH, KmADHNAD, KmADHNADH;
+  var KmALDDHAP, KmALDF16P, KmALDGAP, KmALDGAPi, KmATP, KmENOP2G, KmENOPEP;
+  var KmG3PAG3P, KmG3PAPhi, KmG3PDHADP, KmG3PDHATP, KmG3PDHDHAP, KmG3PDHF16P;
+  var KmG3PDHG3P, KmG3PDHNAD, KmG3PDHNADH, KmGAPDHBPG, KmGAPDHGAP, KmGAPDHNAD;
+  var KmGAPDHNADH, KmGLKADP, KmGLKATP, KmGLKG6P, KmGLKGLCi, KmGLTGLCi, KmGLTGLCo;
+  var KmPDCPYR, KmPFKATP, KmPFKF6P, KmPGIF6P, KmPGIG6P, KmPGKADP, KmPGKATP;
+  var KmPGKBPG, KmPGKP3G, KmPGMP2G, KmPGMP3G, KmPYKADP, KmPYKATP, KmPYKPEP;
+  var KmPYKPYR, L0, NAD, NADSUM, Phi, VmADH, VmAK, VmALD, VmENO, VmG3PA, VmG3PDH;
+  var VmGAPDHf, VmGLK, VmGLT, VmPDC, VmPFK, VmPGI, VmPGK, VmPGM, VmPYK, alpha;
+  var gR, kACEt, kETOH, kHigh, kLACTO, kLow, nATP, nPDC, t1;
+
+  // Unit definitions:
+  unit mmol = 1e-3 mole;
+  unit L = litre;
+  unit mM = 1e-3 mole / litre;
+  unit min = 60 second;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+
+  // CV terms:
+  ACE identity "http://identifiers.org/obo.chebi/CHEBI15343",
+               "http://identifiers.org/kegg.compound/C00084"
+  ACEo identity "http://identifiers.org/obo.chebi/CHEBI15343",
+                "http://identifiers.org/kegg.compound/C00084"
+  AMP identity "http://identifiers.org/obo.chebi/CHEBI16027",
+               "http://identifiers.org/kegg.compound/C00020"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  BPG identity "http://identifiers.org/obo.chebi/28907",
+               "http://identifiers.org/kegg.compound/C00236"
+  F16P identity "http://identifiers.org/obo.chebi/16905",
+                "http://identifiers.org/kegg.compound/C00354"
+  F6P identity "http://identifiers.org/kegg.compound/C00085",
+               "http://identifiers.org/obo.chebi/15946"
+  G3P identity "http://identifiers.org/kegg.compound/C00093",
+               "http://identifiers.org/obo.chebi/CHEBI15978"
+  G6P identity "http://identifiers.org/kegg.compound/C00092",
+               "http://identifiers.org/obo.chebi/17665"
+  GLCi identity "http://identifiers.org/kegg.compound/C00293",
+                "http://identifiers.org/obo.chebi/CHEBI17234"
+  NADH identity "http://identifiers.org/obo.chebi/16908",
+                "http://identifiers.org/kegg.compound/C00004"
+  P2G identity "http://identifiers.org/kegg.compound/C00631",
+               "http://identifiers.org/obo.chebi/17835"
+  P3G identity "http://identifiers.org/kegg.compound/C00197",
+               "http://identifiers.org/obo.chebi/17794"
+  PEP identity "http://identifiers.org/obo.chebi/18021",
+               "http://identifiers.org/kegg.compound/C00074"
+  PYR identity "http://identifiers.org/obo.chebi/15361",
+               "http://identifiers.org/kegg.compound/C00022"
+  TRIO identity "http://identifiers.org/obo.chebi/CHEBI15978",
+                "http://identifiers.org/obo.chebi/CHEBI17138",
+                "http://identifiers.org/kegg.compound/C00093",
+                "http://identifiers.org/kegg.compound/C00661"
+  v_ADH identity "http://identifiers.org/kegg.reaction/R00754"
+  v_ALD identity "http://identifiers.org/kegg.reaction/R01068"
+  v_ATP identity "http://identifiers.org/obo.go/0006200"
+  v_ENO identity "http://identifiers.org/kegg.reaction/R00658"
+  v_GAPDH identity "http://identifiers.org/kegg.reaction/R01061"
+  v_GLK identity "http://identifiers.org/kegg.reaction/R00299"
+  v_GLT identity "http://identifiers.org/obo.go/0015758"
+  v_PDC identity "http://identifiers.org/kegg.reaction/R00224"
+  v_PFK identity "http://identifiers.org/kegg.reaction/R04779"
+  v_PGI identity "http://identifiers.org/kegg.reaction/R02740"
+  v_PGK identity "http://identifiers.org/kegg.reaction/R01512"
+  v_PGM identity "http://identifiers.org/kegg.reaction/R01518"
+end
+
+gustavsson3 is "gustavsson3"

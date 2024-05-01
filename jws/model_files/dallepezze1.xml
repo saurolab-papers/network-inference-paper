@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="dallepezze1" name="dallepezze1">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_3" id="compartment_1" name="Membrane" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005886"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+      <compartment metaid="metaid_4" id="compartment_2" name="Cytoplasm" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005737"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="species_1" name="Sink" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="species_10" name="PRAS40_pT246" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q96B36"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_7" id="species_11" name="mTORC1" compartment="compartment_2" initialConcentration="4.3225" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42345"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" id="species_12" name="PRAS40_pS183" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q96B36"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" id="species_13" name="PDK2" compartment="compartment_2" initialConcentration="12.1175" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q13153"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q13315"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P78527"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P49137"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" id="species_14" name="PDK2_p" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P49137"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q13153"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q13315"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P78527"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" id="species_15" name="IR_beta_refractory" compartment="compartment_1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P06213"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" id="species_16" name="PI3K_variant_p" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P27986"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_13" id="species_17" name="p70S6K_pT389" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P23443"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" id="species_18" name="PI3K_variant" compartment="compartment_2" initialConcentration="2.965" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P27986"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_15" id="species_19" name="IRS1_pS636_PI3K" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42336"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P35568"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_16" id="species_2" name="mTORC1_pS2448" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_16">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42345"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_17" id="species_20" name="IR_beta" compartment="compartment_1" initialConcentration="12.1175" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P06213"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_18" id="species_21" name="IR_beta_pY1146" compartment="compartment_1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_18">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P06213"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_19" id="species_22" name="mTORC2_pS2481" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_19">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42345"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_20" id="species_23" name="PI3K" compartment="compartment_2" initialConcentration="2.965" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_20">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P27986"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_21" id="species_27" name="Akt" compartment="compartment_2" initialConcentration="144.13" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_21">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P31749"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_22" id="species_28" name="Amino_Acids" compartment="compartment_2" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_23" id="species_3" name="Akt_pT308" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_23">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P31749"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_24" id="species_4" name="Akt_pT308_pS473" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_24">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P31749"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_25" id="species_41" name="Insulin" compartment="compartment_1" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_25">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P01308"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_26" id="species_42" name="IRS1_PI3K" compartment="compartment_2" initialConcentration="2.965" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_26">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P35568"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42336"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_27" id="species_47" name="p70S6K" compartment="compartment_2" initialConcentration="127.0725" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_27">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P23443"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_28" id="species_5" name="mTORC2" compartment="compartment_2" initialConcentration="6.2175" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_28">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42345"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_29" id="species_6" name="TSC_clx" compartment="compartment_2" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P49815"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q92574"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_30" id="species_7" name="IRS1_p_PI3K" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_30">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P35568"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P42336"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_31" id="species_8" name="TSC_p_clx" compartment="compartment_2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_31">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q92574"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P49815"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_32" id="species_9" name="PRAS40" compartment="compartment_2" initialConcentration="73.2175" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_32">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q96B36"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfInitialAssignments>
+      <initialAssignment metaid="metaid_33" symbol="species_18">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> species_23 </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment metaid="metaid_34" symbol="species_42">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> species_23 </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfReactions>
+      <reaction metaid="metaid_39" id="reaction_1" name="mTORC2_pS2481_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_36" species="species_22" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_37" species="species_5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_38" species="species_22"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_22 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_35" id="k1" name="k1" value="0.0255714"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_44" id="reaction_10" name="PRAS40_pT246_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_41" species="species_10" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_42" species="species_9" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_43" species="species_10"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_10 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_40" id="k1" name="k1" value="0.999991"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_49" id="reaction_11" name="PRAS40_pS183_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_46" species="species_12" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_47" species="species_9" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_48" species="species_12"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_12 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_45" id="k1" name="k1" value="0.403706"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_57" id="reaction_12" name="PRAS40_S183_phosphorylation_by_mTORC1_pS2448" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_51" species="species_2" stoichiometry="1"/>
+          <speciesReference metaid="metaid_52" species="species_9" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="species_2" stoichiometry="1"/>
+          <speciesReference metaid="metaid_54" species="species_12" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_55" species="species_2"/>
+          <modifierSpeciesReference metaid="metaid_56" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_9 </ci>
+              <ci> species_2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_50" id="k1" name="k1" value="0.073093"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_65" id="reaction_13" name="Akt_pT308_S473_phosphorylation_by_PDK2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="species_14" stoichiometry="1"/>
+          <speciesReference metaid="metaid_60" species="species_3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_61" species="species_14" stoichiometry="1"/>
+          <speciesReference metaid="metaid_62" species="species_4" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_63" species="species_14"/>
+          <modifierSpeciesReference metaid="metaid_64" species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_3 </ci>
+              <ci> species_14 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_58" id="k1" name="k1" value="5.90372"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_70" id="reaction_14" name="PDK2_p_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_67" species="species_14" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_68" species="species_13" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_69" species="species_14"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_14 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_66" id="k1" name="k1" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_78" id="reaction_15" name="PDK2_phosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_72" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_73" species="species_13" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_74" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_75" species="species_14" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_76" species="species_21"/>
+          <modifierSpeciesReference metaid="metaid_77" species="species_13"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> species_13 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_71" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_86" id="reaction_16" name="p70S6K_T389_phosphorylation_by_mTORC1_pS2448" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="species_2" stoichiometry="1"/>
+          <speciesReference metaid="metaid_81" species="species_47" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_82" species="species_2" stoichiometry="1"/>
+          <speciesReference metaid="metaid_83" species="species_17" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_84" species="species_2"/>
+          <modifierSpeciesReference metaid="metaid_85" species="species_47"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_47 </ci>
+              <ci> species_2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_79" id="k1" name="k1" value="0.00573896"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_91" id="reaction_17" name="p70S6K_pT389_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_88" species="species_17" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_89" species="species_47" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_90" species="species_17"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_17 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_87" id="k1" name="k1" value="0.00528455"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="reaction_18" name="mTORC2_S2481_phosphorylation_by_PI3K_variant_p" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_93" species="species_16" stoichiometry="1"/>
+          <speciesReference metaid="metaid_94" species="species_5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="species_16" stoichiometry="1"/>
+          <speciesReference metaid="metaid_96" species="species_22" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_97" species="species_16"/>
+          <modifierSpeciesReference metaid="metaid_98" species="species_5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_5 </ci>
+              <ci> species_16 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_92" id="k1" name="k1" value="0.0318902"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_107" id="reaction_19" name="PI3K_variant_phosphorylation_by_IR_beta_pY1146" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_101" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_102" species="species_18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_104" species="species_16" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_105" species="species_21"/>
+          <modifierSpeciesReference metaid="metaid_106" species="species_18"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> species_18 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_100" id="k1" name="k1" value="0.999985"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_112" id="reaction_2" name="IR_beta_pY1146_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_109" species="species_21" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_110" species="species_15" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_111" species="species_21"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> k1 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_108" id="k1" name="k1" value="0.149328"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_117" id="reaction_20" name="PI3K_variant_p_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_114" species="species_16" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="species_18" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_116" species="species_16"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_16 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_113" id="k1" name="k1" value="0.000232165"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="reaction_22" name="IRS1_S636_phosphorylation_by_p70S6K_pT389" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_119" species="species_17" stoichiometry="1"/>
+          <speciesReference metaid="metaid_120" species="species_42" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_121" species="species_17" stoichiometry="1"/>
+          <speciesReference metaid="metaid_122" species="species_19" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_123" species="species_17"/>
+          <modifierSpeciesReference metaid="metaid_124" species="species_42"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_42 </ci>
+              <ci> species_17 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_118" id="k1" name="k1" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_133" id="reaction_23" name="IRS1_PI3K_phosphorylation_by_IR_beta_pY1146" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_127" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_128" species="species_42" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="species_21" stoichiometry="1"/>
+          <speciesReference metaid="metaid_130" species="species_7" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_131" species="species_21"/>
+          <modifierSpeciesReference metaid="metaid_132" species="species_42"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> species_42 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_126" id="k1" name="k1" value="0.134664"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_141" id="reaction_3" name="TSC_clx_phosphorylation_by_Akt_pT308_pS473" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_135" species="species_4" stoichiometry="1"/>
+          <speciesReference metaid="metaid_136" species="species_6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_137" species="species_4" stoichiometry="1"/>
+          <speciesReference metaid="metaid_138" species="species_8" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_139" species="species_4"/>
+          <modifierSpeciesReference metaid="metaid_140" species="species_6"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_6 </ci>
+              <ci> species_4 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_134" id="k1" name="k1" value="0.000100039"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_149" id="reaction_31" name="Akt_T308_phosphorylation_by_IRS1_phos_PI3K" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="species_7" stoichiometry="1"/>
+          <speciesReference metaid="metaid_144" species="species_27" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_145" species="species_7" stoichiometry="1"/>
+          <speciesReference metaid="metaid_146" species="species_3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_147" species="species_7"/>
+          <modifierSpeciesReference metaid="metaid_148" species="species_27"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_27 </ci>
+              <ci> species_7 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_142" id="k1" name="k1" value="0.699505"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="reaction_32" name="Akt_pT308_S473_phosphorylation_by_mTORC2_pS2481" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_151" species="species_22" stoichiometry="1"/>
+          <speciesReference metaid="metaid_152" species="species_3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="species_22" stoichiometry="1"/>
+          <speciesReference metaid="metaid_154" species="species_4" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_155" species="species_22"/>
+          <modifierSpeciesReference metaid="metaid_156" species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_3 </ci>
+              <ci> species_22 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_150" id="k1" name="k1" value="4.50769"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" id="reaction_33" name="TSC_clx_phosphorylation_by_Akt_pT308" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_159" species="species_3" stoichiometry="1"/>
+          <speciesReference metaid="metaid_160" species="species_6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="species_3" stoichiometry="1"/>
+          <speciesReference metaid="metaid_162" species="species_8" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_163" species="species_3"/>
+          <modifierSpeciesReference metaid="metaid_164" species="species_6"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_6 </ci>
+              <ci> species_3 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_158" id="k1" name="k1" value="0.00627315"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_170" id="reaction_4" name="IRS1_synthesis" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_167" species="species_1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_168" species="species_42" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_169" species="species_1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_166" id="k1" name="k1" value="0.0999968"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_177" id="reaction_40" name="mTORC1_S2448_activation_by_Amino_Acids" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_172" species="species_28" stoichiometry="1"/>
+          <speciesReference metaid="metaid_173" species="species_11" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_174" species="species_2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_175" species="species_28"/>
+          <modifierSpeciesReference metaid="metaid_176" species="species_11"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_11 </ci>
+              <ci> species_28 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_171" id="k1" name="k1" value="0.0513784"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_184" id="reaction_41" name="IR_beta_Y1146_phosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="species_41" stoichiometry="1"/>
+          <speciesReference metaid="metaid_180" species="species_20" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_181" species="species_21" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_182" species="species_41"/>
+          <modifierSpeciesReference metaid="metaid_183" species="species_20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> k1 </ci>
+              <ci> species_20 </ci>
+              <ci> species_41 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_178" id="k1" name="k1" value="0.0253763"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="reaction_44" name="Akt_pT308_pS473_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_186" species="species_4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_187" species="species_3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_188" species="species_4"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_4 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_185" id="k1" name="k1" value="7.52842"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_197" id="reaction_46" name="IRS1_p_pi3K_phosphorylation_by_p70S6K_pT389" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_191" species="species_17" stoichiometry="1"/>
+          <speciesReference metaid="metaid_192" species="species_7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_193" species="species_17" stoichiometry="1"/>
+          <speciesReference metaid="metaid_194" species="species_19" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_195" species="species_17"/>
+          <modifierSpeciesReference metaid="metaid_196" species="species_7"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_7 </ci>
+              <ci> species_17 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_190" id="k1" name="k1" value="0.0001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_202" id="reaction_5" name="IR_beta_ready" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_199" species="species_15" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_200" species="species_20" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_201" species="species_15"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> k1 </ci>
+              <ci> species_15 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_198" id="k1" name="k1" value="0.0309731"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_207" id="reaction_53" name="IRS1_pS636_degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_204" species="species_19" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_205" species="species_1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_206" species="species_19"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_19 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_203" id="k1" name="k1" value="0.000100001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_212" id="reaction_55" name="IRS1_p_PI3K_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_209" species="species_7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_210" species="species_42" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_211" species="species_7"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_7 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_208" id="k1" name="k1" value="0.00328283"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_220" id="reaction_6" name="PRAS40_T246_phosphorylation_by_Akt_pT308_pS473" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_214" species="species_4" stoichiometry="1"/>
+          <speciesReference metaid="metaid_215" species="species_9" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_216" species="species_4" stoichiometry="1"/>
+          <speciesReference metaid="metaid_217" species="species_10" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_218" species="species_4"/>
+          <modifierSpeciesReference metaid="metaid_219" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_9 </ci>
+              <ci> species_4 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_213" id="k1" name="k1" value="0.000100001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_225" id="reaction_61" name="Akt_pT308_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_222" species="species_3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_223" species="species_27" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_224" species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_3 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_221" id="k1" name="k1" value="4.0739"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_233" id="reaction_7" name="mTORC1_pS2448_dephosphorylation_by_TSC_clx" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_227" species="species_6" stoichiometry="1"/>
+          <speciesReference metaid="metaid_228" species="species_2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_229" species="species_6" stoichiometry="1"/>
+          <speciesReference metaid="metaid_230" species="species_11" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_231" species="species_6"/>
+          <modifierSpeciesReference metaid="metaid_232" species="species_2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_2 </ci>
+              <ci> species_6 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_226" id="k1" name="k1" value="0.999989"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_241" id="reaction_8" name="PRAS40_T246_phosphorylation_by_Akt_pT308" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_235" species="species_3" stoichiometry="1"/>
+          <speciesReference metaid="metaid_236" species="species_9" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_237" species="species_3" stoichiometry="1"/>
+          <speciesReference metaid="metaid_238" species="species_10" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_239" species="species_3"/>
+          <modifierSpeciesReference metaid="metaid_240" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_9 </ci>
+              <ci> species_3 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_234" id="k1" name="k1" value="0.0239178"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_246" id="reaction_9" name="TSC_p_clx_dephosphorylation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_243" species="species_8" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_244" species="species_6" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_245" species="species_8"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_2 </ci>
+              <ci> k1 </ci>
+              <ci> species_8 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_242" id="k1" name="k1" value="0.00812537"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

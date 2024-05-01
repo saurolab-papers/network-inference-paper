@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="wilhelm1" name="wilhelm1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000290" id="batch" name="batch" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" sboTerm="SBO:0000285" id="P" name="P" compartment="batch" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" sboTerm="SBO:0000285" id="S" name="S" compartment="batch" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_3" sboTerm="SBO:0000285" id="X" name="X" compartment="batch" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" sboTerm="SBO:0000285" id="Y" name="Y" compartment="batch" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction metaid="metaid_9" sboTerm="SBO:0000182" id="r1" name="r1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_6" species="Y" stoichiometry="1"/>
+          <speciesReference metaid="metaid_7" species="S" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_8" species="X" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> S </ci>
+              <ci> Y </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_5" sboTerm="SBO:0000036" id="k1" value="8"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_14" sboTerm="SBO:0000182" id="r2" name="r2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_11" species="X" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_12" species="Y" stoichiometry="1"/>
+          <speciesReference metaid="metaid_13" species="X" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <apply>
+                <power/>
+                <ci> X </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_10" sboTerm="SBO:0000036" id="k2" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_20" sboTerm="SBO:0000182" id="r3" name="r3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_16" species="Y" stoichiometry="1"/>
+          <speciesReference metaid="metaid_17" species="X" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_18" species="Y" stoichiometry="1"/>
+          <speciesReference metaid="metaid_19" species="P" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> X </ci>
+              <ci> Y </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_15" sboTerm="SBO:0000036" id="k3" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_24" sboTerm="SBO:0000182" id="r4" name="r4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_22" species="X" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_23" species="P" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> X </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_21" sboTerm="SBO:0000154" id="k4" value="1.5"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -1,0 +1,133 @@
+// Created by libAntimony v2.13.2
+function populationgrowth(S, T, k)
+  k*S*T;
+end
+
+
+model *westerhoff1()
+
+  // Compartments and Species:
+  species Coronadeadnontested, Coronadeadtested, $Coronaregistered, recoveredtested;
+  species infectedtested, symptomstested, $coronadead, $totalpopulation, $coronadeadalldead;
+  species noncoronadead, $coronarecovered, recoverednontested, infectednontested;
+  species $noncoronadeadperc, $s, symptomsnontested, uninfectednontested;
+  species uninfectedtested;
+
+  // Assignment Rules:
+  Coronaregistered := Coronadeadtested + recoveredtested + infectedtested + symptomstested;
+  coronadead := 100*(Coronadeadtested + Coronadeadnontested)/totalpopulation;
+  totalpopulation := recoveredtested + recoverednontested + infectednontested + infectedtested + uninfectednontested + uninfectedtested + symptomstested + symptomsnontested;
+  coronadeadalldead := 100*coronadead/(coronadead + noncoronadead);
+  coronarecovered := 100*(recoveredtested + recoverednontested)/totalpopulation;
+  noncoronadeadperc := 100*noncoronadead/totalpopulation;
+  intermittenttime := time - lockdownduration*nlockdowns - nlockdowns*lockdownpauseduration;
+  Governmentinducedisolation := adjF*(1 + ((2.5*symptomaticnumbertolerance/symptomaticnumbertolerance)*symptomstested/symptomaticnumbertolerance)*governmentresponsefactortodiagnosedinfected);
+  TotalInfectioncoefficient := (1 - epidemicextinguished)*(Infectionfromnontesednosymptoms*infectednontested + Infectionfromtestednosymtoms*infectedtested + Infectionfromtestedsymptoms*symptomstested + Infectionfromnontestedsymptoms*symptomsnontested)/SocialDistance;
+
+  // Reactions:
+  re1: uninfectednontested => infectednontested; uninfectednontested*TotalInfectioncoefficient;
+  re10: symptomsnontested => recoverednontested; Coronarecover*symptomsnontested;
+  re11: $s => uninfectednontested; populationgrowth(s, totalpopulation, Birthrate);
+  re12: uninfectednontested => noncoronadead; Normaldeath*uninfectednontested;
+  re13: recoveredtested => noncoronadead; Normaldeath*recoveredtested;
+  re14: recoverednontested => noncoronadead; Normaldeath*recoverednontested;
+  re15: infectedtested => Coronadeadtested; Coronadeathrateconstant*infectedtested;
+  re16: infectednontested => Coronadeadnontested; Coronadeathrateconstant*infectednontested;
+  re17: uninfectedtested => noncoronadead; Normaldeath*uninfectedtested;
+  re18: symptomsnontested => Coronadeadnontested; Coronadeathrateconstant*symptomsnontested;
+  re2: uninfectednontested => uninfectedtested; TestingRandome*uninfectednontested;
+  re3: uninfectedtested => infectednontested; uninfectedtested*TotalInfectioncoefficient;
+  re4: infectednontested => infectedtested; TestingRandome*infectednontested;
+  re5: infectednontested => symptomsnontested; Symptomsappear*infectednontested;
+  re6: infectedtested => symptomstested; Symptomsappear*infectedtested;
+  re7: symptomsnontested => symptomstested; TestingforSymptoms*symptomsnontested;
+  re8: symptomstested => Coronadeadtested; Coronadeathrateconstant*symptomstested;
+  re9: symptomstested => recoveredtested; Coronarecover*symptomstested;
+
+  // Events:
+  endofepidemic: at 0 after (infectednontested + infectedtested + symptomstested + symptomsnontested) < numbercutoff, t0=false, persistent=false, fromTrigger=false: epidemicextinguished = 1;
+  triggerrelaxationsoc: at 0 after intermittenttime > (Timegovermentaction - lockdownduration*(1 - timefractionlockdown)), t0=false, persistent=false, fromTrigger=false: SocialDistance = ModelValue40;
+  triggerrepetitiveinc: at 0 after intermittenttime > Timegovermentaction, t0=false, persistent=false, fromTrigger=false: nlockdowns = 1 + nlockdowns;
+  triggergovernmentact: at 0 after intermittenttime > Timegovermentaction, t0=false, persistent=false, fromTrigger=false: SocialDistance = ModelValue40*Governmentinducedisolation;
+  roundoffsymptomsnont: at 0 after symptomsnontested < 0, t0=false, persistent=false, fromTrigger=false: symptomsnontested = 0;
+  roundoffinfectednott: at 0 after infectednontested < 0, t0=false, persistent=false, fromTrigger=false: infectednontested = 0;
+
+  // Species initializations:
+  Coronadeadnontested = 0;
+  Coronadeadtested = 0;
+  recoveredtested = 0;
+  infectedtested = 1;
+  symptomstested = 0;
+  noncoronadead = 0;
+  recoverednontested = 0;
+  infectednontested = 2;
+  s = 1;
+  symptomsnontested = 0;
+  uninfectednontested = 630000;
+  uninfectedtested = 0;
+
+  // Variable initializations:
+  numbercutoff = 0;
+  epidemicextinguished = 0;
+  Timegovermentaction = 15;
+  lockdownduration = 730;
+  timefractionlockdown = 0.5;
+  SocialDistance = 534700;
+  ModelValue40 = 534700;
+  nlockdowns = 0;
+  Birthrate = 3.29e-05;
+  Coronadeathrateconstant = 0.002;
+  Coronarecover = 0.067;
+  adjF = 1;
+  symptomaticnumbertolerance = 141;
+  governmentresponsefactortodiagnosedinfected = 0;
+  Infectionfromnontesednosymptoms = 0.508;
+  Infectionfromnontestedsymptoms = 0.25;
+  Infectionfromtestednosymtoms = 0.025;
+  Infectionfromtestedsymptoms = 0.025;
+  ModelValue51 = 0;
+  Normaldeath = 3.29e-05;
+  Symptomsappear = 0.30165;
+  TestingRandome = 0.0008;
+  TestingforSymptoms = 500;
+  lockdownpauseduration = 7;
+  npauses = 0;
+
+  // Other declarations:
+  var numbercutoff, epidemicextinguished, intermittenttime, Timegovermentaction;
+  var lockdownduration, timefractionlockdown, SocialDistance, ModelValue40;
+  var nlockdowns, Governmentinducedisolation, Birthrate, Coronadeathrateconstant;
+  var Coronarecover, adjF, symptomaticnumbertolerance, governmentresponsefactortodiagnosedinfected;
+  var Infectionfromnontesednosymptoms, Infectionfromnontestedsymptoms, Infectionfromtestednosymtoms;
+  var Infectionfromtestedsymptoms, ModelValue51, Normaldeath, Symptomsappear;
+  var TestingRandome, TestingforSymptoms, TotalInfectioncoefficient, lockdownpauseduration;
+  var npauses;
+
+  // Display Names:
+  Coronadeadnontested is "Corona-dead-nontested";
+  Coronadeadtested is "Corona-dead-tested";
+  Coronaregistered is "Corona-registered";
+  recoveredtested is "recovered-tested";
+  infectedtested is "infected-tested";
+  symptomstested is "symptoms-tested";
+  coronadead is "% corona dead";
+  totalpopulation is "total population";
+  coronadeadalldead is "corona dead / all dead (%)";
+  noncoronadead is "non-corona-dead";
+  coronarecovered is "% corona recovered";
+  recoverednontested is "recovered-nontested";
+  infectednontested is "infected-nontested";
+  noncoronadeadperc is "% non corona dead";
+  s is "S";
+  symptomsnontested is "symptoms-nontested";
+  uninfectednontested is "uninfectednon-tested";
+  uninfectedtested is "uninfected-tested";
+  triggerrelaxationsoc is "triggerrelaxationsocialisolation";
+  triggerrepetitiveinc is "triggerrepetitiveincreasesocialisolation";
+  triggergovernmentact is "triggergovernmentactivity";
+  roundoffsymptomsnont is "roundoffsymptomsnontested";
+  roundoffinfectednott is "roundoffinfectednottested";
+  adjF is "adjustmentFactor ";
+end
+
+westerhoff1 is "westerhoff1"

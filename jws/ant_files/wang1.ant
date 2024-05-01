@@ -1,0 +1,38 @@
+// Created by libAntimony v2.13.2
+model *wang1()
+
+  // Compartments and Species:
+  species T, TStar, V;
+
+  // Reactions:
+  v1:  -> T; s;
+  v2: T -> ; alpha*T;
+  v3:  -> T; r*T;
+  v4: T -> ; r*T*(T + TStar)/Tmax;
+  v5: T -> ; k*T*V;
+  v6:  -> TStar; k*sigma1*T*V;
+  v7: TStar -> ; beta*TStar;
+  v8:  -> V; beta*NN*TStar;
+  v9: V -> ; gamma_*V;
+
+  // Species initializations:
+  T = 1000;
+  TStar = 0;
+  V = 200;
+
+  // Variable initializations:
+  NN = 10;
+  Tmax = 1500;
+  alpha = 0.02;
+  beta = 0.3;
+  gamma_ = 2.4;
+  k = 0.0027;
+  r = 2;
+  s = 0.1;
+  sigma1 = 0.888888888888889;
+
+  // Other declarations:
+  var NN, Tmax, alpha, beta, gamma_, k, r, s, sigma1;
+end
+
+wang1 is "wang1"

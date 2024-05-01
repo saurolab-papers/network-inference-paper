@@ -1,0 +1,55 @@
+// Created by libAntimony v2.13.2
+model *anderson1()
+
+  // Compartments and Species:
+  species S, T, X, $Xy, Y, $Yi;
+
+  // Assignment Rules:
+  Xy := X + Y;
+  Yi := Y/(X + Y);
+
+  // Reactions:
+  v1:  -> X; lambda;
+  v10: Y -> ; g*Y*T;
+  v11:  -> T; k*Y*T;
+  v2: X -> ; mu*X;
+  v3: S + X -> Y; beta*X*S;
+  v4: Y -> ; alfa*Y;
+  v5:  -> S; alfa*r*Y;
+  v6: S -> ; d*S;
+  v7: S -> ; h*S*T;
+  v8:  -> T; gamma_*S*T;
+  v9: T -> ; a*T;
+
+  // Species initializations:
+  S = 1;
+  T = 0.0001;
+  X = 120;
+  Y = 0;
+
+  // Variable initializations:
+  a = 0.05;
+  alfa = 0.2;
+  beta = 0.1;
+  d = 72;
+  g = 0.05;
+  gamma_ = 1;
+  h = 0.1;
+  k = 0.05;
+  lambda = 1;
+  mu = 0.00833;
+  r = 16;
+
+  // Other declarations:
+  var a, alfa, beta, d, g, gamma_, h, k, lambda, mu, r;
+
+  // Display Names:
+  S is "Merozoites";
+  T is "T-lymphocytes";
+  X is "RBC";
+  Xy is "Erythrocyte abundance";
+  Y is "iRBC";
+  Yi is "porportion of infected rbc";
+end
+
+anderson1 is "anderson1"

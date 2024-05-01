@@ -1,0 +1,60 @@
+// Created by libAntimony v2.13.2
+model *mayya()
+
+  // Compartments and Species:
+  species ps2c, ps2n, psc, psn, sc, sn;
+
+  // Assignment Rules:
+  sk := piecewise(0, time < lag, 0, time > (lag + period), ampl*sin((pi/period)*(time - lag)));
+
+  // Reactions:
+  v_1: sn -> 0.0684492 sc; sexpmax*sn/(Ksexp + sn);
+  v_2: 0.0684492 sc -> sn; simpmax*sc/(Ksimp + sc);
+  v_3: sc -> psc; Kcatp*sk*sc/(Kmp + sc);
+  v_4: psc -> 0.5 ps2c; Kfd*psc^2;
+  v_5: ps2c -> 2 psc; Krd*ps2c;
+  v_6: 0.0684492 ps2c -> ps2n; ps2impmax*ps2c/(Kps2imp + ps2c);
+  v_7: psn -> 0.5 ps2n; Kfd*psn^2;
+  v_8: ps2n -> 2 psn; Krd*ps2n;
+  v_9: psn -> sn; Kcatde*SP*psn/(Kmde + psn);
+
+  // Species initializations:
+  ps2c = 0;
+  ps2n = 0;
+  psc = 0;
+  psn = 0;
+  sc = 1;
+  sn = 0;
+
+  // Variable initializations:
+  Kcatde = 1;
+  Kcatp = 1;
+  Kfd = 0.6;
+  Kmde = 2;
+  Kmp = 4;
+  Kps2imp = 0.3;
+  Kpsexp = 0.6;
+  Kpsimp = 3;
+  Krd = 0.03;
+  Ksexp = 0.6;
+  Ksimp = 3;
+  SP = 0.05;
+  SVnm = 1;
+  Vc = 0.935;
+  Vn = 0.064;
+  ampl = 0.01;
+  lag = 500;
+  period = 2000;
+  ps2impmax = 0.045;
+  psexpmax = 0.06;
+  psimpmax = 0.003;
+  sexpmax = 0.06;
+  simpmax = 0.003;
+
+  // Other declarations:
+  var Kcatde, Kcatp, Kfd, Kmde, Kmp, Kps2imp, Kpsexp, Kpsimp, Krd, Ksexp;
+  var Ksimp, SP, SVnm, Vc, Vn, ampl, lag, period, ps2impmax, psexpmax, psimpmax;
+  var sexpmax, simpmax, sk;
+end
+
+mayya is "mayya"

@@ -1,0 +1,1609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="vanEunen5" name="vanEunen5">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ACALD" compartment="default_compartment" initialConcentration="0.04" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="BPG" compartment="default_compartment" initialConcentration="1e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="F16P" compartment="default_compartment" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="F6P" compartment="default_compartment" initialConcentration="0.2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="G6P" compartment="default_compartment" initialConcentration="1.2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="GLCi" compartment="default_compartment" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="NADH" compartment="default_compartment" initialConcentration="0.29" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="P2G" compartment="default_compartment" initialConcentration="0.06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="P3G" compartment="default_compartment" initialConcentration="0.54" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="PEP" compartment="default_compartment" initialConcentration="0.5" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="PYR" compartment="default_compartment" initialConcentration="0.14" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="TRIO" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_13" id="ACE" value="10" constant="false"/>
+      <parameter metaid="metaid_14" id="ADP" value="1" constant="false"/>
+      <parameter metaid="metaid_15" id="AMP" value="0.3" constant="false"/>
+      <parameter metaid="metaid_16" id="CGAPDH" value="1" constant="false"/>
+      <parameter metaid="metaid_17" id="CO2" value="1" constant="false"/>
+      <parameter metaid="metaid_18" id="CPFKAMP" value="0.0845" constant="false"/>
+      <parameter metaid="metaid_19" id="CPFKATP" value="3" constant="false"/>
+      <parameter metaid="metaid_20" id="CPFKF16BP" value="0.397" constant="false"/>
+      <parameter metaid="metaid_21" id="CPFKF26BP" value="0.0174" constant="false"/>
+      <parameter metaid="metaid_22" id="CiPFKATP" value="100" constant="false"/>
+      <parameter metaid="metaid_23" id="ETOH" value="25" constant="false"/>
+      <parameter metaid="metaid_24" id="EXTERNAL" value="1" constant="false"/>
+      <parameter metaid="metaid_25" id="F26BP" value="0.014" constant="false"/>
+      <parameter metaid="metaid_26" id="GLY" value="10" constant="false"/>
+      <parameter metaid="metaid_27" id="KACE" value="0.5" constant="false"/>
+      <parameter metaid="metaid_28" id="KEQADH" value="6.9e-05" constant="false"/>
+      <parameter metaid="metaid_29" id="KEQALD" value="0.069" constant="false"/>
+      <parameter metaid="metaid_30" id="KEQENO" value="6.7" constant="false"/>
+      <parameter metaid="metaid_31" id="KEQGLT" value="1" constant="false"/>
+      <parameter metaid="metaid_32" id="KEQHK" value="3800" constant="false"/>
+      <parameter metaid="metaid_33" id="KEQPGI" value="0.314" constant="false"/>
+      <parameter metaid="metaid_34" id="KEQPGK" value="3200" constant="false"/>
+      <parameter metaid="metaid_35" id="KEQPGM" value="0.19" constant="false"/>
+      <parameter metaid="metaid_36" id="KEQTPI" value="0.045" constant="false"/>
+      <parameter metaid="metaid_37" id="KGLY" value="17.5" constant="false"/>
+      <parameter metaid="metaid_38" id="KIADHACALD" value="1.1" constant="false"/>
+      <parameter metaid="metaid_39" id="KIADHETOH" value="90" constant="false"/>
+      <parameter metaid="metaid_40" id="KIADHNAD" value="0.92" constant="false"/>
+      <parameter metaid="metaid_41" id="KIADHNADH" value="0.031" constant="false"/>
+      <parameter metaid="metaid_42" id="KIHKT6P" value="0.04" constant="false"/>
+      <parameter metaid="metaid_43" id="KMADHACALD" value="1.11" constant="false"/>
+      <parameter metaid="metaid_44" id="KMADHETOH" value="17" constant="false"/>
+      <parameter metaid="metaid_45" id="KMADHNAD" value="0.17" constant="false"/>
+      <parameter metaid="metaid_46" id="KMADHNADH" value="0.11" constant="false"/>
+      <parameter metaid="metaid_47" id="KMALDDHAP" value="2.4" constant="false"/>
+      <parameter metaid="metaid_48" id="KMALDF16P" value="0.3" constant="false"/>
+      <parameter metaid="metaid_49" id="KMALDGAP" value="2" constant="false"/>
+      <parameter metaid="metaid_50" id="KMALDGAPi" value="10" constant="false"/>
+      <parameter metaid="metaid_51" id="KMENOP2G" value="0.04" constant="false"/>
+      <parameter metaid="metaid_52" id="KMENOPEP" value="0.5" constant="false"/>
+      <parameter metaid="metaid_53" id="KMGAPDHBPG" value="0.51" constant="false"/>
+      <parameter metaid="metaid_54" id="KMGAPDHGAP" value="0.39" constant="false"/>
+      <parameter metaid="metaid_55" id="KMGAPDHNAD" value="2.85" constant="false"/>
+      <parameter metaid="metaid_56" id="KMGAPDHNADH" value="0.007" constant="false"/>
+      <parameter metaid="metaid_57" id="KMGLTGLCi" value="1" constant="false"/>
+      <parameter metaid="metaid_58" id="KMGLTGLCo" value="1" constant="false"/>
+      <parameter metaid="metaid_59" id="KMHKADP" value="0.23" constant="false"/>
+      <parameter metaid="metaid_60" id="KMHKATP" value="0.15" constant="false"/>
+      <parameter metaid="metaid_61" id="KMHKG6P" value="30" constant="false"/>
+      <parameter metaid="metaid_62" id="KMHKGLCi" value="0.08" constant="false"/>
+      <parameter metaid="metaid_63" id="KMPDCPYR" value="6.36" constant="false"/>
+      <parameter metaid="metaid_64" id="KMPFKATP" value="0.71" constant="false"/>
+      <parameter metaid="metaid_65" id="KMPFKF6P" value="0.1" constant="false"/>
+      <parameter metaid="metaid_66" id="KMPGIF6P" value="0.3" constant="false"/>
+      <parameter metaid="metaid_67" id="KMPGIG6P" value="1.4" constant="false"/>
+      <parameter metaid="metaid_68" id="KMPGKADP" value="0.2" constant="false"/>
+      <parameter metaid="metaid_69" id="KMPGKATP" value="0.3" constant="false"/>
+      <parameter metaid="metaid_70" id="KMPGKBPG" value="0.003" constant="false"/>
+      <parameter metaid="metaid_71" id="KMPGKP3G" value="0.53" constant="false"/>
+      <parameter metaid="metaid_72" id="KMPGMP2G" value="0.08" constant="false"/>
+      <parameter metaid="metaid_73" id="KMPGMP3G" value="1.2" constant="false"/>
+      <parameter metaid="metaid_74" id="KMPYKADP" value="0.3" constant="false"/>
+      <parameter metaid="metaid_75" id="KMPYKATP" value="9.3" constant="false"/>
+      <parameter metaid="metaid_76" id="KMPYKF16P" value="0.2" constant="false"/>
+      <parameter metaid="metaid_77" id="KMPYKPEP" value="0.19" constant="false"/>
+      <parameter metaid="metaid_78" id="KPFKAMP" value="0.0995" constant="false"/>
+      <parameter metaid="metaid_79" id="KPFKF16BP" value="0.111" constant="false"/>
+      <parameter metaid="metaid_80" id="KPFKF26BP" value="0.000682" constant="false"/>
+      <parameter metaid="metaid_81" id="KSUC" value="0.9" constant="false"/>
+      <parameter metaid="metaid_82" id="KTRE1" value="0" constant="false"/>
+      <parameter metaid="metaid_83" id="KTRE2" value="0" constant="false"/>
+      <parameter metaid="metaid_84" id="KiPFKATP" value="0.65" constant="false"/>
+      <parameter metaid="metaid_85" id="L0" value="0.66" constant="false"/>
+      <parameter metaid="metaid_86" id="L10" value="60000" constant="false"/>
+      <parameter metaid="metaid_87" id="NADt" value="1.59" constant="false"/>
+      <parameter metaid="metaid_88" id="NHPDC" value="1.9" constant="false"/>
+      <parameter metaid="metaid_89" id="T6P" value="0.2" constant="false"/>
+      <parameter metaid="metaid_90" id="TREH" value="2" constant="false"/>
+      <parameter metaid="metaid_91" id="VMAXADH" value="932" constant="false"/>
+      <parameter metaid="metaid_92" id="VMAXALD" value="310" constant="false"/>
+      <parameter metaid="metaid_93" id="VMAXENO" value="357" constant="false"/>
+      <parameter metaid="metaid_94" id="VMAXGAPDHf" value="1487" constant="false"/>
+      <parameter metaid="metaid_95" id="VMAXGAPDHr" value="853" constant="false"/>
+      <parameter metaid="metaid_96" id="VMAXGLT" value="160" constant="false"/>
+      <parameter metaid="metaid_97" id="VMAXHK" value="213" constant="false"/>
+      <parameter metaid="metaid_98" id="VMAXPDC" value="395" constant="false"/>
+      <parameter metaid="metaid_99" id="VMAXPFK" value="213" constant="false"/>
+      <parameter metaid="metaid_100" id="VMAXPGI" value="787" constant="false"/>
+      <parameter metaid="metaid_101" id="VMAXPGK" value="2512" constant="false"/>
+      <parameter metaid="metaid_102" id="VMAXPGM" value="856" constant="false"/>
+      <parameter metaid="metaid_103" id="VMAXPYK" value="820" constant="false"/>
+      <parameter metaid="metaid_104" id="atp1" value="3" constant="false"/>
+      <parameter metaid="metaid_105" id="atp2" value="1.5" constant="false"/>
+      <parameter metaid="metaid_106" id="gR" value="5.12" constant="false"/>
+      <parameter metaid="metaid_107" id="glc1" value="0.2" constant="false"/>
+      <parameter metaid="metaid_108" id="glc2" value="5" constant="false"/>
+      <parameter metaid="metaid_109" id="n10" value="4" constant="false"/>
+      <parameter metaid="metaid_110" id="tswitch" value="10" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_112" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_111" species="GLCi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXGLT </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <piecewise>
+                      <piece>
+                        <ci> glc1 </ci>
+                        <apply>
+                          <lt/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> tswitch </ci>
+                        </apply>
+                      </piece>
+                      <otherwise>
+                        <ci> glc2 </ci>
+                      </otherwise>
+                    </piecewise>
+                    <ci> KMGLTGLCo </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLCi </ci>
+                    <apply>
+                      <times/>
+                      <ci> KMGLTGLCo </ci>
+                      <ci> KEQGLT </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <piecewise>
+                    <piece>
+                      <ci> glc1 </ci>
+                      <apply>
+                        <lt/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <ci> tswitch </ci>
+                      </apply>
+                    </piece>
+                    <otherwise>
+                      <ci> glc2 </ci>
+                    </otherwise>
+                  </piecewise>
+                  <ci> KMGLTGLCo </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> GLCi </ci>
+                  <ci> KMGLTGLCi </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <cn> 0.91 </cn>
+                    <piecewise>
+                      <piece>
+                        <ci> glc1 </ci>
+                        <apply>
+                          <lt/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> tswitch </ci>
+                        </apply>
+                      </piece>
+                      <otherwise>
+                        <ci> glc2 </ci>
+                      </otherwise>
+                    </piecewise>
+                    <ci> GLCi </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KMGLTGLCo </ci>
+                    <ci> KMGLTGLCi </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_115" id="v_10" name="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_113" species="BPG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_114" species="P3G" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXPGK </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> KEQPGK </ci>
+                      <ci> BPG </ci>
+                      <ci> ADP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMPGKP3G </ci>
+                      <ci> KMPGKATP </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> P3G </ci>
+                      <piecewise>
+                        <piece>
+                          <ci> atp1 </ci>
+                          <apply>
+                            <lt/>
+                            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                            <ci> tswitch </ci>
+                          </apply>
+                        </piece>
+                        <otherwise>
+                          <ci> atp2 </ci>
+                        </otherwise>
+                      </piecewise>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMPGKP3G </ci>
+                      <ci> KMPGKATP </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> BPG </ci>
+                    <ci> KMPGKBPG </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> P3G </ci>
+                    <ci> KMPGKP3G </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <piecewise>
+                      <piece>
+                        <ci> atp1 </ci>
+                        <apply>
+                          <lt/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> tswitch </ci>
+                        </apply>
+                      </piece>
+                      <otherwise>
+                        <ci> atp2 </ci>
+                      </otherwise>
+                    </piecewise>
+                    <ci> KMPGKATP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> ADP </ci>
+                    <ci> KMPGKADP </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_118" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_116" species="P3G" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_117" species="P2G" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXPGM </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> P3G </ci>
+                    <ci> KMPGMP3G </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> P2G </ci>
+                    <apply>
+                      <times/>
+                      <ci> KMPGMP3G </ci>
+                      <ci> KEQPGM </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> P3G </ci>
+                  <ci> KMPGMP3G </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> P2G </ci>
+                  <ci> KMPGMP2G </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_119" species="P2G" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_120" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXENO </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> P2G </ci>
+                    <ci> KMENOP2G </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> PEP </ci>
+                    <apply>
+                      <times/>
+                      <ci> KMENOP2G </ci>
+                      <ci> KEQENO </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> P2G </ci>
+                  <ci> KMENOP2G </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> PEP </ci>
+                  <ci> KMENOPEP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="v_13" name="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="PYR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_124" species="F16P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> VMAXPYK </ci>
+                        <ci> PEP </ci>
+                      </apply>
+                      <ci> KMPYKPEP </ci>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> PEP </ci>
+                          <ci> KMPYKPEP </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <minus/>
+                        <ci> n10 </ci>
+                        <cn type="integer"> 1 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> L10 </ci>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <divide/>
+                              <piecewise>
+                                <piece>
+                                  <ci> atp1 </ci>
+                                  <apply>
+                                    <lt/>
+                                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                    <ci> tswitch </ci>
+                                  </apply>
+                                </piece>
+                                <otherwise>
+                                  <ci> atp2 </ci>
+                                </otherwise>
+                              </piecewise>
+                              <ci> KMPYKATP </ci>
+                            </apply>
+                            <cn type="integer"> 1 </cn>
+                          </apply>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <divide/>
+                              <ci> F16P </ci>
+                              <ci> KMPYKF16P </ci>
+                            </apply>
+                            <cn type="integer"> 1 </cn>
+                          </apply>
+                        </apply>
+                        <ci> n10 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> PEP </ci>
+                          <ci> KMPYKPEP </ci>
+                        </apply>
+                      </apply>
+                      <ci> n10 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> ADP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> ADP </ci>
+                <ci> KMPYKADP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_128" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="PYR" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="ACALD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXPDC </ci>
+                <apply>
+                  <power/>
+                  <ci> PYR </ci>
+                  <ci> NHPDC </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <power/>
+                  <ci> KMPDCPYR </ci>
+                  <ci> NHPDC </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <power/>
+                      <ci> PYR </ci>
+                      <ci> NHPDC </ci>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <ci> KMPDCPYR </ci>
+                      <ci> NHPDC </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_131" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_129" species="PYR" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_130" species="NADH" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> KSUC </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_134" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_132" species="ACALD" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_133" species="NADH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> VMAXADH </ci>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <minus/>
+                          <ci> NADt </ci>
+                          <ci> NADH </ci>
+                        </apply>
+                        <ci> ETOH </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> KIADHNAD </ci>
+                        <ci> KMADHETOH </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> NADH </ci>
+                        <ci> ACALD </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> KIADHNAD </ci>
+                        <ci> KMADHETOH </ci>
+                        <ci> KEQADH </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADt </ci>
+                    <ci> NADH </ci>
+                  </apply>
+                  <ci> KIADHNAD </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> KMADHNAD </ci>
+                    <ci> ETOH </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNAD </ci>
+                    <ci> KMADHETOH </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> KMADHNADH </ci>
+                    <ci> ACALD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNADH </ci>
+                    <ci> KMADHACALD </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> NADH </ci>
+                  <ci> KIADHNADH </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> NADt </ci>
+                      <ci> NADH </ci>
+                    </apply>
+                    <ci> ETOH </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNAD </ci>
+                    <ci> KMADHETOH </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> KMADHNADH </ci>
+                    <apply>
+                      <minus/>
+                      <ci> NADt </ci>
+                      <ci> NADH </ci>
+                    </apply>
+                    <ci> ACALD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNAD </ci>
+                    <ci> KIADHNADH </ci>
+                    <ci> KMADHACALD </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> KMADHNAD </ci>
+                    <ci> ETOH </ci>
+                    <ci> NADH </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNAD </ci>
+                    <ci> KMADHETOH </ci>
+                    <ci> KIADHNADH </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> NADH </ci>
+                    <ci> ACALD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNADH </ci>
+                    <ci> KMADHACALD </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> NADt </ci>
+                      <ci> NADH </ci>
+                    </apply>
+                    <ci> ETOH </ci>
+                    <ci> ACALD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHNAD </ci>
+                    <ci> KMADHETOH </ci>
+                    <ci> KIADHACALD </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> ETOH </ci>
+                    <ci> NADH </ci>
+                    <ci> ACALD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KIADHETOH </ci>
+                    <ci> KIADHNADH </ci>
+                    <ci> KMADHACALD </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_137" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_135" species="ACALD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_136" species="NADH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KACE </ci>
+              <ci> ACALD </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_140" id="v_2" name="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_138" species="GLCi" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_139" species="G6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXHK </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> GLCi </ci>
+                        <ci> KMHKGLCi </ci>
+                      </apply>
+                      <piecewise>
+                        <piece>
+                          <ci> atp1 </ci>
+                          <apply>
+                            <lt/>
+                            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                            <ci> tswitch </ci>
+                          </apply>
+                        </piece>
+                        <otherwise>
+                          <ci> atp2 </ci>
+                        </otherwise>
+                      </piecewise>
+                    </apply>
+                    <ci> KMHKATP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> G6P </ci>
+                      <ci> ADP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMHKGLCi </ci>
+                      <ci> KMHKATP </ci>
+                      <ci> KEQHK </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLCi </ci>
+                    <ci> KMHKGLCi </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> G6P </ci>
+                    <ci> KMHKG6P </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> T6P </ci>
+                    <ci> KIHKT6P </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <piecewise>
+                      <piece>
+                        <ci> atp1 </ci>
+                        <apply>
+                          <lt/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> tswitch </ci>
+                        </apply>
+                      </piece>
+                      <otherwise>
+                        <ci> atp2 </ci>
+                      </otherwise>
+                    </piecewise>
+                    <ci> KMHKATP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> ADP </ci>
+                    <ci> KMHKADP </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="v_3" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="GLCi" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> KTRE1 </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="G6P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="F6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXPGI </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> G6P </ci>
+                    <ci> KMPGIG6P </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> F6P </ci>
+                    <apply>
+                      <times/>
+                      <ci> KMPGIG6P </ci>
+                      <ci> KEQPGI </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> G6P </ci>
+                  <ci> KMPGIG6P </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> F6P </ci>
+                  <ci> KMPGIF6P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_147" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="G6P" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> KTRE2 </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_150" id="v_6" name="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_148" species="F6P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_149" species="F16P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXPFK </ci>
+                <ci> gR </ci>
+                <ci> F6P </ci>
+                <piecewise>
+                  <piece>
+                    <ci> atp1 </ci>
+                    <apply>
+                      <lt/>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <ci> tswitch </ci>
+                    </apply>
+                  </piece>
+                  <otherwise>
+                    <ci> atp2 </ci>
+                  </otherwise>
+                </piecewise>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> F6P </ci>
+                        <ci> KMPFKF6P </ci>
+                      </apply>
+                      <piecewise>
+                        <piece>
+                          <ci> atp1 </ci>
+                          <apply>
+                            <lt/>
+                            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                            <ci> tswitch </ci>
+                          </apply>
+                        </piece>
+                        <otherwise>
+                          <ci> atp2 </ci>
+                        </otherwise>
+                      </piecewise>
+                    </apply>
+                    <ci> KMPFKATP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> gR </ci>
+                      <ci> F6P </ci>
+                      <piecewise>
+                        <piece>
+                          <ci> atp1 </ci>
+                          <apply>
+                            <lt/>
+                            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                            <ci> tswitch </ci>
+                          </apply>
+                        </piece>
+                        <otherwise>
+                          <ci> atp2 </ci>
+                        </otherwise>
+                      </piecewise>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMPFKF6P </ci>
+                      <ci> KMPFKATP </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> KMPFKF6P </ci>
+                <ci> KMPFKATP </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <ci> F6P </ci>
+                            <ci> KMPFKF6P </ci>
+                          </apply>
+                          <piecewise>
+                            <piece>
+                              <ci> atp1 </ci>
+                              <apply>
+                                <lt/>
+                                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                <ci> tswitch </ci>
+                              </apply>
+                            </piece>
+                            <otherwise>
+                              <ci> atp2 </ci>
+                            </otherwise>
+                          </piecewise>
+                        </apply>
+                        <ci> KMPFKATP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> gR </ci>
+                          <ci> F6P </ci>
+                          <piecewise>
+                            <piece>
+                              <ci> atp1 </ci>
+                              <apply>
+                                <lt/>
+                                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                <ci> tswitch </ci>
+                              </apply>
+                            </piece>
+                            <otherwise>
+                              <ci> atp2 </ci>
+                            </otherwise>
+                          </piecewise>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> KMPFKF6P </ci>
+                          <ci> KMPFKATP </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> L0 </ci>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> CiPFKATP </ci>
+                                <piecewise>
+                                  <piece>
+                                    <ci> atp1 </ci>
+                                    <apply>
+                                      <lt/>
+                                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                      <ci> tswitch </ci>
+                                    </apply>
+                                  </piece>
+                                  <otherwise>
+                                    <ci> atp2 </ci>
+                                  </otherwise>
+                                </piecewise>
+                              </apply>
+                              <ci> KiPFKATP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> CPFKAMP </ci>
+                                <ci> AMP </ci>
+                              </apply>
+                              <ci> KPFKAMP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> CPFKF26BP </ci>
+                                <ci> F26BP </ci>
+                              </apply>
+                              <ci> KPFKF26BP </ci>
+                            </apply>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> CPFKF16BP </ci>
+                                <ci> F16P </ci>
+                              </apply>
+                              <ci> KPFKF16BP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <piecewise>
+                                <piece>
+                                  <ci> atp1 </ci>
+                                  <apply>
+                                    <lt/>
+                                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                    <ci> tswitch </ci>
+                                  </apply>
+                                </piece>
+                                <otherwise>
+                                  <ci> atp2 </ci>
+                                </otherwise>
+                              </piecewise>
+                              <ci> KiPFKATP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <ci> AMP </ci>
+                              <ci> KPFKAMP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                        <apply>
+                          <power/>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <apply>
+                              <divide/>
+                              <ci> F26BP </ci>
+                              <ci> KPFKF26BP </ci>
+                            </apply>
+                            <apply>
+                              <divide/>
+                              <ci> F16P </ci>
+                              <ci> KPFKF16BP </ci>
+                            </apply>
+                          </apply>
+                          <cn type="integer"> 2 </cn>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> CPFKATP </ci>
+                            <piecewise>
+                              <piece>
+                                <ci> atp1 </ci>
+                                <apply>
+                                  <lt/>
+                                  <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                                  <ci> tswitch </ci>
+                                </apply>
+                              </piece>
+                              <otherwise>
+                                <ci> atp2 </ci>
+                              </otherwise>
+                            </piecewise>
+                          </apply>
+                          <ci> KMPFKATP </ci>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_153" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_151" species="F16P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_152" species="TRIO" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VMAXALD </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> F16P </ci>
+                    <ci> KMALDF16P </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <ci> KEQTPI </ci>
+                            <apply>
+                              <plus/>
+                              <cn type="integer"> 1 </cn>
+                              <ci> KEQTPI </ci>
+                            </apply>
+                          </apply>
+                          <ci> TRIO </ci>
+                          <cn type="integer"> 1 </cn>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <ci> KEQTPI </ci>
+                        </apply>
+                      </apply>
+                      <ci> TRIO </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMALDF16P </ci>
+                      <ci> KEQALD </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> F16P </ci>
+                  <ci> KMALDF16P </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <ci> KEQTPI </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> KEQTPI </ci>
+                      </apply>
+                    </apply>
+                    <ci> TRIO </ci>
+                  </apply>
+                  <ci> KMALDGAP </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> KEQTPI </ci>
+                      </apply>
+                    </apply>
+                    <ci> TRIO </ci>
+                  </apply>
+                  <ci> KMALDDHAP </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <ci> KEQTPI </ci>
+                          <apply>
+                            <plus/>
+                            <cn type="integer"> 1 </cn>
+                            <ci> KEQTPI </ci>
+                          </apply>
+                        </apply>
+                        <ci> TRIO </ci>
+                        <cn type="integer"> 1 </cn>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> KEQTPI </ci>
+                      </apply>
+                    </apply>
+                    <ci> TRIO </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KMALDGAP </ci>
+                    <ci> KMALDDHAP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> F16P </ci>
+                        <ci> KEQTPI </ci>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> KEQTPI </ci>
+                      </apply>
+                    </apply>
+                    <ci> TRIO </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KMALDGAPi </ci>
+                    <ci> KMALDF16P </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_156" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_154" species="NADH" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_155" species="TRIO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> KGLY </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_160" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_157" species="TRIO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_158" species="BPG" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_159" species="NADH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> CGAPDH </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> VMAXGAPDHf </ci>
+                          <ci> KEQTPI </ci>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <ci> KEQTPI </ci>
+                        </apply>
+                      </apply>
+                      <ci> TRIO </ci>
+                      <apply>
+                        <minus/>
+                        <ci> NADt </ci>
+                        <ci> NADH </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMGAPDHGAP </ci>
+                      <ci> KMGAPDHNAD </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> VMAXGAPDHr </ci>
+                      <ci> BPG </ci>
+                      <ci> NADH </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KMGAPDHBPG </ci>
+                      <ci> KMGAPDHNADH </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> KEQTPI </ci>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <ci> KEQTPI </ci>
+                        </apply>
+                      </apply>
+                      <ci> TRIO </ci>
+                    </apply>
+                    <ci> KMGAPDHGAP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> BPG </ci>
+                    <ci> KMGAPDHBPG </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> NADt </ci>
+                      <ci> NADH </ci>
+                    </apply>
+                    <ci> KMGAPDHNAD </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> NADH </ci>
+                    <ci> KMGAPDHNADH </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

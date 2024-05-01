@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *naresh1()
+
+  // Compartments and Species:
+  species A, $EXT, I1, I2, N;
+
+  // Reactions:
+  v_1: $EXT -> N; Q0;
+  v_10: I2 -> $EXT; d*I2;
+  v_11: A -> $EXT; alpha*A;
+  v_12: A -> $EXT; d*A;
+  v_2: N -> $EXT; d*N;
+  v_3: N -> $EXT; alpha*A;
+  v_4: $EXT -> I1; beta1*(N - I1 - I2 - A)*I1/N;
+  v_5: I1 -> I2; beta3*I1*I2/N;
+  v_6: I1 -> $EXT; lambda*I1;
+  v_7: I1 -> $EXT; d*I1;
+  v_8: $EXT -> I2; beta2*(N - I1 - I2 - A)*I2/N;
+  v_9: I2 -> A; delta*I2;
+
+  // Species initializations:
+  A = 500;
+  EXT = 1;
+  I1 = 2000;
+  I2 = 3000;
+  N = 20000;
+
+  // Variable initializations:
+  Q0 = 2000;
+  alpha = 1;
+  beta1 = 0.925;
+  beta2 = 0.365;
+  beta3 = 1.15;
+  d = 0.02;
+  delta = 0.2;
+  lambda = 0.3;
+
+  // Other declarations:
+  var Q0, alpha, beta1, beta2, beta3, d, delta, lambda;
+
+  // Display Names:
+  A is "AIDS";
+  I1 is "TB infected";
+  I2 is "HIV infected";
+  N is "Total population";
+end
+
+naresh1 is "naresh1"

@@ -1,0 +1,123 @@
+// Created by libAntimony v2.13.2
+model *hoefnagel_mixedacid()
+
+  // Compartments and Species:
+  species $AC, ACAL, ACCOA, ACP, ADP, ATP, COA, $ETOH, $GLC, $H2CO2, $LAC;
+  species NAD, NADH, $O2, $P, PYR;
+
+  // Reactions:
+  v_1: ATP -> ADP + $P; Vmax3*(ATP/ADP)^n3/(KATP^n3 + (ATP/ADP)^n3);
+  v_2: COA + PYR -> ACCOA + $H2CO2; kpfl*COA*PYR;
+  v_3: ACAL + NADH -> $ETOH + NAD; ((Vmax14*ACAL/Km14ACAL)*NADH/Km14NADH)*(1 - ETOH*NAD/(ACAL*NADH*Keq14))/((1 + ACAL/Km14ACAL + ETOH/Km14ETOH)*(1 + NADH/Km14NADH + NAD/Km14NAD));
+  v_4: $O2 + NADH -> NAD; (Vmax4*NADH/Km4NADH)*O2/Km4O/((1 + NADH/Km4NADH + NAD/Km4NAD)*(1 + O2/Km4O));
+  v_5: $P + ACCOA -> COA + ACP; (Vmax10/(Ki10ACCOA*Km10P))*(ACCOA*P - ACP*COA/Keq10)/(1 + ACCOA/Ki10ACCOA + P/Ki10P + ACP/Ki10ACP + COA/Ki10COA + ACCOA*P/(Ki10ACCOA*Km10P) + ACP*COA/(Km10ACP*Ki10COA));
+  v_6: ADP + ACP -> ATP + $AC; ((Vmax11*ACP/Km11ACP)*ADP/Km11ADP)*(1 - AC*ATP/(ACP*ADP*Keq11))/((1 + ACP/Km11ACP + AC/Km11AC)*(1 + ADP/Km11ADP + ATP/Km11ATP));
+  v_7: NADH + PYR -> $LAC + NAD; Vmax2*(PYR/Km2PYR)*(NADH/Km2NADH)*(1 - LAC*NAD/(PYR*NADH*Keq2))/((1 + PYR/Km2PYR + LAC/Km2LAC)*(1 + NADH/Km2NADH + NAD/Km2NAD));
+  v_8: ACCOA + NADH -> ACAL + COA + NAD; (Vmax13*NADH*ACCOA/(Km13NADH*Km13ACCOA) - Vmax13*NAD*COA*ACAL/(Km13NADH*Km13ACCOA*Keq13))/((1 + NADH/Km13NADH + NAD/Km13NAD)*(1 + ACCOA/Km13ACCOA + COA/Km13COA)*(1 + ACAL/Km13ACAL));
+  v_9: $GLC + 2 NAD + 2 ADP -> 2 PYR + 2 NADH + 2 ATP; Vmax1*(GLC/Km1GLC)*(NAD/Km1NAD)*(ADP/Km1ADP)/((1 + GLC/Km1GLC + PYR/Km1PYR)*(1 + NAD/Km1NAD + NADH/Km1NADH)*(1 + ADP/Km1ADP + ATP/Km1ATP));
+
+  // Species initializations:
+  AC = 0.01;
+  ACAL = 0.11;
+  ACCOA = 0.11;
+  ACP = 0.03145;
+  ADP = 4.9;
+  ATP = 0.1;
+  COA = 0.89;
+  ETOH = 0.1;
+  GLC = 15;
+  H2CO2 = 1;
+  LAC = 0.1;
+  NAD = 6.33;
+  NADH = 3.67;
+  O2 = 0.2;
+  P = 10;
+  PYR = 1;
+
+  // Variable initializations:
+  KATP = 6.196;
+  Keq10 = 0.0065;
+  Keq11 = 174.217;
+  Keq13 = 1;
+  Keq14 = 12354.9;
+  Keq2 = 21120.69;
+  Keq5 = 9000000000000;
+  Keq9 = 1400;
+  Ki10ACCOA = 0.2;
+  Ki10ACP = 0.2;
+  Ki10COA = 0.029;
+  Ki10P = 2.6;
+  Ki12 = 46.4159;
+  Km10ACP = 0.7;
+  Km10P = 2.6;
+  Km11AC = 7;
+  Km11ACP = 0.16;
+  Km11ADP = 0.5;
+  Km11ATP = 0.07;
+  Km12ACCOA = 0.008;
+  Km12COA = 0.014;
+  Km12NAD = 0.4;
+  Km12NADH = 0.1;
+  Km12PYR = 1;
+  Km13ACAL = 10;
+  Km13ACCOA = 0.007;
+  Km13COA = 0.008;
+  Km13NAD = 0.08;
+  Km13NADH = 0.025;
+  Km14ACAL = 0.03;
+  Km14ETOH = 1;
+  Km14NAD = 0.08;
+  Km14NADH = 0.05;
+  Km1ADP = 0.04699;
+  Km1ATP = 0.01867;
+  Km1GLC = 0.1;
+  Km1NAD = 0.1412;
+  Km1NADH = 0.08999;
+  Km1PYR = 2.5;
+  Km2LAC = 100;
+  Km2NAD = 2.4;
+  Km2NADH = 0.08;
+  Km2PYR = 1.5;
+  Km4NAD = 1;
+  Km4NADH = 0.041;
+  Km4O = 0.2;
+  Km5ACLAC = 100;
+  Km5PYR = 50;
+  Km6ACET = 100;
+  Km6ACLAC = 10;
+  Km7ACET = 5;
+  Km9ACET = 0.06;
+  Km9BUT = 2.6;
+  Km9NAD = 0.16;
+  Km9NADH = 0.02;
+  Vmax1 = 2397;
+  Vmax10 = 42;
+  Vmax11 = 2700;
+  Vmax12 = 259;
+  Vmax13 = 97;
+  Vmax14 = 162;
+  Vmax2 = 5118;
+  Vmax3 = 900;
+  Vmax4 = 118;
+  Vmax5 = 600;
+  Vmax6 = 106;
+  Vmax7 = 200;
+  Vmax9 = 105;
+  h5 = 2.4;
+  k8 = 0.0003;
+  kpfl = 10;
+  n3 = 2.58;
+
+  // Other declarations:
+  var KATP, Keq10, Keq11, Keq13, Keq14, Keq2, Keq5, Keq9, Ki10ACCOA, Ki10ACP;
+  var Ki10COA, Ki10P, Ki12, Km10ACP, Km10P, Km11AC, Km11ACP, Km11ADP, Km11ATP;
+  var Km12ACCOA, Km12COA, Km12NAD, Km12NADH, Km12PYR, Km13ACAL, Km13ACCOA;
+  var Km13COA, Km13NAD, Km13NADH, Km14ACAL, Km14ETOH, Km14NAD, Km14NADH, Km1ADP;
+  var Km1ATP, Km1GLC, Km1NAD, Km1NADH, Km1PYR, Km2LAC, Km2NAD, Km2NADH, Km2PYR;
+  var Km4NAD, Km4NADH, Km4O, Km5ACLAC, Km5PYR, Km6ACET, Km6ACLAC, Km7ACET;
+  var Km9ACET, Km9BUT, Km9NAD, Km9NADH, Vmax1, Vmax10, Vmax11, Vmax12, Vmax13;
+  var Vmax14, Vmax2, Vmax3, Vmax4, Vmax5, Vmax6, Vmax7, Vmax9, h5, k8, kpfl;
+  var n3;
+end
+
+hoefnagel_mixedacid is "hoefnagel_mixedacid_demo"

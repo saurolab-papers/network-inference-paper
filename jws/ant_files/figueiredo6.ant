@@ -1,0 +1,187 @@
+// Created by libAntimony v2.13.2
+model *figueiredo6()
+
+  // Compartments and Species:
+  species BPG, DGAT, GA, GAP, Glci, Gly, KDG, KDPG, PEP, PG2, PG3, Pyr;
+
+  // Assignment Rules:
+  Glci0 := KmGlcvGDH*VmGlcUp/(-VmGlcUp + VmGlcvGDH);
+  VmGlcUp := VmGlcUp80*volFactor;
+  VmGlcvGDH := VmGlcvGDH80*volFactor;
+  KdegBPG := KdegBPG80;
+  KdegGAP := KdegGAP80;
+  KdegPEP := KdegPEP80;
+  VmBPGvGAPDH := VmBPGvGAPDH80*volFactor;
+  VmBPGvPGK := VmBPGvPGK80*volFactor;
+  VmDGatvGAD := VmDGatvGAD80*volFactor;
+  VmGAPvGAPDH := VmGAPvGAPDH80*volFactor;
+  VmGAPvGAPN := VmGAPvGAPN80*volFactor;
+  VmGAPvKDPGA2 := VmGAPvKDPGA280*volFactor;
+  VmGAvGAOR := VmGAvGAOR80*volFactor;
+  VmGAvKDPGA1 := VmGAvKDPGA180*volFactor;
+  VmGlyvG2K := VmGlyvG2K80*volFactor;
+  VmKDGvKDGKi := VmKDGvKDGKi80*volFactor;
+  VmKDGvKDPGA1 := VmKDGvKDPGA180*volFactor;
+  VmKDPGvKDPGA2 := VmKDPGvKDPGA280*volFactor;
+  VmPEPvENOa := VmPEPvENOa80*volFactor;
+  VmPEPvPK := VmPEPvPK80*volFactor;
+  VmPG2vENOc := VmPG2vENOc80*volFactor;
+  VmPG2vIPGAMa := VmPG2vIPGAMa80*volFactor;
+  VmPG3vIPGAMc := VmPG3vIPGAMc80*volFactor;
+  VmPG3vPGK := VmPG3vPGK80*volFactor;
+  VmPyrvKDPGA1 := VmPyrvKDPGA180*volFactor;
+  VmPyrvKDPGA2 := VmPyrvKDPGA280*volFactor;
+  VmPyrvPEPS := VmPyrvPEPS80*volFactor;
+
+  // Reactions:
+  vENOf: PG2 -> PEP; VmPG2vENOc*PG2/(KmPG2vENOc + PG2);
+  vENOr: PEP -> PG2; VmPEPvENOa*PEP/(KmPEPvENOa + PEP);
+  vG2K: Gly -> PG2; VmGlyvG2K*Gly^2*(1 + alpha*KO*Gly/KiGlyvG2K)/(KsGlyvG2K + Gly^2 + KO*Gly^3/KiGlyvG2K);
+  vGAD: DGAT -> KDG; VmDGatvGAD*DGAT/(KmvDGatvGAD + DGAT);
+  vGAOR: GA -> Gly; VmGAvGAOR*GA/(KmGAvGAOR + GA);
+  vGAPDH: BPG -> GAP; (-(NADP*Phi*VmGAPvGAPDH/(KmGAPvGAPDH*KmNADPvGAPDH)) + NADPH*VmBPGvGAPDH*BPG/(KmBPGvGAPDH*KmNADPHvGAPDH))*(BPG/KmBPGvGAPDH + KmPhivGAPDH*Phi*GAP/KmGAPvGAPDH)^(-1 + n)/((1 + NADP/KmNADPvGAPDH + NADPH/KmNADPHvGAPDH)*(1 + (Phi/KmPhivGAPDH)^n + (BPG/KmBPGvGAPDH)^n + (GAP/KmGAPvGAPDH)^n + (KmPhivGAPDH*Phi*GAP/KmGAPvGAPDH)^n));
+  vGAPN: GAP -> PG3; NADP*VmGAPvGAPN*GAP/(KmGAPvGAPN*KmNADPvGAPN + KmGAPvGAPN*NADP + KmNADPvGAPN*GAP + NADP*GAP);
+  vGDH: Glci -> DGAT; VmGlcvGDH*Glci/(KmGlcvGDH + Glci);
+  vGlcUp:  -> Glci; VmGlcUp;
+  vIPGAMf: PG3 -> PG2; VmPG3vIPGAMc*PG3/(KmPG3vIPGAMc + PG3);
+  vIPGAMr: PG2 -> PG3; VmPG2vIPGAMa*PG2/(KmPG2vIPGAMa + PG2);
+  vKDGKi: KDG -> KDPG; ATP*VmKDGvKDGKi*KDG/(ATP*KmKDGvKDGKi + KmATPvKDGKi*KmKDGvKDGKi + ATP*KDG + KmATPvKDGKi*KDG);
+  vKDPGA1f: KDG -> Pyr + GA; VmKDGvKDPGA1*KDG/(KmKDGvKDPGA1 + KDG);
+  vKDPGA1r: Pyr + GA -> KDG; VmGAvKDPGA1*GA*Pyr/(KmGAvKDPGA1*KmPyrvKDPGA1 + KmPyrvKDPGA1*GA + KmGAvKDPGA1*Pyr + GA*Pyr);
+  vKDPGA2f: KDPG -> Pyr + GAP; VmKDPGvKDPGA2*KDPG/(KmKDPGvKDPGA2 + KDPG);
+  vKDPGA2r: Pyr + GAP -> KDPG; VmGAPvKDPGA2*GAP*Pyr/(KmGAPvKDPGA2*KmPyrvKDPGA2 + KmPyrvKDPGA2*GAP + KmGAPvKDPGA2*Pyr + GAP*Pyr);
+  vPEPS: Pyr -> PEP; ATP*VmPyrvPEPS*Pyr/(ATP*KmPyrvPEPS + KmATPvPEPS*KmPyrvPEPS + ATP*Pyr + KmATPvPEPS*Pyr);
+  vPGK: PG3 -> BPG; (-(ADP*VmBPGvPGK*BPG/(KmATPvPGK*KmBPGvPGK)) + ATP*VmPG3vPGK*PG3/(KmATPvPGK*KmPG3vPGK))/((1 + ADP/KiADPvPGK)*(1 + (1 + ADP/KmADPvPGK)*BPG/KmBPGvPGK + (1 + ATP/KmATPvPGK)*PG3/KmPG3vPGK));
+  vPK: PEP -> Pyr; ADP*VmPEPvPK*PEP/(ADP*KmPEPvPK + KmADPvPK*KmPEPvPK + ADP*PEP + KmADPvPK*PEP);
+  vdegBPG: BPG -> ; KdegBPG*BPG;
+  vdegGAP: GAP -> ; KdegGAP*GAP;
+  vdegPEP: PEP -> ; KdegPEP*PEP;
+  vsinkGAP: GAP -> ; KsinkGAP*GAP;
+  vsinkPyr: Pyr -> ; KsinkPyr*Pyr;
+
+  // Species initializations:
+  BPG = 0.1;
+  DGAT = 0.0909529453696715;
+  GA = 0.1;
+  GAP = 0.1;
+  Glci = 0.218082943949036;
+  Gly = 0.1;
+  KDG = 0.1;
+  KDPG = 0.1;
+  PEP = 0.1;
+  PG2 = 0.1;
+  PG3 = 0.1;
+  Pyr = 0.1;
+
+  // Variable initializations:
+  ADP = 0.8;
+  ATP = 1;
+  KmGlcvGDH = 1.5;
+  KO = 1;
+  KdegBPG80 = 3.9261;
+  KdegGAP80 = 0.3464;
+  KdegPEP80 = 0.034253;
+  KiADPvPGK = 1.142;
+  KiGlyvG2K = 0.1;
+  KmADPvPGK = 0.085;
+  KmADPvPK = 0.07;
+  KmADPvPK70 = 0.24;
+  KmATPvKDGKi = 2.8;
+  KmATPvPEPS = 0.61;
+  KmATPvPGK = 9.7;
+  KmBPGvGAPDH = 0.00041;
+  KmBPGvPGK = 5.59;
+  KmGAPvGAPDH = 0.84;
+  KmGAPvGAPN = 0.5;
+  KmGAPvKDPGA2 = 3.9;
+  KmGAvGAOR = 0.09;
+  KmGAvKDPGA1 = 3.9;
+  KmKDGvKDGKi = 3.6;
+  KmKDGvKDPGA1 = 25.7;
+  KmKDPGvKDPGA2 = 0.1;
+  KmNADPHvGAPDH = 0.074;
+  KmNADPvGAPDH = 0.27;
+  KmNADPvGAPN = 0.09;
+  KmPEPvENOa = 0.42;
+  KmPEPvPK = 0.09;
+  KmPG2vENOc = 0.09;
+  KmPG2vIPGAMa = 0.15;
+  KmPG3vIPGAMc = 0.1;
+  KmPG3vPGK = 0.54;
+  KmPhivGAPDH = 408.5;
+  KmPyrvKDPGA1 = 1;
+  KmPyrvKDPGA2 = 1;
+  KmPyrvPEPS = 0.46;
+  KmvDGatvGAD = 0.45;
+  KmvDGatvGAD2 = 1.57;
+  KsATPvG2K = 1.5;
+  KsGlyvG2K = 48;
+  KsinkGAP = 8.9852;
+  KsinkPyr = 3.6326;
+  NADP = 0.2;
+  NADPH = 5;
+  Phi = 1000;
+  SMALL = 0.0001;
+  VmBPGvGAPDH80 = 933.91;
+  volFactor = 0.25;
+  VmBPGvPGK80 = 217.4;
+  VmDGatvGAD80 = 185.29;
+  VmGAPvGAPDH80 = 82.915;
+  VmGAPvGAPN80 = 36.76;
+  VmGAPvKDPGA280 = 115.22;
+  VmGAvGAOR80 = 959.63;
+  VmGAvKDPGA180 = 119.36;
+  VmGlcUp80 = 31.154;
+  VmGlcvGDH80 = 245.44;
+  VmGlyvG2K80 = 872.36;
+  VmKDGvKDGKi80 = 943.31;
+  VmKDGvKDPGA180 = 952.4;
+  VmKDPGvKDPGA280 = 908.77;
+  VmPEPvENOa80 = 10.007;
+  VmPEPvPK80 = 144;
+  VmPG2vENOc80 = 937.97;
+  VmPG2vIPGAMa80 = 169.76;
+  VmPG3vIPGAMc80 = 78.97;
+  VmPG3vPGK80 = 110.25;
+  VmPyrvKDPGA180 = 121.88;
+  VmPyrvKDPGA280 = 114.7;
+  VmPyrvPEPS80 = 26.138;
+  alpha = 1;
+  kdeg = 1;
+  kiATPvG2K = 61;
+  n = 1.5;
+  range = 1.2;
+  volFactor2 = 250000;
+  vrange = 0.1;
+
+  // Other declarations:
+  var ADP, ATP, Glci0, KmGlcvGDH, VmGlcUp, VmGlcvGDH, KO, KdegBPG, KdegBPG80;
+  var KdegGAP, KdegGAP80, KdegPEP, KdegPEP80, KiADPvPGK, KiGlyvG2K, KmADPvPGK;
+  var KmADPvPK, KmADPvPK70, KmATPvKDGKi, KmATPvPEPS, KmATPvPGK, KmBPGvGAPDH;
+  var KmBPGvPGK, KmGAPvGAPDH, KmGAPvGAPN, KmGAPvKDPGA2, KmGAvGAOR, KmGAvKDPGA1;
+  var KmKDGvKDGKi, KmKDGvKDPGA1, KmKDPGvKDPGA2, KmNADPHvGAPDH, KmNADPvGAPDH;
+  var KmNADPvGAPN, KmPEPvENOa, KmPEPvPK, KmPG2vENOc, KmPG2vIPGAMa, KmPG3vIPGAMc;
+  var KmPG3vPGK, KmPhivGAPDH, KmPyrvKDPGA1, KmPyrvKDPGA2, KmPyrvPEPS, KmvDGatvGAD;
+  var KmvDGatvGAD2, KsATPvG2K, KsGlyvG2K, KsinkGAP, KsinkPyr, NADP, NADPH;
+  var Phi, SMALL, VmBPGvGAPDH, VmBPGvGAPDH80, volFactor, VmBPGvPGK, VmBPGvPGK80;
+  var VmDGatvGAD, VmDGatvGAD80, VmGAPvGAPDH, VmGAPvGAPDH80, VmGAPvGAPN, VmGAPvGAPN80;
+  var VmGAPvKDPGA2, VmGAPvKDPGA280, VmGAvGAOR, VmGAvGAOR80, VmGAvKDPGA1, VmGAvKDPGA180;
+  var VmGlcUp80, VmGlcvGDH80, VmGlyvG2K, VmGlyvG2K80, VmKDGvKDGKi, VmKDGvKDGKi80;
+  var VmKDGvKDPGA1, VmKDGvKDPGA180, VmKDPGvKDPGA2, VmKDPGvKDPGA280, VmPEPvENOa;
+  var VmPEPvENOa80, VmPEPvPK, VmPEPvPK80, VmPG2vENOc, VmPG2vENOc80, VmPG2vIPGAMa;
+  var VmPG2vIPGAMa80, VmPG3vIPGAMc, VmPG3vIPGAMc80, VmPG3vPGK, VmPG3vPGK80;
+  var VmPyrvKDPGA1, VmPyrvKDPGA180, VmPyrvKDPGA2, VmPyrvKDPGA280, VmPyrvPEPS;
+  var VmPyrvPEPS80, alpha, kdeg, kiATPvG2K, n, range, volFactor2, vrange;
+
+  // Unit definitions:
+  unit min = 60 second;
+  unit mmol = 1e-3 mole;
+  unit mM = 1e-3 mole / litre;
+  unit L = litre;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+figueiredo6 is "figueiredo6"

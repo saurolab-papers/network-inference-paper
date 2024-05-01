@@ -1,0 +1,49 @@
+// Created by libAntimony v2.13.2
+model *nyman1()
+
+  // Compartments and Species:
+  species bact, beta, betaphos, cAMP;
+
+  // Assignment Rules:
+  FoC := scale*cAMP;
+
+  // Reactions:
+  v_1: beta -> bact; kbasal*beta;
+  v_2: beta -> bact; kH*kratio*h*beta;
+  v_3: betaphos -> beta; k1*betaphos;
+  v_4: bact -> betaphos; bact*k2;
+  v_5:  -> cAMP; bact*k3;
+  v_6:  -> cAMP; cAMP0;
+  v_7: cAMP -> ; k4*cAMP;
+
+  // Events:
+  event2: at 0 after time > 15, t0=false, persistent=false, fromTrigger=false: h = 0;
+  event1: at 0 after time > 5, t0=false, persistent=false, fromTrigger=false: h = 100;
+  _E0: at 0 after time > 20, t0=false, persistent=false, fromTrigger=false: h = 100;
+
+  // Species initializations:
+  bact = 6.36298895958195;
+  beta = 47.5628313437178;
+  betaphos = 46.0741796964978;
+  cAMP = 0.119663775088957;
+
+  // Variable initializations:
+  h = 0;
+  scale = 8.36;
+  cAMP0 = 18.307;
+  k1 = 0.11566;
+  k2 = 0.83749;
+  k3 = 1.2313;
+  k4 = 218.46;
+  kH = 0.00077465;
+  kbasal = 0.11204;
+  kratio = 5.5528;
+
+  // Other declarations:
+  var h, FoC, scale, cAMP0, k1, k2, k3, k4, kH, kbasal, kratio;
+
+  // Display Names:
+  FoC is "Force of Contraction over basal";
+end
+
+nyman1 is "nyman1"

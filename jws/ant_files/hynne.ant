@@ -1,0 +1,166 @@
+// Created by libAntimony v2.13.2
+model *hynne()
+
+  // Compartments and Species:
+  species ACA, ACAX, ADP, AMP, ATP, BPG, CNX, $CNX0, DHAP, EtOH, EtOHX, F6P;
+  species FBP, G6P, GAP, Glc, GlcX, $GlcX0, Glyc, GlycX, NAD, NADH, $P, PEP;
+  species Pyr;
+
+  // Reactions:
+  v_1: $GlcX0 -> GlcX; k0*(GlcX0 - GlcX);
+  v_10: PEP + ADP -> Pyr + ATP; V10m*ADP*PEP/((K10PEP + PEP)*(K10ADP + ADP));
+  v_11: Pyr -> ACA; V11m*Pyr/(K11 + Pyr);
+  v_12: ACA + NADH -> EtOH + NAD; V12m*ACA*NADH/((K12NADH + NADH)*(K12ACA + ACA));
+  v_13: 59 EtOH -> EtOHX; (k13/Yvol)*(EtOH - EtOHX);
+  v_14: EtOHX -> $P; k0*EtOHX;
+  v_15: DHAP + NADH -> Glyc + NAD; V15m*DHAP/(K15DHAP*(1 + (K15INADH/NADH)*(1 + NAD/K15INAD)) + DHAP*(1 + (K15NADH/NADH)*(1 + NAD/K15INAD)));
+  v_16: 59 Glyc -> GlycX; (k16/Yvol)*(Glyc - GlycX);
+  v_17: GlycX -> $P; k0*GlycX;
+  v_18: 59 ACA -> ACAX; (k18/Yvol)*(ACA - ACAX);
+  v_19: ACAX -> $P; k0*ACAX;
+  v_2: GlcX -> 59 Glc; (V2f/Yvol)*(GlcX/K2Glc/(1 + GlcX/K2Glc + ((P2*(GlcX/K2Glc) + 1)/(P2*(Glc/K2Glc) + 1))*(1 + Glc/K2Glc + G6P/K2IG6P + Glc*G6P/(K2Glc*K2IIG6P)))) - (V2r/Yvol)*(Glc/K2Glc/(1 + Glc/K2Glc + ((P2*(Glc/K2Glc) + 1)/(P2*(GlcX/K2Glc) + 1))*(1 + GlcX/K2Glc) + G6P/K2IG6P + Glc*G6P/(K2Glc*K2IIG6P)));
+  v_20: ACAX + CNX -> $P; k20*ACAX*CNX;
+  v_21: $CNX0 -> CNX; k0*(CNX0 - CNX);
+  v_22: ATP + G6P -> ADP; k22*ATP*G6P;
+  v_23: ATP -> ADP; k23*ATP;
+  v_24: AMP + ATP -> 2 ADP; k24f*AMP*ATP - k24r*ADP^2;
+  v_3: Glc + ATP -> G6P + ADP; V3m*ATP*Glc/(K3DGlc*K3ATP + K3Glc*ATP + K3ATP*Glc + Glc*ATP);
+  v_4: G6P -> F6P; V4f*G6P/(K4G6P + G6P + (K4G6P/K4F6P)*F6P) - V4r*(F6P/K4eq)/(K4G6P + G6P + (K4G6P/K4F6P)*F6P);
+  v_5: F6P + ATP -> FBP + ADP; V5m*F6P^2/(K5*(1 + kappa5*(ATP/AMP)*(ATP/AMP)) + F6P^2);
+  v_6: FBP -> GAP + DHAP; V6f*FBP/(K6FBP + FBP + GAP*K6DHAP*V6f/(K6eq*V6f*ratio6) + DHAP*K6GAP*V6f/(K6eq*V6f*ratio6) + FBP*GAP/K6IGAP + GAP*DHAP*V6f/(K6eq*V6f*ratio6)) - V6f*GAP*DHAP/K6eq/(K6FBP + FBP + GAP*K6DHAP*V6f/(K6eq*V6f*ratio6) + DHAP*K6GAP*V6f/(K6eq*V6f*ratio6) + FBP*GAP/K6IGAP + GAP*DHAP*V6f/(K6eq*V6f*ratio6));
+  v_7: DHAP -> GAP; V7f*DHAP/(K7DHAP + DHAP + (K7DHAP/K7GAP)*GAP) - V7r*(GAP/K7eq)/(K7DHAP + DHAP + (K7DHAP/K7GAP)*GAP);
+  v_8: GAP + NAD -> BPG + NADH; V8f*GAP*NAD/K8GAP/K8NAD/((1 + GAP/K8GAP + BPG/K8BPG)*(1 + NAD/K8NAD + NADH/K8NADH)) - V8r*BPG*NADH/K8eq/K8GAP/K8NAD/((1 + GAP/K8GAP + BPG/K8BPG)*(1 + NAD/K8NAD + NADH/K8NADH));
+  v_9: BPG + ADP -> PEP + ATP; k9f*BPG*ADP - k9r*PEP*ATP;
+
+  // Species initializations:
+  ACA = 1.48153;
+  ACAX = 1.28836;
+  ADP = 1.5;
+  AMP = 0.33;
+  ATP = 2.1;
+  BPG = 0.00027;
+  CNX = 5.20358;
+  CNX0 = 5.6;
+  DHAP = 2.95;
+  EtOH = 19.2379;
+  EtOHX = 16.4514;
+  F6P = 0.49;
+  FBP = 4.64;
+  G6P = 4.2;
+  GAP = 0.115;
+  Glc = 0.573074;
+  GlcX = 1.55307;
+  GlcX0 = 18.5;
+  Glyc = 4.196;
+  GlycX = 1.68478;
+  NAD = 0.65;
+  NADH = 0.33;
+  P = 0;
+  PEP = 0.04;
+  Pyr = 8.7;
+
+  // Variable initializations:
+  Atot = 3.93;
+  K10ADP = 0.17;
+  K10PEP = 0.2;
+  K11 = 0.3;
+  K12ACA = 0.71;
+  K12NADH = 0.1;
+  K15DHAP = 25;
+  K15INAD = 0.13;
+  K15INADH = 0.034;
+  K15NADH = 0.13;
+  K2Glc = 1.7;
+  K2IG6P = 1.2;
+  K2IIG6P = 7.2;
+  K3ATP = 0.1;
+  K3DGlc = 0.37;
+  K3Glc = 0;
+  K4F6P = 0.15;
+  K4G6P = 0.8;
+  K4eq = 0.13;
+  K5 = 0.021;
+  K6DHAP = 2;
+  K6FBP = 0.3;
+  K6GAP = 4;
+  K6IGAP = 10;
+  K6eq = 0.081;
+  K7DHAP = 1.23;
+  K7GAP = 1.27;
+  K7eq = 0.055;
+  K8BPG = 0.01;
+  K8GAP = 0.6;
+  K8NAD = 0.1;
+  K8NADH = 0.06;
+  K8eq = 0.0055;
+  Ntot = 0.98;
+  P2 = 1;
+  V10m = 343.096;
+  V11m = 53.1328;
+  V12m = 89.8023;
+  V15m = 81.4797;
+  V2f = 1014.96;
+  V2r = 1014.96;
+  V3m = 51.7547;
+  V4f = 496.042;
+  V4r = 496.042;
+  V5m = 45.4327;
+  V6f = 2207.82;
+  V7f = 116.365;
+  V7r = 116.365;
+  V8f = 833.858;
+  V8r = 833.858;
+  Yvol = 59;
+  k0 = 0.048;
+  k13 = 16.72;
+  k16 = 1.9;
+  k18 = 24.7;
+  k20 = 0.00283828;
+  k22 = 2.25932;
+  k23 = 3.2076;
+  k24f = 432.9;
+  k24r = 133.333;
+  k9f = 443866;
+  k9r = 1528.62;
+  kappa5 = 0.15;
+  ratio6 = 5;
+
+  // Other declarations:
+  var Atot, K10ADP, K10PEP, K11, K12ACA, K12NADH, K15DHAP, K15INAD, K15INADH;
+  var K15NADH, K2Glc, K2IG6P, K2IIG6P, K3ATP, K3DGlc, K3Glc, K4F6P, K4G6P;
+  var K4eq, K5, K6DHAP, K6FBP, K6GAP, K6IGAP, K6eq, K7DHAP, K7GAP, K7eq, K8BPG;
+  var K8GAP, K8NAD, K8NADH, K8eq, Ntot, P2, V10m, V11m, V12m, V15m, V2f, V2r;
+  var V3m, V4f, V4r, V5m, V6f, V7f, V7r, V8f, V8r, Yvol, k0, k13, k16, k18;
+  var k20, k22, k23, k24f, k24r, k9f, k9r, kappa5, ratio6;
+
+  // CV terms:
+  ACA identity "http://identifiers.org/kegg.compound/C00084"
+  ACAX identity "http://identifiers.org/kegg.compound/C00084"
+  ADP identity "http://identifiers.org/kegg.compound/C00008"
+  AMP identity "http://identifiers.org/kegg.compound/C00020"
+  ATP identity "http://identifiers.org/kegg.compound/C00002"
+  BPG identity "http://identifiers.org/kegg.compound/C00236"
+  CNX identity "http://identifiers.org/kegg.compound/C00042"
+  CNX0 identity "http://identifiers.org/kegg.compound/C00042"
+  DHAP identity "http://identifiers.org/kegg.compound/C00111"
+  EtOH identity "http://identifiers.org/kegg.compound/C00469"
+  EtOHX identity "http://identifiers.org/kegg.compound/C00469"
+  F6P identity "http://identifiers.org/kegg.compound/C00085"
+  FBP identity "http://identifiers.org/kegg.compound/C00354"
+  G6P identity "http://identifiers.org/kegg.compound/C00092"
+  GAP identity "http://identifiers.org/kegg.compound/C00118"
+  Glc identity "http://identifiers.org/kegg.compound/C00293"
+  GlcX identity "http://identifiers.org/kegg.compound/C00293"
+  GlcX0 identity "http://identifiers.org/kegg.compound/C00293"
+  Glyc identity "http://identifiers.org/kegg.compound/C00116"
+  GlycX identity "http://identifiers.org/kegg.compound/C00116"
+  NAD identity "http://identifiers.org/kegg.compound/C00003"
+  NADH identity "http://identifiers.org/kegg.compound/C00004"
+  P identity "http://identifiers.org/kegg.compound/C00009"
+  PEP identity "http://identifiers.org/kegg.compound/C00074"
+  Pyr identity "http://identifiers.org/kegg.compound/C00022"
+  v_1 identity "http://identifiers.org/obo.go/GO%3A0015758"
+  v_10 identity "http://identifiers.org/kegg.compound/C02601"
+end
+
+hynne is "hynne"

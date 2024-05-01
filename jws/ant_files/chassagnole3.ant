@@ -1,0 +1,83 @@
+// Created by libAntimony v2.13.2
+model *chassagnole3()
+
+  // Compartments and Species:
+  species $adp, asa, $asp, aspp, $atp, hs, hsp, $nadp, $nadph, $pi_, $thr;
+
+  // Reactions:
+  v_1: $asp + $atp -> aspp + $adp; F1*(vm11*prot*(asp*atp - aspp*adp/keqak)/((k11*(1 + (thr/k1thr)^nak1)/(1 + (thr/(alpha*k1thr))^nak1) + k11*aspp/k1aspp + asp)*(k1atp*(1 + adp/k1adp) + atp)) + vm13*prot*(asp*atp - aspp*adp/keqak)/((1 + (lys/k1lys)^nak3)*(k13*(1 + aspp/k13aspp) + asp)*(k13atp*(1 + adp/k13adp) + atp)));
+  v_2: aspp + $nadph -> asa + $nadp + $pi_; vm2f*prot*(aspp*nadph - asa*nadp*pi_/k2eq)/((k2aspp*(1 + asa/k2asa)*(1 + pi_/k2p) + aspp)*(k2nadph*(1 + nadp/k2nadp) + nadph));
+  v_3: asa + $nadph -> hs + $nadp; vm3f*prot*(asa*nadph - hs*nadp/k3eq)/(((1 + asp/k3asp)*(1 + (thr/k3thr)^nhdh1)/(1 + (thr/(alpha3*k3thr))^nhdh1))*(k3asa + asa + hs*k3asa/k3hs)*(k3nadph*(1 + nadp/k3nadp) + nadph));
+  v_4: hs + $atp -> hsp + $adp; vm4f*prot*hs*atp/((1 + lys/k4lys)*(atp + k4atp*(1 + hs/k4ihs))*(hs + k4hs*(1 + thr/k4thr)*(1 + atp/k4iatp)));
+  v_5: hsp -> $thr + $pi_; vm5*prot*hsp/(hsp + k5hsp);
+
+  // Species initializations:
+  adp = 0.17;
+  asa = 0;
+  asp = 1.34;
+  aspp = 0;
+  atp = 1.31;
+  hs = 0;
+  hsp = 0;
+  nadp = 0.63;
+  nadph = 0.56;
+  pi_ = 5;
+  thr = 3.49;
+
+  // Variable initializations:
+  F1 = 1;
+  alpha = 2.47;
+  alpha3 = 3.93;
+  k11 = 0.97;
+  k13 = 0.323;
+  k13adp = 0.25;
+  k13aspp = 0.017;
+  k13atp = 0.225;
+  k1adp = 0.25;
+  k1aspp = 0.017;
+  k1atp = 0.98;
+  k1lys = 0.391;
+  k1thr = 0.167;
+  k2asa = 0.11;
+  k2aspp = 0.022;
+  k2eq = 56.4150334574039;
+  k2nadp = 0.144;
+  k2nadph = 0.0287;
+  k2p = 10;
+  k3asa = 0.245;
+  k3asp = 10;
+  k3eq = 3162.27766016838;
+  k3hs = 3.39;
+  k3nadp = 0.067;
+  k3nadph = 0.037;
+  k3thr = 0.094;
+  k4atp = 0.072;
+  k4hs = 0.11;
+  k4iatp = 4.35;
+  k4ihs = 4.7;
+  k4lys = 9.45;
+  k4thr = 1.09;
+  k5hsp = 0.307;
+  keqak = 0.000639;
+  lys = 0.46;
+  nak1 = 4.09;
+  nak3 = 2.78;
+  nhdh1 = 1.41;
+  pH = 7.5;
+  prot = 1;
+  vm11 = 0.68987;
+  vm13 = 0.33488;
+  vm2f = 0.920322;
+  vm3f = 3.6707;
+  vm4f = 0.54579;
+  vm5 = 0.2392;
+
+  // Other declarations:
+  var F1, alpha, alpha3, k11, k13, k13adp, k13aspp, k13atp, k1adp, k1aspp;
+  var k1atp, k1lys, k1thr, k2asa, k2aspp, k2eq, k2nadp, k2nadph, k2p, k3asa;
+  var k3asp, k3eq, k3hs, k3nadp, k3nadph, k3thr, k4atp, k4hs, k4iatp, k4ihs;
+  var k4lys, k4thr, k5hsp, keqak, lys, nak1, nak3, nhdh1, pH, prot, vm11;
+  var vm13, vm2f, vm3f, vm4f, vm5;
+end
+
+chassagnole3 is "chassagnole3"

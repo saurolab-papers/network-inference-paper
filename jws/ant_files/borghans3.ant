@@ -1,0 +1,90 @@
+// Created by libAntimony v2.13.2
+model *borghans3()
+
+  // Compartments and Species:
+  compartment cytosol, extracellular, intravesicular1, intravesicular2;
+  species EC in extracellular, X in intravesicular1, Y in intravesicular2;
+  species Z in cytosol;
+
+  // Reactions:
+  v2i: Z => Y; intravesicular2*v2i_Vm2i*Z^2/(v2i_K2i^2 + Z^2);
+  v2s: Z => X; intravesicular1*v2s_Vm2s*Z^2/(v2s_K2s^2 + Z^2);
+  v3i: Y => Z; cytosol*v3i_Vm3i*Y^2*Z^2/((v3i_K3y^2 + Y^2)*(v3i_K3z^2 + Z^2));
+  v3s: X => Z; cytosol*beta*v3s_Vm3s*X^2/(v3s_K3s^2 + X^2);
+  v4: Y => Z; cytosol*v4_Kf*Y;
+  v5: Z => EC; extracellular*v5_K*Z;
+  v6: X => Z; cytosol*v6_Kf*X;
+  vin: EC => Z; cytosol*(vin_v0 + vin_v1*beta);
+
+  // Species initializations:
+  EC = 0;
+  X = 0.5/intravesicular1;
+  Y = 0;
+  Z = 0;
+
+  // Compartment initializations:
+  cytosol = 1;
+  extracellular = 1;
+  intravesicular1 = 1;
+  intravesicular2 = 1;
+
+  // Variable initializations:
+  beta = 1;
+  v2i_Vm2i = 3.1;
+  v2i_K2i = 0.005;
+  v2s_Vm2s = 1.5;
+  v2s_K2s = 0.0265;
+  v3i_Vm3i = 25;
+  v3i_K3y = 0.065;
+  v3i_K3z = 0.022;
+  v3s_Vm3s = 0.169;
+  v3s_K3s = 0.1;
+  v4_Kf = 0.5;
+  v5_K = 1;
+  v6_Kf = 0.5;
+  vin_v0 = 0.015;
+  vin_v1 = 0.012;
+
+  // Other declarations:
+  const cytosol, extracellular, intravesicular1, intravesicular2, beta;
+
+  // Unit definitions:
+  unit micromole_default = 1e-6 mole;
+  unit minute_default = 60 second;
+
+  // Display Names:
+  micromole_default is "micromole (default)";
+  minute_default is "minute (default)";
+
+  // CV terms:
+  cytosol hypernym "http://identifiers.org/obo.go/GO:0005829"
+  extracellular hypernym "http://identifiers.org/obo.go/GO:0005615"
+  intravesicular1 hypernym "http://identifiers.org/obo.go/GO:0005790"
+  EC identity "http://identifiers.org/chebi/CHEBI:29108",
+              "http://identifiers.org/kegg.compound/C00076"
+  X identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Y identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Z identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  v2i hypernym "http://identifiers.org/obo.go/GO:0051481",
+               "http://identifiers.org/obo.go/GO:0006816"
+  v2s hypernym "http://identifiers.org/obo.go/GO:0006816",
+               "http://identifiers.org/obo.go/GO:0051481"
+  v3i hypernym "http://identifiers.org/obo.go/GO:0005219",
+               "http://identifiers.org/obo.go/GO:0006816",
+               "http://identifiers.org/obo.go/GO:0007204"
+  v3s hypernym "http://identifiers.org/obo.go/GO:0006816",
+               "http://identifiers.org/obo.go/GO:0051482"
+  v4 hypernym "http://identifiers.org/obo.go/GO:0006816",
+              "http://identifiers.org/obo.go/GO:0007204"
+  v5 hypernym "http://identifiers.org/obo.go/GO:0051481",
+              "http://identifiers.org/obo.go/GO:0006816"
+  v6 hypernym "http://identifiers.org/obo.go/GO:0006816",
+              "http://identifiers.org/obo.go/GO:0007204"
+  vin hypernym "http://identifiers.org/obo.go/GO:0006816",
+               "http://identifiers.org/obo.go/GO:0007204"
+end
+
+borghans3 is "borghans3"

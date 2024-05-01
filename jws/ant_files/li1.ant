@@ -1,0 +1,41 @@
+// Created by libAntimony v2.13.2
+model *li1()
+
+  // Compartments and Species:
+  species T, TStar, V;
+
+  // Reactions:
+  v1:  -> T; s;
+  v10:  -> V; beta*NN*TStar;
+  v11: V -> ; epsilon*V;
+  v2: T -> ; alpha*T;
+  v3:  -> T; r1*T;
+  v4: T -> ; r1*T*(T + TStar)/Tmax;
+  v5: T -> ; k*T*V;
+  v6:  -> TStar; k*sigma*T*V;
+  v7: TStar -> ; beta*TStar;
+  v8:  -> TStar; r2*TStar;
+  v9: TStar -> ; r2*TStar*(T + TStar)/Tmax;
+
+  // Species initializations:
+  T = 100;
+  TStar = 0;
+  V = 100;
+
+  // Variable initializations:
+  NN = 10;
+  Tmax = 1500;
+  alpha = 0.2;
+  beta = 1;
+  epsilon = 2.4;
+  k = 0.0027;
+  r1 = 0.55;
+  r2 = 0.5;
+  s = 0.1;
+  sigma = 0.7;
+
+  // Other declarations:
+  var NN, Tmax, alpha, beta, epsilon, k, r1, r2, s, sigma;
+end
+
+li1 is "li1"

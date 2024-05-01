@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="ihekwaba" name="ihekwaba">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="IKK" compartment="default_compartment" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="IKKIkBa" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="IKKIkBaNFkB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="IKKIkBb" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="IKKIkBbNFkB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="IKKIkBe" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="IKKIkBeNFkB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="IkBa" compartment="default_compartment" initialConcentration="0.19028" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="IkBaNFkB" compartment="default_compartment" initialConcentration="0.082062" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="IkBan" compartment="default_compartment" initialConcentration="0.19326" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="IkBanNFkBn" compartment="default_compartment" initialConcentration="0.0013739" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="IkBat" compartment="default_compartment" initialConcentration="0.0054868" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="IkBb" compartment="default_compartment" initialConcentration="0.021428" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="IkBbNFkB" compartment="default_compartment" initialConcentration="0.0090963" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="IkBbn" compartment="default_compartment" initialConcentration="0.021887" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="IkBbnNFkBn" compartment="default_compartment" initialConcentration="0.00030061" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="IkBbt" compartment="default_compartment" initialConcentration="0.00063696" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="IkBe" compartment="default_compartment" initialConcentration="0.015307" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="IkBeNFkB" compartment="default_compartment" initialConcentration="0.0064977" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="IkBen" compartment="default_compartment" initialConcentration="0.015635" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="IkBenNFkBn" compartment="default_compartment" initialConcentration="0.00021473" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="IkBet" compartment="default_compartment" initialConcentration="0.000455" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="NFkB" compartment="default_compartment" initialConcentration="0.00025081" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="NFkBn" compartment="default_compartment" initialConcentration="0.00020366" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="sink" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_26" id="source" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_27" id="k1" value="30" constant="false"/>
+      <parameter metaid="metaid_28" id="k10" value="30" constant="false"/>
+      <parameter metaid="metaid_29" id="k11" value="0.03" constant="false"/>
+      <parameter metaid="metaid_30" id="k12" value="0.45" constant="false"/>
+      <parameter metaid="metaid_31" id="k13" value="30" constant="false"/>
+      <parameter metaid="metaid_32" id="k14" value="0.03" constant="false"/>
+      <parameter metaid="metaid_33" id="k15" value="0.66" constant="false"/>
+      <parameter metaid="metaid_34" id="k16" value="0.00135" constant="false"/>
+      <parameter metaid="metaid_35" id="k17" value="0.00135" constant="false"/>
+      <parameter metaid="metaid_36" id="k18" value="0.00135" constant="false"/>
+      <parameter metaid="metaid_37" id="k19" value="5.4" constant="false"/>
+      <parameter metaid="metaid_38" id="k2" value="0.03" constant="false"/>
+      <parameter metaid="metaid_39" id="k20" value="0.0048" constant="false"/>
+      <parameter metaid="metaid_40" id="k21" value="30" constant="false"/>
+      <parameter metaid="metaid_41" id="k22" value="0.03" constant="false"/>
+      <parameter metaid="metaid_42" id="k23" value="30" constant="false"/>
+      <parameter metaid="metaid_43" id="k24" value="0.03" constant="false"/>
+      <parameter metaid="metaid_44" id="k25" value="30" constant="false"/>
+      <parameter metaid="metaid_45" id="k26" value="0.03" constant="false"/>
+      <parameter metaid="metaid_46" id="k27" value="9.2137e-05" constant="false"/>
+      <parameter metaid="metaid_47" id="k28" value="1.0271" constant="false"/>
+      <parameter metaid="metaid_48" id="k29" value="0.0168" constant="false"/>
+      <parameter metaid="metaid_49" id="k3" value="30" constant="false"/>
+      <parameter metaid="metaid_50" id="k30" value="1.0701e-05" constant="false"/>
+      <parameter metaid="metaid_51" id="k31" value="0.0168" constant="false"/>
+      <parameter metaid="metaid_52" id="k32" value="7.644e-06" constant="false"/>
+      <parameter metaid="metaid_53" id="k33" value="0.0168" constant="false"/>
+      <parameter metaid="metaid_54" id="k34" value="1.35" constant="false"/>
+      <parameter metaid="metaid_55" id="k35" value="0.075" constant="false"/>
+      <parameter metaid="metaid_56" id="k36" value="0.2448" constant="false"/>
+      <parameter metaid="metaid_57" id="k37" value="0.00675" constant="false"/>
+      <parameter metaid="metaid_58" id="k38" value="0.018" constant="false"/>
+      <parameter metaid="metaid_59" id="k39" value="0.012" constant="false"/>
+      <parameter metaid="metaid_60" id="k4" value="0.03" constant="false"/>
+      <parameter metaid="metaid_61" id="k40" value="0.36" constant="false"/>
+      <parameter metaid="metaid_62" id="k41" value="0.105" constant="false"/>
+      <parameter metaid="metaid_63" id="k42" value="0.2448" constant="false"/>
+      <parameter metaid="metaid_64" id="k43" value="0.00675" constant="false"/>
+      <parameter metaid="metaid_65" id="k44" value="0.018" constant="false"/>
+      <parameter metaid="metaid_66" id="k45" value="0.012" constant="false"/>
+      <parameter metaid="metaid_67" id="k46" value="0.54" constant="false"/>
+      <parameter metaid="metaid_68" id="k47" value="0.105" constant="false"/>
+      <parameter metaid="metaid_69" id="k48" value="0.2448" constant="false"/>
+      <parameter metaid="metaid_70" id="k49" value="0.00675" constant="false"/>
+      <parameter metaid="metaid_71" id="k5" value="30" constant="false"/>
+      <parameter metaid="metaid_72" id="k50" value="0.018" constant="false"/>
+      <parameter metaid="metaid_73" id="k51" value="0.012" constant="false"/>
+      <parameter metaid="metaid_74" id="k52" value="11.1" constant="false"/>
+      <parameter metaid="metaid_75" id="k53" value="0.075" constant="false"/>
+      <parameter metaid="metaid_76" id="k54" value="0.82944" constant="false"/>
+      <parameter metaid="metaid_77" id="k55" value="2.88" constant="false"/>
+      <parameter metaid="metaid_78" id="k56" value="0.105" constant="false"/>
+      <parameter metaid="metaid_79" id="k57" value="0.41472" constant="false"/>
+      <parameter metaid="metaid_80" id="k58" value="4.2" constant="false"/>
+      <parameter metaid="metaid_81" id="k59" value="0.105" constant="false"/>
+      <parameter metaid="metaid_82" id="k6" value="0.03" constant="false"/>
+      <parameter metaid="metaid_83" id="k60" value="0.41472" constant="false"/>
+      <parameter metaid="metaid_84" id="k61" value="0.0072" constant="false"/>
+      <parameter metaid="metaid_85" id="k62" value="0.2442" constant="false"/>
+      <parameter metaid="metaid_86" id="k63" value="0.09" constant="false"/>
+      <parameter metaid="metaid_87" id="k64" value="0.132" constant="false"/>
+      <parameter metaid="metaid_88" id="k7" value="30" constant="false"/>
+      <parameter metaid="metaid_89" id="k8" value="0.03" constant="false"/>
+      <parameter metaid="metaid_90" id="k9" value="1.221" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_94" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_92" species="IKKIkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_93" species="IKKIkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k7 </ci>
+              <ci> IKKIkBa </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_98" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="IkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_96" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_97" species="IKKIkBb" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k40 </ci>
+              <ci> IKK </ci>
+              <ci> IkBb </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_99" species="IKKIkBb" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_100" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k63 </ci>
+              <ci> IKKIkBb </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_105" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_102" species="IKKIkBb" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_104" species="IkBb" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k41 </ci>
+              <ci> IKKIkBb </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_109" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_106" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_107" species="IKKIkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="IKKIkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k13 </ci>
+              <ci> IKKIkBe </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_113" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_110" species="IKKIkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_111" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_112" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k15 </ci>
+              <ci> IKKIkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_117" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_114" species="IKKIkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_116" species="IKKIkBe" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k14 </ci>
+              <ci> IKKIkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_118" species="IkBe" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_119" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_120" species="IKKIkBe" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k46 </ci>
+              <ci> IKK </ci>
+              <ci> IkBe </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_124" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="IKKIkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k64 </ci>
+              <ci> IKKIkBe </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_128" id="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="IKKIkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_126" species="IkBe" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_127" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k47 </ci>
+              <ci> IKKIkBe </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_132" id="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_129" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_130" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_131" species="IKKIkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k52 </ci>
+              <ci> IKK </ci>
+              <ci> IkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_136" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_133" species="IKKIkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_134" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_135" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k9 </ci>
+              <ci> IKKIkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_140" id="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_137" species="IKKIkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_139" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k53 </ci>
+              <ci> IKKIkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_144" id="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_141" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_142" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_143" species="IKKIkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k55 </ci>
+              <ci> IKK </ci>
+              <ci> IkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="v_22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_145" species="IKKIkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_146" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_147" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k56 </ci>
+              <ci> IKKIkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_152" id="v_23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_150" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_151" species="IKKIkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k58 </ci>
+              <ci> IKK </ci>
+              <ci> IkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_156" id="v_24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="IKKIkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_155" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k59 </ci>
+              <ci> IKKIkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_160" id="v_25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_157" species="IkBa" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_158" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_159" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> IkBa </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" id="v_26" name="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_161" species="source" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_162" species="IkBat" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_163" species="sink" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_164" species="NFkBn"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k28 </ci>
+              <ci> NFkBn </ci>
+              <ci> NFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_169" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_166" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_167" species="IkBa" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_168" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> IkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_170" species="NFkBn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_171" species="IkBan" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_172" species="IkBanNFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k21 </ci>
+              <ci> IkBan </ci>
+              <ci> NFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_177" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_174" species="IkBanNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_175" species="NFkBn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_176" species="IkBan" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k22 </ci>
+              <ci> IkBanNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_181" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_178" species="IKKIkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_179" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_180" species="IKKIkBa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k8 </ci>
+              <ci> IKKIkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_184" id="v_30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_182" species="IkBanNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_183" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k54 </ci>
+              <ci> IkBanNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_187" id="v_31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_185" species="IkBaNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k16 </ci>
+              <ci> IkBaNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_190" id="v_32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_188" species="IkBat" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_189" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k29 </ci>
+              <ci> IkBat </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_193" id="v_33" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_191" species="IkBan" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_192" species="IkBa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k39 </ci>
+              <ci> IkBan </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_196" id="v_34" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_194" species="IkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_195" species="IkBan" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k38 </ci>
+              <ci> IkBa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_201" id="v_35" name="v_35" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_197" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_198" species="IkBa" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_199" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_200" species="IkBat"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k36 </ci>
+              <ci> IkBat </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="v_36" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_202" species="IkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_203" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_204" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> IkBb </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_209" id="v_37" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_207" species="IkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_208" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> IkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_213" id="v_38" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_210" species="IkBbn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_211" species="NFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_212" species="IkBbnNFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k23 </ci>
+              <ci> IkBbn </ci>
+              <ci> NFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_217" id="v_39" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_214" species="IkBbnNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_215" species="IkBbn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_216" species="NFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k24 </ci>
+              <ci> IkBbnNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_221" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_218" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_219" species="IkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_220" species="IKKIkBa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k34 </ci>
+              <ci> IKK </ci>
+              <ci> IkBa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_224" id="v_40" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_222" species="IkBbnNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_223" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k57 </ci>
+              <ci> IkBbnNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_227" id="v_41" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_225" species="IkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_226" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k17 </ci>
+              <ci> IkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_230" id="v_42" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_228" species="IkBbt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_229" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k31 </ci>
+              <ci> IkBbt </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_233" id="v_43" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_231" species="IkBbn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_232" species="IkBb" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k45 </ci>
+              <ci> IkBbn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_236" id="v_44" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_234" species="IkBb" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_235" species="IkBbn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k44 </ci>
+              <ci> IkBb </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_241" id="v_45" name="v_45" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_237" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_238" species="IkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_239" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_240" species="IkBbt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k42 </ci>
+              <ci> IkBbt </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_245" id="v_46" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_242" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_243" species="IkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_244" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k5 </ci>
+              <ci> IkBe </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_249" id="v_47" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_246" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_247" species="NFkB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_248" species="IkBe" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k6 </ci>
+              <ci> IkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_253" id="v_48" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_250" species="NFkBn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_251" species="IkBen" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_252" species="IkBenNFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k25 </ci>
+              <ci> IkBen </ci>
+              <ci> NFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_257" id="v_49" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_254" species="IkBenNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_255" species="IkBen" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_256" species="NFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k26 </ci>
+              <ci> IkBenNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_260" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_258" species="IKKIkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_259" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k62 </ci>
+              <ci> IKKIkBa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_263" id="v_50" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_261" species="IkBenNFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_262" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k60 </ci>
+              <ci> IkBenNFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_266" id="v_51" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_264" species="IkBeNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_265" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k18 </ci>
+              <ci> IkBeNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_269" id="v_52" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_267" species="IkBet" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k33 </ci>
+              <ci> IkBet </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_272" id="v_53" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_270" species="IkBen" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_271" species="IkBe" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k51 </ci>
+              <ci> IkBen </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_275" id="v_54" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_273" species="IkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_274" species="IkBen" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k50 </ci>
+              <ci> IkBe </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_280" id="v_55" name="v_55" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_276" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_277" species="IkBe" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_278" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_279" species="IkBet"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k48 </ci>
+              <ci> IkBet </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_283" id="v_56" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_281" species="NFkBn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_282" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k20 </ci>
+              <ci> NFkBn </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_286" id="v_57" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_284" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_285" species="NFkBn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k19 </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_289" id="v_58" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_287" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_288" species="IkBat" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k27 </ci>
+              <ci> source </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_292" id="v_59" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_290" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_291" species="IkBbt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k30 </ci>
+              <ci> source </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_296" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_293" species="IKKIkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_294" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_295" species="IkBa" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k35 </ci>
+              <ci> IKKIkBa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_299" id="v_60" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_297" species="source" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_298" species="IkBet" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k32 </ci>
+              <ci> source </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_302" id="v_61" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_300" species="IkBa" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_301" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k37 </ci>
+              <ci> IkBa </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_305" id="v_62" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_303" species="IkBb" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_304" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k43 </ci>
+              <ci> IkBb </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_308" id="v_63" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_306" species="IkBe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_307" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k49 </ci>
+              <ci> IkBe </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_311" id="v_64" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_309" species="IKK" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_310" species="sink" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k61 </ci>
+              <ci> IKK </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_315" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_312" species="IKKIkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_313" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_314" species="IKKIkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k10 </ci>
+              <ci> IKKIkBb </ci>
+              <ci> NFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_319" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_316" species="IKKIkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_317" species="IKK" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_318" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k12 </ci>
+              <ci> IKKIkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_323" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_320" species="IKKIkBbNFkB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_321" species="IKKIkBb" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_322" species="NFkB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k11 </ci>
+              <ci> IKKIkBbNFkB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -1,0 +1,32 @@
+// Created by libAntimony v2.13.2
+model *cao1()
+
+  // Compartments and Species:
+  compartment default;
+  species ES in default, S in default;
+
+  // Reactions:
+  re12: S => ES; k2*S;
+  re2: ES => S; default*k1;
+
+  // Species initializations:
+  ES = 0;
+  S = 0;
+
+  // Compartment initializations:
+  default = 1;
+
+  // Variable initializations:
+  k1 = 1;
+  k2 = 0.025;
+
+  // Other declarations:
+  const default, k1, k2;
+
+  // SBO terms:
+  default.sboTerm = 290
+  ES.sboTerm = 285
+  S.sboTerm = 285
+end
+
+cao1 is "cao1"

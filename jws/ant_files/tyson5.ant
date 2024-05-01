@@ -1,0 +1,73 @@
+// Created by libAntimony v2.13.2
+function GK(a, b, c, d)
+  2*a*d/((b - a) + b*c + a*d + (((b - a) + b*c + a*d)^2 - 4*a*d*(b - a))^0.5);
+end
+
+GK is "GK"
+
+
+model *tyson5()
+
+  // Compartments and Species:
+  species Cdc20A, Cdc20T, Cdh1, CycBT, IEP, SK, $ext_, m;
+
+  // Assignment Rules:
+  CycB := CycBT;
+  TF := GK(1.5*m + 0.05*SK, 1 + 3*m*CycB, 0.01, 0.01);
+
+  // Reactions:
+  v_1: $ext_ -> CycBT; k1 + k0*SK;
+  v_10: $ext_ -> IEP; k9*m*CycB*(1 - IEP);
+  v_11: IEP -> $ext_; k10*IEP;
+  v_12: $ext_ -> m; 0.005*m*(1 - m/10);
+  v_13: $ext_ -> SK; 1*TF + k0*SK;
+  v_14: SK -> $ext_; 1*SK;
+  v_2: CycBT -> $ext_; (k21 + k22*Cdh1 + 1*Cdc20A)*CycBT;
+  v_3: $ext_ -> Cdh1; (k31 + k32*Cdc20A)*(1 - Cdh1)/(J3 + 1 - Cdh1);
+  v_4: Cdh1 -> $ext_; (2*SK + k4*m*CycB)*Cdh1/(J4 + Cdh1);
+  v_5:  -> Cdc20T; k51 + k52*(CycB*m/J5)^n/(1 + (CycB*m/J5)^n);
+  v_6: Cdc20T -> $ext_; k6*(Cdc20T - Cdc20A);
+  v_7: $ext_ -> Cdc20A; k7*IEP*(Cdc20T - Cdc20A)/(J7 + Cdc20T - Cdc20A);
+  v_8: Cdc20A -> $ext_; k8*MAD*Cdc20A/(J8 + Cdc20A);
+  v_9: Cdc20A + Cdc20T -> $ext_; k6*Cdc20A;
+
+  // Species initializations:
+  Cdc20A = 0.001;
+  Cdc20T = 0.001;
+  Cdh1 = 0.001;
+  CycBT = 0.001;
+  IEP = 0.001;
+  SK = 0.001;
+  ext_ = 0;
+  m = 0.5;
+
+  // Variable initializations:
+  J3 = 0.04;
+  J4 = 0.04;
+  J5 = 0.3;
+  J7 = 0.001;
+  J8 = 0.001;
+  MAD = 1;
+  k0 = 0;
+  k1 = 0.04;
+  k10 = 0.02;
+  k21 = 0.04;
+  k22 = 1;
+  k31 = 1;
+  k32 = 10;
+  k4 = 35;
+  k51 = 0.005;
+  k52 = 0.2;
+  k6 = 0.1;
+  k7 = 1;
+  k8 = 0.5;
+  k9 = 0.1;
+  mu = 0.01;
+  n = 4;
+
+  // Other declarations:
+  var CycB, J3, J4, J5, J7, J8, MAD, TF, k0, k1, k10, k21, k22, k31, k32;
+  var k4, k51, k52, k6, k7, k8, k9, mu, n;
+end
+
+tyson5 is "tyson5"

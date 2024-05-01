@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="pritchart1" name="pritchart1">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Competitive_inhibition__irr" name="Competitive inhibition (irr)">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> substrate </ci>
+            </bvar>
+            <bvar>
+              <ci> Inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> Km </ci>
+            </bvar>
+            <bvar>
+              <ci> V </ci>
+            </bvar>
+            <bvar>
+              <ci> Ki </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> V </ci>
+                <ci> substrate </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Km </ci>
+                <ci> substrate </ci>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Km </ci>
+                    <ci> Inhibitor </ci>
+                  </apply>
+                  <ci> Ki </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_3" id="Apoplast" name="Apoplast" spatialDimensions="3" size="1" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This compartment represents &quot;apoplast&quot;: the fluid-filled volume adjacent to the cell. The microbe, and chemical species, occupy this volume.</pre>
+          </body>
+        </notes>
+      </compartment>
+      <compartment metaid="metaid_4" id="Cell" name="Cell" spatialDimensions="3" size="1" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This compartment represents the host cell volume.</pre>
+          </body>
+        </notes>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="Callose" name="Callose" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This species is a generic &quot;Callose&quot;, abstractly representing a measurable biochemical consequence of PRR activation, at the cell wall. 
+
+Callose is also a proxy for PTI, in that it enhances the rate of loss of the species Path. This is obviously troublesome at a mechanistic level, but for the purposes of this model we equate callose deposition with ROS/peroxide production and other defences.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_6" id="E" name="E" compartment="Apoplast" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This species is an abstract Effector: a molecular species that is produced by the microbe, translocated across the cell wall to become E_int, where it acts to reduce the effect of PTI by enhancing the rate of loss of Callose. The effector also interacts with the model&apos;s R protein, activating it with consequent enhanced loss of local Path, in an abstraction of ETI.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_7" id="E_int" name="E_int" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>E_int acts to reduce the effect of PTI by enhancing the rate of loss of Callose. The effector also interacts reversibly with the R protein, activating it with consequent enhanced loss of local Path, in an abstraction of ETI</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_8" id="PAMP" name="PAMP" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PAMP is an abstraction of pathogen-associated molecular patterns, which are produced by Path in the apoplast. These may interact reversibly with the model&apos;s PRR species to produce PRR*, in a representation of PAMP detection leading (perhaps) to PTI.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_9" id="PRR" name="PRR*" compartment="Apoplast" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PRR* represents the host&apos;s Pathogen Recognition Receptor, activated by binding to a PAMP. In the activated form, this species enhances callose production, and the rate at which Path is lost, emulating PTI.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_10" id="PRR_0" name="PRR" compartment="Apoplast" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PRR represents the host&apos;s Pathogen Recognition Receptor, in its unbound state. On binding to a PAMP, it becomes activated to form PRR*.
+
+There is a constant pool of PRR in this model.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_11" id="Path" name="Path" compartment="Apoplast" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Path is a representation of microbes local to the cell. These derive from the larger (remote) population of microbes in Path_bulk, and disappear to NULL.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_12" id="Path_bulk" name="Path_bulk" compartment="Apoplast" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Path_bulk represents a remote population of microbes, from which the local microbes abstracted in Path derive.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_13" id="R" name="R" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>R represents the host&apos;s Resistance protein, in its unbound state. On binding to an internalised effector E_int, it becomes activated to form R*.
+
+There is a constant pool of R protein in this model.</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_14" id="R_0" name="R*" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>R* represents the host&apos;s Resistance protein, activated by binding to E_int. In the activated form, this species enhances rate at which Path is lost, emulating ETI.</pre>
+          </body>
+        </notes>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction metaid="metaid_20" id="Callose_production" name="Callose production" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>The mechanism by which Callose is produced is not defined. Callose is produced at a constant rate proportional to [PRR*], so the rate of production increases with increasing PAMP detection.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_16" species="PRR" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_17" species="Callose" stoichiometry="1"/>
+          <speciesReference metaid="metaid_18" species="PRR" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_19" species="PRR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> PRR </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_15" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_24" id="Callose_removal" name="Callose removal" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Callose is removed at a constant rate, so that a steady state can be reached.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_22" species="Callose" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_23" species="Callose"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> k1 </ci>
+              <ci> Callose </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_21" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_31" id="Callose_suppression" name="Callose suppression" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Callose suppression is represented by greater loss of Callose when there is internalised effector (E_int) present. The mechanism of this is undefined.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_26" species="E_int" stoichiometry="1"/>
+          <speciesReference metaid="metaid_27" species="Callose" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_28" species="E_int" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_29" species="E_int"/>
+          <modifierSpeciesReference metaid="metaid_30" species="Callose"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> k1 </ci>
+              <ci> Callose </ci>
+              <ci> E_int </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_25" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_38" id="ETI" name="ETI" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>The ETI step represents reduction of local microbe concentration due to activation of the host&apos;s R protein. No molecular mechanism for this is proposed in the model.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_33" species="R_0" stoichiometry="1"/>
+          <speciesReference metaid="metaid_34" species="Path" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_35" species="R_0" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_36" species="R_0"/>
+          <modifierSpeciesReference metaid="metaid_37" species="Path"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Path </ci>
+              <ci> R_0 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_32" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_42" id="E_int_removal" name="E_int removal" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>E_int is removed at a constant rate, so steady state can be reached.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_40" species="E_int" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_41" species="E_int"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> k1 </ci>
+              <ci> E_int </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_39" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_48" id="Effector_production" name="Effector production" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Effector E is produced proportional to the amount of local microbe (Path) present. E is produced initially into the apoplast compartment, where it may be removed, or translocated into the cell compartment.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_44" species="Path" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_45" species="Path" stoichiometry="1"/>
+          <speciesReference metaid="metaid_46" species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_47" species="Path"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Apoplast </ci>
+              <ci> k1 </ci>
+              <ci> Path </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_43" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_57" id="Effector_recognition" name="Effector recognition" reversible="true" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Effector recognition abstracts the interaction between internalised effector E_int, and &quot;R protein&quot; R, to produce &quot;activated R protein&quot; R*. As [R*] reflects the local concentration of E_int, it might also be considered to represent the strength of effector triggered responses.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_51" species="E_int" stoichiometry="1"/>
+          <speciesReference metaid="metaid_52" species="R" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="R_0" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_54" species="R_0"/>
+          <modifierSpeciesReference metaid="metaid_55" species="E_int"/>
+          <modifierSpeciesReference metaid="metaid_56" species="R"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> R </ci>
+                  <ci> E_int </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> R_0 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_49" id="k2" name="k2" value="0.1"/>
+            <parameter metaid="metaid_50" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="Effector_removal" name="Effector removal" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This represents the loss of effector from the apoplast, necessary to obtain steady state.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_60" species="E"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Apoplast </ci>
+              <ci> k1 </ci>
+              <ci> E </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_58" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_70" id="Effector_translocation" name="Effector translocation" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This step represents the translocation of effector E from the apoplast compartment to the cell compartment, where it is represented as E_int. No mechanism is reflected in the model, except that translocation rate is [E]-dependent, and slowed in response to increased Callose,</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_65" species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_66" species="E_int" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_67" species="Callose"/>
+          <modifierSpeciesReference metaid="metaid_68" species="E"/>
+          <modifierSpeciesReference metaid="metaid_69" species="Callose"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Competitive_inhibition__irr </ci>
+              <ci> E </ci>
+              <ci> Callose </ci>
+              <ci> Km </ci>
+              <ci> V </ci>
+              <ci> Ki </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_62" id="Ki" name="Ki" value="0.1"/>
+            <parameter metaid="metaid_63" id="V" name="V" value="0.1"/>
+            <parameter metaid="metaid_64" id="Km" name="Km" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_76" id="PAMP_production" name="PAMP production" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PAMP is produced proportional to the amount of local microbe (Path) present, in the apoplast compartment.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_72" species="Path" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_73" species="Path" stoichiometry="1"/>
+          <speciesReference metaid="metaid_74" species="PAMP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_75" species="Path"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Path </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_71" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_85" id="PAMP_recognition" name="PAMP recognition" reversible="true" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PAMP recognition abstracts the interaction between PAMPs(/MAMPs/other molecules), and Pattern Recognition Receptor (PRR), to produce &quot;activated PRR&quot; PRR*. As [PRR*] reflects the local concentration of PAMP, that might be considered to be strength of pattern-triggered signalling.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_79" species="PAMP" stoichiometry="1"/>
+          <speciesReference metaid="metaid_80" species="PRR_0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="PRR" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_82" species="PRR"/>
+          <modifierSpeciesReference metaid="metaid_83" species="PAMP"/>
+          <modifierSpeciesReference metaid="metaid_84" species="PRR_0"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> PRR_0 </ci>
+                <ci> PAMP </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> PRR </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_77" id="k2" name="k2" value="0.1"/>
+            <parameter metaid="metaid_78" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_89" id="PAMP_removal" name="PAMP removal" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>This represents the loss of PAMP from the apoplast, necessary to obtain steady state.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_87" species="PAMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_88" species="PAMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> k1 </ci>
+              <ci> PAMP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_86" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="PTI" name="PTI" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>The PTI step represents reduction of local microbe concentration due to the activation of PRR, as an abstraction of the consequences of Pattern Triggered Immunity (PTI), represented by the amount of callose deposition. No reasonable molecular mechanism for this is proposed in the model.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="Callose" stoichiometry="1"/>
+          <speciesReference metaid="metaid_92" species="Path" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_93" species="Callose" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_94" species="Callose"/>
+          <modifierSpeciesReference metaid="metaid_95" species="Path"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Path </ci>
+              <ci> Callose </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_90" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_102" id="Pathogen_arrival" name="Pathogen arrival" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Pathogen arrival represents movement of microbes from some (distant) &apos;bulk&apos; to the locality of the cell, where they may interact.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_98" species="Path_bulk" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_99" species="Path" stoichiometry="1"/>
+          <speciesReference metaid="metaid_100" species="Path_bulk" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_101" species="Path_bulk"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Apoplast </ci>
+              <ci> k1 </ci>
+              <ci> Path_bulk </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_97" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="Pathogen_removal" name="Pathogen removal" reversible="false" fast="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Pathogen removal represents removal of microbes from the locality of the cell, where they may interact, to some other location or state where they can no longer interact. This might be due to movement/diffusion, or microbe destruction.</pre>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="Path" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_105" species="Path"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Apoplast </ci>
+              <ci> k1 </ci>
+              <ci> Path </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_103" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event metaid="metaid_107" id="Pathogen_introduced" name="Pathogen introduced" useValuesFromTriggerTime="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>Microbes are introduced to the bulk (not locally to the cell) at a specified time point, as an emulation of inoculation at some other point in the physical system.</pre>
+          </body>
+        </notes>
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 10 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_108" variable="Path_bulk">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

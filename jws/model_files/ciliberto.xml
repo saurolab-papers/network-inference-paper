@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="ciliberto" name="ciliberto">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="APCP" compartment="default_compartment" initialConcentration="0.124" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="APCPCdc20" compartment="default_compartment" initialConcentration="0.32" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="Cdc20" compartment="default_compartment" initialConcentration="0.652" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="Cdc25P" compartment="default_compartment" initialConcentration="0.281" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="MPF" compartment="default_compartment" initialConcentration="0.015" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="MPFtotal" compartment="default_compartment" initialConcentration="0.016" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="Mad2Cdc20P" compartment="default_compartment" initialConcentration="0.009" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="Wee" compartment="default_compartment" initialConcentration="0.718" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="p" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_10" id="s" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_11" id="APC" constant="false"/>
+      <parameter metaid="metaid_12" id="APCtotal" value="1" constant="false"/>
+      <parameter metaid="metaid_13" id="Cdc20P" constant="false"/>
+      <parameter metaid="metaid_14" id="Cdc20total" value="1" constant="false"/>
+      <parameter metaid="metaid_15" id="Cdc25total" value="1" constant="false"/>
+      <parameter metaid="metaid_16" id="J25" value="0.01" constant="false"/>
+      <parameter metaid="metaid_17" id="Jcycdeg" value="0.01" constant="false"/>
+      <parameter metaid="metaid_18" id="Jwee" value="0.01" constant="false"/>
+      <parameter metaid="metaid_19" id="Mad2" constant="false"/>
+      <parameter metaid="metaid_20" id="Mad2active" value="0.01" constant="false"/>
+      <parameter metaid="metaid_21" id="Vaaiwee" value="1" constant="false"/>
+      <parameter metaid="metaid_22" id="Vapa25" value="1" constant="false"/>
+      <parameter metaid="metaid_23" id="Vawee" value="0.2" constant="false"/>
+      <parameter metaid="metaid_24" id="Vi25" value="0.2" constant="false"/>
+      <parameter metaid="metaid_25" id="Weetotal" value="1" constant="false"/>
+      <parameter metaid="metaid_26" id="k20deph" value="8" constant="false"/>
+      <parameter metaid="metaid_27" id="k20ph" value="10" constant="false"/>
+      <parameter metaid="metaid_28" id="k25" constant="false"/>
+      <parameter metaid="metaid_29" id="ka25" value="0.2" constant="false"/>
+      <parameter metaid="metaid_30" id="kaa25" value="10" constant="false"/>
+      <parameter metaid="metaid_31" id="kaawee" value="4" constant="false"/>
+      <parameter metaid="metaid_32" id="kacycdeg" value="0.08" constant="false"/>
+      <parameter metaid="metaid_33" id="kapcdeph" value="0.04" constant="false"/>
+      <parameter metaid="metaid_34" id="kapcph" value="0.04" constant="false"/>
+      <parameter metaid="metaid_35" id="kass" value="80" constant="false"/>
+      <parameter metaid="metaid_36" id="kass2" value="10" constant="false"/>
+      <parameter metaid="metaid_37" id="kawee" value="0.1" constant="false"/>
+      <parameter metaid="metaid_38" id="kcycdeg" value="2" constant="false"/>
+      <parameter metaid="metaid_39" id="kcycsyn" value="0.4" constant="false"/>
+      <parameter metaid="metaid_40" id="kdiss" value="20" constant="false"/>
+      <parameter metaid="metaid_41" id="kdiss2" value="0.1" constant="false"/>
+      <parameter metaid="metaid_42" id="kwee" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_43" variable="kwee">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <ci> Weetotal </ci>
+              <ci> kawee </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <ci> kaawee </ci>
+                <ci> kawee </ci>
+              </apply>
+              <ci> Wee </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_44" variable="Mad2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> Mad2active </ci>
+            <ci> Mad2Cdc20P </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_45" variable="Cdc20P">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <minus/>
+                <ci> Cdc20total </ci>
+                <ci> Cdc20 </ci>
+              </apply>
+              <ci> APCPCdc20 </ci>
+            </apply>
+            <ci> Mad2Cdc20P </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_46" variable="APC">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <ci> APCtotal </ci>
+              <ci> APCP </ci>
+            </apply>
+            <ci> APCPCdc20 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_47" variable="k25">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <ci> Cdc25total </ci>
+              <ci> ka25 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <ci> kaa25 </ci>
+                <ci> ka25 </ci>
+              </apply>
+              <ci> Cdc25P </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_51" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_48" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_49" species="MPF" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_50" species="MPFtotal" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> kcycsyn </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_54" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_52" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="Mad2Cdc20P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kass2 </ci>
+              <ci> Mad2 </ci>
+              <ci> Cdc20P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_57" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="Mad2Cdc20P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_56" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kdiss2 </ci>
+              <ci> Mad2Cdc20P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_58" species="APCPCdc20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_59" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_60" species="MPF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> kdiss </ci>
+                <ci> kapcdeph </ci>
+                <apply>
+                  <times/>
+                  <ci> k20ph </ci>
+                  <ci> MPF </ci>
+                </apply>
+              </apply>
+              <ci> APCPCdc20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_65" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="APCP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_64" species="MPF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kapcph </ci>
+              <ci> MPF </ci>
+              <ci> APC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_68" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_66" species="APCP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_67" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kapcdeph </ci>
+              <ci> APCP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_73" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_69" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_70" species="APCP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_71" species="MPF"/>
+          <modifierSpeciesReference metaid="metaid_72" species="APCPCdc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> kdiss </ci>
+                <apply>
+                  <times/>
+                  <ci> k20ph </ci>
+                  <ci> MPF </ci>
+                </apply>
+              </apply>
+              <ci> APCPCdc20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_76" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_74" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_75" species="Wee" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Vawee </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <ci> Weetotal </ci>
+                  <ci> Wee </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <plus/>
+                    <ci> Jwee </ci>
+                    <ci> Weetotal </ci>
+                  </apply>
+                  <ci> Wee </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_80" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_77" species="Wee" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_78" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_79" species="MPF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Vaaiwee </ci>
+              <ci> MPF </ci>
+              <ci> Wee </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_84" id="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_81" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_82" species="Cdc25P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_83" species="MPF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Vapa25 </ci>
+              <ci> MPF </ci>
+              <apply>
+                <minus/>
+                <ci> Cdc25total </ci>
+                <ci> Cdc25P </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_87" id="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_85" species="Cdc25P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vi25 </ci>
+                <ci> Cdc25P </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> J25 </ci>
+                <ci> Cdc25P </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_90" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_88" species="MPF" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_89" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kwee </ci>
+              <ci> MPF </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_94" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_92" species="MPF" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_93" species="MPFtotal"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k25 </ci>
+              <apply>
+                <minus/>
+                <ci> MPFtotal </ci>
+                <ci> MPF </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="MPF" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_96" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_97" species="APCPCdc20"/>
+          <modifierSpeciesReference metaid="metaid_98" species="MPFtotal"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> kacycdeg </ci>
+                <apply>
+                  <times/>
+                  <ci> kcycdeg </ci>
+                  <apply>
+                    <divide/>
+                    <ci> APCPCdc20 </ci>
+                    <apply>
+                      <plus/>
+                      <ci> Jcycdeg </ci>
+                      <ci> MPFtotal </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> MPF </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_103" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_100" species="MPFtotal" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_101" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_102" species="APCPCdc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> kacycdeg </ci>
+                <apply>
+                  <times/>
+                  <ci> kcycdeg </ci>
+                  <apply>
+                    <divide/>
+                    <ci> APCPCdc20 </ci>
+                    <apply>
+                      <plus/>
+                      <ci> Jcycdeg </ci>
+                      <ci> MPFtotal </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> MPFtotal </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_105" species="Cdc20" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k20deph </ci>
+              <ci> Cdc20P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_110" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_107" species="Cdc20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_109" species="MPF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k20ph </ci>
+              <ci> MPF </ci>
+              <ci> Cdc20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_114" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_111" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_112" species="Cdc20" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_113" species="APCPCdc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> kapcdeph </ci>
+                <ci> kdiss </ci>
+              </apply>
+              <ci> APCPCdc20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_118" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_115" species="Cdc20" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_116" species="APCP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_117" species="APCPCdc20" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kass </ci>
+              <ci> Cdc20 </ci>
+              <ci> APCP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

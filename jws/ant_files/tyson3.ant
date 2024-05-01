@@ -1,0 +1,51 @@
+// Created by libAntimony v2.13.2
+model *tyson3()
+
+  // Compartments and Species:
+  species C2, CP, M, $P, $S, Y, YP, pM;
+
+  // Assignment Rules:
+  CT := C2 + CP + pM + M;
+  M_to_CT := M/CT;
+  YT := Y + YP + pM + M;
+  YT_to_CT := YT/CT;
+
+  // Reactions:
+  v_1: M -> YP + C2; k6*M;
+  v_2: C2 -> CP; C2*k8notP;
+  v_3: CP -> C2; CP*k9;
+  v_4: Y + CP -> pM; CP*k3*Y;
+  v_5: M -> pM; k5notP*M;
+  v_6: $S -> Y; k1aa;
+  v_7: Y -> $P; k2*Y;
+  v_8: YP -> $P; k7*YP;
+  v_9: pM -> M; pM*(k4prime + k4*M^2);
+
+  // Species initializations:
+  C2 = 0;
+  CP = 1;
+  M = 0;
+  P = 1;
+  S = 1;
+  Y = 0;
+  YP = 0;
+  pM = 0.3;
+
+  // Variable initializations:
+  k1aa = 0.015;
+  k2 = 0;
+  k3 = 200;
+  k4 = 180;
+  k4prime = 0.018;
+  k5notP = 0;
+  k6 = 1;
+  k7 = 0.6;
+  k8notP = 1000000;
+  k9 = 1000;
+
+  // Other declarations:
+  var CT, M_to_CT, YT, YT_to_CT, k1aa, k2, k3, k4, k4prime, k5notP, k6, k7;
+  var k8notP, k9;
+end
+
+tyson3 is "tyson3"

@@ -1,0 +1,177 @@
+// Created by libAntimony v2.13.2
+model *goldbeter8()
+
+  // Compartments and Species:
+  compartment PSM;
+  species C in PSM, F in PSM, M_C in PSM, $M_F in PSM, RA in PSM;
+
+  // Assignment Rules:
+  M_F := M_0*(x/L);
+  alpha1 := RA/(RA + Kr1);
+  alpha2 := F/(F + Kr2);
+  rho := alpha2/alpha1;
+  vs1 := ks1*RALDH2_0*(1 - x/L);
+
+  // Reactions:
+  C_decay: C => ; PSM*kd2*C;
+  C_translation:  => C; PSM*ks2*M_C;
+  FGF_decay: F => ; PSM*kd4*F;
+  FGF_synthesis:  => F; PSM*ks3*M_F*(Ki^m/(Ki^m + RA^m));
+  M_C_decay: M_C => ; PSM*kd3*M_C;
+  M_C_transcription:  => M_C; PSM*(V0 + Vsc*F^n/(Ka^n + F^n));
+  RA_decay: RA => ; PSM*kd5*RA;
+  RA_deg_by_Cyp26: RA => ; PSM*kd1*RA*C;
+  RA_synthesis:  => RA; PSM*vs1;
+
+  // Species initializations:
+  C = 0.1/PSM;
+  F = 1/PSM;
+  M_C = 0.1/PSM;
+  RA = 0.1/PSM;
+
+  // Compartment initializations:
+  PSM = 1;
+
+  // Variable initializations:
+  M_0 = 5;
+  M_0 has nM;
+  x = 15;
+  L = 50;
+  Ka = 0.2;
+  Ka has nM;
+  Ki = 0.2;
+  Ki has nM;
+  Kr1 = 1;
+  Kr1 has nM;
+  Kr2 = 1;
+  Kr2 has nM;
+  RALDH2_0 = 7.1;
+  RALDH2_0 has nM;
+  V0 = 0.365;
+  V0 has nM_per_min;
+  Vsc = 7.1;
+  Vsc has nM_per_min;
+  alpha1 has dimensionless;
+  alpha2 has dimensionless;
+  kd1 = 1;
+  kd1 has per_nM_per_min;
+  kd2 = 0.28;
+  kd2 has per_min;
+  kd3 = 1;
+  kd3 has per_min;
+  kd4 = 1;
+  kd4 has per_min;
+  kd5 = 0;
+  kd5 has per_min;
+  ks1 = 1;
+  ks1 has per_min;
+  ks2 = 1;
+  ks2 has per_min;
+  ks3 = 1;
+  ks3 has per_min;
+  m = 2;
+  m has dimensionless;
+  n = 2;
+  n has dimensionless;
+  rho has dimensionless;
+  vs1 has nM_per_min;
+
+  // Other declarations:
+  var alpha1, alpha2, rho, vs1;
+  const PSM, M_0, x, L, Ka, Ki, Kr1, Kr2, RALDH2_0, V0, Vsc, kd1, kd2, kd3;
+  const kd4, kd5, ks1, ks2, ks3, m, n;
+
+  // Unit definitions:
+  unit nmole = 1e-9 mole;
+  unit min = 60 second;
+  unit nM = 1e-9 mole / litre;
+  unit nM_per_min = 1e-9 mole / (litre * 60 second);
+  unit per_nM_per_min = litre / (1e-9 mole * 60 second);
+  unit per_min = 1 / 60 second;
+  unit arbit_length = dimensionless;
+
+  // Display Names:
+  nM_per_min is "nM per min";
+  per_nM_per_min is "per nM per min";
+  per_min is "per min";
+  arbit_length is "arbit. length";
+  C is "CYP26";
+  F is "FGF";
+  M_C is "cyp26_mRNA";
+  M_F is "FGF_mRNA";
+
+  // SBO terms:
+  PSM.sboTerm = 290
+  C.sboTerm = 252
+  F.sboTerm = 252
+  M_C.sboTerm = 250
+  M_F.sboTerm = 250
+  M_0.sboTerm = 196
+  x.sboTerm = 466
+  L.sboTerm = 466
+  RA.sboTerm = 247
+  Ka.sboTerm = 363
+  Ki.sboTerm = 261
+  Kr1.sboTerm = 282
+  Kr2.sboTerm = 282
+  RALDH2_0.sboTerm = 505
+  V0.sboTerm = 485
+  Vsc.sboTerm = 186
+  alpha1.sboTerm = 256
+  alpha2.sboTerm = 256
+  kd1.sboTerm = 36
+  kd2.sboTerm = 356
+  kd3.sboTerm = 356
+  kd4.sboTerm = 356
+  kd5.sboTerm = 356
+  ks1.sboTerm = 35
+  ks2.sboTerm = 35
+  ks3.sboTerm = 35
+  m.sboTerm = 190
+  n.sboTerm = 190
+  rho.sboTerm = 256
+  vs1.sboTerm = 46
+  C_decay.sboTerm = 179
+  C_translation.sboTerm = 184
+  FGF_decay.sboTerm = 179
+  FGF_synthesis.sboTerm = 184
+  M_C_decay.sboTerm = 179
+  M_C_transcription.sboTerm = 183
+  RA_decay.sboTerm = 179
+  RA_deg_by_Cyp26.sboTerm = 179
+  RA_synthesis.sboTerm = 205
+
+  // CV terms:
+  PSM hypernym "http://identifiers.org/fma/FMA:69072"
+  C property "http://identifiers.org/go/GO:0008401",
+             "http://identifiers.org/kegg.orthology/K12665",
+             "http://identifiers.org/kegg.orthology/K12664",
+             "http://identifiers.org/kegg.orthology/K07437",
+             "http://identifiers.org/uniprot/Q9NR63",
+             "http://identifiers.org/uniprot/Q6V0L0",
+             "http://identifiers.org/uniprot/O43174",
+             "http://identifiers.org/interpro/IPR001128"
+  F property "http://identifiers.org/go/GO:0005111",
+             "http://identifiers.org/go/GO:0005105",
+             "http://identifiers.org/go/GO:0008083",
+             "http://identifiers.org/uniprot/P55075",
+             "http://identifiers.org/interpro/IPR002348"
+  M_C encodement "http://identifiers.org/interpro/IPR001128",
+                 "http://identifiers.org/kegg.compound/C02339",
+                 "http://identifiers.org/chebi/CHEBI:33699"
+  M_F hypernym "http://identifiers.org/chebi/CHEBI:33699"
+  RA identity "http://identifiers.org/chebi/CHEBI:26536"
+  C_decay hypernym "http://identifiers.org/go/GO:0030163"
+  C_translation hypernym "http://identifiers.org/go/GO:0006412"
+  FGF_decay hypernym "http://identifiers.org/go/GO:0030163"
+  FGF_synthesis hypernym "http://identifiers.org/go/GO:0006412"
+  M_C_decay hypernym "http://identifiers.org/go/GO:0006402"
+  M_C_transcription hypernym "http://identifiers.org/go/GO:0009299"
+  RA_decay hypernym "http://identifiers.org/go/GO:0034653"
+  RA_deg_by_Cyp26 hypernym "http://identifiers.org/go/GO:0034653",
+                           "http://identifiers.org/reactome/REACT_13550.1",
+                           "http://identifiers.org/reactome/REACT_13572.1"
+  RA_synthesis hypernym "http://identifiers.org/go/GO:0002138"
+end
+
+goldbeter8 is "goldbeter8"

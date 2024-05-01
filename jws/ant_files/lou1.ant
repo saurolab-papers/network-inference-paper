@@ -1,0 +1,62 @@
+// Created by libAntimony v2.13.2
+model *lou1()
+
+  // Compartments and Species:
+  species Ib, It, Iv, Sb, St, Sv;
+
+  // Assignment Rules:
+  Total_infected_MSM := It + Iv + Ib;
+  lambdaB := (betaTB*It + betaVB*Iv)/(St + It + Sv + Iv);
+  lambdaT := (betaBT*Ib + betaVT*Iv)/(Sb + Ib + Sv + Iv);
+  lambdaV := (betaTV*It + betaBV*Ib + betaVV*Iv)/(St + It + Sv + Iv + Sb + Ib);
+
+  // Reactions:
+  v_1:  -> St; rt;
+  v_10: Sb -> Ib; lambdaB*Sb;
+  v_11: Sb -> ; dM*Sb;
+  v_12: Ib -> ; dI*Ib;
+  v_2: St -> It; lambdaT*St;
+  v_3: St -> ; dM*St;
+  v_4: It -> ; dI*It;
+  v_5:  -> Sv; rv;
+  v_6: Sv -> Iv; lambdaV*Sv;
+  v_7: Sv -> ; dM*Sv;
+  v_8: Iv -> ; dI*Iv;
+  v_9:  -> Sb; rb;
+
+  // Species initializations:
+  Ib = 39455;
+  It = 36931;
+  Iv = 234800;
+  Sb = 2590800;
+  St = 2425100;
+  Sv = 15418000;
+
+  // Variable initializations:
+  betaBT = 0.2563;
+  betaBV = 0.2826;
+  betaTB = 0.5786;
+  betaTV = 0.5653;
+  betaVB = 0.5786;
+  betaVT = 0.2563;
+  betaVV = 0.4239;
+  dI = 0.105;
+  dM = 0.022;
+  rb = 70817;
+  rt = 96667;
+  rv = 603950;
+
+  // Other declarations:
+  var Total_infected_MSM, betaBT, betaBV, betaTB, betaTV, betaVB, betaVT;
+  var betaVV, dI, dM, lambdaB, lambdaT, lambdaV, rb, rt, rv;
+
+  // Display Names:
+  Ib is "Infected bottom";
+  It is "Infected top";
+  Iv is "Infected versatile";
+  Sb is "Susceptible bottom";
+  St is "Susceptible top";
+  Sv is "Susceptible versatile";
+end
+
+lou1 is "lou1"

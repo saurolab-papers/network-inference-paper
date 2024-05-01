@@ -1,0 +1,74 @@
+// Created by libAntimony v2.13.2
+model *olsen()
+
+  // Compartments and Species:
+  species Ar, ArH, H2O2, $NAD, $NAD2, NADH, $NADHres, NADrad, O2, $O2g, coI;
+  species coII, coIII, per2, per3, super;
+
+  // Reactions:
+  v_1: NADH + O2 -> H2O2 + $NAD; k1*NADH*O2;
+  v_10: per3 + NADrad -> per2 + $NAD; k10*per3*NADrad;
+  v_11: O2 + per2 -> coIII; k11*per2*O2;
+  v_12: $NADHres -> NADH; k12;
+  v_13: $O2g -> O2; k13f;
+  v_14: O2 -> $O2g; k13b*O2;
+  v_15: NADH + Ar -> NADrad + ArH; k14*Ar*NADH;
+  v_2: per3 + H2O2 -> coI; k2*H2O2*per3;
+  v_3: coI + ArH -> coII + Ar; k3*coI*ArH;
+  v_4: coII + ArH -> per3 + Ar; k4*coII*ArH;
+  v_5: O2 + NADrad -> super + $NAD; k5*NADrad*O2;
+  v_6: per3 + super -> coIII; k6*super*per3;
+  v_7: 2 super -> O2 + H2O2; k7*super*super;
+  v_8: NADrad + coIII -> coI + $NAD; k8*coIII*NADrad;
+  v_9: 2 NADrad -> $NAD2; k9*NADrad*NADrad;
+
+  // Species initializations:
+  Ar = 0;
+  ArH = 300;
+  H2O2 = 0.7;
+  NAD = 0;
+  NAD2 = 0;
+  NADH = 0;
+  NADHres = 1;
+  NADrad = 0;
+  O2 = 12;
+  O2g = 1;
+  coI = 0;
+  coII = 0;
+  coIII = 0;
+  per2 = 0;
+  per3 = 1.2;
+  super = 0;
+
+  // Variable initializations:
+  k1 = 3e-06;
+  k10 = 1.8;
+  k11 = 0.1;
+  k12 = 0.08;
+  k13b = 0.006;
+  k13f = 0.072;
+  k14 = 0.7;
+  k2 = 18;
+  k3 = 0.15;
+  k4 = 0.0052;
+  k5 = 20;
+  k6 = 17;
+  k7 = 20;
+  k8 = 40;
+  k9 = 60;
+
+  // Other declarations:
+  var k1, k10, k11, k12, k13b, k13f, k14, k2, k3, k4, k5, k6, k7, k8, k9;
+
+  // Unit definitions:
+  unit s = second;
+  unit uM = 1e-6 mole / litre;
+  unit umol = 1e-6 mole;
+  unit L = litre;
+  unit volume = L;
+  unit substance = umol;
+  unit extent = uM;
+  unit time_unit = s;
+end
+
+olsen is "olsen"

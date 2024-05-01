@@ -1,0 +1,31 @@
+// Created by libAntimony v2.13.2
+model *kintutb()
+
+  // Compartments and Species:
+  species S1, S2, S3, $X0, $X4;
+
+  // Reactions:
+  v_1: S1 + $X0 -> S2; k1f*X0*S1 - k1r*S2;
+  v_2: S2 -> S3; k2f*S2 - k2r*S3;
+  v_3: S3 -> S1 + $X4; k3f*S3 - k3r*X4*S1;
+
+  // Species initializations:
+  S1 = 1;
+  S2 = 1;
+  S3 = 1;
+  X0 = 10;
+  X4 = 1;
+
+  // Variable initializations:
+  k1f = 2;
+  k1r = 1;
+  k2f = 1;
+  k2r = 1;
+  k3f = 5;
+  k3r = 1;
+
+  // Other declarations:
+  var k1f, k1r, k2f, k2r, k3f, k3r;
+end
+
+kintutb is "kintutb"

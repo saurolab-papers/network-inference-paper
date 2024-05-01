@@ -1,0 +1,40 @@
+// Created by libAntimony v2.13.2
+model *tan1()
+
+  // Compartments and Species:
+  compartment cell;
+  species c in cell;
+
+  // Reactions:
+  reaction_1:  => c; reaction_1_alpha;
+  reaction_2:  => c; c/(reaction_2_kappa + c);
+  reaction_3: c => ; reaction_3_kd*c;
+  reaction_4: c => ; reaction_4_phi*c/(reaction_4_delta + reaction_4_gamma*c);
+
+  // Species initializations:
+  c = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  reaction_1_alpha = 0.001;
+  reaction_2_kappa = 0.5;
+  reaction_3_kd = 1;
+  reaction_4_gamma = 1e-05;
+  reaction_4_delta = 1e-05;
+  reaction_4_phi = 5e-06;
+
+  // Other declarations:
+  const cell;
+
+  // Display Names:
+  c is "ribosome concentration";
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  c part "http://identifiers.org/uniprot/P0A7L0",
+         "http://identifiers.org/uniprot/P0AG67"
+end
+
+tan1 is "tan1"

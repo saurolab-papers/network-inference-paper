@@ -1,0 +1,109 @@
+// Created by libAntimony v2.13.2
+model *wolf()
+
+  // Compartments and Species:
+  species at_, na, s1, s2, s3, s4, s5, s6, s6o;
+
+  // Reactions:
+  v_1:  -> s1; k0;
+  v_10: s6o -> ; k9*s6o;
+  v_11: at_ -> ; k7*at_;
+  v_2: s1 + 2 at_ -> s2; k1*s1*at_/(1 + (at_/ki)^n);
+  v_3: s2 -> 2 s3; k2*s2;
+  v_4: s3 -> na; k8*s3*(ntot - na);
+  v_5: s3 + na -> s4 + at_; (k31*k32*s3*na*(atot - at_) - k33*k34*s4*at_*(ntot - na))/(k33*(ntot - na) + k32*(atot - at_));
+  v_6: s4 -> s5 + at_; k4*s4*(atot - at_);
+  v_7: s5 -> s6; k5*s5;
+  v_8: s6 -> na; k6*s6*(ntot - na);
+  v_9: s6 -> 0.1 s6o; k10*(s6 - s6o);
+
+  // Species initializations:
+  at_ = 2;
+  na = 0.6;
+  s1 = 1;
+  s2 = 5;
+  s3 = 0.6;
+  s4 = 0.7;
+  s5 = 8;
+  s6 = 0.08;
+  s6o = 0.02;
+
+  // Variable initializations:
+  atot = 4;
+  k0 = 50;
+  k1 = 550;
+  k10 = 375;
+  k2 = 9.8;
+  k31 = 323.8;
+  k32 = 76411.1;
+  k33 = 57823.1;
+  k34 = 23.7;
+  k4 = 80;
+  k5 = 9.7;
+  k6 = 2000;
+  k7 = 28;
+  k8 = 85.7;
+  k9 = 80;
+  ki = 1;
+  n = 4;
+  ntot = 1;
+
+  // Other declarations:
+  var atot, k0, k1, k10, k2, k31, k32, k33, k34, k4, k5, k6, k7, k8, k9, ki;
+  var n, ntot;
+
+  // Display Names:
+  at_ is "ATP";
+  na is "NAD";
+  s1 is "glucose";
+  s2 is "fructose-1,6-bisphosphate";
+  s3 is "triose phosphates";
+  s4 is "triphosphoglycerate";
+  s5 is "pyruvate";
+  s6 is "acetaldehyde";
+  s6o is "external acetaldehyde";
+  v_1 is "glucose transporter";
+
+  // CV terms:
+  at_ identity "http://identifiers.org/pubchem.substance/3304",
+               "http://identifiers.org/kegg.compound/C00002",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+               "http://identifiers.org/3dmet/B01125",
+               "http://identifiers.org/cas/56-65-5"
+  na identity "http://identifiers.org/pubchem.substance/3305",
+              "http://identifiers.org/kegg.compound/C00003",
+              "http://identifiers.org/obo.chebi/CHEBI%3A15846",
+              "http://identifiers.org/3dmet/B01126"
+  s1 identity "http://identifiers.org/obo.chebi/CHEBI%3A22390",
+              "http://identifiers.org/pubchem.substance/3565",
+              "http://identifiers.org/kegg.compound/C00267",
+              "http://identifiers.org/obo.chebi/CHEBI%3A17925",
+              "http://identifiers.org/3dmet/B01203",
+              "http://identifiers.org/cas/492-62-6"
+  s2 identity "http://identifiers.org/pubchem.substance/3647",
+              "http://identifiers.org/kegg.compound/C00354",
+              "http://identifiers.org/obo.chebi/CHEBI%3A16905",
+              "http://identifiers.org/3dmet/B04673",
+              "http://identifiers.org/cas/488-69-7"
+  s4 identity "http://identifiers.org/pubchem.substance/3497",
+              "http://identifiers.org/kegg.compound/C00197",
+              "http://identifiers.org/obo.chebi/CHEBI%3A17794",
+              "http://identifiers.org/3dmet/B01185"
+  s5 identity "http://identifiers.org/pubchem.substance/3324",
+              "http://identifiers.org/kegg.compound/C00022",
+              "http://identifiers.org/obo.chebi/CHEBI%3A32816",
+              "http://identifiers.org/3dmet/B00006",
+              "http://identifiers.org/cas/127-17-3"
+  s6 identity "http://identifiers.org/pubchem.substance/3384",
+              "http://identifiers.org/kegg.compound/C00084",
+              "http://identifiers.org/obo.chebi/CHEBI%3A15343",
+              "http://identifiers.org/3dmet/B01155",
+              "http://identifiers.org/cas/75-07-0"
+  s6o identity "http://identifiers.org/pubchem.substance/3384",
+               "http://identifiers.org/kegg.compound/C00084",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15343",
+               "http://identifiers.org/3dmet/B01155",
+               "http://identifiers.org/cas/75-07-0"
+end
+
+wolf is "wolf"

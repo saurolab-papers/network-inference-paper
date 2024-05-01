@@ -1,0 +1,49 @@
+// Created by libAntimony v2.13.2
+model *bajaria1()
+
+  // Compartments and Species:
+  species MB, ML, NB, NL;
+
+  // Assignment Rules:
+  SUMB := MB + NB;
+  SUML := ML + NL;
+
+  // Reactions:
+  v1:  -> NB; beta*eNL*NL;
+  v10: ML -> ; eML*ML;
+  v11: ML -> ; muM*ML;
+  v12:  -> NL; 90000000000*0.97^(time/365)*muN;
+  v13:  -> ML; R/(K1 + NL);
+  v2: NB -> ; eNB*NB;
+  v3:  -> MB; beta*eML*ML;
+  v4: MB -> ; eMB*MB;
+  v5:  -> NL; alpha*eNB*NB;
+  v6: NL -> ; eNL*NL;
+  v7: NL -> ; muN*NL;
+  v8:  -> ML; lambda*muN*NL;
+  v9:  -> ML; alpha*eMB*MB;
+
+  // Species initializations:
+  MB = 550;
+  ML = 110000000000;
+  NB = 450;
+  NL = 90000000000;
+
+  // Variable initializations:
+  K1 = 100000000000;
+  R = 6.5e+19;
+  alpha = 5000000;
+  beta = 2e-07;
+  eMB = 10;
+  eML = 0.25;
+  eNB = 40;
+  eNL = 1;
+  lambda = 0.1;
+  muM = 0.003;
+  muN = 0.002;
+
+  // Other declarations:
+  var K1, R, SUMB, SUML, alpha, beta, eMB, eML, eNB, eNL, lambda, muM, muN;
+end
+
+bajaria1 is "bajaria1"

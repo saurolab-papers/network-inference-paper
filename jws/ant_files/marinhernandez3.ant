@@ -1,0 +1,256 @@
+// Created by libAntimony v2.13.2
+function Reversible_Michaelis_Menten(substrate, product, Kms, Kmp, Vf, Vr)
+  (Vf*substrate/Kms - Vr*product/Kmp)/(1 + substrate/Kms + product/Kmp);
+end
+
+Reversible_Michaelis_Menten is "Reversible Michaelis-Menten"
+
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+function PYK_kinetics(A, B, P, Q, Vmax, Kpep, Kadp, Keq, Kpyr, Katp)
+  Vmax*(A*B/(Kpep*Kadp) - P*Q/(Kpep*Kadp*Keq))/((1 + A/Kpep + P/Kpyr)*(1 + B/Kadp + Q/Katp));
+end
+
+PYK_kinetics is "PYK kinetics"
+
+function HPI_rate_equation(G6P, F6P, ERY4P, FBP, PG, Vmf, Kg6p, Vmr, Kf6p, Kery4p, Kfbp, Kpg)
+  (Vmf*(G6P/Kg6p) - Vmr*(F6P/Kf6p))/(1 + G6P/Kg6p + F6P/Kf6p + ERY4P/Kery4p + FBP/Kfbp + PG/Kpg);
+end
+
+HPI_rate_equation is "HPI rate-equation"
+
+function GAPDH_0(NAD, G3P, P, DPG, NADH, Vmf, Knad, Kg3p, Kp, Vmr, Kdpg, Knadh)
+  (Vmf*(NAD*G3P*P/(Knad*Kg3p*Kp)) - Vmr*(DPG*NADH/(Kdpg*Knadh)))/(1 + NAD/Knad + NAD*G3P/(Knad*Kg3p) + NAD*G3P*P/(Knad*Kg3p*Kp) + DPG*NADH/(Kdpg*Knadh) + NADH/Knadh);
+end
+
+GAPDH_0 is "GAPDH"
+
+function PFK_1_rate_equation(ATP, F6P, ADP, FBP, F26BP, CIT, Vm, Katp, beta, alfa, Kf26bp, Kf6p, L, Kcit, Kiatp, Kadp, Kfbp, Keq)
+  Vm*(ATP/Katp/(1 + ATP/Katp))*((1 + beta*F26BP/(alfa*Kf26bp))/(1 + F26BP/(alfa*Kf26bp)))*((F6P*(1 + F26BP/(alfa*Kf26bp))/(Kf6p*(1 + F26BP/Kf26bp)))*(1 + F6P*(1 + F26BP/(alfa*Kf26bp))/(Kf6p*(1 + F26BP/Kf26bp)))^3/(L*(1 + CIT/Kcit)^4*(1 + ATP/Kiatp)^4/(1 + F26BP/Kf26bp)^4 + (1 + F6P*(1 + F26BP/(alfa*Kf26bp))/(Kf6p*(1 + F26BP/Kf26bp)))^4) - ADP*FBP/(Kadp*Kfbp*Keq)/(ADP/Kadp + FBP/Kfbp + ADP*FBP/(Kadp*Kfbp) + 1));
+end
+
+PFK_1_rate_equation is "PFK-1 rate-equation"
+
+function ALDO_rate_equation(FBP, DHAP, G3P, Vmf, Kfbp, Vmr, Kdhap, Kg3p)
+  (Vmf*(FBP/Kfbp) - Vmr*(DHAP*G3P/(Kdhap*Kg3p)))/(1 + FBP/Kfbp + DHAP/Kdhap + G3P/Kg3p + DHAP*G3P/(Kdhap*Kg3p));
+end
+
+ALDO_rate_equation is "ALDO rate-equation"
+
+function HK_isoforms_rate_equation(A, B, P, Q, Vm, f1, Ka, Kb, Keq, Kp, Kq, f2, Ka2)
+  Vm*((f1/(Ka*Kb))*(A*B - P*Q/Keq)/(1 + A/Ka + B/Kb + A*B/(Ka*Kb) + P/Kp + Q/Kq + P*Q/(Kp*Kq) + A*Q/(Ka*Kq) + P*B/(Kp*Kb)) + (f2/(Ka2*Kb))*(A*B - P*Q/Keq)/(1 + A/Ka2 + B/Kb + A*B/(Ka2*Kb) + P/Kp + Q/Kq + P*Q/(Kp*Kq) + A*Q/(Ka2*Kq) + P*B/(Kp*Kb)));
+end
+
+HK_isoforms_rate_equation is "HK isoforms rate-equation"
+
+function MCT1_0(Lacin, Lacout, Vmf, Keq, Klacin, Klacout)
+  Vmf*(Lacin - Lacout/Keq)/(Klacin*(1 + Lacout/Klacout) + Lacin);
+end
+
+MCT1_0 is "MCT1"
+
+function GLUT_isoforms_rate_equation(Gluout, Gluin, Vmf, f1, Keq, Kgluout, Kgluin, f2, Keq1, Kgluout1, Kgluin1)
+  Vmf*(f1*(Gluout - Gluin/Keq)/(Kgluout*(1 + Gluin/Kgluin) + Gluout) + f2*(Gluout - Gluin/Keq1)/(Kgluout1*(1 + Gluin/Kgluin1) + Gluout));
+end
+
+GLUT_isoforms_rate_equation is "GLUT isoforms rate-equation"
+
+function Random_Bi_Bi_reversible_Michaelis_Menten(A, B, P, Q, Vmf, alfa, Ka, Kb, Vmr, beta, Kp, Kq)
+  (Vmf*(A*B/(alfa*Ka*Kb)) - Vmr*(P*Q/(beta*Kp*Kq)))/(1 + A/Ka + B/Kb + A*B/(alfa*Ka*Kb) + P*Q/(beta*Kp*Kq) + P/Kp + Q/Kq);
+end
+
+Random_Bi_Bi_reversible_Michaelis_Menten is "Random Bi-Bi reversible Michaelis-Menten"
+
+
+model *marinhernandez3()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species ADP in compartment_, AMP in compartment_, ATP in compartment_, $Cit in compartment_;
+  species DHAP in compartment_, $Ery4P in compartment_, $F26BP in compartment_;
+  species F6P in compartment_, FBP in compartment_, G3P in compartment_, G6P in compartment_;
+  species Gluin in compartment_, $Gluout in compartment_, Lacin in compartment_;
+  species $Lacout in compartment_, NAD in compartment_, NADH in compartment_;
+  species PEP in compartment_, $Pi in compartment_, Pyr in compartment_, $Xy5P in compartment_;
+  species _13BPG in compartment_, _2PG in compartment_, _3PG in compartment_;
+  species $_6PG in compartment_, $glycogen in compartment_;
+
+  // Reactions:
+  AK: AMP + ATP -> 2 ADP; compartment_*(AK_k1*ATP*AMP - AK_k2*ADP^2);
+  ALDO: FBP -> G3P + DHAP; compartment_*ALDO_rate_equation(FBP, DHAP, G3P, ALDO_Vmf, ALDO_Kfbp, ALDO_Vmr, ALDO_Kdhap, ALDO_Kg3p);
+  ATPases: ATP => $Pi + ADP; compartment_*ATPases_k1*ATP;
+  DHases: NADH -> NAD; compartment_*(DHases_k1*NADH - DHases_k2*NAD);
+  ENO: _2PG -> PEP; compartment_*Reversible_Michaelis_Menten(_2PG, PEP, ENO_Kms, ENO_Kmp, ENO_Vf, ENO_Vr);
+  GAPDH: $Pi + G3P + NAD -> NADH + _13BPG; compartment_*GAPDH_0(NAD, G3P, Pi, _13BPG, NADH, GAPDH_Vmf, GAPDH_Knad, GAPDH_Kg3p, GAPDH_Kp, GAPDH_Vmr, GAPDH_Kdpg, GAPDH_Knadh);
+  GLUT: $Gluout -> Gluin; compartment_*GLUT_isoforms_rate_equation(Gluout, Gluin, GLUT_Vmf, GLUT_f1, GLUT_Keq, GLUT_Kgluout, GLUT_Kgluin, GLUT_f2, GLUT_Keq1, GLUT_Kgluout1, GLUT_Kgluin1);
+  Glycogen_degradation: $Pi + $glycogen => G6P; compartment_*Constant_flux__irreversible(Glycogen_degradation_v);
+  Glycogen_synthesis: ATP + G6P => 2 $Pi + ADP + $glycogen; compartment_*Constant_flux__irreversible(Glycogen_synthesis_v);
+  HK: ATP + Gluin -> ADP + G6P; compartment_*HK_isoforms_rate_equation(Gluin, ATP, G6P, ADP, HK_Vm, HK_f1, HK_Ka, HK_Kb, HK_Keq, HK_Kp, HK_Kq, HK_f2, HK_Ka2);
+  HPI: G6P -> F6P; compartment_*HPI_rate_equation(G6P, F6P, Ery4P, FBP, _6PG, HPI_Vmf, HPI_Kg6p, HPI_Vmr, HPI_Kf6p, HPI_Kery4p, HPI_Kfbp, HPI_Kpg);
+  LDH: Pyr + NADH -> NAD + Lacin; compartment_*Random_Bi_Bi_reversible_Michaelis_Menten(NADH, Pyr, Lacin, NAD, LDH_Vmf, LDH_alfa, LDH_Ka, LDH_Kb, LDH_Vmr, LDH_beta, LDH_Kp, LDH_Kq);
+  MCT1: Lacin -> $Lacout; compartment_*MCT1_0(Lacin, Lacout, MCT1_Vmf, MCT1_Keq, MCT1_Klacin, MCT1_Klacout);
+  MPM: 13 $Pi + 13 ADP + Pyr => 13 ATP; compartment_*Constant_flux__irreversible(MPM_v);
+  OxPhos: $Pi + ADP => ATP; compartment_*Constant_flux__irreversible(OxPhos_v);
+  PFK1: ATP + F6P -> ADP + FBP; compartment_*PFK_1_rate_equation(F6P, ATP, FBP, ADP, F26BP, Cit, PFK1_Vm, PFK1_Katp, PFK1_beta, PFK1_alfa, PFK1_Kf26bp, PFK1_Kf6p, PFK1_L, PFK1_Kcit, PFK1_Kiatp, PFK1_Kadp, PFK1_Kfbp, PFK1_Keq);
+  PGAM: _3PG -> _2PG; compartment_*Reversible_Michaelis_Menten(_3PG, _2PG, PGAM_Kms, PGAM_Kmp, PGAM_Vf, PGAM_Vr);
+  PGK: ADP + _13BPG -> ATP + _3PG; compartment_*Random_Bi_Bi_reversible_Michaelis_Menten(_13BPG, ADP, _3PG, ATP, PGK_Vmf, PGK_alfa, PGK_Ka, PGK_Kb, PGK_Vmr, PGK_beta, PGK_Kp, PGK_Kq);
+  PPP: G6P => $_6PG; compartment_*Constant_flux__irreversible(PPP_v);
+  PYK: ADP + PEP -> ATP + Pyr; compartment_*PYK_kinetics(PEP, ADP, Pyr, ATP, PYK_Vmax, PYK_Kpep, PYK_Kadp, PYK_Keq, PYK_Kpyr, PYK_Katp);
+  TK: $Ery4P + $Xy5P => F6P + G3P; compartment_*Constant_flux__irreversible(TK_v);
+  TPI: DHAP -> G3P; compartment_*Reversible_Michaelis_Menten(DHAP, G3P, TPI_Kms, TPI_Kmp, TPI_Vf, TPI_Vr);
+
+  // Species initializations:
+  ADP = 2.1/compartment_;
+  AMP = 1.6/compartment_;
+  ATP = 11/compartment_;
+  Cit = 1.7;
+  DHAP = 0.8/compartment_;
+  Ery4P = 0.22;
+  F26BP = 0.0042;
+  F6P = 2.7/compartment_;
+  FBP = 0.5/compartment_;
+  G3P = 0.5/compartment_;
+  G6P = 4/compartment_;
+  Gluin = 0.001/compartment_;
+  Gluout = 5;
+  Lacin = 33/compartment_;
+  Lacout = 1.9;
+  NAD = 1.3/compartment_;
+  NADH = 0.05/compartment_;
+  PEP = 0.5/compartment_;
+  Pi = 4;
+  Pyr = 2.7/compartment_;
+  Xy5P = 0.016;
+  _13BPG = 0.001/compartment_;
+  _2PG = 0.001/compartment_;
+  _3PG = 0.001/compartment_;
+  _6PG = 1.5;
+  glycogen = 57;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  AK_k2 = 2.26;
+  AK_k1 = 1;
+  ALDO_Kg3p = 0.16;
+  ALDO_Kdhap = 0.08;
+  ALDO_Vmr = 0.063;
+  ALDO_Kfbp = 0.009;
+  ALDO_Vmf = 0.08;
+  ATPases_k1 = 0.00265;
+  DHases_k2 = 1;
+  DHases_k1 = 250;
+  ENO_Vr = 0.38;
+  ENO_Vf = 0.34;
+  ENO_Kmp = 0.06;
+  ENO_Kms = 0.038;
+  GAPDH_Knadh = 0.01;
+  GAPDH_Kdpg = 0.022;
+  GAPDH_Vmr = 0.35;
+  GAPDH_Kp = 11;
+  GAPDH_Kg3p = 0.19;
+  GAPDH_Knad = 0.09;
+  GAPDH_Vmf = 0.28;
+  GLUT_Kgluin1 = 10;
+  GLUT_Kgluout1 = 9.3;
+  GLUT_Keq1 = 1;
+  GLUT_f2 = 0.86;
+  GLUT_Kgluin = 10;
+  GLUT_Kgluout = 1.8;
+  GLUT_Keq = 1;
+  GLUT_f1 = 0.14;
+  GLUT_Vmf = 0.023;
+  Glycogen_degradation_v = 0.0045;
+  Glycogen_synthesis_v = 0.001;
+  HK_Ka2 = 0.3;
+  HK_f2 = 0.99;
+  HK_Kq = 3.5;
+  HK_Kp = 0.02;
+  HK_Keq = 651;
+  HK_Kb = 1.1;
+  HK_Ka = 0.03;
+  HK_f1 = 0.01;
+  HK_Vm = 0.036;
+  HPI_Kpg = 0.015;
+  HPI_Kfbp = 0.06;
+  HPI_Kery4p = 0.001;
+  HPI_Kf6p = 0.05;
+  HPI_Vmr = 0.54;
+  HPI_Kg6p = 0.4;
+  HPI_Vmf = 0.24;
+  LDH_Kq = 0.07;
+  LDH_Kp = 4.7;
+  LDH_beta = 1;
+  LDH_Vmr = 0.07;
+  LDH_Kb = 0.3;
+  LDH_Ka = 0.002;
+  LDH_alfa = 1;
+  LDH_Vmf = 0.44;
+  MCT1_Klacout = 0.5;
+  MCT1_Klacin = 8.5;
+  MCT1_Keq = 1;
+  MCT1_Vmf = 0.03;
+  MPM_v = 0.0001;
+  OxPhos_v = 0.01875;
+  PFK1_Keq = 247;
+  PFK1_Kfbp = 5;
+  PFK1_Kadp = 5;
+  PFK1_Kiatp = 1.1;
+  PFK1_Kcit = 6.7;
+  PFK1_L = 6.6;
+  PFK1_Kf6p = 1.1;
+  PFK1_Kf26bp = 0.00099;
+  PFK1_alfa = 0.75;
+  PFK1_beta = 1.18;
+  PFK1_Katp = 0.0292;
+  PFK1_Vm = 0.022;
+  PGAM_Vr = 0.36;
+  PGAM_Vf = 0.94;
+  PGAM_Kmp = 0.12;
+  PGAM_Kms = 0.19;
+  PGK_Kq = 0.27;
+  PGK_Kp = 0.13;
+  PGK_beta = 1;
+  PGK_Vmr = 2.5;
+  PGK_Kb = 0.04;
+  PGK_Ka = 0.079;
+  PGK_alfa = 1;
+  PGK_Vmf = 8.7;
+  PPP_v = 9.5e-05;
+  PYK_Katp = 0.86;
+  PYK_Kpyr = 10;
+  PYK_Keq = 195172.4;
+  PYK_Kadp = 0.4;
+  PYK_Kpep = 0.05;
+  PYK_Vmax = 0.072;
+  TK_v = 9.5e-05;
+  TPI_Vr = 28;
+  TPI_Vf = 3.4;
+  TPI_Kmp = 0.51;
+  TPI_Kms = 1.6;
+
+  // Other declarations:
+  const compartment_;
+
+  // Unit definitions:
+  unit substance = 1e-3 mole;
+  unit time_unit = 60 second;
+  unit volume = 1e-3 litre;
+
+  // Display Names:
+  time_unit is "time";
+  compartment_ is "compartment";
+  _13BPG is "13BPG";
+  _2PG is "2PG";
+  _3PG is "3PG";
+  _6PG is "6PG";
+  Glycogen_degradation is "Glycogen degradation";
+  Glycogen_synthesis is "Glycogen synthesis";
+end
+
+marinhernandez3 is "marinhernandez3"

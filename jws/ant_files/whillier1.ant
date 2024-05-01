@@ -1,0 +1,40 @@
+// Created by libAntimony v2.13.2
+model *whillier1()
+
+  // Compartments and Species:
+  species ammi, glne, glni, glui;
+
+  // Assignment Rules:
+  Kdgln := (0.000878/60)*voliw;
+  Vmaxtransglne := 9.83e-8*voli;
+  Vmaxtransglni := 9.83e-8*voli;
+  glnec := glne/vole;
+  glnic := glni/voli;
+  gluic := glui/voli;
+
+  // Reactions:
+  v_1: glne -> glni; Vmaxtransglne*(glne/vole)/(glne/vole + Kmtransglne);
+  v_2: glni -> glne; Vmaxtransglni*(glni/voliw)/(glni/voliw + Kmtransglni);
+  v_3: glni -> ammi + glui; (glni/voliw)*Kdgln;
+
+  // Species initializations:
+  ammi = 0;
+  glne = 1.36458e-06;
+  glni = 5.36717e-07;
+  glui = 3.81014e-07;
+
+  // Variable initializations:
+  voliw = 0.0009159;
+  Kmtransglne = 0.00025;
+  Kmtransglni = 0.00025;
+  voli = 0.00129;
+  vole = 0.00171;
+  volhbn = 0.0003741;
+  voltotalw = 0.0026259;
+
+  // Other declarations:
+  var Kdgln, voliw, Kmtransglne, Kmtransglni, Vmaxtransglne, voli, Vmaxtransglni;
+  var glnec, vole, glnic, gluic, volhbn, voltotalw;
+end
+
+whillier1 is "whillier1"

@@ -1,0 +1,50 @@
+// Created by libAntimony v2.13.2
+model *westermark()
+
+  // Compartments and Species:
+  species F6P, FBP, $g3P, $glc;
+
+  // Reactions:
+  v_1: $glc -> F6P; (Vgk/fac)*(glc/ksgk)^hgk/(1 + (glc/ksgk)^hgk);
+  v_2: F6P -> FBP; (Vpfk/fac)*((keqpgi/(1 + keqpgi))*F6P/kspfk)^(hpfk - (hpfk - hact)*(FBP/ksfba/(1 + FBP/ksfba)))/(((keqpgi/(1 + keqpgi))*F6P/kspfk)^(hpfk - (hpfk - hact)*(FBP/ksfba/(1 + FBP/ksfba))) + (1 + (FBP/kxpfk)^hx)/(1 + alpha^(hpfk - (hpfk - hact)*(FBP/ksfba/(1 + FBP/ksfba)))*(FBP/kxpfk)^hx));
+  v_3: FBP -> $g3P; (Vfba/fac)*(FBP/ksfba)/(FBP/ksfba + 1);
+
+  // Species initializations:
+  F6P = 0.00403813819995114;
+  FBP = 9.11723734681295e-07;
+  g3P = 0;
+  glc = 0.01;
+
+  // Variable initializations:
+  Vfba = 25;
+  Vgk = 10;
+  Vpfk = 100;
+  alpha = 5;
+  fac = 180000;
+  hact = 1;
+  hgk = 1.7;
+  hpfk = 2.5;
+  hx = 2.5;
+  keqpgi = 0.3;
+  ksfba = 5e-06;
+  ksgk = 0.008;
+  kspfk = 0.004;
+  kxpfk = 1e-05;
+  sigcorr = 1.5;
+
+  // Other declarations:
+  var Vfba, Vgk, Vpfk, alpha, fac, hact, hgk, hpfk, hx, keqpgi, ksfba, ksgk;
+  var kspfk, kxpfk, sigcorr;
+
+  // CV terms:
+  F6P identity "http://identifiers.org/kegg.compound/C00085",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15946"
+  FBP identity "http://identifiers.org/kegg.compound/C00354",
+               "http://identifiers.org/obo.chebi/CHEBI%3A16905"
+  g3P identity "http://identifiers.org/kegg.compound/C00093",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15978"
+  glc identity "http://identifiers.org/kegg.compound/C00293",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+end
+
+westermark is "westermark"

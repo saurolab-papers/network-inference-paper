@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *alsheihk1()
+
+  // Compartments and Species:
+  species A, $EXT, I1, I2, S;
+
+  // Reactions:
+  v_1: $EXT -> S; Q_0;
+  v_10: A -> $EXT; d*A;
+  v_2: S -> I1; (Beta_1*I1 + Beta_2*I2)*S;
+  v_3: S -> $EXT; Mu*S;
+  v_4: I1 -> I2; Theta*I1;
+  v_5: I1 -> $EXT; Mu*I1;
+  v_6: I1 -> A; Delta*I1;
+  v_7: I2 -> $EXT; Mu*I2;
+  v_8: I2 -> A; Delta*I2;
+  v_9: A -> $EXT; Mu*A;
+
+  // Species initializations:
+  A = 1800;
+  EXT = 1;
+  I1 = 5400;
+  I2 = 4500;
+  S = 15300;
+
+  // Variable initializations:
+  Beta_1 = 0.0009;
+  Beta_2 = 0.00027;
+  Delta = 0.3;
+  Mu = 0.04;
+  Q_0 = 3000;
+  Theta = 0.02;
+  d = 1;
+
+  // Other declarations:
+  var Beta_1, Beta_2, Delta, Mu, Q_0, Theta, d;
+
+  // Display Names:
+  A is "AIDS";
+  I1 is "Unaware infected";
+  I2 is "Aware infected";
+  S is "Susceptible";
+end
+
+alsheihk1 is "alsheihk1"

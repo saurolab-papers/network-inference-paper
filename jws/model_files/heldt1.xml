@@ -1,0 +1,2461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="heldt1" name="heldt1" substanceUnits="substance" timeUnits="time" volumeUnits="volume" areaUnits="area" lengthUnits="length" extentUnits="substance">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="function_1" name="Protein binding">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k </ci>
+            </bvar>
+            <bvar>
+              <ci> substratea </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateb </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> k </ci>
+              <ci> substratea </ci>
+              <ci> substrateb </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_2" name="Virus release kinetic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateA </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateB </ci>
+            </bvar>
+            <bvar>
+              <ci> KmB </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateC </ci>
+            </bvar>
+            <bvar>
+              <ci> KmC </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateD </ci>
+            </bvar>
+            <bvar>
+              <ci> KmD </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateE </ci>
+            </bvar>
+            <bvar>
+              <ci> KmE </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateF </ci>
+            </bvar>
+            <bvar>
+              <ci> KmF </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateG </ci>
+            </bvar>
+            <bvar>
+              <ci> KmG </ci>
+            </bvar>
+            <bvar>
+              <ci> substrateH </ci>
+            </bvar>
+            <bvar>
+              <ci> KmH </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k </ci>
+                <ci> substrateA </ci>
+                <ci> substrateB </ci>
+                <ci> substrateC </ci>
+                <ci> substrateD </ci>
+                <ci> substrateE </ci>
+                <ci> substrateF </ci>
+                <ci> substrateG </ci>
+                <ci> substrateH </ci>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> substrateB </ci>
+                  <ci> KmB </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateC </ci>
+                  <ci> KmC </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateD </ci>
+                  <ci> KmD </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateE </ci>
+                  <ci> KmE </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateF </ci>
+                  <ci> KmF </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateG </ci>
+                  <ci> KmG </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> substrateH </ci>
+                  <ci> KmH </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_4" id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_5" id="compartment_1" name="cell" spatialDimensions="3" size="1" units="litre" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005623"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_6" sboTerm="SBO:0000605" id="species_1" name="Bhi" compartment="compartment_1" initialConcentration="150" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>free high-affinity binding sites (sites)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:26667"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_7" id="species_10" name="Rc" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>nascent cRNA (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0001172"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019022"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" sboTerm="SBO:0000297" id="species_11" name="P_Rdrp" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>viral polymerase complex (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031381"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" sboTerm="SBO:0000296" id="species_12" name="RcRdrp" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>complex of viral polymerase and cRNA (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031381"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019022"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" id="species_13" name="P_Np" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>NP proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P03466"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" id="species_14" name="P_M1" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>M1 proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P05777"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" id="species_15" name="VpNucM1" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>M1-vRNP complexes in the nucleus (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0030529"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P05777"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005634"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_13" id="species_16" name="VpCytM1" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>M1-vRNP complexes in the cytoplasm (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0030529"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P05777"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005737"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" id="species_17" name="Cp" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>cRNPs (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0030529"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_15" id="species_18" name="Rv" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>nascent vRNA (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:isPartOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/taxonomy/211044"/>
+                </rdf:Bag>
+              </bqbiol:isPartOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_16" id="species_19" name="RvRdrp" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>complex of viral polymerase and vRNA (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_16">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031381"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019022"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_17" sboTerm="SBO:0000605" id="species_2" name="VattHi" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>virions attached to high-affinity binding sites (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019012"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019062"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_18" sboTerm="SBO:0000278" id="species_20" name="Rm1" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 1 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_19" sboTerm="SBO:0000278" id="species_21" name="Rm2" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 2 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_20" sboTerm="SBO:0000278" id="species_22" name="Rm3" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 3 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_21" sboTerm="SBO:0000278" id="species_23" name="Rm4" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 4 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_22" sboTerm="SBO:0000278" id="species_24" name="Rm5" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 5 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_23" sboTerm="SBO:0000278" id="species_25" name="Rm6" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>mRNA of segment 6 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_24" sboTerm="SBO:0000278" id="species_26" name="Rm7" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>unspliced mRNA of segment 7 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_25" sboTerm="SBO:0000278" id="species_27" name="Rm8" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>unspliced mRNA of segment 8 (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_26" id="species_28" name="P_Pb1" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PB1 proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_26">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P16511"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_27" id="species_29" name="P_Pb2" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PB2 proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_27">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P03427"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_28" id="species_3" name="Vex" compartment="compartment_1" initialConcentration="10" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>virions in the extracellular medium (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_28">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019012"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005576"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_29" id="species_30" name="P_Pa" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>PA proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P15659"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_30" id="species_31" name="P_Nep" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>NEP proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_30">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P03508"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_31" id="species_32" name="P_Ha" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>HA proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_31">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P03437"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_32" id="species_33" name="P_Na" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>NA proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_32">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P06820"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_33" id="species_34" name="P_M2" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>M2 proteins (molecules)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_33">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P63231"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_34" id="species_35" name="Vrel" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of released virions (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_34">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019012"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_35" id="species_36" name="total cRNA" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of cRNA in the cell considering all segments (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_36" id="species_37" name="total cRNA of a segment" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of cRNA in the cell considering an arbitrary segment (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_37" id="species_38" name="total vRNA" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of vRNA in the cell considering all segments (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_38" id="species_39" name="total vRNA of a segment" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of vRNA in the cell considering an arbitrary segments (molecules)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_39" sboTerm="SBO:0000606" id="species_4" name="Blo" compartment="compartment_1" initialConcentration="1000" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>free low-affinity binding sites (sites)</pre>
+          </body>
+        </notes>
+      </species>
+      <species metaid="metaid_40" sboTerm="SBO:0000606" id="species_5" name="VattLo" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>virions attached to low-affinity binding sites (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_40">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019012"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019062"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_41" id="species_6" name="Ven" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>virions in endosomes (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_41">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0019012"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005768"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_42" id="species_7" name="Vfus" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>total amount of virions fused with endosomes (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_42">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0010008"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0036338"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0039654"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_43" id="species_8" name="VpCyt" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>parental vRNPs in the cytoplasm (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_43">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0030529"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005737"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_44" id="species_9" name="VpNuc" compartment="compartment_1" initialConcentration="0" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>vRNPs in the nucleus (virions)</pre>
+          </body>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_44">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0030529"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005634"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_45" id="parameter_1" name="kAttHi" value="0.0809" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>attachment rate of virus particles to high-affinity binding sites (1/(site*h))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_46" id="parameter_10" name="kSynV" value="13.86" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of vRNAs (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_47" id="parameter_11" name="kSynC" value="1.38" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of cRNAs (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_48" id="parameter_12" name="kBindRdrp" value="1" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>binding rate of polymerase complexes to cRNA and vRNA (1/(h*molecule))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_49" id="parameter_13" name="kBindNp" value="0.000301" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>binding rate of NP to RdRp-cRNA and RdRp-vRNA complexes (1/(h*molecule))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_50" id="parameter_14" name="kBindM1" value="1.39e-06" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>binding rate of M1 to nuclear vRNPs (1/(h*molecule))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_51" id="parameter_15" name="kExp" value="1e-06" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>combined rate of NEP binding to M1-vRNP complexes and subsequent transport out of the nucleus (1/(molecule*h))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_52" id="parameter_16" name="kSynP_Drib" value="405" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>fraction of protein synthesis rate and distance between two adjacent ribosomes (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_53" id="parameter_17" name="kRdrp" value="1" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>formation rate of functional polymerase complexes from the three subunits (1/(h*molecule^2))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_54" id="parameter_18" name="kRel" value="0.0037" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>release rate of progeny virions from the cell (virions/(molecule*h))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_55" id="parameter_19" name="kDegR" value="36.36" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>degradation rate of nascent cRNA and vRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_56" id="parameter_2" name="kAttLo" value="0.000455" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>attachment rate of virus particles to low-affinity binding sites (1/(site*h))</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_57" id="parameter_20" name="kDegRnp" value="0.09" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>degradation rate of RNPs (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_58" id="parameter_21" name="kDegM" value="0.33" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>degradation rate of mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_59" id="parameter_22" name="kDegRrdrp" value="4.25" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>degradation rate of RdRp-cRNA and RdRp-vRNA complexes (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_60" id="parameter_23" name="Ffus" value="0.51" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>fraction of fusion-competent virions (-)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_61" id="parameter_24" name="Drib" value="160" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>distance between two adjacent ribosomes on an mRNA (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_62" id="parameter_25" name="Fspl7" value="0.02" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>fraction of spliced M2 mRNAs compared to total mRNAs of segment 7 (-)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_63" id="parameter_26" name="Fspl8" value="0.125" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>fraction of spliced NEP mRNAs compared to total mRNAs of segment 8 (-)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_64" id="parameter_27" name="kSynP_M1" value="396.9" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of M1 proteins (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_65" id="parameter_28" name="kSynP_M2" value="8.1" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of M2 proteins (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_66" id="parameter_29" name="kSynP_NEP" value="50.625" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of NEP proteins (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_67" id="parameter_3" name="kDisHi" value="7.15929203539823" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>dissociation rate of virions from high-affinity binding sites (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_68" id="parameter_30" name="L1" value="2320" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 1&apos;s mRNA encoding PB2 (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_69" id="parameter_31" name="L2" value="2320" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 2&apos;s mRNA encoding PB1 (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_70" id="parameter_32" name="L3" value="2211" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 3&apos;s mRNA encoding PA (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_71" id="parameter_33" name="L4" value="1757" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 4&apos;s mRNA encoding HA (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_72" id="parameter_34" name="L5" value="1540" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 5&apos;s mRNA encoding NP (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_73" id="parameter_35" name="L6" value="1392" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 6&apos;s mRNA encoding NA (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_74" id="parameter_36" name="L7" value="1005" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 7&apos;s unspliced mRNA encoding M1 (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_75" id="parameter_37" name="L8" value="868" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>length of segment 8&apos;s unspliced mRNA encoding NS1 (nucleotides)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_76" id="parameter_38" name="kSynM" value="250000" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of mRNAs (nucleotides/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_77" id="parameter_39" name="kSynM1" value="13.4698275862069" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 1&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_78" id="parameter_4" name="kDisLo" value="5.46218487394958" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>dissociation rate of virions from low-affinity binding sites (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_79" id="parameter_40" name="kSynM2" value="13.4698275862069" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 2&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_80" id="parameter_41" name="kSynM3" value="14.1338760741746" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 3&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_81" id="parameter_42" name="kSynM4" value="17.7859988616961" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 4&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_82" id="parameter_43" name="kSynM5" value="20.2922077922078" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 5&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_83" id="parameter_44" name="kSynM6" value="22.4497126436782" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 6&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_84" id="parameter_45" name="kSynM7" value="31.0945273631841" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 7&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_85" id="parameter_46" name="kSynM8" value="36.0023041474654" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of segment 8&apos;s mRNA (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_86" id="parameter_47" name="kEqHi" value="0.0113" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>equilibrium constant for the attachment of virions to the high-affinity binding sites (1/site)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_87" id="parameter_48" name="kEqLo" value="8.33e-05" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>equilibrium constant for the attachment of virions to the low-affinity binding sites (1/site)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_88" id="parameter_5" name="kEn" value="4.8" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>endocytosis rate of virions bound to high-affinity or low-affinity binding sites (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_89" id="parameter_6" name="kFus" value="3.21" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>fusion rate of virions in late endosomes (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_90" id="parameter_7" name="kDegVen" value="3.08411764705882" constant="false">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>degradation rate of virions which do not fuse with the endosomal membrane (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_91" id="parameter_8" name="kImp" value="6" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>nuclear import rate of cytoplasmic vRNPs which are not bound to M1 (1/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_92" id="parameter_9" name="kSynP" value="64800" constant="true">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <pre>synthesis rate of proteins (nucleotides/h)</pre>
+          </body>
+        </notes>
+      </parameter>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_93" variable="species_37">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> species_36 </ci>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_94" variable="species_39">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> species_38 </ci>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_95" variable="species_36">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> species_10 </ci>
+            <ci> species_12 </ci>
+            <ci> species_17 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_96" variable="species_38">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn> 8 </cn>
+              <apply>
+                <plus/>
+                <ci> species_2 </ci>
+                <ci> species_5 </ci>
+                <ci> species_6 </ci>
+              </apply>
+            </apply>
+            <ci> species_8 </ci>
+            <ci> species_9 </ci>
+            <ci> species_18 </ci>
+            <ci> species_19 </ci>
+            <ci> species_15 </ci>
+            <ci> species_16 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_97" variable="parameter_45">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_36 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_98" variable="parameter_29">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> parameter_9 </ci>
+              <ci> parameter_24 </ci>
+            </apply>
+            <ci> parameter_26 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_99" variable="parameter_28">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> parameter_9 </ci>
+              <ci> parameter_24 </ci>
+            </apply>
+            <ci> parameter_25 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_100" variable="parameter_42">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_33 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_101" variable="parameter_39">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_30 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_102" variable="parameter_41">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_32 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_103" variable="parameter_40">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_31 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_104" variable="parameter_46">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_37 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_105" variable="parameter_27">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> parameter_9 </ci>
+              <ci> parameter_24 </ci>
+            </apply>
+            <apply>
+              <minus/>
+              <cn> 1 </cn>
+              <ci> parameter_25 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_106" variable="parameter_44">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_35 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_107" variable="parameter_43">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <ci> parameter_38 </ci>
+              <ci> parameter_34 </ci>
+            </apply>
+            <cn> 8 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_108" variable="parameter_7">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <ci> parameter_23 </ci>
+              </apply>
+              <ci> parameter_23 </ci>
+            </apply>
+            <ci> parameter_6 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_109" variable="parameter_4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> parameter_2 </ci>
+            <ci> parameter_48 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_110" variable="parameter_3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> parameter_1 </ci>
+            <ci> parameter_47 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_111" variable="parameter_16">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> parameter_9 </ci>
+            <ci> parameter_24 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_118" id="reaction_1" name="Binding of virions to high-affinity sites" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_112" species="species_1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_113" species="species_3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_114" species="species_2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_115" species="species_2"/>
+          <modifierSpeciesReference metaid="metaid_116" species="species_1"/>
+          <modifierSpeciesReference metaid="metaid_117" species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> parameter_1 </ci>
+                  <ci> species_3 </ci>
+                  <ci> species_1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> parameter_3 </ci>
+                  <ci> species_2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_124" id="reaction_10" name="Binding of NP to RdRp-cRNA complexes" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_119" species="species_13" stoichiometry="71" constant="true"/>
+          <speciesReference metaid="metaid_120" species="species_12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_121" species="species_17" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_122" species="species_13"/>
+          <modifierSpeciesReference metaid="metaid_123" species="species_12"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_1 </ci>
+                <ci> parameter_13 </ci>
+                <ci> species_12 </ci>
+                <ci> species_13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_130" id="reaction_11" name="Binding of M1 to vRNPs in the nucleus" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="species_14" stoichiometry="8.5" constant="true"/>
+          <speciesReference metaid="metaid_126" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="species_15" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_128" species="species_14"/>
+          <modifierSpeciesReference metaid="metaid_129" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_1 </ci>
+                <ci> parameter_14 </ci>
+                <ci> species_9 </ci>
+                <ci> species_14 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_136" id="reaction_12" name="Nuclear export of vRNPs" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_131" species="species_31" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_132" species="species_15" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_133" species="species_16" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_134" species="species_31"/>
+          <modifierSpeciesReference metaid="metaid_135" species="species_15"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_15 </ci>
+              <ci> species_15 </ci>
+              <ci> species_31 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_141" id="reaction_13" name="Synthesis of vRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_137" species="species_17" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="species_18" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_139" species="species_17" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_140" species="species_17"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_10 </ci>
+              <ci> species_17 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_147" id="reaction_14" name="Binding of polymerase to nascent vRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="species_11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_143" species="species_18" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="species_19" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_145" species="species_11"/>
+          <modifierSpeciesReference metaid="metaid_146" species="species_18"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_12 </ci>
+              <ci> species_18 </ci>
+              <ci> species_11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_153" id="reaction_15" name="Binding of NP to RdRp-vRNA complexes" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_148" species="species_13" stoichiometry="71" constant="true"/>
+          <speciesReference metaid="metaid_149" species="species_19" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_151" species="species_13"/>
+          <modifierSpeciesReference metaid="metaid_152" species="species_19"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_1 </ci>
+                <ci> parameter_13 </ci>
+                <ci> species_19 </ci>
+                <ci> species_13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_158" id="reaction_16" name="Synthesis of mRNA of segment 1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_154" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_155" species="species_20" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_156" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_157" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_39 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="reaction_17" name="Synthesis of mRNA of segment 2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_159" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_160" species="species_21" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_161" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_162" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_40 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_168" id="reaction_18" name="Synthesis of mRNA of segment 3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_165" species="species_22" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_166" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_167" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_41 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="reaction_19" name="Synthesis of mRNA of segment 4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_169" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_170" species="species_23" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_171" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_172" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_42 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_180" id="reaction_2" name="Binding of virions to low-affinity sites" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_174" species="species_4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_175" species="species_3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="species_5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_177" species="species_5"/>
+          <modifierSpeciesReference metaid="metaid_178" species="species_4"/>
+          <modifierSpeciesReference metaid="metaid_179" species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> parameter_2 </ci>
+                  <ci> species_3 </ci>
+                  <ci> species_4 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> parameter_4 </ci>
+                  <ci> species_5 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_185" id="reaction_20" name="Synthesis of mRNA of segment 5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_181" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_182" species="species_24" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_183" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_184" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_43 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_190" id="reaction_21" name="Synthesis of mRNA of segment 6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_186" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_187" species="species_25" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_188" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_189" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_44 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="reaction_22" name="Synthesis of mRNA of segment 7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_191" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_192" species="species_26" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_193" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_194" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_45 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_200" id="reaction_23" name="Synthesis of mRNA of segment 8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="species_27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_198" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_199" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_46 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="reaction_24" name="Synthesis of PB1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_201" species="species_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_202" species="species_28" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_203" species="species_21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_204" species="species_21"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_210" id="reaction_25" name="Synthesis of PB2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="species_20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_207" species="species_29" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_208" species="species_20" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_209" species="species_20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_215" id="reaction_26" name="Synthesis of PA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_211" species="species_22" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_212" species="species_30" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_213" species="species_22" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_214" species="species_22"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_22 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_223" id="reaction_27" name="Formation of polymerases" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_216" species="species_30" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_217" species="species_29" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_218" species="species_28" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_219" species="species_11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_220" species="species_30"/>
+          <modifierSpeciesReference metaid="metaid_221" species="species_29"/>
+          <modifierSpeciesReference metaid="metaid_222" species="species_28"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_17 </ci>
+              <ci> species_28 </ci>
+              <ci> species_29 </ci>
+              <ci> species_30 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_228" id="reaction_28" name="Synthesis of NP" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_224" species="species_24" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_225" species="species_13" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_226" species="species_24" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_227" species="species_24"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_24 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_233" id="reaction_29" name="Synthesis of M1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_229" species="species_26" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_230" species="species_14" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_231" species="species_26" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_232" species="species_26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_27 </ci>
+              <ci> species_26 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_238" id="reaction_3" name="Endocytosis of virions bound to high-affinity sites" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_234" species="species_2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_235" species="species_1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_236" species="species_6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_237" species="species_2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_5 </ci>
+              <ci> species_2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_243" id="reaction_30" name="Synthesis of NEP" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_239" species="species_27" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_240" species="species_31" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_241" species="species_27" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_242" species="species_27"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_29 </ci>
+              <ci> species_27 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_248" id="reaction_31" name="Synthesis of HA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_244" species="species_23" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_245" species="species_32" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_246" species="species_23" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_247" species="species_23"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_23 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_253" id="reaction_32" name="Synthesis of NA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_249" species="species_25" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_250" species="species_33" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_251" species="species_25" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_252" species="species_25"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_16 </ci>
+              <ci> species_25 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_258" id="reaction_33" name="Synthesis of M2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_254" species="species_26" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_255" species="species_34" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_256" species="species_26" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_257" species="species_26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_28 </ci>
+              <ci> species_26 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_283" id="reaction_34" name="Virus release" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_266" species="species_34" stoichiometry="40" constant="true"/>
+          <speciesReference metaid="metaid_267" species="species_33" stoichiometry="100" constant="true"/>
+          <speciesReference metaid="metaid_268" species="species_32" stoichiometry="500" constant="true"/>
+          <speciesReference metaid="metaid_269" species="species_31" stoichiometry="157" constant="true"/>
+          <speciesReference metaid="metaid_270" species="species_14" stoichiometry="2932" constant="true"/>
+          <speciesReference metaid="metaid_271" species="species_13" stoichiometry="433" constant="true"/>
+          <speciesReference metaid="metaid_272" species="species_11" stoichiometry="37" constant="true"/>
+          <speciesReference metaid="metaid_273" species="species_16" stoichiometry="8" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_274" species="species_35" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_275" species="species_31"/>
+          <modifierSpeciesReference metaid="metaid_276" species="species_34"/>
+          <modifierSpeciesReference metaid="metaid_277" species="species_14"/>
+          <modifierSpeciesReference metaid="metaid_278" species="species_33"/>
+          <modifierSpeciesReference metaid="metaid_279" species="species_13"/>
+          <modifierSpeciesReference metaid="metaid_280" species="species_32"/>
+          <modifierSpeciesReference metaid="metaid_281" species="species_11"/>
+          <modifierSpeciesReference metaid="metaid_282" species="species_16"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_2 </ci>
+                <ci> parameter_18 </ci>
+                <ci> species_16 </ci>
+                <ci> species_11 </ci>
+                <ci> KmB </ci>
+                <ci> species_32 </ci>
+                <ci> KmC </ci>
+                <ci> species_13 </ci>
+                <ci> KmD </ci>
+                <ci> species_33 </ci>
+                <ci> KmE </ci>
+                <ci> species_14 </ci>
+                <ci> KmF </ci>
+                <ci> species_34 </ci>
+                <ci> KmG </ci>
+                <ci> species_31 </ci>
+                <ci> KmH </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter metaid="metaid_259" id="KmH" name="KmH" value="1650"/>
+            <localParameter metaid="metaid_260" id="KmG" name="KmG" value="400"/>
+            <localParameter metaid="metaid_261" id="KmF" name="KmF" value="30000"/>
+            <localParameter metaid="metaid_262" id="KmE" name="KmE" value="1000"/>
+            <localParameter metaid="metaid_263" id="KmD" name="KmD" value="10000"/>
+            <localParameter metaid="metaid_264" id="KmC" name="KmC" value="5000"/>
+            <localParameter metaid="metaid_265" id="KmB" name="KmB" value="450"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_286" id="reaction_35" name="Degradation of vRNPs in the nucleus" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_284" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_285" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_20 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_289" id="reaction_36" name="Degradation of nascent cRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_287" species="species_10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_288" species="species_10"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_19 </ci>
+              <ci> species_10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_292" id="reaction_37" name="Degradation of nascent vRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_290" species="species_18" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_291" species="species_18"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_19 </ci>
+              <ci> species_18 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_295" id="reaction_38" name="Degradation of RdRp-cRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_293" species="species_12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_294" species="species_12"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_22 </ci>
+              <ci> species_12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_298" id="reaction_39" name="Degradation of RdRp-vRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_296" species="species_19" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_297" species="species_19"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_22 </ci>
+              <ci> species_19 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_303" id="reaction_4" name="Endocytosis of virions bound to low-affinity sites" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_299" species="species_5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_300" species="species_4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_301" species="species_6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_302" species="species_5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_5 </ci>
+              <ci> species_5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_306" id="reaction_40" name="Degradation of cRNPs" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_304" species="species_17" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_305" species="species_17"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_20 </ci>
+              <ci> species_17 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_309" id="reaction_41" name="Degradation of M1-vRNP complexes in the nucleus" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_307" species="species_15" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_308" species="species_15"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_20 </ci>
+              <ci> species_15 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_312" id="reaction_42" name="Degradation of M1-vRNP complexes in the cytoplasm" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_310" species="species_16" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_311" species="species_16"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_20 </ci>
+              <ci> species_16 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_315" id="reaction_43" name="Degradation of mRNA of segment 1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_313" species="species_20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_314" species="species_20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_318" id="reaction_44" name="Degradation of mRNA of segment 2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_316" species="species_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_317" species="species_21"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_321" id="reaction_45" name="Degradation of mRNA of segment 3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_319" species="species_22" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_320" species="species_22"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_22 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_324" id="reaction_46" name="Degradation of mRNA of segment 4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_322" species="species_23" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_323" species="species_23"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_23 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_327" id="reaction_47" name="Degradation of mRNA of segment 5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_325" species="species_24" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_326" species="species_24"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_24 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_330" id="reaction_48" name="Degradation of mRNA of segment 6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_328" species="species_25" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_329" species="species_25"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_25 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_333" id="reaction_49" name="Degradation of mRNA of segment 7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_331" species="species_26" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_332" species="species_26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_26 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_338" id="reaction_5" name="Fusion of virions with endosomes" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_334" species="species_6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_335" species="species_8" stoichiometry="8" constant="true"/>
+          <speciesReference metaid="metaid_336" species="species_7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_337" species="species_6"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_6 </ci>
+              <ci> species_6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_341" id="reaction_50" name="Degradation of mRNA of segment 8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_339" species="species_27" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_340" species="species_27"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_21 </ci>
+              <ci> species_27 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_344" id="reaction_6" name="Degradation of virions in endosomes" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_342" species="species_6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_343" species="species_6"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_7 </ci>
+              <ci> species_6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_348" id="reaction_7" name="Nuclear import of vRNPs" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_345" species="species_8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_346" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_347" species="species_8"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_8 </ci>
+              <ci> species_8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_353" id="reaction_8" name="Synthesis of cRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_349" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_350" species="species_10" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_351" species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_352" species="species_9"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_11 </ci>
+              <ci> species_9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_359" id="reaction_9" name="Binding of polymerase to nascent cRNA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_354" species="species_11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_355" species="species_10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_356" species="species_12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_357" species="species_11"/>
+          <modifierSpeciesReference metaid="metaid_358" species="species_10"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <ci> parameter_12 </ci>
+              <ci> species_10 </ci>
+              <ci> species_11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

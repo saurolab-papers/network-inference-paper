@@ -1,0 +1,36 @@
+// Created by libAntimony v2.13.2
+model *branch3()
+
+  // Compartments and Species:
+  species $p1, $p2, $s, x;
+
+  // Reactions:
+  v_1: $s -> x; (Vm1/K1s)*(s - x/Keq1)/(1 + s/K1s + x/K1x);
+  v_2: x -> $p1; (Vm2/K2x)*(x - p1/Keq2)/(1 + x/K2x + p1/K2p1);
+  v_3: x -> $p2; (Vm3/K3x)*(x - p2/Keq3)/(1 + x/K3x + p2/K3p2);
+
+  // Species initializations:
+  p1 = 0;
+  p2 = 0;
+  s = 1;
+  x = 0;
+
+  // Variable initializations:
+  K1s = 1;
+  K1x = 1;
+  K2p1 = 1;
+  K2x = 1;
+  K3p2 = 1;
+  K3x = 1;
+  Keq1 = 1;
+  Keq2 = 1;
+  Keq3 = 1;
+  Vm1 = 1;
+  Vm2 = 1;
+  Vm3 = 1;
+
+  // Other declarations:
+  var K1s, K1x, K2p1, K2x, K3p2, K3x, Keq1, Keq2, Keq3, Vm1, Vm2, Vm3;
+end
+
+branch3 is "branch3"

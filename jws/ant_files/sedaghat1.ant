@@ -1,0 +1,35 @@
+// Created by libAntimony v2.13.2
+model *sedaghat1()
+
+  // Compartments and Species:
+  species L, P, U;
+
+  // Reactions:
+  v1:  -> U; lambda;
+  v2: U -> ; deltaU*U;
+  v3: U -> P; beta*P*U;
+  v4: P -> ; deltaP*P;
+  v5: P -> L; alphaR*P;
+  v6:  -> P; alphaQ*L;
+  v7: L -> ; deltaL*L;
+  v8: L -> ; alphaQ*L;
+
+  // Species initializations:
+  L = 7237784.79589;
+  P = 1174269000;
+  U = 72377847958.9;
+
+  // Variable initializations:
+  alphaQ = 0.0005;
+  alphaR = 5e-06;
+  beta = 5.2000106e-12;
+  deltaL = 0.0001;
+  deltaP = 0.5;
+  deltaU = 0.02;
+  lambda = 2000000000;
+
+  // Other declarations:
+  var alphaQ, alphaR, beta, deltaL, deltaP, deltaU, lambda;
+end
+
+sedaghat1 is "sedaghat1"

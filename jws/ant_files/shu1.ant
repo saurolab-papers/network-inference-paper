@@ -1,0 +1,43 @@
+// Created by libAntimony v2.13.2
+model *shu1()
+
+  // Compartments and Species:
+  species A, R, T, Z;
+
+  // Reactions:
+  v1:  -> R; lambda;
+  v10:  -> Z; rho*A*T*Z;
+  v11: Z -> ; dZ*Z;
+  v2: A -> R; r*A;
+  v3: R -> A; a*R;
+  v4: R -> ; dR*R;
+  v5:  -> A; p*A;
+  v6: A -> ; dA*A;
+  v7: A -> T; mu*A*T;
+  v8: T -> ; dT*T;
+  v9: T -> ; delta*T*Z;
+
+  // Species initializations:
+  A = 10;
+  R = 700;
+  T = 1;
+  Z = 0.1;
+
+  // Variable initializations:
+  a = 0.002;
+  dA = 0.6;
+  dR = 0.0001;
+  dT = 0.7;
+  dZ = 0.2;
+  delta = 0.5;
+  lambda = 1;
+  mu = 0.8;
+  p = 0.5;
+  r = 0.2;
+  rho = 0.1;
+
+  // Other declarations:
+  var a, dA, dR, dT, dZ, delta, lambda, mu, p, r, rho;
+end
+
+shu1 is "shu1"

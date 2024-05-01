@@ -1,0 +1,744 @@
+// Created by libAntimony v2.13.2
+model *fernandez1()
+
+  // Compartments and Species:
+  compartment Spine;
+  species AMP in Spine, CDK5 in Spine, CK1 in Spine, CK1P in Spine, CK1P_PP2B in Spine;
+  species Ca in Spine, D in Spine, D137 in Spine, D137_CDK5 in Spine, D137_PKA in Spine;
+  species D137_PP2C in Spine, D34 in Spine, D34_137 in Spine, D34_137_CDK5 in Spine;
+  species D34_137_PP2B in Spine, D34_137_PP2C in Spine, D34_75 in Spine, D34_75_134_PP2A in Spine;
+  species D34_75_137 in Spine, D34_75_137_PP2AP in Spine, D34_75_137_PP2B in Spine;
+  species D34_75_137_PP2C in Spine, D34_75_CK1 in Spine, D34_75_PP2A in Spine;
+  species D34_75_PP2AP in Spine, D34_75_PP2B in Spine, D34_CDK5 in Spine;
+  species D34_CK1 in Spine, D34_PP2B in Spine, D75 in Spine, D75CK1 in Spine;
+  species D75_137 in Spine, D75_137_PKA in Spine, D75_137_PP2A in Spine, D75_137_PP2AP in Spine;
+  species D75_137_PP2C in Spine, D75_PKA in Spine, D75_PP2A in Spine, D75_PP2AP in Spine;
+  species D_CDK5 in Spine, D_CK1 in Spine, D_PKA in Spine, $Empty in Spine;
+  species PDE in Spine, PDEP in Spine, PDE_PKA in Spine, PKA in Spine, PP2A in Spine;
+  species PP2AP in Spine, PP2A_PKA in Spine, PP2B in Spine, PP2Binactive in Spine;
+  species PP2BinactiveCa2 in Spine, PP2C in Spine, R2C2 in Spine, cAMP in Spine;
+  species cAMP2_R2C2 in Spine, cAMP3_R2C2 in Spine, cAMP4_R2 in Spine, cAMP4_R2C in Spine;
+  species cAMP4_R2C2 in Spine, cAMP_PDE in Spine, cAMP_PDEP in Spine, cAMP_R2C2 in Spine;
+
+  // Reactions:
+  v57: $Empty => Ca; Spine*k57;
+  v58: Ca => $Empty; Spine*Ca*v58_k58;
+  vcat1: D_CDK5 => D75 + CDK5; Spine*D_CDK5*vcat1_kcat1;
+  vcat10: D75_PP2AP => D + PP2AP; Spine*D75_PP2AP*vcat10_kcat10;
+  vcat11: D137_CDK5 => D75_137 + CDK5; Spine*D137_CDK5*vcat11_kcat11;
+  vcat12: D137_PKA => D34_137 + PKA; Spine*D137_PKA*vcat12_kcat12;
+  vcat13: D137_PP2C => D + PP2C; Spine*D137_PP2C*vcat13_kcat13;
+  vcat14: D34_75_CK1 => D34_75_137 + CK1; Spine*D34_75_CK1*vcat14_kcat14;
+  vcat15: D34_75_PP2A => D34 + PP2A; Spine*D34_75_PP2A*vcat15_kcat15;
+  vcat16: D34_75_PP2AP => D34 + PP2AP; Spine*D34_75_PP2AP*vcat16_kcat16;
+  vcat17: D34_75_PP2B => D75 + PP2B; Spine*D34_75_PP2B*vcat17_kcat17;
+  vcat18: D34_137_CDK5 => D34_75_137 + CDK5; Spine*D34_137_CDK5*vcat18_kcat18;
+  vcat19: D34_137_PP2B => D137 + PP2B; Spine*D34_137_PP2B*vcat19_kcat19;
+  vcat2: D_CK1 => D137 + CK1; Spine*vcat2_kcat2*D_CK1;
+  vcat20: D34_137_PP2C => D34 + PP2C; Spine*D34_137_PP2C*vcat20_kcat20;
+  vcat21: D75_137_PKA => D34_75_137 + PKA; Spine*D75_137_PKA*vcat21_kcat21;
+  vcat22: D75_137_PP2A => D137 + PP2A; Spine*D75_137_PP2A*vcat22_kcat22;
+  vcat23: D75_137_PP2AP => D137 + PP2AP; Spine*D75_137_PP2AP*vcat23_kcat23;
+  vcat24: D75_137_PP2C => D75 + PP2C; Spine*D75_137_PP2C*vcat24_kcat24;
+  vcat25: D34_75_134_PP2A => D34_137 + PP2A; Spine*D34_75_134_PP2A*vcat25_kcat25;
+  vcat26: D34_75_137_PP2AP => D34_137 + PP2AP; Spine*D34_75_137_PP2AP*vcat26_kcat26;
+  vcat27: D34_75_137_PP2B => D75_137 + PP2B; Spine*D34_75_137_PP2B*vcat27_kcat27;
+  vcat28: D34_75_137_PP2C => D34_75 + PP2C; Spine*D34_75_137_PP2C*vcat28_kcat28;
+  vcat29: CK1P_PP2B => CK1 + PP2B; Spine*CK1P_PP2B*vcat29_kcat29;
+  vcat3: D_PKA => D34 + PKA; Spine*D_PKA*vcat3_kcat3;
+  vcat30: CK1 => CK1P; Spine*CK1*vcat30_kcat30;
+  vcat31: PDE_PKA => PDEP + PKA; Spine*PDE_PKA*vcat31_kcat31;
+  vcat32: PDEP => PDE; Spine*PDEP*vcat32_kcat32;
+  vcat33: PP2A_PKA => PP2AP + PKA; Spine*PP2A_PKA*vcat33_kcat33;
+  vcat34: PP2AP => PP2A; Spine*PP2AP*vcat34_kcat34;
+  vcat4: D34_CDK5 => D34_75 + CDK5; Spine*D34_CDK5*vcat4_kcat4;
+  vcat44: cAMP_PDE => AMP + PDE; Spine*cAMP_PDE*vcat44_kcat44;
+  vcat45: cAMP_PDEP => AMP + PDEP; Spine*cAMP_PDEP*vcat45_kcat45;
+  vcat5: D34_CK1 => D34_137 + CK1; Spine*D34_CK1*vcat5_kcat5;
+  vcat6: D34_PP2B => D + PP2B; Spine*D34_PP2B*vcat6_kcat6;
+  vcat7: D75CK1 => CK1 + D75_137; Spine*D75CK1*vcat7_kcat7;
+  vcat8: D75_PKA => D34_75 + PKA; Spine*D75_PKA*vcat8_kcat8;
+  vcat9: D75_PP2A => D + PP2A; Spine*D75_PP2A*vcat9_kcat9;
+  voff1: D_CDK5 => D + CDK5; Spine*D_CDK5*voff1_koff1;
+  voff10: D75_PP2AP => D75 + PP2AP; Spine*D75_PP2AP*voff10_koff10;
+  voff11: D137_CDK5 => D137 + CDK5; Spine*D137_CDK5*voff11_koff11;
+  voff12: D137_PKA => D137 + PKA; Spine*D137_PKA*voff12_koff12;
+  voff13: D137_PP2C => D137 + PP2C; Spine*D137_PP2C*voff13_koff13;
+  voff14: D34_75_CK1 => D34_75 + CK1; Spine*D34_75_CK1*voff14_koff14;
+  voff15: D34_75_PP2A => D34_75 + PP2A; Spine*D34_75_PP2A*voff15_koff15;
+  voff16: D34_75_PP2AP => D34_75 + PP2AP; Spine*D34_75_PP2AP*voff16_koff16;
+  voff17: D34_75_PP2B => D34_75 + PP2B; Spine*D34_75_PP2B*voff17_koff17;
+  voff18: D34_137_CDK5 => D34_137 + CDK5; Spine*D34_137_CDK5*voff18_koff18;
+  voff19: D34_137_PP2B => D34_137 + PP2B; Spine*D34_137_PP2B*voff19_koff19;
+  voff2: D_CK1 => D + CK1; Spine*voff2_koff2*D_CK1;
+  voff20: D34_137_PP2C => D34_137 + PP2C; Spine*D34_137_PP2C*voff20_koff20;
+  voff21: D75_137_PKA => D75_137 + PKA; Spine*D75_137_PKA*voff21_koff21;
+  voff22: D75_137_PP2A => D75_137 + PP2A; Spine*D75_137_PP2A*voff22_koff22;
+  voff23: D75_137_PP2AP => D75_137 + PP2AP; Spine*D75_137_PP2AP*voff23_koff23;
+  voff24: D75_137_PP2C => D75_137 + PP2C; Spine*D75_137_PP2C*voff24_koff24;
+  voff25: D34_75_134_PP2A => D34_75_137 + PP2A; Spine*D34_75_134_PP2A*voff25_koff25;
+  voff26: D34_75_137_PP2AP => D34_75_137 + PP2AP; Spine*D34_75_137_PP2AP*voff26_koff26;
+  voff27: D34_75_137_PP2B => D34_75_137 + PP2B; Spine*D34_75_137_PP2B*voff27_koff27;
+  voff28: D34_75_137_PP2C => D34_75_137 + PP2C; Spine*D34_75_137_PP2C*voff28_koff28;
+  voff29: CK1P_PP2B => CK1P + PP2B; Spine*CK1P_PP2B*voff29_koff29;
+  voff3: D_PKA => D + PKA; Spine*D_PKA*voff3_koff3;
+  voff31: PDE_PKA => PDE + PKA; Spine*PDE_PKA*voff31_koff31;
+  voff33: PP2A_PKA => PP2A + PKA; Spine*PP2A_PKA*voff33_koff33;
+  voff35: PP2BinactiveCa2 => PP2Binactive + 2 Ca; Spine*PP2BinactiveCa2*voff35_koff35;
+  voff36: PP2B => PP2BinactiveCa2 + 2 Ca; Spine*PP2B*voff36_koff36;
+  voff37: cAMP_R2C2 => R2C2 + cAMP; Spine*cAMP_R2C2*voff37_koff37;
+  voff38: cAMP2_R2C2 => cAMP_R2C2 + cAMP; Spine*cAMP2_R2C2*voff38_koff38;
+  voff39: cAMP3_R2C2 => cAMP2_R2C2 + cAMP; Spine*cAMP3_R2C2*voff39_koff39;
+  voff4: D34_CDK5 => D34 + CDK5; Spine*D34_CDK5*voff4_koff4;
+  voff40: cAMP4_R2C2 => cAMP3_R2C2 + cAMP; Spine*cAMP4_R2C2*voff40_koff40;
+  voff41: cAMP4_R2C2 => cAMP4_R2C + PKA; Spine*cAMP4_R2C2*voff41_koff41;
+  voff44: cAMP_PDE => cAMP + PDE; Spine*cAMP_PDE*voff44_koff44;
+  voff45: cAMP_PDEP => cAMP + PDEP; Spine*cAMP_PDEP*voff45_koff45;
+  voff5: D34_CK1 => D34 + CK1; Spine*D34_CK1*voff5_koff5;
+  voff6: D34_PP2B => D34 + PP2B; Spine*D34_PP2B*voff6_koff6;
+  voff7: D75CK1 => D75 + CK1; Spine*D75CK1*voff7_koff7;
+  voff8: D75_PKA => D75 + PKA; Spine*D75_PKA*voff8_koff8;
+  voff9: D75_PP2A => D75 + PP2A; Spine*D75_PP2A*voff9_koff9;
+  von1: D + CDK5 => D_CDK5; Spine*von1_kon1*D*CDK5;
+  von10: D75 + PP2AP => D75_PP2AP; Spine*D75*PP2AP*von10_kon10;
+  von11: D137 + CDK5 => D137_CDK5; Spine*D137*CDK5*von11_kon11;
+  von12: D137 + PKA => D137_PKA; Spine*D137*PKA*von12_kon12;
+  von13: D137 + PP2C => D137_PP2C; Spine*D137*PP2C*von13_kon13;
+  von14: D34_75 + CK1 => D34_75_CK1; Spine*D34_75*CK1*von14_kon14;
+  von15: D34_75 + PP2A => D34_75_PP2A; Spine*D34_75*PP2A*von15_kon15;
+  von16: D34_75 + PP2AP => D34_75_PP2AP; Spine*D34_75*PP2AP*von16_kon16;
+  von17: D34_75 + PP2B => D34_75_PP2B; Spine*D34_75*PP2B*von17_kon17;
+  von18: D34_137 + CDK5 => D34_137_CDK5; Spine*D34_137*CDK5*von18_kon18;
+  von19: D34_137 + PP2B => D34_137_PP2B; Spine*D34_137*PP2B*von19_kon19;
+  von2: D + CK1 => D_CK1; Spine*D*CK1*von2_kon2;
+  von20: D34_137 + PP2C => D34_137_PP2C; Spine*D34_137*PP2C*von20_kon20;
+  von21: D75_137 + PKA => D75_137_PKA; Spine*D75_137*PKA*von21_kon21;
+  von22: D75_137 + PP2A => D75_137_PP2A; Spine*D75_137*PP2A*von22_kon22;
+  von23: D75_137 + PP2AP => D75_137_PP2AP; Spine*D75_137*PP2AP*von23_kon23;
+  von24: D75_137 + PP2C => D75_137_PP2C; Spine*D75_137*PP2C*von24_kon24;
+  von25: D34_75_137 + PP2A => D34_75_134_PP2A; Spine*D34_75_137*PP2A*von25_kon25;
+  von26: D34_75_137 + PP2AP => D34_75_137_PP2AP; Spine*D34_75_137*PP2AP*von26_kon26;
+  von27: D34_75_137 + PP2B => D34_75_137_PP2B; Spine*D34_75_137*PP2B*von27_kon27;
+  von28: D34_75_137 + PP2C => D34_75_137_PP2C; Spine*D34_75_137*PP2C*von28_kon28;
+  von29: CK1P + PP2B => CK1P_PP2B; Spine*CK1P*PP2B*von29_kon29;
+  von3: D + PKA => D_PKA; Spine*D*PKA*von3_kon3;
+  von31: PDE + PKA => PDE_PKA; Spine*PDE*PKA*von31_kon31;
+  von33: PP2A + PKA => PP2A_PKA; Spine*PP2A*PKA*von33_kon33;
+  von35: PP2Binactive + 2 Ca => PP2BinactiveCa2; Spine*PP2Binactive*Ca*Ca*von35_kon35;
+  von36: PP2BinactiveCa2 + 2 Ca => PP2B; Spine*PP2BinactiveCa2*Ca*Ca*von36_kon36;
+  von37: R2C2 + cAMP => cAMP_R2C2; Spine*R2C2*cAMP*von37_kon37;
+  von38: cAMP_R2C2 + cAMP => cAMP2_R2C2; Spine*cAMP_R2C2*cAMP*von38_kon38;
+  von39: cAMP2_R2C2 + cAMP => cAMP3_R2C2; Spine*cAMP2_R2C2*cAMP*von39_kon39;
+  von4: D34 + CDK5 => D34_CDK5; Spine*D34*CDK5*von4_kon4;
+  von40: cAMP3_R2C2 + cAMP => cAMP4_R2C2; Spine*cAMP3_R2C2*cAMP*von40_kon40;
+  von41: cAMP4_R2C + PKA => cAMP4_R2C2; Spine*cAMP4_R2C*PKA*von41_kon41;
+  von42: cAMP4_R2 + PKA => cAMP4_R2C; Spine*cAMP4_R2*PKA*von42_kon42;
+  von43: cAMP4_R2C => cAMP4_R2 + PKA; Spine*cAMP4_R2C*von43_kon43;
+  von44: cAMP + PDE => cAMP_PDE; Spine*cAMP*PDE*von44_kon44;
+  von45: cAMP + PDEP => cAMP_PDEP; Spine*cAMP*PDEP*von45_kon45;
+  von5: D34 + CK1 => D34_CK1; Spine*D34*CK1*von5_kon5;
+  von6: D34 + PP2B => D34_PP2B; Spine*D34*PP2B*von6_kon6;
+  von7: D75 + CK1 => D75CK1; Spine*D75*CK1*von7_kon7;
+  von8: D75 + PKA => D75_PKA; Spine*D75*PKA*von8_kon8;
+  von9: D75 + PP2A => D75_PP2A; Spine*D75*PP2A*von9_kon9;
+
+  // Events:
+  ca_off4: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 3*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_on8: at time >= (cAMP_delay + cAMP_Ca_delay + 7*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_off3: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 2*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_off6: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 5*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_on1: at time >= (cAMP_delay + cAMP_Ca_delay): k57 = kon_high;
+  cAMP_pulse: at time >= cAMP_delay: cAMP = 6.6e-6;
+  Ca_on3: at time >= (cAMP_delay + cAMP_Ca_delay + 2*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_on7: at time >= (cAMP_delay + cAMP_Ca_delay + 6*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_off7: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 6*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_on9: at time >= (cAMP_delay + cAMP_Ca_delay + 8*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_off5: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 4*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_off1: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration): k57 = kon_low;
+  ca_off10: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 9*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_on5: at time >= (cAMP_delay + cAMP_Ca_delay + 4*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_on2: at time >= (cAMP_delay + cAMP_Ca_delay + 1*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_off8: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 7*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_off2: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 1*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_off9: at time >= (cAMP_delay + cAMP_Ca_delay + spike_duration + 8*(spike_interval + spike_duration)): k57 = kon_low;
+  ca_on10: at time >= (cAMP_delay + cAMP_Ca_delay + 9*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_on4: at time >= (cAMP_delay + cAMP_Ca_delay + 3*(spike_duration + spike_interval)): k57 = kon_high;
+  ca_on6: at time >= (cAMP_delay + cAMP_Ca_delay + 5*(spike_duration + spike_interval)): k57 = kon_high;
+
+  // Species initializations:
+  AMP = 0;
+  CDK5 = 2e-22/Spine;
+  CK1 = 1.66e-22/Spine;
+  CK1P = 0;
+  CK1P_PP2B = 0;
+  Ca = 0;
+  D = 4.98e-21/Spine;
+  D137 = 0;
+  D137_CDK5 = 0;
+  D137_PKA = 0;
+  D137_PP2C = 0;
+  D34 = 0;
+  D34_137 = 0;
+  D34_137_CDK5 = 0;
+  D34_137_PP2B = 0;
+  D34_137_PP2C = 0;
+  D34_75 = 0;
+  D34_75_134_PP2A = 0;
+  D34_75_137 = 0;
+  D34_75_137_PP2AP = 0;
+  D34_75_137_PP2B = 0;
+  D34_75_137_PP2C = 0;
+  D34_75_CK1 = 0;
+  D34_75_PP2A = 0;
+  D34_75_PP2AP = 0;
+  D34_75_PP2B = 0;
+  D34_CDK5 = 0;
+  D34_CK1 = 0;
+  D34_PP2B = 0;
+  D75 = 0;
+  D75CK1 = 0;
+  D75_137 = 0;
+  D75_137_PKA = 0;
+  D75_137_PP2A = 0;
+  D75_137_PP2AP = 0;
+  D75_137_PP2C = 0;
+  D75_PKA = 0;
+  D75_PP2A = 0;
+  D75_PP2AP = 0;
+  D_CDK5 = 0;
+  D_CK1 = 0;
+  D_PKA = 0;
+  Empty = 0;
+  PDE = 2e-21/Spine;
+  PDEP = 0;
+  PDE_PKA = 0;
+  PKA = 0;
+  PP2A = 2e-22/Spine;
+  PP2AP = 0;
+  PP2A_PKA = 0;
+  PP2B = 0;
+  PP2Binactive = 3.32e-22/Spine;
+  PP2BinactiveCa2 = 0;
+  PP2C = 1.33e-22/Spine;
+  R2C2 = 6.64e-21/Spine;
+  cAMP = 0;
+  cAMP2_R2C2 = 0;
+  cAMP3_R2C2 = 0;
+  cAMP4_R2 = 0;
+  cAMP4_R2C = 0;
+  cAMP4_R2C2 = 0;
+  cAMP_PDE = 0;
+  cAMP_PDEP = 0;
+  cAMP_R2C2 = 0;
+
+  // Compartment initializations:
+  Spine = 1e-15;
+
+  // Variable initializations:
+  cAMP_delay = 400;
+  cAMP_Ca_delay = 50;
+  spike_duration = 2;
+  spike_interval = 2;
+  k57 = 2.5e-08;
+  kon_low = 2.5e-08;
+  kon_high = 6.6e-06;
+  v58_k58 = 1.7;
+  vcat1_kcat1 = 3;
+  vcat10_kcat10 = 24;
+  vcat11_kcat11 = 3;
+  vcat12_kcat12 = 2.7;
+  vcat13_kcat13 = 3;
+  vcat14_kcat14 = 3;
+  vcat15_kcat15 = 10;
+  vcat16_kcat16 = 24;
+  vcat17_kcat17 = 4;
+  vcat18_kcat18 = 3;
+  vcat19_kcat19 = 0.03;
+  vcat2_kcat2 = 3;
+  vcat20_kcat20 = 3;
+  vcat21_kcat21 = 0;
+  vcat22_kcat22 = 10;
+  vcat23_kcat23 = 24;
+  vcat24_kcat24 = 3;
+  vcat25_kcat25 = 10;
+  vcat26_kcat26 = 24;
+  vcat27_kcat27 = 0.03;
+  vcat28_kcat28 = 3;
+  vcat29_kcat29 = 6;
+  vcat3_kcat3 = 2.7;
+  vcat30_kcat30 = 1;
+  vcat31_kcat31 = 9;
+  vcat32_kcat32 = 0.1;
+  vcat33_kcat33 = 4;
+  vcat34_kcat34 = 5;
+  vcat4_kcat4 = 3;
+  vcat44_kcat44 = 10;
+  vcat45_kcat45 = 20;
+  vcat5_kcat5 = 3;
+  vcat6_kcat6 = 4;
+  vcat7_kcat7 = 3;
+  vcat8_kcat8 = 0;
+  vcat9_kcat9 = 10;
+  voff1_koff1 = 12;
+  voff10_koff10 = 40;
+  voff11_koff11 = 12;
+  voff12_koff12 = 10.8;
+  voff13_koff13 = 12;
+  voff14_koff14 = 12;
+  voff15_koff15 = 24;
+  voff16_koff16 = 40;
+  voff17_koff17 = 1600;
+  voff18_koff18 = 12;
+  voff19_koff19 = 0.12;
+  voff2_koff2 = 12;
+  voff20_koff20 = 12;
+  voff21_koff21 = 10.8;
+  voff22_koff22 = 24;
+  voff23_koff23 = 40;
+  voff24_koff24 = 12;
+  voff25_koff25 = 24;
+  voff26_koff26 = 40;
+  voff27_koff27 = 120;
+  voff28_koff28 = 12;
+  voff29_koff29 = 24;
+  voff3_koff3 = 10.8;
+  voff31_koff31 = 36;
+  voff33_koff33 = 16;
+  voff35_koff35 = 1;
+  voff36_koff36 = 1;
+  voff37_koff37 = 33;
+  voff38_koff38 = 33;
+  voff39_koff39 = 110;
+  voff4_koff4 = 12;
+  voff40_koff40 = 32.5;
+  voff41_koff41 = 60;
+  voff44_koff44 = 40;
+  voff45_koff45 = 80;
+  voff5_koff5 = 12;
+  voff6_koff6 = 16;
+  voff7_koff7 = 12;
+  voff8_koff8 = 10.8;
+  voff9_koff9 = 24;
+  von1_kon1 = 5600000;
+  von10_kon10 = 17000000;
+  von11_kon11 = 5600000;
+  von12_kon12 = 5600000;
+  von13_kon13 = 7500000;
+  von14_kon14 = 4400000;
+  von15_kon15 = 3800000;
+  von16_kon16 = 17000000;
+  von17_kon17 = 10000000;
+  von18_kon18 = 5600000;
+  von19_kon19 = 75000;
+  von2_kon2 = 4400000;
+  von20_kon20 = 7500000;
+  von21_kon21 = 5600000;
+  von22_kon22 = 3800000;
+  von23_kon23 = 17000000;
+  von24_kon24 = 7500000;
+  von25_kon25 = 3800000;
+  von26_kon26 = 17000000;
+  von27_kon27 = 75000;
+  von28_kon28 = 7500000;
+  von29_kon29 = 30000000;
+  von3_kon3 = 5600000;
+  von31_kon31 = 6000000;
+  von33_kon33 = 10000000;
+  von35_kon35 = 1e+15;
+  von36_kon36 = 3e+15;
+  von37_kon37 = 54000000;
+  von38_kon38 = 54000000;
+  von39_kon39 = 75000000;
+  von4_kon4 = 5600000;
+  von40_kon40 = 75000000;
+  von41_kon41 = 18000000;
+  von42_kon42 = 18000000;
+  von43_kon43 = 60;
+  von44_kon44 = 2520000;
+  von45_kon45 = 5040000;
+  von5_kon5 = 4400000;
+  von6_kon6 = 10000000;
+  von7_kon7 = 4400000;
+  von8_kon8 = 5600000;
+  von9_kon9 = 3800000;
+
+  // Other declarations:
+  var k57;
+  const Spine, cAMP_delay, cAMP_Ca_delay, spike_duration, spike_interval;
+  const kon_low, kon_high;
+
+  // Display Names:
+  D34_137 is "D34:137";
+  D34_137_CDK5 is "D34:137_CDK5";
+  D34_137_PP2B is "D34:137_PP2B";
+  D34_137_PP2C is "D34:137_PP2C";
+  D34_75 is "D34:75";
+  D34_75_134_PP2A is "D34:75:137_PP2A";
+  D34_75_137 is "D34:75:137";
+  D34_75_137_PP2AP is "D34:75:137_PP2AP";
+  D34_75_137_PP2B is "D34:75:137_PP2B";
+  D34_75_137_PP2C is "D34:75:137_PP2C";
+  D34_75_CK1 is "D34:75_CK1";
+  D34_75_PP2A is "D34:75_PP2A";
+  D34_75_PP2AP is "D34:75_PP2AP";
+  D34_75_PP2B is "D34:75_PP2B";
+  D75CK1 is "D75_CK1";
+  D75_137 is "D75:137";
+  D75_137_PKA is "D75:137_PKA";
+  D75_137_PP2A is "D75:137_PP2A";
+  D75_137_PP2AP is "D75:137_PP2AP";
+  D75_137_PP2C is "D75:137_PP2C";
+  k57 is "ca_in";
+  ca_off1 is "ca_off";
+  v57 is "Ca_in";
+  v58 is "Ca_destroy";
+  vcat1 is "DPhospho_by_CDK5_on_75";
+  vcat10 is "D75_dephospho_by_PP2AP";
+  vcat11 is "D137_Phospho_by_CDK5_on_75";
+  vcat12 is "D137_phospho_by_PKA_on_34";
+  vcat13 is "D137_dephospho_by_PP2C";
+  vcat14 is "D34:75_phospho_by_CK1_on_137";
+  vcat15 is "D34:75_dephospho_by_PP2A_on_75";
+  vcat16 is "D34:75_dephospho_by_PP2AP_on_75";
+  vcat17 is "D34:75_dephopsho_by_PP2B_on_34";
+  vcat18 is "D34:137_phospho_by_CDK5_on_75";
+  vcat19 is "D34:137_dephospho_by_PP2B_on_34";
+  vcat2 is "D_Phospho_by_CK1_on_137";
+  vcat20 is "D34:137_dephospho_by_PP2C_on_137";
+  vcat21 is "D75:137_phospho_by_PKA_on_34";
+  vcat22 is "D75:137_dephospho_by_PP2A_on_75";
+  vcat23 is "D75:137_dephospho_by_PP2AP_on_75";
+  vcat24 is "D75:137_dephospho_by_PP2C_137";
+  vcat25 is "D34:75:137_dephospho_by_PP2A_on_75";
+  vcat26 is "D34:75:137_dephospho_by_PP2AP_on 75";
+  vcat27 is "D34:75:137_dephospho_by_PP2B_on_34";
+  vcat28 is "D34:75:137_dephospho_by_PP2C_on_137";
+  vcat29 is "CK1P_dephospho_by_PP2B";
+  vcat3 is "D_Phospho_by_PKA_on_34";
+  vcat30 is "CK1_phosphorylation";
+  vcat31 is "PDE_phospho_by_PKA";
+  vcat32 is "PDEP_dephospho";
+  vcat33 is "PP2A_phospho_by_PKA";
+  vcat34 is "PP2AP_dephospho";
+  vcat4 is "D34_Phospho_by_CDK5_on_75";
+  vcat44 is "cAMP_PDE_degradation";
+  vcat45 is "cAMP_PDEP_degradation";
+  vcat5 is "D34_Phospho_by_CK1_on_137";
+  vcat6 is "D34_Dephospho_by_PP2B";
+  vcat7 is "D75_Phospho_by_CK1_on_137";
+  vcat8 is "D75_Phospho_by_PKA_on_34";
+  vcat9 is "D75_dephospho_by_PP2A";
+  voff1 is "D_CDK5_unbinding";
+  voff10 is "D75_PP2AP_unbinding";
+  voff11 is "D137_CDK5_unbinding";
+  voff12 is "D137_PKA_unbinding";
+  voff13 is "D137_PP2C_unbinding";
+  voff14 is "D34:75_CK1_unbinding";
+  voff15 is "D34:75_PP2A_unbinding";
+  voff16 is "D34:75_PP2AP_unbinding";
+  voff17 is "D34:75_PP2B_unbinding";
+  voff18 is "D34:137_CDK5_unbinding";
+  voff19 is "D34:137_PP2B_unbinding";
+  voff2 is "D_CDK1_unbinding";
+  voff20 is "D34:137_PP2C_unbinding";
+  voff21 is "D75:137_PKA_unbinding";
+  voff22 is "D75:137_PP2A_unbinding";
+  voff23 is "D75:137_PP2AP_unbinding";
+  voff24 is "D75:137_PP2C_unbinding";
+  voff25 is "D34:75:137_PP2A_unbinding";
+  voff26 is "D34:75:137_PP2AP_unbinding";
+  voff27 is "D34:75:137_PP2B_unbinding";
+  voff28 is "D34:75:137_PP2C_unbinding";
+  voff29 is "CK1P_PP2B_unbinding";
+  voff3 is "D_PKA_unbinding";
+  voff31 is "PDE_PKA_unbinding";
+  voff33 is "PP2A_PKA_unbinding";
+  voff35 is "PP2BinactiveCa2_Ca_unbinding";
+  voff36 is "PP2B_inactivation";
+  voff37 is "cAMP_R2C2_unbinding";
+  voff38 is "cAMP2_R2C2_unbinding";
+  voff39 is "cAMP3_R2C2_unbinding";
+  voff4 is "D34_CDK5_unbinding";
+  voff40 is "cAMP4_R2C2_unbinding";
+  voff41 is "cAMP4_R2C2_PKA_unbinding";
+  voff44 is "cAMP_PDE_unbinding";
+  voff45 is "cAMP_PDEP_unbinding";
+  voff5 is "D34_CK1_unbinding";
+  voff6 is "D34_PP2B_unbinding";
+  voff7 is "D75_CK1_unbinding";
+  voff8 is "D75_PKA_unbinding";
+  voff9 is "D75_PP2A_unbinding";
+  von1 is "D_CDK5_binding";
+  von10 is "D75_PP2AP_binding";
+  von11 is "D137_CDK5_binding";
+  von12 is "D137_PKA_binding";
+  von13 is "D137_PP2C_binding";
+  von14 is "D34:75_CK1_binding";
+  von15 is "D34:75_PP2A_binding";
+  von16 is "D34:75_PP2AP_binding";
+  von17 is "D34:75_PP2B_binding";
+  von18 is "D34:137_CDK5_binding";
+  von19 is "D34:137_PP2B_binding";
+  von2 is "DCDK1_binding";
+  von20 is "D34:137_PP2C_binding";
+  von21 is "D75:137_PKA_binding";
+  von22 is "D75:137_PP2A_binding";
+  von23 is "D75:137_PP2AP_binding";
+  von24 is "D75:137_PP2C_binding";
+  von25 is "D34:75:137_PP2A_binding";
+  von26 is "D34:75:137_PP2AP_binding";
+  von27 is "D34:75:137_PP2B_binding";
+  von28 is "D34:75:137_PP2C_binding";
+  von29 is "CK1P_PP2B_binding";
+  von3 is "D_PKA_binding";
+  von31 is "PDE_PKA_binding";
+  von33 is "PP2A_PKA_binding";
+  von35 is "PP2Binactive_Ca_binding";
+  von36 is "PP2B_activation";
+  von37 is "R2C2_cAMP_binding";
+  von38 is "cAMP_R2C2_binding_by_cAMP";
+  von39 is "cAMP2_R2C2_binding_by_cAMP";
+  von4 is "D34_CDK5_binding";
+  von40 is "cAMP3_R2C2_binding_by_cAMP";
+  von41 is "cAMP4_R2C_PKA_binding";
+  von42 is "cAMP4_R2_PKA_binding";
+  von43 is "cAMP4_R2C_PKA_unbinding";
+  von44 is "cAMP_PDE_binding";
+  von45 is "cAMP_PDEP_binding";
+  von5 is "D34_CK1_binding";
+  von6 is "D34_PP2B_binding";
+  von7 is "D75_CK1_binding";
+  von8 is "D75_PKA_binding";
+  von9 is "D75_PP2A_binding";
+
+  // CV terms:
+  Spine hypernym "http://identifiers.org/go/GO:0043197"
+  AMP identity "http://identifiers.org/chebi/CHEBI:16027"
+  CDK5 identity "http://identifiers.org/uniprot/Q03114"
+  CK1 hypernym "http://identifiers.org/uniprot/Q99PS2"
+  CK1P hypernym "http://identifiers.org/uniprot/Q99PS2"
+  CK1P_PP2B part "http://identifiers.org/uniprot/Q99PS2",
+                 "http://identifiers.org/pirsf/PIRSF000911"
+  Ca identity "http://identifiers.org/chebi/CHEBI:29108"
+  D hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D137 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D137_CDK5 part "http://identifiers.org/uniprot/Q03114",
+                 "http://identifiers.org/uniprot/Q9UD71"
+  D137_PKA part "http://identifiers.org/uniprot/Q9UD71",
+                "http://identifiers.org/pirsf/PIRSF000582"
+  D137_PP2C part "http://identifiers.org/uniprot/Q9UD71",
+                 "http://identifiers.org/interpro/IPR015655"
+  D34 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D34_137 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D34_137_CDK5 part "http://identifiers.org/uniprot/Q03114",
+                    "http://identifiers.org/uniprot/Q9UD71"
+  D34_137_PP2B part "http://identifiers.org/uniprot/Q9UD71",
+                    "http://identifiers.org/pirsf/PIRSF000911"
+  D34_137_PP2C part "http://identifiers.org/uniprot/Q9UD71",
+                    "http://identifiers.org/interpro/IPR015655"
+  D34_75 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D34_75_134_PP2A part "http://identifiers.org/uniprot/Q9UD71",
+                       "http://identifiers.org/interpro/IPR006186"
+  D34_75_137 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D34_75_137_PP2AP part "http://identifiers.org/uniprot/Q9UD71",
+                        "http://identifiers.org/interpro/IPR006186"
+  D34_75_137_PP2B part "http://identifiers.org/uniprot/Q9UD71",
+                       "http://identifiers.org/pirsf/PIRSF000911"
+  D34_75_137_PP2C part "http://identifiers.org/uniprot/Q9UD71",
+                       "http://identifiers.org/interpro/IPR015655"
+  D34_75_CK1 part "http://identifiers.org/uniprot/Q99PS2",
+                  "http://identifiers.org/uniprot/Q9UD71"
+  D34_75_PP2A part "http://identifiers.org/uniprot/Q9UD71",
+                   "http://identifiers.org/interpro/IPR006186"
+  D34_75_PP2AP part "http://identifiers.org/uniprot/Q9UD71",
+                    "http://identifiers.org/interpro/IPR006186"
+  D34_75_PP2B part "http://identifiers.org/uniprot/Q9UD71",
+                   "http://identifiers.org/pirsf/PIRSF000911"
+  D34_CDK5 part "http://identifiers.org/uniprot/Q03114",
+                "http://identifiers.org/uniprot/Q9UD71"
+  D34_CK1 part "http://identifiers.org/uniprot/Q99PS2",
+               "http://identifiers.org/uniprot/Q9UD71"
+  D34_PP2B part "http://identifiers.org/uniprot/Q9UD71",
+                "http://identifiers.org/pirsf/PIRSF000911"
+  D75 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D75CK1 part "http://identifiers.org/uniprot/Q99PS2",
+              "http://identifiers.org/uniprot/Q9UD71"
+  D75_137 hypernym "http://identifiers.org/uniprot/Q9UD71"
+  D75_137_PKA part "http://identifiers.org/uniprot/Q9UD71",
+                   "http://identifiers.org/pirsf/PIRSF000582"
+  D75_137_PP2A part "http://identifiers.org/uniprot/Q9UD71",
+                    "http://identifiers.org/interpro/IPR006186"
+  D75_137_PP2AP part "http://identifiers.org/uniprot/Q9UD71",
+                     "http://identifiers.org/interpro/IPR006186"
+  D75_137_PP2C part "http://identifiers.org/uniprot/Q9UD71",
+                    "http://identifiers.org/interpro/IPR015655"
+  D75_PKA part "http://identifiers.org/uniprot/Q9UD71",
+               "http://identifiers.org/pirsf/PIRSF000582"
+  D75_PP2A part "http://identifiers.org/uniprot/Q9UD71",
+                "http://identifiers.org/interpro/IPR006186"
+  D75_PP2AP part "http://identifiers.org/uniprot/Q9UD71",
+                 "http://identifiers.org/interpro/IPR006186"
+  D_CDK5 part "http://identifiers.org/uniprot/Q03114",
+              "http://identifiers.org/uniprot/Q9UD71"
+  D_CK1 part "http://identifiers.org/uniprot/Q99PS2",
+             "http://identifiers.org/uniprot/Q9UD71"
+  D_PKA part "http://identifiers.org/uniprot/Q9UD71",
+             "http://identifiers.org/pirsf/PIRSF000582"
+  PDE hypernym "http://identifiers.org/interpro/IPR000396"
+  PDEP hypernym "http://identifiers.org/interpro/IPR000396"
+  PDE_PKA part "http://identifiers.org/pirsf/PIRSF000582"
+  PKA hypernym "http://identifiers.org/pirsf/PIRSF000582"
+  PP2A hypernym "http://identifiers.org/interpro/IPR006186"
+  PP2AP hypernym "http://identifiers.org/interpro/IPR006186"
+  PP2A_PKA part "http://identifiers.org/interpro/IPR006186",
+                "http://identifiers.org/pirsf/PIRSF000582"
+  PP2B hypernym "http://identifiers.org/pirsf/PIRSF000911"
+  PP2Binactive hypernym "http://identifiers.org/pirsf/PIRSF000911"
+  PP2BinactiveCa2 hypernym "http://identifiers.org/chebi/CHEBI:29108",
+                           "http://identifiers.org/pirsf/PIRSF000911"
+  PP2C identity "http://identifiers.org/interpro/IPR015655"
+  R2C2 part "http://identifiers.org/pirsf/PIRSF000582",
+            "http://identifiers.org/pirsf/PIRSF000548",
+            "http://identifiers.org/go/GO:0043234"
+  cAMP identity "http://identifiers.org/chebi/CHEBI:17489"
+  cAMP2_R2C2 part "http://identifiers.org/chebi/CHEBI:17489",
+                  "http://identifiers.org/pirsf/PIRSF000582",
+                  "http://identifiers.org/pirsf/PIRSF000548",
+                  "http://identifiers.org/go/GO:0043234"
+  cAMP3_R2C2 part "http://identifiers.org/chebi/CHEBI:17489",
+                  "http://identifiers.org/pirsf/PIRSF000548",
+                  "http://identifiers.org/pirsf/PIRSF000582",
+                  "http://identifiers.org/go/GO:0043234"
+  cAMP4_R2 hypernym "http://identifiers.org/go/GO:0043234",
+                    "http://identifiers.org/chebi/CHEBI:17489",
+                    "http://identifiers.org/pirsf/PIRSF000548"
+  cAMP4_R2C part "http://identifiers.org/chebi/CHEBI:17489",
+                 "http://identifiers.org/pirsf/PIRSF000548",
+                 "http://identifiers.org/pirsf/PIRSF000582",
+                 "http://identifiers.org/go/GO:0043234"
+  cAMP4_R2C2 part "http://identifiers.org/chebi/CHEBI:17489",
+                  "http://identifiers.org/pirsf/PIRSF000548",
+                  "http://identifiers.org/pirsf/PIRSF000582",
+                  "http://identifiers.org/go/GO:0043234"
+  cAMP_PDE part "http://identifiers.org/chebi/CHEBI:17489",
+                "http://identifiers.org/interpro/IPR000396"
+  cAMP_PDEP part "http://identifiers.org/chebi/CHEBI:17489",
+                 "http://identifiers.org/interpro/IPR000396"
+  cAMP_R2C2 hypernym "http://identifiers.org/go/GO:0043234",
+                     "http://identifiers.org/chebi/CHEBI:17489",
+                     "http://identifiers.org/pirsf/PIRSF000582",
+                     "http://identifiers.org/pirsf/PIRSF000548"
+  v57 hypernym "http://identifiers.org/go/GO:0006816"
+  vcat1 hypernym "http://identifiers.org/ec-code/2.7.11.22",
+                 "http://identifiers.org/go/GO:0004693"
+  vcat10 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat11 hypernym "http://identifiers.org/ec-code/2.7.11.22",
+                  "http://identifiers.org/go/GO:0004693"
+  vcat12 hypernym "http://identifiers.org/ec-code/2.7.11.11"
+  vcat13 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat14 hypernym "http://identifiers.org/ec-code/2.7.11.1"
+  vcat15 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat16 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat17 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0033192"
+  vcat18 hypernym "http://identifiers.org/ec-code/2.7.11.22",
+                  "http://identifiers.org/go/GO:0004693"
+  vcat19 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0033192"
+  vcat2 hypernym "http://identifiers.org/ec-code/2.7.11.1"
+  vcat20 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat21 hypernym "http://identifiers.org/ec-code/2.7.11.11"
+  vcat22 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat23 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat24 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat25 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat26 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat27 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0033192"
+  vcat28 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0004722"
+  vcat29 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                  "http://identifiers.org/go/GO:0033192"
+  vcat3 hypernym "http://identifiers.org/ec-code/2.7.11.11",
+                 "http://identifiers.org/go/GO:0004691"
+  vcat30 hypernym "http://identifiers.org/ec-code/2.7.11.1"
+  vcat31 hypernym "http://identifiers.org/ec-code/2.7.11.11",
+                  "http://identifiers.org/go/GO:0004691"
+  vcat32 hypernym "http://identifiers.org/ec-code/3.1.3.16"
+  vcat33 hypernym "http://identifiers.org/ec-code/2.7.11.11",
+                  "http://identifiers.org/go/GO:0004691"
+  vcat34 hypernym "http://identifiers.org/ec-code/3.1.3.16"
+  vcat4 hypernym "http://identifiers.org/ec-code/2.7.11.22",
+                 "http://identifiers.org/go/GO:0004693"
+  vcat44 hypernym "http://identifiers.org/go/GO:0006198",
+                  "http://identifiers.org/go/GO:0004112"
+  vcat45 hypernym "http://identifiers.org/go/GO:0006198"
+  vcat5 hypernym "http://identifiers.org/ec-code/2.7.11.1"
+  vcat6 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                 "http://identifiers.org/go/GO:0033192"
+  vcat7 hypernym "http://identifiers.org/ec-code/2.7.11.1"
+  vcat8 hypernym "http://identifiers.org/ec-code/2.7.11.11"
+  vcat9 hypernym "http://identifiers.org/ec-code/3.1.3.16",
+                 "http://identifiers.org/go/GO:0004722"
+  voff4 hypernym "http://identifiers.org/go/GO:0019901"
+  von1 hypernym "http://identifiers.org/go/GO:0019901"
+  von10 hypernym "http://identifiers.org/go/GO:0051721"
+  von11 hypernym "http://identifiers.org/go/GO:0019901"
+  von12 hypernym "http://identifiers.org/go/GO:0034236"
+  von13 hypernym "http://identifiers.org/go/GO:0019903"
+  von14 hypernym "http://identifiers.org/go/GO:0019901"
+  von15 hypernym "http://identifiers.org/go/GO:0051721"
+  von16 hypernym "http://identifiers.org/go/GO:0051721"
+  von17 hypernym "http://identifiers.org/go/GO:0030346"
+  von18 hypernym "http://identifiers.org/go/GO:0019901"
+  von19 hypernym "http://identifiers.org/go/GO:0030346"
+  von2 hypernym "http://identifiers.org/go/GO:0019901"
+  von20 hypernym "http://identifiers.org/go/GO:0019903"
+  von21 hypernym "http://identifiers.org/go/GO:0034236"
+  von22 hypernym "http://identifiers.org/go/GO:0051721"
+  von23 hypernym "http://identifiers.org/go/GO:0051721"
+  von24 hypernym "http://identifiers.org/go/GO:0019903"
+  von25 hypernym "http://identifiers.org/go/GO:0051721"
+  von26 hypernym "http://identifiers.org/go/GO:0051721"
+  von27 hypernym "http://identifiers.org/go/GO:0030346"
+  von28 hypernym "http://identifiers.org/go/GO:0019903"
+  von29 hypernym "http://identifiers.org/go/GO:0030346"
+  von3 hypernym "http://identifiers.org/go/GO:0034236"
+  von31 hypernym "http://identifiers.org/go/GO:0034236"
+  von33 hypernym "http://identifiers.org/go/GO:0034236"
+  von35 hypernym "http://identifiers.org/go/GO:0005509"
+  von36 hypernym "http://identifiers.org/go/GO:0005509"
+  von37 hypernym "http://identifiers.org/go/GO:0034237",
+                 "http://identifiers.org/go/GO:0030552"
+  von38 hypernym "http://identifiers.org/go/GO:0034237",
+                 "http://identifiers.org/go/GO:0030552"
+  von39 hypernym "http://identifiers.org/go/GO:0034237",
+                 "http://identifiers.org/go/GO:0030552"
+  von4 hypernym "http://identifiers.org/go/GO:0019901"
+  von40 hypernym "http://identifiers.org/go/GO:0034237",
+                 "http://identifiers.org/go/GO:0030552"
+  von41 hypernym "http://identifiers.org/go/GO:0034236",
+                 "http://identifiers.org/go/GO:0034237"
+  von42 hypernym "http://identifiers.org/go/GO:0034236",
+                 "http://identifiers.org/go/GO:0034237"
+  von44 hypernym "http://identifiers.org/go/GO:0030552"
+  von45 hypernym "http://identifiers.org/go/GO:0030552",
+                 "http://identifiers.org/go/GO:0004112"
+  von5 hypernym "http://identifiers.org/go/GO:0019901"
+  von6 hypernym "http://identifiers.org/go/GO:0030346"
+  von7 hypernym "http://identifiers.org/go/GO:0019901"
+  von8 hypernym "http://identifiers.org/go/GO:0034236"
+  von9 hypernym "http://identifiers.org/go/GO:0051721"
+end
+
+fernandez1 is "fernandez1"

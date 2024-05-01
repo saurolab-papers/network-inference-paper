@@ -1,0 +1,182 @@
+// Created by libAntimony v2.13.2
+model *olah()
+
+  // Compartments and Species:
+  species $ADP, $ATP, DHAP, F6P, FBP, G13DP, $G23DP, G6P, GAP, $Glu, $H, $Lac;
+  species NAD, NADH, $P, P2G, P3G, PEP, $Pyr;
+
+  // Reactions:
+  v_1: $Glu + $ATP -> G6P + $ADP; VmaxHK*(Glu*ATP/(KmHK*Km1HK) - G6P*ADP/KeHK)/(1 + Glu/KmHK + ATP/Km1HK + G6P/Km2HK + ADP/Km3HK + Glu*ATP/(KmHK*Km1HK) + G6P*ADP/(Km2HK*Km3HK));
+  v_10: PEP + $ADP -> $Pyr + $ATP + $P; (1/(1 + 0.0631^nPK*(1 + ATP/Km4PK)^4/((1 + PEP/Km5PK + Pyr/Km2PK)^4*(1 + FBP/Km6PK)^4)))*VmaxPK*(PEP*ADP/(KmPK*Km1PK) - Pyr*ATP/(KePK*Km2PK*Km3PK))/(1 + PEP/KmPK + ADP/Km1PK + Pyr/Km2PK + ATP/Km3PK + PEP*ADP/(KmPK*Km1PK) + Pyr*ATP/(Km2PK*Km3PK));
+  v_11: $Pyr + NADH -> $Lac + NAD; VmaxLDH*((NADH*Pyr/(KmLDH*Km1LDH) - NAD*Lac/(KeLDH*Km2LDH*Km3LDH))/(NADH/KmLDH + NAD/Km3LDH + NADH*Pyr/(KmLDH*Km1LDH) + NAD*Lac/(Km2LDH*Km3LDH) + (1 + Km4LDH*Pyr/(KmLDH*Km1LDH) + Km5LDH*Lac/(Km2LDH*Km3LDH))*(1 + Pyr/Km6LDH) + NADH*Lac*Km5LDH/(KmLDH*Km2LDH*Km3LDH) + NAD*Pyr*Km4LDH/(KmLDH*Km1LDH*Km3LDH) + NADH*Lac*Pyr/(KmLDH*Km1LDH*Km7LDH) + NAD*Pyr*Lac/(Km8LDH*Km2LDH*Km3LDH)));
+  v_12: G13DP -> $G23DP; VmaxBPGM*G13DP/(KmBPGM + Km1BPGM*G13DP + G23DP);
+  v_13: $G23DP -> P3G + $P; VmaxBPGP*G23DP/(KmBPGP*(1 + (P2G + P3G)/Km1BPGP) + G23DP);
+  v_2: G6P -> F6P; (VmaxGPI/KmGPI)*(G6P - F6P/KeGPI)/(1 + G6P/KmGPI + F6P/Km1GPI);
+  v_3: F6P + $ATP -> FBP + $ADP; (1/(1 + 0.1122^nPFK*(1 + ATP/Km1PFK)^4*(1 + Mg/Km4PFK)^4/((1 + F6P/KmPFK + FBP/Km2PFK)^4*(1 + P/Km5PFK)^4)))*VmaxPFK*(F6P*ATP/(KmPFK*Km1PFK) - FBP*ADP/KePFK)/(1 + F6P/KmPFK + ATP/Km1PFK + FBP/Km2PFK + ADP/Km3PFK + F6P*ATP/(KmPFK*Km1PFK) + FBP*ADP/(Km2PFK*Km3PFK));
+  v_4: FBP -> DHAP + GAP; VmaxALD*(FBP/KmALD - DHAP*GAP/KeALD)/(1 + FBP/KmALD + DHAP/Km1ALD + (Km3ALD*GAP + DHAP*GAP)/(Km1ALD*Km2ALD) + Km3ALD*FBP*GAP/(Km1ALD*Km2ALD*Km4ALD));
+  v_5: GAP -> DHAP; (VmaxTPI/KmTPI)*(GAP - DHAP/KeTPI)/(1 + GAP/KmTPI + DHAP/Km1TPI);
+  v_6: GAP + NAD + $P -> G13DP + NADH + $H; VmaxGAPDH*(GAP*NAD*P/(KmGAPDH*Km1GAPDH*Km2GAPDH) - G13DP*NADH*H/(KeGAPDH*Km3GAPDH*Km4GAPDH))/((GAP/Km2GAPDH + G13DP/Km3GAPDH + GAP*P/(Km1GAPDH*Km2GAPDH))*(1 + GAP/Km5GAPDH) + Km6GAPDH*NADH*H/(Km3GAPDH*Km4GAPDH) + Km7GAPDH*NAD*P/(KmGAPDH*Km1GAPDH*Km2GAPDH) + NAD*GAP/(Km8GAPDH*Km2GAPDH) + NAD*G13DP/(Km3GAPDH*Km8GAPDH) + GAP*NAD*P/(KmGAPDH*Km1GAPDH*Km2GAPDH) + Km7GAPDH*NAD*P*G13DP/(KmGAPDH*Km2GAPDH*Km1GAPDH*Km9GAPDH) + NADH*G13DP*H/(Km3GAPDH*Km4GAPDH) + GAP*NADH*H/(Km2GAPDH*Km10GAPDH) + Km6GAPDH*NADH*P*H/(Km1GAPDH*Km3GAPDH*Km4GAPDH) + GAP*NADH*H*P/(Km1GAPDH*Km2GAPDH*Km10GAPDH) + Km6GAPDH*NADH*P*H*G13DP/(Km9GAPDH*Km1GAPDH*Km3GAPDH*Km4GAPDH));
+  v_7: G13DP + $ADP -> P3G + $ATP; VmaxPGK*((G13DP*ADP/(KmPGK*Km1PGK) - P3G*ATP/(KePGK*Km2PGK*Km3PGK))/(1 + G13DP/Km4PGK + ADP/KmPGK + P3G/Km5PGK + ATP/Km2PGK + G13DP*ADP/(KmPGK*Km1PGK) + P3G*ATP/(Km2PGK*Km3PGK)));
+  v_8: P3G -> P2G; (VmaxPGM/KmPGM)*(P3G - P2G/KePGM)/(1 + P3G/KmPGM + P2G/Km1PGM);
+  v_9: P2G -> PEP; VmaxENOLASE*(P2G*Mg/(KmENOLASE*Km1ENOLASE) - PEP*Mg/(KeENOLASE*Km2ENOLASE*Km3ENOLASE))/(1 + P2G/Km4ENOLASE + Mg/KmENOLASE + PEP/Km2ENOLASE + P2G*Mg/(KmENOLASE*Km1ENOLASE) + PEP*Mg/(Km2ENOLASE*Km3ENOLASE));
+
+  // Species initializations:
+  ADP = 300;
+  ATP = 3000;
+  DHAP = 0;
+  F6P = 0;
+  FBP = 0;
+  G13DP = 0;
+  G23DP = 4500;
+  G6P = 0;
+  GAP = 0;
+  Glu = 5000;
+  H = 0.01;
+  Lac = 1200;
+  NAD = 60;
+  NADH = 1;
+  P = 1000;
+  P2G = 0;
+  P3G = 0;
+  PEP = 0;
+  Pyr = 60;
+
+  // Variable initializations:
+  KeALD = 140;
+  KeENOLASE = 4;
+  KeGAPDH = 1.34;
+  KeGPI = 0.329;
+  KeHK = 7750000;
+  KeLDH = 4;
+  KePFK = 14400000;
+  KePGK = 2.5;
+  KePGM = 0.17;
+  KePK = 425;
+  KeTPI = 9;
+  Km10GAPDH = 64;
+  Km1ALD = 10;
+  Km1BPGM = 0.013;
+  Km1BPGP = 0.006;
+  Km1ENOLASE = 140;
+  Km1GAPDH = 3200;
+  Km1GPI = 80;
+  Km1HK = 1000;
+  Km1LDH = 137;
+  Km1PFK = 100;
+  Km1PGK = 2;
+  Km1PGM = 26;
+  Km1PK = 474;
+  Km1TPI = 1300;
+  Km2ALD = 40;
+  Km2ENOLASE = 111;
+  Km2GAPDH = 1.6e-14;
+  Km2HK = 50;
+  Km2LDH = 503;
+  Km2PFK = 600;
+  Km2PGK = 200;
+  Km2PK = 2000;
+  Km3ALD = 40;
+  Km3ENOLASE = 46;
+  Km3GAPDH = 1.6e-14;
+  Km3HK = 1000;
+  Km3LDH = 1070;
+  Km3PFK = 600;
+  Km3PGK = 1100;
+  Km3PK = 3000;
+  Km4ALD = 15;
+  Km4ENOLASE = 140;
+  Km4GAPDH = 21;
+  Km4LDH = 8.44;
+  Km4PFK = 4000;
+  Km4PGK = 1600;
+  Km4PK = 3400;
+  Km5GAPDH = 31;
+  Km5LDH = 107;
+  Km5PFK = 30000;
+  Km5PGK = 205;
+  Km5PK = 255;
+  Km6GAPDH = 0.67;
+  Km6LDH = 101;
+  Km6PK = 5;
+  Km7GAPDH = 100;
+  Km7LDH = 7330;
+  Km8GAPDH = 45;
+  Km8LDH = 228;
+  Km9GAPDH = 1;
+  KmALD = 8;
+  KmBPGM = 40;
+  KmBPGP = 20;
+  KmENOLASE = 46;
+  KmGAPDH = 45;
+  KmGPI = 200;
+  KmHK = 50;
+  KmLDH = 2.45;
+  KmPFK = 100;
+  KmPGK = 80;
+  KmPGM = 168;
+  KmPK = 225;
+  KmTPI = 650;
+  Mg = 300;
+  VmaxALD = 1380;
+  VmaxBPGM = 51000;
+  VmaxBPGP = 8.1;
+  VmaxENOLASE = 3000;
+  VmaxGAPDH = 39000;
+  VmaxGPI = 9000;
+  VmaxHK = 186;
+  VmaxLDH = 55500;
+  VmaxPFK = 5190;
+  VmaxPGK = 87000;
+  VmaxPGM = 6600;
+  VmaxPK = 4200;
+  VmaxTPI = 525000;
+  nPFK = 5;
+  nPK = 1;
+
+  // Other declarations:
+  var KeALD, KeENOLASE, KeGAPDH, KeGPI, KeHK, KeLDH, KePFK, KePGK, KePGM;
+  var KePK, KeTPI, Km10GAPDH, Km1ALD, Km1BPGM, Km1BPGP, Km1ENOLASE, Km1GAPDH;
+  var Km1GPI, Km1HK, Km1LDH, Km1PFK, Km1PGK, Km1PGM, Km1PK, Km1TPI, Km2ALD;
+  var Km2ENOLASE, Km2GAPDH, Km2HK, Km2LDH, Km2PFK, Km2PGK, Km2PK, Km3ALD;
+  var Km3ENOLASE, Km3GAPDH, Km3HK, Km3LDH, Km3PFK, Km3PGK, Km3PK, Km4ALD;
+  var Km4ENOLASE, Km4GAPDH, Km4LDH, Km4PFK, Km4PGK, Km4PK, Km5GAPDH, Km5LDH;
+  var Km5PFK, Km5PGK, Km5PK, Km6GAPDH, Km6LDH, Km6PK, Km7GAPDH, Km7LDH, Km8GAPDH;
+  var Km8LDH, Km9GAPDH, KmALD, KmBPGM, KmBPGP, KmENOLASE, KmGAPDH, KmGPI;
+  var KmHK, KmLDH, KmPFK, KmPGK, KmPGM, KmPK, KmTPI, Mg, VmaxALD, VmaxBPGM;
+  var VmaxBPGP, VmaxENOLASE, VmaxGAPDH, VmaxGPI, VmaxHK, VmaxLDH, VmaxPFK;
+  var VmaxPGK, VmaxPGM, VmaxPK, VmaxTPI, nPFK, nPK;
+
+  // Unit definitions:
+  unit L = litre;
+  unit uM = 1e-6 mole / litre;
+  unit umol = 1e-6 mole;
+  unit min = 60 second;
+  unit volume = L;
+  unit substance = umol;
+  unit extent = uM;
+  unit time_unit = min;
+
+  // CV terms:
+  ADP identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+               "http://identifiers.org/kegg.compound/C00008"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  DHAP identity "http://identifiers.org/obo.chebi/CHEBI%3A16108",
+                "http://identifiers.org/kegg.compound/C00111"
+  F6P identity "http://identifiers.org/obo.chebi/CHEBI%3A15946",
+               "http://identifiers.org/kegg.compound/C00085"
+  FBP identity "http://identifiers.org/obo.chebi/CHEBI%3A16905",
+               "http://identifiers.org/kegg.compound/C00354"
+  G23DP identity "http://identifiers.org/obo.chebi/CHEBI%3A17794",
+                 "http://identifiers.org/kegg.compound/C00197"
+  G6P identity "http://identifiers.org/obo.chebi/CHEBI%3A4170",
+               "http://identifiers.org/kegg.compound/C00092"
+  GAP identity "http://identifiers.org/obo.chebi/CHEBI%3A29052",
+               "http://identifiers.org/kegg.compound/C00118"
+  Glu identity "http://identifiers.org/kegg.compound/C00293",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  H identity "http://identifiers.org/obo.chebi/CHEBI%3A18276",
+             "http://identifiers.org/kegg.compound/C00282"
+end
+
+olah is "olah"

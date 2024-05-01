@@ -1,0 +1,28 @@
+// Created by libAntimony v2.13.2
+model *tyson2()
+
+  // Compartments and Species:
+  species $p, $s, u, z;
+
+  // Reactions:
+  v_1: $s -> z; kappa;
+  v_2: u -> $p; k6*u;
+  v_3: z -> u; k4*z*(k4prime/k4 + u^2);
+
+  // Species initializations:
+  p = 1;
+  s = 1;
+  u = 0;
+  z = 0;
+
+  // Variable initializations:
+  k4 = 180;
+  k4prime = 0.018;
+  k6 = 1;
+  kappa = 0.015;
+
+  // Other declarations:
+  var k4, k4prime, k6, kappa;
+end
+
+tyson2 is "tyson2"

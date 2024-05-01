@@ -1,0 +1,38 @@
+// Created by libAntimony v2.13.2
+model *feedbackmoi()
+
+  // Compartments and Species:
+  species am, bm, $p1, $p2, $s, x1, x2, x3;
+
+  // Reactions:
+  v_1: am + $s -> bm + x1; am*s*V1*(1 - bm*x1/(am*Keq*s))/((1 + am/K + bm/K)*K^2*(1 + s/K + x1/K)*(1 + x2^5/K^5 + x3^5/K^5));
+  v_2: x1 -> x3; V2*x1*(1 - x3/(Keq*x1))/(K*(1 + x1/K + x3/K));
+  v_3: x1 -> x2; V3*x1*(1 - x2/(Keq*x1))/(K*(1 + x1/K + x2/K));
+  v_4: x2 + bm -> $p1 + am; bm*V4*(1 - am*p/(bm*Keq*x2))*x2/((1 + am/K + bm/K)*K^2*(1 + p/K + x2/K));
+  v_5: x3 + bm -> $p2 + am; bm*V5*(1 - am*p/(bm*Keq*x3))*x3/((1 + am/K + bm/K)*K^2*(1 + p/K + x3/K));
+
+  // Species initializations:
+  am = 1;
+  bm = 1;
+  p1 = 1;
+  p2 = 1;
+  s = 5;
+  x1 = 1;
+  x2 = 1;
+  x3 = 1;
+
+  // Variable initializations:
+  K = 1;
+  Keq = 100;
+  V1 = 10;
+  V2 = 1;
+  V3 = 1;
+  V4 = 1;
+  V5 = 2;
+  p = 1;
+
+  // Other declarations:
+  var K, Keq, V1, V2, V3, V4, V5, p;
+end
+
+feedbackmoi is "feedbackmoi"

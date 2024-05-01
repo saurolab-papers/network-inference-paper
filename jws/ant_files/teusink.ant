@@ -1,0 +1,231 @@
+// Created by libAntimony v2.13.2
+model *teusink()
+
+  // Compartments and Species:
+  species ACE, BPG, $CO2, $ETOH, F16P, F6P, G6P, GLCi, $GLCo, $GLY, $Glyc;
+  species NAD, NADH, P2G, P3G, PEP, PYR, Prb, $SUCC, TRIO, $Trh, $X;
+
+  // Reactions:
+  v_1: GLCi + Prb -> G6P; VmGLK*(-(G6P*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((1 - 4*KeqAK)*KeqGLK)) + GLCi*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(2 - 8*KeqAK))/(KmGLKATP*KmGLKGLCi*(1 + G6P/KmGLKG6P + GLCi/KmGLKGLCi)*(1 + (SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((1 - 4*KeqAK)*KmGLKADP) + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmGLKATP)));
+  v_10: P2G -> PEP; (VmENO/KmENOP2G)*(P2G - PEP/KeqENO)/(1 + P2G/KmENOP2G + PEP/KmENOPEP);
+  v_11: PEP -> PYR + Prb; (VmPYK/(KmPYKPEP*KmPYKADP))*(PEP*(SUMAXP - ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(1 - 4*KeqAK) - PYR*(((Prb - 4*KeqAK*Prb - SUMAXP) + ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(2 - 8*KeqAK))/KeqPYK)/((1 + PEP/KmPYKPEP + PYR/KmPYKPYR)*(1 + ((Prb - 4*KeqAK*Prb - SUMAXP) + ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(2 - 8*KeqAK)/KmPYKATP + (SUMAXP - ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(1 - 4*KeqAK)/KmPYKADP));
+  v_12: PYR -> $CO2 + ACE; VmPDC*(PYR^nPDC/KmPDCPYR^nPDC)/(1 + PYR^nPDC/KmPDCPYR^nPDC);
+  v_13: 2 ACE + 3 NAD -> $SUCC + 3 NADH; KSUCC*ACE;
+  v_14: $GLCo -> GLCi; VmGLT*(GLCo - GLCi/KeqGLT)/(KmGLTGLCo*(1 + GLCo/KmGLTGLCo + GLCi/KmGLTGLCi + 0.91*GLCo*GLCi/(KmGLTGLCi*KmGLTGLCo)));
+  v_15: ACE + NADH -> NAD + $ETOH; -((VmADH/(KiADHNAD*KmADHETOH))*(NAD*ETOH - NADH*ACE/KeqADH)/(1 + NAD/KiADHNAD + KmADHNAD*ETOH/(KiADHNAD*KmADHETOH) + KmADHNADH*ACE/(KiADHNADH*KmADHACE) + NADH/KiADHNADH + NAD*ETOH/(KiADHNAD*KmADHETOH) + KmADHNADH*NAD*ACE/(KiADHNAD*KiADHNADH*KmADHACE) + KmADHNAD*ETOH*NADH/(KiADHNAD*KmADHETOH*KiADHNADH) + NADH*ACE/(KiADHNADH*KmADHACE) + NAD*ETOH*ACE/(KiADHNAD*KmADHETOH*KiADHACE) + ETOH*NADH*ACE/(KiADHETOH*KiADHNADH*KmADHACE)));
+  v_16: TRIO + NADH -> NAD + $GLY; VmG3PDH*(-(GLY*NAD/KeqG3PDH) + NADH*TRIO/(1 + KeqTPI))/(KmG3PDHDHAP*KmG3PDHNADH*(1 + NAD/KmG3PDHNAD + NADH/KmG3PDHNADH)*(1 + GLY/KmG3PDHGLY + TRIO/((1 + KeqTPI)*KmG3PDHDHAP)));
+  v_17: Prb -> $X; KATPASE*(((Prb - 4*KeqAK*Prb - SUMAXP) + ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(2 - 8*KeqAK));
+  v_2: G6P -> F6P; (VmPGI/KmPGIG6P)*(G6P - F6P/KeqPGI)/(1 + G6P/KmPGIG6P + F6P/KmPGIF6P);
+  v_3: G6P + Prb -> $Glyc; KGLYCOGEN;
+  v_4: 2 G6P + Prb -> $Trh; KTREHALOSE;
+  v_5: F6P + Prb -> F16P; gR*VmPFK*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)*(1 + F6P/KmPFKF6P + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP) + gR*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP*KmPFKF6P))/((2 - 8*KeqAK)*KmPFKATP*KmPFKF6P*(L0*(1 + CPFKF26BP*F26BP/KPFKF26BP + CPFKF16BP*F16P/KPFKF16BP)^2*(1 + 2*CPFKAMP*KeqAK*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)^2/((-1 + 4*KeqAK)*KPFKAMP*((SUMAXP - Prb) + 4*KeqAK*Prb - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)))^2*(1 + CiPFKATP*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KiPFKATP))^2*(1 + CPFKATP*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP))^2/((1 + F26BP/KPFKF26BP + F16P/KPFKF16BP)^2*(1 + 2*KeqAK*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)^2/((-1 + 4*KeqAK)*KPFKAMP*((SUMAXP - Prb) + 4*KeqAK*Prb - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)))^2*(1 + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KiPFKATP))^2) + (1 + F6P/KmPFKF6P + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP) + gR*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP*KmPFKF6P))^2));
+  v_6: F16P -> 2 TRIO; VmALD*(F16P - KeqTPI*TRIO^2/(KeqALD*(1 + KeqTPI)^2))/(KmALDF16P*(1 + F16P/KmALDF16P + TRIO/((1 + KeqTPI)*KmALDDHAP) + KeqTPI*TRIO/((1 + KeqTPI)*KmALDGAP) + KeqTPI*F16P*TRIO/((1 + KeqTPI)*KmALDF16P*KmALDGAPi) + KeqTPI*TRIO^2/((1 + KeqTPI)^2*KmALDDHAP*KmALDGAP)));
+  v_7: TRIO + NAD -> BPG + NADH; (-(VmGAPDHr*BPG*NADH/(KmGAPDHBPG*KmGAPDHNADH)) + KeqTPI*VmGAPDHf*NAD*TRIO/((1 + KeqTPI)*KmGAPDHGAP*KmGAPDHNAD))/((1 + NAD/KmGAPDHNAD + NADH/KmGAPDHNADH)*(1 + BPG/KmGAPDHBPG + KeqTPI*TRIO/((1 + KeqTPI)*KmGAPDHGAP)));
+  v_8: BPG -> P3G + Prb; VmPGK*(KeqPGK*BPG*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(1 - 4*KeqAK) - ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)*P3G/(2 - 8*KeqAK))/(KmPGKATP*KmPGKP3G*(1 + (SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((1 - 4*KeqAK)*KmPGKADP) + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPGKATP))*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G));
+  v_9: P3G -> P2G; (VmPGM/KmPGMP3G)*(P3G - P2G/KeqPGM)/(1 + P3G/KmPGMP3G + P2G/KmPGMP2G);
+
+  // Species initializations:
+  ACE = 0.04;
+  BPG = 0;
+  CO2 = 1;
+  ETOH = 50;
+  F16P = 0.1;
+  F6P = 0.28;
+  G6P = 1.39;
+  GLCi = 0.087;
+  GLCo = 50;
+  GLY = 0.15;
+  Glyc = 0;
+  NAD = 1.2;
+  NADH = 0.39;
+  P2G = 0.1;
+  P3G = 0.1;
+  PEP = 0.1;
+  PYR = 3.36;
+  Prb = 5;
+  SUCC = 0;
+  TRIO = 5.17;
+  Trh = 0;
+  X = 0;
+
+  // Variable initializations:
+  CPFKAMP = 0.0845;
+  CPFKATP = 3;
+  CPFKF16BP = 0.397;
+  CPFKF26BP = 0.0174;
+  CPFKF6P = 0;
+  CiPFKATP = 100;
+  F26BP = 0.02;
+  KATPASE = 39.5;
+  KGLYCOGEN = 6;
+  KPFKAMP = 0.0995;
+  KPFKF16BP = 0.111;
+  KPFKF26BP = 0.000682;
+  KSUCC = 21.4;
+  KTREHALOSE = 2.4;
+  KeqADH = 6.9e-05;
+  KeqAK = 0.45;
+  KeqALD = 0.069;
+  KeqENO = 6.7;
+  KeqG3PDH = 4300;
+  KeqGLK = 3800;
+  KeqGLT = 1;
+  KeqPGI = 0.314;
+  KeqPGK = 3200;
+  KeqPGM = 0.19;
+  KeqPYK = 6500;
+  KeqTPI = 0.045;
+  KiADHACE = 1.1;
+  KiADHETOH = 90;
+  KiADHNAD = 0.92;
+  KiADHNADH = 0.031;
+  KiPFKATP = 0.65;
+  KmADHACE = 1.11;
+  KmADHETOH = 17;
+  KmADHNAD = 0.17;
+  KmADHNADH = 0.11;
+  KmALDDHAP = 2.4;
+  KmALDF16P = 0.3;
+  KmALDGAP = 2;
+  KmALDGAPi = 10;
+  KmENOP2G = 0.04;
+  KmENOPEP = 0.5;
+  KmG3PDHDHAP = 0.4;
+  KmG3PDHGLY = 1;
+  KmG3PDHNAD = 0.93;
+  KmG3PDHNADH = 0.023;
+  KmGAPDHBPG = 0.0098;
+  KmGAPDHGAP = 0.21;
+  KmGAPDHNAD = 0.09;
+  KmGAPDHNADH = 0.06;
+  KmGLKADP = 0.23;
+  KmGLKATP = 0.15;
+  KmGLKG6P = 30;
+  KmGLKGLCi = 0.08;
+  KmGLTGLCi = 1.1918;
+  KmGLTGLCo = 1.1918;
+  KmPDCPYR = 4.33;
+  KmPFKATP = 0.71;
+  KmPFKF6P = 0.1;
+  KmPGIF6P = 0.3;
+  KmPGIG6P = 1.4;
+  KmPGKADP = 0.2;
+  KmPGKATP = 0.3;
+  KmPGKBPG = 0.003;
+  KmPGKP3G = 0.53;
+  KmPGMP2G = 0.08;
+  KmPGMP3G = 1.2;
+  KmPYKADP = 0.53;
+  KmPYKATP = 1.5;
+  KmPYKPEP = 0.14;
+  KmPYKPYR = 21;
+  L0 = 0.66;
+  SUMAXP = 4.1;
+  VmADH = 810;
+  VmALD = 322.258;
+  VmENO = 365.806;
+  VmG3PDH = 70.15;
+  VmGAPDHf = 1184.52;
+  VmGAPDHr = 6549.68;
+  VmGLK = 226.452;
+  VmGLT = 97.264;
+  VmPDC = 174.194;
+  VmPFK = 182.903;
+  VmPGI = 339.677;
+  VmPGK = 1306.45;
+  VmPGM = 2525.81;
+  VmPYK = 1088.71;
+  gR = 5.12;
+  nPDC = 1.9;
+
+  // Other declarations:
+  var CPFKAMP, CPFKATP, CPFKF16BP, CPFKF26BP, CPFKF6P, CiPFKATP, F26BP, KATPASE;
+  var KGLYCOGEN, KPFKAMP, KPFKF16BP, KPFKF26BP, KSUCC, KTREHALOSE, KeqADH;
+  var KeqAK, KeqALD, KeqENO, KeqG3PDH, KeqGLK, KeqGLT, KeqPGI, KeqPGK, KeqPGM;
+  var KeqPYK, KeqTPI, KiADHACE, KiADHETOH, KiADHNAD, KiADHNADH, KiPFKATP;
+  var KmADHACE, KmADHETOH, KmADHNAD, KmADHNADH, KmALDDHAP, KmALDF16P, KmALDGAP;
+  var KmALDGAPi, KmENOP2G, KmENOPEP, KmG3PDHDHAP, KmG3PDHGLY, KmG3PDHNAD;
+  var KmG3PDHNADH, KmGAPDHBPG, KmGAPDHGAP, KmGAPDHNAD, KmGAPDHNADH, KmGLKADP;
+  var KmGLKATP, KmGLKG6P, KmGLKGLCi, KmGLTGLCi, KmGLTGLCo, KmPDCPYR, KmPFKATP;
+  var KmPFKF6P, KmPGIF6P, KmPGIG6P, KmPGKADP, KmPGKATP, KmPGKBPG, KmPGKP3G;
+  var KmPGMP2G, KmPGMP3G, KmPYKADP, KmPYKATP, KmPYKPEP, KmPYKPYR, L0, SUMAXP;
+  var VmADH, VmALD, VmENO, VmG3PDH, VmGAPDHf, VmGAPDHr, VmGLK, VmGLT, VmPDC;
+  var VmPFK, VmPGI, VmPGK, VmPGM, VmPYK, gR, nPDC;
+
+  // Display Names:
+  BPG is "1,3-bisphosphoglyceric acid";
+  F16P is "D-fructose 1,6-bisphosphate";
+  F6P is "D-fructose 6-phosphate";
+  G6P is "alpha-D-glucose 6-phosphate";
+  NAD is "NAD(+)";
+  P2G is "2-phospho-D-glyceric acid";
+  P3G is "3-phospho-D-glyceric acid";
+  PEP is "phosphoenolpyruvate";
+  PYR is "pyruvate";
+  v_1 is "hexokinase";
+  v_10 is "2-Phospho-D-glycerate 2,3-phosphomutase";
+  v_11 is "2-phospho-D-glycerate hydro-lyase (phosphoenolpyruvate-forming)";
+  v_12 is "ATP:pyruvate 2-O-phosphotransferase";
+  v_13 is "pyruvate carboxy-lyase (acetaldehyde-forming)";
+  v_14 is "glucose transport";
+  v_15 is "ethanol:NAD+ oxidoreductase";
+  v_16 is "gpdh";
+  v_17 is "ATP catabolic process";
+  v_2 is "ATP:D-glucose 6-phosphotransferase";
+  v_5 is "alpha-D-Glucose 6-phosphate ketol-isomerase";
+  v_6 is "ATP:D-fructose-6-phosphate 1-phosphotransferase";
+  v_7 is "D-fructose-1,6-bisphosphate D-glyceraldehyde-3-phosphate-lyase(glycerone-phosphate-forming)";
+  v_8 is "D-glyceraldehyde-3-phosphate:NAD+ oxidoreductase (phosphorylating)";
+  v_9 is "ATP:3-phospho-D-glycerate 1-phosphotransferase";
+
+  // CV terms:
+  ACE identity "http://identifiers.org/obo.chebi/CHEBI%3A15343"
+  BPG identity "http://identifiers.org/obo.chebi/28907",
+               "http://identifiers.org/kegg.compound/C00236"
+  CO2 identity "http://identifiers.org/obo.chebi/CHEBI%3A16526"
+  ETOH identity "http://identifiers.org/obo.chebi/CHEBI%3A16236"
+  F16P identity "http://identifiers.org/obo.chebi/16905",
+                "http://identifiers.org/kegg.compound/C00354"
+  F6P identity "http://identifiers.org/kegg.compound/C00085",
+               "http://identifiers.org/obo.chebi/15946"
+  G6P identity "http://identifiers.org/kegg.compound/C00092",
+               "http://identifiers.org/obo.chebi/17665"
+  GLCi identity "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  GLCo identity "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  GLY identity "http://identifiers.org/obo.chebi/CHEBI%3A17754"
+  Glyc identity "http://identifiers.org/obo.chebi/CHEBI%3A28087"
+  NAD identity "http://identifiers.org/obo.chebi/15846"
+  NADH identity "http://identifiers.org/obo.chebi/16908",
+                "http://identifiers.org/kegg.compound/C00004"
+  P2G identity "http://identifiers.org/kegg.compound/C00631",
+               "http://identifiers.org/obo.chebi/17835"
+  P3G identity "http://identifiers.org/kegg.compound/C00197",
+               "http://identifiers.org/obo.chebi/17794"
+  PEP identity "http://identifiers.org/obo.chebi/18021",
+               "http://identifiers.org/kegg.compound/C00074"
+  PYR identity "http://identifiers.org/obo.chebi/15361",
+               "http://identifiers.org/kegg.compound/C00022"
+  SUCC identity "http://identifiers.org/obo.chebi/CHEBI%3A15741",
+                "http://identifiers.org/kegg.compound/C00042"
+  TRIO identity "http://identifiers.org/obo.chebi/CHEBI%3A29052",
+                "http://identifiers.org/kegg.compound/C00111"
+  Trh identity "http://identifiers.org/obo.chebi/CHEBI%3A27082"
+  v_1 identity "http://identifiers.org/ec-code/2.7.1.1",
+               "http://identifiers.org/interpro/IPR001312"
+  v_10 identity "http://identifiers.org/kegg.reaction/R01518"
+  v_11 identity "http://identifiers.org/kegg.reaction/R00658"
+  v_12 identity "http://identifiers.org/kegg.reaction/R00200"
+  v_13 identity "http://identifiers.org/kegg.reaction/R00224"
+  v_15 identity "http://identifiers.org/kegg.reaction/R00754"
+  v_16 identity "http://identifiers.org/ec-code/1.1.1.94"
+  v_17 identity "http://identifiers.org/obo.go/0006200"
+  v_2 identity "http://identifiers.org/kegg.reaction/R00299"
+  v_5 identity "http://identifiers.org/kegg.reaction/R02740"
+  v_6 identity "http://identifiers.org/kegg.reaction/R04779",
+               "http://identifiers.org/ec-code/2.7.1.11"
+  v_7 identity "http://identifiers.org/kegg.reaction/R01068"
+  v_8 identity "http://identifiers.org/kegg.reaction/R01061"
+  v_9 identity "http://identifiers.org/kegg.reaction/R01512"
+end
+
+teusink is "teusink"

@@ -1,0 +1,205 @@
+// Created by libAntimony v2.13.2
+function Michaelis(M1, J1, k1, S1)
+  k1*S1*M1/(J1 + S1);
+end
+
+function GK(a, b, c, d)
+  2*a*d/((b - a) + b*c + a*d + sqrt(((b - a) + b*c + a*d)^2 - 4*a*d*(b - a)));
+end
+
+
+model *attila()
+
+  // Compartments and Species:
+  species APCP, BCKI, CKI, Cdc20A, Cdc20in, Cdh1, CycA, CycB, CycE, Mass;
+  species TriA, TriE, pB, pBCKI, $sink, $source;
+
+  // Assignment Rules:
+  Cdc14 := Cdc20A;
+  Cdc25 := GK(ka25p + ka25pp*CycB, ki25p + ki25pp*Cdc14, Ja25, Ji25);
+  CycD := CycD0*Mass;
+  TFB := GK(kafb*CycB, kifb, Jafb, Jifb);
+  TFE := GK(Vatf, Vitf, Jatf, Jitf);
+  Vatf := katfp + katfapp*CycA + katfepp*CycE + katfdpp*CycD;
+  Vitf := kitfp + kitfapp*CycA + kitfbpp*CycB;
+  TFI := GK(kafi*Cdc14, kifip + kifibpp*CycB, Jafi, Jifi);
+  V25 := k25p + k25pp*Cdc25;
+  Vah1 := kah1p + kah1pp*Cdc14;
+  Vda := kdap + (kdapp + kdappp)*Cdc20A + kdappp*Cdc20in;
+  Vdb := kdbp + kdbhpp*Cdh1 + kdbcpp*Cdc20A;
+  Vde := kdep + kdeepp*CycE + kdeapp*CycA + kdebpp*CycB;
+  Vdi := (kdip + kdiapp*CycA + kdibpp*CycB + kdiepp*CycE + kdidpp*CycD)/(1 + k14di*Cdc14);
+  Vih1 := kih1p + kih1app*CycA + kih1bpp*CycB + kih1epp*CycE + kih1dpp*CycD;
+  Vsa := (ksap + ksapp*TFE)*Mass;
+  Vsb := (ksbp + ksbpp*TFB)*Mass;
+  Vse := (ksep + ksepp*TFE)*Mass;
+  Vsi := ksip + ksipp*TFI;
+  Vwee := kweep + kweepp*Wee1;
+  Wee1 := GK(kaweep + kaweepp*Cdc14, kiweep + kiweepp*CycB, Jawee, Jiwee);
+
+  // Reactions:
+  v_1: $source -> Mass; mu*Mass*(1 - Mass/MaxMass);
+  v_10: pBCKI -> pB + CKI; kdissb*pBCKI;
+  v_11: pBCKI -> BCKI; V25*pBCKI;
+  v_12: BCKI -> pBCKI; Vwee*BCKI;
+  v_13: BCKI -> CKI; Vdb*BCKI;
+  v_14: BCKI -> CycB; Vdi*BCKI;
+  v_15: pBCKI -> CKI; Vdb*pBCKI;
+  v_16: pBCKI -> pB; Vdi*pBCKI;
+  v_17: $source -> CKI; Vsi;
+  v_18: CKI -> $sink; Vdi*CKI;
+  v_19: CKI + CycA -> TriA; kassa*CKI*CycA;
+  v_2: $source -> CycB; Vsb;
+  v_20: TriA -> CKI + CycA; kdissa*TriA;
+  v_21: TriA -> CycA; Vdi*TriA;
+  v_22: TriA -> CKI; Vda*TriA;
+  v_23: CKI + CycE -> TriE; kasse*CKI*CycE;
+  v_24: TriE -> CKI + CycE; kdisse*TriE;
+  v_25: TriE -> CycE; Vdi*TriE;
+  v_26: TriE -> CKI; Vde*TriE;
+  v_27: $source -> CycA; Vsa;
+  v_28: CycA -> $sink; Vda*CycA;
+  v_29: $source -> CycE; Vse;
+  v_3: CycB -> $sink; Vdb*CycB;
+  v_30: CycE -> $sink; Vde*CycE;
+  v_31: $source -> APCP; Michaelis(CycB, Jaie, kaie, 1 - APCP);
+  v_32: APCP -> $sink; Michaelis(1, Jiie, kiie, APCP);
+  v_33: $source -> Cdc20in; ks20p + ks20pp*CycB^n20/(J20^n20 + CycB^n20);
+  v_34: Cdc20in -> $sink; kd20*Cdc20in;
+  v_35: Cdc20in -> Cdc20A; Michaelis(APCP, Ja20, ka20, Cdc20in);
+  v_36: Cdc20A -> Cdc20in; Michaelis(1, Ji20, ki20, Cdc20A);
+  v_37: Cdc20A -> $sink; kd20*Cdc20A;
+  v_38: $source -> Cdh1; Michaelis(Vah1, Jah1, 1, 1 - Cdh1);
+  v_39: Cdh1 -> $sink; Michaelis(Vih1, Jih1, 1, Cdh1);
+  v_4: pB -> CycB; V25*pB;
+  v_5: CycB -> pB; Vwee*CycB;
+  v_6: CycB + CKI -> BCKI; kassb*CycB*CKI;
+  v_7: BCKI -> CycB + CKI; kdissb*BCKI;
+  v_8: pB -> $sink; Vdb*pB;
+  v_9: pB + CKI -> pBCKI; kassb*pB*CKI;
+
+  // Species initializations:
+  APCP = 0.0759140253067017;
+  BCKI = 0.679449200630188;
+  CKI = 0.02882070094347;
+  Cdc20A = 0.357272386550903;
+  Cdc20in = 0.770238757133484;
+  Cdh1 = 0.718939363956451;
+  CycA = 0.0945030823349953;
+  CycB = 0.190358594059944;
+  CycE = 0.209202438592911;
+  Mass = 1.33826780319214;
+  TriA = 0.349222421646118;
+  TriE = 0;
+  pB = 0.0123442625626922;
+  pBCKI = 0.0479593835771084;
+  sink = 1;
+  source = 1;
+
+  // Variable initializations:
+  ka25p = 0;
+  ka25pp = 1;
+  ki25p = 0.3;
+  ki25pp = 0;
+  Ja25 = 0.1;
+  Ji25 = 0.1;
+  CycD0 = 0.108;
+  J20 = 10;
+  Ja20 = 1;
+  Jafb = 0.1;
+  Jafi = 1;
+  Jah1 = 0.03;
+  Jaie = 0.1;
+  Jatf = 0.01;
+  Jawee = 0.05;
+  Ji20 = 1;
+  Jifb = 0.1;
+  Jifi = 2;
+  Jih1 = 0.03;
+  Jiie = 0.1;
+  Jitf = 0.01;
+  Jiwee = 0.05;
+  KEZ = 0.2;
+  MaxMass = 10000;
+  kafb = 1;
+  kifb = 0.15;
+  kafi = 6;
+  kifip = 0.008;
+  kifibpp = 0.05;
+  k25p = 0.01;
+  k25pp = 5;
+  kah1p = 0.02;
+  kah1pp = 0.8;
+  katfp = 0;
+  katfapp = 1.5;
+  katfepp = 0.38;
+  katfdpp = 3;
+  kdap = 0.01;
+  kdapp = 0.16;
+  kdappp = 0;
+  kdbp = 0.003;
+  kdbhpp = 0.4;
+  kdbcpp = 0.15;
+  kdep = 0.12;
+  kdeepp = 0;
+  kdeapp = 0;
+  kdebpp = 0;
+  kdip = 0.002;
+  kdiapp = 0.1;
+  kdibpp = 0.8;
+  kdiepp = 0.12;
+  kdidpp = 0.1;
+  k14di = 12;
+  kih1p = 0.001;
+  kih1app = 0.35;
+  kih1bpp = 0.1;
+  kih1epp = 0.06;
+  kih1dpp = 0.005;
+  kitfp = 0.75;
+  kitfapp = 0;
+  kitfbpp = 8;
+  ksap = 0.0015;
+  ksapp = 0.01;
+  ksbp = 0.004;
+  ksbpp = 0.04;
+  ksep = 0;
+  ksepp = 0.15;
+  ksip = 0.018;
+  ksipp = 0.18;
+  kweep = 0.02;
+  kweepp = 0.2;
+  kaweep = 0.3;
+  kaweepp = 0;
+  kiweep = 0;
+  kiweepp = 1;
+  ka20 = 1;
+  kaie = 0.1;
+  kassa = 50;
+  kassb = 60;
+  kasse = 0;
+  kd20 = 0.05;
+  kdissa = 0.06;
+  kdissb = 0.05;
+  kdisse = 0;
+  ki20 = 0.16;
+  kiie = 0.15;
+  ks20p = 0.001;
+  ks20pp = 1;
+  mu = 0.005776;
+  n20 = 1;
+
+  // Other declarations:
+  var Cdc14, Cdc25, ka25p, ka25pp, ki25p, ki25pp, Ja25, Ji25, CycD, CycD0;
+  var J20, Ja20, Jafb, Jafi, Jah1, Jaie, Jatf, Jawee, Ji20, Jifb, Jifi, Jih1;
+  var Jiie, Jitf, Jiwee, KEZ, MaxMass, TFB, kafb, kifb, TFE, Vatf, Vitf, TFI;
+  var kafi, kifip, kifibpp, V25, k25p, k25pp, Vah1, kah1p, kah1pp, katfp;
+  var katfapp, katfepp, katfdpp, Vda, kdap, kdapp, kdappp, Vdb, kdbp, kdbhpp;
+  var kdbcpp, Vde, kdep, kdeepp, kdeapp, kdebpp, Vdi, kdip, kdiapp, kdibpp;
+  var kdiepp, kdidpp, k14di, Vih1, kih1p, kih1app, kih1bpp, kih1epp, kih1dpp;
+  var kitfp, kitfapp, kitfbpp, Vsa, ksap, ksapp, Vsb, ksbp, ksbpp, Vse, ksep;
+  var ksepp, Vsi, ksip, ksipp, Vwee, kweep, kweepp, Wee1, kaweep, kaweepp;
+  var kiweep, kiweepp, ka20, kaie, kassa, kassb, kasse, kd20, kdissa, kdissb;
+  var kdisse, ki20, kiie, ks20p, ks20pp, mu, n20;
+end
+
+attila is "attila"

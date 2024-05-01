@@ -1,0 +1,51 @@
+// Created by libAntimony v2.13.2
+model *clancy1()
+
+  // Compartments and Species:
+  species c1, c2, c3, i, o;
+
+  // Assignment Rules:
+  Gk := 0.0135*ko^0.59;
+  a := 0.0555*exp(0.05547153*(-12 + v));
+  v := piecewise(vtest, (50 < time) && (time <= 300), vhold);
+  aa := 0.0655*exp(0.05547153*(-36 + v));
+  ai := 1.9755*exp(-0.02352*(25 + v))/ko;
+  b := 0.002357*exp(-0.036588*v);
+  bb := 0.0029357*exp(-0.02158*v);
+  bi := 1.03007202707417*exp(0.000942*v)*ko^-1^0.3;
+  ik := Gk*(v - vk)*o;
+  vk := R*Temp*ln(ko/ki)/F;
+  u := ai*bb/bi;
+
+  // Reactions:
+  reaction0000001: c3 -> c2; cell*(-(b*c2) + a*c3);
+  reaction0000002: c2 -> c1; cell*(-(bin*c1) + ain*c2);
+  reaction0000003: c1 -> o; cell*(aa*c1 - bb*o);
+  reaction0000004: o -> i; cell*(-(ai*i) + bi*o);
+  reaction0000005: c1 -> i; cell*(aa*c1 - u*i);
+
+  // Species initializations:
+  c1 = 0;
+  c2 = 0;
+  c3 = 1;
+  i = 0;
+  o = 0.06;
+
+  // Variable initializations:
+  F = 96.485;
+  ko = 5.4;
+  R = 8.314;
+  Temp = 310;
+  ain = 2.172;
+  bin = 1.077;
+  ki = 140;
+  vtest = 0;
+  vhold = -40;
+  cell = ;
+
+  // Other declarations:
+  var F, Gk, ko, R, Temp, a, v, aa, ai, ain, b, bb, bi, bin, ik, vk, ki, u;
+  var vtest, vhold;
+end
+
+clancy1 is "clancy1"

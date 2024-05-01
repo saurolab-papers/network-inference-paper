@@ -1,0 +1,1803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="leber1" name="leber1">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Rate_Law_for_Commensal_Harmful_Death_1" name="Rate Law for Commensal Harmful Death_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> m1 </ci>
+            </bvar>
+            <bvar>
+              <ci> A1 </ci>
+            </bvar>
+            <bvar>
+              <ci> m2 </ci>
+            </bvar>
+            <bvar>
+              <ci> A2 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> K </ci>
+              <ci> S </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> m1 </ci>
+                  <ci> A1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> m2 </ci>
+                  <ci> A2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_Commensal_Regrowth" name="Rate Law for Commensal Regrowth">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> m1 </ci>
+            </bvar>
+            <bvar>
+              <ci> m2 </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> P </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> S </ci>
+                <ci> m1 </ci>
+                <ci> m2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> P </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_N_Activation_Migration" name="Rate Law for N Activation/Migration">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> m </ci>
+            </bvar>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> A1 </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> A2 </ci>
+            </bvar>
+            <bvar>
+              <ci> k3 </ci>
+            </bvar>
+            <bvar>
+              <ci> I1 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> v </ci>
+              <ci> S </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> m </ci>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> k1 </ci>
+                      <ci> A1 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> k2 </ci>
+                      <ci> A2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k3 </ci>
+                  <ci> I1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_M_Activation" name="Rate Law for M Activation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> e1 </ci>
+            </bvar>
+            <bvar>
+              <ci> A1 </ci>
+            </bvar>
+            <bvar>
+              <ci> A2 </ci>
+            </bvar>
+            <bvar>
+              <ci> e2 </ci>
+            </bvar>
+            <bvar>
+              <ci> I1 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> K </ci>
+              <ci> S </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> e1 </ci>
+                    <ci> A1 </ci>
+                  </apply>
+                  <ci> A2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> e2 </ci>
+                  <ci> I1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_tDC_Production" name="Rate Law for tDC Production">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> M1 </ci>
+            </bvar>
+            <bvar>
+              <ci> M2 </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> M3 </ci>
+            </bvar>
+            <bvar>
+              <ci> M4 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> K </ci>
+              <ci> S </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> k1 </ci>
+                    <ci> M1 </ci>
+                  </apply>
+                  <ci> M2 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> k2 </ci>
+                    <ci> M3 </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> M4 </ci>
+                    <cn type="integer"> 100 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_CD_Lumen_death" name="Rate Law for CD_Lumen death">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> A1 </ci>
+            </bvar>
+            <bvar>
+              <ci> m2 </ci>
+            </bvar>
+            <bvar>
+              <ci> A2 </ci>
+            </bvar>
+            <bvar>
+              <ci> m3 </ci>
+            </bvar>
+            <bvar>
+              <ci> A3 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> K </ci>
+              <ci> S </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> A1 </ci>
+                  <apply>
+                    <times/>
+                    <ci> m2 </ci>
+                    <ci> A2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> m3 </ci>
+                  <ci> A3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_eDC" name="Rate Law for eDC">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> M1 </ci>
+            </bvar>
+            <bvar>
+              <ci> M2 </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> M3 </ci>
+            </bvar>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> K </ci>
+                <ci> S </ci>
+                <ci> M1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> M2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> M3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_Effector_DC_Production_1" name="Rate Law for Effector DC Production_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> k </ci>
+              <ci> S </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_Th17plas" name="Rate Law for Th17plas">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> s </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> m2 </ci>
+            </bvar>
+            <bvar>
+              <ci> p </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> s </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> m2 </ci>
+                <ci> p </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_E_damage" name="Rate Law for E damage">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> a1 </ci>
+            </bvar>
+            <bvar>
+              <ci> k2 </ci>
+            </bvar>
+            <bvar>
+              <ci> a2 </ci>
+            </bvar>
+            <bvar>
+              <ci> k3 </ci>
+            </bvar>
+            <bvar>
+              <ci> a3 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> v </ci>
+              <ci> S </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> a1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> a2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k3 </ci>
+                  <ci> a3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="KSA" name="KSA">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> K </ci>
+            </bvar>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> A </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> K </ci>
+              <ci> S </ci>
+              <ci> A </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="86400"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_3" id="Epithelium" name="Epithelium" spatialDimensions="3" size="4" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000416"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+      <compartment metaid="metaid_4" id="LP" name="LP" spatialDimensions="3" size="0.07" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+      <compartment metaid="metaid_5" id="Lumen" name="Lumen" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/fma/FMA:14586"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+      <compartment metaid="metaid_6" id="MLN" name="MLN" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_7" id="Cdiff" name="Cdiff" compartment="Lumen" initialConcentration="484" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/taxonomy/1496"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" id="Commensal_Beneficial" name="Commensal_Beneficial" compartment="Lumen" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/taxonomy/2"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" id="Commensal_Dead" name="Commensal_Dead" compartment="Lumen" initialConcentration="50000000000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/taxonomy/2"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" id="Commensal_Harmful" name="Commensal_Harmful" compartment="Lumen" initialConcentration="15000000000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/taxonomy/2"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" id="E" name="E" compartment="Epithelium" initialConcentration="1052500" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000414"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" id="E_d" name="E_d" compartment="Epithelium" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000414"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_13" id="E_i" name="E_i" compartment="Epithelium" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000414"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" id="M0" name="M0" compartment="LP" initialConcentration="1714285.71428571" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000801"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_15" id="M_LP" name="M_LP" compartment="Epithelium" initialConcentration="3250" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000801"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_16" id="N_LP" name="N_LP" compartment="LP" initialConcentration="714285.714285714" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_16">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000130"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_17" id="N_Lum" name="N_Lum" compartment="Lumen" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/fma/FMA:14586"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000130"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_18" id="Th17_LP" name="Th17_LP" compartment="LP" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_18">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0005655"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_19" id="Th17_MLN" name="Th17_MLN" compartment="MLN" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_19">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0005655"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_20" id="Th1_LP" name="Th1_LP" compartment="LP" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_20">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0001678"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_21" id="Th1_MLN" name="Th1_MLN" compartment="MLN" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_21">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0001678"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_22" id="eDC_LP" name="eDC_LP" compartment="LP" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_22">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002042"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_23" id="eDC_MLN" name="eDC_MLN" compartment="MLN" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_23">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002042"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_24" id="iDC_E" name="iDC_E" compartment="Epithelium" initialConcentration="500000" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_24">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000416"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002042"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_25" id="iTreg_LP" name="iTreg_LP" compartment="LP" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_25">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0004520"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_26" id="iTreg_MLN" name="iTreg_MLN" compartment="MLN" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_26">
+              <bqbiol:occursIn>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0004520"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                </rdf:Bag>
+              </bqbiol:occursIn>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_27" id="nT" name="nT" compartment="MLN" initialConcentration="12000000" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_27">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:000782"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_28" id="tDC_LP" name="tDC_LP" compartment="Lumen" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_28">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002330"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002042"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_29" id="tDC_MLN" name="tDC_MLN" compartment="Lumen" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000767"/>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0002042"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction metaid="metaid_45" id="Cdiff_Death" name="Cdiff Death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_33" species="Cdiff" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_34" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_35" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_36" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_37" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_38" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_39" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_40" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_41" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_42" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_43" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_44" species="M_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> Rate_Law_for_CD_Lumen_death </ci>
+                <ci> K </ci>
+                <ci> Cdiff </ci>
+                <ci> M_LP </ci>
+                <ci> m2 </ci>
+                <ci> N_Lum </ci>
+                <ci> m3 </ci>
+                <ci> Commensal_Harmful </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_30" id="m3" name="m3" value="0.102702503781515"/>
+            <parameter metaid="metaid_31" id="m2" name="m2" value="594.896546415159"/>
+            <parameter metaid="metaid_32" id="K" name="K" value="6.27092296294148e-10"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="Cdiff_Growth" name="Cdiff Growth" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_47" species="Cdiff" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_48" species="Cdiff" stoichiometry="2"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_49" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_50" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_51" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_52" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_53" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_54" species="Commensal_Harmful"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> KSA </ci>
+                <ci> K </ci>
+                <ci> Cdiff </ci>
+                <ci> Commensal_Harmful </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_46" id="K" name="K" value="5e-11"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_60" id="Commensal_Death" name="Commensal Death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_57" species="Commensal_Dead" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_58" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_59" species="Commensal_Dead"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <ci> k1 </ci>
+              <ci> Commensal_Dead </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_56" id="k1" name="k1" value="0.0933277452272273"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_73" id="Commensal_Harmful_Death" name="Commensal Harmful Death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_64" species="Commensal_Harmful" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_65" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_66" species="N_LP"/>
+          <modifierSpeciesReference metaid="metaid_67" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_68" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_69" species="N_LP"/>
+          <modifierSpeciesReference metaid="metaid_70" species="Commensal_Harmful"/>
+          <modifierSpeciesReference metaid="metaid_71" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_72" species="N_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> Rate_Law_for_Commensal_Harmful_Death_1 </ci>
+                <ci> K </ci>
+                <ci> Commensal_Harmful </ci>
+                <ci> N_LP </ci>
+                <ci> A1 </ci>
+                <ci> E_i </ci>
+                <ci> A2 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_61" id="A2" name="A2" value="0.18"/>
+            <parameter metaid="metaid_62" id="A1" name="A1" value="0.00478"/>
+            <parameter metaid="metaid_63" id="K" name="K" value="2.33225e-05"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_88" id="Commensal_Regrowth" name="Commensal Regrowth" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_76" species="Commensal_Beneficial" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_77" species="Commensal_Dead" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_78" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_79" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_80" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_81" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_82" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_83" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_84" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_85" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_86" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_87" species="N_Lum"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> Rate_Law_for_Commensal_Regrowth </ci>
+                <ci> k1 </ci>
+                <ci> Commensal_Beneficial </ci>
+                <ci> N_Lum </ci>
+                <ci> E_i </ci>
+                <ci> k2 </ci>
+                <ci> Commensal_Dead </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_74" id="k2" name="k2" value="0.156287382551622"/>
+            <parameter metaid="metaid_75" id="k1" name="k1" value="4.5e-10"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="E_Damage" name="E Damage" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_93" species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_94" species="E_d" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_95" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_96" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_97" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_98" species="E"/>
+          <modifierSpeciesReference metaid="metaid_99" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_100" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_101" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_102" species="E"/>
+          <modifierSpeciesReference metaid="metaid_103" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_104" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_105" species="N_Lum"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <apply>
+                <ci> Rate_Law_for_E_damage </ci>
+                <ci> v </ci>
+                <ci> E </ci>
+                <ci> k1 </ci>
+                <ci> N_Lum </ci>
+                <ci> k2 </ci>
+                <ci> Th17_LP </ci>
+                <ci> k3 </ci>
+                <ci> M_LP </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_89" id="k3" name="k3" value="62.5911647602982"/>
+            <parameter metaid="metaid_90" id="k2" name="k2" value="2.3381277077344e-06"/>
+            <parameter metaid="metaid_91" id="k1" name="k1" value="1.1e-05"/>
+            <parameter metaid="metaid_92" id="v" name="v" value="1.59920673150176e-06"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_112" id="E_Heal" name="E Heal" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_108" species="E_d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_109" species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_110" species="E_d"/>
+          <modifierSpeciesReference metaid="metaid_111" species="E_d"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <ci> k1 </ci>
+              <ci> E_d </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_107" id="k1" name="k1" value="4000"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="E_Inflame" name="E Inflame" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_114" species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="E_i" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_116" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_117" species="E"/>
+          <modifierSpeciesReference metaid="metaid_118" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_119" species="E"/>
+          <modifierSpeciesReference metaid="metaid_120" species="Cdiff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <apply>
+                <ci> KSA </ci>
+                <ci> K </ci>
+                <ci> E </ci>
+                <ci> Cdiff </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_113" id="K" name="K" value="0.000171079818745428"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="E_i_Damage" name="E_i Damage" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="E_i" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="E_d" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_128" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_129" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_130" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_131" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_132" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_133" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_134" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_135" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_136" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_137" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_138" species="N_Lum"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <apply>
+                <ci> Rate_Law_for_E_damage </ci>
+                <ci> v </ci>
+                <ci> E_i </ci>
+                <ci> k1 </ci>
+                <ci> N_Lum </ci>
+                <ci> k2 </ci>
+                <ci> Th17_LP </ci>
+                <ci> k3 </ci>
+                <ci> M_LP </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_122" id="k3" name="k3" value="1.16013457036959e-06"/>
+            <parameter metaid="metaid_123" id="k2" name="k2" value="0.0106698310809694"/>
+            <parameter metaid="metaid_124" id="k1" name="k1" value="0.006"/>
+            <parameter metaid="metaid_125" id="v" name="v" value="0.065"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="E_i_Natural_Death" name="E_i Natural Death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_141" species="E_i" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_142" species="E_d" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_143" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_144" species="E_i"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <ci> k1 </ci>
+              <ci> E_i </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_140" id="k1" name="k1" value="2.5"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_162" id="M_Activation" name="M Activation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="M0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="M_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_151" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_152" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_153" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_154" species="M0"/>
+          <modifierSpeciesReference metaid="metaid_155" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_156" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_157" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_158" species="M0"/>
+          <modifierSpeciesReference metaid="metaid_159" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_160" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_161" species="Th17_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Rate_Law_for_M_Activation </ci>
+              <ci> K </ci>
+              <ci> M0 </ci>
+              <ci> e1 </ci>
+              <ci> Th17_LP </ci>
+              <ci> Cdiff </ci>
+              <ci> e2 </ci>
+              <ci> iTreg_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_146" id="e2" name="e2" value="0.092308585205372"/>
+            <parameter metaid="metaid_147" id="e1" name="e1" value="2"/>
+            <parameter metaid="metaid_148" id="K" name="K" value="4.5e-05"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_168" id="M_Death" name="M Death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="M_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_165" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_166" species="M_LP"/>
+          <modifierSpeciesReference metaid="metaid_167" species="iTreg_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Epithelium </ci>
+              <ci> k1 </ci>
+              <ci> M_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_163" id="k1" name="k1" value="20"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="N_Activation_Migration" name="N Activation/Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_173" species="N_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_174" species="N_Lum" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_175" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_176" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_177" species="E_d"/>
+          <modifierSpeciesReference metaid="metaid_178" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_179" species="N_LP"/>
+          <modifierSpeciesReference metaid="metaid_180" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_181" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_182" species="E_d"/>
+          <modifierSpeciesReference metaid="metaid_183" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_184" species="N_LP"/>
+          <modifierSpeciesReference metaid="metaid_185" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_186" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_187" species="E_d"/>
+          <modifierSpeciesReference metaid="metaid_188" species="Cdiff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Rate_Law_for_N_Activation_Migration </ci>
+              <ci> v </ci>
+              <ci> N_LP </ci>
+              <ci> Cdiff </ci>
+              <ci> k1 </ci>
+              <ci> E_d </ci>
+              <ci> k2 </ci>
+              <ci> Th17_LP </ci>
+              <ci> k3 </ci>
+              <ci> iTreg_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_169" id="k3" name="k3" value="0.129717307334483"/>
+            <parameter metaid="metaid_170" id="k2" name="k2" value="0.171190728888258"/>
+            <parameter metaid="metaid_171" id="k1" name="k1" value="0.120935308788409"/>
+            <parameter metaid="metaid_172" id="v" name="v" value="5.29827880572231e-05"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_197" id="N_Degradation" name="N Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_191" species="N_Lum" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_192" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_193" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_194" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_195" species="N_Lum"/>
+          <modifierSpeciesReference metaid="metaid_196" species="Commensal_Beneficial"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> KSA </ci>
+                <ci> K </ci>
+                <ci> N_Lum </ci>
+                <ci> Commensal_Beneficial </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_190" id="K" name="K" value="2.35932924820229e-07"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_203" id="Th17_Degradation" name="Th17 Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_199" species="Th17_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_200" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_201" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_202" species="iTreg_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> LP </ci>
+              <ci> k1 </ci>
+              <ci> Th17_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_198" id="k1" name="k1" value="2.39665140586358"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_209" id="Th17_Differentiation" name="Th17 Differentiation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_205" species="eDC_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_206" species="Th17_MLN" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_207" species="eDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_208" species="eDC_MLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> MLN </ci>
+              <ci> k1 </ci>
+              <ci> eDC_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_204" id="k1" name="k1" value="2255.80469507059"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_216" id="Th17_Migration" name="Th17 Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_211" species="Th17_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_212" species="Th17_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_213" species="Th17_MLN"/>
+          <modifierSpeciesReference metaid="metaid_214" species="Th17_MLN"/>
+          <modifierSpeciesReference metaid="metaid_215" species="E_i"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Th17_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_210" id="k1" name="k1" value="2.50454427171444"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_228" id="Th17_Plasticity" name="Th17 Plasticity" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_219" species="Th17_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_220" species="iTreg_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_221" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_222" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_223" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_224" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_225" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_226" species="Th17_LP"/>
+          <modifierSpeciesReference metaid="metaid_227" species="Cdiff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> LP </ci>
+              <apply>
+                <ci> Rate_Law_for_Th17plas </ci>
+                <ci> k1 </ci>
+                <ci> Th17_LP </ci>
+                <ci> k2 </ci>
+                <ci> Cdiff </ci>
+                <ci> iTreg_LP </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_217" id="k2" name="k2" value="0.0020401460213434"/>
+            <parameter metaid="metaid_218" id="k1" name="k1" value="1.27393226093773"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_235" id="Th1_Degradation" name="Th1 Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_230" species="Th1_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_231" species="Th1_LP"/>
+          <modifierSpeciesReference metaid="metaid_232" species="Th1_LP"/>
+          <modifierSpeciesReference metaid="metaid_233" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_234" species="iTreg_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> LP </ci>
+              <ci> k1 </ci>
+              <ci> Th1_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_229" id="k1" name="k1" value="0.99505694359"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_252" id="Th1_Differentiation" name="Th1 Differentiation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_239" species="eDC_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_240" species="Th1_MLN" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_241" species="E"/>
+          <modifierSpeciesReference metaid="metaid_242" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_243" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_244" species="eDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_245" species="E"/>
+          <modifierSpeciesReference metaid="metaid_246" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_247" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_248" species="eDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_249" species="E"/>
+          <modifierSpeciesReference metaid="metaid_250" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_251" species="Commensal_Dead"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> MLN </ci>
+              <apply>
+                <ci> Rate_Law_for_eDC </ci>
+                <ci> K </ci>
+                <ci> eDC_MLN </ci>
+                <ci> Commensal_Dead </ci>
+                <ci> Commensal_Beneficial </ci>
+                <ci> k2 </ci>
+                <ci> E </ci>
+                <ci> k1 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_236" id="k1" name="k1" value="0.0648415756801505"/>
+            <parameter metaid="metaid_237" id="k2" name="k2" value="9.65568121975566e-05"/>
+            <parameter metaid="metaid_238" id="K" name="K" value="0.0430096"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_259" id="Th1_Migration" name="Th1 Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_254" species="Th1_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_255" species="Th1_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_256" species="Th1_MLN"/>
+          <modifierSpeciesReference metaid="metaid_257" species="Th1_MLN"/>
+          <modifierSpeciesReference metaid="metaid_258" species="E_i"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Th1_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_253" id="k1" name="k1" value="1.459"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_265" id="Treg_Degradation" name="Treg Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_261" species="iTreg_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_262" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_263" species="iTreg_LP"/>
+          <modifierSpeciesReference metaid="metaid_264" species="Cdiff"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> LP </ci>
+              <ci> k1 </ci>
+              <ci> iTreg_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_260" id="k1" name="k1" value="0.5069887"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_271" id="Treg_Differentiation" name="Treg Differentiation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_267" species="tDC_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="iTreg_MLN" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_269" species="tDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_270" species="tDC_MLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> tDC_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_266" id="k1" name="k1" value="53.9130568911728"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_278" id="Treg_Migration" name="Treg Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_273" species="iTreg_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_274" species="iTreg_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_275" species="iTreg_MLN"/>
+          <modifierSpeciesReference metaid="metaid_276" species="iTreg_MLN"/>
+          <modifierSpeciesReference metaid="metaid_277" species="E_i"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> iTreg_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_272" id="k1" name="k1" value="5.5"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_284" id="eDC_Degradation" name="eDC Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_280" species="eDC_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_281" species="eDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_282" species="eDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_283" species="iTreg_MLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> MLN </ci>
+              <ci> k1 </ci>
+              <ci> eDC_MLN </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_279" id="k1" name="k1" value="1.72495199303666e-05"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_290" id="eDC_Migration" name="eDC Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_286" species="eDC_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_287" species="eDC_MLN" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_288" species="eDC_LP"/>
+          <modifierSpeciesReference metaid="metaid_289" species="eDC_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> eDC_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_285" id="k1" name="k1" value="10.5"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_299" id="eDC_Production" name="eDC Production" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_292" species="Cdiff" stoichiometry="1"/>
+          <speciesReference metaid="metaid_293" species="iDC_E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_294" species="eDC_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_295" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_296" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_297" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_298" species="Commensal_Dead"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Rate_Law_for_Effector_DC_Production_1 </ci>
+              <ci> k </ci>
+              <ci> Cdiff </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_291" id="k" name="k" value="0.55"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_305" id="tDC_Degradation" name="tDC Degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_301" species="tDC_MLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_302" species="tDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_303" species="tDC_MLN"/>
+          <modifierSpeciesReference metaid="metaid_304" species="iTreg_MLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <apply>
+                <ci> Rate_Law_for_Effector_DC_Production_1 </ci>
+                <ci> k </ci>
+                <ci> tDC_MLN </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_300" id="k" name="k" value="0.00095"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_311" id="tDC_Migration" name="tDC Migration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_307" species="tDC_LP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_308" species="tDC_MLN" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_309" species="tDC_LP"/>
+          <modifierSpeciesReference metaid="metaid_310" species="tDC_LP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Lumen </ci>
+              <ci> k1 </ci>
+              <ci> tDC_LP </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_306" id="k1" name="k1" value="3.65"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_332" id="tDC_Production" name="tDC Production" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_315" species="Cdiff" stoichiometry="1"/>
+          <speciesReference metaid="metaid_316" species="iDC_E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_317" species="tDC_LP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_318" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_319" species="E"/>
+          <modifierSpeciesReference metaid="metaid_320" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_321" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_322" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_323" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_324" species="E"/>
+          <modifierSpeciesReference metaid="metaid_325" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_326" species="Commensal_Beneficial"/>
+          <modifierSpeciesReference metaid="metaid_327" species="Cdiff"/>
+          <modifierSpeciesReference metaid="metaid_328" species="E_i"/>
+          <modifierSpeciesReference metaid="metaid_329" species="E"/>
+          <modifierSpeciesReference metaid="metaid_330" species="Commensal_Dead"/>
+          <modifierSpeciesReference metaid="metaid_331" species="Commensal_Beneficial"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Rate_Law_for_tDC_Production </ci>
+              <ci> K </ci>
+              <ci> Cdiff </ci>
+              <ci> k1 </ci>
+              <ci> Commensal_Beneficial </ci>
+              <ci> Commensal_Dead </ci>
+              <ci> k2 </ci>
+              <ci> E </ci>
+              <ci> E_i </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_312" id="k2" name="k2" value="26.8747332769592"/>
+            <parameter metaid="metaid_313" id="k1" name="k1" value="559.297141527983"/>
+            <parameter metaid="metaid_314" id="K" name="K" value="0.0002"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

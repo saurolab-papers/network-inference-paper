@@ -1,0 +1,134 @@
+// Created by libAntimony v2.13.2
+model *queralt()
+
+  // Compartments and Species:
+  species Cdc15, Cdc20, Cdh1, Clb2, MEN, Net1, Net1Cdc14, Polo, PoloT, Tem1;
+  species $p, $s, securin, securinT, securinseparase, separase, separaseT;
+
+  // Assignment Rules:
+  Cdc14 := Cdc14T - Net1Cdc14;
+  Cdk := Clb2/(1 + Inh);
+  Net1P := Net1T - Net1 - Net1Cdc14;
+  PP2A := ((1 + kpp*ki*separase)/(1 + ki*separase))*PP2AT;
+
+  // Reactions:
+  v_1: $s -> Clb2; ksclb2;
+  v_10: separaseT + separase -> $p; kdseparase*separaseT;
+  v_11: securin + separase -> securinseparase; lasecurin*securin*separase;
+  v_12: securinseparase -> securin + separase; (ldsecurin + kdseparase + kdsecurin + kadsecurin*Cdc20)*securinseparase;
+  v_13: $s -> Net1; (kad*Cdc14 + kd*PP2A)*(Net1P/(Jnet + Net1P));
+  v_14: Net1 -> $p; (kp*Cdk + kap*MEN)*(Net1/(Jnet + Net1 + Net1Cdc14));
+  v_15: Net1 -> Net1Cdc14; lanet*Net1*Cdc14;
+  v_16: Net1Cdc14 -> Net1; ldnet*Net1Cdc14;
+  v_17: Net1Cdc14 -> $p; (kp*Cdk + kap*MEN)*(Net1Cdc14/(Jnet + Net1 + Net1Cdc14));
+  v_18: $s -> PoloT; kspolo;
+  v_19: PoloT -> $p; (kdpolo + kadpolo*Cdh1)*PoloT;
+  v_2: Clb2 -> $p; (kdclb2 + kadclb2*Cdc20 + kaadclb2*Cdh1)*Clb2;
+  v_20: $s -> Polo; (kapolo + kaapolo*Cdk)*((PoloT - Polo)/(Jpolo + PoloT - Polo));
+  v_21: Polo -> $p; kipolo*(Polo/(Jpolo + Polo));
+  v_22: Polo -> $p; (kdpolo + kadpolo*Cdh1)*Polo;
+  v_23: $s -> Tem1; (katem + kaatem*Polo)*((Tem1T - Tem1)/(Jtem1 + Tem1T - Tem1));
+  v_24: Tem1 -> $p; (kitem + kaitem*PP2A)*(Tem1/(Jtem1 + Tem1));
+  v_25: $s -> Cdc15; (kacdc15 + kaacdc15*Cdc14)*((Cdc15T - Cdc15)/(Jcdc15 + Cdc15T - Cdc15));
+  v_26: Cdc15 -> $p; (kicdc15 + kaicdc15*Cdk)*(Cdc15/(Jcdc15 + Cdc15));
+  v_27: $s -> MEN; lamen*(Tem1 - MEN)*(Cdc15 - MEN);
+  v_28: MEN -> $p; ldmen*MEN;
+  v_29: MEN -> $p; (kitem + kaitem*PP2A)*(MEN/(Jtem1 + Tem1));
+  v_3: $s -> Cdc20; kscdc20;
+  v_30: MEN -> $p; (kicdc15 + kaicdc15*Cdk)*(MEN/(Jcdc15 + Cdc15));
+  v_4: Cdc20 -> $p; (kdcdc20 + kadcdc20*Cdh1)*Cdc20;
+  v_5: $s -> Cdh1; (kdcdh + kadcdh*Cdc14T)*((Cdh1T - Cdh1)/(Jcdh + Cdh1T - Cdh1));
+  v_6: Cdh1 -> $p; kapcdh*Cdk*(Cdh1/(Jcdh + Cdh1));
+  v_7: $s -> securinT + securin; kssecurin;
+  v_8: securinT + securin -> $p; (kdsecurin + kadsecurin*Cdc20)*securinT;
+  v_9: $s -> separaseT + separase; ksseparase;
+
+  // Species initializations:
+  Cdc15 = 0.0257;
+  Cdc20 = 0;
+  Cdh1 = 3.8e-05;
+  Clb2 = 0.997;
+  MEN = 8e-06;
+  Net1 = 0.098;
+  Net1Cdc14 = 0.485;
+  Polo = 0.945;
+  PoloT = 0.99;
+  Tem1 = 0.00389;
+  p = 1;
+  s = 1;
+  securin = 0.352;
+  securinT = 0.6;
+  securinseparase = 0.248;
+  separase = 0.002;
+  separaseT = 0.25;
+
+  // Variable initializations:
+  Cdc14T = 0.5;
+  Cdc15T = 1;
+  Cdh1T = 1;
+  Inh = 0;
+  Jcdc15 = 0.2;
+  Jcdh = 0.0015;
+  Jnet = 0.2;
+  Jpolo = 0.25;
+  Jtem1 = 0.005;
+  Net1T = 1;
+  kpp = 0.1;
+  ki = 20;
+  PP2AT = 1;
+  Tem1T = 1;
+  kaacdc15 = 0.5;
+  kaadclb2 = 2;
+  kaapolo = 0.5;
+  kaatem = 0.5;
+  kacdc15 = 0.02;
+  kad = 0.1;
+  kadcdc20 = 2;
+  kadcdh = 1;
+  kadclb2 = 0.2;
+  kadpolo = 0.25;
+  kadsecurin = 2;
+  kaicdc15 = 0.2;
+  kaitem = 1;
+  kap = 2;
+  kapcdh = 1;
+  kapolo = 0;
+  katem = 0;
+  kd = 0.45;
+  kdcdc20 = 0.05;
+  kdcdh = 0.01;
+  kdclb2 = 0.03;
+  kdpolo = 0.01;
+  kdsecurin = 0.05;
+  kdseparase = 0.004;
+  kicdc15 = 0;
+  kipolo = 0.1;
+  kitem = 0.1;
+  kp = 0.4;
+  kscdc20 = 0.015;
+  ksclb2 = 0.03;
+  kspolo = 0.01;
+  kssecurin = 0.03;
+  ksseparase = 0.001;
+  lamen = 10;
+  lanet = 500;
+  lasecurin = 500;
+  ldmen = 0.1;
+  ldnet = 1;
+  ldsecurin = 1;
+
+  // Other declarations:
+  var Cdc14, Cdc14T, Cdc15T, Cdh1T, Cdk, Inh, Jcdc15, Jcdh, Jnet, Jpolo, Jtem1;
+  var Net1P, Net1T, PP2A, kpp, ki, PP2AT, Tem1T, kaacdc15, kaadclb2, kaapolo;
+  var kaatem, kacdc15, kad, kadcdc20, kadcdh, kadclb2, kadpolo, kadsecurin;
+  var kaicdc15, kaitem, kap, kapcdh, kapolo, katem, kd, kdcdc20, kdcdh, kdclb2;
+  var kdpolo, kdsecurin, kdseparase, kicdc15, kipolo, kitem, kp, kscdc20;
+  var ksclb2, kspolo, kssecurin, ksseparase, lamen, lanet, lasecurin, ldmen;
+  var ldnet, ldsecurin;
+
+  // Unit definitions:
+  unit min = 60 second;
+  unit time_unit = min;
+end
+
+queralt is "queralt"

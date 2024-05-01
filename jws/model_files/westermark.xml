@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="westermark" name="westermark">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="F6P" compartment="default_compartment" initialConcentration="0.00403813819995114" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00085"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15946"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_2" id="FBP" compartment="default_compartment" initialConcentration="9.11723734681295e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_2">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00354"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A16905"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_3" id="g3P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00093"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15978"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_4" id="glc" compartment="default_compartment" initialConcentration="0.01" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00293"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A17234"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_5" id="Vfba" value="25" constant="false"/>
+      <parameter metaid="metaid_6" id="Vgk" value="10" constant="false"/>
+      <parameter metaid="metaid_7" id="Vpfk" value="100" constant="false"/>
+      <parameter metaid="metaid_8" id="alpha" value="5" constant="false"/>
+      <parameter metaid="metaid_9" id="fac" value="180000" constant="false"/>
+      <parameter metaid="metaid_10" id="hact" value="1" constant="false"/>
+      <parameter metaid="metaid_11" id="hgk" value="1.7" constant="false"/>
+      <parameter metaid="metaid_12" id="hpfk" value="2.5" constant="false"/>
+      <parameter metaid="metaid_13" id="hx" value="2.5" constant="false"/>
+      <parameter metaid="metaid_14" id="keqpgi" value="0.3" constant="false"/>
+      <parameter metaid="metaid_15" id="ksfba" value="5e-06" constant="false"/>
+      <parameter metaid="metaid_16" id="ksgk" value="0.008" constant="false"/>
+      <parameter metaid="metaid_17" id="kspfk" value="0.004" constant="false"/>
+      <parameter metaid="metaid_18" id="kxpfk" value="1e-05" constant="false"/>
+      <parameter metaid="metaid_19" id="sigcorr" value="1.5" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_22" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_20" species="glc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_21" species="F6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> Vgk </ci>
+                  <ci> fac </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> glc </ci>
+                    <ci> ksgk </ci>
+                  </apply>
+                  <ci> hgk </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> glc </ci>
+                    <ci> ksgk </ci>
+                  </apply>
+                  <ci> hgk </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_25" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_23" species="F6P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_24" species="FBP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> Vpfk </ci>
+                  <ci> fac </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> keqpgi </ci>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <ci> keqpgi </ci>
+                        </apply>
+                      </apply>
+                      <ci> F6P </ci>
+                    </apply>
+                    <ci> kspfk </ci>
+                  </apply>
+                  <apply>
+                    <minus/>
+                    <ci> hpfk </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> hpfk </ci>
+                        <ci> hact </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <divide/>
+                          <ci> FBP </ci>
+                          <ci> ksfba </ci>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> FBP </ci>
+                            <ci> ksfba </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> keqpgi </ci>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <ci> keqpgi </ci>
+                        </apply>
+                      </apply>
+                      <ci> F6P </ci>
+                    </apply>
+                    <ci> kspfk </ci>
+                  </apply>
+                  <apply>
+                    <minus/>
+                    <ci> hpfk </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> hpfk </ci>
+                        <ci> hact </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <divide/>
+                          <ci> FBP </ci>
+                          <ci> ksfba </ci>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> FBP </ci>
+                            <ci> ksfba </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> FBP </ci>
+                        <ci> kxpfk </ci>
+                      </apply>
+                      <ci> hx </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> alpha </ci>
+                        <apply>
+                          <minus/>
+                          <ci> hpfk </ci>
+                          <apply>
+                            <times/>
+                            <apply>
+                              <minus/>
+                              <ci> hpfk </ci>
+                              <ci> hact </ci>
+                            </apply>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <divide/>
+                                <ci> FBP </ci>
+                                <ci> ksfba </ci>
+                              </apply>
+                              <apply>
+                                <plus/>
+                                <cn type="integer"> 1 </cn>
+                                <apply>
+                                  <divide/>
+                                  <ci> FBP </ci>
+                                  <ci> ksfba </ci>
+                                </apply>
+                              </apply>
+                            </apply>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <divide/>
+                          <ci> FBP </ci>
+                          <ci> kxpfk </ci>
+                        </apply>
+                        <ci> hx </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_28" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_26" species="FBP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_27" species="g3P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <ci> Vfba </ci>
+                  <ci> fac </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> FBP </ci>
+                  <ci> ksfba </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> FBP </ci>
+                  <ci> ksfba </ci>
+                </apply>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

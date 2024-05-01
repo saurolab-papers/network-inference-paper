@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="sen1" name="sen1">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="_1_per_minute" name="1/minute">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="0.0166666666666667"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="mole_per_liter" name="mole/liter">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1000"/>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-3" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="mole_per_liter_per_minute" name="mole/liter/minute">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="16.6666666666667"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-3" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="liter" name="liter">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="0.001"/>
+          <unit kind="metre" exponent="3" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_4" id="mw81b30d38_6ef3_4391_b826_e6c3cc210196" name="unnamed" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/bto/BTO:0000757"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="mw08818dfe_fb12_45cc_8c1d_d965f142d0ce" name="EtnE" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16000"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_6" id="mw15abaa48_d7d0_4845_ae04_c573d289d495" name="Ser" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:17822"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_7" id="mw73259e20_240e_4f3a_b2e0_9ca248658898" name="SerE" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0.0001" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:17822"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" id="mw812f63db_4cb0_40ad_b92b_9874be969dfe" name="Cho" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:15354"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" id="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41" name="PEtn" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:17553"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" id="mw8796c919_9251_4970_8f87_0bca9ecfeb5c" name="Etn" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16000"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" id="mw919f8a86_e702_4b24_9cd7_adad694fcf9b" name="ChoE" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="5e-05" substanceUnits="mole" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:15354"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" id="mwcb834e43_dc57_45ae_9452_f4c10955caf1" name="PCho" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:18132"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_13" id="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5" name="PC" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:49183"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" id="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" name="PE" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16038"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_15" id="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" name="PS" compartment="mw81b30d38_6ef3_4391_b826_e6c3cc210196" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:72738"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_16" id="mw15ba24b5_7a87_479e_9be7_261b12cbdb63" name="km5" value="0.000122223738254533" constant="true"/>
+      <parameter metaid="metaid_17" id="mw18bbabcb_d229_4d91_99f1_484f2ba8f020" name="km6" value="0.000203868171233541" constant="true"/>
+      <parameter metaid="metaid_18" id="mw1a53a2cb_a3a7_40d7_ae07_4d93ad1123a3" name="Vm9" value="0.00141678261342411" constant="true"/>
+      <parameter metaid="metaid_19" id="mw231a5907_d1ee_4a43_83ab_abb72f19502c" name="Vm8" value="4.12788404046025e-07" constant="true"/>
+      <parameter metaid="metaid_20" id="mw2439178f_a48f_4425_82f9_13267b917b85" name="Vm4" value="8.62083015294042e-06" constant="true"/>
+      <parameter metaid="metaid_21" id="mw27f524cb_75b3_401c_8533_99d6f27af654" name="km13" value="0.000203777063277265" constant="true"/>
+      <parameter metaid="metaid_22" id="mw284c519a_cc2b_4a98_99ce_5a4471af99e1" name="km16" value="3.04072645117622e-05" constant="true"/>
+      <parameter metaid="metaid_23" id="mw2cd81e51_eb11_4e2c_b609_b2f802438a6b" name="kf17" value="0.0005" constant="true"/>
+      <parameter metaid="metaid_24" id="mw3046ca21_42a2_4a4b_89c4_9d6ca3d927c5" name="km11" value="0.171122974053956" constant="true"/>
+      <parameter metaid="metaid_25" id="mw371071cd_ec20_4517_acc1_08dfdc871e87" name="km12" value="2.41308392167819e-05" constant="true"/>
+      <parameter metaid="metaid_26" id="mw4035a2c9_3cda_467c_83cc_8f9c2902abaf" name="km9" value="0.321125432799976" constant="true"/>
+      <parameter metaid="metaid_27" id="mw5b225cdc_783f_4a15_93db_e960a2398b8e" name="Vm13" value="1.53754224136353e-06" constant="true"/>
+      <parameter metaid="metaid_28" id="mw5c4edb54_cfd9_43af_b70b_e9ff1b44dc55" name="km4" value="0.000108608492867695" constant="true"/>
+      <parameter metaid="metaid_29" id="mw5ffad843_5f02_419d_ba99_6e1f9b7e6b7b" name="Vm11" value="8.99054709659885e-05" constant="true"/>
+      <parameter metaid="metaid_30" id="mw798d0b02_925e_471b_a372_526d681cc370" name="Vm3" value="2.620389955953e-06" constant="true"/>
+      <parameter metaid="metaid_31" id="mw7ce1b6a3_e65e_4aaa_9c32_aeefb420f0ea" name="Vm2" value="1.30568052867489e-06" constant="true"/>
+      <parameter metaid="metaid_32" id="mw7d57aa6b_1bfb_4472_b555_919263d9eaf9" name="km10" value="3.76085190209901e-06" constant="true"/>
+      <parameter metaid="metaid_33" id="mw85485398_9f97_408c_bca6_90f0a8377eae" name="km2" value="0.000796722533770371" constant="true"/>
+      <parameter metaid="metaid_34" id="mw87bb1238_3292_467e_bfe3_ff7f1e64a351" name="Vm12" value="1.5662833197895e-06" constant="true"/>
+      <parameter metaid="metaid_35" id="mw8f20c25d_9700_4822_b5f9_fe243e001091" name="km1" value="0.000362894258752347" constant="true"/>
+      <parameter metaid="metaid_36" id="mw91e15e1e_c73e_4866_ab2b_8225a32b7610" name="Vm15" value="2.32432741134546e-07" constant="true"/>
+      <parameter metaid="metaid_37" id="mw961dacfa_f443_4814_ad6c_a27c04e74268" name="Vm5" value="1.0780611108133e-06" constant="true"/>
+      <parameter metaid="metaid_38" id="mw9f56ecc5_c22b_4f8c_8b82_90e2a6d9e364" name="Vm6" value="2.24518521682572e-06" constant="true"/>
+      <parameter metaid="metaid_39" id="mwaf289d12_4291_4651_8bd1_82e321e476a4" name="km8" value="3.10498877738431e-05" constant="true"/>
+      <parameter metaid="metaid_40" id="mwba0debe9_c575_4f5a_a980_e2b6857ff053" name="Vm7" value="5.61352652271706e-06" constant="true"/>
+      <parameter metaid="metaid_41" id="mwbf296afc_5e4f_4819_8028_06b20d7af7ca" name="km14" value="0.155164586398126" constant="true"/>
+      <parameter metaid="metaid_42" id="mwc623d82f_a94e_4460_9aed_444597a728c2" name="Vm14" value="0.00077375270429582" constant="true"/>
+      <parameter metaid="metaid_43" id="mwd3807289_133c_4621_8087_366621f553d3" name="km3" value="2.39591245105385e-05" constant="true"/>
+      <parameter metaid="metaid_44" id="mwee07eca4_0806_4cc3_a6ab_9226ee79be6c" name="Vm1" value="3.40936490738966e-06" constant="true"/>
+      <parameter metaid="metaid_45" id="mwf5cecb8f_89f8_4fba_b39b_b517d0bef2ce" name="km15" value="0.000102326862282225" constant="true"/>
+      <parameter metaid="metaid_46" id="mwf7d1ff9f_1734_4232_9a96_037b31b193b0" name="Vm10" value="6.97333029651601e-07" constant="true"/>
+      <parameter metaid="metaid_47" id="mwff26437c_166b_4946_ad35_f13df6145780" name="Vm16" value="5.55658410000431e-07" constant="true"/>
+      <parameter metaid="metaid_48" id="mwff99ad6c_8951_4d58_a836_cf2d3d08ac86" name="kb17" value="0.000132810241970949" constant="true"/>
+      <parameter metaid="metaid_49" id="mwffba86ff_a560_401a_93d6_c0e30bf42c87" name="km7" value="0.000227368268903121" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_54" id="mw106407fc_e33f_45aa_b5ae_258bd4790633" name="R11" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_50" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_51" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_52" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5"/>
+          <modifierSpeciesReference metaid="metaid_53" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw5ffad843_5f02_419d_ba99_6e1f9b7e6b7b </ci>
+                <ci> mwf166ad55_4ff0_49fb_95d2_b657ad7653d5 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw3046ca21_42a2_4a4b_89c4_9d6ca3d927c5 </ci>
+                <ci> mwf166ad55_4ff0_49fb_95d2_b657ad7653d5 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_59" id="mw155447fb_ce5b_4ba2_bd74_434951481a78" name="R2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="mw15abaa48_d7d0_4845_ae04_c573d289d495" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_56" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_57" species="mw15abaa48_d7d0_4845_ae04_c573d289d495"/>
+          <modifierSpeciesReference metaid="metaid_58" species="mw15abaa48_d7d0_4845_ae04_c573d289d495"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw7ce1b6a3_e65e_4aaa_9c32_aeefb420f0ea </ci>
+                <ci> mw15abaa48_d7d0_4845_ae04_c573d289d495 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw85485398_9f97_408c_bca6_90f0a8377eae </ci>
+                <ci> mw15abaa48_d7d0_4845_ae04_c573d289d495 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_64" id="mw15bb92b6_4cff_4a41_b815_c1d904618e57" name="R10" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_60" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_61" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_62" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5"/>
+          <modifierSpeciesReference metaid="metaid_63" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mwf7d1ff9f_1734_4232_9a96_037b31b193b0 </ci>
+                <ci> mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw7d57aa6b_1bfb_4472_b555_919263d9eaf9 </ci>
+                <ci> mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_69" id="mw185e644d_6f10_499f_a3a6_5a47d7ba2eef" name="R16" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_65" species="mw812f63db_4cb0_40ad_b92b_9874be969dfe" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_66" species="mwcb834e43_dc57_45ae_9452_f4c10955caf1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_67" species="mw812f63db_4cb0_40ad_b92b_9874be969dfe"/>
+          <modifierSpeciesReference metaid="metaid_68" species="mw812f63db_4cb0_40ad_b92b_9874be969dfe"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mwff26437c_166b_4946_ad35_f13df6145780 </ci>
+                <ci> mw812f63db_4cb0_40ad_b92b_9874be969dfe </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw284c519a_cc2b_4a98_99ce_5a4471af99e1 </ci>
+                <ci> mw812f63db_4cb0_40ad_b92b_9874be969dfe </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_74" id="mw307551ca_91cc_4634_bba5_0e3ecd38cfdd" name="R9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_70" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_71" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_72" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5"/>
+          <modifierSpeciesReference metaid="metaid_73" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw1a53a2cb_a3a7_40d7_ae07_4d93ad1123a3 </ci>
+                <ci> mwf166ad55_4ff0_49fb_95d2_b657ad7653d5 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw4035a2c9_3cda_467c_83cc_8f9c2902abaf </ci>
+                <ci> mwf166ad55_4ff0_49fb_95d2_b657ad7653d5 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_79" id="mw4c9aa283_577e_4b6c_ae5a_c96f62dbbb08" name="R3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_75" species="mw15abaa48_d7d0_4845_ae04_c573d289d495" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_76" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_77" species="mw15abaa48_d7d0_4845_ae04_c573d289d495"/>
+          <modifierSpeciesReference metaid="metaid_78" species="mw15abaa48_d7d0_4845_ae04_c573d289d495"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw798d0b02_925e_471b_a372_526d681cc370 </ci>
+                <ci> mw15abaa48_d7d0_4845_ae04_c573d289d495 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwd3807289_133c_4621_8087_366621f553d3 </ci>
+                <ci> mw15abaa48_d7d0_4845_ae04_c573d289d495 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_84" id="mw4f62d07e_217b_4602_b6fe_548af112eec8" name="R8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="mwcb834e43_dc57_45ae_9452_f4c10955caf1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_82" species="mwcb834e43_dc57_45ae_9452_f4c10955caf1"/>
+          <modifierSpeciesReference metaid="metaid_83" species="mwcb834e43_dc57_45ae_9452_f4c10955caf1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw231a5907_d1ee_4a43_83ab_abb72f19502c </ci>
+                <ci> mwcb834e43_dc57_45ae_9452_f4c10955caf1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwaf289d12_4291_4651_8bd1_82e321e476a4 </ci>
+                <ci> mwcb834e43_dc57_45ae_9452_f4c10955caf1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_91" id="mw5194cffd_f75a_4c61_b60e_23d5b0fea120" name="R17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_85" species="mw08818dfe_fb12_45cc_8c1d_d965f142d0ce" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_87" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c"/>
+          <modifierSpeciesReference metaid="metaid_88" species="mw08818dfe_fb12_45cc_8c1d_d965f142d0ce"/>
+          <modifierSpeciesReference metaid="metaid_89" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c"/>
+          <modifierSpeciesReference metaid="metaid_90" species="mw08818dfe_fb12_45cc_8c1d_d965f142d0ce"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw2cd81e51_eb11_4e2c_b609_b2f802438a6b </ci>
+                <ci> mw08818dfe_fb12_45cc_8c1d_d965f142d0ce </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwff99ad6c_8951_4d58_a836_cf2d3d08ac86 </ci>
+                <ci> mw8796c919_9251_4970_8f87_0bca9ecfeb5c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="mw55fba323_0865_4254_a6e9_09acd2b4a10f" name="R4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_92" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_93" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_94" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c"/>
+          <modifierSpeciesReference metaid="metaid_95" species="mw8796c919_9251_4970_8f87_0bca9ecfeb5c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw2439178f_a48f_4425_82f9_13267b917b85 </ci>
+                <ci> mw8796c919_9251_4970_8f87_0bca9ecfeb5c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw5c4edb54_cfd9_43af_b70b_e9ff1b44dc55 </ci>
+                <ci> mw8796c919_9251_4970_8f87_0bca9ecfeb5c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="mw79830677_2d7e_4f49_9d0b_f05fe026749f" name="R1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_97" species="mw73259e20_240e_4f3a_b2e0_9ca248658898" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_98" species="mw15abaa48_d7d0_4845_ae04_c573d289d495" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_99" species="mw73259e20_240e_4f3a_b2e0_9ca248658898"/>
+          <modifierSpeciesReference metaid="metaid_100" species="mw73259e20_240e_4f3a_b2e0_9ca248658898"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mwee07eca4_0806_4cc3_a6ab_9226ee79be6c </ci>
+                <ci> mw73259e20_240e_4f3a_b2e0_9ca248658898 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw8f20c25d_9700_4822_b5f9_fe243e001091 </ci>
+                <ci> mw73259e20_240e_4f3a_b2e0_9ca248658898 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="mwa25d1a3d_bbd9_41b8_8274_236f9d67bb60" name="R15" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_102" species="mw919f8a86_e702_4b24_9cd7_adad694fcf9b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="mw812f63db_4cb0_40ad_b92b_9874be969dfe" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_104" species="mw919f8a86_e702_4b24_9cd7_adad694fcf9b"/>
+          <modifierSpeciesReference metaid="metaid_105" species="mw919f8a86_e702_4b24_9cd7_adad694fcf9b"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw91e15e1e_c73e_4866_ab2b_8225a32b7610 </ci>
+                <ci> mw919f8a86_e702_4b24_9cd7_adad694fcf9b </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwf5cecb8f_89f8_4fba_b39b_b517d0bef2ce </ci>
+                <ci> mw919f8a86_e702_4b24_9cd7_adad694fcf9b </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_111" id="mwb47b4c45_fac9_49e6_a6a4_87b9050ddfbb" name="R7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_107" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_109" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41"/>
+          <modifierSpeciesReference metaid="metaid_110" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mwba0debe9_c575_4f5a_a980_e2b6857ff053 </ci>
+                <ci> mw849ed3fd_87d9_44d2_9f3e_4d631b900d41 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwffba86ff_a560_401a_93d6_c0e30bf42c87 </ci>
+                <ci> mw849ed3fd_87d9_44d2_9f3e_4d631b900d41 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_116" id="mwb8420f59_69c3_4707_918c_2e06bedff243" name="R5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_112" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_113" species="mwcb834e43_dc57_45ae_9452_f4c10955caf1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_114" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41"/>
+          <modifierSpeciesReference metaid="metaid_115" species="mw849ed3fd_87d9_44d2_9f3e_4d631b900d41"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw961dacfa_f443_4814_ad6c_a27c04e74268 </ci>
+                <ci> mw849ed3fd_87d9_44d2_9f3e_4d631b900d41 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw15ba24b5_7a87_479e_9be7_261b12cbdb63 </ci>
+                <ci> mw849ed3fd_87d9_44d2_9f3e_4d631b900d41 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="mwc9170c21_608b_4bd7_b2d0_f359d045da17" name="R6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_117" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_118" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_119" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+          <modifierSpeciesReference metaid="metaid_120" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw9f56ecc5_c22b_4f8c_8b82_90e2a6d9e364 </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw18bbabcb_d229_4d91_99f1_484f2ba8f020 </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="mwd71cb6c2_6420_46b9_ab17_eedc7b0fd8dc" name="R13" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_123" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+          <modifierSpeciesReference metaid="metaid_124" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw5b225cdc_783f_4a15_93db_e960a2398b8e </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw27f524cb_75b3_401c_8533_99d6f27af654 </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_129" id="mwdd7079dc_8d70_41b7_a369_3334522cdd13" name="R14" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="mwf166ad55_4ff0_49fb_95d2_b657ad7653d5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_127" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+          <modifierSpeciesReference metaid="metaid_128" species="mwfcfaf604_14d4_47a6_b021_226d1fb5497c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mwc623d82f_a94e_4460_9aed_444597a728c2 </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mwbf296afc_5e4f_4819_8028_06b20d7af7ca </ci>
+                <ci> mwfcfaf604_14d4_47a6_b021_226d1fb5497c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_133" id="mwfb854977_51ea_4daa_b84e_3bcb2fcccd39" name="R12" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_130" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_131" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5"/>
+          <modifierSpeciesReference metaid="metaid_132" species="mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mw87bb1238_3292_467e_bfe3_ff7f1e64a351 </ci>
+                <ci> mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> mw371071cd_ec20_4517_acc1_08dfdc871e87 </ci>
+                <ci> mwee54b5b4_b8c0_41df_8dda_5b160c5e10a5 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

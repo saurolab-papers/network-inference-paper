@@ -1,0 +1,81 @@
+// Created by libAntimony v2.13.2
+model *dano1()
+
+  // Compartments and Species:
+  species ADP, AMP, ATP, BPG, DHAP, FBP, GAP, $sink;
+
+  // Assignment Rules:
+  k22t := CG6P*9.72635/4.30499;
+
+  // Reactions:
+  v_1: ATP -> ADP + FBP; V5mt/(K5t + (ATP/AMP)^2);
+  v_10: ADP -> ATP; k9f*BPG*ADP - k9rt*ATP;
+  v_11: ATP + AMP -> 2 ADP; k24f*ATP*AMP - k24r*ADP^2;
+  v_2: FBP -> GAP + DHAP; V6m*(FBP - GAP*DHAP/K6eq)/(K6FBP + FBP + FBP*GAP/K6IGAP + K6t*(GAP*K6DHAP + DHAP*K6GAP + GAP*DHAP));
+  v_3: DHAP -> GAP; V7m*(DHAP - GAP/K7eq)/(K7DHAP + DHAP + K7DHAP*GAP/K7GAP);
+  v_4: DHAP -> $sink; V15mt*DHAP/(K15t + DHAP);
+  v_5: GAP -> BPG; V8mt*(GAP - BPG/K8eqt)/(1 + GAP/K8GAP + BPG/K8BPG);
+  v_6: ADP + BPG -> ATP; k9f*ADP*BPG - k9rt*ATP;
+  v_7: ATP -> ADP; V5mt/(K5t + (ATP/AMP)^2) + k22t*ATP;
+  v_8: ATP -> ADP; k23*ATP;
+  v_9: ATP -> ADP; k22t*ATP;
+
+  // Species initializations:
+  ADP = 1.50328;
+  AMP = 0.33234;
+  ATP = 2.09438;
+  BPG = 0.000275381;
+  DHAP = 3.08016;
+  FBP = 5.03986;
+  GAP = 0.119766;
+  sink = 1;
+
+  // Variable initializations:
+  Atot = 3.93;
+  CF6P = 0.501106;
+  CG6P = 4.30499;
+  CNAD = 0.644434;
+  CNADH = 0.335566;
+  CPEP = 0.0410114;
+  K15t = 12.1196;
+  K5t = 86.3832;
+  K6DHAP = 2;
+  K6FBP = 0.3;
+  K6GAP = 4;
+  K6IGAP = 10;
+  K6eq = 0.081;
+  K6t = 2.46914;
+  K7DHAP = 1.23;
+  K7GAP = 1.27;
+  K7eq = 0.055;
+  K8BPG = 0.01;
+  K8GAP = 0.6;
+  K8eqt = 0.0105624;
+  V15mt = 24.6323;
+  V5mt = 3621.74;
+  V6m = 2207.82;
+  V7m = 116.365;
+  V8mt = 686.97;
+  k23 = 3.2076;
+  k24f = 432.9;
+  k24r = 133.333;
+  k9f = 443866;
+  k9rt = 62.6908;
+
+  // Other declarations:
+  var Atot, CF6P, CG6P, CNAD, CNADH, CPEP, K15t, K5t, K6DHAP, K6FBP, K6GAP;
+  var K6IGAP, K6eq, K6t, K7DHAP, K7GAP, K7eq, K8BPG, K8GAP, K8eqt, V15mt;
+  var V5mt, V6m, V7m, V8mt, k22t, k23, k24f, k24r, k9f, k9rt;
+
+  // Unit definitions:
+  unit min = 60 second;
+  unit mM = 1e-3 mole / litre;
+  unit mmol = 1e-3 mole;
+  unit L = litre;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+dano1 is "dano1"

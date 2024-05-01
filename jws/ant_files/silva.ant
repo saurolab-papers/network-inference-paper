@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *silva()
+
+  // Compartments and Species:
+  species $DHAP, $GAP, HTA, MG, SDLTSH, TSH2;
+
+  // Reactions:
+  v_1: $DHAP -> MG; k1*DHAP;
+  v_2: $GAP -> MG; k2*GAP;
+  v_3: MG + TSH2 -> HTA; k3*MG*TSH2;
+  v_4: HTA -> MG + TSH2; k4*HTA;
+  v_5: HTA -> SDLTSH; V5*HTA/(Km5 + HTA);
+  v_6: SDLTSH -> TSH2; V6*SDLTSH/(Km6 + SDLTSH);
+
+  // Species initializations:
+  DHAP = 0.16;
+  GAP = 0.0072;
+  HTA = 0.14;
+  MG = 0;
+  SDLTSH = 0;
+  TSH2 = 0.9;
+
+  // Variable initializations:
+  Km5 = 0.506;
+  Km6 = 0.196;
+  V5 = 6.084;
+  V6 = 5.306;
+  k1 = 0.0064;
+  k2 = 0.00066;
+  k3 = 0.34;
+  k4 = 1.01;
+
+  // Other declarations:
+  var Km5, Km6, V5, V6, k1, k2, k3, k4;
+
+  // Unit definitions:
+  unit mM = 1e-3 mole / litre;
+  unit min = 60 second;
+  unit substance = mM;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+silva is "silva"

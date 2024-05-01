@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *snoep()
+
+  // Compartments and Species:
+  species $mRNAp, mRNApribo, $mRNAribo, mRNAriboribo, p, ribo, $sink;
+
+  // Reactions:
+  v_1: $mRNAp + ribo -> mRNApribo; k11*mRNAp*ribo - k12*mRNApribo;
+  v_2: mRNApribo -> ribo + p; k2*mRNApribo/(mRNApribo + K2);
+  v_3: $mRNAribo + ribo -> mRNAriboribo; k31*mRNAribo*ribo - k32*mRNAriboribo;
+  v_4: mRNAriboribo -> 2 ribo; k4*mRNAriboribo/(mRNAriboribo + K4);
+  v_5: p -> $sink; k5*p;
+  v_6: ribo -> $sink; k5*ribo;
+  v_7: mRNApribo -> $sink; k5*mRNApribo;
+  v_8: mRNAriboribo -> $sink; k5*mRNAriboribo;
+
+  // Species initializations:
+  mRNAp = 1;
+  mRNApribo = 0;
+  mRNAribo = 1;
+  mRNAriboribo = 0;
+  p = 0.5;
+  ribo = 0.5;
+  sink = 0;
+
+  // Variable initializations:
+  K2 = 1;
+  K4 = 3;
+  k11 = 1000;
+  k12 = 1;
+  k2 = 750;
+  k31 = 200;
+  k32 = 10;
+  k4 = 12;
+  k5 = 1;
+  k6 = 0.1;
+  k7 = 0.1;
+  k8 = 0.1;
+
+  // Other declarations:
+  var K2, K4, k11, k12, k2, k31, k32, k4, k5, k6, k7, k8;
+end
+
+snoep is "snoep"

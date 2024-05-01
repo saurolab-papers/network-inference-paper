@@ -1,0 +1,87 @@
+// Created by libAntimony v2.13.2
+model *edelstein1()
+
+  // Compartments and Species:
+  species ActiveACh, ActiveACh2, ActiveVar, Basal, BasalACh, BasalACh2, Desensitised;
+  species DesensitisedACh, DesensitisedACh2, Intermediate, IntermediateACh;
+  species IntermediateACh2;
+
+  // Reactions:
+  v_1: Basal -> BasalACh; kf0*Basal - kr0*BasalACh;
+  v_10: ActiveVar -> Intermediate; kf9*ActiveVar - kr9*Intermediate;
+  v_11: ActiveACh -> IntermediateACh; kf10*ActiveACh - kr10*IntermediateACh;
+  v_12: ActiveACh2 -> IntermediateACh2; kf11*ActiveACh2 - kr11*IntermediateACh2;
+  v_13: Desensitised -> DesensitisedACh; kf12*Desensitised - kr12*DesensitisedACh;
+  v_14: DesensitisedACh -> DesensitisedACh2; kf13*DesensitisedACh - kr13*DesensitisedACh2;
+  v_15: Intermediate -> Desensitised; -(kr14*Desensitised) + kf14*Intermediate;
+  v_16: IntermediateACh -> DesensitisedACh; -(kr15*DesensitisedACh) + kf15*IntermediateACh;
+  v_17: IntermediateACh2 -> DesensitisedACh2; -(kr16*DesensitisedACh2) + kf16*IntermediateACh2;
+  v_2: BasalACh -> BasalACh2; kf1*BasalACh - kr1*BasalACh2;
+  v_3: BasalACh2 -> ActiveACh2; -(kr2*ActiveACh2) + kf2*BasalACh2;
+  v_4: ActiveVar -> ActiveACh; -(kr3*ActiveACh) + kf3*ActiveVar;
+  v_5: ActiveACh -> ActiveACh2; kf4*ActiveACh - kr4*ActiveACh2;
+  v_6: Basal -> ActiveVar; -(kr5*ActiveVar) + kf5*Basal;
+  v_7: BasalACh -> ActiveACh; -(kr6*ActiveACh) + kf6*BasalACh;
+  v_8: Intermediate -> IntermediateACh; kf7*Intermediate - kr7*IntermediateACh;
+  v_9: IntermediateACh -> IntermediateACh2; kf8*IntermediateACh - kr8*IntermediateACh2;
+
+  // Species initializations:
+  ActiveACh = 0;
+  ActiveACh2 = 0;
+  ActiveVar = 0;
+  Basal = 1.53757e-05;
+  BasalACh = 0;
+  BasalACh2 = 0;
+  Desensitised = 0;
+  DesensitisedACh = 0;
+  DesensitisedACh2 = 0;
+  Intermediate = 0;
+  IntermediateACh = 0;
+  IntermediateACh2 = 0;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  comp1 = 1e-16;
+  kf0 = 3000;
+  kf1 = 1500;
+  kf10 = 19.85;
+  kf11 = 20;
+  kf12 = 3000;
+  kf13 = 1500;
+  kf14 = 0.05;
+  kf15 = 0.05;
+  kf16 = 0.05;
+  kf2 = 30000;
+  kf3 = 3000;
+  kf4 = 1500;
+  kf5 = 0.54;
+  kf6 = 130;
+  kf7 = 3000;
+  kf8 = 1500;
+  kf9 = 19.7;
+  kr0 = 8000;
+  kr1 = 16000;
+  kr10 = 1.74;
+  kr11 = 0.81;
+  kr12 = 4;
+  kr13 = 8;
+  kr14 = 0.0012;
+  kr15 = 0.0012;
+  kr16 = 0.0012;
+  kr2 = 700;
+  kr3 = 8.64;
+  kr4 = 17.28;
+  kr5 = 10800;
+  kr6 = 2740;
+  kr7 = 4;
+  kr8 = 8;
+  kr9 = 3.74;
+  t2 = 20;
+
+  // Other declarations:
+  var EXTERNAL, comp1, kf0, kf1, kf10, kf11, kf12, kf13, kf14, kf15, kf16;
+  var kf2, kf3, kf4, kf5, kf6, kf7, kf8, kf9, kr0, kr1, kr10, kr11, kr12;
+  var kr13, kr14, kr15, kr16, kr2, kr3, kr4, kr5, kr6, kr7, kr8, kr9, t2;
+end
+
+edelstein1 is "edelstein1"

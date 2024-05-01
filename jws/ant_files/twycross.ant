@@ -1,0 +1,131 @@
+// Created by libAntimony v2.13.2
+model *twycross()
+
+  // Compartments and Species:
+  species Fvar, S, a0, a1, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19;
+  species a2, a20, a3, a4, a5, a6, a7, a8, a9, c1, c10, c11, c12, c13, c14;
+  species c15, c16, c17, c18, c19, c2, c20, c3, c4, c5, c6, c7, c8, c9;
+
+  // Assignment Rules:
+  Aaniona := 1 - Aprota;
+  Aprota := 1/(1 + 10^(pHa - pK));
+  Aanionc := 1 - Aprotc;
+  Aprotc := 1/(1 + 10^(pHc - pK));
+  Ba := Aaniona*(subval/(2.71828^subval - 1));
+  subval := -F*V/(R*T);
+  Bc := Aanionc*(-subval/(2.71828^-subval - 1));
+
+  // Reactions:
+  v_1: S -> 40000 a0; kVol*2*Dvar*(S - a0)/(Ls + lambda);
+  v_10: 40000 a4 -> 20 c5; kVol*Pdiff*(Aprota*a4 - Aprotc*c5);
+  v_11: 20 c5 -> 40000 a5; kVol*(PPin*(-(Ba*a5) + Bc*c5) + Pdiff*(-Aprota*a5 + Aprotc*c5));
+  v_12: 40000 a5 -> 20 c6; kVol*Pdiff*(Aprota*a5 - Aprotc*c6);
+  v_13: 20 c6 -> 40000 a6; kVol*(PPin*(-(Ba*a6) + Bc*c6) + Pdiff*(-Aprota*a6 + Aprotc*c6));
+  v_14: 40000 a6 -> 20 c7; kVol*Pdiff*(Aprota*a6 - Aprotc*c7);
+  v_15: 20 c7 -> 40000 a7; kVol*(PPin*(-(Ba*a7) + Bc*c7) + Pdiff*(-Aprota*a7 + Aprotc*c7));
+  v_16: 40000 a7 -> 20 c8; kVol*Pdiff*(Aprota*a7 - Aprotc*c8);
+  v_17: 20 c8 -> 40000 a8; kVol*(PPin*(-(Ba*a8) + Bc*c8) + Pdiff*(-Aprota*a8 + Aprotc*c8));
+  v_18: 40000 a8 -> 20 c9; kVol*Pdiff*(Aprota*a8 - Aprotc*c9);
+  v_19: 20 c9 -> 40000 a9; kVol*(PPin*(-(Ba*a9) + Bc*c9) + Pdiff*(-Aprota*a9 + Aprotc*c10));
+  v_2: 40000 a0 -> 20 c1; kVol*Pdiff*(Aprota*a0 - Aprotc*c1);
+  v_20: 40000 a9 -> 20 c10; kVol*Pdiff*(Aprota*a9 - Aprotc*c10);
+  v_21: 20 c10 -> 40000 a10; kVol*(PPin*(-(Ba*a10) + Bc*c10) + Pdiff*(-Aprota*a10 + Aprotc*c10));
+  v_22: 40000 a10 -> 20 c11; kVol*Pdiff*(Aprota*a10 - Aprotc*c11);
+  v_23: 20 c11 -> 40000 a11; kVol*(PPin*(-(Ba*a11) + Bc*c11) + Pdiff*(-Aprota*a11 + Aprotc*c11));
+  v_24: 40000 a11 -> 20 c12; kVol*Pdiff*(Aprota*a11 - Aprotc*c12);
+  v_25: 20 c12 -> 40000 a12; kVol*(PPin*(-(Ba*a12) + Bc*c12) + Pdiff*(-Aprota*a12 + Aprotc*c12));
+  v_26: 40000 a12 -> 20 c13; kVol*Pdiff*(Aprota*a12 - Aprotc*c13);
+  v_27: 20 c13 -> 40000 a13; kVol*(PPin*(-(Ba*a13) + Bc*c13) + Pdiff*(-Aprota*a13 + Aprotc*c13));
+  v_28: 40000 a13 -> 20 c14; kVol*Pdiff*(Aprota*a13 - Aprotc*c14);
+  v_29: 20 c14 -> 40000 a14; kVol*(PPin*(-(Ba*a14) + Bc*c14) + Pdiff*(-Aprota*a14 + Aprotc*c14));
+  v_3: 20 c1 -> 40000 a1; kVol*(PPin*(-(Ba*a1) + Bc*c1) + Pdiff*(-Aprota*a1 + Aprotc*c1));
+  v_30: 40000 a14 -> 20 c15; kVol*Pdiff*(Aprota*a14 - Aprotc*c15);
+  v_31: 20 c15 -> 40000 a15; kVol*(PPin*(-(Ba*a15) + Bc*c15) + Pdiff*(-Aprota*a15 + Aprotc*c15));
+  v_32: 40000 a15 -> 20 c16; kVol*Pdiff*(Aprota*a15 - Aprotc*c16);
+  v_33: 20 c16 -> 40000 a16; kVol*(PPin*(-(Ba*a16) + Bc*c16) + Pdiff*(-Aprota*a16 + Aprotc*c16));
+  v_34: 40000 a16 -> 20 c17; kVol*Pdiff*(Aprota*a16 - Aprotc*c17);
+  v_35: 20 c17 -> 40000 a17; kVol*(PPin*(-(Ba*a17) + Bc*c17) + Pdiff*(-Aprota*a17 + Aprotc*c17));
+  v_36: 40000 a17 -> 20 c18; kVol*Pdiff*(Aprota*a17 - Aprotc*c18);
+  v_37: 20 c18 -> 40000 a18; kVol*(PPin*(-(Ba*a18) + Bc*c18) + Pdiff*(-Aprota*a18 + Aprotc*c18));
+  v_38: 40000 a18 -> 20 c19; kVol*Pdiff*(Aprota*a18 - Aprotc*c19);
+  v_39: 20 c19 -> 40000 a19; kVol*(PPin*(-(Ba*a19) + Bc*c19) + Pdiff*(-Aprota*a19 + Aprotc*c19));
+  v_4: 40000 a1 -> 20 c2; kVol*Pdiff*(Aprota*a1 - Aprotc*c2);
+  v_40: 40000 a19 -> 20 c20; kVol*Pdiff*(Aprota*a19 - Aprotc*c20);
+  v_41: 20 c20 -> 40000 a20; kVol*(Pdiff*(Aprotc*c20 - Aprota*a20) + PPin*(Bc*c20 - Ba*a20));
+  v_42: 40000 a20 -> Fvar; kVol*(2*Dvar*(a20 - Fvar)/(Ls + lambda));
+  v_5: 20 c2 -> 40000 a2; kVol*(PPin*(-(Ba*a2) + Bc*c2) + Pdiff*(-Aprota*a2 + Aprotc*c2));
+  v_6: 40000 a2 -> 20 c3; kVol*Pdiff*(Aprota*a2 - Aprotc*c3);
+  v_7: 20 c3 -> 40000 a3; kVol*(PPin*(-(Ba*a3) + Bc*c3) + Pdiff*(-Aprota*a3 + Aprotc*c3));
+  v_8: 40000 a3 -> 20 c4; kVol*Pdiff*(Aprota*a3 - Aprotc*c4);
+  v_9: 20 c4 -> 40000 a4; kVol*(PPin*(-(Ba*a4) + Bc*c4) + Pdiff*(-Aprota*a4 + Aprotc*c4));
+
+  // Species initializations:
+  Fvar = 0;
+  S = 1;
+  a0 = 0;
+  a1 = 0;
+  a10 = 0;
+  a11 = 0;
+  a12 = 0;
+  a13 = 0;
+  a14 = 0;
+  a15 = 0;
+  a16 = 0;
+  a17 = 0;
+  a18 = 0;
+  a19 = 0;
+  a2 = 0;
+  a20 = 0;
+  a3 = 0;
+  a4 = 0;
+  a5 = 0;
+  a6 = 0;
+  a7 = 0;
+  a8 = 0;
+  a9 = 0;
+  c1 = 0;
+  c10 = 0;
+  c11 = 0;
+  c12 = 0;
+  c13 = 0;
+  c14 = 0;
+  c15 = 0;
+  c16 = 0;
+  c17 = 0;
+  c18 = 0;
+  c19 = 0;
+  c2 = 0;
+  c20 = 0;
+  c3 = 0;
+  c4 = 0;
+  c5 = 0;
+  c6 = 0;
+  c7 = 0;
+  c8 = 0;
+  c9 = 0;
+
+  // Variable initializations:
+  pHa = 5.3;
+  pK = 4.8;
+  pHc = 7.2;
+  Dvar = 6.7e-10;
+  F = 96485.3399;
+  L = 0.002;
+  Ls = 0.002;
+  PPin = 3.3e-06;
+  Pdiff = 5.6e-07;
+  R = 8.314472;
+  T = 295.15;
+  V = -0.12;
+  ext_ = 0;
+  kVol = 500;
+  lambda = 5e-07;
+  lcyt = 0.0001;
+  w = 1e-05;
+
+  // Other declarations:
+  var Aaniona, Aprota, Aanionc, Aprotc, pHa, pK, pHc, Ba, subval, Bc, Dvar;
+  var F, L, Ls, PPin, Pdiff, R, T, V, ext_, kVol, lambda, lcyt, w;
+end
+
+twycross is "twycross"

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="edelstein1" name="edelstein1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ActiveACh" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="ActiveACh2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="ActiveVar" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="Basal" compartment="default_compartment" initialConcentration="1.53757e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="BasalACh" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="BasalACh2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="Desensitised" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="DesensitisedACh" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="DesensitisedACh2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="Intermediate" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="IntermediateACh" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="IntermediateACh2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_13" id="EXTERNAL" value="0" constant="false"/>
+      <parameter metaid="metaid_14" id="comp1" value="1e-16" constant="false"/>
+      <parameter metaid="metaid_15" id="kf0" value="3000" constant="false"/>
+      <parameter metaid="metaid_16" id="kf1" value="1500" constant="false"/>
+      <parameter metaid="metaid_17" id="kf10" value="19.85" constant="false"/>
+      <parameter metaid="metaid_18" id="kf11" value="20" constant="false"/>
+      <parameter metaid="metaid_19" id="kf12" value="3000" constant="false"/>
+      <parameter metaid="metaid_20" id="kf13" value="1500" constant="false"/>
+      <parameter metaid="metaid_21" id="kf14" value="0.05" constant="false"/>
+      <parameter metaid="metaid_22" id="kf15" value="0.05" constant="false"/>
+      <parameter metaid="metaid_23" id="kf16" value="0.05" constant="false"/>
+      <parameter metaid="metaid_24" id="kf2" value="30000" constant="false"/>
+      <parameter metaid="metaid_25" id="kf3" value="3000" constant="false"/>
+      <parameter metaid="metaid_26" id="kf4" value="1500" constant="false"/>
+      <parameter metaid="metaid_27" id="kf5" value="0.54" constant="false"/>
+      <parameter metaid="metaid_28" id="kf6" value="130" constant="false"/>
+      <parameter metaid="metaid_29" id="kf7" value="3000" constant="false"/>
+      <parameter metaid="metaid_30" id="kf8" value="1500" constant="false"/>
+      <parameter metaid="metaid_31" id="kf9" value="19.7" constant="false"/>
+      <parameter metaid="metaid_32" id="kr0" value="8000" constant="false"/>
+      <parameter metaid="metaid_33" id="kr1" value="16000" constant="false"/>
+      <parameter metaid="metaid_34" id="kr10" value="1.74" constant="false"/>
+      <parameter metaid="metaid_35" id="kr11" value="0.81" constant="false"/>
+      <parameter metaid="metaid_36" id="kr12" value="4" constant="false"/>
+      <parameter metaid="metaid_37" id="kr13" value="8" constant="false"/>
+      <parameter metaid="metaid_38" id="kr14" value="0.0012" constant="false"/>
+      <parameter metaid="metaid_39" id="kr15" value="0.0012" constant="false"/>
+      <parameter metaid="metaid_40" id="kr16" value="0.0012" constant="false"/>
+      <parameter metaid="metaid_41" id="kr2" value="700" constant="false"/>
+      <parameter metaid="metaid_42" id="kr3" value="8.64" constant="false"/>
+      <parameter metaid="metaid_43" id="kr4" value="17.28" constant="false"/>
+      <parameter metaid="metaid_44" id="kr5" value="10800" constant="false"/>
+      <parameter metaid="metaid_45" id="kr6" value="2740" constant="false"/>
+      <parameter metaid="metaid_46" id="kr7" value="4" constant="false"/>
+      <parameter metaid="metaid_47" id="kr8" value="8" constant="false"/>
+      <parameter metaid="metaid_48" id="kr9" value="3.74" constant="false"/>
+      <parameter metaid="metaid_49" id="t2" value="20" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_52" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_50" species="Basal" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_51" species="BasalACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf0 </ci>
+                <ci> Basal </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr0 </ci>
+                <ci> BasalACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_53" species="ActiveVar" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_54" species="Intermediate" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf9 </ci>
+                <ci> ActiveVar </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr9 </ci>
+                <ci> Intermediate </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_58" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="ActiveACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_57" species="IntermediateACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf10 </ci>
+                <ci> ActiveACh </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr10 </ci>
+                <ci> IntermediateACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="ActiveACh2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_60" species="IntermediateACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf11 </ci>
+                <ci> ActiveACh2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr11 </ci>
+                <ci> IntermediateACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_64" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="Desensitised" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="DesensitisedACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf12 </ci>
+                <ci> Desensitised </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr12 </ci>
+                <ci> DesensitisedACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_67" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_65" species="DesensitisedACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_66" species="DesensitisedACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf13 </ci>
+                <ci> DesensitisedACh </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr13 </ci>
+                <ci> DesensitisedACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_70" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_68" species="Intermediate" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_69" species="Desensitised" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr14 </ci>
+                  <ci> Desensitised </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf14 </ci>
+                <ci> Intermediate </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_73" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_71" species="IntermediateACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_72" species="DesensitisedACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr15 </ci>
+                  <ci> DesensitisedACh </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf15 </ci>
+                <ci> IntermediateACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_76" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_74" species="IntermediateACh2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_75" species="DesensitisedACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr16 </ci>
+                  <ci> DesensitisedACh2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf16 </ci>
+                <ci> IntermediateACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_79" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_77" species="BasalACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_78" species="BasalACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf1 </ci>
+                <ci> BasalACh </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr1 </ci>
+                <ci> BasalACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_82" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="BasalACh2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="ActiveACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr2 </ci>
+                  <ci> ActiveACh2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf2 </ci>
+                <ci> BasalACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_85" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_83" species="ActiveVar" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_84" species="ActiveACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr3 </ci>
+                  <ci> ActiveACh </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf3 </ci>
+                <ci> ActiveVar </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_88" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_86" species="ActiveACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_87" species="ActiveACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf4 </ci>
+                <ci> ActiveACh </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr4 </ci>
+                <ci> ActiveACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_91" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_89" species="Basal" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_90" species="ActiveVar" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr5 </ci>
+                  <ci> ActiveVar </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf5 </ci>
+                <ci> Basal </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_94" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_92" species="BasalACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_93" species="ActiveACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kr6 </ci>
+                  <ci> ActiveACh </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kf6 </ci>
+                <ci> BasalACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_97" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="Intermediate" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_96" species="IntermediateACh" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf7 </ci>
+                <ci> Intermediate </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr7 </ci>
+                <ci> IntermediateACh </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_100" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_98" species="IntermediateACh" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_99" species="IntermediateACh2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kf8 </ci>
+                <ci> IntermediateACh </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kr8 </ci>
+                <ci> IntermediateACh2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

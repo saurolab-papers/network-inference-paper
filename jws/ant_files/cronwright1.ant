@@ -1,0 +1,41 @@
+// Created by libAntimony v2.13.2
+model *cronwright1()
+
+  // Compartments and Species:
+  species $DHAP, G3P, $Gly;
+
+  // Reactions:
+  v_1: $DHAP -> G3P; (Vf1/(K1nadh*K1dhap))*(NADH*DHAP - NAD*G3P/Keq1)/((1 + F16BP/K1f16bp + ATP/K1atp + ADP/K1adp)*(1 + NADH/K1nadh + NAD/K1nad)*(1 + DHAP/K1dhap + G3P/K1g3p));
+  v_2: G3P -> $Gly; V2*G3P/K2g3p/((1 + G3P/K2g3p)*(1 + Phi/K2phi));
+
+  // Species initializations:
+  DHAP = 0.59;
+  G3P = 0;
+  Gly = 0;
+
+  // Variable initializations:
+  ADP = 2.17;
+  ATP = 2.37;
+  F16BP = 6.01;
+  K1adp = 2;
+  K1atp = 0.73;
+  K1dhap = 0.54;
+  K1f16bp = 4.8;
+  K1g3p = 1.2;
+  K1nad = 0.93;
+  K1nadh = 0.023;
+  K2g3p = 3.5;
+  K2phi = 1;
+  Keq1 = 10000;
+  NAD = 1.45;
+  NADH = 1.87;
+  Phi = 1;
+  V2 = 53;
+  Vf1 = 47;
+
+  // Other declarations:
+  var ADP, ATP, F16BP, K1adp, K1atp, K1dhap, K1f16bp, K1g3p, K1nad, K1nadh;
+  var K2g3p, K2phi, Keq1, NAD, NADH, Phi, V2, Vf1;
+end
+
+cronwright1 is "cronwright1"

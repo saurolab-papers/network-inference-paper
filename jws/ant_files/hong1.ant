@@ -1,0 +1,121 @@
+// Created by libAntimony v2.13.2
+model *hong1()
+
+  // Compartments and Species:
+  compartment system;
+  species CP in system, CP2 in system, M in system, TF in system;
+
+  // Assignment Rules:
+  trigOFFtime := trigONtime + IR_pulse_duration;
+  CPtot := CP + 2*CP2 + 2*IC;
+  IC := TFtot - TF;
+  chk2 := chk2ToggleOnOff*chk2pulseonoff*(chk2_value/IR_pulse_duration);
+  chk2pulseonoff := chk2pulseactive - (chk2pulseactive_elim_elim + chk2pulseactive_elim);
+  chk2c := chk2ToggleOnOff*chk2pulseonoff*(chk2c_value/IR_pulse_duration);
+  function_1 := kcps*M;
+  function_4_r1 := Dex/system;
+  function_4_r13 := kp2*CP2/(Jp + CP + 2*CP2 + 2*IC)/system;
+  function_4_r17 := kp2*IC/(Jp + CP + 2*CP2 + 2*IC)/system;
+  function_4_r2 := kms*TF^n/(J^n + TF^n)/system;
+  function_4_r8 := kp1*CP/(Jp + CP + 2*CP2 + 2*IC)/system;
+
+  // Reactions:
+  r1:  => M; system*function_4_r1;
+  r10:  => TF + CP2; system*kicd*IC;
+  r11: CP2 => ; system*kcp2d*CP2;
+  r12: TF + CP2 => ; system*kica*CP2*TF;
+  r13: CP2 => ; system*function_4_r13;
+  r14: CP2 => ; system*chk2*CP2;
+  r15:  => TF; system*kcp2d*IC;
+  r16:  => TF; system*chk2c*IC;
+  r17:  => TF; system*function_4_r17;
+  r2:  => M; system*function_4_r2;
+  r3: M => ; system*kmd*M;
+  r4:  => CP; system*function_1;
+  r5: CP => ; system*kcpd*CP;
+  r6: 2 CP => CP2; system*ka*CP^2;
+  r7: CP2 => 2 CP; system*kd*CP2;
+  r8: CP => ; system*function_4_r8;
+  r9: CP => ; system*chk2*CP;
+
+  // Events:
+  trigON: at 0 after time >= trigONtime: chk2pulseactive_elim = 0;
+  trigOFF: at 0 after time >= trigOFFtime: chk2pulseactive_elim_elim = 1;
+
+  // Species initializations:
+  CP = initialValue_CP;
+  CP2 = initialValue_CP2;
+  M = initialValue_M;
+  TF = initialValue_TF;
+
+  // Compartment initializations:
+  system = 1;
+
+  // Variable initializations:
+  initialValue_CP = 0.039;
+  initialValue_CP2 = 0.088;
+  initialValue_M = 1.35;
+  initialValue_TF = 0.06;
+  trigONtime = 4;
+  chk2pulseactive_elim = 1;
+  chk2pulseactive_elim_elim = 0;
+  Dex = 0;
+  TFtot = 0.5;
+  ICtot = 1;
+  IR_pulse_duration = 2;
+  J = 0.3;
+  Jp = 0.05;
+  chk2ToggleOnOff = 1;
+  chk2_value = 0.25;
+  chk2c_value = 0.1;
+  chk2pulseactive = 1;
+  kcps = 0.5;
+  kp2 = 0.1;
+  kms = 1;
+  n = 2;
+  kp1 = 10;
+  ka = 100;
+  kcp2d = 0.0525;
+  kcpd = 0.525;
+  kd = 0.01;
+  kica = 20;
+  kicd = 0.01;
+  kmd = 0.1;
+
+  // Other declarations:
+  var initialValue_CP, initialValue_CP2, initialValue_M, initialValue_TF;
+  var chk2pulseactive_elim, trigOFFtime, chk2pulseactive_elim_elim, CPtot;
+  var IC, TFtot, chk2, chk2ToggleOnOff, chk2pulseonoff, chk2_value, chk2c;
+  var chk2c_value, function_1, function_4_r1, function_4_r13, function_4_r17;
+  var function_4_r2, function_4_r8;
+  const system, trigONtime, Dex, ICtot, IR_pulse_duration, J, Jp, chk2pulseactive;
+  const kcps, kp2, kms, n, kp1, ka, kcp2d, kcpd, kd, kica, kicd, kmd;
+
+  // Display Names:
+  CP is "Monomer clock proteins (PER)";
+  CP2 is "Dimer form of clock proteins (PER/PER)";
+  M is "Messenger RNA of the clock proteins (Per mRNA)";
+  TF is "Transcription factor (BMAL1/CLK)";
+  CPtot is "Total amount of clock proteins (PER on Fig. 2)";
+  IC is "Inactive complex of clock dimers and transcription factor";
+  ICtot is "TFtot";
+
+  // SBO terms:
+  system.sboTerm = 290
+  CP.sboTerm = 252
+  CP2.sboTerm = 297
+  TF.sboTerm = 296
+  Dex.sboTerm = 196
+
+  // CV terms:
+  system hypernym "http://identifiers.org/go/GO:0005623"
+  CP homolog "http://identifiers.org/uniprot/O15516"
+  CP2 part "http://identifiers.org/uniprot/O15516"
+  M hypernym "http://identifiers.org/kegg.compound/C00046",
+             "http://identifiers.org/chebi/CHEBI:33699"
+  TF part "http://identifiers.org/uniprot/O00327",
+          "http://identifiers.org/uniprot/P49759"
+  Dex hypernym "http://identifiers.org/chebi/CHEBI:41879"
+end
+
+hong1 is "hong1"

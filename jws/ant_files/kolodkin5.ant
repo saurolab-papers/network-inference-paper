@@ -1,0 +1,62 @@
+// Created by libAntimony v2.13.2
+function TR(Kapf, Cvar, Kapb, Nvar)
+  Cvar*Kapf - Kapb*Nvar;
+end
+
+
+model *kolodkin5()
+
+  // Compartments and Species:
+  species $Lc, Ln_, NR, NRLc, NRLn, NRc, RE, REL;
+
+  // Reactions:
+  v_1: NRLn + RE -> REL; k1*NRLn*RE - k2*REL;
+  v_2: $Lc -> Ln_; TR(Kapf, Lc, Kapb, Ln_)/Vnucleus;
+  v_3: Ln_ + NR -> NRLn; k12*Ln_*NR - k22*NRLn;
+  v_4: NRc -> NRLc; k13*Lc*NRc - k23*NRLc;
+  v_5: NRc -> 3.44444 NR; TR(Kapf4, NRc, Kapb4, NR)/Vcytosol;
+  v_6: NRLc -> 3.44444 NRLn; TR(Kapf5, NRLc, Kapb5, NRLn)/Vcytosol + 0*NRLn + 0*RE + 0*Ln_ + 0*NR + 0*NRc + 0*NRLc + 0*REL + 0*NRLn + 0*RE + 0*Ln_ + 0*NR + 0*NRc + 0*NRLc + 0*REL;
+
+  // Species initializations:
+  Lc = 0.005;
+  Ln_ = 0;
+  NR = 358.754;
+  NRLc = 0;
+  NRLn = 0;
+  NRc = 3.58;
+  RE = 3.7;
+  REL = 0;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  Kapb = 3.24e-11;
+  Kapb4 = 5.4e-14;
+  Kapb5 = 5.4e-14;
+  Kapf = 3.24e-11;
+  Kapf4 = 5.4e-12;
+  Kapf5 = 5.4e-12;
+  Vcytosol = 4.5e-13;
+  Vnucleus = 1.55e-12;
+  k1 = 60;
+  k12 = 60;
+  k13 = 60;
+  k2 = 60;
+  k22 = 60;
+  k23 = 60;
+
+  // Other declarations:
+  var EXTERNAL, Kapb, Kapb4, Kapb5, Kapf, Kapf4, Kapf5, Vcytosol, Vnucleus;
+  var k1, k12, k13, k2, k22, k23;
+
+  // Unit definitions:
+  unit nmol = 1e-9 mole;
+  unit L = litre;
+  unit min = 60 second;
+  unit nM = 1e-9 mole / litre;
+  unit volume = L;
+  unit substance = nmol;
+  unit extent = nM;
+  unit time_unit = min;
+end
+
+kolodkin5 is "kolodkin5"

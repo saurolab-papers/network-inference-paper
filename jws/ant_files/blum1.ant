@@ -1,0 +1,87 @@
+// Created by libAntimony v2.13.2
+model *blum1()
+
+  // Compartments and Species:
+  compartment cell;
+  species $CHO in cell, IP3 in cell, E in cell, GQ in cell, H in cell, HR in cell;
+  species HRRH in cell, R in cell;
+
+  // Assignment Rules:
+  CHO := 0.001*alpha*IP3*(0.3 + 0.3*beta*time*exp(1 - beta*time))/(1 + 0.001*alpha*IP3);
+
+  // Reactions:
+  reaction_0: H + R -> HR; cell*(reaction_0_k1*H*R - reaction_0_k2*HR);
+  reaction_1: 2 HR -> HRRH; cell*(reaction_1_k1*HR^2 - reaction_1_k2*HRRH);
+  reaction_2: HRRH + GQ -> E; cell*(reaction_2_k1*HRRH*GQ - reaction_2_k2*E);
+  reaction_3: IP3 => ; cell*reaction_3_k1*IP3;
+  reaction_4:  => IP3; cell*reaction_4_k*E;
+
+  // Events:
+  RemovalH: at time > 5: H = 0;
+
+  // Species initializations:
+  IP3 = 0;
+  E = 0;
+  GQ = 0.1/cell;
+  H = 1/cell;
+  HR = 0;
+  HRRH = 0;
+  R = 0.01/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  alpha = 2;
+  alpha has substance;
+  beta = 4;
+  reaction_0_k1 = 2.5;
+  reaction_0_k2 = 5;
+  reaction_1_k1 = 2500;
+  reaction_1_k2 = 5;
+  reaction_2_k1 = 4000;
+  reaction_2_k2 = 200;
+  reaction_3_k1 = 10;
+  reaction_4_k = 20000000;
+
+  // Other declarations:
+  const cell, alpha, beta;
+
+  // Unit definitions:
+  unit time_unit = 60 second;
+  unit substance = 1e-9 mole;
+  unit unit_for_beta = 1 / 60 second;
+
+  // Display Names:
+  time_unit is "time";
+  unit_for_beta is "unit for beta";
+  RemovalH is "removal of hormone";
+  reaction_0 is "H binding to  R";
+  reaction_1 is "HR forming HRRH";
+  reaction_2 is "G protein react with dimer producing E";
+  reaction_3 is "IP3 converted into inactive metabolites";
+  reaction_4 is "Production of IP3";
+
+  // CV terms:
+  cell identity "http://identifiers.org/go/GO:0005623"
+  CHO hypernym "http://identifiers.org/interpro/IPR000699"
+  IP3 hypernym "http://identifiers.org/chebi/CHEBI:16595",
+               "http://identifiers.org/kegg.compound/C01245"
+  E identity "http://identifiers.org/pirsf/PIRSF005483"
+  GQ version "http://identifiers.org/go/GO:0005834"
+  H version "http://identifiers.org/uniprot/P51924",
+            "http://identifiers.org/uniprot/P07490"
+  HR version "http://identifiers.org/uniprot/P07490",
+             "http://identifiers.org/uniprot/P30969"
+  HRRH hypernym "http://identifiers.org/go/GO:0043234"
+  R version "http://identifiers.org/uniprot/P30969"
+  reaction_0 hypernym "http://identifiers.org/go/GO:0051428",
+                      "http://identifiers.org/go/GO:0005102",
+                      "http://identifiers.org/go/GO:0004968"
+  reaction_1 hypernym "http://identifiers.org/go/GO:0006461"
+  reaction_2 hypernym "http://identifiers.org/go/GO:0007202"
+  reaction_3 hypernym "http://identifiers.org/go/GO:0009056"
+  reaction_4 hypernym "http://identifiers.org/go/GO:0004629"
+end
+
+blum1 is "blum1"

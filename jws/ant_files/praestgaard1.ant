@@ -1,0 +1,31 @@
+// Created by libAntimony v2.13.2
+model *praestgaard1()
+
+  // Compartments and Species:
+  species e, ep2, es, p1, p2, s;
+
+  // Reactions:
+  v_1: e + s -> es; k1f*s*e;
+  v_2: es -> e + s; k1r*es;
+  v_3: es -> ep2 + p1; k2*es;
+  v_4: ep2 -> e + p2; k3*ep2;
+
+  // Species initializations:
+  e = 0.05;
+  ep2 = 0;
+  es = 0;
+  p1 = 0;
+  p2 = 0;
+  s = 20;
+
+  // Variable initializations:
+  k1f = 0.002;
+  k1r = 0.002;
+  k2 = 0.3;
+  k3 = 0.002;
+
+  // Other declarations:
+  var k1f, k1r, k2, k3;
+end
+
+praestgaard1 is "praestgaard1"

@@ -1,0 +1,73 @@
+// Created by libAntimony v2.13.2
+model *rohwer2()
+
+  // Compartments and Species:
+  species EI, EIIA, EIIAP, EIIAPIICB, EIICB, EIICBP, EIICBPGlc, EIP, EIPHPr;
+  species $Glc, $GlcP, HPr, HPrP, HPrPIIA, $PEP, $Pyr, PyrPI;
+
+  // Reactions:
+  v_1: $PEP + EI -> PyrPI; k1f*PEP*EI - k1r*PyrPI;
+  v_10: EIICBPGlc -> EIICB + $GlcP; k10f*EIICBPGlc - k10r*EIICB*GlcP;
+  v_2: PyrPI -> $Pyr + EIP; k2f*PyrPI - k2r*Pyr*EIP;
+  v_3: EIP + HPr -> EIPHPr; k3f*EIP*HPr - k3r*EIPHPr;
+  v_4: EIPHPr -> EI + HPrP; k4f*EIPHPr - k4r*EI*HPrP;
+  v_5: HPrP + EIIA -> HPrPIIA; k5f*HPrP*EIIA - k5r*HPrPIIA;
+  v_6: HPrPIIA -> HPr + EIIAP; k6f*HPrPIIA - k6r*HPr*EIIAP;
+  v_7: EIIAP + EIICB -> EIIAPIICB; k7f*EIIAP*EIICB - k7r*EIIAPIICB;
+  v_8: EIIAPIICB -> EIIA + EIICBP; k8f*EIIAPIICB - k8r*EIIA*EIICBP;
+  v_9: EIICBP + $Glc -> EIICBPGlc; k9f*EIICBP*Glc - k9r*EIICBPGlc;
+
+  // Species initializations:
+  EI = 3;
+  EIIA = 20;
+  EIIAP = 20;
+  EIIAPIICB = 0;
+  EIICB = 5;
+  EIICBP = 5;
+  EIICBPGlc = 0;
+  EIP = 2;
+  EIPHPr = 0;
+  Glc = 500;
+  GlcP = 50;
+  HPr = 25;
+  HPrP = 25;
+  HPrPIIA = 0;
+  PEP = 2800;
+  Pyr = 900;
+  PyrPI = 0;
+
+  // Variable initializations:
+  k10f = 4800;
+  k10r = 0.0054;
+  k1f = 1960;
+  k1r = 480000;
+  k2f = 108000;
+  k2r = 294;
+  k3f = 14000;
+  k3r = 14000;
+  k4f = 84000;
+  k4r = 3360;
+  k5f = 21960;
+  k5r = 21960;
+  k6f = 4392;
+  k6r = 3384;
+  k7f = 880;
+  k7r = 880;
+  k8f = 2640;
+  k8r = 960;
+  k9f = 260;
+  k9r = 389;
+
+  // Other declarations:
+  var k10f, k10r, k1f, k1r, k2f, k2r, k3f, k3r, k4f, k4r, k5f, k5r, k6f, k6r;
+  var k7f, k7r, k8f, k8r, k9f, k9r;
+
+  // Unit definitions:
+  unit min = 60 second;
+  unit uM = 1e-6 mole / litre;
+  unit substance = uM;
+  unit extent = uM;
+  unit time_unit = min;
+end
+
+rohwer2 is "rohwer2"

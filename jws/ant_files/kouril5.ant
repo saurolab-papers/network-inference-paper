@@ -1,0 +1,19 @@
+// Created by libAntimony v2.13.2
+model *kouril5()
+
+  // Compartments and Species:
+  species BPG, P3G;
+
+  // Reactions:
+  v1: BPG -> P3G; kd*BPG;
+
+  // Species initializations:
+  BPG = 1.49199;
+  P3G = 1.89227;
+
+  // Variable initializations:
+  kd = 0.736416;
+
+  // Other declarations:
+  var kd;
+end

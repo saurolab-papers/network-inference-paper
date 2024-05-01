@@ -1,0 +1,54 @@
+// Created by libAntimony v2.13.2
+function TR(Kapf, Cvar, Kapb, Nvar)
+  Cvar*Kapf - Kapb*Nvar;
+end
+
+TR is "TR"
+
+
+model *kolodkin2()
+
+  // Compartments and Species:
+  species $Lc, Ln_, NRLn, NRn, RE, REL;
+
+  // Reactions:
+  v_1: NRLn + RE -> REL; k1*NRLn*RE - k2*REL;
+  v_2: $Lc -> Ln_; TR(Kapf, Lc, Kapb, Ln_)/Vnucleus;
+  v_3: Ln_ + NRn -> NRLn; -(k22*NRLn) + k12*Ln_*NRn + 0*NRLn + 0*RE + 0*Ln_ + 0*NRn + 0*REL + 0*NRLn + 0*RE + 0*Ln_ + 0*NRn + 0*REL;
+
+  // Species initializations:
+  Lc = 0.005;
+  Ln_ = 0;
+  NRLn = 0;
+  NRn = 370;
+  RE = 3.7;
+  REL = 0;
+
+  // Variable initializations:
+  Kapb = 3.24e-11;
+  Kapf = 3.24e-11;
+  Vcytosol = 1.55e-12;
+  Vnucleus = 4.5e-13;
+  k1 = 60;
+  k12 = 60;
+  k2 = 60;
+  k22 = 60;
+
+  // Other declarations:
+  var Kapb, Kapf, Vcytosol, Vnucleus, k1, k12, k2, k22;
+
+  // Unit definitions:
+  unit nM = 1e-9 mole / litre;
+  unit min = 60 second;
+  unit nmol = 1e-9 mole;
+  unit L = litre;
+  unit volume = L;
+  unit substance = nmol;
+  unit extent = nM;
+  unit time_unit = min;
+
+  // Display Names:
+  Ln_ is "Ln";
+end
+
+kolodkin2 is "kolodkin2"

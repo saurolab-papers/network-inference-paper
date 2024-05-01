@@ -1,0 +1,155 @@
+// Created by libAntimony v2.13.2
+model *kofahl1()
+
+  // Compartments and Species:
+  species Bar1, Bar1a, Bar1aex, Cdc28, Far1, Far1PP, Far1U, Fus3, Fus3PP;
+  species GaGDP, GaGTP, Gabc, Gbc, Sst2, Ste11, Ste12, Ste12a, Ste2, Ste20;
+  species Ste2a, Ste5, Ste7, alpha, complexA, complexB, complexC, complexD;
+  species complexE, complexF, complexG, complexH, complexI, complexK, complexL;
+  species complexM, complexN, $p;
+
+  // Reactions:
+  v_1: alpha -> $p; alpha*Bar1aex*k1;
+  v_10: Gbc + complexC -> complexD; Gbc*complexC*k10;
+  v_11: complexD -> Gbc + complexC; complexD*k11;
+  v_12: Ste5 + Ste11 -> complexA; Ste5*Ste11*k12;
+  v_13: complexA -> Ste5 + Ste11; complexA*k13;
+  v_14: Ste7 + Fus3 -> complexB; Ste7*Fus3*k14;
+  v_15: complexB -> Ste7 + Fus3; complexB*k15;
+  v_16: complexA + complexB -> complexC; complexA*complexB*k16;
+  v_17: complexC -> Ste11 + Ste5 + Ste7 + Fus3; complexC*k17;
+  v_18: complexD + Ste20 -> complexE; complexD*Ste20*k18;
+  v_19: complexE -> complexD + Ste20; complexE*k19;
+  v_2: Ste2 -> Ste2a; Ste2*alpha*k2;
+  v_20: complexE -> complexF; complexE*k20;
+  v_21: complexE -> Gbc + Ste5 + Ste11 + Ste7 + Fus3 + Ste20; complexE*k21;
+  v_22: complexF -> complexG; complexF*k22;
+  v_23: complexF -> Gbc + Ste5 + Ste11 + Ste7 + Fus3 + Ste20; complexF*k23;
+  v_24: complexG -> complexH; complexG*k24;
+  v_25: complexG -> Gbc + Ste5 + Ste11 + Ste7 + Fus3 + Ste20; complexG*k25;
+  v_26: complexH -> complexI; complexH*k26;
+  v_27: complexH -> Gbc + Ste5 + Ste11 + Ste7 + Fus3 + Ste20; complexH*k27;
+  v_28: complexI -> complexL + Fus3PP; complexI*k28;
+  v_29: complexL + Fus3 -> complexK; complexL*Fus3*k29;
+  v_3: Ste2a -> Ste2; Ste2a*k3;
+  v_30: complexK -> Fus3 + complexL; complexK*k30;
+  v_31: complexK -> complexI; complexK*k31;
+  v_32: complexL -> Gbc + Ste5 + Ste11 + Ste7 + Ste20; complexL*k32;
+  v_33: Fus3PP -> Fus3; Fus3PP*k33;
+  v_34: Ste12 + Fus3PP -> Ste12a; Ste12*Fus3PP*k34;
+  v_35: Ste12a -> Ste12 + Fus3PP; Ste12a*k35;
+  v_36: Bar1 -> Bar1a; Ste12a*Bar1*k36;
+  v_37: Bar1a -> Bar1; Bar1a*k37;
+  v_38: Bar1a -> Bar1aex; Bar1a*k38;
+  v_39: Far1 -> Far1PP; (Far1*Fus3PP*Fus3PP/(100*100 + Fus3PP*Fus3PP))*k39;
+  v_4: Ste2a -> $p; Ste2a*k4;
+  v_40: Far1PP -> Far1; Far1PP*k40;
+  v_41: Far1 -> Far1U; Far1*Cdc28*k41;
+  v_42: Far1PP + Gbc -> complexM; Gbc*Far1PP*k42;
+  v_43: complexM -> Gbc + Far1PP; complexM*k43;
+  v_44: complexN -> Cdc28 + Far1PP; complexN*k44;
+  v_45: Cdc28 + Far1PP -> complexN; Far1PP*Cdc28*k45;
+  v_46: $p -> Sst2; (Fus3PP^2/(4^2 + Fus3PP^2))*k46;
+  v_47: Sst2 -> $p; Sst2*k47;
+  v_5: Ste2 -> $p; Ste2*k5;
+  v_6: Gabc -> GaGTP + Gbc; Ste2a*Gabc*k6;
+  v_7: GaGTP -> GaGDP; GaGTP*k7;
+  v_8: GaGTP -> GaGDP; GaGTP*Sst2*k8;
+  v_9: GaGDP + Gbc -> Gabc; GaGDP*Gbc*k9;
+
+  // Species initializations:
+  Bar1 = 200;
+  Bar1a = 0;
+  Bar1aex = 0;
+  Cdc28 = 300;
+  Far1 = 500;
+  Far1PP = 0;
+  Far1U = 0;
+  Fus3 = 686.399701640513;
+  Fus3PP = 0;
+  GaGDP = 0;
+  GaGTP = 0;
+  Gabc = 1666.6666667;
+  Gbc = 0;
+  Sst2 = 0;
+  Ste11 = 158.33176608789;
+  Ste12 = 200;
+  Ste12a = 0;
+  Ste2 = 1666.6666667;
+  Ste20 = 1000;
+  Ste2a = 0;
+  Ste5 = 158.33176608789;
+  Ste7 = 36.3997016405141;
+  alpha = 100;
+  complexA = 105.943298120207;
+  complexB = 77.8753625675829;
+  complexC = 235.724935791903;
+  complexD = 0;
+  complexE = 0;
+  complexF = 0;
+  complexG = 0;
+  complexH = 0;
+  complexI = 0;
+  complexK = 0;
+  complexL = 0;
+  complexM = 0;
+  complexN = 0;
+  p = 0;
+
+  // Variable initializations:
+  k1 = 0.03;
+  k10 = 0.1;
+  k11 = 5;
+  k12 = 1;
+  k13 = 3;
+  k14 = 1;
+  k15 = 3;
+  k16 = 3;
+  k17 = 100;
+  k18 = 5;
+  k19 = 1;
+  k2 = 0.0012;
+  k20 = 10;
+  k21 = 5;
+  k22 = 47;
+  k23 = 5;
+  k24 = 345;
+  k25 = 5;
+  k26 = 50;
+  k27 = 5;
+  k28 = 140;
+  k29 = 10;
+  k3 = 0.6;
+  k30 = 1;
+  k31 = 250;
+  k32 = 5;
+  k33 = 50;
+  k34 = 18;
+  k35 = 10;
+  k36 = 0.1;
+  k37 = 0.1;
+  k38 = 0.01;
+  k39 = 18;
+  k4 = 0.24;
+  k40 = 1;
+  k41 = 0.02;
+  k42 = 0.1;
+  k43 = 0.01;
+  k44 = 0.01;
+  k45 = 0.1;
+  k46 = 200;
+  k47 = 1;
+  k5 = 0.024;
+  k6 = 0.0036;
+  k7 = 0.24;
+  k8 = 0.033;
+  k9 = 2000;
+
+  // Other declarations:
+  var k1, k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k2, k20, k21;
+  var k22, k23, k24, k25, k26, k27, k28, k29, k3, k30, k31, k32, k33, k34;
+  var k35, k36, k37, k38, k39, k4, k40, k41, k42, k43, k44, k45, k46, k47;
+  var k5, k6, k7, k8, k9;
+end
+
+kofahl1 is "kofahl1"

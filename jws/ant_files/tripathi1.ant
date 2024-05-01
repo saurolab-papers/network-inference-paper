@@ -1,0 +1,49 @@
+// Created by libAntimony v2.13.2
+model *tripathi1()
+
+  // Compartments and Species:
+  species A, $EXT, I1, I2, S;
+
+  // Assignment Rules:
+  Lambda := (Beta_1*I1 + Beta_2*I2)/(S + I1 + I2 + A);
+  N := S + I1 + I2 + A;
+
+  // Reactions:
+  v_1: $EXT -> S; Q_0;
+  v_10: A -> $EXT; d*A;
+  v_2: S -> I1; Lambda*S;
+  v_3: S -> $EXT; d*S;
+  v_4: I1 -> I2; Theta*I1;
+  v_5: I1 -> A; Delta*I1;
+  v_6: I1 -> $EXT; d*I1;
+  v_7: I2 -> A; Delta*I2;
+  v_8: I2 -> $EXT; d*I2;
+  v_9: A -> $EXT; Alpha*A;
+
+  // Species initializations:
+  A = 500;
+  EXT = 1;
+  I1 = 10000;
+  I2 = 2000;
+  S = 2500;
+
+  // Variable initializations:
+  Alpha = 1;
+  Beta_1 = 1.344;
+  Beta_2 = 0.15;
+  Delta = 0.1;
+  Q_0 = 2000;
+  Theta = 0.015;
+  d = 0.02;
+
+  // Other declarations:
+  var Alpha, Beta_1, Beta_2, Delta, Lambda, N, Q_0, Theta, d;
+
+  // Display Names:
+  A is "AIDS";
+  I1 is "Unaware HIV infected";
+  I2 is "Aware HIV infected";
+  S is "Susceptible";
+end
+
+tripathi1 is "tripathi1"

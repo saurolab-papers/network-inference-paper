@@ -1,0 +1,103 @@
+// Created by libAntimony v2.13.2
+function Competitive_inhibition__irr(substrate, Inhibitor, Km, V, Ki)
+  V*substrate/(Km + substrate + Km*Inhibitor/Ki);
+end
+
+Competitive_inhibition__irr is "Competitive inhibition (irr)"
+
+
+model *pritchart1()
+
+  // Compartments and Species:
+  compartment Apoplast, Cell;
+  species Callose in Cell, E in Apoplast, E_int in Cell, PAMP in Cell, PRR in Apoplast;
+  species PRR_0 in Apoplast, Path in Apoplast, Path_bulk in Apoplast, R in Cell;
+  species R_0 in Cell;
+
+  // Reactions:
+  Callose_production: PRR => Callose + PRR; Callose_production_k1*PRR;
+  Callose_removal: Callose => ; Cell*Callose_removal_k1*Callose;
+  Callose_suppression: E_int + Callose => E_int; Cell*Callose_suppression_k1*Callose*E_int;
+  ETI: R_0 + Path => R_0; ETI_k1*Path*R_0;
+  E_int_removal: E_int => ; Cell*E_int_removal_k1*E_int;
+  Effector_production: Path => Path + E; Apoplast*Effector_production_k1*Path;
+  Effector_recognition: E_int + R -> R_0; Cell*(Effector_recognition_k1*R*E_int - Effector_recognition_k2*R_0);
+  Effector_removal: E => ; Apoplast*Effector_removal_k1*E;
+  Effector_translocation: E => E_int; Competitive_inhibition__irr(E, Callose, Effector_translocation_Km, Effector_translocation_V, Effector_translocation_Ki);
+  PAMP_production: Path => Path + PAMP; PAMP_production_k1*Path;
+  PAMP_recognition: PAMP + PRR_0 -> PRR; PAMP_recognition_k1*PRR_0*PAMP - PAMP_recognition_k2*PRR;
+  PAMP_removal: PAMP => ; Cell*PAMP_removal_k1*PAMP;
+  PTI: Callose + Path => Callose; PTI_k1*Path*Callose;
+  Pathogen_arrival: Path_bulk => Path + Path_bulk; Apoplast*Pathogen_arrival_k1*Path_bulk;
+  Pathogen_removal: Path => ; Apoplast*Pathogen_removal_k1*Path;
+
+  // Events:
+  Pathogen_introduced: at time > 10: Path_bulk = 1;
+
+  // Species initializations:
+  Callose = 0;
+  E = 0;
+  E_int = 0;
+  PAMP = 0;
+  PRR = 0;
+  PRR_0 = 1/Apoplast;
+  Path = 0;
+  Path_bulk = 0;
+  R = 1/Cell;
+  R_0 = 0;
+
+  // Compartment initializations:
+  Apoplast = 1;
+  Cell = 1;
+
+  // Variable initializations:
+  Callose_production_k1 = 0.1;
+  Callose_removal_k1 = 0.1;
+  Callose_suppression_k1 = 0.1;
+  ETI_k1 = 0.1;
+  E_int_removal_k1 = 0.1;
+  Effector_production_k1 = 0.1;
+  Effector_recognition_k2 = 0.1;
+  Effector_recognition_k1 = 0.1;
+  Effector_removal_k1 = 0.1;
+  Effector_translocation_Ki = 0.1;
+  Effector_translocation_V = 0.1;
+  Effector_translocation_Km = 0.1;
+  PAMP_production_k1 = 0.1;
+  PAMP_recognition_k2 = 0.1;
+  PAMP_recognition_k1 = 0.1;
+  PAMP_removal_k1 = 0.1;
+  PTI_k1 = 0.1;
+  Pathogen_arrival_k1 = 0.1;
+  Pathogen_removal_k1 = 0.1;
+
+  // Other declarations:
+  const Apoplast, Cell;
+
+  // Unit definitions:
+  unit substance = dimensionless;
+  unit time_unit = dimensionless;
+  unit volume = dimensionless;
+
+  // Display Names:
+  time_unit is "time";
+  PRR is "PRR*";
+  PRR_0 is "PRR";
+  R_0 is "R*";
+  Pathogen_introduced is "Pathogen introduced";
+  Callose_production is "Callose production";
+  Callose_removal is "Callose removal";
+  Callose_suppression is "Callose suppression";
+  E_int_removal is "E_int removal";
+  Effector_production is "Effector production";
+  Effector_recognition is "Effector recognition";
+  Effector_removal is "Effector removal";
+  Effector_translocation is "Effector translocation";
+  PAMP_production is "PAMP production";
+  PAMP_recognition is "PAMP recognition";
+  PAMP_removal is "PAMP removal";
+  Pathogen_arrival is "Pathogen arrival";
+  Pathogen_removal is "Pathogen removal";
+end
+
+pritchart1 is "pritchart1"

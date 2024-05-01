@@ -1,0 +1,102 @@
+// Created by libAntimony v2.13.2
+model *niger1()
+
+  // Compartments and Species:
+  species A, B, M, X, Y1, Y2, Y3, Y4, Y5, $Yt;
+
+  // Assignment Rules:
+  Yt := Y1 + Y2 + Y3 + Y4 + Y5;
+
+  // Reactions:
+  v1:  -> X; lambdaX;
+  v10: Y3 -> ; mu3*Y3;
+  v11: Y3 -> Y4; gamma3*Y3;
+  v12: Y3 -> ; k3*B*Y3;
+  v13: Y4 -> ; mu4*Y4;
+  v14: Y4 -> Y5; gamma4*Y4;
+  v15: Y4 -> ; k4*B*Y4;
+  v16: Y5 -> ; mu5*Y5;
+  v17: Y5 -> ; gamma5*Y5;
+  v18: Y5 -> ; k5*B*Y5;
+  v19:  -> M; r*(mu5 + gamma5)*Y5;
+  v2: X -> Y1; beta*X*M;
+  v20: M -> ; muM*M;
+  v21: M -> ; kM*B*M;
+  v22: M -> ; mu*beta*X*M;
+  v23:  -> B; lambdaB;
+  v24:  -> B; B*(rho1*Y1 + rho2*Y2 + rho3*Y3 + rho4*Y4 + rho5*Y5);
+  v25:  -> B; B*rho6*M;
+  v26: B -> ; muB*B;
+  v27:  -> A; eta*B*M;
+  v28: A -> ; muA*A;
+  v3: X -> ; muX*X;
+  v4: Y1 -> ; mu1*Y1;
+  v5: Y1 -> Y2; gamma1*Y1;
+  v6: Y1 -> ; k1*B*Y1;
+  v7: Y2 -> ; mu2*Y2;
+  v8: Y2 -> Y3; gamma2*Y2;
+  v9: Y2 -> ; k2*B*Y2;
+
+  // Species initializations:
+  A = 0;
+  B = 0;
+  M = 10;
+  X = 500;
+  Y1 = 0;
+  Y2 = 0;
+  Y3 = 0;
+  Y4 = 0;
+  Y5 = 0;
+
+  // Variable initializations:
+  beta = 0.0008;
+  eta = 0.6;
+  gamma1 = 1.5;
+  gamma2 = 1.5;
+  gamma3 = 1.5;
+  gamma4 = 1.5;
+  gamma5 = 1.5;
+  k1 = 0.01;
+  k2 = 0.01;
+  k3 = 0.01;
+  k4 = 0.01;
+  k5 = 0.01;
+  kM = 0.3;
+  lambdaB = 30;
+  lambdaX = 41664;
+  mu = 1;
+  mu1 = 0.5;
+  mu2 = 0.5;
+  mu3 = 0.5;
+  mu4 = 0.5;
+  mu5 = 1;
+  muA = 0.4;
+  muB = 1.53;
+  muM = 3;
+  muX = 0.8;
+  r = 16;
+  rho1 = 0.001;
+  rho2 = 1e-05;
+  rho3 = 1e-05;
+  rho4 = 1e-05;
+  rho5 = 1e-05;
+  rho6 = 1e-05;
+
+  // Other declarations:
+  var beta, eta, gamma1, gamma2, gamma3, gamma4, gamma5, k1, k2, k3, k4, k5;
+  var kM, lambdaB, lambdaX, mu, mu1, mu2, mu3, mu4, mu5, muA, muB, muM, muX;
+  var r, rho1, rho2, rho3, rho4, rho5, rho6;
+
+  // Display Names:
+  A is "antibodies";
+  B is "immune cells";
+  M is "Merozoites";
+  X is "RBC";
+  Y1 is "iRBC1";
+  Y2 is "iRBC2";
+  Y3 is "iRBC3";
+  Y4 is "iRBC4";
+  Y5 is "iRBC5";
+end
+
+niger1 is "niger1"

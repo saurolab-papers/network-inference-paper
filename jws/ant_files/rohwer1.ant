@@ -1,0 +1,104 @@
+// Created by libAntimony v2.13.2
+model *rohwer1()
+
+  // Compartments and Species:
+  species $ADP, $ATP, Fru, $Fruex, Glc, $Glcex, HexP, Suc, Suc6P, $Sucvac;
+  species $UDP, $glycolysis, $phos;
+
+  // Reactions:
+  v_1: $Fruex -> Fru; Vmax1*Fruex/(Km1Fruex*(1 + Fru/Ki1Fru) + Fruex);
+  v_10: HexP -> $glycolysis; Vmax10*0.0575*HexP/(Km10F6P + 0.0575*HexP);
+  v_11: Suc -> $Sucvac; Vmax11*Suc/(Km11Suc + Suc);
+  v_2: $Glcex -> Glc; Vmax2*Glcex/(Km2Glcex*(1 + Glc/Ki2Glc) + Glcex);
+  v_3: Glc + $ATP -> HexP + $ADP; (Vmax3*Glc/Km3Glc)*(ATP/Km3ATP)/((1 + ATP/Km3ATP)*(1 + Glc/Km3Glc + Fru/Km4Fru + 0.113*HexP/Ki3G6P + 0.0575*HexP/Ki4F6P));
+  v_4: Fru + $ATP -> HexP + $ADP; (Vmax4*Fru/Km4Fru)*(ATP/Km4ATP)/((1 + ATP/Km4ATP)*(1 + Glc/Km3Glc + Fru/Km4Fru + 0.113*HexP/Ki3G6P + 0.0575*HexP/Ki4F6P));
+  v_5: Fru + $ATP -> HexP + $ADP; (Vmax5/(1 + Fru/Ki5Fru))*(Fru/Km5Fru)*(ATP/Km5ATP)/(1 + Fru/Km5Fru + ATP/Km5ATP + Fru*ATP/(Km5Fru*Km5ATP) + ADP/Ki5ADP);
+  v_6: 2 HexP -> Suc6P + $UDP; Vmax6f*(0.0575*HexP*0.8231*HexP - Suc6P*UDP/Keq6)/(0.0575*HexP*0.8231*HexP*(1 + Suc6P/Ki6Suc6P) + Km6F6P*(1 + phos/Ki6Pi)*(0.8231*HexP + Ki6UDPGlc) + Km6UDPGlc*0.0575*HexP + (Vmax6f/(Vmax6r*Keq6))*(Km6UDP*Suc6P*(1 + 0.8231*HexP/Ki6UDPGlc) + UDP*(Km6Suc6P*(1 + Km6UDPGlc*0.0575*HexP/(Ki6UDPGlc*Km6F6P*(1 + phos/Ki6Pi))) + Suc6P*(1 + 0.0575*HexP/Ki6F6P))));
+  v_7: Suc6P -> Suc + $phos; Vmax7*Suc6P/(Km7Suc6P + Suc6P);
+  v_8: HexP + Fru -> Suc + $UDP; -Vmax8f*(Suc*UDP - Fru*0.8231*HexP/Keq8)/(Suc*UDP*(1 + Fru/Ki8Fru) + Km8Suc*(UDP + Ki8UDP) + Km8UDP*Suc + (Vmax8f/(Vmax8r*Keq8))*(Km8UDPGlc*Fru*(1 + UDP/Ki8UDP) + 0.8231*HexP*(Km8Fru*(1 + Km8UDP*Suc/(Ki8UDP*Km8Suc)) + Fru*(1 + Suc/Ki8Suc))));
+  v_9: Suc -> Glc + Fru; (Vmax9/(1 + Glc/Ki9Glc))*Suc/(Km9Suc*(1 + Fru/Ki9Fru) + Suc);
+
+  // Species initializations:
+  ADP = 0.2;
+  ATP = 1;
+  Fru = 1;
+  Fruex = 5;
+  Glc = 1;
+  Glcex = 5;
+  HexP = 1;
+  Suc = 1;
+  Suc6P = 1;
+  Sucvac = 0;
+  UDP = 0.2;
+  glycolysis = 0;
+  phos = 5.1;
+
+  // Variable initializations:
+  Keq6 = 10;
+  Keq8 = 5;
+  Ki1Fru = 1;
+  Ki2Glc = 1;
+  Ki3G6P = 0.1;
+  Ki4F6P = 10;
+  Ki5ADP = 2;
+  Ki5Fru = 12;
+  Ki6F6P = 0.4;
+  Ki6Pi = 3;
+  Ki6Suc6P = 0.07;
+  Ki6UDPGlc = 1.4;
+  Ki8Fru = 4;
+  Ki8Suc = 40;
+  Ki8UDP = 0.3;
+  Ki9Fru = 15;
+  Ki9Glc = 15;
+  Km10F6P = 0.2;
+  Km11Suc = 100;
+  Km1Fruex = 0.2;
+  Km2Glcex = 0.2;
+  Km3ATP = 0.25;
+  Km3Glc = 0.07;
+  Km4ATP = 0.25;
+  Km4Fru = 10;
+  Km5ATP = 0.085;
+  Km5Fru = 0.1;
+  Km6F6P = 0.6;
+  Km6Suc6P = 0.1;
+  Km6UDP = 0.3;
+  Km6UDPGlc = 1.8;
+  Km7Suc6P = 0.1;
+  Km8Fru = 4;
+  Km8Suc = 50;
+  Km8UDP = 0.3;
+  Km8UDPGlc = 0.3;
+  Km9Suc = 10;
+  Vmax1 = 0.286;
+  Vmax10 = 0.1;
+  Vmax11 = 1;
+  Vmax2 = 0.286;
+  Vmax3 = 0.197;
+  Vmax4 = 0.197;
+  Vmax5 = 0.164;
+  Vmax6f = 0.379;
+  Vmax6r = 0.2;
+  Vmax7 = 0.5;
+  Vmax8f = 0.677;
+  Vmax8r = 0.3;
+  Vmax9 = 0.372;
+
+  // Other declarations:
+  var Keq6, Keq8, Ki1Fru, Ki2Glc, Ki3G6P, Ki4F6P, Ki5ADP, Ki5Fru, Ki6F6P;
+  var Ki6Pi, Ki6Suc6P, Ki6UDPGlc, Ki8Fru, Ki8Suc, Ki8UDP, Ki9Fru, Ki9Glc;
+  var Km10F6P, Km11Suc, Km1Fruex, Km2Glcex, Km3ATP, Km3Glc, Km4ATP, Km4Fru;
+  var Km5ATP, Km5Fru, Km6F6P, Km6Suc6P, Km6UDP, Km6UDPGlc, Km7Suc6P, Km8Fru;
+  var Km8Suc, Km8UDP, Km8UDPGlc, Km9Suc, Vmax1, Vmax10, Vmax11, Vmax2, Vmax3;
+  var Vmax4, Vmax5, Vmax6f, Vmax6r, Vmax7, Vmax8f, Vmax8r, Vmax9;
+
+  // Unit definitions:
+  unit mM = 1e-3 mole / litre;
+  unit min = 60 second;
+  unit substance = mM;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+rohwer1 is "rohwer1"

@@ -1,0 +1,91 @@
+// Created by libAntimony v2.13.2
+model *aguda1()
+
+  // Compartments and Species:
+  species CYCDcdk4, CYCDcdk4p27, CYCEcdk2p27, E2F, aCYCEcdk2, aCYCEcdk20;
+  species aCYCEcdk21, iCYCEcdk2, p27, pRB, pRBE2F, $xvar;
+
+  // Reactions:
+  v_1: pRBE2F -> aCYCEcdk21 + E2F; k1*aCYCEcdk2*pRBE2F + k1a*CYCDcdk4*pRBE2F + k1aa*CYCDcdk4p27*pRBE2F;
+  v_10: CYCDcdk4 -> $xvar; kmin6*CYCDcdk4;
+  v_11: $xvar -> p27; k7;
+  v_12: p27 -> $xvar; k8*aCYCEcdk2*p27;
+  v_13: aCYCEcdk2 + p27 -> CYCEcdk2p27; k9*aCYCEcdk2*p27;
+  v_14: CYCEcdk2p27 -> aCYCEcdk2 + p27; k10*CYCEcdk2p27;
+  v_15: aCYCEcdk20 + CYCDcdk4 -> $xvar; k17*aCYCEcdk20*CYCDcdk4;
+  v_16: $xvar -> E2F; k18*E2F;
+  v_17: CYCDcdk4 + p27 -> CYCDcdk4p27; k19*CYCDcdk4*p27;
+  v_18: CYCDcdk4p27 -> CYCDcdk4 + p27; k20*CYCDcdk4p27;
+  v_19: aCYCEcdk2 -> $xvar; k21*aCYCEcdk2^2;
+  v_2: E2F + pRB -> pRBE2F; kmin1*E2F*pRB;
+  v_20: p27 -> $xvar; k22*p27;
+  v_21: $xvar -> aCYCEcdk20; k23;
+  v_22: aCYCEcdk20 -> $xvar; k24*aCYCEcdk20;
+  v_23: $xvar -> aCYCEcdk20; k25/(1 + k25a*pRB);
+  v_24: $xvar -> pRB; k26/(1 + k26a*aCYCEcdk20);
+  v_25: $xvar -> pRB; k27;
+  v_26: pRB -> $xvar; k28*pRB;
+  v_27: aCYCEcdk21 -> pRB; k29*aCYCEcdk21;
+  v_3: iCYCEcdk2 -> aCYCEcdk2; k2*aCYCEcdk2*iCYCEcdk2;
+  v_4: aCYCEcdk2 -> iCYCEcdk2; kmin2*aCYCEcdk2;
+  v_5: $xvar -> iCYCEcdk2; k3a + k3*E2F;
+  v_6: $xvar -> E2F; k4;
+  v_7: E2F -> $xvar; kmin4*E2F;
+  v_8: iCYCEcdk2 -> $xvar; k5*iCYCEcdk2;
+  v_9: $xvar -> CYCDcdk4; k6;
+
+  // Species initializations:
+  CYCDcdk4 = 0;
+  CYCDcdk4p27 = 0;
+  CYCEcdk2p27 = 1;
+  E2F = 0;
+  aCYCEcdk2 = 0;
+  aCYCEcdk20 = 5;
+  aCYCEcdk21 = 0.01;
+  iCYCEcdk2 = 0.01;
+  p27 = 2;
+  pRB = 0.05;
+  pRBE2F = 1.95;
+  xvar = 0;
+
+  // Variable initializations:
+  k1 = 0.1;
+  k10 = 0.035;
+  k17 = 3.5;
+  k18 = 1e-05;
+  k19 = 0.05;
+  k1a = 0.5;
+  k1aa = 0.5;
+  k2 = 0.1;
+  k20 = 0.01;
+  k21 = 0.1;
+  k22 = 0.001;
+  k23 = 0.2;
+  k24 = 0.1;
+  k25 = 0.01;
+  k25a = 0.02;
+  k26 = 0.01;
+  k26a = 0.1;
+  k27 = 0.01;
+  k28 = 0.01;
+  k29 = 0.001;
+  k3 = 1.42;
+  k3a = 0;
+  k4 = 1e-06;
+  k5 = 0.02;
+  k6 = 0.018;
+  k7 = 1e-05;
+  k8 = 2;
+  k9 = 2;
+  kmin1 = 0.001;
+  kmin2 = 1;
+  kmin4 = 0.016;
+  kmin6 = 5;
+
+  // Other declarations:
+  var k1, k10, k17, k18, k19, k1a, k1aa, k2, k20, k21, k22, k23, k24, k25;
+  var k25a, k26, k26a, k27, k28, k29, k3, k3a, k4, k5, k6, k7, k8, k9, kmin1;
+  var kmin2, kmin4, kmin6;
+end
+
+aguda1 is "aguda1"

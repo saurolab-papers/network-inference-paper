@@ -1,0 +1,124 @@
+// Created by libAntimony v2.13.2
+model *obeyesekere1()
+
+  // Compartments and Species:
+  compartment cell_1;
+  species D_1 in cell_1, $E2F_1 in cell_1, RS_1 in cell_1, E_1 in cell_1;
+  species $RP_1 in cell_1, R_1 in cell_1, X_1 in cell_1;
+
+  // Assignment Rules:
+  E2F_1 := theta_1 - RS_1;
+  RP_1 := RT_1 - RS_1 - R_1;
+  unpho_RB := R_1 + RS_1;
+
+  // Reactions:
+  _1:  => D_1; aD_1*(k_1*GF_1/(1 + k_1*GF_1));
+  _7: RS_1 => ; pE_1*RS_1*E_1/(qE_1 + RS_1 + E_1);
+  cycECDK2degradation_1: E_1 => ; dE_1*X_1*E_1;
+  cyclebreak_1: X_1 => ; dX_1*X_1;
+  cycleprogression_1:  => X_1; aX_1*E_1 + f_1*E2F_1 + g_1*X_1^2*E_1;
+  cyclinCDK4degradation_1: D_1 => ; dD_1*E_1*D_1;
+  cyclin_1:  => E_1; aE_1*(1 + af_1*E2F_1);
+  pRBE2Fcomplexassociation_1: R_1 => RS_1; pS_1*E2F_1*R_1;
+  pRBE2FcomplexdeassociationviacycDCDK4_1: RS_1 => ; pD_1*RS_1*D_1/(qD_1 + RS_1 + D_1);
+  pRBpdephosphorylation_1:  => R_1; pX_1*RP_1*X_1/(qX_1 + RP_1 + X_1);
+
+  // Species initializations:
+  D_1 = 0.1/cell_1;
+  RS_1 = 1/cell_1;
+  E_1 = 0.6/cell_1;
+  R_1 = 0.5/cell_1;
+  X_1 = 0.7/cell_1;
+
+  // Compartment initializations:
+  cell_1 = 1;
+
+  // Variable initializations:
+  theta_1 = 1.5;
+  RT_1 = 2.5;
+  GF_1 = 6.3;
+  aD_1 = 0.4;
+  aE_1 = 0.16;
+  aX_1 = 0.08;
+  af_1 = 0.9;
+  dD_1 = 0.4;
+  dE_1 = 0.2;
+  dX_1 = 1.04;
+  f_1 = 0.2;
+  g_1 = 0.528;
+  k_1 = 0.05;
+  pD_1 = 0.48;
+  pE_1 = 0.096;
+  pS_1 = 0.6;
+  pX_1 = 0.48;
+  qD_1 = 0.6;
+  qE_1 = 0.6;
+  qX_1 = 0.8;
+
+  // Other declarations:
+  var unpho_RB;
+  const cell_1, theta_1, RT_1, GF_1, aD_1, aE_1, aX_1, af_1, dD_1, dE_1, dX_1;
+  const f_1, g_1, k_1, pD_1, pE_1, pS_1, pX_1, qD_1, qE_1, qX_1;
+
+  // Display Names:
+  cell_1 is "cell";
+  D_1 is "D";
+  E2F_1 is "E2F";
+  theta_1 is "theta";
+  RS_1 is "RS";
+  E_1 is "E";
+  RP_1 is "RP";
+  RT_1 is "RT";
+  R_1 is "R";
+  X_1 is "X";
+  GF_1 is "GF";
+  aD_1 is "aD";
+  aE_1 is "aE";
+  aX_1 is "aX";
+  af_1 is "af";
+  dD_1 is "dD";
+  dE_1 is "dE";
+  dX_1 is "dX";
+  f_1 is "f";
+  g_1 is "g";
+  k_1 is "k";
+  pD_1 is "pD";
+  pE_1 is "pE";
+  pS_1 is "pS";
+  pX_1 is "pX";
+  qD_1 is "qD";
+  qE_1 is "qE";
+  qX_1 is "qX";
+  _1 is "cycD/CDK4 synthesis";
+  _7 is "pRB/E2F complex deassociation via cycE/CDK2";
+  cycECDK2degradation_1 is "cycE/CDK2 degradation";
+  cyclebreak_1 is "cycle break";
+  cycleprogression_1 is "cycle progression";
+  cyclinCDK4degradation_1 is "cycD/CDK4 degradation";
+  cyclin_1 is "cycE/CDK2 synthesis";
+  pRBE2Fcomplexassociation_1 is "pRB/E2F complex association";
+  pRBE2FcomplexdeassociationviacycDCDK4_1 is "pRB/E2F complex deassociation via cycD/CDK4";
+  pRBpdephosphorylation_1 is "pRB-p dephosphorilation";
+
+  // CV terms:
+  cell_1 identity "http://identifiers.org/go/GO:0005623"
+  D_1 hypernym "http://identifiers.org/uniprot/P24385"
+  E2F_1 hypernym "http://identifiers.org/uniprot/Q01094"
+  RS_1 part "http://identifiers.org/uniprot/Q01094",
+            "http://identifiers.org/uniprot/P06400"
+  E_1 hypernym "http://identifiers.org/uniprot/P24864"
+  RP_1 hypernym "http://identifiers.org/uniprot/P06400"
+  R_1 hypernym "http://identifiers.org/uniprot/P06400"
+  _1 hypernym "http://identifiers.org/go/GO:0006412"
+  _7 hypernym "http://identifiers.org/go/GO:0043624"
+  cycECDK2degradation_1 hypernym "http://identifiers.org/go/GO:0008054"
+  cyclebreak_1 hypernym "http://identifiers.org/go/GO:0051726"
+  cycleprogression_1 hypernym "http://identifiers.org/go/GO:0051726"
+  cyclinCDK4degradation_1 hypernym "http://identifiers.org/go/GO:0008054"
+  cyclin_1 hypernym "http://identifiers.org/go/GO:0006412"
+  pRBE2Fcomplexassociation_1 hypernym "http://identifiers.org/go/GO:0006461"
+  pRBE2FcomplexdeassociationviacycDCDK4_1 hypernym "http://identifiers.org/go/GO:0043624"
+  pRBpdephosphorylation_1 hypernym "http://identifiers.org/go/GO:0016311"
+end
+
+obeyesekere1 is "obeyesekere1"

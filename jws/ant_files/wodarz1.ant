@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *wodarz1()
+
+  // Compartments and Species:
+  species w, x, y, z;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v2: x -> ; d*x;
+  v3: x -> y; beta*x*y;
+  v4: y -> ; a*y;
+  v5: y -> ; p*y*z;
+  v6:  -> w; c*w*y;
+  v7: w -> z; c*q*w*y;
+  v8: w -> ; b*w;
+  v9: z -> ; h*z;
+
+  // Species initializations:
+  w = 0.01;
+  x = 100;
+  y = 0.01;
+  z = 0;
+
+  // Variable initializations:
+  a = 0.5;
+  b = 0.0015;
+  beta = 0.01;
+  c = 0.063;
+  d = 0.1;
+  h = 0.1;
+  lambda = 10;
+  p = 1;
+  q = 0.1;
+
+  // Other declarations:
+  var a, b, beta, c, d, h, lambda, p, q;
+end
+
+wodarz1 is "wodarz1"

@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *snoep1()
+
+  // Compartments and Species:
+  species Biom, Sext, Sint, $Sr, Xint, $p;
+
+  // Reactions:
+  v_1: $Sr -> Sext; Dil*Sr;
+  v_2: Sext -> Sint; Biom*((Vm2/K2S)*Sext/(1 + Sext/K2S + Sint/(0.0001*K2Sin)));
+  v_3: Sext -> $p; Dil*Sext;
+  v_4: Sint -> Xint; Biom*((Vm4/K4Sint)*(Sint/0.0001 - Xint/(0.0001*Keq4))/(1 + Sint/(0.0001*K4Sint) + Xint/(0.0001*K4X)));
+  v_5: Xint -> Biom; Biom*(Vm5*Xint/(0.0001*K5X)/(1 + Xint/(0.0001*K5X)));
+  v_6: Biom -> $p; Dil*Biom;
+
+  // Species initializations:
+  Biom = 0.03;
+  Sext = 0;
+  Sint = 0;
+  Sr = 20;
+  Xint = 0;
+  p = 0;
+
+  // Variable initializations:
+  Dil = 0.1;
+  K2S = 0.1;
+  K2Sin = 0.1;
+  K4Sint = 1;
+  K4X = 1;
+  K5X = 2;
+  Keq4 = 100;
+  Vm2 = 9;
+  Vm4 = 10;
+  Vm5 = 0.52;
+
+  // Other declarations:
+  var Dil, K2S, K2Sin, K4Sint, K4X, K5X, Keq4, Vm2, Vm4, Vm5;
+end
+
+snoep1 is "snoep1"

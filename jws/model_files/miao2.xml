@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="miao2" name="miao2">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_4" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_5" id="default" spatialDimensions="3" size="1" units="volume" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/fma/FMA:7195"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_6" id="s1" name="Ep" compartment="default" initialAmount="580000" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        Initial no. of uninfected and infectible epithelial cells per lung</p>
+        </notes>
+      </species>
+      <species metaid="metaid_7" id="s2" name="Eps" compartment="default" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        This entity is refered as Ep* in the paper. Infected epithelial cells per lung.</p>
+        </notes>
+      </species>
+      <species metaid="metaid_8" id="s3" name="V" compartment="default" initialAmount="1473" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        Infective viral titer (EID50/ml)</p>
+        </notes>
+      </species>
+      <species metaid="metaid_9" sboTerm="SBO:0000291" id="s4" name="s4" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" sboTerm="SBO:0000291" id="s5" name="s5" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" sboTerm="SBO:0000291" id="s6" name="s6" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" sboTerm="SBO:0000291" id="s7" name="s7" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_13" id="beta_a" name="beta_a" value="2.4e-06" units="substance" constant="true">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        alpha x the infection rate of uninfected epithelial cells ml*per(EID50*day)</p>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_14" id="c_V" name="c_V" value="4.2" units="substance" constant="true">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        Virus clearance rate (reduction of infectious viral titer)  (per day)</p>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_15" id="delta_Es" name="delta_Es" value="0.6" units="substance" constant="true">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        Death rate of infected epithelial cells (per day)</p>
+        </notes>
+      </parameter>
+      <parameter metaid="metaid_16" id="pi_a" name="pi_a" value="100" units="substance" constant="true"/>
+      <parameter metaid="metaid_17" id="rho_E" name="rho_E" value="6.2e-08" units="substance" constant="true">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        Net growth rate of uninfected epithelial cells (per day)</p>
+        </notes>
+      </parameter>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment metaid="metaid_18" symbol="s3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="e-notation"> 1.473 <sep/> 3 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment metaid="metaid_19" symbol="s2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment metaid="metaid_20" symbol="s1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="e-notation"> 5.8 <sep/> 5 </cn>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfReactions>
+      <reaction metaid="metaid_28" id="re1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_21" species="s1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_22" species="s2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_23" species="s3"/>
+          <modifierSpeciesReference metaid="metaid_24" species="s1"/>
+          <modifierSpeciesReference metaid="metaid_25" species="s3"/>
+          <modifierSpeciesReference metaid="metaid_26" species="s1"/>
+          <modifierSpeciesReference metaid="metaid_27" species="s3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> beta_a </ci>
+              <ci> s1 </ci>
+              <ci> s3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_33" id="re3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_29" species="s4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_30" species="s1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_31" species="s1"/>
+          <modifierSpeciesReference metaid="metaid_32" species="s1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> rho_E </ci>
+              <ci> s1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_38" id="re5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_34" species="s2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_35" species="s5" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_36" species="s2"/>
+          <modifierSpeciesReference metaid="metaid_37" species="s2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> delta_Es </ci>
+              <ci> s2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_43" id="re6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_39" species="s3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_40" species="s6" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_41" species="s3"/>
+          <modifierSpeciesReference metaid="metaid_42" species="s3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c_V </ci>
+              <ci> s3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_49" id="re7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_44" species="s7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_45" species="s3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_46" species="s2"/>
+          <modifierSpeciesReference metaid="metaid_47" species="s2"/>
+          <modifierSpeciesReference metaid="metaid_48" species="s2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pi_a </ci>
+              <ci> s2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

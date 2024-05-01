@@ -1,0 +1,153 @@
+// Created by libAntimony v2.13.2
+model *lambeth()
+
+  // Compartments and Species:
+  species DHAP, DPG, F6P, FDP, G1P, G6P, GAP, $GLY, $LAC, NAD, NADH, P2G;
+  species P3G, PEP, PYR, $Ph, $adp, $atp;
+
+  // Reactions:
+  v_1: $Ph + $GLY -> G1P; fracA*(Vfgly*Ph*GLY/(KgpAigly*KgpApi)/(1 + GLY/KgpAglyf + Ph/KgpApi + GLY*Ph/(KgpAglyf*KgpAipi) + GLY/KgpAglyb + G1P/KgpAg1p + GLY*G1P/(KgpAig1p*KgpAglyb)) - (Vfgly*KgpAglyb*KgpAig1p/(KgpAigly*KgpApi*0.31))*G1P*GLY/(KgpAglyb*KgpAig1p)/(1 + GLY/KgpAglyf + Ph/KgpApi + GLY*Ph/(KgpAglyf*KgpAipi) + GLY/KgpAglyb + G1P/KgpAg1p + GLY*G1P/(KgpAig1p*KgpAglyb))) + fracB*((amp^nH/(Kgpamp^nH*0.02)/(1 + amp^nH/(Kgpamp^nH*0.02)))*(Vfgly*Ph*GLY/(KgpBiglyf*KgpBpi))/(1 + GLY/KgpBipi + Ph/KgpBiglyf + GLY/KgpBiglyb + G1P/KgpBig1p + GLY*Ph/(KgpBiglyf*KgpBpi) + GLY*G1P/(KgpBg1p*KgpBiglyb)) - (amp^nH/(Kgpamp^nH*0.02)/(1 + amp^nH/(Kgpamp^nH*0.02)))*((Vfgly*KgpBg1p*KgpBiglyb/(KgpBiglyf*KgpBpi*0.31))*G1P*GLY/(KgpBg1p*KgpBiglyb))/(1 + GLY/KgpBipi + Ph/KgpBiglyf + GLY/KgpBiglyb + G1P/KgpBig1p + GLY*Ph/(KgpBiglyf*KgpBpi) + GLY*G1P/(KgpBg1p*KgpBiglyb)));
+  v_10: P2G -> PEP; (Vfen*P2G/Ken2pg - (Vfen*Kenpep/(Ken2pg*0.49))*PEP/Kenpep)/(1 + P2G/Ken2pg + PEP/Kenpep);
+  v_11: PEP + $adp -> PYR + $atp; (Vfpk*PEP*adp/(Kpkpep*Kpkadp) - (Vfpk*Kpkpyr*Kpkatp/(Kpkpep*Kpkadp*10304))*PYR*atp/(Kpkpyr*Kpkatp))/(1 + PEP/Kpkpep + adp/Kpkadp + PEP*adp/(Kpkpep*Kpkadp) + atp/Kpkatp + PYR/Kpkpyr + PYR*atp/(Kpkpyr*Kpkatp));
+  v_12: PYR + NADH -> $LAC + NAD; (Vfldh*PYR*NADH/(Kldhpyr*Kldhnadh) - (Vfldh*Kldhlac*Kldhnad/(Kldhpyr*Kldhnadh*16198))*LAC*NAD/(Kldhlac*Kldhnad))/(1 + PYR/Kldhpyr + NADH/Kldhnadh + PYR*NADH/(Kldhpyr*Kldhnadh) + LAC/Kldhlac + NAD/Kldhnad + LAC*NAD/(Kldhlac*Kldhnad));
+  v_2: G1P -> G6P; (Vfpglm*G1P/Kpglmg1p - (Vfpglm*Kpglmg6p/(Kpglmg1p*16.62))*G6P/Kpglmg6p)/(1 + G1P/Kpglmg1p + G6P/Kpglmg6p);
+  v_3: G6P -> F6P; ((Vbpgi*Kpgig6p/Kpgif6p)*0.45*G6P/Kpgig6p - Vbpgi*F6P/Kpgif6p)/(1 + F6P/Kpgif6p + G6P/Kpgig6p);
+  v_4: F6P + $atp -> FDP + $adp; Vfpfk*atp*F6P*(1 + Kpfkatp*Kpfkf6p*Lo*(1 + en*amp/Kpfkamp)^4*(1 + atp/Kpfkiatp)^4*((1 + atp/KpfkatpT)*(1 + F6P/Kpfkf6pT) + FDP/KpfkfdpT + adp*(1 + FDP/KpfkfdpT)/KpfkadpT)^3/(KpfkatpT*Kpfkf6pT*(1 + amp/Kpfkamp)^4*(1 + dn*atp/Kpfkiatp)^4*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)^3))/(Kpfkatp*Kpfkf6p*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)*(1 + Lo*(1 + en*amp/Kpfkamp)^4*(1 + atp/Kpfkiatp)^4*((1 + atp/KpfkatpT)*(1 + F6P/Kpfkf6pT) + FDP/KpfkfdpT + adp*(1 + FDP/KpfkfdpT)/KpfkadpT)^4/((1 + amp/Kpfkamp)^4*(1 + dn*atp/Kpfkiatp)^4*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)^4))) - 0.00411742907728414*Vfpfk*adp*FDP*(1 + Kpfkatp*Kpfkf6p*Lo*(1 + en*amp/Kpfkamp)^4*(1 + atp/Kpfkiatp)^4*((1 + atp/KpfkatpT)*(1 + F6P/Kpfkf6pT) + FDP/KpfkfdpT + adp*(1 + FDP/KpfkfdpT)/KpfkadpT)^3/(KpfkatpT*Kpfkf6pT*(1 + amp/Kpfkamp)^4*(1 + dn*atp/Kpfkiatp)^4*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)^3))/(Kpfkatp*Kpfkf6p*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)*(1 + Lo*(1 + en*amp/Kpfkamp)^4*(1 + atp/Kpfkiatp)^4*((1 + atp/KpfkatpT)*(1 + F6P/Kpfkf6pT) + FDP/KpfkfdpT + adp*(1 + FDP/KpfkfdpT)/KpfkadpT)^4/((1 + amp/Kpfkamp)^4*(1 + dn*atp/Kpfkiatp)^4*((1 + atp/Kpfkatp)*(1 + F6P/Kpfkf6p) + FDP/Kpfkfdp + adp*(1 + FDP/Kpfkfdp)/Kpfkadp)^4)));
+  v_5: FDP -> DHAP + GAP; (Vfald*FDP/Kaldfdp - (Vfald*Kaldgap*Kalddhap/(Kaldfdp*9.5e-5))*DHAP*GAP/(Kaldgap*Kalddhap))/(1 + FDP/Kaldfdp + GAP/Kaldgap + DHAP/Kalddhap);
+  v_6: GAP -> DHAP; (Vftpi*GAP/Ktpigap - (Vftpi*Ktpidhap/(Ktpigap*19.2))*DHAP/Ktpidhap)/(1 + GAP/Ktpigap + DHAP/Ktpidhap);
+  v_7: GAP + NAD + $Ph -> DPG + NADH; (-11.2359550561798*Vfgad*DPG*NADH/(Kgapdhgap*Kgapdhnad*Kgapdhpi) + Vfgad*GAP*NAD*Ph/(Kgapdhgap*Kgapdhnad*Kgapdhpi))/(1 + DPG/Kgapdh13dpg + GAP/Kgapdhgap + NAD/Kgapdhnad + GAP*NAD/(Kgapdhgap*Kgapdhnad) + NADH/Kgapdhnadh + DPG*NADH/(Kgapdh13dpg*Kgapdhnadh) + Ph/Kgapdhpi + GAP*NAD*Ph/(Kgapdhgap*Kgapdhnad*Kgapdhpi));
+  v_8: DPG + $adp -> P3G + $atp; (57109*Vbpgk*adp*DPG/(Kpgk3pg*Kpgkatp) - Vbpgk*atp*P3G/(Kpgk3pg*Kpgkatp))/(1 + adp/Kpgkadp + atp/Kpgkatp + DPG/Kpgk13dpg + adp*DPG/(Kpgk13dpg*Kpgkadp) + P3G/Kpgk3pg + atp*P3G/(Kpgk3pg*Kpgkatp));
+  v_9: P3G -> P2G; (Vfpgm*P3G/Kpgm3pg - (Vfpgm*Kpgm2pg/(Kpgm3pg*0.18))*P2G/Kpgm2pg)/(1 + P3G/Kpgm3pg + P2G/Kpgm2pg);
+
+  // Species initializations:
+  DHAP = 7e-05;
+  DPG = 6.5e-05;
+  F6P = 0.0002;
+  FDP = 7e-05;
+  G1P = 5e-05;
+  G6P = 0.00075;
+  GAP = 3e-05;
+  GLY = 0.112;
+  LAC = 0.00205129800531363;
+  NAD = 0.0005;
+  NADH = 5e-07;
+  P2G = 5e-06;
+  P3G = 5e-05;
+  PEP = 1e-05;
+  PYR = 0.000144;
+  Ph = 0.0307416000593277;
+  adp = 0.000405079560143532;
+  atp = 0.00779841945674673;
+
+  // Variable initializations:
+  Kadkadp = 0.00035;
+  Kadkamp = 0.00032;
+  Kadkatp = 0.00027;
+  Kalddhap = 0.002;
+  Kaldfdp = 0.0005;
+  Kaldgap = 0.001;
+  KckPCr = 0.00111;
+  Kckcr = 0.0038;
+  KckiPCr = 0.0039;
+  Kckiadp = 0.000135;
+  Kckiatp = 0.0035;
+  Ken2pg = 0.0001;
+  Kenpep = 0.00037;
+  KeqCK = 233;
+  Kgapdh13dpg = 8e-07;
+  Kgapdhgap = 2.5e-06;
+  Kgapdhnad = 9e-05;
+  Kgapdhnadh = 3.3e-06;
+  Kgapdhpi = 0.00029;
+  KgpAg1p = 0.0027;
+  KgpAglyb = 0.00015;
+  KgpAglyf = 0.0017;
+  KgpAig1p = 0.0101;
+  KgpAigly = 0.002;
+  KgpAipi = 0.0047;
+  KgpApi = 0.004;
+  KgpBg1p = 0.0015;
+  KgpBig1p = 0.0074;
+  KgpBiglyb = 0.0044;
+  KgpBiglyf = 0.015;
+  KgpBipi = 0.0046;
+  KgpBpi = 0.0002;
+  Kgpamp = 9.7e-05;
+  Kldhlac = 0.01717;
+  Kldhnad = 0.000849;
+  Kldhnadh = 2.167e-06;
+  Kldhpyr = 0.000335;
+  Kpfkadp = 0.00271;
+  KpfkadpT = 0.00271;
+  Kpfkamp = 6e-05;
+  Kpfkatp = 8e-05;
+  KpfkatpT = 0.00025;
+  Kpfkf6p = 0.00018;
+  Kpfkf6pT = 0.02;
+  Kpfkfdp = 0.0042;
+  KpfkfdpT = 0.0042;
+  Kpfkiatp = 0.00087;
+  Kpgif6p = 0.000119;
+  Kpgig6p = 0.00048;
+  Kpgk13dpg = 1.9e-06;
+  Kpgk3pg = 0.0012;
+  Kpgkadp = 8.3e-05;
+  Kpgkatp = 0.00035;
+  Kpglmg1p = 6.3e-05;
+  Kpglmg6p = 3e-05;
+  Kpgm2pg = 1.4e-05;
+  Kpgm3pg = 0.0002;
+  Kpkadp = 0.0003;
+  Kpkatp = 0.00113;
+  Kpkpep = 8e-05;
+  Kpkpyr = 0.00705;
+  Ktpidhap = 0.00061;
+  Ktpigap = 0.00032;
+  Lo = 13;
+  Vbpgi = 0.88;
+  Vbpgk = 1.12;
+  Vfadk = 0.88;
+  Vfald = 0.104;
+  Vfen = 0.5;
+  Vfgad = 1.65;
+  Vfgly = 0.15;
+  Vfldh = 1.92;
+  Vfpfk = 0.056;
+  Vfpglm = 0.48;
+  Vfpgm = 1.12;
+  Vfpk = 3;
+  Vftpi = 12;
+  VrevCK = 0.5;
+  amp = 9.52098310973979e-06;
+  dn = 0.01;
+  en = 0.01;
+  fracA = 0.4;
+  fracB = 0.6;
+  k = 0.075;
+  kout = 0.2;
+  nH = 1.75;
+
+  // Other declarations:
+  var Kadkadp, Kadkamp, Kadkatp, Kalddhap, Kaldfdp, Kaldgap, KckPCr, Kckcr;
+  var KckiPCr, Kckiadp, Kckiatp, Ken2pg, Kenpep, KeqCK, Kgapdh13dpg, Kgapdhgap;
+  var Kgapdhnad, Kgapdhnadh, Kgapdhpi, KgpAg1p, KgpAglyb, KgpAglyf, KgpAig1p;
+  var KgpAigly, KgpAipi, KgpApi, KgpBg1p, KgpBig1p, KgpBiglyb, KgpBiglyf;
+  var KgpBipi, KgpBpi, Kgpamp, Kldhlac, Kldhnad, Kldhnadh, Kldhpyr, Kpfkadp;
+  var KpfkadpT, Kpfkamp, Kpfkatp, KpfkatpT, Kpfkf6p, Kpfkf6pT, Kpfkfdp, KpfkfdpT;
+  var Kpfkiatp, Kpgif6p, Kpgig6p, Kpgk13dpg, Kpgk3pg, Kpgkadp, Kpgkatp, Kpglmg1p;
+  var Kpglmg6p, Kpgm2pg, Kpgm3pg, Kpkadp, Kpkatp, Kpkpep, Kpkpyr, Ktpidhap;
+  var Ktpigap, Lo, Vbpgi, Vbpgk, Vfadk, Vfald, Vfen, Vfgad, Vfgly, Vfldh;
+  var Vfpfk, Vfpglm, Vfpgm, Vfpk, Vftpi, VrevCK, amp, dn, en, fracA, fracB;
+  var k, kout, nH;
+
+  // Unit definitions:
+  unit L = litre;
+  unit min = 60 second;
+  unit M = mole / litre;
+  unit volume = L;
+  unit substance = mole;
+  unit extent = M;
+  unit time_unit = min;
+end
+
+lambeth is "lambeth"

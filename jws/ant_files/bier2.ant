@@ -1,0 +1,65 @@
+// Created by libAntimony v2.13.2
+model *bier2()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species G1 in compartment_, G2 in compartment_, T1 in compartment_, T2 in compartment_;
+
+  // Assignment Rules:
+  Tdiff := T2 - T1;
+  Tsum := T2 + T1;
+
+  // Reactions:
+  vG1toT1: G1 -> 2 T1; k1*G1*T1;
+  vG2toT2: G2 -> 2 T2; k1*G2*T2;
+  vIn:  -> G1 + G2; V_in;
+  vOut1T1: T1 -> ; kp*T1/(km + T1);
+  vOut1T2: T2 -> ; kp*T2/(km + T2);
+  vT2toT1: T2 -> T1; epsilon*(T2 - T1);
+
+  // Species initializations:
+  G1 = 6.6/compartment_;
+  G2 = 10.3/compartment_;
+  T1 = 7.6/compartment_;
+  T2 = 0.41/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  V_in = 0.36;
+  epsilon = 0.01;
+  k1 = 0.02;
+  km = 13;
+  kp = 6;
+
+  // Other declarations:
+  var Tdiff, Tsum;
+  const compartment_, V_in, epsilon, k1, km, kp;
+
+  // Display Names:
+  G1 is "Glucose_1";
+  G2 is "Glucose_2";
+  T1 is "ATP_1";
+  T2 is "ATP_2";
+
+  // SBO terms:
+  compartment_.sboTerm = 290
+  G1.sboTerm = 247
+  G2.sboTerm = 247
+  T1.sboTerm = 247
+  T2.sboTerm = 247
+
+  // CV terms:
+  compartment_ identity "http://identifiers.org/go/GO:0005623"
+  G1 hypernym "http://identifiers.org/kegg.compound/C00293",
+              "http://identifiers.org/chebi/CHEBI:17234"
+  G2 hypernym "http://identifiers.org/kegg.compound/C00293",
+              "http://identifiers.org/chebi/CHEBI:17234"
+  T1 hypernym "http://identifiers.org/kegg.compound/C00002",
+              "http://identifiers.org/chebi/CHEBI:15422"
+  T2 hypernym "http://identifiers.org/kegg.compound/C00002",
+              "http://identifiers.org/chebi/CHEBI:15422"
+end
+
+bier2 is "bier2"

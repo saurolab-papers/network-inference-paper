@@ -1,0 +1,50 @@
+// Created by libAntimony v2.13.2
+model *zhao1()
+
+  // Compartments and Species:
+  species $EXT, I, Ip, S, Sp;
+
+  // Assignment Rules:
+  N := Sp + S + Ip + I;
+  beta := 1 - (1 - ba)^n;
+
+  // Reactions:
+  v_1: $EXT -> Sp; k*Lambda;
+  v_10: I -> $EXT; d*I;
+  v_2: Sp -> Ip; ((1 - alphas)*beta*I/N + (1 - alphas)*(1 - alphai)*beta*Ip/N)*Sp;
+  v_3: Sp -> $EXT; mu*Sp;
+  v_4: $EXT -> S; (1 - k)*Lambda;
+  v_5: S -> I; (beta*I/N + (1 - alphai)*beta*Ip/N)*S;
+  v_6: S -> $EXT; mu*S;
+  v_7: Ip -> $EXT; mu*Ip;
+  v_8: Ip -> $EXT; d*Ip;
+  v_9: I -> $EXT; mu*I;
+
+  // Species initializations:
+  EXT = 1;
+  I = 149400;
+  Ip = 16600;
+  S = 667200;
+  Sp = 166800;
+
+  // Variable initializations:
+  Lambda = 38094;
+  alphai = 0.5;
+  alphas = 0.5;
+  ba = 0.003;
+  n = 65.8494;
+  d = 0.1302;
+  k = 0.2;
+  mu = 0.025;
+
+  // Other declarations:
+  var Lambda, N, alphai, alphas, ba, beta, n, d, k, mu;
+
+  // Display Names:
+  I is "Infected";
+  Ip is "Infected on PrEP";
+  S is "Susceptible";
+  Sp is "Susceptible on PrEP";
+end
+
+zhao1 is "zhao1"

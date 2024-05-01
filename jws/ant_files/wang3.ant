@@ -1,0 +1,204 @@
+// Created by libAntimony v2.13.2
+model *wang3()
+
+  // Compartments and Species:
+  compartment cell;
+  species $c1 in cell, sumrc1 in cell, c2 in cell, $eGEF in cell, m3PI in cell;
+  species fGEF in cell, $ePI3K in cell, eph in cell, mRas in cell, $r in cell;
+  species w in cell, x1 in cell, x2 in cell, y in cell, $yp in cell, ypp in cell;
+  species z in cell, $zp in cell, zpp in cell;
+
+  // Assignment Rules:
+  c1 := L*sumrc1/(KDL + L);
+  eGEF := ((KGR*c2 + KGP*m3PI)/(1 + KGR*c2 + KGP*m3PI))*fGEF;
+  ePI3K := (1 + kappaPI3K + 2*alphaPI3K*c2 - ((1 + kappaPI3K + 2*alphaPI3K*c2)^2 - 8*alphaPI3K*c2)^0.5)/2;
+  r := KDL*sumrc1/(KDL + L);
+  yp := 1 - y - ypp;
+  zp := 1 - z - zpp;
+
+  // Reactions:
+  c2ODE:  -> c2; kxR0*c1^2 - (kminusx + ke)*c2;
+  ephODE:  -> eph; kFBph*(w^p/(Wph^p + w^p) - (eph - 1)/Kph);
+  fGEFODE:  -> fGEF; kFBf*((1 - fGEF)/Kf - (zpp^n/(Zf^n + zpp^n))*fGEF);
+  m3PIODE:  -> m3PI; k3PI*(ePI3K - m3PI);
+  mRasODE:  -> mRas; kRas*((1 + Gamma)*eGEF - (1 + Gamma*eGEF)*mRas);
+  sumrc1ODE:  -> sumrc1; kt*(1 - sumrc1) + 2*(kminusx*c2 - kxR0*c1^2);
+  wODE:  -> w; kdw*(zpp - w);
+  x1ODE:  -> x1; kdx1*(mRas - x1/(1 + y/KMx11 + yp/KMx12));
+  x2ODE:  -> x2; kdx2*((1 + Kx2)*m3PI/(1 + Kx2*m3PI) - x2/(1 + y/KMx21 + yp/KMx22));
+  yODE:  -> y; VmaxOVERKMyph1*yp/(1 + yp/KMyph1 + ypp/KMyph2) - VmaxOVERKMx11*x1*y/(1 + y/KMx11 + yp/KMx12) - VmaxOVERKMx21*x2*y/(1 + y/KMx21 + yp/KMx22);
+  yppODE:  -> ypp; VmaxOVERKMx12*x1*yp/(1 + y/KMx11 + yp/KMx12) + VmaxOVERKMx22*x2*yp/(1 + y/KMx21 + yp/KMx22) - VmaxOVERKMyph2*ypp/((1 + z/KMy1 + zp/KMy2)*(1 + yp/KMyph1) + ypp/KMyph2);
+  zODE:  -> z; VmaxOVERKMzph1*eph*zp/(1 + zp/KMzph1 + zpp/KMzph2) - VmaxOVERKMy1*ypp*z/(1 + z/KMy1 + zp/KMy2);
+  zppODE:  -> zpp; VmaxOVERKMy2*ypp*zp/(1 + z/KMy1 + zp/KMy2) - VmaxOVERKMzph2*eph*zpp/(1 + zp/KMzph1 + zpp/KMzph2);
+
+  // Species initializations:
+  sumrc1 = 1/cell;
+  c2 = 0;
+  m3PI = 0;
+  fGEF = 1/cell;
+  eph = 1/cell;
+  mRas = 0;
+  w = 0;
+  x1 = 0;
+  x2 = 0;
+  y = 1/cell;
+  ypp = 0;
+  z = 1/cell;
+  zpp = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  L = 1;
+  KDL = 1.5;
+  KGR = 495;
+  KGP = 5.09;
+  kappaPI3K = 0.3;
+  alphaPI3K = 80;
+  Gamma = 0.1;
+  KMx11 = 30.3;
+  KMx12 = 18.6;
+  KMx21 = 13.7;
+  KMx22 = 9.59;
+  KMy1 = 9.91;
+  KMy2 = 8.81;
+  KMyph1 = 23;
+  KMyph2 = 7.99;
+  KMzph1 = 8.27;
+  KMzph2 = 31.5;
+  Kf = 3.76;
+  Kph = 4.64;
+  Kx2 = 6.77;
+  VmaxOVERKMx11 = 1.18;
+  VmaxOVERKMx12 = 3.45;
+  VmaxOVERKMx21 = 0.405;
+  VmaxOVERKMx22 = 1.09;
+  VmaxOVERKMy1 = 6.57;
+  VmaxOVERKMy2 = 31.9;
+  VmaxOVERKMyph1 = 1.65;
+  VmaxOVERKMyph2 = 4.2;
+  VmaxOVERKMzph1 = 0.167;
+  VmaxOVERKMzph2 = 0.228;
+  Wph = 0.385;
+  Zf = 0.272;
+  k3PI = 1;
+  kFBf = 0.976;
+  kFBph = 2.34;
+  kRas = 1;
+  kdw = 0.0333;
+  kdx1 = 0.745;
+  kdx2 = 2.85;
+  ke = 0.2;
+  kminusx = 0.007;
+  kt = 0.005;
+  kxR0 = 0.3;
+  n = 1.03;
+  p = 1.98;
+
+  // Other declarations:
+  const cell, L, KDL, KGR, KGP, kappaPI3K, alphaPI3K, Gamma, KMx11, KMx12;
+  const KMx21, KMx22, KMy1, KMy2, KMyph1, KMyph2, KMzph1, KMzph2, Kf, Kph;
+  const Kx2, VmaxOVERKMx11, VmaxOVERKMx12, VmaxOVERKMx21, VmaxOVERKMx22, VmaxOVERKMy1;
+  const VmaxOVERKMy2, VmaxOVERKMyph1, VmaxOVERKMyph2, VmaxOVERKMzph1, VmaxOVERKMzph2;
+  const Wph, Zf, k3PI, kFBf, kFBph, kRas, kdw, kdx1, kdx2, ke, kminusx, kt;
+  const kxR0, n, p;
+
+  // SBO terms:
+  cell.sboTerm = 290
+  c1.sboTerm = 296
+  L.sboTerm = 188
+  sumrc1.sboTerm = 296
+  KDL.sboTerm = 282
+  c2.sboTerm = 420
+  KGR.sboTerm = 337
+  KGP.sboTerm = 337
+  m3PI.sboTerm = 236
+  fGEF.sboTerm = 245
+  ePI3K.sboTerm = 245
+  kappaPI3K.sboTerm = 282
+  alphaPI3K.sboTerm = 2
+  eph.sboTerm = 245
+  mRas.sboTerm = 245
+  r.sboTerm = 245
+  w.sboTerm = 245
+  x1.sboTerm = 14
+  x2.sboTerm = 14
+  y.sboTerm = 245
+  yp.sboTerm = 245
+  ypp.sboTerm = 245
+  z.sboTerm = 245
+  zp.sboTerm = 245
+  zpp.sboTerm = 245
+  Gamma.sboTerm = 2
+  KMx11.sboTerm = 27
+  KMx12.sboTerm = 27
+  KMx21.sboTerm = 27
+  KMx22.sboTerm = 27
+  KMy1.sboTerm = 27
+  KMy2.sboTerm = 27
+  KMyph1.sboTerm = 27
+  KMyph2.sboTerm = 27
+  KMzph1.sboTerm = 27
+  KMzph2.sboTerm = 27
+  Kf.sboTerm = 9
+  Kph.sboTerm = 9
+  Kx2.sboTerm = 2
+  VmaxOVERKMx11.sboTerm = 2
+  VmaxOVERKMx12.sboTerm = 2
+  VmaxOVERKMx21.sboTerm = 2
+  VmaxOVERKMx22.sboTerm = 2
+  VmaxOVERKMy1.sboTerm = 2
+  VmaxOVERKMy2.sboTerm = 2
+  VmaxOVERKMyph1.sboTerm = 2
+  VmaxOVERKMyph2.sboTerm = 2
+  VmaxOVERKMzph1.sboTerm = 2
+  VmaxOVERKMzph2.sboTerm = 2
+  Wph.sboTerm = 9
+  Zf.sboTerm = 2
+  k3PI.sboTerm = 2
+  kFBf.sboTerm = 2
+  kFBph.sboTerm = 9
+  kRas.sboTerm = 9
+  kdw.sboTerm = 9
+  kdx1.sboTerm = 9
+  kdx2.sboTerm = 9
+  ke.sboTerm = 9
+  kminusx.sboTerm = 9
+  kt.sboTerm = 9
+  kxR0.sboTerm = 9
+  n.sboTerm = 190
+  p.sboTerm = 190
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  c1 part "http://identifiers.org/uniprot/P04085",
+          "http://identifiers.org/uniprot/P01127",
+          "http://identifiers.org/uniprot/Q9NRA1",
+          "http://identifiers.org/uniprot/Q15198",
+          "http://identifiers.org/uniprot/Q9GZP0"
+  sumrc1 hypernym "http://identifiers.org/uniprot/P04085",
+                  "http://identifiers.org/uniprot/P01127",
+                  "http://identifiers.org/uniprot/Q9GZP0",
+                  "http://identifiers.org/uniprot/Q9NRA1",
+                  "http://identifiers.org/uniprot/Q15198"
+  c2 hypernym "http://identifiers.org/uniprot/Q15198"
+  eGEF homolog "http://identifiers.org/uniprot/P70392"
+  m3PI hypernym "http://identifiers.org/go/GO:0005811"
+  fGEF hypernym "http://identifiers.org/uniprot/P70392"
+  ePI3K hypernym "http://identifiers.org/uniprot/O00750"
+  eph hypernym "http://identifiers.org/go/GO:0016791"
+  mRas hypernym "http://identifiers.org/uniprot/O14807"
+  r hypernym "http://identifiers.org/uniprot/Q15198"
+  w hypernym "http://identifiers.org/go/GO:0016563"
+  x1 parthood "http://identifiers.org/uniprot/P04049"
+  x2 hypernym "http://identifiers.org/uniprot/Q13153"
+  y hypernym "http://identifiers.org/uniprot/P36507"
+  yp hypernym "http://identifiers.org/uniprot/P36507"
+  ypp hypernym "http://identifiers.org/uniprot/P36507"
+  z hypernym "http://identifiers.org/uniprot/P27361"
+  zp hypernym "http://identifiers.org/uniprot/P27361"
+  zpp hypernym "http://identifiers.org/uniprot/P27361"
+end
+
+wang3 is "wang3"

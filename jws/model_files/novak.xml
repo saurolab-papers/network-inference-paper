@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="novak" name="novak">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="CA" name="CA" compartment="default_compartment" initialConcentration="0.0434486" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="CD" name="CD" compartment="default_compartment" initialConcentration="0.0488772" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="CDc20" name="CDc20" compartment="default_compartment" initialConcentration="1e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="CDc20T" name="CDc20T" compartment="default_compartment" initialConcentration="0.006466" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="CDh1" name="CDh1" compartment="default_compartment" initialConcentration="0.98702" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="CE" name="CE" compartment="default_compartment" initialConcentration="0.1380924" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="CYCA" name="CYCA" compartment="default_compartment" initialConcentration="0.3411" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="CYCB" name="CYCB" compartment="default_compartment" initialConcentration="0.00514" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="CYCD" name="CYCD" compartment="default_compartment" initialConcentration="0.401389" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="CYCE" name="CYCE" compartment="default_compartment" initialConcentration="1.09959" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="DRG" name="DRG" compartment="default_compartment" initialConcentration="0.9005328" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="E2F" name="E2F" compartment="default_compartment" initialConcentration="4.25991" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="ERG" name="ERG" compartment="default_compartment" initialConcentration="0.0121808" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="GM" name="GM" compartment="default_compartment" initialConcentration="1.032033" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="IEP" name="IEP" compartment="default_compartment" initialConcentration="1.98e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="MASS" name="MASS" compartment="default_compartment" initialConcentration="1.28486" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="P27" name="P27" compartment="default_compartment" initialConcentration="0.011877" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="PPX" name="PPX" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="p" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="s" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_21" id="E2FA" name="E2FA" value="0" constant="false"/>
+      <parameter metaid="metaid_22" id="E2FT" value="5" constant="false"/>
+      <parameter metaid="metaid_23" id="E2RBC" name="E2RBC" value="0" constant="false"/>
+      <parameter metaid="metaid_24" id="FB" value="2" constant="false"/>
+      <parameter metaid="metaid_25" id="FE" value="25" constant="false"/>
+      <parameter metaid="metaid_26" id="GA" value="0.3" constant="false"/>
+      <parameter metaid="metaid_27" id="GB" value="1" constant="false"/>
+      <parameter metaid="metaid_28" id="GE" value="0" constant="false"/>
+      <parameter metaid="metaid_29" id="HA" value="0.5" constant="false"/>
+      <parameter metaid="metaid_30" id="HB" value="1" constant="false"/>
+      <parameter metaid="metaid_31" id="HE" value="0.5" constant="false"/>
+      <parameter metaid="metaid_32" id="J1" value="0.1" constant="false"/>
+      <parameter metaid="metaid_33" id="J13" value="0.005" constant="false"/>
+      <parameter metaid="metaid_34" id="J14" value="0.005" constant="false"/>
+      <parameter metaid="metaid_35" id="J15" value="0.1" constant="false"/>
+      <parameter metaid="metaid_36" id="J17" value="0.3" constant="false"/>
+      <parameter metaid="metaid_37" id="J3" value="0.01" constant="false"/>
+      <parameter metaid="metaid_38" id="J31" value="0.01" constant="false"/>
+      <parameter metaid="metaid_39" id="J32" value="0.01" constant="false"/>
+      <parameter metaid="metaid_40" id="J4" value="0.01" constant="false"/>
+      <parameter metaid="metaid_41" id="J8" value="0.1" constant="false"/>
+      <parameter metaid="metaid_42" id="K1" value="0.06" constant="false"/>
+      <parameter metaid="metaid_43" id="K10" value="0.5" constant="false"/>
+      <parameter metaid="metaid_44" id="K11" value="0.15" constant="false"/>
+      <parameter metaid="metaid_45" id="K11a" value="0" constant="false"/>
+      <parameter metaid="metaid_46" id="K12" value="0.15" constant="false"/>
+      <parameter metaid="metaid_47" id="K13" value="0.5" constant="false"/>
+      <parameter metaid="metaid_48" id="K14" value="0.25" constant="false"/>
+      <parameter metaid="metaid_49" id="K19" value="2" constant="false"/>
+      <parameter metaid="metaid_50" id="K19a" value="0" constant="false"/>
+      <parameter metaid="metaid_51" id="K1a" value="0.01" constant="false"/>
+      <parameter metaid="metaid_52" id="K2" value="2" constant="false"/>
+      <parameter metaid="metaid_53" id="K20" value="1" constant="false"/>
+      <parameter metaid="metaid_54" id="K21" value="1" constant="false"/>
+      <parameter metaid="metaid_55" id="K22" value="0.1" constant="false"/>
+      <parameter metaid="metaid_56" id="K23" value="0.1" constant="false"/>
+      <parameter metaid="metaid_57" id="K23a" value="0.0005" constant="false"/>
+      <parameter metaid="metaid_58" id="K25" value="100" constant="false"/>
+      <parameter metaid="metaid_59" id="K25R" value="1" constant="false"/>
+      <parameter metaid="metaid_60" id="K26" value="1000" constant="false"/>
+      <parameter metaid="metaid_61" id="K26R" value="20" constant="false"/>
+      <parameter metaid="metaid_62" id="K27" value="0.02" constant="false"/>
+      <parameter metaid="metaid_63" id="K28" value="0.02" constant="false"/>
+      <parameter metaid="metaid_64" id="K29" value="0.005" constant="false"/>
+      <parameter metaid="metaid_65" id="K2a" value="0.005" constant="false"/>
+      <parameter metaid="metaid_66" id="K2aa" value="0.1" constant="false"/>
+      <parameter metaid="metaid_67" id="K3" value="14" constant="false"/>
+      <parameter metaid="metaid_68" id="K30" value="2" constant="false"/>
+      <parameter metaid="metaid_69" id="K31" value="0.07" constant="false"/>
+      <parameter metaid="metaid_70" id="K32" value="0.18" constant="false"/>
+      <parameter metaid="metaid_71" id="K33" value="0.005" constant="false"/>
+      <parameter metaid="metaid_72" id="K34" value="0.005" constant="false"/>
+      <parameter metaid="metaid_73" id="K3a" value="0.75" constant="false"/>
+      <parameter metaid="metaid_74" id="K4" value="4" constant="false"/>
+      <parameter metaid="metaid_75" id="K5" value="2" constant="false"/>
+      <parameter metaid="metaid_76" id="K6" value="10" constant="false"/>
+      <parameter metaid="metaid_77" id="K6a" value="1" constant="false"/>
+      <parameter metaid="metaid_78" id="K7" value="0.06" constant="false"/>
+      <parameter metaid="metaid_79" id="K7a" value="0" constant="false"/>
+      <parameter metaid="metaid_80" id="K8" value="0.2" constant="false"/>
+      <parameter metaid="metaid_81" id="K8a" value="0.01" constant="false"/>
+      <parameter metaid="metaid_82" id="K9" value="0.25" constant="false"/>
+      <parameter metaid="metaid_83" id="L" name="L" value="0" constant="false"/>
+      <parameter metaid="metaid_84" id="LA" value="3" constant="false"/>
+      <parameter metaid="metaid_85" id="LB" value="5" constant="false"/>
+      <parameter metaid="metaid_86" id="LD" value="3.3" constant="false"/>
+      <parameter metaid="metaid_87" id="LE" value="5" constant="false"/>
+      <parameter metaid="metaid_88" id="MU" value="0.0061" constant="false"/>
+      <parameter metaid="metaid_89" id="PP1A" name="PP1A" value="0" constant="false"/>
+      <parameter metaid="metaid_90" id="PP1T" value="1" constant="false"/>
+      <parameter metaid="metaid_91" id="RBH" name="RBH" value="0" constant="false"/>
+      <parameter metaid="metaid_92" id="RBT" value="10" constant="false"/>
+      <parameter metaid="metaid_93" id="YB" value="0.05" constant="false"/>
+      <parameter metaid="metaid_94" id="YE" value="1" constant="false"/>
+      <parameter metaid="metaid_95" id="eps" value="1" constant="false"/>
+      <parameter metaid="metaid_96" id="k15" value="0.025" constant="false"/>
+      <parameter metaid="metaid_97" id="k16" value="0.025" constant="false"/>
+      <parameter metaid="metaid_98" id="k17" value="1" constant="false"/>
+      <parameter metaid="metaid_99" id="k17a" value="0.035" constant="false"/>
+      <parameter metaid="metaid_100" id="k18" value="1" constant="false"/>
+      <parameter metaid="metaid_101" id="k24" value="100" constant="false"/>
+      <parameter metaid="metaid_102" id="k24r" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_103" variable="L">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> K26R </ci>
+              <apply>
+                <times/>
+                <ci> K20 </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> LD </ci>
+                    <ci> CYCD </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> LE </ci>
+                    <ci> CYCE </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> LA </ci>
+                    <ci> CYCA </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> LB </ci>
+                    <ci> CYCB </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+            <ci> K26 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_104" variable="E2RBC">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn type="integer"> 2 </cn>
+              <ci> E2FT </ci>
+              <ci> RBH </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> E2FT </ci>
+              <ci> RBH </ci>
+              <ci> L </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <ci> E2FT </ci>
+                      <ci> RBH </ci>
+                      <ci> L </ci>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <cn type="integer"> 4 </cn>
+                    <ci> E2FT </ci>
+                    <ci> RBH </ci>
+                  </apply>
+                </apply>
+                <cn> 0.5 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_105" variable="RBH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> RBT </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> K20 </ci>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> LD </ci>
+                      <ci> CYCD </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> LE </ci>
+                      <ci> CYCE </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> LA </ci>
+                      <ci> CYCA </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> LB </ci>
+                      <ci> CYCB </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> K19a </ci>
+                    <apply>
+                      <minus/>
+                      <ci> PP1T </ci>
+                      <ci> PP1A </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> K19 </ci>
+                    <ci> PP1A </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <cn type="integer"> 1 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_106" variable="PP1A">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> PP1T </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> K21 </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> FE </ci>
+                    <apply>
+                      <plus/>
+                      <ci> CYCE </ci>
+                      <ci> CYCA </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> FB </ci>
+                    <ci> CYCB </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <cn type="integer"> 1 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_109" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_107" species="ERG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k16 </ci>
+              <ci> ERG </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_113" id="v_10" name="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_110" species="CA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_111" species="P27" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_112" species="CDc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K30 </ci>
+              <ci> CDc20 </ci>
+              <ci> CA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_117" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_114" species="CE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_116" species="CYCE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K25R </ci>
+              <ci> CE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_118" species="CA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_119" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_120" species="CYCA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K25R </ci>
+              <ci> CA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_124" id="v_13" name="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="CE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="P27" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_8 </ci>
+              <ci> CE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_127" id="v_14" name="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="CYCE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_126" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_8 </ci>
+              <ci> CYCE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_130" id="v_15" name="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_128" species="P27" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_6 </ci>
+              <ci> P27 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_133" id="v_16" name="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_131" species="CE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_132" species="CYCE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_6 </ci>
+              <ci> CE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_136" id="v_17" name="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_134" species="CD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="CYCD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_6 </ci>
+              <ci> CD </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="v_18" name="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_137" species="CA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="CYCA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_6 </ci>
+              <ci> CA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="v_19" name="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="CYCB" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> v_2 </ci>
+              <ci> CYCB </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="DRG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k18 </ci>
+              <ci> DRG </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_149" id="v_20" name="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="CDh1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_148" species="CDc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> K3a </ci>
+                  <apply>
+                    <times/>
+                    <ci> K3 </ci>
+                    <ci> CDc20 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> CDh1 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> J3 </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <ci> CDh1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_152" id="v_21" name="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_150" species="CDh1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_151" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> v_4 </ci>
+                <ci> CDh1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> J4 </ci>
+                <ci> CDh1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_155" id="v_22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="PPX" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K34 </ci>
+              <ci> PPX </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_159" id="v_23" name="v_23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_156" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_157" species="IEP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_158" species="CYCB"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> K31 </ci>
+                <ci> CYCB </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> IEP </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> J31 </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <ci> IEP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="v_24" name="v_24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_160" species="IEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_162" species="PPX"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> K32 </ci>
+                <ci> PPX </ci>
+                <ci> IEP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> J32 </ci>
+                <ci> IEP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_166" id="v_25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="CDc20T" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_165" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K12 </ci>
+              <ci> CDc20T </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_171" id="v_26" name="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_167" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_168" species="CDc20" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_169" species="CDc20T"/>
+          <modifierSpeciesReference metaid="metaid_170" species="IEP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> K13 </ci>
+                <ci> IEP </ci>
+                <apply>
+                  <minus/>
+                  <ci> CDc20T </ci>
+                  <ci> CDc20 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> J13 </ci>
+                  <ci> CDc20T </ci>
+                </apply>
+                <ci> CDc20 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_174" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_172" species="CDc20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_173" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> K14 </ci>
+                <ci> CDc20 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> J14 </ci>
+                <ci> CDc20 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_177" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_175" species="CDc20" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K12 </ci>
+              <ci> CDc20 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_180" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_178" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_179" species="E2F" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K22 </ci>
+              <apply>
+                <minus/>
+                <ci> E2FT </ci>
+                <ci> E2F </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_181" species="CD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_182" species="P27" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K10 </ci>
+              <ci> CD </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_188" id="v_30" name="v_30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="E2F" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_185" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_186" species="CYCB"/>
+          <modifierSpeciesReference metaid="metaid_187" species="CYCA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> K23a </ci>
+                <apply>
+                  <times/>
+                  <ci> K23 </ci>
+                  <apply>
+                    <plus/>
+                    <ci> CYCA </ci>
+                    <ci> CYCB </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> E2F </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_192" id="v_31" name="v_31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_189" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_190" species="GM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_191" species="MASS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K27 </ci>
+              <ci> MASS </ci>
+              <piecewise>
+                <piece>
+                  <cn type="integer"> 0 </cn>
+                  <apply>
+                    <gt/>
+                    <apply>
+                      <divide/>
+                      <ci> RBH </ci>
+                      <ci> RBT </ci>
+                    </apply>
+                    <cn> 0.8 </cn>
+                  </apply>
+                </piece>
+                <otherwise>
+                  <cn type="integer"> 1 </cn>
+                </otherwise>
+              </piecewise>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="v_32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="GM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_194" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K28 </ci>
+              <ci> GM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_199" id="v_33" name="v_33" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="MASS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_198" species="GM"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <ci> MU </ci>
+              <ci> GM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_203" id="v_34" name="v_34" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_200" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_201" species="ERG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_202" species="DRG"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> eps </ci>
+                <ci> k15 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> DRG </ci>
+                    <ci> J15 </ci>
+                  </apply>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_207" id="v_35" name="v_35" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_204" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_205" species="CDc20T" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_206" species="CYCB"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <apply>
+                <plus/>
+                <ci> K11a </ci>
+                <apply>
+                  <times/>
+                  <ci> K11 </ci>
+                  <ci> CYCB </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_211" id="v_36" name="v_36" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_208" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_209" species="CYCA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_210" species="MASS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <ci> K29 </ci>
+              <ci> E2FA </ci>
+              <ci> MASS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_214" id="v_37" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_212" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_213" species="PPX" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <ci> K33 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_217" id="v_38" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_215" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_216" species="CYCE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <apply>
+                <plus/>
+                <ci> K7a </ci>
+                <apply>
+                  <times/>
+                  <ci> K7 </ci>
+                  <ci> E2FA </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_221" id="v_39" name="v_39" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_218" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_219" species="CYCD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_220" species="DRG"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <ci> K9 </ci>
+              <ci> DRG </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_224" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_222" species="CYCD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_223" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K10 </ci>
+              <ci> CYCD </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_227" id="v_40" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_225" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_226" species="P27" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <ci> K5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_231" id="v_41" name="v_41" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_228" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_229" species="DRG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_230" species="ERG"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> k17a </ci>
+                  <ci> ERG </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> k17 </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> DRG </ci>
+                        <ci> J17 </ci>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> DRG </ci>
+                        <ci> J17 </ci>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_234" id="v_42" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_232" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_233" species="CYCB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eps </ci>
+              <apply>
+                <plus/>
+                <ci> K1a </ci>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> K1 </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> CYCB </ci>
+                        <ci> J1 </ci>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> CYCB </ci>
+                        <ci> J1 </ci>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_238" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_235" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_236" species="CYCE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_237" species="CE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K25 </ci>
+              <ci> P27 </ci>
+              <ci> CYCE </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_242" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_239" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_240" species="CYCA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_241" species="CA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K25 </ci>
+              <ci> P27 </ci>
+              <ci> CYCA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_246" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_243" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_244" species="CYCD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_245" species="CD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k24 </ci>
+              <ci> CYCD </ci>
+              <ci> P27 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_250" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_247" species="CD" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_248" species="P27" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_249" species="CYCD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k24r </ci>
+              <ci> CD </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_254" id="v_9" name="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_251" species="CYCA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_252" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_253" species="CDc20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K30 </ci>
+              <ci> CDc20 </ci>
+              <ci> CYCA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

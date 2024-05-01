@@ -1,0 +1,178 @@
+// Created by libAntimony v2.13.2
+model *bakker1()
+
+  // Compartments and Species:
+  species BPGA13, DHAP, Fru16BP, Fru6P, GAP, Glc6P, $GlcE, GlcI, $Gly, $Gly3P;
+  species NAD, NADH, Nb, Pc, Pg, Pyr, $PyrE, $X;
+
+  // Assignment Rules:
+  ADPc := Pc - 2*ATPc;
+  ATPc := (-(sumAc - Pc*ac) + ((sumAc - Pc*ac)*(sumAc - Pc*ac) - 4*ac*-KeqAK*Pc*Pc)^0.5)/2/ac;
+  ADPg := Pg - 2*ATPg;
+  ATPg := (-(sumAg - Pg*ag) + ((sumAg - Pg*ag)*(sumAg - Pg*ag) - 4*ag*-KeqAK*Pg*Pg)^0.5)/2/ag;
+  AMPg := sumAg - ATPg - ADPg;
+  ac := 1 - 4*KeqAK;
+  ag := 1 - 4*KeqAK;
+  DHAPc := sumc5*DHAP*(Vc/Vg + 1)/(sumc5*Vc/Vg + rsum);
+  rsum := sumc4 - Glc6P - Fru6P - 2*Fru16BP - GAP - BPGA13 - Pg;
+  DHAPg := (DHAP*Vt - DHAPc*Vc)/Vg;
+  Gly3Pc := sumc5 - DHAPc;
+  Gly3Pg := sumc4 - DHAPg - Glc6P - Fru6P - 2*Fru16BP - GAP - BPGA13 - Pg;
+  K12PEP := 0.34*(1 + ATPc/0.57 + ADPc/0.64);
+  K5Fru16BP := 0.009*(1 + ATPg/0.68 + ADPg/1.51 + AMPg/3.65);
+  PEP := PGA3*KeqPGM*KeqENO;
+  PGA3 := Nb*(1 + Vc/Vg)/(1 + (Vc/Vg)*(1 + KeqPGM + KeqPGM*KeqENO));
+
+  // Reactions:
+  v_1: $GlcE -> 0.175439 GlcI; Vm1*(GlcE - GlcI)/(K1Glc + GlcE + GlcI + afac*GlcE*GlcI/K1Glc);
+  v_10: 0.183306 Pyr -> $PyrE; Vm10*Pyr/K10Pyr/(1 + Pyr/K10Pyr);
+  v_11: 4.08772 BPGA13 -> 0.175439 Nb + 4.08772 Pg; Vm11*(Vm11f*(BPGA13*ADPg/K11BPGA13/K11ADPg - (Vm11r/Vm11f)*PGA3*ATPg/K11PGA3/K11ATPg)/((1 + BPGA13/K11BPGA13 + PGA3/K11PGA3)*(1 + ADPg/K11ADPg + ATPg/K11ATPg)));
+  v_12: 0.175439 Nb -> 0.183306 Pc + 0.183306 Pyr; Vm12*((PEP/K12PEP)^n12*ADPc/K12ADP/(1 + (PEP/K12PEP)^n12)/(1 + ADPc/K12ADP));
+  v_13: 0.183306 Pc -> $X; K13*ATPc/ADPc;
+  v_14: $X -> $Gly + 4.08772 Pg; Vm14*(Vm14f*(Gly3Pg*ADPg/K14Gly3Pg/K14ADPg) - Vm14r*(Gly*ATPg/K14Gly/K14ATPg))/((1 + Gly3Pg/K14Gly3Pg + Gly/K14Gly)*(1 + ADPg/K14ADPg + ATPg/K14ATPg));
+  v_2: 0.175439 GlcI + 4.08772 Pg -> 4.08772 Glc6P; Vm2*ATPg*GlcI/K2GlcI/K2ATPg/(1 + ATPg/K2ATPg + ADPg/K2ADPg)/(1 + GlcI/K2GlcI + Glc6P/K2Glc6P);
+  v_3: 4.08772 Glc6P -> 4.08772 Fru6P; Vm3*(Glc6P/K3Glc6P - Fru6P/K3Fru6P)/(1 + Glc6P/K3Glc6P + Fru6P/K3Fru6P);
+  v_4: 4.08772 Fru6P + 4.08772 Pg -> 4.08772 Fru16BP; Vm4*(((K4i1Fru16BP/(K4i1Fru16BP + Fru16BP))*Fru6P/K4Fru6P)*ATPg/K4ATPg/(1 + Fru6P/K4Fru6P + Fru16BP/K4i2Fru16BP)/(1 + ATPg/K4ATPg));
+  v_5: 4.08772 Fru16BP -> 0.175439 DHAP + 4.08772 GAP; Vm5*(Vm5f*Fru16BP/K5Fru16BP - Vm5r*GAP*DHAPg/K5GAP/K5DHAP)/(1 + Fru16BP/K5Fru16BP + GAP/K5GAP + DHAPg/K5DHAP + (Fru16BP/K5Fru16BP)*GAP/K5i + GAP*DHAPg/K5GAP/K5DHAP);
+  v_6: 0.175439 DHAP -> 4.08772 GAP; Vm6*(DHAPg/K6DHAPg - 5.7*GAP/K6GAP)/(1 + DHAPg/K6DHAPg + GAP/K6GAP);
+  v_7: 4.08772 GAP + 4.08772 NAD -> 4.08772 BPGA13 + 4.08772 NADH; Vm7*(Vm7f*(GAP*(NAD/K7GAP/K7NAD) - (Vm7r/Vm7f)*(BPGA13*NADH/K7BPGA13/K7NADH))/((1 + GAP/K7GAP + BPGA13/K7BPGA13)*(1 + NAD/K7NAD + NADH/K7NADH)));
+  v_8: 0.175439 DHAP + 4.08772 NADH -> $Gly3P + 4.08772 NAD; Vm8*(Vm8f*(DHAPg*NADH/K8DHAPg/K8NADH - (Vm8r/Vm8f)*(NAD*Gly3Pg/K8NAD/K8Gly3Pg))/((1 + DHAPg/K8DHAPg + Gly3Pg/K8Gly3Pg)*(1 + NADH/K8NADH + NAD/K8NAD)));
+  v_9: $Gly3P -> 0.175439 DHAP; Vm9*(Gly3Pc/K9Gly3Pc)/(1 + Gly3Pc/K9Gly3Pc);
+
+  // Species initializations:
+  BPGA13 = 0;
+  DHAP = 1;
+  Fru16BP = 10;
+  Fru6P = 1;
+  GAP = 0;
+  Glc6P = 1;
+  GlcE = 5;
+  GlcI = 0;
+  Gly = 0;
+  Gly3P = 0;
+  NAD = 4;
+  NADH = 0;
+  Nb = 1;
+  Pc = 1;
+  Pg = 1;
+  Pyr = 1;
+  PyrE = 0;
+  X = 0;
+
+  // Variable initializations:
+  sumAg = 6;
+  sumAc = 3.9;
+  KeqAK = 0.442;
+  sumc5 = 5;
+  Vc = 5.4549;
+  Vg = 0.2451;
+  DHAPct0 = 4.01536;
+  Vt = 5.7;
+  sumc4 = 45;
+  K10Pyr = 1.96;
+  K11ADPg = 0.1;
+  K11ATPg = 0.29;
+  K11BPGA13 = 0.05;
+  K11PGA3 = 1.62;
+  K12ADP = 0.114;
+  K13 = 50;
+  K14ADPg = 0.12;
+  K14ATPg = 0.19;
+  K14Gly = 0.12;
+  K14Gly3Pg = 5.1;
+  K1Glc = 2;
+  K2ADPg = 0.126;
+  K2ATPg = 0.116;
+  K2Glc6P = 12;
+  K2GlcI = 0.1;
+  K3Fru6P = 0.12;
+  K3Glc6P = 0.4;
+  K4ATPg = 0.026;
+  K4Fru6P = 0.82;
+  K4i1Fru16BP = 15.8;
+  K4i2Fru16BP = 10.7;
+  K5DHAP = 0.015;
+  K5GAP = 0.067;
+  K5i = 0.098;
+  K6DHAPg = 1.2;
+  K6GAP = 0.25;
+  K7BPGA13 = 0.1;
+  K7GAP = 0.15;
+  K7NAD = 0.45;
+  K7NADH = 0.02;
+  K8DHAPg = 0.1;
+  K8Gly3Pg = 2;
+  K8NAD = 0.4;
+  K8NADH = 0.01;
+  K9Gly3Pc = 1.7;
+  KeqENO = 6.7;
+  KeqPGM = 0.187;
+  Vm1 = 106.2;
+  Vm10 = 200;
+  Vm11 = 1;
+  Vm11f = 640;
+  Vm11r = 18.56;
+  Vm12 = 2600;
+  Vm14 = 1;
+  Vm14f = 200;
+  Vm14r = 33400;
+  Vm2 = 625;
+  Vm3 = 848;
+  Vm4 = 780;
+  Vm5 = 1;
+  Vm5f = 184.5;
+  Vm5r = 219.555;
+  Vm6 = 842;
+  Vm7 = 1;
+  Vm7f = 1470;
+  Vm7r = 984.9;
+  Vm8 = 1;
+  Vm8f = 533;
+  Vm8r = 149.24;
+  Vm9 = 368;
+  afac = 0.75;
+  n12 = 2.5;
+
+  // Other declarations:
+  var ADPc, ATPc, ADPg, ATPg, AMPg, sumAg, sumAc, ac, KeqAK, ag, DHAPc, sumc5;
+  var Vc, Vg, rsum, DHAPct0, DHAPg, Vt, Gly3Pc, Gly3Pg, sumc4, K10Pyr, K11ADPg;
+  var K11ATPg, K11BPGA13, K11PGA3, K12ADP, K12PEP, K13, K14ADPg, K14ATPg;
+  var K14Gly, K14Gly3Pg, K1Glc, K2ADPg, K2ATPg, K2Glc6P, K2GlcI, K3Fru6P;
+  var K3Glc6P, K4ATPg, K4Fru6P, K4i1Fru16BP, K4i2Fru16BP, K5DHAP, K5Fru16BP;
+  var K5GAP, K5i, K6DHAPg, K6GAP, K7BPGA13, K7GAP, K7NAD, K7NADH, K8DHAPg;
+  var K8Gly3Pg, K8NAD, K8NADH, K9Gly3Pc, KeqENO, KeqPGM, PEP, PGA3, Vm1, Vm10;
+  var Vm11, Vm11f, Vm11r, Vm12, Vm14, Vm14f, Vm14r, Vm2, Vm3, Vm4, Vm5, Vm5f;
+  var Vm5r, Vm6, Vm7, Vm7f, Vm7r, Vm8, Vm8f, Vm8r, Vm9, afac, n12;
+
+  // CV terms:
+  BPGA13 identity "http://identifiers.org/kegg.compound/C00236",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A16001"
+  DHAP identity "http://identifiers.org/kegg.compound/C00111",
+                "http://identifiers.org/obo.chebi/CHEBI%3A16108"
+  Fru16BP identity "http://identifiers.org/kegg.compound/C00354",
+                   "http://identifiers.org/obo.chebi/CHEBI%3A16905"
+  Fru6P identity "http://identifiers.org/kegg.compound/C00085",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A15946"
+  GAP identity "http://identifiers.org/kegg.compound/C00118",
+               "http://identifiers.org/obo.chebi/CHEBI%3A29052"
+  Glc6P identity "http://identifiers.org/kegg.compound/C00092",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A4170"
+  GlcE identity "http://identifiers.org/kegg.compound/C00293",
+                "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  GlcI identity "http://identifiers.org/obo.chebi/CHEBI%3A17234",
+                "http://identifiers.org/kegg.compound/C00293"
+  Gly identity "http://identifiers.org/kegg.compound/C00116",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17754"
+  Gly3P identity "http://identifiers.org/kegg.compound/C00093",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A15978"
+  NAD identity "http://identifiers.org/kegg.compound/C00003",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15846"
+  NADH identity "http://identifiers.org/kegg.compound/C00004",
+                "http://identifiers.org/obo.chebi/CHEBI%3A16908"
+  Pyr identity "http://identifiers.org/kegg.compound/C00022",
+               "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+  PyrE identity "http://identifiers.org/kegg.compound/C00022",
+                "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+end
+
+bakker1 is "bakker1"

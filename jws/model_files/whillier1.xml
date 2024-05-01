@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="whillier1" name="whillier1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ammi" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="glne" compartment="default_compartment" initialConcentration="1.36458e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="glni" compartment="default_compartment" initialConcentration="5.36717e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="glui" compartment="default_compartment" initialConcentration="3.81014e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_5" id="Kdgln" value="0" constant="false"/>
+      <parameter metaid="metaid_6" id="Kmtransglne" value="0.00025" constant="false"/>
+      <parameter metaid="metaid_7" id="Kmtransglni" value="0.00025" constant="false"/>
+      <parameter metaid="metaid_8" id="Vmaxtransglne" value="0" constant="false"/>
+      <parameter metaid="metaid_9" id="Vmaxtransglni" value="0" constant="false"/>
+      <parameter metaid="metaid_10" id="glnec" value="0" constant="false"/>
+      <parameter metaid="metaid_11" id="glnic" value="0" constant="false"/>
+      <parameter metaid="metaid_12" id="gluic" value="0" constant="false"/>
+      <parameter metaid="metaid_13" id="vole" value="0.00171" constant="false"/>
+      <parameter metaid="metaid_14" id="volhbn" value="0.0003741" constant="false"/>
+      <parameter metaid="metaid_15" id="voli" value="0.00129" constant="false"/>
+      <parameter metaid="metaid_16" id="voliw" value="0.0009159" constant="false"/>
+      <parameter metaid="metaid_17" id="voltotalw" value="0.0026259" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_18" variable="gluic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> glui </ci>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_19" variable="Vmaxtransglne">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 9.83 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_20" variable="Vmaxtransglni">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 9.83 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_21" variable="glnec">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> glne </ci>
+            <ci> vole </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_22" variable="glnic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> glni </ci>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_23" variable="Kdgln">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <cn> 0.000878 </cn>
+              <cn type="integer"> 60 </cn>
+            </apply>
+            <ci> voliw </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_26" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_24" species="glne" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_25" species="glni" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vmaxtransglne </ci>
+                <apply>
+                  <divide/>
+                  <ci> glne </ci>
+                  <ci> vole </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> glne </ci>
+                  <ci> vole </ci>
+                </apply>
+                <ci> Kmtransglne </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_29" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_27" species="glni" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_28" species="glne" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vmaxtransglni </ci>
+                <apply>
+                  <divide/>
+                  <ci> glni </ci>
+                  <ci> voliw </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> glni </ci>
+                  <ci> voliw </ci>
+                </apply>
+                <ci> Kmtransglni </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_33" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_30" species="glni" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_31" species="ammi" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_32" species="glui" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> glni </ci>
+                <ci> voliw </ci>
+              </apply>
+              <ci> Kdgln </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

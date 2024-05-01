@@ -1,0 +1,76 @@
+// Created by libAntimony v2.13.2
+model *brands1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species AMP in compartment_, Acetic_acid in compartment_, Amadori in compartment_;
+  species C5 in compartment_, Cn in compartment_, Formic_acid in compartment_;
+  species Fru in compartment_, Glu in compartment_, Melanoidin in compartment_;
+  species Triose in compartment_, lys_R in compartment_;
+
+  // Reactions:
+  _J1: Glu => Fru; _J1_K1*Glu;
+  _J10: lys_R + Fru => AMP; _J10_K10*Fru*lys_R;
+  _J11: AMP => Melanoidin; _J11_K11*AMP;
+  _J2: Fru => Glu; _J2_K2*Fru;
+  _J3: Glu => C5 + Formic_acid; _J3_K3*Glu;
+  _J4: Fru => C5 + Formic_acid; _J4_K4*Fru;
+  _J5: Fru => 2 Triose; _J5_K5*Fru;
+  _J6: Triose => Cn + Acetic_acid; _J6_K6*Triose;
+  _J7: lys_R + Glu => Amadori; _J7_K7*Glu*lys_R;
+  _J8: Amadori => Acetic_acid + lys_R; _J8_K8*Amadori;
+  _J9: Amadori => AMP; _J9_K9*Amadori;
+
+  // Species initializations:
+  AMP = 0;
+  Acetic_acid = 0;
+  Amadori = 0;
+  C5 = 0;
+  Cn = 0;
+  Formic_acid = 0;
+  Fru = 0;
+  Glu = 160/compartment_;
+  Melanoidin = 0;
+  Triose = 0;
+  lys_R = 15/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  _J1_K1 = 0.01;
+  _J10_K10 = 0.00015;
+  _J11_K11 = 0.12514;
+  _J2_K2 = 0.00509;
+  _J3_K3 = 0.00047;
+  _J4_K4 = 0.0011;
+  _J5_K5 = 0.00712;
+  _J6_K6 = 0.00439;
+  _J7_K7 = 0.00018;
+  _J8_K8 = 0.11134;
+  _J9_K9 = 0.14359;
+
+  // Other declarations:
+  const compartment_;
+
+  // Unit definitions:
+  unit millimole_default = 1e-3 mole;
+  unit minute_default = 60 second;
+
+  // Display Names:
+  millimole_default is "millimole (default)";
+  minute_default is "minute (default)";
+
+  // CV terms:
+  Acetic_acid identity "http://identifiers.org/chebi/CHEBI:15366",
+                       "http://identifiers.org/kegg.compound/C00033"
+  Formic_acid identity "http://identifiers.org/chebi/CHEBI:30751",
+                       "http://identifiers.org/kegg.compound/C00058"
+  Fru identity "http://identifiers.org/chebi/CHEBI:28757",
+               "http://identifiers.org/kegg.compound/C01496"
+  Glu identity "http://identifiers.org/chebi/CHEBI:17234",
+               "http://identifiers.org/kegg.compound/C00293"
+  lys_R identity "http://identifiers.org/chebi/CHEBI:32568"
+end
+
+brands1 is "brands1"

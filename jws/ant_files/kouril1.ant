@@ -1,0 +1,96 @@
+// Created by libAntimony v2.13.2
+model *kouril1()
+
+  // Compartments and Species:
+  species BPG, $GAP, NADP, NADPH, P2G, P3G, PEP, $PYR, Prb;
+
+  // Reactions:
+  v_1: NADP + $GAP -> BPG + NADPH; (VmfGAPDH*GAP*NADP/(KmGAPDHGAP*KmGAPDHNADP) - VmbGAPDH*BPG*NADPH/(KmGAPDHBPG*KmGAPDHNADPH))/((1 + GAP/KmGAPDHGAP + BPG/KmGAPDHBPG)*(1 + NADP/KmGAPDHNADP + NADPH/KmGAPDHNADPH));
+  v_2: BPG -> P3G + Prb; VmPGK*(KeqPGK*BPG*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(1 - 4*KeqAK) - ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)*P3G/(2 - 8*KeqAK))/(KmPGKATP*KmPGKP3G*(1 + (SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((1 - 4*KeqAK)*KmPGKADP) + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPGKATP))*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G));
+  v_3: P3G -> P2G; (VmPGAM/KmPGAMP3G)*(P3G - P2G/KeqPGAM)/(1 + P3G/KmPGAMP3G + P2G/KmPGAMP2G);
+  v_4: P2G -> PEP; (VmENO/KmENOP2G)*(P2G - PEP/KeqENO)/(1 + P2G/KmENOP2G + PEP/KmENOPEP);
+  v_5: PEP -> Prb + $PYR; (VmPYK/(KmPYKPEP*KmPYKADP))*(PEP*(SUMAXP - ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(1 - 4*KeqAK) - PYR*(((Prb - 4*KeqAK*Prb - SUMAXP) + ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(2 - 8*KeqAK))/KeqPYK)/((1 + PEP/KmPYKPEP + PYR/KmPYKPYR)*(1 + ((Prb - 4*KeqAK*Prb - SUMAXP) + ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(2 - 8*KeqAK)/KmPYKATP + (SUMAXP - ((Prb^2 - 4*KeqAK*Prb^2 - 2*Prb*SUMAXP) + 8*KeqAK*Prb*SUMAXP + SUMAXP^2)^0.5)/(1 - 4*KeqAK)/KmPYKADP));
+  v_6: NADPH -> NADP; k1*NADPH;
+  v_7: BPG -> P3G; k99*BPG;
+  v_8: NADP + $GAP -> NADPH + P3G; Vm*GAP*NADP/(Kms17*Kms27)/((1 + GAP/Kms17)*(1 + NADP/Kms27));
+  v_9: Prb -> ; k8*Prb;
+
+  // Species initializations:
+  BPG = 5.2237048281e-05;
+  GAP = 0.77;
+  NADP = 1.54287095;
+  NADPH = 0.037129052;
+  P2G = 0.0146943;
+  P3G = 0.081090648;
+  PEP = 0.091284474;
+  PYR = 8.5;
+  Prb = 6.2961983;
+
+  // Variable initializations:
+  KeqAK = 0.45;
+  KeqENO = 6.7;
+  KeqG3PDH = 4300;
+  KeqPGAM = 0.19;
+  KeqPGK = 3200;
+  KeqPYK = 6500;
+  KmENOP2G = 0.04;
+  KmENOPEP = 0.5;
+  KmGAPDHBPG = 92.4;
+  KmGAPDHGAP = 4.6;
+  KmGAPDHNADP = 0.31;
+  KmGAPDHNADPH = 0.025;
+  KmPGAMP2G = 0.08;
+  KmPGAMP3G = 1.2;
+  KmPGKADP = 0.2;
+  KmPGKATP = 0.3;
+  KmPGKBPG = 0.003;
+  KmPGKP3G = 0.53;
+  KmPYKADP = 0.113;
+  KmPYKATP = 1.5;
+  KmPYKPEP = 0.26;
+  KmPYKPYR = 21;
+  Kms17 = 1;
+  Kms27 = 0.18;
+  SUMAXP = 4.1;
+  Vm = 0;
+  VmENO = 365.806;
+  VmPGAM = 2525.81;
+  VmPGI = 339.677;
+  VmPGK = 1306.45;
+  VmPYK = 40;
+  VmbGAPDH = 66;
+  VmfGAPDH = 66;
+  k1 = 170;
+  k8 = 2.005;
+  k99 = 0;
+
+  // Other declarations:
+  var KeqAK, KeqENO, KeqG3PDH, KeqPGAM, KeqPGK, KeqPYK, KmENOP2G, KmENOPEP;
+  var KmGAPDHBPG, KmGAPDHGAP, KmGAPDHNADP, KmGAPDHNADPH, KmPGAMP2G, KmPGAMP3G;
+  var KmPGKADP, KmPGKATP, KmPGKBPG, KmPGKP3G, KmPYKADP, KmPYKATP, KmPYKPEP;
+  var KmPYKPYR, Kms17, Kms27, SUMAXP, Vm, VmENO, VmPGAM, VmPGI, VmPGK, VmPYK;
+  var VmbGAPDH, VmfGAPDH, k1, k8, k99;
+
+  // Unit definitions:
+  unit L = litre;
+  unit mM = 1e-3 mole / litre;
+  unit min = 60 second;
+  unit mmol = 1e-3 mole;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+
+  // CV terms:
+  BPG identity "http://identifiers.org/ec-code/5.4.2.4"
+  GAP identity "http://identifiers.org/kegg.compound/C00118"
+  NADP identity "http://identifiers.org/kegg.compound/C00006"
+  NADPH identity "http://identifiers.org/kegg.compound/C00004"
+  P2G identity "http://identifiers.org/kegg.compound/C00631"
+  P3G identity "http://identifiers.org/kegg.compound/C00197"
+  PEP identity "http://identifiers.org/kegg.compound/C00074"
+  PYR identity "http://identifiers.org/kegg.compound/C00022"
+  Prb identity "http://identifiers.org/kegg.compound/C00002"
+end
+
+kouril1 is "kouril1"

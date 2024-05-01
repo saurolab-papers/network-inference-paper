@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *rong1()
+
+  // Compartments and Species:
+  species T, TEstar, Tstar, V;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v2: T -> ; d*T;
+  v3: T -> TEstar; k*T*V;
+  v4: TEstar -> T; b*TEstar;
+  v5: TEstar -> Tstar; phi*TEstar;
+  v6: TEstar -> ; deltaE*TEstar;
+  v7: Tstar -> ; delta*Tstar;
+  v8:  -> V; p*Tstar;
+  v9: V -> ; c*V;
+
+  // Species initializations:
+  T = 1000000;
+  TEstar = 0;
+  Tstar = 0;
+  V = 1e-06;
+
+  // Variable initializations:
+  b = 0.01;
+  c = 23;
+  d = 0.01;
+  delta = 1;
+  deltaE = 0.7;
+  k = 2.4e-08;
+  lambda = 10000;
+  p = 4000;
+  phi = 0.8;
+
+  // Other declarations:
+  var b, c, d, delta, deltaE, k, lambda, p, phi;
+end
+
+rong1 is "rong1"

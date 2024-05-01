@@ -1,0 +1,57 @@
+// Created by libAntimony v2.13.2
+model *kolodkin8()
+
+  // Compartments and Species:
+  species Deg, ImpNRLc, ImpNRLn, Impc, Impn, NRLcyt, NRLnuc, RE, RENRLnuc;
+
+  // Reactions:
+  v_1: NRLnuc + RE -> RENRLnuc; k5f*NRLnuc*RE - k5b*RENRLnuc;
+  v_2: Impn + NRLnuc -> ImpNRLn; -(k4b*ImpNRLn) + k4f*Impn*NRLnuc;
+  v_3: Impc + NRLcyt -> ImpNRLc; -(k1b*ImpNRLc) + k1f*Impc*NRLcyt;
+  v_4: Impc -> 3.44444 Impn; (Kap3f*Impc - Kap3b*Impn)/Vcytosol;
+  v_5: ImpNRLc -> 3.44444 ImpNRLn; (Kap2f*ImpNRLc - Kap2b*ImpNRLn)/Vcytosol;
+  v_6: RENRLnuc -> Deg + RE; k6*RENRLnuc + 0*NRLnuc + 0*RE + 0*Impn + 0*Impc + 0*NRLcyt + 0*ImpNRLc + 0*RENRLnuc + 0*ImpNRLn + 0*Deg + 0*NRLnuc + 0*RE + 0*Impn + 0*Impc + 0*NRLcyt + 0*ImpNRLc + 0*RENRLnuc + 0*ImpNRLn + 0*Deg;
+
+  // Species initializations:
+  Deg = 0;
+  ImpNRLc = 0;
+  ImpNRLn = 0;
+  Impc = 0.84;
+  Impn = 0;
+  NRLcyt = 0.84;
+  NRLnuc = 0;
+  RE = 3.7;
+  RENRLnuc = 0;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  Kap2b = 5.4e-12;
+  Kap2f = 5.4e-12;
+  Kap3b = 5.4e-12;
+  Kap3f = 5.4e-12;
+  Vcytosol = 1.55e-12;
+  Vnucleus = 4.5e-13;
+  k1b = 300;
+  k1f = 60;
+  k4b = 300;
+  k4f = 60;
+  k5b = 60;
+  k5f = 60;
+  k6 = 0.1;
+
+  // Other declarations:
+  var EXTERNAL, Kap2b, Kap2f, Kap3b, Kap3f, Vcytosol, Vnucleus, k1b, k1f;
+  var k4b, k4f, k5b, k5f, k6;
+
+  // Unit definitions:
+  unit nmol = 1e-9 mole;
+  unit nM = 1e-9 mole / litre;
+  unit L = litre;
+  unit min = 60 second;
+  unit volume = L;
+  unit substance = nmol;
+  unit extent = nM;
+  unit time_unit = min;
+end
+
+kolodkin8 is "kolodkin8"

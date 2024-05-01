@@ -1,0 +1,20 @@
+// Created by libAntimony v2.13.2
+model *ho1()
+
+  // Compartments and Species:
+  species T;
+
+  // Reactions:
+  v1:  -> T; mu*T;
+
+  // Species initializations:
+  T = 293;
+
+  // Variable initializations:
+  mu = 0.005;
+
+  // Other declarations:
+  var mu;
+end
+
+ho1 is "ho1"

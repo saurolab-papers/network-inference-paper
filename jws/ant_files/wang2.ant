@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *wang2()
+
+  // Compartments and Species:
+  species CC, Mstar, T, Tstar, V;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v10: V -> ; d4*V;
+  v11:  -> CC; d3*Nc*Mstar;
+  v12: CC -> ; d5*CC;
+  v2: T -> Tstar; k*T*V;
+  v3: T -> Tstar; gammai*k*CC*T*V;
+  v4: T -> ; d1*T;
+  v5: Tstar -> Mstar; f*k*T*V;
+  v6: Tstar -> Mstar; f*gammai*k*CC*T*V;
+  v7: Tstar -> ; d2*Tstar;
+  v8: Mstar -> ; d3*Mstar;
+  v9:  -> V; pv*Tstar;
+
+  // Species initializations:
+  CC = 0;
+  Mstar = 0;
+  T = 1000000;
+  Tstar = 0;
+  V = 0.001;
+
+  // Variable initializations:
+  Nc = 15;
+  d1 = 0.01;
+  d2 = 1;
+  d3 = 0.001;
+  d4 = 23;
+  d5 = 6.6;
+  f = 0.95;
+  gammai = 0.00015;
+  k = 2.4e-08;
+  lambda = 10000;
+  pv = 30000;
+
+  // Other declarations:
+  var Nc, d1, d2, d3, d4, d5, f, gammai, k, lambda, pv;
+end
+
+wang2 is "wang2"

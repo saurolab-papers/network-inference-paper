@@ -1,0 +1,85 @@
+// Created by libAntimony v2.13.2
+model *goldbeter4()
+
+  // Compartments and Species:
+  compartment cytosol, store;
+  species Y in store, Z in cytosol;
+
+  // Reactions:
+  R0:  => Z; cytosol*v0;
+  R1:  => Z; cytosol*v1*beta;
+  R2: Z => Y; cytosol*(Vm2*Z^n/(K2^n + Z^n));
+  R3: Y => Z; store*(Vm3*Y^m*Z^p/((Kr^m + Y^m)*(Ka^p + Z^p)));
+  R_eff: Z => ; cytosol*k*Z;
+  Rf: Y => Z; store*kf*Y;
+
+  // Species initializations:
+  Y = 1.6/store;
+  Z = 0.15/cytosol;
+
+  // Compartment initializations:
+  cytosol = 1;
+  store = 1;
+
+  // Variable initializations:
+  K2 = 1;
+  K2 has uM;
+  Ka = 0.9;
+  Ka has uM;
+  Kr = 2;
+  Kr has uM;
+  Vm2 = 65;
+  Vm2 has uM_per_sec;
+  Vm3 = 500;
+  Vm3 has uM_per_sec;
+  beta = 0.301;
+  beta has dimensionless;
+  k = 10;
+  k has sec_inv;
+  kf = 1;
+  kf has sec_inv;
+  m = 2;
+  m has dimensionless;
+  n = 2;
+  n has dimensionless;
+  p = 4;
+  p has dimensionless;
+  v0 = 1;
+  v0 has uM_per_sec;
+  v1 = 7.3;
+  v1 has uM_per_sec;
+
+  // Other declarations:
+  const cytosol, store, K2, Ka, Kr, Vm2, Vm3, beta, k, kf, m, n, p, v0, v1;
+
+  // Unit definitions:
+  unit micromole = 1e-6 mole;
+  unit uM_per_sec = 1e-6 mole / (litre * second);
+  unit sec_inv = 1 / second;
+  unit uM = 1e-6 mole / litre;
+
+  // Display Names:
+  R0 is "Ca influx";
+  R1 is "InsP3 dependent Ca influx";
+  R2 is "ATP driven Ca pumping into store";
+  R3 is "ATP driven pumping into cytosol";
+  R_eff is "Ca efflux";
+  Rf is "Ca leak";
+
+  // CV terms:
+  cytosol identity "http://identifiers.org/go/GO:0005829"
+  store identity "http://identifiers.org/go/GO:0005783"
+  Y identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Z identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  R0 identity "http://identifiers.org/go/GO:0006816"
+  R1 identity "http://identifiers.org/go/GO:0005220"
+  R2 identity "http://identifiers.org/go/GO:0032470"
+  R3 identity "http://identifiers.org/go/GO:0007204",
+              "http://identifiers.org/go/GO:0048763"
+  R_eff identity "http://identifiers.org/go/GO:0006816"
+  Rf identity "http://identifiers.org/go/GO:0007204"
+end
+
+goldbeter4 is "goldbeter4"

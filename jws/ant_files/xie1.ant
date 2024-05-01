@@ -1,0 +1,257 @@
+// Created by libAntimony v2.13.2
+model *xie1()
+
+  // Compartments and Species:
+  compartment wholeCell;
+  species CC in wholeCell, CCPT in wholeCell, CLK in wholeCell, $CYC in wholeCell;
+  species PDP in wholeCell, PER in wholeCell, PT in wholeCell, TIM in wholeCell;
+  species VRI in wholeCell, clkm in wholeCell, clkp in wholeCell, pdpm in wholeCell;
+  species pdpp in wholeCell, perm in wholeCell, perp in wholeCell, prcpdp in wholeCell;
+  species prcper in wholeCell, prct in wholeCell, prcv in wholeCell, prpc in wholeCell;
+  species prvc in wholeCell, timm in wholeCell, timp in wholeCell, vrim in wholeCell;
+  species vrip in wholeCell;
+
+  // Reactions:
+  re1: PT + CC => CCPT; wholeCell*CC*PT*bccpt;
+  re10:  => CLK; wholeCell*clkm*tlclk;
+  re15: perm => ; wholeCell*perm*dperm;
+  re17:  => PER; wholeCell*perm*tlper;
+  re2: CC => ; wholeCell*CC*dcc;
+  re20:  => perm; wholeCell*((1 - (1 - prcper)^npt)*tcccperp + (1 - prcper)^npt*tcdvpmt)*perp;
+  re28:  => vrim; wholeCell*((1 - (1 - prcv)^nvri)*tcccvrip + (1 - prcv)^nvri*tcdvpmt)*vrip;
+  re3: CCPT => ; wholeCell*CCPT*dccpt;
+  re30: vrim => ; wholeCell*vrim*dvrim;
+  re31:  => VRI; wholeCell*vrim*tlvri;
+  re32: VRI => ; wholeCell*VRI*dvri;
+  re35:  => pdpm; wholeCell*((1 - (1 - prcpdp)^npdp)*tcccpdpp + (1 - prcpdp)^npdp*tcdvpmt)*pdpp;
+  re37: pdpm => ; wholeCell*pdpm*dpdpm;
+  re38:  => PDP; wholeCell*pdpm*tlpdp;
+  re39: PDP => ; wholeCell*PDP*dpdp;
+  re4: PT => ; wholeCell*PT*dpt;
+  re42:  => clkm; wholeCell*(prvc*tcvriclkp + prpc*tcpdpclkp + (1 - prvc - prpc)*tcclkp)*clkp;
+  re43: $CYC + CLK => CC; wholeCell*CLK*bcc*CYC;
+  re44: CLK => ; wholeCell*CLK*dclk;
+  re45: CC => $CYC + CLK; wholeCell*CC*ubcc;
+  re46: TIM + PER => PT; wholeCell*PER*TIM*bpt;
+  re47: PT => TIM + PER; wholeCell*PT*ubpt;
+  re48: PER => ; wholeCell*PER*dper;
+  re51:  => timm; wholeCell*((1 - (1 - prct)^npt)*tccctimp + (1 - prct)^npt*tcdvpmt)*timp;
+  re53: timm => ; wholeCell*timm*dtimm;
+  re54:  => TIM; wholeCell*timm*tltim;
+  re55: TIM => ; wholeCell*TIM*dtim;
+  re56: CCPT => PT + CC; wholeCell*CCPT*ubccpt;
+  re57:  => prcper; wholeCell*(1 - prcper)*bccperp*CC;
+  re58: prcper => ; wholeCell*prcper*ubccperp;
+  re59: prcv => ; wholeCell*ubccvrip*prcv;
+  re60:  => prcv; wholeCell*(1 - prcv)*bccvrip*CC;
+  re61: prcpdp => ; wholeCell*ubccpdpp*prcpdp;
+  re62:  => prcpdp; wholeCell*(1 - prcpdp)*bccpdpp*CC;
+  re63:  => prvc; wholeCell*(1 - prvc - prpc)*bvriclkp*VRI;
+  re64: prvc => ; wholeCell*prvc*ubvriclkp;
+  re65:  => prpc; wholeCell*(1 - prvc - prpc)*bpdpclkp*PDP;
+  re66: prpc => ; wholeCell*prpc*ubpdpclkp;
+  re68:  => prct; wholeCell*(1 - prct)*bcctimp*CC;
+  re69: prct => ; wholeCell*prct*ubcctimp;
+  re9: clkm => ; wholeCell*clkm*dclkm;
+
+  // Species initializations:
+  CC = 0.5566/wholeCell;
+  CCPT = 0.4982/wholeCell;
+  CLK = 3.6628/wholeCell;
+  CYC = 1;
+  PDP = 4.1953/wholeCell;
+  PER = 2.7527/wholeCell;
+  PT = 0.4014/wholeCell;
+  TIM = 2.7527/wholeCell;
+  VRI = 3.175/wholeCell;
+  clkm = 0.2583/wholeCell;
+  clkp = 0.003185/wholeCell;
+  pdpm = 0.3175/wholeCell;
+  pdpp = 0.003185/wholeCell;
+  perm = 0.2395/wholeCell;
+  perp = 0.003185/wholeCell;
+  prcpdp = 0;
+  prcper = 0;
+  prct = 0;
+  prcv = 0;
+  prpc = 0;
+  prvc = 0;
+  timm = 0.2395/wholeCell;
+  timp = 0.003185/wholeCell;
+  vrim = 0.2571/wholeCell;
+  vrip = 0.003185/wholeCell;
+
+  // Compartment initializations:
+  wholeCell = 1;
+
+  // Variable initializations:
+  bcc = 2.349;
+  bccpdpp = 0.062;
+  bccperp = 0.069;
+  bccpt = 51;
+  bcctimp = 0.069;
+  bccvrip = 0.1;
+  bpdpclkp = 1.155;
+  bpt = 1.1;
+  bvriclkp = 1.858;
+  dcc = 0.184;
+  dccpt = 15.06;
+  dclk = 0.2;
+  dclkm = 0.643;
+  dpdp = 0.156;
+  dpdpm = 0.06;
+  dper = 0.62;
+  dperm = 0.053;
+  dpt = 0.279;
+  dtim = 0.62;
+  dtimm = 0.053;
+  dvri = 1.226;
+  dvrim = 0.07;
+  npdp = 6;
+  npt = 5;
+  nvri = 4;
+  tcccpdpp = 9.831;
+  tcccperp = 11;
+  tccctimp = 11;
+  tcccvrip = 16.86;
+  tcclkp = 1.42;
+  tcdvpmt = 0.028;
+  tcpdpclkp = 125.54;
+  tcvriclkp = 0.053;
+  tlclk = 35;
+  tlpdp = 1.87;
+  tlper = 36;
+  tltim = 36;
+  tlvri = 14.68;
+  ubcc = 0.89;
+  ubccpdpp = 0.145;
+  ubccperp = 0.262;
+  ubccpt = 7.89;
+  ubcctimp = 0.262;
+  ubccvrip = 0.276;
+  ubpdpclkp = 0.952;
+  ubpt = 2.93;
+  ubvriclkp = 1.043;
+
+  // Other declarations:
+  const wholeCell, bcc, bccpdpp, bccperp, bccpt, bcctimp, bccvrip, bpdpclkp;
+  const bpt, bvriclkp, dcc, dccpt, dclk, dclkm, dpdp, dpdpm, dper, dperm;
+  const dpt, dtim, dtimm, dvri, dvrim, npdp, npt, nvri, tcccpdpp, tcccperp;
+  const tccctimp, tcccvrip, tcclkp, tcdvpmt, tcpdpclkp, tcvriclkp, tlclk;
+  const tlpdp, tlper, tltim, tlvri, ubcc, ubccpdpp, ubccperp, ubccpt, ubcctimp;
+  const ubccvrip, ubpdpclkp, ubpt, ubvriclkp;
+
+  // Unit definitions:
+  unit hour = 3600 second;
+  unit nano_mole = 1e-9 mole;
+
+  // Display Names:
+  nano_mole is "nano mole";
+  prcpdp is "CCbindingpdp";
+  prcper is "CCbindingPer";
+  prct is "CCbindingtim";
+  prcv is "CCbindingvri";
+  prpc is "PDPbindingclkp";
+  prvc is "VRIbindingclkp";
+  re1 is "CC PT association";
+  re10 is "clkm translation";
+  re15 is "Degradation of per mRNA";
+  re17 is "perm translation";
+  re2 is "Degradation of CLK CYK dimer";
+  re20 is "per transcription";
+  re28 is "vri transcription";
+  re3 is "Degradation of CC PT dimer";
+  re30 is "Degradation of vri mRNA";
+  re31 is "vrim translation";
+  re32 is "VRI protein degradation";
+  re35 is "pdp transcription";
+  re37 is "Degradation of pdp mRNA";
+  re38 is "pdpm translation";
+  re39 is "PDP protein degradation";
+  re4 is "Degradation of PER TIM dimer";
+  re42 is "clk transcription";
+  re43 is "CLK CYC association";
+  re44 is "CLK protein degradation";
+  re45 is "CLK CYC dissociation";
+  re46 is "PER TIM association";
+  re47 is "PER TIM dissociation";
+  re48 is "PER protein degradation";
+  re51 is "tim transcription";
+  re53 is "Degradation of tim mRNA";
+  re54 is "timm translation";
+  re55 is "TIM protein degradation";
+  re56 is "CC PT dimer dissociation";
+  re57 is "CC binding probability in per promoter";
+  re58 is "CC Unbinding probability in per promoter";
+  re59 is "CC Unbinding probability in vri promoter";
+  re60 is "CC binding probability in vri promoter";
+  re61 is "CC Unbinding probability in pdp1 promoter";
+  re62 is "CC binding probability in pdp1 promoter";
+  re63 is "VRI binding clk promoter";
+  re64 is "VRI unbinding clk promoter";
+  re65 is "PDP binding clk promoter";
+  re66 is "PDP unbinding clk promoter";
+  re68 is "CC binding probability in tim promoter";
+  re69 is "CC Unbinding probability in tim promoter";
+  re9 is "Degradation of clk mRNA";
+
+  // CV terms:
+  wholeCell identity "http://identifiers.org/obo.go/GO:0005623"
+  CC part "http://identifiers.org/uniprot/O61735",
+          "http://identifiers.org/uniprot/O61734"
+  CCPT part "http://identifiers.org/uniprot/O61735",
+            "http://identifiers.org/uniprot/O61734",
+            "http://identifiers.org/uniprot/P07663",
+            "http://identifiers.org/uniprot/Q59E16"
+  CLK hypernym "http://identifiers.org/uniprot/O61735"
+  CYC hypernym "http://identifiers.org/uniprot/O61734"
+  PDP hypernym "http://identifiers.org/uniprot/Q9TW49"
+  PER hypernym "http://identifiers.org/uniprot/P07663"
+  PT part "http://identifiers.org/uniprot/P07663",
+          "http://identifiers.org/uniprot/Q59E16"
+  TIM hypernym "http://identifiers.org/uniprot/Q59E16"
+  VRI identity "http://identifiers.org/uniprot/Q9VMS4"
+  re1 hypernym "http://identifiers.org/obo.go/GO:0046982"
+  re10 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  re15 hypernym "http://identifiers.org/obo.go/GO:0006402"
+  re17 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  re2 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re20 hypernym "http://identifiers.org/obo.go/GO:0006351"
+  re28 hypernym "http://identifiers.org/obo.go/GO:0006351"
+  re3 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re30 hypernym "http://identifiers.org/obo.go/GO:0006402"
+  re31 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  re32 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re35 hypernym "http://identifiers.org/obo.go/GO:0006351"
+  re37 hypernym "http://identifiers.org/obo.go/GO:0006402"
+  re38 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  re39 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re4 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re42 hypernym "http://identifiers.org/obo.go/GO:0006351"
+  re43 hypernym "http://identifiers.org/obo.go/GO:0046982"
+  re44 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re45 hypernym "http://identifiers.org/obo.go/GO:0043624"
+  re46 hypernym "http://identifiers.org/obo.go/GO:0046982"
+  re47 hypernym "http://identifiers.org/obo.go/GO:0043624"
+  re48 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re51 hypernym "http://identifiers.org/obo.go/GO:0006351"
+  re53 hypernym "http://identifiers.org/obo.go/GO:0006402"
+  re54 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  re55 hypernym "http://identifiers.org/obo.go/GO:0044257"
+  re56 hypernym "http://identifiers.org/obo.go/GO:0046982"
+  re57 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re58 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re59 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re60 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re61 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re62 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re63 hypernym "http://identifiers.org/obo.go/GO:0030528"
+  re64 hypernym "http://identifiers.org/obo.go/GO:0030528"
+  re65 hypernym "http://identifiers.org/obo.go/GO:0003700"
+  re66 hypernym "http://identifiers.org/obo.go/GO:0043433"
+  re68 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re69 hypernym "http://identifiers.org/obo.go/GO:0006357"
+  re9 hypernym "http://identifiers.org/obo.go/GO:0006402"
+end
+
+xie1 is "xie1"

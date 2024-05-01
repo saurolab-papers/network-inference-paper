@@ -1,0 +1,79 @@
+// Created by libAntimony v2.13.2
+model *teusink2()
+
+  // Compartments and Species:
+  species ATP, Fru16P2, $Glc, HMP;
+
+  // Reactions:
+  v_1: ATP + $Glc -> HMP; Glc*VHK*ATP/(KATP*KGlc*(1 + ATP/KATP)*(1 + Glc/KGlc + wildtype*HMP^2/KiTre6P));
+  v_2: ATP + HMP -> Fru16P2; gR*VPFK*ATP*HMP*(1 + ATP/KRATP + HMP/KRHMP + gR*ATP*HMP/(KRATP*KRHMP))/(KRATP*KRHMP*((1 + ATP/KRATP + HMP/KRHMP + gR*ATP*HMP/(KRATP*KRHMP))^2 + L0*(1 + ci*ATP/KiATP)^2*(1 + c2*ATP/KRATP + c1*HMP/KRHMP + c1*c2*gT*ATP*HMP/(KRATP*KRHMP))^2/(1 + ATP/KiATP)^2));
+  v_3: Fru16P2 -> 4 ATP; Vlower*(5 - ATP)*Fru16P2/(KADP*KFru16P2*(1 + (5 - ATP)/KADP)*(1 + Fru16P2/KFru16P2));
+  v_4: ATP -> ; VATPase*ATP/(KATP3 + ATP);
+
+  // Species initializations:
+  ATP = 4;
+  Fru16P2 = 1;
+  Glc = 10;
+  HMP = 0.1;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  KADP = 0.1;
+  KATP = 0.15;
+  KATP3 = 3;
+  KFru16P2 = 1;
+  KGlc = 1;
+  KRATP = 0.06;
+  KRHMP = 1;
+  KiATP = 10;
+  KiTre6P = 4.422;
+  L0 = 1000;
+  VATPase = 68;
+  VHK = 68;
+  VPFK = 30;
+  Vlower = 20;
+  c1 = 0.0005;
+  c2 = 1;
+  ci = 10;
+  gR = 10;
+  gT = 1;
+  wildtype = 1;
+
+  // Other declarations:
+  var EXTERNAL, KADP, KATP, KATP3, KFru16P2, KGlc, KRATP, KRHMP, KiATP, KiTre6P;
+  var L0, VATPase, VHK, VPFK, Vlower, c1, c2, ci, gR, gT, wildtype;
+
+  // Display Names:
+  Fru16P2 is "fructose 1,6-bisphosphate";
+  Glc is "glucose";
+  HMP is "hexose monophosphate";
+  v_1 is "hexokinase";
+  v_2 is "phosphofructokinase";
+  v_3 is "lower";
+  v_4 is "ATPase";
+
+  // CV terms:
+  ATP identity "http://identifiers.org/kegg.compound/C00002",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15422"
+  Fru16P2 identity "http://identifiers.org/obo.chebi/CHEBI%3A16905",
+                   "http://identifiers.org/kegg.compound/C00354"
+  Glc identity "http://identifiers.org/obo.chebi/CHEBI%3A17925",
+               "http://identifiers.org/kegg.compound/C00293"
+  HMP identity "http://identifiers.org/obo.chebi/CHEBI%3A16084",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17665"
+  v_1 identity "http://identifiers.org/reactome/REACT_1318",
+               "http://identifiers.org/interpro/IPR001312"
+  v_2 identity "http://identifiers.org/reactome/REACT_1840",
+               "http://identifiers.org/interpro/IPR022953"
+  v_3 identity "http://identifiers.org/ec-code/5.3.1.1",
+               "http://identifiers.org/ec-code/2.7.1.40",
+               "http://identifiers.org/ec-code/2.7.2.3",
+               "http://identifiers.org/ec-code/4.2.1.11",
+               "http://identifiers.org/ec-code/4.1.2.13",
+               "http://identifiers.org/ec-code/5.4.2.1",
+               "http://identifiers.org/ec-code/1.2.1.12"
+  v_4 identity "http://identifiers.org/obo.go/GO%3A0016887",
+               "http://identifiers.org/interpro/IPR020958"
+end
+
+teusink2 is "teusink2"

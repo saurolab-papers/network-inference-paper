@@ -1,0 +1,52 @@
+// Created by libAntimony v2.13.2
+model *hornberg1()
+
+  // Compartments and Species:
+  species $Inh, R, Rin, x1, x1p, x2, x2p, x3, x3p;
+
+  // Reactions:
+  v_1: R -> Rin; Vm1*R/(Km1 + R);
+  v_2: Rin -> R; Vm2*Rin/(Km2 + Rin);
+  v_3: x1 -> x1p; k3*R*x1/(Km3 + x1);
+  v_4: x1p -> x1; Vm4*x1p/(Km4 + x1p);
+  v_5: x2 -> x2p; k5*x1p*x2/(Km5 + x2);
+  v_6: x2p -> x2; Vm6*x2p/(Km6 + x2p);
+  v_7: x3 -> x3p; k7*x2p*x3/(Km7 + x3);
+  v_8: x3p -> x3; Vm8*x3p/Km8/(1 + x3p/Km8 + Inh/Ki8);
+
+  // Species initializations:
+  Inh = 0;
+  R = 0.5;
+  Rin = 0;
+  x1 = 1;
+  x1p = 0;
+  x2 = 1;
+  x2p = 0;
+  x3 = 1;
+  x3p = 0;
+
+  // Variable initializations:
+  Ki8 = 1;
+  Km1 = 0.1;
+  Km2 = 0.1;
+  Km3 = 0.1;
+  Km4 = 1;
+  Km5 = 0.1;
+  Km6 = 1;
+  Km7 = 0.1;
+  Km8 = 1;
+  Vm1 = 1;
+  Vm2 = 0.01;
+  Vm4 = 0.3;
+  Vm6 = 0.3;
+  Vm8 = 0.3;
+  k3 = 1;
+  k5 = 1;
+  k7 = 1;
+
+  // Other declarations:
+  var Ki8, Km1, Km2, Km3, Km4, Km5, Km6, Km7, Km8, Vm1, Vm2, Vm4, Vm6, Vm8;
+  var k3, k5, k7;
+end
+
+hornberg1 is "hornberg1"

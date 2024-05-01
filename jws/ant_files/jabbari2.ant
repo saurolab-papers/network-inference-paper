@@ -1,0 +1,77 @@
+// Created by libAntimony v2.13.2
+model *jabbari2()
+
+  // Compartments and Species:
+  species A, AP, B, M, P, R, Rstar, S, T, aa, c, d, $sink, $source;
+
+  // Reactions:
+  v_1: $source -> M; basal;
+  v_10: $source -> B + c + d; alpha*M;
+  v_11: B -> $sink; alpha*B;
+  v_12: $sink -> T; lambda*B;
+  v_13: c -> $sink; alpha*c;
+  v_14: $sink -> R; lambda*c;
+  v_15: d -> $sink; alpha*d;
+  v_16: $sink -> S; lambda*d;
+  v_17: T -> $sink; lambda*T;
+  v_18: aa -> $sink; beta*aa*R/epsilon;
+  v_19: $sink -> Rstar; aa*R;
+  v_2: $source -> M; v*P/epsilon;
+  v_20: R -> $sink; epsilon*eta*aa*R/phi;
+  v_21: $sink -> aa; beta*gamma_*Rstar/epsilon;
+  v_22: $sink -> R; epsilon*eta*gamma_*Rstar/phi;
+  v_23: Rstar -> $sink; gamma_*Rstar;
+  v_24: R -> $sink; lambda*R;
+  v_25: S -> $sink; lambda*S;
+  v_26: S -> $sink; k*S*T;
+  v_27: $sink -> aa; beta*k*phi*S*T/(epsilon^2*eta);
+  v_28: aa -> $sink; lambdaa*aa;
+  v_29: Rstar -> $sink; lambda*Rstar;
+  v_3: M -> $sink; M;
+  v_30: AP -> $sink; lambda*AP;
+  v_31: $source -> P; AP*(1 - P) - u*P;
+  v_4: $source -> A; lambda*M;
+  v_5: A -> $sink; eta*A*Rstar;
+  v_6: $sink -> AP; A*Rstar;
+  v_7: $source -> A; epsilon*eta*mu*AP;
+  v_8: AP -> $sink; epsilon*mu*AP;
+  v_9: A -> $sink; lambda*A;
+
+  // Species initializations:
+  A = 1;
+  AP = 0;
+  B = 1;
+  M = 1;
+  P = 0;
+  R = 1;
+  Rstar = 0;
+  S = 1;
+  T = 1;
+  aa = 0;
+  c = 1;
+  d = 1;
+  sink = 0;
+  source = 0;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  alpha = 1;
+  basal = 1;
+  beta = 1;
+  epsilon = 0.001;
+  eta = 1;
+  gamma_ = 1;
+  k = 1;
+  lambda = 1;
+  lambdaa = 1;
+  mu = 1;
+  phi = 1;
+  u = 1;
+  v = 1;
+
+  // Other declarations:
+  var EXTERNAL, alpha, basal, beta, epsilon, eta, gamma_, k, lambda, lambdaa;
+  var mu, phi, u, v;
+end
+
+jabbari2 is "jabbari2"

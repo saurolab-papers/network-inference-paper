@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="westerhoff1" name="westerhoff1">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="populationgrowth">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> S </ci>
+            </bvar>
+            <bvar>
+              <ci> T </ci>
+            </bvar>
+            <bvar>
+              <ci> k </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> k </ci>
+              <ci> S </ci>
+              <ci> T </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="Coronadeadnontested" name="Corona-dead-nontested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="Coronadeadtested" name="Corona-dead-tested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="Coronaregistered" name="Corona-registered" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="coronadead" name="% corona dead" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="coronadeadalldead" name="corona dead / all dead (%)" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="coronarecovered" name="% corona recovered" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="infectednontested" name="infected-nontested" compartment="default" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="infectedtested" name="infected-tested" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="noncoronadead" name="non-corona-dead" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="noncoronadeadperc" name="% non corona dead" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="recoverednontested" name="recovered-nontested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="recoveredtested" name="recovered-tested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="s" name="S" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_14" id="symptomsnontested" name="symptoms-nontested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="symptomstested" name="symptoms-tested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="totalpopulation" name="total population" compartment="default" initialConcentration="630003" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="uninfectednontested" name="uninfectednon-tested" compartment="default" initialConcentration="630000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="uninfectedtested" name="uninfected-tested" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_19" id="Birthrate" value="3.29e-05" constant="false"/>
+      <parameter metaid="metaid_20" id="Coronadeathrateconstant" value="0.002" constant="false"/>
+      <parameter metaid="metaid_21" id="Coronarecover" value="0.067" constant="false"/>
+      <parameter metaid="metaid_22" id="Governmentinducedisolation" name="Governmentinducedisolation" value="1" constant="false"/>
+      <parameter metaid="metaid_23" id="Infectionfromnontesednosymptoms" value="0.508" constant="false"/>
+      <parameter metaid="metaid_24" id="Infectionfromnontestedsymptoms" value="0.25" constant="false"/>
+      <parameter metaid="metaid_25" id="Infectionfromtestednosymtoms" value="0.025" constant="false"/>
+      <parameter metaid="metaid_26" id="Infectionfromtestedsymptoms" value="0.025" constant="false"/>
+      <parameter metaid="metaid_27" id="ModelValue40" value="534700" constant="false"/>
+      <parameter metaid="metaid_28" id="ModelValue51" value="0" constant="false"/>
+      <parameter metaid="metaid_29" id="Normaldeath" value="3.29e-05" constant="false"/>
+      <parameter metaid="metaid_30" id="SocialDistance" value="534700" constant="false"/>
+      <parameter metaid="metaid_31" id="Symptomsappear" value="0.30165" constant="false"/>
+      <parameter metaid="metaid_32" id="TestingRandome" value="0.0008" constant="false"/>
+      <parameter metaid="metaid_33" id="TestingforSymptoms" value="500" constant="false"/>
+      <parameter metaid="metaid_34" id="Timegovermentaction" value="15" constant="false"/>
+      <parameter metaid="metaid_35" id="TotalInfectioncoefficient" value="0" constant="false"/>
+      <parameter metaid="metaid_36" id="adjF" name="adjustmentFactor " value="1" constant="false"/>
+      <parameter metaid="metaid_37" id="epidemicextinguished" value="0" constant="false"/>
+      <parameter metaid="metaid_38" id="governmentresponsefactortodiagnosedinfected" value="0" constant="false"/>
+      <parameter metaid="metaid_39" id="intermittenttime" value="0" constant="false"/>
+      <parameter metaid="metaid_40" id="lockdownduration" value="730" constant="false"/>
+      <parameter metaid="metaid_41" id="lockdownpauseduration" value="7" constant="false"/>
+      <parameter metaid="metaid_42" id="nlockdowns" value="0" constant="false"/>
+      <parameter metaid="metaid_43" id="npauses" value="0" constant="false"/>
+      <parameter metaid="metaid_44" id="numbercutoff" value="0" constant="false"/>
+      <parameter metaid="metaid_45" id="symptomaticnumbertolerance" value="141" constant="false"/>
+      <parameter metaid="metaid_46" id="timefractionlockdown" value="0.5" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_47" variable="totalpopulation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> recoveredtested </ci>
+            <ci> recoverednontested </ci>
+            <ci> infectednontested </ci>
+            <ci> infectedtested </ci>
+            <ci> uninfectednontested </ci>
+            <ci> uninfectedtested </ci>
+            <ci> symptomstested </ci>
+            <ci> symptomsnontested </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_48" variable="coronadead">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 100 </cn>
+              <apply>
+                <plus/>
+                <ci> Coronadeadtested </ci>
+                <ci> Coronadeadnontested </ci>
+              </apply>
+            </apply>
+            <ci> totalpopulation </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_49" variable="coronadeadalldead">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 100 </cn>
+              <ci> coronadead </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> coronadead </ci>
+              <ci> noncoronadead </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_50" variable="noncoronadeadperc">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 100 </cn>
+              <ci> noncoronadead </ci>
+            </apply>
+            <ci> totalpopulation </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_51" variable="coronarecovered">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 100 </cn>
+              <apply>
+                <plus/>
+                <ci> recoveredtested </ci>
+                <ci> recoverednontested </ci>
+              </apply>
+            </apply>
+            <ci> totalpopulation </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_52" variable="Coronaregistered">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> Coronadeadtested </ci>
+            <ci> recoveredtested </ci>
+            <ci> infectedtested </ci>
+            <ci> symptomstested </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_53" variable="intermittenttime">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <apply>
+                <times/>
+                <ci> lockdownduration </ci>
+                <ci> nlockdowns </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> nlockdowns </ci>
+              <ci> lockdownpauseduration </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_54" variable="TotalInfectioncoefficient">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <ci> epidemicextinguished </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> Infectionfromnontesednosymptoms </ci>
+                  <ci> infectednontested </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Infectionfromtestednosymtoms </ci>
+                  <ci> infectedtested </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Infectionfromtestedsymptoms </ci>
+                  <ci> symptomstested </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Infectionfromnontestedsymptoms </ci>
+                  <ci> symptomsnontested </ci>
+                </apply>
+              </apply>
+            </apply>
+            <ci> SocialDistance </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_55" variable="Governmentinducedisolation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> adjF </ci>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <cn> 2.5 </cn>
+                        <ci> symptomaticnumbertolerance </ci>
+                      </apply>
+                      <ci> symptomaticnumbertolerance </ci>
+                    </apply>
+                    <ci> symptomstested </ci>
+                  </apply>
+                  <ci> symptomaticnumbertolerance </ci>
+                </apply>
+                <ci> governmentresponsefactortodiagnosedinfected </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_58" id="re1" name="re1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="uninfectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_57" species="infectednontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> uninfectednontested </ci>
+              <ci> TotalInfectioncoefficient </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="re10" name="re10" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="symptomsnontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_60" species="recoverednontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronarecover </ci>
+              <ci> symptomsnontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_65" id="re11" name="re11" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="uninfectednontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_64" species="totalpopulation"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> populationgrowth </ci>
+              <ci> s </ci>
+              <ci> totalpopulation </ci>
+              <ci> Birthrate </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_68" id="re12" name="re12" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_66" species="uninfectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_67" species="noncoronadead" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Normaldeath </ci>
+              <ci> uninfectednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_71" id="re13" name="re13" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_69" species="recoveredtested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_70" species="noncoronadead" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Normaldeath </ci>
+              <ci> recoveredtested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_74" id="re14" name="re14" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_72" species="recoverednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_73" species="noncoronadead" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Normaldeath </ci>
+              <ci> recoverednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_77" id="re15" name="re15" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_75" species="infectedtested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_76" species="Coronadeadtested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronadeathrateconstant </ci>
+              <ci> infectedtested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_80" id="re16" name="re16" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_78" species="infectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_79" species="Coronadeadnontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronadeathrateconstant </ci>
+              <ci> infectednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_83" id="re17" name="re17" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_81" species="uninfectedtested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_82" species="noncoronadead" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Normaldeath </ci>
+              <ci> uninfectedtested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_86" id="re18" name="re18" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_84" species="symptomsnontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_85" species="Coronadeadnontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronadeathrateconstant </ci>
+              <ci> symptomsnontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_89" id="re2" name="re2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_87" species="uninfectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_88" species="uninfectedtested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> TestingRandome </ci>
+              <ci> uninfectednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_92" id="re3" name="re3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_90" species="uninfectedtested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_91" species="infectednontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> uninfectedtested </ci>
+              <ci> TotalInfectioncoefficient </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_95" id="re4" name="re4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_93" species="infectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_94" species="infectedtested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> TestingRandome </ci>
+              <ci> infectednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_98" id="re5" name="re5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_96" species="infectednontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_97" species="symptomsnontested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Symptomsappear </ci>
+              <ci> infectednontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="re6" name="re6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_99" species="infectedtested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_100" species="symptomstested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Symptomsappear </ci>
+              <ci> infectedtested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="re7" name="re7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_102" species="symptomsnontested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="symptomstested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> TestingforSymptoms </ci>
+              <ci> symptomsnontested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_107" id="re8" name="re8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_105" species="symptomstested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_106" species="Coronadeadtested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronadeathrateconstant </ci>
+              <ci> symptomstested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_110" id="re9" name="re9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_108" species="symptomstested" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_109" species="recoveredtested" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Coronarecover </ci>
+              <ci> symptomstested </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event metaid="metaid_111" id="endofepidemic" name="endofepidemic" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <apply>
+                <plus/>
+                <ci> infectednontested </ci>
+                <ci> infectedtested </ci>
+                <ci> symptomstested </ci>
+                <ci> symptomsnontested </ci>
+              </apply>
+              <ci> numbercutoff </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_112" variable="epidemicextinguished">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_113" id="triggerrelaxationsoc" name="triggerrelaxationsocialisolation" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <ci> intermittenttime </ci>
+              <apply>
+                <minus/>
+                <ci> Timegovermentaction </ci>
+                <apply>
+                  <times/>
+                  <ci> lockdownduration </ci>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> timefractionlockdown </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_114" variable="SocialDistance">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <ci> ModelValue40 </ci>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_115" id="triggerrepetitiveinc" name="triggerrepetitiveincreasesocialisolation" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <ci> intermittenttime </ci>
+              <ci> Timegovermentaction </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_116" variable="nlockdowns">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <ci> nlockdowns </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_117" id="triggergovernmentact" name="triggergovernmentactivity" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <ci> intermittenttime </ci>
+              <ci> Timegovermentaction </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_118" variable="SocialDistance">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <times/>
+                <ci> ModelValue40 </ci>
+                <ci> Governmentinducedisolation </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_119" id="roundoffsymptomsnont" name="roundoffsymptomsnontested" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <ci> symptomsnontested </ci>
+              <cn type="integer"> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_120" variable="symptomsnontested">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_121" id="roundoffinfectednott" name="roundoffinfectednottested" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <ci> infectednontested </ci>
+              <cn type="integer"> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_122" variable="infectednontested">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

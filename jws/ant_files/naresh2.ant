@@ -1,0 +1,55 @@
+// Created by libAntimony v2.13.2
+model *naresh2()
+
+  // Compartments and Species:
+  species A, $EXT, I1, I2, S;
+
+  // Assignment Rules:
+  N := S + I1 + I2 + A;
+
+  // Reactions:
+  v_1: $EXT -> S; Q_0;
+  v_10: I2 -> A; Delta_2*I2;
+  v_11: I2 -> $EXT; Mu*I2;
+  v_12: A -> $EXT; Alpha*A;
+  v_13: A -> $EXT; Mu*A;
+  v_2: S -> I1; Beta_1*S*I1/(S + I1 + I2 + A);
+  v_3: S -> I2; Epsilon*Beta_2*S*I2/(S + I1 + I2 + A);
+  v_4: S -> $EXT; Mu*S;
+  v_5: S -> I1; (1 - Epsilon)*Beta_2*I2*S/(S + I1 + I2 + A);
+  v_6: I1 -> I2; Theta*I1;
+  v_7: I1 -> A; Delta_1*I1;
+  v_8: I1 -> $EXT; Mu*I1;
+  v_9: I1 -> I2; k*I1*I2;
+
+  // Species initializations:
+  A = 200;
+  EXT = 1;
+  I1 = 5000;
+  I2 = 1000;
+  S = 3800;
+
+  // Variable initializations:
+  Alpha = 1;
+  Beta_1 = 1.5;
+  Beta_2 = 0.5;
+  Delta_1 = 0.2;
+  Delta_2 = 0.1;
+  Epsilon = 0.01;
+  Mu = 0.02;
+  Q_0 = 2000;
+  Theta = 0.015;
+  k = 1e-05;
+
+  // Other declarations:
+  var Alpha, Beta_1, Beta_2, Delta_1, Delta_2, Epsilon, Mu, N, Q_0, Theta;
+  var k;
+
+  // Display Names:
+  A is "AIDS";
+  I1 is "Unaware infected";
+  I2 is "Aware infected";
+  S is "Susceptible";
+end
+
+naresh2 is "naresh2"

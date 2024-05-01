@@ -1,0 +1,117 @@
+// Created by libAntimony v2.13.2
+model *palini1()
+
+  // Compartments and Species:
+  compartment cell;
+  species A in cell, C in cell, I in cell, $L in cell, R in cell, X in cell;
+
+  // Reactions:
+  A_degradation: A => ; cell*kdegA*A;
+  C_I_binding: I + C -> X; cell*(k1*C*I - k2*X);
+  C_degradation: C => ; cell*kdegC*C;
+  I_activation: X => A + C; cell*k3*X;
+  I_degradation: I => ; cell*kdegI*I;
+  I_expression:  => I; cell*(BI + TFs*A/(KD + A));
+  R_L_binding: $L + R -> C; cell*(kon*L*R - koff*C);
+  R_degradation: R => ; cell*kdegR*R;
+  R_expression:  => R; cell*(BR + Rs*A/(KD + A));
+  X_degradation: X => ; cell*kdegX*X;
+
+  // Species initializations:
+  A = 0;
+  C = 0;
+  I = 1/cell;
+  L = 0.1;
+  R = 1/cell;
+  X = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  BI = 0.005;
+  BR = 0.005;
+  KD = 200;
+  Rs = 3;
+  TFs = 3;
+  k1 = 1;
+  k2 = 5;
+  k3 = 45;
+  kdegA = 0.005;
+  kdegC = 0.01;
+  kdegI = 0.005;
+  kdegR = 0.005;
+  kdegX = 0.005;
+  koff = 0.05;
+  kon = 0.001;
+
+  // Other declarations:
+  const cell, BI, BR, KD, Rs, TFs, k1, k2, k3, kdegA, kdegC, kdegI, kdegR;
+  const kdegX, koff, kon;
+
+  // SBO terms:
+  cell.sboTerm = 290
+  A.sboTerm = 252
+  C.sboTerm = 297
+  I.sboTerm = 252
+  L.sboTerm = 247
+  R.sboTerm = 252
+  X.sboTerm = 297
+  BI.sboTerm = 485
+  BR.sboTerm = 485
+  KD.sboTerm = 27
+  Rs.sboTerm = 186
+  TFs.sboTerm = 186
+  k1.sboTerm = 339
+  k2.sboTerm = 338
+  k3.sboTerm = 35
+  kdegA.sboTerm = 356
+  kdegC.sboTerm = 356
+  kdegI.sboTerm = 356
+  kdegR.sboTerm = 356
+  kdegX.sboTerm = 356
+  koff.sboTerm = 338
+  kon.sboTerm = 339
+  A_degradation.sboTerm = 179
+  C_I_binding.sboTerm = 177
+  C_degradation.sboTerm = 179
+  I_activation.sboTerm = 216
+  I_degradation.sboTerm = 179
+  I_expression.sboTerm = 205
+  R_L_binding.sboTerm = 177
+  R_degradation.sboTerm = 179
+  R_expression.sboTerm = 205
+  X_degradation.sboTerm = 179
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/obo.go/GO:0005623"
+  A property "http://identifiers.org/uniprot/P38889",
+             "http://identifiers.org/obo.psi-mod/MOD:00890",
+             "http://identifiers.org/obo.go/GO:0016563"
+  C property "http://identifiers.org/obo.chebi/CHEBI:60283",
+             "http://identifiers.org/uniprot/Q9C5U0",
+             "http://identifiers.org/obo.go/GO:0009885"
+  I hypernym "http://identifiers.org/uniprot/P38889"
+  L hypernym "http://identifiers.org/chembl.compound/CHEMBL1163500",
+             "http://identifiers.org/obo.chebi/CHEBI:60283",
+             "http://identifiers.org/obo.chebi/CHEBI:23530"
+  R hypernym "http://identifiers.org/uniprot/Q9C5U0"
+  X property "http://identifiers.org/obo.chebi/CHEBI:60283",
+             "http://identifiers.org/uniprot/Q9C5U0",
+             "http://identifiers.org/uniprot/P38889",
+             "http://identifiers.org/obo.go/GO:0009885"
+  A_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  C_I_binding hypernym "http://identifiers.org/obo.go/GO:0006461"
+  C_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  I_activation hypernym "http://identifiers.org/obo.go/GO:0009885",
+                        "http://identifiers.org/obo.go/GO:0006468",
+                        "http://identifiers.org/ec-code/2.7.13.3"
+  I_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  I_expression hypernym "http://identifiers.org/obo.go/GO:0010467"
+  R_L_binding hypernym "http://identifiers.org/obo.go/GO:0023038"
+  R_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  R_expression hypernym "http://identifiers.org/obo.go/GO:0010467"
+  X_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+end
+
+palini1 is "palini1"

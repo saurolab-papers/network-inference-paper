@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="wolf" name="wolf">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="at" name="ATP" compartment="default_compartment" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3304"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15422"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01125"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/56-65-5"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_2" id="na" name="NAD" compartment="default_compartment" initialConcentration="0.6" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_2">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3305"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00003"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15846"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01126"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_3" id="s1" name="glucose" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A22390"/>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3565"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00267"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A17925"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01203"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/492-62-6"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_4" id="s2" name="fructose-1,6-bisphosphate" compartment="default_compartment" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3647"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00354"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A16905"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B04673"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/488-69-7"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_5" id="s3" name="triose phosphates" compartment="default_compartment" initialConcentration="0.6" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="s4" name="triphosphoglycerate" compartment="default_compartment" initialConcentration="0.7" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3497"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00197"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A17794"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01185"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_7" id="s5" name="pyruvate" compartment="default_compartment" initialConcentration="8" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3324"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00022"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A32816"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B00006"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/127-17-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" id="s6" name="acetaldehyde" compartment="default_compartment" initialConcentration="0.08" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3384"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00084"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15343"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01155"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/75-07-0"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" id="s6o" name="external acetaldehyde" compartment="default_compartment" initialConcentration="0.02" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3384"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00084"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15343"/>
+                  <rdf:li rdf:resource="http://identifiers.org/3dmet/B01155"/>
+                  <rdf:li rdf:resource="http://identifiers.org/cas/75-07-0"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_10" id="atot" value="4" constant="false"/>
+      <parameter metaid="metaid_11" id="k0" value="50" constant="false"/>
+      <parameter metaid="metaid_12" id="k1" value="550" constant="false"/>
+      <parameter metaid="metaid_13" id="k10" value="375" constant="false"/>
+      <parameter metaid="metaid_14" id="k2" value="9.8" constant="false"/>
+      <parameter metaid="metaid_15" id="k31" value="323.8" constant="false"/>
+      <parameter metaid="metaid_16" id="k32" value="76411.1" constant="false"/>
+      <parameter metaid="metaid_17" id="k33" value="57823.1" constant="false"/>
+      <parameter metaid="metaid_18" id="k34" value="23.7" constant="false"/>
+      <parameter metaid="metaid_19" id="k4" value="80" constant="false"/>
+      <parameter metaid="metaid_20" id="k5" value="9.7" constant="false"/>
+      <parameter metaid="metaid_21" id="k6" value="2000" constant="false"/>
+      <parameter metaid="metaid_22" id="k7" value="28" constant="false"/>
+      <parameter metaid="metaid_23" id="k8" value="85.7" constant="false"/>
+      <parameter metaid="metaid_24" id="k9" value="80" constant="false"/>
+      <parameter metaid="metaid_25" id="ki" value="1" constant="false"/>
+      <parameter metaid="metaid_26" id="n" value="4" constant="false"/>
+      <parameter metaid="metaid_27" id="ntot" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_29" id="v_1" name="glucose transporter" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_28" species="s1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> k0 </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_31" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_30" species="s6o" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k9 </ci>
+              <ci> s6o </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_33" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_32" species="at" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k7 </ci>
+              <ci> at </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_37" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_34" species="s1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_35" species="at" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_36" species="s2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> s1 </ci>
+                <ci> at </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> at </ci>
+                    <ci> ki </ci>
+                  </apply>
+                  <ci> n </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_40" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_38" species="s2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_39" species="s3" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> s2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_43" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_41" species="s3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_42" species="na" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k8 </ci>
+              <ci> s3 </ci>
+              <apply>
+                <minus/>
+                <ci> ntot </ci>
+                <ci> na </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_48" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_44" species="s3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_45" species="na" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_46" species="s4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_47" species="at" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k31 </ci>
+                  <ci> k32 </ci>
+                  <ci> s3 </ci>
+                  <ci> na </ci>
+                  <apply>
+                    <minus/>
+                    <ci> atot </ci>
+                    <ci> at </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k33 </ci>
+                  <ci> k34 </ci>
+                  <ci> s4 </ci>
+                  <ci> at </ci>
+                  <apply>
+                    <minus/>
+                    <ci> ntot </ci>
+                    <ci> na </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> k33 </ci>
+                  <apply>
+                    <minus/>
+                    <ci> ntot </ci>
+                    <ci> na </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k32 </ci>
+                  <apply>
+                    <minus/>
+                    <ci> atot </ci>
+                    <ci> at </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_52" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_49" species="s4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_50" species="s5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_51" species="at" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> s4 </ci>
+              <apply>
+                <minus/>
+                <ci> atot </ci>
+                <ci> at </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_53" species="s5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_54" species="s6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k5 </ci>
+              <ci> s5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_58" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="s6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_57" species="na" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k6 </ci>
+              <ci> s6 </ci>
+              <apply>
+                <minus/>
+                <ci> ntot </ci>
+                <ci> na </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="s6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_60" species="s6o" stoichiometry="0.1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k10 </ci>
+              <apply>
+                <minus/>
+                <ci> s6 </ci>
+                <ci> s6o </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

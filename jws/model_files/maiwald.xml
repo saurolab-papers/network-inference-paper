@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="maiwald" name="maiwald" substanceUnits="AU" timeUnits="min" extentUnits="AU">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="AU" name="AU"/>
+      <unitDefinition metaid="metaid_1" id="min" name="min">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_2" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_3" id="ActivatedReceptorComplex" name="ActivatedReceptorComplex" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="ActivatedReceptorComplexSTAT2c" name="ActivatedReceptorComplexSTAT2c" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="ActivatedReceptorComplexSTAT2cSTAT1c" name="ActivatedReceptorComplexSTAT2cSTAT1c" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="CP" name="CP" compartment="default_compartment" initialAmount="20" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="IFN" name="IFN" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="IFNARdimer" name="IFNARdimer" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="IRF9c" name="IRF9c" compartment="default_compartment" initialAmount="45" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="IRF9n" name="IRF9n" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="ISGF3c" name="ISGF3c" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="ISGF3cCP" name="ISGF3cCP" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="ISGF3n" name="ISGF3n" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="ISGF3nNP" name="ISGF3nNP" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="JAK" name="JAK" compartment="default_compartment" initialAmount="26" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="NP" name="NP" compartment="default_compartment" initialAmount="40" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="OccupiedISGF3nbindingsites" name="OccupiedISGF3nbindingsites" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="OccupiedISGF3nbindingsitesNP" name="OccupiedISGF3nbindingsitesNP" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="OpenISGF3nbindingsites" name="OpenISGF3nbindingsites" compartment="default_compartment" initialAmount="500" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="PIAS" name="PIAS" compartment="default_compartment" initialAmount="10" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="PIASISGF3n" name="PIASISGF3n" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="ReceptorIFNAR1" name="ReceptorIFNAR1" compartment="default_compartment" initialAmount="1000" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="ReceptorJAKcomplex" name="ReceptorJAKcomplex" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="ReceptorTYKcomplex" name="ReceptorTYKcomplex" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="SOCS1" name="SOCS1" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="STAT1c" name="STAT1c" compartment="default_compartment" initialAmount="1500" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="STAT1cstarSTAT2cstar" name="STAT1cstarSTAT2cstar" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_28" id="STAT1cstarSTAT2cstarCP" name="STAT1cstarSTAT2cstarCP" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_29" id="STAT1n" name="STAT1n" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="STAT1nstarSTAT2nstar" name="STAT1nstarSTAT2nstar" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="STAT1nstarSTAT2nstarNP" name="STAT1nstarSTAT2nstarNP" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="STAT2c" name="STAT2c" compartment="default_compartment" initialAmount="250" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_33" id="STAT2cIRF9" name="STAT2cIRF9" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" id="STAT2n" name="STAT2n" compartment="default_compartment" initialAmount="250" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" id="STAT2nIRF9" name="STAT2nIRF9" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_36" id="TYK" name="TYK" compartment="default_compartment" initialAmount="13" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_37" id="extVariable" name="extVariable" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_38" id="mRNAc" name="mRNAc" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_39" id="mRNAn" name="mRNAn" compartment="default_compartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_40" id="preIFN" name="preIFN" compartment="default_compartment" initialAmount="6.5" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_41" id="species6" name="species6" compartment="default_compartment" initialAmount="1000" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_42" id="DNAbinding" value="0" constant="false"/>
+      <parameter metaid="metaid_43" id="IRF9deg" value="0.0001" constant="false"/>
+      <parameter metaid="metaid_44" id="NPfreebinding" value="0.01" constant="false"/>
+      <parameter metaid="metaid_45" id="NPfreeunbinding" value="0.1" constant="false"/>
+      <parameter metaid="metaid_46" id="PhosphoTransport" value="0.015" constant="false"/>
+      <parameter metaid="metaid_47" id="ReceptorSOCSdeg" value="1.2e-05" constant="false"/>
+      <parameter metaid="metaid_48" id="Receptordegradation" value="0.0003" constant="false"/>
+      <parameter metaid="metaid_49" id="SOCSbinding" value="0.02" constant="false"/>
+      <parameter metaid="metaid_50" id="SOCSunbinding" value="0.1" constant="false"/>
+      <parameter metaid="metaid_51" id="STAT1Start" value="1500" constant="false"/>
+      <parameter metaid="metaid_52" id="STAT2Start" value="250" constant="false"/>
+      <parameter metaid="metaid_53" id="StartingJak" value="26" constant="false"/>
+      <parameter metaid="metaid_54" id="StartingReceptor" value="1000" constant="false"/>
+      <parameter metaid="metaid_55" id="StartingTyk" value="13" constant="false"/>
+      <parameter metaid="metaid_56" id="activatedsynth" value="0.045" constant="false"/>
+      <parameter metaid="metaid_57" id="constdeg" value="0.0005" constant="false"/>
+      <parameter metaid="metaid_58" id="cytoplasm" value="2" constant="false"/>
+      <parameter metaid="metaid_59" id="function4" constant="false"/>
+      <parameter metaid="metaid_60" id="function4Transcription" constant="false"/>
+      <parameter metaid="metaid_61" id="function5" constant="false"/>
+      <parameter metaid="metaid_62" id="function6" constant="false"/>
+      <parameter metaid="metaid_63" id="k1" value="0.1" constant="false"/>
+      <parameter metaid="metaid_64" id="k11" value="0.1" constant="false"/>
+      <parameter metaid="metaid_65" id="k111" value="0.01" constant="false"/>
+      <parameter metaid="metaid_66" id="k112" value="0.1" constant="false"/>
+      <parameter metaid="metaid_67" id="k113" value="2.5e-05" constant="false"/>
+      <parameter metaid="metaid_68" id="k114" value="0.001" constant="false"/>
+      <parameter metaid="metaid_69" id="k118" value="0.01" constant="false"/>
+      <parameter metaid="metaid_70" id="k12" value="0.01" constant="false"/>
+      <parameter metaid="metaid_71" id="k122" value="0.001" constant="false"/>
+      <parameter metaid="metaid_72" id="k123" value="0.003" constant="false"/>
+      <parameter metaid="metaid_73" id="k124" value="0.001" constant="false"/>
+      <parameter metaid="metaid_74" id="k125" value="0.003" constant="false"/>
+      <parameter metaid="metaid_75" id="k127" value="0.1" constant="false"/>
+      <parameter metaid="metaid_76" id="k129" value="0.002" constant="false"/>
+      <parameter metaid="metaid_77" id="k13" value="0.005" constant="false"/>
+      <parameter metaid="metaid_78" id="k130" value="0.0001" constant="false"/>
+      <parameter metaid="metaid_79" id="k131" value="0.1" constant="false"/>
+      <parameter metaid="metaid_80" id="k132" value="0.1" constant="false"/>
+      <parameter metaid="metaid_81" id="k133" value="0.0005" constant="false"/>
+      <parameter metaid="metaid_82" id="k134" value="0.01" constant="false"/>
+      <parameter metaid="metaid_83" id="k135" value="0.0014" constant="false"/>
+      <parameter metaid="metaid_84" id="k136" value="0.01" constant="false"/>
+      <parameter metaid="metaid_85" id="k137" value="0.01" constant="false"/>
+      <parameter metaid="metaid_86" id="k138" value="0.00125" constant="false"/>
+      <parameter metaid="metaid_87" id="k139" value="0.02" constant="false"/>
+      <parameter metaid="metaid_88" id="k140" value="0.0009" constant="false"/>
+      <parameter metaid="metaid_89" id="k17" value="8" constant="false"/>
+      <parameter metaid="metaid_90" id="k18" value="0.1" constant="false"/>
+      <parameter metaid="metaid_91" id="k19" value="0.015" constant="false"/>
+      <parameter metaid="metaid_92" id="k2" value="0.05" constant="false"/>
+      <parameter metaid="metaid_93" id="k21" value="0.05" constant="false"/>
+      <parameter metaid="metaid_94" id="k210" value="0" constant="false"/>
+      <parameter metaid="metaid_95" id="k211" value="0.01" constant="false"/>
+      <parameter metaid="metaid_96" id="k212" value="0.1" constant="false"/>
+      <parameter metaid="metaid_97" id="k214" value="0" constant="false"/>
+      <parameter metaid="metaid_98" id="k22" value="0.01" constant="false"/>
+      <parameter metaid="metaid_99" id="k222" value="0.2" constant="false"/>
+      <parameter metaid="metaid_100" id="k224" value="0.2" constant="false"/>
+      <parameter metaid="metaid_101" id="k230" value="0.1" constant="false"/>
+      <parameter metaid="metaid_102" id="k232" value="0.1" constant="false"/>
+      <parameter metaid="metaid_103" id="k234" value="0.00125" constant="false"/>
+      <parameter metaid="metaid_104" id="k235" value="8.17e-05" constant="false"/>
+      <parameter metaid="metaid_105" id="k236" value="0.01" constant="false"/>
+      <parameter metaid="metaid_106" id="k237" value="0.01" constant="false"/>
+      <parameter metaid="metaid_107" id="k238" value="0.0014" constant="false"/>
+      <parameter metaid="metaid_108" id="k239" value="0.005" constant="false"/>
+      <parameter metaid="metaid_109" id="k28" value="0.1" constant="false"/>
+      <parameter metaid="metaid_110" id="k29" value="0" constant="false"/>
+      <parameter metaid="metaid_111" id="nucleus" value="1" constant="false"/>
+      <parameter metaid="metaid_112" id="startkin" value="13" constant="false"/>
+      <parameter metaid="metaid_113" id="statrecbinding" value="0.002" constant="false"/>
+      <parameter metaid="metaid_114" id="statrecunbinding" value="4" constant="false"/>
+      <parameter metaid="metaid_115" id="vactivated" value="0.045" constant="false"/>
+      <parameter metaid="metaid_116" id="vconst" value="0.005" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_117" variable="DNAbinding">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> OccupiedISGF3nbindingsites </ci>
+            <cn type="integer"> 2 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_118" variable="function6">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> activatedsynth </ci>
+              <ci> mRNAc </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> constdeg </ci>
+              <ci> SOCS1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_119" variable="function4Transcription">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k1 </ci>
+            <ci> OccupiedISGF3nbindingsites </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_120" variable="function5">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <ci> ActivatedReceptorComplex </ci>
+              <ci> Receptordegradation </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> ActivatedReceptorComplex </ci>
+              <ci> ReceptorSOCSdeg </ci>
+              <ci> SOCS1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_121" variable="function4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <plus/>
+              <ci> vconst </ci>
+              <apply>
+                <times/>
+                <ci> mRNAc </ci>
+                <ci> vactivated </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> IRF9c </ci>
+              <ci> IRF9deg </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_125" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="ReceptorIFNAR1" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_123" species="TYK" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_124" species="ReceptorTYKcomplex" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> ReceptorIFNAR1 </ci>
+                  <ci> TYK </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> ReceptorTYKcomplex </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_128" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="ISGF3c" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="ISGF3n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k19 </ci>
+                <ci> ISGF3c </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k29 </ci>
+                <ci> ISGF3n </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_131" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_129" species="STAT1cstarSTAT2cstar" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_130" species="STAT1nstarSTAT2nstar" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> PhosphoTransport </ci>
+                <ci> STAT1cstarSTAT2cstar </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k210 </ci>
+                <ci> STAT1nstarSTAT2nstar </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_135" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_132" species="STAT1nstarSTAT2nstar" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_133" species="IRF9n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_134" species="ISGF3n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k111 </ci>
+                  <ci> STAT1nstarSTAT2nstar </ci>
+                  <ci> IRF9n </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k211 </ci>
+                  <ci> ISGF3n </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_136" species="OpenISGF3nbindingsites" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_137" species="ISGF3n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="OccupiedISGF3nbindingsites" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k112 </ci>
+                  <ci> OpenISGF3nbindingsites </ci>
+                  <ci> ISGF3n </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k212 </ci>
+                  <ci> OccupiedISGF3nbindingsites </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="v_14" name="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="extVariable" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="mRNAn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> function4Transcription </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="mRNAn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="mRNAc" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k114 </ci>
+                <ci> mRNAn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k214 </ci>
+                <ci> mRNAc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="v_16" name="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="extVariable" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="IRF9c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> function4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_151" id="v_17" name="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="extVariable" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="SOCS1" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> function6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="v_18" name="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="ReceptorIFNAR1" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_154" species="species6" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_155" species="JAK" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_156" species="TYK" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> function5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_160" id="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_158" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_159" species="IFNARdimer" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k118 </ci>
+              <ci> ActivatedReceptorComplex </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_164" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_161" species="JAK" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_162" species="species6" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_163" species="ReceptorJAKcomplex" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k11 </ci>
+                  <ci> JAK </ci>
+                  <ci> species6 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k21 </ci>
+                  <ci> ReceptorJAKcomplex </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_167" id="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_165" species="IRF9n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_166" species="extVariable" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> IRF9deg </ci>
+              <ci> IRF9n </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_170" id="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_168" species="STAT2cIRF9" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_169" species="STAT2c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> IRF9deg </ci>
+              <ci> STAT2cIRF9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="v_22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_171" species="STAT2nIRF9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_172" species="STAT2n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> IRF9deg </ci>
+              <ci> STAT2nIRF9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_177" id="v_23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_174" species="ISGF3c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_175" species="CP" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="ISGF3cCP" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k122 </ci>
+                  <ci> ISGF3c </ci>
+                  <ci> CP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k222 </ci>
+                  <ci> ISGF3cCP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="v_24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_178" species="ISGF3cCP" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_179" species="STAT1c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_180" species="STAT2c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_181" species="CP" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_182" species="IRF9c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k123 </ci>
+              <ci> ISGF3cCP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_187" id="v_25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="STAT1cstarSTAT2cstar" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_185" species="CP" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="STAT1cstarSTAT2cstarCP" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k124 </ci>
+                  <ci> STAT1cstarSTAT2cstar </ci>
+                  <ci> CP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k224 </ci>
+                  <ci> STAT1cstarSTAT2cstarCP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_192" id="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_188" species="STAT1cstarSTAT2cstarCP" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_189" species="STAT1c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_190" species="STAT2c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_191" species="CP" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k125 </ci>
+              <ci> STAT1cstarSTAT2cstarCP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_196" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="NP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_194" species="STAT1nstarSTAT2nstar" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_195" species="STAT1nstarSTAT2nstarNP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> NPfreebinding </ci>
+                  <ci> NP </ci>
+                  <ci> STAT1nstarSTAT2nstar </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> NPfreeunbinding </ci>
+                  <ci> STAT1nstarSTAT2nstarNP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_201" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_197" species="STAT1nstarSTAT2nstarNP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_198" species="STAT1n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_199" species="STAT2n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_200" species="NP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> k127 </ci>
+              <ci> STAT1nstarSTAT2nstarNP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_202" species="ISGF3n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_203" species="NP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_204" species="ISGF3nNP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> NPfreebinding </ci>
+                  <ci> ISGF3n </ci>
+                  <ci> NP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> NPfreeunbinding </ci>
+                  <ci> ISGF3nNP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_210" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="ReceptorJAKcomplex" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_207" species="ReceptorTYKcomplex" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_208" species="IFN" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_209" species="IFNARdimer" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k12 </ci>
+                  <ci> ReceptorJAKcomplex </ci>
+                  <ci> ReceptorTYKcomplex </ci>
+                  <ci> IFN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k22 </ci>
+                  <ci> IFNARdimer </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_216" id="v_30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_211" species="ISGF3nNP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_212" species="STAT1n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_213" species="STAT2n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_214" species="NP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_215" species="IRF9n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> k129 </ci>
+              <ci> ISGF3nNP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_220" id="v_31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_217" species="NP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_218" species="OccupiedISGF3nbindingsites" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_219" species="OccupiedISGF3nbindingsitesNP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k130 </ci>
+                  <ci> NP </ci>
+                  <ci> OccupiedISGF3nbindingsites </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k230 </ci>
+                  <ci> OccupiedISGF3nbindingsitesNP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_227" id="v_32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_221" species="OccupiedISGF3nbindingsitesNP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_222" species="STAT1n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_223" species="STAT2n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_224" species="IRF9n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_225" species="OpenISGF3nbindingsites" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_226" species="NP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <ci> k131 </ci>
+              <ci> OccupiedISGF3nbindingsitesNP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_231" id="v_33" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_228" species="PIAS" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_229" species="ISGF3n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_230" species="PIASISGF3n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k132 </ci>
+                  <ci> PIAS </ci>
+                  <ci> ISGF3n </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k232 </ci>
+                  <ci> PIASISGF3n </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_234" id="v_34" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_232" species="mRNAc" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_233" species="extVariable" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k133 </ci>
+              <ci> mRNAc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_237" id="v_35" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_235" species="STAT1n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_236" species="STAT1c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k134 </ci>
+                <ci> STAT1n </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k234 </ci>
+                <ci> STAT1c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_240" id="v_36" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_238" species="STAT2n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_239" species="STAT2c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k135 </ci>
+                <ci> STAT2n </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k235 </ci>
+                <ci> STAT2c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_244" id="v_37" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_241" species="STAT2c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_242" species="IRF9c" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_243" species="STAT2cIRF9" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k136 </ci>
+                  <ci> STAT2c </ci>
+                  <ci> IRF9c </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k236 </ci>
+                  <ci> STAT2cIRF9 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_248" id="v_38" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_245" species="STAT2n" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_246" species="IRF9n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_247" species="STAT2nIRF9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> nucleus </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k137 </ci>
+                  <ci> STAT2n </ci>
+                  <ci> IRF9n </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k237 </ci>
+                  <ci> STAT2nIRF9 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_251" id="v_39" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_249" species="STAT2cIRF9" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_250" species="STAT2nIRF9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k138 </ci>
+                <ci> STAT2cIRF9 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k238 </ci>
+                <ci> STAT2nIRF9 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_254" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_252" species="IFNARdimer" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_253" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k13 </ci>
+              <ci> IFNARdimer </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_257" id="v_40" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_255" species="IRF9c" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_256" species="IRF9n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k139 </ci>
+                <ci> IRF9c </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k239 </ci>
+                <ci> IRF9n </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_260" id="v_41" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_258" species="preIFN" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_259" species="IFN" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k140 </ci>
+              <ci> preIFN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_265" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_261" species="STAT2cIRF9" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_262" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_263" species="ActivatedReceptorComplexSTAT2c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_264" species="IRF9c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> statrecbinding </ci>
+              <ci> STAT2cIRF9 </ci>
+              <ci> ActivatedReceptorComplex </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_269" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_266" species="STAT2c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_267" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="ActivatedReceptorComplexSTAT2c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> statrecbinding </ci>
+                  <ci> STAT2c </ci>
+                  <ci> ActivatedReceptorComplex </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> statrecunbinding </ci>
+                  <ci> ActivatedReceptorComplexSTAT2c </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_273" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_270" species="STAT1c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_271" species="ActivatedReceptorComplexSTAT2c" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_272" species="ActivatedReceptorComplexSTAT2cSTAT1c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> statrecbinding </ci>
+                  <ci> STAT1c </ci>
+                  <ci> ActivatedReceptorComplexSTAT2c </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> statrecunbinding </ci>
+                  <ci> ActivatedReceptorComplexSTAT2cSTAT1c </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_277" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_274" species="ActivatedReceptorComplexSTAT2cSTAT1c" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_275" species="ActivatedReceptorComplex" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_276" species="STAT1cstarSTAT2cstar" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <ci> k17 </ci>
+              <ci> ActivatedReceptorComplexSTAT2cSTAT1c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_281" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_278" species="IRF9c" stoichiometry="0.5" constant="true"/>
+          <speciesReference metaid="metaid_279" species="STAT1cstarSTAT2cstar" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_280" species="ISGF3c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cytoplasm </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k18 </ci>
+                  <ci> IRF9c </ci>
+                  <ci> STAT1cstarSTAT2cstar </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k28 </ci>
+                  <ci> ISGF3c </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -1,0 +1,58 @@
+// Created by libAntimony v2.13.2
+model *huo1()
+
+  // Compartments and Species:
+  species A, $EXT, I1, I2, J, S;
+
+  // Reactions:
+  v_1: $EXT -> S; Lambda;
+  v_10: I2 -> J; p1*I2;
+  v_11: I2 -> $EXT; Mu*I2;
+  v_12: J -> I2; Xi2*J;
+  v_13: J -> A; p2*J;
+  v_14: J -> $EXT; Mu*J;
+  v_15: A -> $EXT; Mu*A;
+  v_16: A -> $EXT; Alpha*A;
+  v_2: S -> I1; p*Beta1*I2*S;
+  v_3: S -> I2; (1 - p)*Beta1*I2*S;
+  v_4: S -> $EXT; Mu*S;
+  v_5: S -> I1; q*Beta2*J*S;
+  v_6: I1 -> I2; Epsilon*I1;
+  v_7: I1 -> $EXT; Mu*I1;
+  v_8: J -> I1; Xi1*J;
+  v_9: S -> I2; (1 - q)*Beta2*J*S;
+
+  // Species initializations:
+  A = 10;
+  EXT = 1;
+  I1 = 30;
+  I2 = 40;
+  J = 20;
+  S = 50;
+
+  // Variable initializations:
+  Alpha = 0.01;
+  Beta1 = 0.0001;
+  Beta2 = 0.006;
+  Epsilon = 0.002;
+  Lambda = 0.55;
+  Mu = 0.01;
+  Xi1 = 0.8;
+  Xi2 = 0.9;
+  p = 0.9;
+  p1 = 0.01;
+  p2 = 0.03;
+  q = 0.8;
+
+  // Other declarations:
+  var Alpha, Beta1, Beta2, Epsilon, Lambda, Mu, Xi1, Xi2, p, p1, p2, q;
+
+  // Display Names:
+  A is "AIDS";
+  I1 is "Slow latent";
+  I2 is "Fast latent";
+  J is "Symptomatic";
+  S is "Susceptible";
+end
+
+huo1 is "huo1"

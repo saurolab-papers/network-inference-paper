@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *gomes()
+
+  // Compartments and Species:
+  species $Acetol, $DHAP, $DLac, $GAP, GSH, MGO, SDLGSH;
+
+  // Reactions:
+  v_1: $DHAP + $GAP -> MGO; k1*GAP + k2*DHAP;
+  v_2: MGO + GSH -> SDLGSH; V1*MGO*GSH/((km1 + MGO)*(km2 + GSH));
+  v_3: SDLGSH -> GSH + $DLac; V2*SDLGSH/(km3 + SDLGSH);
+  v_4: MGO -> $Acetol; V3*NADPH*MGO/((km4 + MGO)*(km5 + NADPH));
+
+  // Species initializations:
+  Acetol = 0;
+  DHAP = 2.5;
+  DLac = 0;
+  GAP = 0.12;
+  GSH = 4;
+  MGO = 0;
+  SDLGSH = 0;
+
+  // Variable initializations:
+  NADPH = 1.7;
+  V1 = 186.45;
+  V2 = 8.09;
+  V3 = 17.85;
+  k1 = 0.01636;
+  k2 = 0.00066;
+  km1 = 3.56;
+  km2 = 1.64;
+  km3 = 0.91;
+  km4 = 0.65;
+  km5 = 0.075;
+  kout = 1;
+
+  // Other declarations:
+  var NADPH, V1, V2, V3, k1, k2, km1, km2, km3, km4, km5, kout;
+
+  // CV terms:
+  DHAP identity "http://identifiers.org/kegg.compound/C00111"
+  DLac identity "http://identifiers.org/kegg.compound/C00256"
+  GAP identity "http://identifiers.org/kegg.compound/C00118"
+  GSH identity "http://identifiers.org/kegg.compound/C00051"
+  MGO identity "http://identifiers.org/kegg.compound/C00546"
+  SDLGSH identity "http://identifiers.org/kegg.compound/C03451"
+end
+
+gomes is "gomes"

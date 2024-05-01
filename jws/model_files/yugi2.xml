@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="yugi2" name="yugi2">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_4" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_5" id="default" spatialDimensions="3" size="1" units="volume" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005623"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_6" id="s1" name="PFKL" compartment="default" initialAmount="1.235570941" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="s10" name="Citrate" compartment="default" initialAmount="17.7476118652" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" sboTerm="SBO:0000291" id="s11" name="sa4_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="s12" name="ALDO" compartment="default" initialAmount="1" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="s13" name="pPFKL" compartment="default" initialAmount="0.759332005" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" sboTerm="SBO:0000291" id="s14" name="sa8_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" sboTerm="SBO:0000291" id="s15" name="sa7_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" sboTerm="SBO:0000291" id="s16" name="sa5_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" sboTerm="SBO:0000291" id="s17" name="sa6_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" sboTerm="SBO:0000291" id="s18" name="sa9_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" sboTerm="SBO:0000291" id="s19" name="sa10_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="s2" name="FBPase" compartment="default" initialAmount="1" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" sboTerm="SBO:0000291" id="s21" name="sa3_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="s22" name="F6P_proxy" compartment="default" initialAmount="14.0774258421" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="s23" name="IR_complex" compartment="default" initialAmount="37.81914621" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="s24" name="pro_IR_complex" compartment="default" initialAmount="46.2222520609226" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_22" id="s25" name="p1IR_complex" compartment="default" initialAmount="2.507671281" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="s26" name="p2IR_complex" compartment="default" initialAmount="852.608418" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="s27" name="p1p2IRcomplex" compartment="default" initialAmount="3.930695895" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="s28" name="AKT" compartment="default" initialAmount="4.33812187331668" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_26" id="s29" name="pAKT" compartment="default" initialAmount="0.012942682" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="s3" name="F6P" compartment="default" initialAmount="14.0774258421" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_28" id="s30" name="mTOR" compartment="default" initialAmount="0.0959163701057347" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_29" id="s31" name="pmTOR" compartment="default" initialAmount="0.004015031" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="s32" name="S6K" compartment="default" initialAmount="2.7769943784158" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_31" id="s33" name="pS6K" compartment="default" initialAmount="0.000988831" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="s34" name="X" compartment="default" initialAmount="14.9913345914433" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_33" id="s35" name="pX" compartment="default" initialAmount="0.043352951" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" sboTerm="SBO:0000291" id="s36" name="sa28_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" sboTerm="SBO:0000291" id="s37" name="sa27_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_36" sboTerm="SBO:0000291" id="s38" name="sa26_degraded" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_37" id="s4" name="F1,6BP" compartment="default" initialAmount="104.07239819" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_38" id="s5" name="PEP" compartment="default" initialAmount="108.094519859" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_39" id="s6" name="Isocitrate" compartment="default" initialAmount="1.79487179487" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_40" id="s7" name="2-oxoglutarate" compartment="default" initialAmount="25.1885369533" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_41" id="s8" name="Malate" compartment="default" initialAmount="68.8788335846" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_42" id="s9" name="F2,6BP" compartment="default" initialAmount="1" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_43" id="K_FBPase_cit" name="K_FBPase_cit" value="0.0211646" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_44" id="K_FBPase_f16bp" name="K_FBPase_f16bp" value="0.104089638" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_45" id="K_FBPase_f26bp" name="K_FBPase_f26bp" value="17.51744342" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_46" id="K_PFKL_PHOS_S775" name="K_PFKL_PHOS_S775" value="6.283705757" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_47" id="K_PFKL_akg" name="K_PFKL_akg" value="24661.01154" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_48" id="K_PFKL_cit" name="K_PFKL_cit" value="41.30426029" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_49" id="K_PFKL_f26bp" name="K_PFKL_f26bp" value="1.282443082" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_50" id="K_PFKL_f6p" name="K_PFKL_f6p" value="0.014114844" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_51" id="K_PFKL_icit" name="K_PFKL_icit" value="1784.508205" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_52" id="K_PFKL_mal" name="K_PFKL_mal" value="9.544729149" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_53" id="K_PFKL_pep" name="K_PFKL_pep" value="0.633518366" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_54" id="Vf_FBPase" name="Vf_FBPase" value="9.932861302" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_55" id="Vf_PFKL" name="Vf_PFKL" value="695063.7194" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_56" id="insulin" name="insulin" value="1" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_57" id="k_ALDO" name="k_ALDO" value="0.008187906" units="dimensionless" constant="true"/>
+      <parameter metaid="metaid_58" id="k_akg" name="k_akg" value="-3.544494721" units="substance" constant="false"/>
+      <parameter metaid="metaid_59" id="k_cit" name="k_cit" value="-0.351935646" units="substance" constant="false"/>
+      <parameter metaid="metaid_60" id="k_f26bp" name="k_f26bp" value="-0.083430336" units="substance" constant="false"/>
+      <parameter metaid="metaid_61" id="k_f6p" name="k_f6p" value="-0.930115636" units="dimensionless" constant="false"/>
+      <parameter metaid="metaid_62" id="k_icit" name="k_icit" value="-0.038210156" units="substance" constant="false"/>
+      <parameter metaid="metaid_63" id="k_mal" name="k_mal" value="1.005530417" units="substance" constant="false"/>
+      <parameter metaid="metaid_64" id="k_pep" name="k_pep" value="43.99195576" units="substance" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_65" variable="s22">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> s3 </ci>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_84" id="re30" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_66" species="s22" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_67" species="s4" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_68" species="s22"/>
+          <modifierSpeciesReference metaid="metaid_69" species="s13"/>
+          <modifierSpeciesReference metaid="metaid_70" species="s8"/>
+          <modifierSpeciesReference metaid="metaid_71" species="s6"/>
+          <modifierSpeciesReference metaid="metaid_72" species="s10"/>
+          <modifierSpeciesReference metaid="metaid_73" species="s5"/>
+          <modifierSpeciesReference metaid="metaid_74" species="s7"/>
+          <modifierSpeciesReference metaid="metaid_75" species="s9"/>
+          <modifierSpeciesReference metaid="metaid_76" species="s13"/>
+          <modifierSpeciesReference metaid="metaid_77" species="s10"/>
+          <modifierSpeciesReference metaid="metaid_78" species="s9"/>
+          <modifierSpeciesReference metaid="metaid_79" species="s8"/>
+          <modifierSpeciesReference metaid="metaid_80" species="s7"/>
+          <modifierSpeciesReference metaid="metaid_81" species="s6"/>
+          <modifierSpeciesReference metaid="metaid_82" species="s5"/>
+          <modifierSpeciesReference metaid="metaid_83" species="s1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> s9 </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_f26bp </ci>
+                  <ci> s9 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> K_PFKL_akg </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_akg </ci>
+                  <ci> s7 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> K_PFKL_pep </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_pep </ci>
+                  <ci> s5 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> K_PFKL_cit </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_cit </ci>
+                  <ci> s10 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> K_PFKL_icit </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_icit </ci>
+                  <ci> s6 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> K_PFKL_mal </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_mal </ci>
+                  <ci> s8 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> s13 </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_PHOS_S775 </ci>
+                  <ci> s13 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vf_PFKL </ci>
+                  <ci> s22 </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> K_PFKL_f6p </ci>
+                  <ci> s22 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_93" id="re31" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_85" species="s4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="s22" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_87" species="s4"/>
+          <modifierSpeciesReference metaid="metaid_88" species="s10"/>
+          <modifierSpeciesReference metaid="metaid_89" species="s9"/>
+          <modifierSpeciesReference metaid="metaid_90" species="s10"/>
+          <modifierSpeciesReference metaid="metaid_91" species="s9"/>
+          <modifierSpeciesReference metaid="metaid_92" species="s2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> K_FBPase_f26bp </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_FBPase_f26bp </ci>
+                  <ci> s9 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> s10 </ci>
+                <apply>
+                  <plus/>
+                  <ci> K_FBPase_cit </ci>
+                  <ci> s10 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vf_FBPase </ci>
+                  <ci> s4 </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> K_FBPase_f16bp </ci>
+                  <ci> s4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_98" id="re32" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_94" species="s4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="s11" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_96" species="s4"/>
+          <modifierSpeciesReference metaid="metaid_97" species="s12"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_ALDO </ci>
+              <ci> s4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="re33" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_99" species="s8" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_100" species="s14" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_mal </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="re34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_102" species="s7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="s15" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_akg </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_107" id="re35" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_105" species="s5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_106" species="s16" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_pep </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_110" id="re36" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_108" species="s6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_109" species="s17" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_icit </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_113" id="re37" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_111" species="s9" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_112" species="s18" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_f26bp </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_116" id="re38" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_114" species="s10" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_115" species="s19" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_cit </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_119" id="re39" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_117" species="s3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_118" species="s21" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> k_f6p </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="re40" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_121" species="s24" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_122" species="s23" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_123" species="s23"/>
+          <modifierSpeciesReference metaid="metaid_124" species="s24"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s24 </ci>
+                <ci> s23 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_120" id="k1" name="k1" value="0.0477985900779305" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_132" id="re41" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_128" species="s23" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="s25" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_130" species="s25"/>
+          <modifierSpeciesReference metaid="metaid_131" species="s23"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> insulin </ci>
+                <ci> s23 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> s25 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_126" id="k2" name="k2" value="1.61147523779118" units="dimensionless"/>
+            <parameter metaid="metaid_127" id="k1" name="k1" value="7.78160761103111" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="re42" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_134" species="s23" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="s26" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_136" species="s31"/>
+          <modifierSpeciesReference metaid="metaid_137" species="s23"/>
+          <modifierSpeciesReference metaid="metaid_138" species="s31"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s23 </ci>
+              <ci> s31 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_133" id="k1" name="k1" value="9.93311225447353" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_146" id="re43" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="s26" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_143" species="s27" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_144" species="s27"/>
+          <modifierSpeciesReference metaid="metaid_145" species="s26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1 </ci>
+                <ci> insulin </ci>
+                <ci> s26 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> s27 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_140" id="k2" name="k2" value="0.408127912886804" units="dimensionless"/>
+            <parameter metaid="metaid_141" id="k1" name="k1" value="0.363030286526969" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_153" id="re44" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_148" species="s25" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_149" species="s27" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_150" species="s31"/>
+          <modifierSpeciesReference metaid="metaid_151" species="s25"/>
+          <modifierSpeciesReference metaid="metaid_152" species="s31"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s25 </ci>
+              <ci> s31 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_147" id="k1" name="k1" value="3.88248960751442e-05" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_158" id="re45" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_155" species="s27" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_156" species="s25" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_157" species="s27"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s27 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_154" id="k1" name="k1" value="0.28442597446931" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="re46" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_160" species="s26" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="s23" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_162" species="s26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s26 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_159" id="k1" name="k1" value="1.00000000282413e-05" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_168" id="re47" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_165" species="s27" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_166" species="s36" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_167" species="s27"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s27 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_164" id="k1" name="k1" value="0.0948960328385619" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_176" id="re48" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_170" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_171" species="s29" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_172" species="s25"/>
+          <modifierSpeciesReference metaid="metaid_173" species="s29"/>
+          <modifierSpeciesReference metaid="metaid_174" species="s28"/>
+          <modifierSpeciesReference metaid="metaid_175" species="s25"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s28 </ci>
+                <ci> s29 </ci>
+              </apply>
+              <ci> s25 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_169" id="k1" name="k1" value="0.00919578911309774" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_181" id="re49" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_178" species="s29" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_179" species="s28" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_180" species="s29"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s29 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_177" id="k1" name="k1" value="7.70618517548016" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_186" id="re50" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_183" species="s26" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_184" species="s37" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_185" species="s26"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s26 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_182" id="k1" name="k1" value="1.00277786609339e-05" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_191" id="re51" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_188" species="s25" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_189" species="s38" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_190" species="s25"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s25 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_187" id="k1" name="k1" value="0.00792717614041237" units="substance"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_199" id="re52" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="s30" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_194" species="s31" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_195" species="s29"/>
+          <modifierSpeciesReference metaid="metaid_196" species="s31"/>
+          <modifierSpeciesReference metaid="metaid_197" species="s30"/>
+          <modifierSpeciesReference metaid="metaid_198" species="s29"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s30 </ci>
+                <ci> s31 </ci>
+              </apply>
+              <ci> s29 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_192" id="k1" name="k1" value="0.419682384304397" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_204" id="re53" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_201" species="s31" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_202" species="s30" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_203" species="s31"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s31 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_200" id="k1" name="k1" value="0.124330492920416" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_212" id="re54" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="s32" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_207" species="s33" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_208" species="s31"/>
+          <modifierSpeciesReference metaid="metaid_209" species="s33"/>
+          <modifierSpeciesReference metaid="metaid_210" species="s32"/>
+          <modifierSpeciesReference metaid="metaid_211" species="s31"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s32 </ci>
+                <ci> s33 </ci>
+              </apply>
+              <ci> s31 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_205" id="k1" name="k1" value="0.00752464611370891" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_219" id="re55" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_214" species="s33" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_215" species="s32" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_216" species="s35"/>
+          <modifierSpeciesReference metaid="metaid_217" species="s33"/>
+          <modifierSpeciesReference metaid="metaid_218" species="s35"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s33 </ci>
+              <ci> s35 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_213" id="k1" name="k1" value="1.95497593092361" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_227" id="re56" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_221" species="s34" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_222" species="s35" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_223" species="s31"/>
+          <modifierSpeciesReference metaid="metaid_224" species="s35"/>
+          <modifierSpeciesReference metaid="metaid_225" species="s34"/>
+          <modifierSpeciesReference metaid="metaid_226" species="s31"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s34 </ci>
+                <ci> s35 </ci>
+              </apply>
+              <ci> s31 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_220" id="k1" name="k1" value="0.00105342379833469" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_232" id="re57" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_229" species="s35" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_230" species="s34" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_231" species="s35"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s35 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_228" id="k1" name="k1" value="0.00145811601430322" units="substance"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_240" id="re58" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_234" species="s1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_235" species="s13" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_236" species="s33"/>
+          <modifierSpeciesReference metaid="metaid_237" species="s13"/>
+          <modifierSpeciesReference metaid="metaid_238" species="s1"/>
+          <modifierSpeciesReference metaid="metaid_239" species="s33"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <apply>
+                <minus/>
+                <ci> s1 </ci>
+                <ci> s13 </ci>
+              </apply>
+              <ci> s33 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_233" id="k1" name="k1" value="26.8316707654711" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_245" id="re59" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_242" species="s13" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_243" species="s1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_244" species="s13"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s13 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_241" id="k1" name="k1" value="0.0166525139097609" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event metaid="metaid_246" id="ev45min" name="ev45min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 45 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_247" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.301659125 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_248" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.502765209 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_249" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.003055632 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_250" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.031674208 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_251" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.070387129 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_252" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.306686777 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_253" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.369532428 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_254" id="ev30min" name="ev30min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 30 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_255" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.306686777 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_256" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.301659125 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_257" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.502765209 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_258" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.003055632 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_259" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.031674208 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_260" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.070387129 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_261" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.369532428 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_262" id="ev20min" name="ev20min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 20 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_263" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 3.619909502 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_264" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 1.206636501 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_265" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.032601514 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_266" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.031674208 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_267" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.165912519 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_268" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.377073906 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_269" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.226244344 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_270" id="ev15min" name="ev15min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 15 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_271" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 1.809954751 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_272" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 4.826546003 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_273" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.100115778 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_274" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.018099548 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_275" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.12066365 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_276" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.452488688 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_277" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 1.085972851 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_278" id="ev10min" name="ev10min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 10 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_279" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 1.055806938 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_280" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 9.049773756 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_281" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 3.921568627 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_282" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.050207413 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_283" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.038210156 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_284" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 1.085972851 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_285" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.36199095 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_286" id="ev5min" name="ev5min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_287" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 6.334841629 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_288" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.904977376 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_289" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.119075279 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_290" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.038210156 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_291" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.271493213 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_292" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.211161388 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_293" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_294" id="ev2min" name="ev2min" useValuesFromTriggerTime="true">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 2 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_295" variable="k_pep">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 7.54147813 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_296" variable="k_mal">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 1.508295626 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_297" variable="k_f26bp">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.028924455 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_298" variable="k_icit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 0.038210156 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_299" variable="k_f6p">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 1.357466063 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_300" variable="k_cit">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.351935646 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_301" variable="k_akg">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <minus/>
+                <cn> 1.357466063 </cn>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

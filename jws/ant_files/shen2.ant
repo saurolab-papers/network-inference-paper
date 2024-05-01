@@ -1,0 +1,92 @@
+// Created by libAntimony v2.13.2
+model *shen2()
+
+  // Compartments and Species:
+  species KDX, KG, KGSA, LAC, NAD, PYR, XA, XLAC, XYL;
+
+  // Reactions:
+  v1: XYL + NAD -> XLAC; Eb*VmXDH*NAD*XYL/(1000*KmXDHNAD*KmXDHXYL*(1 + (Ntot - NAD)/KmXDHNADH + NAD/KmXDHNAD)*(1 + XYL/KmXDHXYL + XLAC/KmXDHXLAC));
+  v2: XLAC -> XA; kXLA*XLAC;
+  v3: XLAC -> XA; Ec*VmXLA*XLAC/(1000*KmXLAXLAC*(1 + XLAC/KmXLAXLAC + XA/KmXLAXA));
+  v4: XA -> KDX; Ed*VmXAD*XA/(1000*KmXADXA*(1 + (Ntot - NAD)/KiXADNADH)*(1 + KDX/KmXADKDX + XA/KmXADXA));
+  v5: KDX -> KGSA; Ex*fracX*VmKDXD*KDX/(1000*KmKDXDKDX*(1 + KGSA/KmKDXDKGSA + KDX/KmKDXDKDX)*(1 + KG/KiKDXDakg + LAC/KiKDXDLAC + PYR/KiKDXDPYR + XA/KiKDXDxylonate));
+  v6: KGSA + NAD -> KG; (Ea/1000)*(VmKGSADH*KGSA*NAD/(KmKGSADHKGSA*KmKGSADHNAD))/((1 + KGSA/KmKGSADHKGSA + KG/KmKGSADHKG)*(1 + NAD/KmKGSADHNAD + (Ntot - NAD)/KmKGSADHNADH) + (KDX/KmKGSADHKDX)*(1 + NAD/KmKGSADHNAD + (Ntot - NAD)/KmKGSADHNADH2));
+  v7: PYR -> LAC + NAD; kLDH*(Ntot - NAD)*PYR;
+
+  // Species initializations:
+  KDX = 0;
+  KG = 0;
+  KGSA = 0;
+  LAC = 0;
+  NAD = 8;
+  PYR = 0;
+  XA = 0;
+  XLAC = 0;
+  XYL = 5;
+
+  // Variable initializations:
+  Ea = 10;
+  Eb = 2.5;
+  Ec = 0.8;
+  Ed = 8.67;
+  Ex = 0.5;
+  KiKDXDLAC = 27.9762;
+  KiKDXDPYR = 17.9168;
+  KiKDXDakg = 14.7919;
+  KiKDXDxylonate = 18.3001;
+  KiXADNADH = 10.4629;
+  KmKDXDKDX = 0.207656;
+  KmKDXDKGSA = 0.288658;
+  KmKGSADHKDX = 0.2136;
+  KmKGSADHKG = 0.279059;
+  KmKGSADHKGSA = 0.0217501;
+  KmKGSADHNAD = 0.596286;
+  KmKGSADHNADH = 0.2674;
+  KmKGSADHNADH2 = 0.0241;
+  KmXADKDX = 0.862428;
+  KmXADXA = 0.793955;
+  KmXDHNAD = 0.161239;
+  KmXDHNADH = 0.0297091;
+  KmXDHXLAC = 0.535734;
+  KmXDHXYL = 0.19851;
+  KmXLAXA = 0.0381004;
+  KmXLAXLAC = 0.445269;
+  Ntot = 8;
+  VmKDXD = 107.075;
+  VmKGSADH = 49.3374;
+  VmXAD = 42.359;
+  VmXDH = 119.743;
+  VmXLA = 944.406;
+  fracX = 0.251104;
+  kLDH = 10;
+  kXLA = 0.00718272;
+
+  // Other declarations:
+  var Ea, Eb, Ec, Ed, Ex, KiKDXDLAC, KiKDXDPYR, KiKDXDakg, KiKDXDxylonate;
+  var KiXADNADH, KmKDXDKDX, KmKDXDKGSA, KmKGSADHKDX, KmKGSADHKG, KmKGSADHKGSA;
+  var KmKGSADHNAD, KmKGSADHNADH, KmKGSADHNADH2, KmXADKDX, KmXADXA, KmXDHNAD;
+  var KmXDHNADH, KmXDHXLAC, KmXDHXYL, KmXLAXA, KmXLAXLAC, Ntot, VmKDXD, VmKGSADH;
+  var VmXAD, VmXDH, VmXLA, fracX, kLDH, kXLA;
+
+  // CV terms:
+  KDX identity "http://identifiers.org/kegg.compound/C03826",
+               "http://identifiers.org/obo.chebi/CHEBI%3A1060"
+  KG identity "http://identifiers.org/obo.chebi/CHEBI%3A30915",
+              "http://identifiers.org/kegg.compound/C00026"
+  KGSA identity "http://identifiers.org/obo.chebi/CHEBI%3A17415",
+                "http://identifiers.org/kegg.compound/C00433"
+  LAC identity "http://identifiers.org/kegg.compound/C01432",
+               "http://identifiers.org/obo.chebi/CHEBI%3A28358"
+  NAD identity "http://identifiers.org/obo.chebi/CHEBI%3A15846",
+               "http://identifiers.org/kegg.compound/C00003"
+  PYR identity "http://identifiers.org/kegg.compound/C00022",
+               "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+  XA identity "http://identifiers.org/kegg.compound/C00502",
+              "http://identifiers.org/obo.chebi/CHEBI%3A48093"
+  XLAC identity "http://identifiers.org/kegg.compound/C02266",
+                "http://identifiers.org/obo.chebi/CHEBI%3A15867"
+  XYL identity "http://identifiers.org/kegg.compound/C00181",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15936"
+end
+
+shen2 is "shen2"

@@ -1,0 +1,125 @@
+// Created by libAntimony v2.13.2
+model *fung1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species AcCoA in compartment_, AcP in compartment_, Acs in compartment_;
+  species HOAc in compartment_, $HOAc_E in compartment_, LacI in compartment_;
+  species OAc in compartment_, Pta in compartment_;
+
+  // Reactions:
+  R_Acs:  => Acs; compartment_*(alpha2*(AcP/Kg2)^n/(1 + (AcP/Kg2)^n) + alpha0);
+  R_LacI:  => LacI; compartment_*(alpha1*(AcP/Kg1)^n/(1 + (AcP/Kg1)^n) + alpha0);
+  R_Pta:  => Pta; alpha3/(1 + (LacI/Kg3)^n) + alpha0;
+  R_dAcs: Acs => ; compartment_*kd*Acs;
+  R_dLacI: LacI => ; compartment_*kd*LacI;
+  R_dPta: Pta => ; compartment_*kd*Pta;
+  V_Ace: OAc -> HOAc; compartment_*C*(OAc*H - Keq*HOAc);
+  V_Ack: AcP -> OAc; compartment_*(kAck_f*AcP - kAck_r*OAc);
+  V_Acs: OAc => AcCoA; compartment_*k2*Acs*OAc/(KM2 + OAc);
+  V_Pta: AcCoA => AcP; compartment_*k1*Pta*AcCoA/(KM1 + AcCoA);
+  V_TCA: AcCoA => ; compartment_*kTCA*AcCoA;
+  V_gly:  => AcCoA; compartment_*S0;
+  V_out: HOAc -> $HOAc_E; compartment_*k3*(HOAc - HOAc_E);
+
+  // Species initializations:
+  AcCoA = 0;
+  AcP = 0;
+  Acs = 0;
+  HOAc = 0;
+  HOAc_E = 0;
+  LacI = 0;
+  OAc = 0;
+  Pta = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  C = 100;
+  H = 1e-07;
+  KM1 = 0.06;
+  KM2 = 0.1;
+  Keq = 0.0005;
+  Kg1 = 10;
+  Kg2 = 10;
+  Kg3 = 0.001;
+  S0 = 0.5;
+  alpha0 = 0;
+  alpha1 = 0.1;
+  alpha2 = 2;
+  alpha3 = 2;
+  k1 = 80;
+  k2 = 0.8;
+  k3 = 0.01;
+  kAck_f = 1;
+  kAck_r = 1;
+  kTCA = 10;
+  kd = 0.06;
+  n = 2;
+
+  // Other declarations:
+  const compartment_, C, H, KM1, KM2, Keq, Kg1, Kg2, Kg3, S0, alpha0, alpha1;
+  const alpha2, alpha3, k1, k2, k3, kAck_f, kAck_r, kTCA, kd, n;
+
+  // Display Names:
+  compartment_ is "Intracellular";
+  AcCoA is "Acetyl-CoA";
+  AcP is "Acetyl phosphate";
+  Acs is "Acetyl-CoA synthase";
+  HOAc is "protonated acetate";
+  HOAc_E is "acetate export";
+  LacI is "lac repressor";
+  OAc is "Acetate";
+  Pta is "Phosphate acetyl transferase";
+  R_Acs is "Acetyl-CoA synthase synthesis";
+  R_LacI is "LacI synthesis";
+  R_Pta is "Phosphate acetyl transferase synthase";
+  R_dAcs is "Acs degradation";
+  R_dLacI is "LacI degradation";
+  R_dPta is "Pta degradation";
+  V_Ace is "Acid-base equilibrium";
+  V_Ack is "Acetate kinase";
+  V_Acs is "Acetyl-CoA synthase flux";
+  V_Pta is "Phosphate acetyl transferase flux";
+  V_TCA is "Flux to TCA cycle";
+  V_gly is "Glycolytic flux";
+  V_out is "Intercellular transport of Acetate";
+
+  // CV terms:
+  compartment_ identity "http://identifiers.org/obo.go/GO:0005622"
+  AcCoA identity "http://identifiers.org/obo.chebi/CHEBI:15351",
+                 "http://identifiers.org/kegg.compound/C00024"
+  AcP identity "http://identifiers.org/obo.chebi/CHEBI:15350",
+               "http://identifiers.org/kegg.compound/C00227"
+  Acs identity "http://identifiers.org/uniprot/P27550"
+  HOAc hypernym "http://identifiers.org/obo.chebi/CHEBI:30089",
+                "http://identifiers.org/kegg.compound/C00033"
+  HOAc_E hypernym "http://identifiers.org/obo.chebi/CHEBI:30089",
+                  "http://identifiers.org/kegg.compound/C00033"
+  LacI parthood "http://identifiers.org/obo.go/GO:0017053"
+  OAc identity "http://identifiers.org/obo.chebi/CHEBI:30089",
+               "http://identifiers.org/kegg.compound/C00033"
+  Pta identity "http://identifiers.org/uniprot/P0A9M8"
+  R_Acs part "http://identifiers.org/obo.go/GO:0006351",
+             "http://identifiers.org/obo.go/GO:0006412"
+  R_LacI part "http://identifiers.org/obo.go/GO:0006351",
+              "http://identifiers.org/obo.go/GO:0006412"
+  R_Pta part "http://identifiers.org/obo.go/GO:0006351",
+             "http://identifiers.org/obo.go/GO:0006412"
+  R_dAcs hypernym "http://identifiers.org/obo.go/GO:0030163"
+  R_dLacI hypernym "http://identifiers.org/obo.go/GO:0030163"
+  R_dPta hypernym "http://identifiers.org/obo.go/GO:0030163"
+  V_Ack hypernym "http://identifiers.org/ec-code/2.7.2.1",
+                 "http://identifiers.org/obo.go/GO:0008776"
+  V_Acs hypernym "http://identifiers.org/ec-code/6.2.1.1",
+                 "http://identifiers.org/obo.go/GO:0019427",
+                 "http://identifiers.org/kegg.reaction/R00235"
+  V_Pta identity "http://identifiers.org/ec-code/2.3.1.8",
+                 "http://identifiers.org/kegg.reaction/R00230"
+  V_TCA version "http://identifiers.org/obo.go/GO:0006099"
+  V_gly version "http://identifiers.org/obo.go/GO:0006096"
+  V_out hypernym "http://identifiers.org/obo.go/GO:0015123"
+end
+
+fung1 is "fung1"

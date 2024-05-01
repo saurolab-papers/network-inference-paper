@@ -1,0 +1,2550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="bruggeman1" name="bruggeman1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ADP" compartment="default_compartment" initialConcentration="2.685" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="ATP" compartment="default_compartment" initialConcentration="2.685" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="AZGLN" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="AZGLU" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="AZgln" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_6" id="AZglu" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="GLN" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="GLU" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="GS" compartment="default_compartment" initialConcentration="0.014" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="GSAMP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="KG" compartment="default_compartment" initialConcentration="0.2" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_12" id="NADP" compartment="default_compartment" initialConcentration="0.05" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_13" id="NADPH" compartment="default_compartment" initialConcentration="0.15" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_14" id="NH" compartment="default_compartment" initialConcentration="0.05" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_15" id="PII" compartment="default_compartment" initialConcentration="0.003" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="PIIUMP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="PIIUMP2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="PIIUMP3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="PPi" compartment="default_compartment" initialConcentration="0.05" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="UMP" compartment="default_compartment" initialConcentration="0.01" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_21" id="UTP" compartment="default_compartment" initialConcentration="0.5" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_22" id="ATPtot" value="5.37" constant="false"/>
+      <parameter metaid="metaid_23" id="GStot" value="0.014" constant="false"/>
+      <parameter metaid="metaid_24" id="Kadgln" value="0.9714" constant="false"/>
+      <parameter metaid="metaid_25" id="Kadgs" value="0.001703" constant="false"/>
+      <parameter metaid="metaid_26" id="Kadp" value="0.5" constant="false"/>
+      <parameter metaid="metaid_27" id="Kadpiikg" value="1.052e-05" constant="false"/>
+      <parameter metaid="metaid_28" id="Kazglndemazgln" value="1" constant="false"/>
+      <parameter metaid="metaid_29" id="Kazglndemazinter" value="0.5" constant="false"/>
+      <parameter metaid="metaid_30" id="Kazglndemeq" value="10000000000" constant="false"/>
+      <parameter metaid="metaid_31" id="Kazgludemazglu" value="0.3" constant="false"/>
+      <parameter metaid="metaid_32" id="Kazgludemazinter" value="0.5" constant="false"/>
+      <parameter metaid="metaid_33" id="Kazgludemeq" value="10000000000" constant="false"/>
+      <parameter metaid="metaid_34" id="Kd1" value="0.005" constant="false"/>
+      <parameter metaid="metaid_35" id="Kd1piiump" value="0.025" constant="false"/>
+      <parameter metaid="metaid_36" id="Kd2" value="0.15" constant="false"/>
+      <parameter metaid="metaid_37" id="Kd2piiump" value="0.15" constant="false"/>
+      <parameter metaid="metaid_38" id="Kd3" value="0.15" constant="false"/>
+      <parameter metaid="metaid_39" id="Kd3piiump" value="0.15" constant="false"/>
+      <parameter metaid="metaid_40" id="Kdeadgln" value="0.04444" constant="false"/>
+      <parameter metaid="metaid_41" id="Kdeadgsa" value="0.0002015" constant="false"/>
+      <parameter metaid="metaid_42" id="Kdeadpiikg" value="2.274e-06" constant="false"/>
+      <parameter metaid="metaid_43" id="Kdeadpiiu" value="1.805e-05" constant="false"/>
+      <parameter metaid="metaid_44" id="Keq" value="460" constant="false"/>
+      <parameter metaid="metaid_45" id="Keqgdh" value="1290" constant="false"/>
+      <parameter metaid="metaid_46" id="Kgdhazglu" value="2.5" constant="false"/>
+      <parameter metaid="metaid_47" id="Kgdhglu" value="10" constant="false"/>
+      <parameter metaid="metaid_48" id="Kgdhkg" value="0.32" constant="false"/>
+      <parameter metaid="metaid_49" id="Kgdhnadp" value="0.042" constant="false"/>
+      <parameter metaid="metaid_50" id="Kgdhnadph" value="0.04" constant="false"/>
+      <parameter metaid="metaid_51" id="Kgdhnh" value="1.1" constant="false"/>
+      <parameter metaid="metaid_52" id="Kglndemazgln" value="0.25" constant="false"/>
+      <parameter metaid="metaid_53" id="Kglndemeq" value="10000000000" constant="false"/>
+      <parameter metaid="metaid_54" id="Kglndemgln" value="2" constant="false"/>
+      <parameter metaid="metaid_55" id="Kglnur" value="0.07" constant="false"/>
+      <parameter metaid="metaid_56" id="Kglnut" value="0.07" constant="false"/>
+      <parameter metaid="metaid_57" id="Kgludemazglu" value="0.5" constant="false"/>
+      <parameter metaid="metaid_58" id="Kgludemeq" value="10000000000" constant="false"/>
+      <parameter metaid="metaid_59" id="Kgludemglu" value="8" constant="false"/>
+      <parameter metaid="metaid_60" id="Kgogaz" value="0.65" constant="false"/>
+      <parameter metaid="metaid_61" id="Kgoggln" value="0.175" constant="false"/>
+      <parameter metaid="metaid_62" id="Kgogglu" value="11" constant="false"/>
+      <parameter metaid="metaid_63" id="Kgogkg" value="0.007" constant="false"/>
+      <parameter metaid="metaid_64" id="Kgognadp" value="0.0037" constant="false"/>
+      <parameter metaid="metaid_65" id="Kgognadph" value="0.0015" constant="false"/>
+      <parameter metaid="metaid_66" id="Kgsadp" value="0.0585" constant="false"/>
+      <parameter metaid="metaid_67" id="Kgsatp" value="0.35" constant="false"/>
+      <parameter metaid="metaid_68" id="Kgseq" value="460" constant="false"/>
+      <parameter metaid="metaid_69" id="Kgsgln" value="5.65" constant="false"/>
+      <parameter metaid="metaid_70" id="Kgsglu" value="4.1" constant="false"/>
+      <parameter metaid="metaid_71" id="Kgsnh" value="0.1" constant="false"/>
+      <parameter metaid="metaid_72" id="Kgspi" value="3.7" constant="false"/>
+      <parameter metaid="metaid_73" id="Kurpiiump" value="0.0023" constant="false"/>
+      <parameter metaid="metaid_74" id="Kurump" value="8.4" constant="false"/>
+      <parameter metaid="metaid_75" id="Kutipii" value="0.0018" constant="false"/>
+      <parameter metaid="metaid_76" id="Kutippi" value="0.1135" constant="false"/>
+      <parameter metaid="metaid_77" id="Kutpii" value="0.003" constant="false"/>
+      <parameter metaid="metaid_78" id="Kutpiiump" value="0.0035" constant="false"/>
+      <parameter metaid="metaid_79" id="Kututp" value="0.04" constant="false"/>
+      <parameter metaid="metaid_80" id="PI" value="10" constant="false"/>
+      <parameter metaid="metaid_81" id="PIItot" value="0.003" constant="false"/>
+      <parameter metaid="metaid_82" id="UR" value="0.0006" constant="false"/>
+      <parameter metaid="metaid_83" id="UT" value="0.0006" constant="false"/>
+      <parameter metaid="metaid_84" id="Vad" value="0.5" constant="false"/>
+      <parameter metaid="metaid_85" id="Vadp" value="100" constant="false"/>
+      <parameter metaid="metaid_86" id="Vazglndem" value="20" constant="false"/>
+      <parameter metaid="metaid_87" id="Vazgludem" value="30" constant="false"/>
+      <parameter metaid="metaid_88" id="Vdead" value="0.5" constant="false"/>
+      <parameter metaid="metaid_89" id="Vgdh" value="360" constant="false"/>
+      <parameter metaid="metaid_90" id="Vglndem" value="70" constant="false"/>
+      <parameter metaid="metaid_91" id="Vgludem" value="120" constant="false"/>
+      <parameter metaid="metaid_92" id="Vgog" value="85" constant="false"/>
+      <parameter metaid="metaid_93" id="Vgs" value="600" constant="false"/>
+      <parameter metaid="metaid_94" id="a1" value="1e-22" constant="false"/>
+      <parameter metaid="metaid_95" id="aamp" value="10" constant="false"/>
+      <parameter metaid="metaid_96" id="azinter" value="0.1" constant="false"/>
+      <parameter metaid="metaid_97" id="b1" value="0.5166" constant="false"/>
+      <parameter metaid="metaid_98" id="bamp" value="2.3667" constant="false"/>
+      <parameter metaid="metaid_99" id="c1" value="0.5974" constant="false"/>
+      <parameter metaid="metaid_100" id="camp" value="0.1012" constant="false"/>
+      <parameter metaid="metaid_101" id="d1" value="0.0387" constant="false"/>
+      <parameter metaid="metaid_102" id="damp" value="10.8688" constant="false"/>
+      <parameter metaid="metaid_103" id="e1" value="1e-22" constant="false"/>
+      <parameter metaid="metaid_104" id="f1" value="2.766" constant="false"/>
+      <parameter metaid="metaid_105" id="g1" value="3.323" constant="false"/>
+      <parameter metaid="metaid_106" id="h1" value="0.2148" constant="false"/>
+      <parameter metaid="metaid_107" id="i1" value="1e-22" constant="false"/>
+      <parameter metaid="metaid_108" id="j1" value="1e-22" constant="false"/>
+      <parameter metaid="metaid_109" id="k1" value="1e-22" constant="false"/>
+      <parameter metaid="metaid_110" id="kcatur" value="5.5" constant="false"/>
+      <parameter metaid="metaid_111" id="kcatut" value="137" constant="false"/>
+      <parameter metaid="metaid_112" id="l1" value="0.02316" constant="false"/>
+      <parameter metaid="metaid_113" id="m1" value="0.8821" constant="false"/>
+      <parameter metaid="metaid_114" id="n1" value="8.491" constant="false"/>
+      <parameter metaid="metaid_115" id="n1amp" value="1.1456" constant="false"/>
+      <parameter metaid="metaid_116" id="n2amp" value="19.2166" constant="false"/>
+      <parameter metaid="metaid_117" id="o1" value="0.8791" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_125" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_118" species="PII" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_119" species="UTP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_120" species="PIIUMP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_121" species="PPi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_122" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_123" species="PIIUMP2"/>
+          <modifierSpeciesReference metaid="metaid_124" species="PIIUMP3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatut </ci>
+                <ci> UT </ci>
+                <ci> UTP </ci>
+                <ci> PII </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kutipii </ci>
+                <ci> Kututp </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kglnut </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> UTP </ci>
+                    <ci> Kututp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <plus/>
+                      <ci> PII </ci>
+                      <ci> PIIUMP </ci>
+                      <ci> PIIUMP2 </ci>
+                    </apply>
+                    <ci> Kutipii </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> PPi </ci>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutippi </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Kutpii </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutpiiump </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_132" id="v_10" name="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="GLN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_127" species="NADPH" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_128" species="KG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="GLU" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_130" species="NADP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_131" species="AZGLU"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> KG </ci>
+                <ci> NADPH </ci>
+                <ci> Vgog </ci>
+                <ci> GLN </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kgoggln </ci>
+                <ci> Kgogkg </ci>
+                <ci> Kgognadph </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NADP </ci>
+                    <ci> Kgognadp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> NADPH </ci>
+                    <ci> Kgognadph </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> AZGLU </ci>
+                    <ci> Kgogaz </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> KG </ci>
+                    <ci> Kgogkg </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLU </ci>
+                    <ci> Kgogglu </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kgoggln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLU </ci>
+                    <ci> Kgogglu </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="v_11" name="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_133" species="GLU" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_134" species="ATP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_135" species="NH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_136" species="GLN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_137" species="ADP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_138" species="GSAMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> aamp </ci>
+                <ci> camp </ci>
+                <ci> Vgs </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> PI </ci>
+                        <ci> ADP </ci>
+                        <ci> GLN </ci>
+                      </apply>
+                      <ci> Keq </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> NH </ci>
+                    <ci> ATP </ci>
+                    <ci> GLU </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kgsatp </ci>
+                <ci> Kgsglu </ci>
+                <ci> Kgsnh </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> PI </ci>
+                    <ci> Kgspi </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> ADP </ci>
+                    <ci> Kgsadp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> PI </ci>
+                      <ci> ADP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kgsadp </ci>
+                      <ci> Kgspi </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> ATP </ci>
+                    <ci> Kgsatp </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NH </ci>
+                    <ci> Kgsnh </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kgsgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> NH </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kgsgln </ci>
+                      <ci> Kgsnh </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLU </ci>
+                    <ci> Kgsglu </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> NH </ci>
+                      <ci> GLU </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kgsglu </ci>
+                      <ci> Kgsnh </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <power/>
+                      <cn type="integer"> 12 </cn>
+                      <ci> n1amp </ci>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> GSAMP </ci>
+                        <apply>
+                          <times/>
+                          <ci> bamp </ci>
+                          <ci> GStot </ci>
+                        </apply>
+                      </apply>
+                      <ci> n1amp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <power/>
+                      <cn type="integer"> 12 </cn>
+                      <ci> n2amp </ci>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <ci> GSAMP </ci>
+                        <apply>
+                          <times/>
+                          <ci> damp </ci>
+                          <ci> GStot </ci>
+                        </apply>
+                      </apply>
+                      <ci> n2amp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="GLU" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="AZGLU" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vgludem </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <ci> AZGLU </ci>
+                      <ci> Kgludemeq </ci>
+                    </apply>
+                  </apply>
+                  <ci> GLU </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kgludemglu </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> AZGLU </ci>
+                    <ci> Kgludemazglu </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLU </ci>
+                    <ci> Kgludemglu </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="AZGLU" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="AZglu" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vazgludem </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <ci> azinter </ci>
+                      <ci> Kazgludemeq </ci>
+                    </apply>
+                  </apply>
+                  <ci> AZGLU </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kazgludemazglu </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> azinter </ci>
+                    <ci> Kazgludemazinter </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> AZGLU </ci>
+                    <ci> Kazgludemazglu </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="GLN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="AZGLN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vglndem </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <ci> AZGLN </ci>
+                      <ci> Kglndemeq </ci>
+                    </apply>
+                  </apply>
+                  <ci> GLN </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kglndemgln </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> AZGLN </ci>
+                    <ci> Kglndemazgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kglndemgln </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_151" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="AZGLN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="AZgln" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vazglndem </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <ci> azinter </ci>
+                      <ci> Kazglndemeq </ci>
+                    </apply>
+                  </apply>
+                  <ci> AZGLN </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kazglndemazgln </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> azinter </ci>
+                    <ci> Kazglndemazinter </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> AZGLN </ci>
+                    <ci> Kazglndemazgln </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_154" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="ADP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vadp </ci>
+                <ci> ADP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Kadp </ci>
+                <ci> ADP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="v_2" name="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_155" species="PIIUMP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_156" species="PII" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_157" species="UMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_158" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_159" species="PIIUMP2"/>
+          <modifierSpeciesReference metaid="metaid_160" species="PIIUMP3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatur </ci>
+                <ci> UR </ci>
+                <ci> PIIUMP </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kurpiiump </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> Kglnur </ci>
+                    <ci> GLN </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <ci> Kurpiiump </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_169" id="v_3" name="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="PIIUMP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_163" species="UTP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_164" species="PIIUMP2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_165" species="PPi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_166" species="PIIUMP3"/>
+          <modifierSpeciesReference metaid="metaid_167" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_168" species="PII"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatut </ci>
+                <ci> UT </ci>
+                <ci> UTP </ci>
+                <ci> PIIUMP </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kutipii </ci>
+                <ci> Kututp </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kglnut </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> UTP </ci>
+                    <ci> Kututp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <plus/>
+                      <ci> PII </ci>
+                      <ci> PIIUMP </ci>
+                      <ci> PIIUMP2 </ci>
+                    </apply>
+                    <ci> Kutipii </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> PPi </ci>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutippi </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Kutpii </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutpiiump </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_175" id="v_4" name="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_170" species="PIIUMP2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_171" species="PIIUMP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_172" species="UMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_173" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_174" species="PIIUMP3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatur </ci>
+                <ci> UR </ci>
+                <ci> PIIUMP2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kurpiiump </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> Kglnur </ci>
+                    <ci> GLN </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <ci> Kurpiiump </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="v_5" name="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_176" species="PIIUMP2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_177" species="UTP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_178" species="PIIUMP3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_179" species="PPi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_180" species="PII"/>
+          <modifierSpeciesReference metaid="metaid_181" species="PIIUMP"/>
+          <modifierSpeciesReference metaid="metaid_182" species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatut </ci>
+                <ci> UT </ci>
+                <ci> UTP </ci>
+                <ci> PIIUMP2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kutipii </ci>
+                <ci> Kututp </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kglnut </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> UTP </ci>
+                    <ci> Kututp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <plus/>
+                      <ci> PII </ci>
+                      <ci> PIIUMP </ci>
+                      <ci> PIIUMP2 </ci>
+                    </apply>
+                    <ci> Kutipii </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> PPi </ci>
+                      <ci> UTP </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PII </ci>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutippi </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Kutpii </ci>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutipii </ci>
+                      <ci> Kutpiiump </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="v_6" name="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="PIIUMP3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_185" species="PIIUMP2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_186" species="UMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_187" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_188" species="PIIUMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcatur </ci>
+                <ci> UR </ci>
+                <ci> PIIUMP3 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kurpiiump </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> Kglnur </ci>
+                    <ci> GLN </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> PIIUMP </ci>
+                        <ci> PIIUMP2 </ci>
+                        <ci> PIIUMP3 </ci>
+                      </apply>
+                    </apply>
+                    <ci> Kurpiiump </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="v_7" name="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_190" species="GS" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_191" species="GSAMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_192" species="KG"/>
+          <modifierSpeciesReference metaid="metaid_193" species="PII"/>
+          <modifierSpeciesReference metaid="metaid_194" species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vad </ci>
+                <ci> GS </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> b1 </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                    <ci> Kadgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> a1 </ci>
+                      <ci> KG </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kadpiikg </ci>
+                      <ci> Kd1 </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> c1 </ci>
+                      <ci> KG </ci>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kadgln </ci>
+                      <ci> Kadpiikg </ci>
+                      <ci> Kd1 </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> Kadgs </ci>
+                  <ci> GS </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kadgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> KG </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kadpiikg </ci>
+                      <ci> Kd1 </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> KG </ci>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> d1 </ci>
+                      <ci> Kadgln </ci>
+                      <ci> Kadpiikg </ci>
+                      <ci> Kd1 </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_202" id="v_8" name="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="GSAMP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="GS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_198" species="GLN"/>
+          <modifierSpeciesReference metaid="metaid_199" species="KG"/>
+          <modifierSpeciesReference metaid="metaid_200" species="PII"/>
+          <modifierSpeciesReference metaid="metaid_201" species="PIIUMP3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vdead </ci>
+                <ci> GSAMP </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> f1 </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                    <ci> Kdeadgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> e1 </ci>
+                      <ci> KG </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> h1 </ci>
+                      <ci> KG </ci>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> g1 </ci>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 3 </cn>
+                      </apply>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> j1 </ci>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 3 </cn>
+                      </apply>
+                      <ci> GLN </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> i1 </ci>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 4 </cn>
+                      </apply>
+                      <ci> PII </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> k1 </ci>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 4 </cn>
+                      </apply>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <ci> Kdeadgsa </ci>
+                  <ci> GSAMP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GLN </ci>
+                    <ci> Kdeadgln </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> KG </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <ci> KG </ci>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> l1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 3 </cn>
+                      </apply>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 3 </cn>
+                      </apply>
+                      <ci> GLN </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> n1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 4 </cn>
+                      </apply>
+                      <ci> PII </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> m1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 3 </cn>
+                      <apply>
+                        <power/>
+                        <ci> KG </ci>
+                        <cn type="integer"> 4 </cn>
+                      </apply>
+                      <ci> GLN </ci>
+                      <ci> PII </ci>
+                      <ci> PIIUMP3 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kd1 </ci>
+                      <ci> Kd1piiump </ci>
+                      <ci> Kd2piiump </ci>
+                      <ci> Kd3piiump </ci>
+                      <ci> Kdeadgln </ci>
+                      <ci> Kdeadpiikg </ci>
+                      <ci> Kdeadpiiu </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1 </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1 </ci>
+                            <ci> Kd2 </ci>
+                            <ci> Kd3 </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <ci> KG </ci>
+                          </apply>
+                          <ci> Kd1piiump </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> KG </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> KG </ci>
+                            <cn type="integer"> 3 </cn>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <ci> Kd1piiump </ci>
+                            <ci> Kd2piiump </ci>
+                            <ci> Kd3piiump </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> o1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_208" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_203" species="NH" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_204" species="KG" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_205" species="NADPH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_206" species="GLU" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_207" species="NADP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vgdh </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> KG </ci>
+                    <ci> NADPH </ci>
+                    <ci> NH </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> NADP </ci>
+                      <ci> GLU </ci>
+                    </apply>
+                    <ci> Keqgdh </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kgdhkg </ci>
+                <ci> Kgdhnadph </ci>
+                <ci> Kgdhnh </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NADP </ci>
+                    <ci> Kgdhnadp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> NADPH </ci>
+                    <ci> Kgdhnadph </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NH </ci>
+                    <ci> Kgdhnh </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> KG </ci>
+                    <ci> Kgdhkg </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> GLU </ci>
+                    <ci> Kgdhglu </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

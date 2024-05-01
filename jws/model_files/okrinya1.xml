@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="okrinya1" name="okrinya1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="A" name="Antibodies" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="G" name="Gametocytes" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="M" name="Merozoites" compartment="default" initialConcentration="0.105" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="P" name="Innate immune cells" compartment="default" initialConcentration="0.127" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="X" name="RBC" compartment="default" initialConcentration="5000000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="Y" name="iRBC" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_7" id="A0" value="0" constant="false"/>
+      <parameter metaid="metaid_8" id="bM" value="0.038" constant="false"/>
+      <parameter metaid="metaid_9" id="betaX" value="4.9e-06" constant="false"/>
+      <parameter metaid="metaid_10" id="c0" value="0.6" constant="false"/>
+      <parameter metaid="metaid_11" id="c1" value="1.12" constant="false"/>
+      <parameter metaid="metaid_12" id="eta1" value="1.3e-07" constant="false"/>
+      <parameter metaid="metaid_13" id="eta1phi" value="2.6e-07" constant="false"/>
+      <parameter metaid="metaid_14" id="eta2" value="3e-07" constant="false"/>
+      <parameter metaid="metaid_15" id="eta3" value="4.5e-08" constant="false"/>
+      <parameter metaid="metaid_16" id="eta4" value="3.4e-08" constant="false"/>
+      <parameter metaid="metaid_17" id="g2" value="0.85" constant="false"/>
+      <parameter metaid="metaid_18" id="kA" value="1.38" constant="false"/>
+      <parameter metaid="metaid_19" id="kB" value="12" constant="false"/>
+      <parameter metaid="metaid_20" id="kC" value="1.26" constant="false"/>
+      <parameter metaid="metaid_21" id="kD" value="2.8e-09" constant="false"/>
+      <parameter metaid="metaid_22" id="kG" value="1.4" constant="false"/>
+      <parameter metaid="metaid_23" id="kM" value="118" constant="false"/>
+      <parameter metaid="metaid_24" id="kN" value="3.1e-09" constant="false"/>
+      <parameter metaid="metaid_25" id="kY" value="0.9" constant="false"/>
+      <parameter metaid="metaid_26" id="lambdaX" value="41500" constant="false"/>
+      <parameter metaid="metaid_27" id="muA" value="0.3" constant="false"/>
+      <parameter metaid="metaid_28" id="muG" value="0.02" constant="false"/>
+      <parameter metaid="metaid_29" id="muM" value="48" constant="false"/>
+      <parameter metaid="metaid_30" id="muN" value="0.055" constant="false"/>
+      <parameter metaid="metaid_31" id="muP" value="0.3" constant="false"/>
+      <parameter metaid="metaid_32" id="muX" value="0.0083" constant="false"/>
+      <parameter metaid="metaid_33" id="muY" value="0.5" constant="false"/>
+      <parameter metaid="metaid_34" id="phi" value="2" constant="false"/>
+      <parameter metaid="metaid_35" id="r" value="16" constant="false"/>
+      <parameter metaid="metaid_36" id="theta" value="0.0064" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_38" id="v1" name="v1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_37" species="X" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> lambdaX </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_42" id="v10" name="v10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_39" species="G" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_40" species="A"/>
+          <modifierSpeciesReference metaid="metaid_41" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> muG </ci>
+              <ci> G </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_46" id="v11" name="v11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_43" species="G" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_44" species="A"/>
+          <modifierSpeciesReference metaid="metaid_45" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kG </ci>
+              <ci> P </ci>
+              <ci> G </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> kC </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_50" id="v12" name="v12" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_47" species="P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_48" species="M"/>
+          <modifierSpeciesReference metaid="metaid_49" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> bM </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_54" id="v13" name="v13" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_51" species="P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_52" species="M"/>
+          <modifierSpeciesReference metaid="metaid_53" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> eta1 </ci>
+                <ci> Y </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> eta1phi </ci>
+                <ci> M </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_58" id="v14" name="v14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_56" species="Y"/>
+          <modifierSpeciesReference metaid="metaid_57" species="M"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> muP </ci>
+              <ci> P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_62" id="v15" name="v15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_60" species="M"/>
+          <modifierSpeciesReference metaid="metaid_61" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> P </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> kD </ci>
+                  <ci> Y </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kN </ci>
+                  <ci> M </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" id="v16" name="v16" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="A" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_64" species="M"/>
+          <modifierSpeciesReference metaid="metaid_65" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> eta2 </ci>
+              <apply>
+                <plus/>
+                <ci> Y </ci>
+                <apply>
+                  <times/>
+                  <ci> g2 </ci>
+                  <ci> M </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_68" id="v17" name="v17" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_67" species="A" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> muA </ci>
+              <apply>
+                <minus/>
+                <ci> A0 </ci>
+                <ci> A </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_72" id="v18" name="v18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_69" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_70" species="M"/>
+          <modifierSpeciesReference metaid="metaid_71" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> A </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> eta3 </ci>
+                  <ci> Y </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> eta4 </ci>
+                  <ci> M </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_79" id="v2" name="v2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_73" species="X" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_74" species="M" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_75" species="Y" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_76" species="X"/>
+          <modifierSpeciesReference metaid="metaid_77" species="M"/>
+          <modifierSpeciesReference metaid="metaid_78" species="A"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> betaX </ci>
+                <ci> X </ci>
+                <ci> M </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> c0 </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_81" id="v3" name="v3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="X" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> muX </ci>
+              <ci> X </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_85" id="v4" name="v4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_82" species="Y" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_83" species="A"/>
+          <modifierSpeciesReference metaid="metaid_84" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> muY </ci>
+                <ci> muN </ci>
+              </apply>
+              <ci> Y </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_89" id="v5" name="v5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_86" species="Y" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_87" species="A"/>
+          <modifierSpeciesReference metaid="metaid_88" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kY </ci>
+              <ci> P </ci>
+              <ci> Y </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> kA </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_93" id="v6" name="v6" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_90" species="M" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_91" species="A"/>
+          <modifierSpeciesReference metaid="metaid_92" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> r </ci>
+                <ci> muY </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> theta </ci>
+                </apply>
+                <ci> Y </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> c1 </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_97" id="v7" name="v7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_94" species="M" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_95" species="A"/>
+          <modifierSpeciesReference metaid="metaid_96" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> muM </ci>
+              <ci> M </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="v8" name="v8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_98" species="M" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_99" species="A"/>
+          <modifierSpeciesReference metaid="metaid_100" species="P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kM </ci>
+              <ci> P </ci>
+              <ci> M </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> kB </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_105" id="v9" name="v9" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_102" species="G" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_103" species="A"/>
+          <modifierSpeciesReference metaid="metaid_104" species="Y"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> r </ci>
+                <ci> muY </ci>
+                <ci> theta </ci>
+                <ci> Y </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> c1 </ci>
+                  <ci> A </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

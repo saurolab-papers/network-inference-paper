@@ -1,0 +1,530 @@
+// Created by libAntimony v2.13.2
+model *demin1()
+
+  // Compartments and Species:
+  compartment Default, V_AW, V_B, V_BM, Vd_AW_Hn, Vd_AW_LTC, Vd_AW_LTD, Vd_AW_LTE;
+  compartment Vd_AW_ZF, Vd_Hn, Vd_IL5, Vd_LTC, Vd_LTD, Vd_LTE, Vd_ML, Vd_ZF;
+  species AA_aw in Default, AA_b in Default, EO_a_aw in V_AW, EO_a_b in V_B;
+  species EO_aw in V_AW, EO_b in V_B, EO_bm in V_BM, EO_i_aw in V_AW, EO_i_b in V_B;
+  species HETE_aw in Default, HETE_b in Default, HPETE_aw in Default, HPETE_b in Default;
+  species Hn_aw in Vd_AW_Hn, Hn_b in Vd_Hn, IL_aw in V_AW, IL_b in Vd_IL5;
+  species IL_bm in V_BM, LTA4_aw in Default, LTA4_b in Default, LTC4_aw in Default;
+  species LTC4_aw_out in Vd_AW_LTC, LTC4_b in Default, LTC4_b_out in Vd_LTC;
+  species LTD4_aw in Vd_AW_LTD, LTD4_b in Vd_LTD, LTE4_aw in Vd_AW_LTE, LTE4_b in Vd_LTE;
+  species ML_blood in Vd_ML, ML_intes in Default, ZF_airways in Vd_AW_ZF;
+  species ZF_blood in Vd_ZF, ZF_intes in Default;
+
+  // Assignment Rules:
+  A_aw := (GSH_aw*GSH_aw/(Km_gpx_GSH*Km_gpx_GSH))*(1e0 + GSSG_aw/Kd_gpx_GSSG) + (HPETE_aw/Km_gpx_HPETE5)*(1e0 + HETE_aw/Kd_gpx_HETE5) + C_aw;
+  GSSG_aw := (GS_pool_aw - GSH_aw)/2e0;
+  C_aw := HPETE_aw*GSH_aw*GSH_aw/(Km_gpx_HPETE5*Km_gpx_GSH*Km_gpx_GSH);
+  A_b := (GSH_b*GSH_b/(Km_gpx_GSH*Km_gpx_GSH))*(1e0 + GSSG_b/Kd_gpx_GSSG) + (HPETE_b/Km_gpx_HPETE5)*(1e0 + HETE_b/Kd_gpx_HETE5) + C_b;
+  GSSG_b := (GS_pool_b - GSH_b)/2e0;
+  C_b := HPETE_b*GSH_b*GSH_b/(Km_gpx_HPETE5*Km_gpx_GSH*Km_gpx_GSH);
+  A_hedh_aw := (1e0 + NADP_aw/Kd_hedh_NADP + oxoETE_aw/Kd_hedh_oxoETE5)*(k_hedh_1*HETE_aw/Kd_hedh_HETE5 + k_hedh_4*NADPH_aw/Kd_hedh_NADPH) + C_hedh_aw;
+  NADPH_aw := NP_pool_aw - NADP_aw;
+  C_hedh_aw := (1e0 + HETE_aw/Kd_hedh_HETE5 + NADPH_aw/Kd_hedh_NADPH)*(k_hedh_3*oxoETE_aw/Kd_hedh_oxoETE5 + k_hedh_2*NADP_aw/Kd_hedh_NADP);
+  A_hedh_b := (1e0 + NADP_b/Kd_hedh_NADP + oxoETE_b/Kd_hedh_oxoETE5)*(k_hedh_1*HETE_b/Kd_hedh_HETE5 + k_hedh_4*NADPH_b/Kd_hedh_NADPH) + C_hedh_b;
+  NADPH_b := NP_pool_b - NADP_b;
+  C_hedh_b := (1e0 + HETE_b/Kd_hedh_HETE5 + NADPH_b/Kd_hedh_NADPH)*(k_hedh_3*oxoETE_b/Kd_hedh_oxoETE5 + k_hedh_2*NADP_b/Kd_hedh_NADP);
+  B_aw := k_gpx_cat*HPETE_aw*GSH_aw*GSH_aw/(Km_gpx_HPETE5*Km_gpx_GSH*Km_gpx_GSH);
+  B_b := k_gpx_cat*HPETE_b*GSH_b*GSH_b/(Km_gpx_HPETE5*Km_gpx_GSH*Km_gpx_GSH);
+  B_hedh_aw := k_hedh_1*k_hedh_2*HETE_aw*NADP_aw/(Kd_hedh_HETE5*Kd_hedh_NADP) - oxoETE_aw*NADPH_aw*k_hedh_3*k_hedh_4/(Kd_hedh_oxoETE5*Kd_hedh_NADPH);
+  B_hedh_b := k_hedh_1*k_hedh_2*HETE_b*NADP_b/(Kd_hedh_HETE5*Kd_hedh_NADP) - oxoETE_b*NADPH_b*k_hedh_3*k_hedh_4/(Kd_hedh_oxoETE5*Kd_hedh_NADPH);
+  Ca_FEV := Cao_FEV + k_fev_eff*(R1_portion_FEV*(LTD4_aw/Kd_LTR1_FEV)/(1e0 + LTD4_aw/Kd_LTR1_FEV + ML_airways_conc/EC50_ML_FEV) + R2_portion_FEV*((LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV)/(1e0 + (LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV) + (1e0 - R1_portion_FEV - R2_portion_FEV)*(Hn_aw/Kd_Hn_FEV)/(1e0 + Hn_aw/Kd_Hn_FEV));
+  ML_airways_conc := fup_ML*ML_blood;
+  Ca_FEV_LTR1 := k_fev_eff*(R1_portion_FEV*(LTD4_aw/Kd_LTR1_FEV)/(1e0 + LTD4_aw/Kd_LTR1_FEV + ML_airways_conc/EC50_ML_FEV))/(Ca_FEV - Cao_FEV);
+  Ca_FEV_LTR2 := k_fev_eff*(R2_portion_FEV*((LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV)/(1e0 + (LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV) + (1e0 - R1_portion_FEV - R2_portion_FEV)*(Hn_aw/Kd_Hn_FEV)/(1e0 + Hn_aw/Kd_Hn_FEV))/(Ca_FEV - Cao_FEV);
+  DFLOa_aw := (1e0 + Ca/K_Ca3)*(1e0 + REDOX_aw*(1e0 + Ca/K_Ca2)/(1e0 + Ca/K_Ca3) + (AA_aw/K_AA)*(1e0 + AA_aw/Ki_AA_AA) + (AA_aw/Ki_AA)*(1e0 + HETE_aw/K_AA_HETE) + RELFLO5_aw*(1e0 + AA_aw/Ki_HPETE_AA) + HETE_aw/Ki_HETE + al*ZF_airways_conc/KdZ);
+  REDOX_aw := (r2/Ke_red + r1*OH_aw/Ke_ox + (al*ki*ZF_airways_conc/KdZ)*(1e0 + Ca/K_Ca3))/(r2 + r1*OOH_aw);
+  Ki_AA_AA := Ki_AA;
+  K_AA_HETE := Ki_HETE;
+  RELFLO5_aw := (k_lo*AA_aw/K_AA + k3*HPETE_aw*(1e0 + AA_aw/Ki_AA))/(k_lta_syn + k_3*(1e0 + AA_aw/Ki_HPETE_AA));
+  Ki_HPETE_AA := Ki_AA;
+  ZF_airways_conc := ZF_airways;
+  DFLOa_b := (1e0 + Ca/K_Ca3)*(1e0 + REDOX_b*(1e0 + Ca/K_Ca2)/(1e0 + Ca/K_Ca3) + (AA_b/K_AA)*(1e0 + AA_b/Ki_AA_AA) + (AA_b/Ki_AA)*(1e0 + HETE_b/K_AA_HETE) + RELFLO5_b*(1e0 + AA_b/Ki_HPETE_AA) + HETE_b/Ki_HETE + al*ZF_blood_conc/KdZ);
+  REDOX_b := (r2/Ke_red + r1*OH_b/Ke_ox + (al*ki*ZF_blood_conc/KdZ)*(1e0 + Ca/K_Ca3))/(r2 + r1*OOH_b);
+  RELFLO5_b := (k_lo*AA_b/K_AA + k3*HPETE_b*(1e0 + AA_b/Ki_AA))/(k_lta_syn + k_3*(1e0 + AA_b/Ki_HPETE_AA));
+  ZF_blood_conc := fup_ZF*ZF_blood;
+  EO_aw_tot := EO_aw + EO_i_aw + EO_a_aw;
+  EO_b_tot := EO_b + EO_i_b + EO_a_b;
+  EO_b_tot_per_ss := 1e2*(EO_b_tot - 5.33e-4)/5.33e-4;
+  FEV1 := MAX_FEV*(r_in_FEV/R_in_relax_FEV)^2e0;
+  r_in_FEV := r_out_FEV - (R_FEV - R_in_relax_FEV)*(R_FEV/r_out_FEV)^5e-1;
+  FEV1_percent := ((FEV1 - 3.528e0)/3.528e0)*1e2;
+  FLO2_aw := FLO3_aw*REDOX_aw;
+  FLO3_aw := FLOa/DFLOa_aw;
+  FLO2_b := FLO3_b*REDOX_b;
+  FLO3_b := FLOa/DFLOa_b;
+  FLO2t_aw := FLO2_aw*(1e0 + Ca/K_Ca2);
+  FLO2t_b := FLO2_b*(1e0 + Ca/K_Ca2);
+  FLO3t_aw := FLO3_aw*(1e0 + Ca/K_Ca3);
+  FLO3t_b := FLO3_b*(1e0 + Ca/K_Ca3);
+  FLO5HP_aw := FLO3t_aw*RELFLO5_aw;
+  FLO5HP_b := FLO3t_b*RELFLO5_b;
+  Hn_aw_perc := 1e2*Hn_aw/1.4162e4;
+  LTC4_b_pM := LTC4_b*1e6;
+  LTD4_aw_pers := 1e2*LTD4_aw/2.0576e2;
+  LTD4_b_free := LTD4_b*fup_LT;
+  LTs_aw_pg := ((LTC4_aw_out/fup_LT)*M_LTC + (LTD4_aw/fup_LT)*M_LTD + (LTE4_aw/fup_LT)*M_LTE)/1e3;
+  ML_blood_conc := fup_ML*ML_blood;
+  ML_uM := ML_blood/1e6;
+  N_EO := (N_EO_b_tot*V_B + N_EO_aw_tot*V_AW)/(V_B + V_AW);
+  N_EO_b_tot := (EO_b + EO_i_b + EO_a_b)*6.02e0*1e1^8e0;
+  N_EO_aw_tot := (EO_aw + EO_i_aw + EO_a_aw)*6.02e0*1e1^8e0;
+  N_EO_a := (N_EO_a_b*V_B + N_EO_a_aw*V_AW)/(V_B + V_AW);
+  N_EO_a_b := EO_a_b*6.02e0*1e1^8e0;
+  N_EO_a_aw := EO_a_aw*6.02e0*1e1^8e0;
+  N_EO_aw := EO_aw*6.02e0*1e1^8e0;
+  N_EO_aw_perc := 1e2*N_EO_aw_tot/8.18735e5;
+  N_EO_aw_tot_perc := (N_EO_aw_tot/8.18735e5)*1e2;
+  N_EO_b := EO_b*6.02e0*1e1^8e0;
+  N_EO_b_tot_perc := (N_EO_b_tot/4.266021e6)*1e2;
+  N_EO_bm := EO_bm*6.02e0*1e1^8e0;
+  N_EO_i_aw := EO_i_aw*6.02e0*1e1^8e0;
+  N_EO_i_b := EO_i_b*6.02e0*1e1^8e0;
+  N_EO_perc := 1e2*N_EO/3.58758e5;
+  OH_aw := HETE_aw + LOH_aw;
+  OH_b := HETE_b + LOH_b;
+  OL_ASM := R1_portion_FEV*(LTD4_aw/Kd_LTR1_FEV)/(1e0 + LTD4_aw/Kd_LTR1_FEV + ML_airways_conc/EC50_ML_FEV) + R2_portion_FEV*((LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV)/(1e0 + (LTD4_aw + LTC4_aw_out)/Kd_LTR2_FEV) + (1e0 - R1_portion_FEV - R2_portion_FEV)*(Hn_aw/Kd_Hn_FEV)/(1e0 + Hn_aw/Kd_Hn_FEV);
+  OL_aw := R1_portion_EOa*(LTD4_aw/Kd_LT)/(1e0 + LTD4_aw/Kd_LT + ML_airways_conc/Ki_ML_EOa) + (1e0 - R1_portion_EOa)*((LTC4_aw_out + LTD4_aw)/Kd_LT_2)/(1e0 + (LTC4_aw_out + LTD4_aw)/Kd_LT_2);
+  OL_b := R1_portion_EOa*(fup_LT*LTD4_b/Kd_LT)/(1e0 + fup_LT*LTD4_b/Kd_LT + ML_blood_conc/Ki_ML_EOa) + (1e0 - R1_portion_EOa)*(fup_LT*(LTC4_b_out + LTD4_b)/Kd_LT_2)/(1e0 + fup_LT*(LTC4_b_out + LTD4_b)/Kd_LT_2);
+  OOH_aw := HPETE_aw + LOOH_aw;
+  OOH_b := HPETE_b + LOOH_b;
+  PLA2_Ca := Ca/K_PLA2_Ca/PLA2_D;
+  PLA2_D := 1e0 + Ca/K_PLA2_Ca;
+  r2 := k_red + k_red2*Ca/K_Ca2;
+  r1 := k_ox + k_ox2*Ca/K_Ca2;
+  Rec_occup_migr := portion_migr*fup_LT*LTE4_b/(Kd_LTE_migr + fup_LT*LTE4_b) + (1e0 - portion_migr)*IL_b/(Kd_IL_migr + IL_b);
+  TSN := TSN_0*(R_FEV - (R_FEV*(R_FEV - R_in_relax_FEV)^2e0)^(1e0/3e0))*Ca_FEV_ex^n_FEV/(K_Ca_FEV^n_FEV + Ca_FEV_ex^n_FEV);
+  TSN_Hn := TSN_0*(R_FEV - (R_FEV*(R_FEV - R_in_relax_FEV)^2e0)^(1e0/3e0))*Ca_FEV^n_FEV/(K_Ca_FEV^n_FEV + Ca_FEV^n_FEV);
+  V_CAW := (EO_a_aw + EO_aw + EO_i_aw)*N_A_pmole*w_EO*V_AW;
+  w_EO := npi*diam_EO^3e0/6e0;
+  V_CB := (EO_a_b + EO_b + EO_i_b)*N_A_pmole*w_EO*V_B;
+  V_LTC_CAW := (naEO_LTCsyn*(EO_aw + EO_i_aw) + EO_a_aw)*N_A_pmole*w_EO*V_AW;
+  V_LTC_CB := (naEO_LTCsyn*(EO_b + EO_i_b) + EO_a_b)*N_A_pmole*w_EO*V_B;
+  V_aCAW := EO_a_aw*N_A_pmole*w_EO*V_AW;
+  V_aCB := EO_a_b*N_A_pmole*w_EO*V_B;
+  delta_LTCs_aw := 1e0 + LTA4_aw/K_LTA + GSH_aw/K_GSH + LTA4_aw*GSH_aw/K_LTA/K_LTA_GSH + LTC4_aw/K_LTC;
+  delta_LTCs_b := 1e0 + LTA4_b/K_LTA + GSH_b/K_GSH + LTA4_b*GSH_b/K_LTA/K_LTA_GSH + LTC4_b/K_LTC;
+  den_LTCs_aw := delta_LTCs_aw*K_LTA_GSH*K_GSH*K_LTC;
+  den_LTCs_b := delta_LTCs_b*K_LTA_GSH*K_GSH*K_LTC;
+  ft_ml := ceil(time/T);
+  ft_zf := ceil(time/T) + ceil((time - 3.6e2)/T) + ceil((time - 6.6e2)/T) + ceil((time - 9.6e2)/T);
+  nom_LTCs_aw := Et_LTCs*(K_LTC*k_LTCs_fow*LTA4_aw*GSH_aw - k_LTCs_back*K_LTA_GSH*K_GSH*LTC4_aw);
+  nom_LTCs_b := Et_LTCs*(K_LTC*k_LTCs_fow*LTA4_b*GSH_b - k_LTCs_back*K_LTA_GSH*K_GSH*LTC4_b);
+  r_out_FEV := R_FEV - (R_FEV - (R_FEV*(R_FEV - R_in_relax_FEV)^2e0)^(1e0/3e0))*Ca_FEV^n_FEV/(K_Ca_FEV^n_FEV + Ca_FEV^n_FEV);
+  time_day := time/1.44e3;
+  time_hour := time/6e1;
+
+  // Reactions:
+  v1:  => AA_b; Default*(Vmax_PLA2*PLA2_Ca*PL/(Km_PLA2_APC + PL) - V_CoA*AA_b/(Km_CoA_AA + AA_b));
+  v10in: LTC4_b => ; Default*Kd50*LTC4_b;
+  v10out:  => LTC4_b_out; Default*Kd50*LTC4_b*V_LTC_CB*1e1^6e0;
+  v11: LTC4_b_out => LTD4_b; Vd_LTC*k_ggt*fup_LT*LTC4_b_out;
+  v12: LTD4_b => LTE4_b; Vd_LTD*k_dp*fup_LT*LTD4_b;
+  v13: LTC4_b_out => ; Vd_LTC*k_ltc_ltd_el*fup_LT*LTC4_b_out;
+  v14: LTD4_b => ; Vd_LTD*k_ltc_ltd_el*fup_LT*LTD4_b;
+  v15: LTE4_b => ; Vd_LTE*(k_lte_el + k_acet)*fup_LT*LTE4_b;
+  v16: EO_b => EO_i_b; ca*V_B*(ka*EO_b*OL_b^h_act/(EC50_act^h_act + OL_b^h_act));
+  v17: EO_i_b => EO_a_b; ca*V_B*k_EO_m*EO_i_b;
+  v18: EO_a_b => EO_b; ca*V_B*kia*EO_a_b;
+  v19: EO_b => ; V_B*k_EO_d*EO_b;
+  v2: AA_b => ; Default*(k_lo*AA_b*FLO3t_b/K_AA);
+  v20: EO_a_b => ; V_B*k_EO_a_d*EO_a_b;
+  v21: EO_i_b => EO_i_aw; V_B*(k_EO_t_baw*EO_i_b*Rec_occup_migr^h_migr/(EC50_migr^h_migr + Rec_occup_migr^h_migr));
+  v22: EO_a_b => EO_a_aw; V_B*(k_EO_t_baw*EO_a_b*Rec_occup_migr^h_migr/(EC50_migr^h_migr + Rec_occup_migr^h_migr));
+  v23: EO_b => EO_aw; V_B*(k_EO_t_baw*EO_b*Rec_occup_migr^h_migr/(EC50_migr^h_migr + Rec_occup_migr^h_migr));
+  v24:  => Hn_b; V_B*k_Hn_p*(EO_b + EO_i_b + EO_a_b);
+  v25: Hn_b => ; Vd_Hn*k_Hn_d*fup_Hn*Hn_b;
+  v26:  => IL_b; V_B*k_IL_p*EO_a_b;
+  v27: IL_b => ; Vd_IL5*k_IL_d*IL_b;
+  v28: IL_b => IL_bm; k_IL_t_bbm*(IL_b - IL_bm) - J_BM_lymfl*IL_bm;
+  v29:  => EO_bm; V_BM*(k1*IL_bm^h_matur/(Km_1^h_matur + IL_bm^h_matur) + k1_min);
+  v3:  => HPETE_b; Default*(k_3*FLO5HP_b - k3*FLO3t_b*HPETE_b)*(1e0 + AA_b/Ki_AA);
+  v30: EO_bm => EO_b; ca*V_BM*k_EO_t_bmb*EO_bm;
+  v31:  => AA_aw; Default*(Vmax_PLA2*PLA2_Ca*PL/(Km_PLA2_APC + PL) - V_CoA*AA_aw/(Km_CoA_AA + AA_aw));
+  v32: AA_aw => ; Default*(k_lo*AA_aw*FLO3t_aw/K_AA);
+  v33:  => HPETE_aw; Default*(k_3*FLO5HP_aw - k3*FLO3t_aw*HPETE_aw)*(1e0 + AA_aw/Ki_AA);
+  v34: HPETE_aw => HETE_aw; Default*r1*(HPETE_aw*FLO2_aw - HETE_aw*FLO3_aw/Ke_ox);
+  v35: HPETE_aw => HETE_aw; Default*(GPx*B_aw/A_aw);
+  v36:  => LTA4_aw; Default*k_lta_syn*FLO5HP_aw;
+  v37: LTA4_aw => LTC4_aw; Default*(nom_LTCs_aw/den_LTCs_aw);
+  v38: HETE_aw => ; Default*(HEDH5*B_hedh_aw/A_hedh_aw);
+  v39: LTA4_aw => ; Default*Kd12*LTA4_aw;
+  v4: HPETE_b => HETE_b; Default*r1*(HPETE_b*FLO2_b - HETE_b*FLO3_b/Ke_ox);
+  v40in: LTC4_aw => ; Default*Kd50*LTC4_aw;
+  v40out:  => LTC4_aw_out; Default*Kd50*LTC4_aw*V_LTC_CAW*1e1^6e0;
+  v41: LTC4_aw_out => LTD4_aw; Vd_AW_LTC*k_ggt*LTC4_aw_out;
+  v42: LTD4_aw => LTE4_aw; Vd_AW_LTD*k_dp*LTD4_aw;
+  v43: LTE4_aw => LTE4_b; Q_AW_blf*R_LTE_B*(LTE4_aw*R_LTE_AW/Kp_LTE_AW - LTE4_b);
+  v44: LTD4_aw => LTD4_b; Q_AW_blf*R_LTD_B*(LTD4_aw*R_LTD_AW/Kp_LTD_AW - LTD4_b);
+  v45: LTC4_aw_out => LTC4_b_out; Q_AW_blf*R_LTC_B*(LTC4_aw_out*R_LTC_AW/Kp_LTC_AW - LTC4_b_out);
+  v46: EO_aw => EO_i_aw; ca*V_AW*(ka*EO_aw*OL_aw^h_act/(EC50_act^h_act + OL_aw^h_act));
+  v47: EO_i_aw => EO_a_aw; ca*V_AW*k_EO_m*EO_i_aw;
+  v48: EO_a_aw => EO_aw; ca*V_AW*kia*EO_a_aw;
+  v49: EO_aw => ; V_AW*k_EO_d*EO_aw;
+  v5: HPETE_b => HETE_b; Default*(GPx*B_b/A_b);
+  v50: EO_a_aw => ; V_AW*k_EO_a_d*EO_a_aw;
+  v51:  => Hn_aw; V_AW*k_Hn_p*(EO_a_aw + EO_i_aw + EO_aw);
+  v52: Hn_aw => Hn_b; Q_AW_blf*R_Hn_B*(Hn_aw*R_Hn_AW/Kp_Hn_AW - Hn_b);
+  v53:  => IL_aw; V_AW*k_IL_p*EO_a_aw;
+  v54: IL_aw => IL_b; k_IL_t_awb*(IL_aw - IL_b) + J_AW_lymfl*IL_aw;
+  v55: LTE4_aw => ; Vd_AW_LTE*(k_lte_el + k_acet)*LTE4_aw;
+  v56: LTD4_aw => ; Vd_AW_LTD*k_ltc_ltd_el*LTD4_aw;
+  v57: LTC4_aw_out => ; Vd_AW_LTC*k_ltc_ltd_el*LTC4_aw_out;
+  v58: IL_aw => ; V_AW*k_IL_d*IL_aw;
+  v59: Hn_aw => ; Vd_AW_Hn*k_Hn_d*Hn_aw;
+  v6:  => LTA4_b; Default*k_lta_syn*FLO5HP_b;
+  v60: ZF_intes => ZF_blood; Default*k_abs_zf*(ZF_intes + oral*F_zf*(a*ft_zf + (1e0 - a))*DOSE_zf*1e3/M_ZF);
+  v61: ZF_blood => ZF_airways; Q_AW_blf*R_ZF_B*(ZF_blood - ZF_airways*R_ZF_AW/Kp_ZF_AW);
+  v62: ZF_blood => ; Vd_ZF*k_elim_zf*ZF_blood;
+  v63: ML_intes => ML_blood; Default*k_abs_ml*(ML_intes + oral*F_ml*(a*ft_ml + (1e0 - a))*DOSE_ml*1e9/M_ML);
+  v64: ML_blood => ; Vd_ML*k_elim_ml*ML_blood;
+  v7: LTA4_b => LTC4_b; Default*(nom_LTCs_b/den_LTCs_b);
+  v8: HETE_b => ; Default*(HEDH5*B_hedh_b/A_hedh_b);
+  v9: LTA4_b => ; Default*Kd12*LTA4_b;
+
+  // Species initializations:
+  AA_aw = 0.1304887/Default;
+  AA_b = 0.2890944/Default;
+  EO_a_aw = 0.000285329721091583/V_AW;
+  EO_a_b = 0.00151267495419717/V_B;
+  EO_aw = 2.47077172285884e-07/V_AW;
+  EO_b = 1.3154003132143e-06/V_B;
+  EO_bm = 1.35084755548078e-06/V_BM;
+  EO_i_aw = 2.85326571091682e-08/V_AW;
+  EO_i_b = 1.5396484246479e-07/V_B;
+  HETE_aw = 1.960926/Default;
+  HETE_b = 5.037703/Default;
+  HPETE_aw = 1.780604/Default;
+  HPETE_b = 0.2965837/Default;
+  Hn_aw = 79874526/Vd_AW_Hn;
+  Hn_b = 1171178228/Vd_Hn;
+  IL_aw = 0.139176214654712/V_AW;
+  IL_b = 6.11475402565716/Vd_IL5;
+  IL_bm = 0.331930000203741/V_BM;
+  LTA4_aw = 41.69257/Default;
+  LTA4_b = 1.081167/Default;
+  LTC4_aw = 6.806687/Default;
+  LTC4_aw_out = 554.360562268067/Vd_AW_LTC;
+  LTC4_b = 0.8869873/Default;
+  LTC4_b_out = 20558.052087307/Vd_LTC;
+  LTD4_aw = 316.870700150872/Vd_AW_LTD;
+  LTD4_b = 12404.4656410217/Vd_LTD;
+  LTE4_aw = 496.860351692391/Vd_AW_LTE;
+  LTE4_b = 19463.7378201485/Vd_LTE;
+  ML_blood = 0;
+  ML_intes = 0;
+  ZF_airways = 0;
+  ZF_blood = 0;
+  ZF_intes = 0;
+
+  // Compartment initializations:
+  Default = 1;
+  V_AW = 0.209999993443489;
+  V_B = 2.80999994277954;
+  V_BM = 0.824999988079071;
+  Vd_AW_Hn = 5640;
+  Vd_AW_LTC = 1.53999996185303;
+  Vd_AW_LTD = 1.53999996185303;
+  Vd_AW_LTE = 1.53999996185303;
+  Vd_AW_ZF = 3.25999999046326;
+  Vd_Hn = 78100;
+  Vd_IL5 = 10.1999998092651;
+  Vd_LTC = 9.47999954223633;
+  Vd_LTD = 9.47999954223633;
+  Vd_LTE = 9.47999954223633;
+  Vd_ML = 10;
+  Vd_ZF = 9.44999980926514;
+
+  // Variable initializations:
+  GSH_aw = 1000;
+  Km_gpx_GSH = 600;
+  Kd_gpx_GSSG = 0.07154222;
+  Km_gpx_HPETE5 = 5.974381;
+  Kd_gpx_HETE5 = 6.043446;
+  GSH_b = 5000;
+  NADP_aw = 2900;
+  Kd_hedh_NADP = 2.895899;
+  oxoETE_aw = 0;
+  Kd_hedh_oxoETE5 = 1.667019;
+  k_hedh_1 = 88.33768;
+  Kd_hedh_HETE5 = 0.331696;
+  k_hedh_4 = 8.077531;
+  Kd_hedh_NADPH = 2.685581;
+  NADP_b = 2000;
+  oxoETE_b = 0;
+  k_gpx_cat = 0.4884995;
+  k_hedh_2 = 1724.404;
+  k_hedh_3 = 31.49749;
+  Ca = 1;
+  Cao_FEV = 10000;
+  k_fev_eff = 3000000;
+  R1_portion_FEV = 0.016;
+  Kd_LTR1_FEV = 1000;
+  EC50_ML_FEV = 500;
+  R2_portion_FEV = 0.037;
+  Kd_LTR2_FEV = 10000;
+  Kd_Hn_FEV = 6300000;
+  Ca_FEV_ex = 10000;
+  K_Ca3 = 7116.527;
+  K_Ca2 = 14.36738;
+  K_AA = 10.74959;
+  Ki_AA = 551.8748;
+  Ki_HETE = 0.5408177;
+  al = 1;
+  KdZ = 20;
+  DOSE_ml = 0;
+  DOSE_zf = 0;
+  EC50_act = 0.75;
+  EC50_migr = 0.115;
+  Et_LTCs = 1;
+  MAX_FEV = 4.94;
+  R_in_relax_FEV = 2.073;
+  FLOa = 1.5;
+  F_ml = 0.660688;
+  F_zf = 0.082;
+  GPx = 1.6;
+  GS_pool_aw = 10000;
+  GS_pool_b = 10000;
+  HEDH5 = 0.5;
+  J_AW_lymfl = 0.00115;
+  J_BM_lymfl = 0.00049;
+  K_Ca_FEV = 150000;
+  K_GSH = 744.9176;
+  K_LTA = 1.75951;
+  K_LTA_GSH = 1696.6;
+  K_LTC = 0.1951215;
+  K_PLA2_Ca = 0.1;
+  Kd12 = 0.007;
+  Kd50 = 0.43;
+  Kd_IL_migr = 50;
+  Kd_LT = 1000;
+  Kd_LTE_migr = 50000;
+  Kd_LT_2 = 10000;
+  Ke_ox = 99.99979;
+  Ke_red = 5.761955e-07;
+  Ki_ML_EOa = 500;
+  Km_1 = 2;
+  Km_CoA_AA = 0.005;
+  Km_PLA2_APC = 20;
+  Kp_Hn_AW = 3950;
+  Kp_LTC_AW = 0.22;
+  Kp_LTD_AW = 0.22;
+  Kp_LTE_AW = 0.22;
+  Kp_ZF_AW = 0.204;
+  Kp_ZF_IW = 0.631;
+  LOH_aw = 0;
+  LOH_b = 0;
+  LOOH_aw = 20;
+  LOOH_b = 1;
+  fup_LT = 0.16;
+  M_LTC = 625.8;
+  M_LTD = 496.7;
+  M_LTE = 439.6;
+  ML_airways = 0;
+  fup_ML = 0.004;
+  ML_ex = 0;
+  M_Hn = 111.2;
+  M_IL5 = 45000;
+  M_ML = 586.18;
+  M_ZF = 236;
+  NP_pool_aw = 3000;
+  NP_pool_b = 3000;
+  N_A_pmole = 602000000000;
+  R1_portion_EOa = 0.39;
+  OL_b_ex = 0;
+  PL = 110;
+  Q_AW_blf = 5.23;
+  ki = 25000;
+  k_lo = 4642.68;
+  k3 = 34;
+  k_lta_syn = 54420;
+  k_3 = 263640;
+  R_FEV = 3.007;
+  R_Hn_AW = 5130;
+  R_Hn_B = 141;
+  R_LTC_AW = 1.4;
+  R_LTC_B = 0.538;
+  R_LTD_AW = 1.4;
+  R_LTD_B = 0.538;
+  R_LTE_AW = 1.4;
+  R_LTE_B = 0.538;
+  R_ZF_AW = 2.96;
+  R_ZF_B = 0.533;
+  portion_migr = 0.3;
+  T = 1440;
+  TSN_0 = 15.5;
+  n_FEV = 1;
+  V_CoA = 350;
+  naEO_LTCsyn = 0;
+  Vmax_PLA2 = 450;
+  fup_ZF = 0.069;
+  a = 1;
+  ca = 10;
+  diam_EO = 0.00012;
+  fup_Hn = 0.77;
+  h_act = 3;
+  h_matur = 1;
+  h_migr = 3;
+  k1 = 1e-06;
+  k1_min = 1.6e-07;
+  k_EO_a_d = 0.00015;
+  k_EO_d = 0.0003;
+  k_EO_m = 10;
+  k_EO_t_baw = 0.04;
+  k_EO_t_bmb = 0.02;
+  k_Hn_d = 0.033;
+  k_Hn_p = 18000000000;
+  k_IL_d = 0.0046;
+  k_IL_p = 16;
+  k_IL_t_awb = 0.05;
+  k_IL_t_bbm = 0.001;
+  k_LTCs_back = 1003.709;
+  k_LTCs_fow = 1068016;
+  k_abs_ml = 0.012;
+  k_abs_zf = 0.018;
+  k_acet = 0.002703885;
+  k_dp = 0.067;
+  k_elim_ml = 0.00225;
+  k_elim_zf = 0.004;
+  k_ggt = 0.1;
+  k_ltc_ltd_el = 0.1;
+  k_lte_el = 0.04;
+  k_ox = 0.0002658;
+  k_ox2 = 67.2;
+  k_red = 0.0002538;
+  k_red2 = 4.428e-05;
+  ka = 500;
+  kia = 0.001;
+  npi = 3.14;
+  oral = 1;
+  zf_inh = 0;
+
+  // Other declarations:
+  var A_aw, GSH_aw, Km_gpx_GSH, GSSG_aw, Kd_gpx_GSSG, Km_gpx_HPETE5, Kd_gpx_HETE5;
+  var C_aw, A_b, GSH_b, GSSG_b, C_b, A_hedh_aw, NADP_aw, Kd_hedh_NADP, oxoETE_aw;
+  var Kd_hedh_oxoETE5, k_hedh_1, Kd_hedh_HETE5, k_hedh_4, NADPH_aw, Kd_hedh_NADPH;
+  var C_hedh_aw, A_hedh_b, NADP_b, oxoETE_b, NADPH_b, C_hedh_b, B_aw, k_gpx_cat;
+  var B_b, B_hedh_aw, k_hedh_2, k_hedh_3, B_hedh_b, Ca, Ca_FEV, Cao_FEV, k_fev_eff;
+  var R1_portion_FEV, Kd_LTR1_FEV, ML_airways_conc, EC50_ML_FEV, R2_portion_FEV;
+  var Kd_LTR2_FEV, Kd_Hn_FEV, Ca_FEV_LTR1, Ca_FEV_LTR2, Ca_FEV_ex, DFLOa_aw;
+  var K_Ca3, REDOX_aw, K_Ca2, K_AA, Ki_AA_AA, Ki_AA, K_AA_HETE, RELFLO5_aw;
+  var Ki_HPETE_AA, Ki_HETE, al, ZF_airways_conc, KdZ, DFLOa_b, REDOX_b, RELFLO5_b;
+  var ZF_blood_conc, DOSE_ml, DOSE_zf, EC50_act, EC50_migr, EO_aw_tot, EO_b_tot;
+  var EO_b_tot_per_ss, Et_LTCs, FEV1, MAX_FEV, r_in_FEV, R_in_relax_FEV, FEV1_percent;
+  var FLO2_aw, FLO3_aw, FLO2_b, FLO3_b, FLO2t_aw, FLO2t_b, FLOa, FLO3t_aw;
+  var FLO3t_b, FLO5HP_aw, FLO5HP_b, F_ml, F_zf, GPx, GS_pool_aw, GS_pool_b;
+  var HEDH5, Hn_aw_perc, J_AW_lymfl, J_BM_lymfl, K_Ca_FEV, K_GSH, K_LTA, K_LTA_GSH;
+  var K_LTC, K_PLA2_Ca, Kd12, Kd50, Kd_IL_migr, Kd_LT, Kd_LTE_migr, Kd_LT_2;
+  var Ke_ox, Ke_red, Ki_ML_EOa, Km_1, Km_CoA_AA, Km_PLA2_APC, Kp_Hn_AW, Kp_LTC_AW;
+  var Kp_LTD_AW, Kp_LTE_AW, Kp_ZF_AW, Kp_ZF_IW, LOH_aw, LOH_b, LOOH_aw, LOOH_b;
+  var LTC4_b_pM, LTD4_aw_pers, LTD4_b_free, fup_LT, LTs_aw_pg, M_LTC, M_LTD;
+  var M_LTE, ML_airways, fup_ML, ML_blood_conc, ML_ex, ML_uM, M_Hn, M_IL5;
+  var M_ML, M_ZF, NP_pool_aw, NP_pool_b, N_A_pmole, N_EO, N_EO_b_tot, N_EO_aw_tot;
+  var N_EO_a, N_EO_a_b, N_EO_a_aw, N_EO_aw, N_EO_aw_perc, N_EO_aw_tot_perc;
+  var N_EO_b, N_EO_b_tot_perc, N_EO_bm, N_EO_i_aw, N_EO_i_b, N_EO_perc, OH_aw;
+  var OH_b, OL_ASM, OL_aw, R1_portion_EOa, OL_b, OL_b_ex, OOH_aw, OOH_b, PL;
+  var PLA2_Ca, PLA2_D, Q_AW_blf, r2, r1, ki, k_lo, k3, k_lta_syn, k_3, R_FEV;
+  var R_Hn_AW, R_Hn_B, R_LTC_AW, R_LTC_B, R_LTD_AW, R_LTD_B, R_LTE_AW, R_LTE_B;
+  var R_ZF_AW, R_ZF_B, Rec_occup_migr, portion_migr, T, TSN, TSN_0, n_FEV;
+  var TSN_Hn, V_CAW, w_EO, V_CB, V_CoA, V_LTC_CAW, naEO_LTCsyn, V_LTC_CB;
+  var V_aCAW, V_aCB, Vmax_PLA2, fup_ZF, a, ca, delta_LTCs_aw, delta_LTCs_b;
+  var den_LTCs_aw, den_LTCs_b, diam_EO, ft_ml, ft_zf, fup_Hn, h_act, h_matur;
+  var h_migr, k1, k1_min, k_EO_a_d, k_EO_d, k_EO_m, k_EO_t_baw, k_EO_t_bmb;
+  var k_Hn_d, k_Hn_p, k_IL_d, k_IL_p, k_IL_t_awb, k_IL_t_bbm, k_LTCs_back;
+  var k_LTCs_fow, k_abs_ml, k_abs_zf, k_acet, k_dp, k_elim_ml, k_elim_zf;
+  var k_ggt, k_ltc_ltd_el, k_lte_el, k_ox, k_ox2, k_red, k_red2, ka, kia;
+  var nom_LTCs_aw, nom_LTCs_b, npi, oral, r_out_FEV, time_day, time_hour;
+  var zf_inh;
+  const Default, V_AW, V_B, V_BM, Vd_AW_Hn, Vd_AW_LTC, Vd_AW_LTD, Vd_AW_LTE;
+  const Vd_AW_ZF, Vd_Hn, Vd_IL5, Vd_LTC, Vd_LTD, Vd_LTE, Vd_ML, Vd_ZF;
+
+  // SBO terms:
+  Default.sboTerm = 290
+  V_AW.sboTerm = 290
+  V_B.sboTerm = 290
+  V_BM.sboTerm = 290
+  Vd_AW_Hn.sboTerm = 290
+  Vd_AW_LTC.sboTerm = 290
+  Vd_AW_LTD.sboTerm = 290
+  Vd_AW_LTE.sboTerm = 290
+  Vd_AW_ZF.sboTerm = 290
+  Vd_Hn.sboTerm = 290
+  Vd_IL5.sboTerm = 290
+  Vd_LTC.sboTerm = 290
+  Vd_LTD.sboTerm = 290
+  Vd_LTE.sboTerm = 290
+  Vd_ML.sboTerm = 290
+  Vd_ZF.sboTerm = 290
+  LTC4_b_out.sboTerm = 290
+
+  // CV terms:
+  V_AW hypernym "http://identifiers.org/bto/BTO:0001660"
+  V_B hypernym "http://identifiers.org/bto/BTO:0000131"
+  AA_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                 "http://identifiers.org/chebi/CHEBI:15843"
+  AA_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                "http://identifiers.org/chebi/CHEBI:15843"
+  EO_a_aw container "http://identifiers.org/cl/CL:0000771",
+                    "http://identifiers.org/bto/BTO:0001660"
+  EO_a_b container "http://identifiers.org/cl/CL:0000771",
+                   "http://identifiers.org/bto/BTO:0000131"
+  EO_aw container "http://identifiers.org/cl/CL:0000771",
+                  "http://identifiers.org/bto/BTO:0001660"
+  EO_b container "http://identifiers.org/cl/CL:0000771",
+                 "http://identifiers.org/bto/BTO:0000131"
+  EO_bm hypernym "http://identifiers.org/bto/BTO:0000141",
+                 "http://identifiers.org/cl/CL:0000771"
+  EO_i_aw container "http://identifiers.org/cl/CL:0000771",
+                    "http://identifiers.org/bto/BTO:0001660"
+  EO_i_b container "http://identifiers.org/cl/CL:0000771",
+                   "http://identifiers.org/bto/BTO:0000131"
+  HETE_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                   "http://identifiers.org/pubchem.compound/5280733"
+  HETE_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                  "http://identifiers.org/pubchem.compound/5280733"
+  HPETE_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                    "http://identifiers.org/pubchem.compound/5280778"
+  HPETE_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                   "http://identifiers.org/pubchem.compound/5280778"
+  Hn_aw container "http://identifiers.org/chebi/CHEBI:18295",
+                  "http://identifiers.org/bto/BTO:0001660"
+  Hn_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                "http://identifiers.org/chebi/CHEBI:18295"
+  IL_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                 "http://identifiers.org/uniprot/P05113"
+  IL_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                "http://identifiers.org/uniprot/P05113"
+  IL_bm hypernym "http://identifiers.org/bto/BTO:0000141",
+                 "http://identifiers.org/uniprot/P05113"
+  LTA4_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                   "http://identifiers.org/pubchem.compound/5280383"
+  LTA4_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                  "http://identifiers.org/pubchem.compound/5280383"
+  LTC4_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                   "http://identifiers.org/pubchem.compound/5280493"
+  LTC4_aw_out hypernym "http://identifiers.org/pubchem.compound/5280493"
+  LTC4_b hypernym "http://identifiers.org/bto/BTO:0000131",
+                  "http://identifiers.org/pubchem.compound/5280493"
+  LTC4_b_out hypernym "http://identifiers.org/pubchem.compound/5280493"
+  LTD4_aw container "http://identifiers.org/pubchem.compound/6435286",
+                    "http://identifiers.org/bto/BTO:0001660"
+  LTD4_b hypernym "http://identifiers.org/pubchem.compound/6435286"
+  LTE4_aw hypernym "http://identifiers.org/bto/BTO:0001660",
+                   "http://identifiers.org/pubchem.compound/5280879"
+  LTE4_b hypernym "http://identifiers.org/pubchem.compound/5280879"
+  ML_blood hypernym "http://identifiers.org/bto/BTO:0000131",
+                    "http://identifiers.org/chebi/CHEBI:50730"
+  ML_intes hypernym "http://identifiers.org/bto/BTO:0000648",
+                    "http://identifiers.org/chebi/CHEBI:50730"
+  ZF_airways hypernym "http://identifiers.org/bto/BTO:0001660",
+                      "http://identifiers.org/chebi/CHEBI:10112"
+  ZF_blood hypernym "http://identifiers.org/bto/BTO:0001660",
+                    "http://identifiers.org/chebi/CHEBI:10112"
+  ZF_intes hypernym "http://identifiers.org/bto/BTO:0000648",
+                    "http://identifiers.org/chebi/CHEBI:10112"
+end
+
+demin1 is "demin1"

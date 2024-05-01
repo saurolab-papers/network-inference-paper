@@ -1,0 +1,38 @@
+// Created by libAntimony v2.13.2
+model *roy1()
+
+  // Compartments and Species:
+  species x, y, z;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v2:  -> x; p*x;
+  v2a: x -> ; p*x^2/Tm;
+  v3: x -> ; d*x;
+  v4: x -> y; beta*x*y;
+  v5: y -> ; a*y;
+  v6: y -> ; k*y*z;
+  v7:  -> z; s*y;
+  v8: z -> ; b*z;
+
+  // Species initializations:
+  x = 50;
+  y = 50;
+  z = 2;
+
+  // Variable initializations:
+  Tm = 1500;
+  a = 0.24;
+  b = 0.02;
+  beta = 0.002;
+  d = 0.01;
+  k = 0.001;
+  lambda = 10;
+  p = 0.03;
+  s = 0.2;
+
+  // Other declarations:
+  var Tm, a, b, beta, d, k, lambda, p, s;
+end
+
+roy1 is "roy1"

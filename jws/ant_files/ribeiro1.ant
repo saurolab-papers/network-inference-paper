@@ -1,0 +1,31 @@
+// Created by libAntimony v2.13.2
+model *ribeiro1()
+
+  // Compartments and Species:
+  species NN, Nplus;
+
+  // Assignment Rules:
+  ratio := Nplus/NN;
+
+  // Reactions:
+  v1:  -> Nplus; alpha*sigma;
+  v2: Nplus -> ; dN*Nplus;
+  v3:  -> NN; sigma;
+  v4:  -> NN; p*NN;
+  v5: NN -> ; dN*NN;
+
+  // Species initializations:
+  NN = 10;
+  Nplus = 0;
+
+  // Variable initializations:
+  alpha = 0.125;
+  dN = 0.001;
+  p = 0.00092;
+  sigma = 0.032;
+
+  // Other declarations:
+  var alpha, dN, p, ratio, sigma;
+end
+
+ribeiro1 is "ribeiro1"

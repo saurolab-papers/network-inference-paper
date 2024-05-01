@@ -1,0 +1,222 @@
+// Created by libAntimony v2.13.2
+model *muraro1()
+
+  // Compartments and Species:
+  compartment cell;
+  species AHKph in cell, $ARF in cell, ARF2 in cell, ARFIAA in cell, ARRAm in cell;
+  species ARRAp in cell, ARRAph in cell, $ARRBp in cell, ARRBph in cell, ARm in cell;
+  species ARp in cell, Aux in cell, AuxTIAA in cell, AuxTIR1 in cell, CRm in cell;
+  species CRp in cell, Ck in cell, $CkAHK in cell, $CkAHKph in cell, $F1 in cell;
+  species IAAp in cell, $F2 in cell, $F3 in cell, $F4 in cell, $F5a in cell;
+  species $F5b in cell, $F6 in cell, IAAm in cell, IAAs in cell, PINm in cell;
+  species PINp in cell, $TIR1 in cell;
+
+  // Assignment Rules:
+  ARF := alphaARF - 2*ARF2 - ARFIAA;
+  ARRBp := alphaARRB - etaAHKph*ARRBph;
+  CkAHK := alphaAHK - etaAHKph*(AHKph + CkAHKph);
+  CkAHKph := alphaPH - AHKph - ARRAph - ARRBph;
+  F1 := ARF/thetaARF/(1 + ARF/thetaARF + ARF2/thetaARF2 + ARFIAA/thARFIAA + ARF*IAAp/psiARFIAA + ARF^2/psiARF + ARRBph/thARRBph);
+  F2 := (ARF2/thetaARF2 + ARF^2/psiARF)/(1 + ARF/thetaARF + ARF2/thetaARF2 + ARFIAA/thARFIAA + ARF*IAAp/psiARFIAA + ARF^2/psiARF + ARRBph/thARRBph);
+  F3 := ARRBph/thARRBph/(1 + ARF/thetaARF + ARF2/thetaARF2 + ARFIAA/thARFIAA + ARF*IAAp/psiARFIAA + ARF^2/psiARF + ARRBph/thARRBph);
+  F4 := ARRBph/thARRBph/(1 + ARRAph/thARRAph + ARRBph/thARRBph);
+  F5a := ARF/thetaARF/(1 + ARF/thetaARF + ARF2/thetaARF2 + ARFIAA/thARFIAA + ARF*IAAp/psiARFIAA + ARF^2/psiARF);
+  F5b := (ARF2/thetaARF2 + ARF^2/psiARF)/(1 + ARF/thetaARF + ARF2/thetaARF2 + ARFIAA/thARFIAA + ARF*IAAp/psiARFIAA + ARF^2/psiARF);
+  F6 := ARp/thetaARp/(1 + ARp/thetaARp);
+  TIR1 := alphaTIR1 - AuxTIR1 - AuxTIAA;
+
+  // Reactions:
+  r1:  => IAAm; phiIAAp*(lambda1*F1 + F2 + lambda3*F3) - IAAm;
+  r10:  => PINp; (1/eps)*(deltaPINp*PINm - PINp);
+  r11:  => ARm; phiARp*(lambda1*F5a + F5b) - ARm;
+  r12:  => ARp; (1/eps)*(deltaARp*ARm - ARp);
+  r13:  => CRm; phiCRp*F4 - CRm;
+  r14:  => CRp; (1/eps)*(deltaCRp*CRm - CRp);
+  r15:  => AHKph; (1/eps)*(rd*CkAHKph - ra*AHKph*Ck);
+  r16:  => Ck; muCk*(alphaCk - Ck) - (etaCkPh/eps)*(ra*AHKph*Ck - rd*CkAHKph);
+  r17:  => ARRBph; (1/eps)*(ua*CkAHKph*ARRBp - ud*CkAHK*ARRBph);
+  r18:  => ARRAph; (1/eps)*(sa*CkAHKph*ARRAp - sd*CkAHK*ARRAph);
+  r19:  => ARRAm; phiARRAp*F6 - ARRAm;
+  r2:  => IAAp; (1/eps)*((deltaIAAp*IAAm - la*IAAp*AuxTIR1) + ld*AuxTIAA) + etaARFIAA*(pd*ARFIAA - pa*IAAp*ARF);
+  r20:  => ARRAp; (1/eps)*((deltaARRAp*ARRAm - ARRAp) + etaAHKph*(sd*CkAHK*ARRAph - sa*CkAHKph*ARRAp));
+  r3:  => AuxTIR1; (1/eps)*((ka*Aux*TIR1 - kd*AuxTIR1) + (ld + 1)*AuxTIAA - la*AuxTIR1*IAAp);
+  r4:  => AuxTIAA; (1/eps)*(la*IAAp*AuxTIR1 - (ld + 1)*AuxTIAA);
+  r5:  => IAAs; (1/eps)*(AuxTIAA - muIAAs*IAAs);
+  r6:  => ARFIAA; pa*ARF*IAAp - pd*ARFIAA;
+  r7:  => ARF2; qa*ARF^2 - qd*ARF2;
+  r8:  => Aux; muAux*(alphaAux - Aux) - (1/eps)*etaAuxTIR1*(ka*Aux*TIR1 - kd*AuxTIR1);
+  r9:  => PINm; phiPINp*(lambda1*F5a + F5b) - PINm;
+
+  // Species initializations:
+  AHKph = 1/cell;
+  ARF2 = 0;
+  ARFIAA = 0;
+  ARRAm = 0;
+  ARRAp = 0;
+  ARRAph = 0;
+  ARRBph = 0;
+  ARm = 0;
+  ARp = 0;
+  Aux = 1/cell;
+  AuxTIAA = 0;
+  AuxTIR1 = 0;
+  CRm = 0;
+  CRp = 0;
+  Ck = 1/cell;
+  IAAp = 0;
+  IAAm = 0;
+  IAAs = 0;
+  PINm = 0;
+  PINp = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  alphaARF = 1;
+  alphaARRB = 2;
+  etaAHKph = 1;
+  alphaAHK = 1;
+  alphaPH = 1;
+  thetaARF = 0.1;
+  thetaARF2 = 0.01;
+  thARFIAA = 0.1;
+  psiARFIAA = 0.1;
+  psiARF = 0.1;
+  thARRBph = 0.1;
+  thARRAph = 0.1;
+  thetaARp = 0.1;
+  alphaTIR1 = 1;
+  alphaAux = 1;
+  alphaCk = 1;
+  deltaARRAp = 1;
+  deltaARp = 1;
+  deltaCRp = 1;
+  deltaIAAp = 1;
+  deltaPINp = 1;
+  eps = 0.01;
+  etaARFIAA = 1;
+  etaAuxTIR1 = 10;
+  etaCkPh = 1;
+  ka = 100;
+  kd = 1;
+  la = 0.5;
+  lambda1 = 0.1;
+  lambda3 = 0.02;
+  ld = 0.1;
+  muAux = 0.1;
+  muCk = 0.1;
+  muIAAs = 1;
+  pa = 10;
+  pd = 10;
+  phiARRAp = 100;
+  phiARp = 2;
+  phiCRp = 2;
+  phiIAAp = 100;
+  phiPINp = 100;
+  qa = 1;
+  qd = 1;
+  ra = 1;
+  rd = 1;
+  sa = 1;
+  sd = 1;
+  thetaIAAp = 0.1;
+  ua = 1;
+  ud = 1;
+
+  // Other declarations:
+  const cell, alphaARF, alphaARRB, etaAHKph, alphaAHK, alphaPH, thetaARF;
+  const thetaARF2, thARFIAA, psiARFIAA, psiARF, thARRBph, thARRAph, thetaARp;
+  const alphaTIR1, alphaAux, alphaCk, deltaARRAp, deltaARp, deltaCRp, deltaIAAp;
+  const deltaPINp, eps, etaARFIAA, etaAuxTIR1, etaCkPh, ka, kd, la, lambda1;
+  const lambda3, ld, muAux, muCk, muIAAs, pa, pd, phiARRAp, phiARp, phiCRp;
+  const phiIAAp, phiPINp, qa, qd, ra, rd, sa, sd, thetaIAAp, ua, ud;
+
+  // SBO terms:
+  cell.sboTerm = 290
+  AHKph.sboTerm = 252
+  ARF.sboTerm = 252
+  ARF2.sboTerm = 252
+  ARFIAA.sboTerm = 297
+  ARRAm.sboTerm = 278
+  ARRAp.sboTerm = 252
+  ARRAph.sboTerm = 252
+  ARRBp.sboTerm = 252
+  ARRBph.sboTerm = 252
+  ARm.sboTerm = 278
+  ARp.sboTerm = 252
+  Aux.sboTerm = 247
+  AuxTIAA.sboTerm = 296
+  AuxTIR1.sboTerm = 296
+  CRm.sboTerm = 278
+  CRp.sboTerm = 252
+  Ck.sboTerm = 247
+  CkAHK.sboTerm = 296
+  CkAHKph.sboTerm = 296
+  IAAp.sboTerm = 252
+  IAAm.sboTerm = 278
+  IAAs.sboTerm = 252
+  PINm.sboTerm = 278
+  PINp.sboTerm = 252
+  TIR1.sboTerm = 252
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  AHKph hypernym "http://identifiers.org/kegg.compound/C00562",
+                 "http://identifiers.org/uniprot/Q9C5U0"
+  ARF hypernym "http://identifiers.org/uniprot/Q94JM3"
+  ARF2 hypernym "http://identifiers.org/uniprot/Q94JM3"
+  ARFIAA hypernym "http://identifiers.org/uniprot/P49677",
+                  "http://identifiers.org/uniprot/Q94JM3"
+  ARRAm encodement "http://identifiers.org/uniprot/Q940D0"
+  ARRAp hypernym "http://identifiers.org/uniprot/Q940D0"
+  ARRAph hypernym "http://identifiers.org/kegg.compound/C00562",
+                  "http://identifiers.org/uniprot/Q9ZWJ9"
+  ARRBp hypernym "http://identifiers.org/uniprot/Q940D0"
+  ARRBph hypernym "http://identifiers.org/kegg.compound/C00562",
+                  "http://identifiers.org/uniprot/Q940D0"
+  ARm encodement "http://identifiers.org/uniprot/Q9FZ33"
+  ARp hypernym "http://identifiers.org/uniprot/Q9FZ33"
+  Aux hypernym "http://identifiers.org/chebi/CHEBI:22676"
+  AuxTIAA part "http://identifiers.org/uniprot/P49677",
+               "http://identifiers.org/uniprot/Q570C0",
+               "http://identifiers.org/chebi/CHEBI:22676"
+  AuxTIR1 part "http://identifiers.org/uniprot/Q570C0",
+               "http://identifiers.org/chebi/CHEBI:22676"
+  CRm encodement "http://identifiers.org/uniprot/O82503"
+  CRp hypernym "http://identifiers.org/uniprot/O82503"
+  Ck hypernym "http://identifiers.org/chebi/CHEBI:23530"
+  CkAHK part "http://identifiers.org/uniprot/Q9C5U0",
+             "http://identifiers.org/chebi/CHEBI:23530"
+  CkAHKph part "http://identifiers.org/uniprot/Q9C5U0",
+               "http://identifiers.org/chebi/CHEBI:23530"
+  IAAp hypernym "http://identifiers.org/uniprot/P49677"
+  IAAm encodement "http://identifiers.org/chebi/CHEBI:33699",
+                  "http://identifiers.org/uniprot/P49677"
+  IAAs hypernym "http://identifiers.org/uniprot/P49677"
+  PINm encodement "http://identifiers.org/uniprot/Q9SL42"
+  PINp hypernym "http://identifiers.org/uniprot/Q9SL42"
+  TIR1 hypernym "http://identifiers.org/uniprot/Q570C0"
+  r1 hypernym "http://identifiers.org/go/GO:0009299"
+  r10 hypernym "http://identifiers.org/go/GO:0006412"
+  r11 hypernym "http://identifiers.org/go/GO:0009299"
+  r12 hypernym "http://identifiers.org/go/GO:0006412"
+  r13 hypernym "http://identifiers.org/go/GO:0009299"
+  r14 hypernym "http://identifiers.org/go/GO:0006412"
+  r15 hypernym "http://identifiers.org/go/GO:0016310"
+  r16 hypernym "http://identifiers.org/go/GO:0009691"
+  r17 hypernym "http://identifiers.org/go/GO:0016310"
+  r18 hypernym "http://identifiers.org/go/GO:0016310"
+  r19 hypernym "http://identifiers.org/go/GO:0009299"
+  r2 hypernym "http://identifiers.org/go/GO:0006412"
+  r20 hypernym "http://identifiers.org/go/GO:0006412"
+  r3 hypernym "http://identifiers.org/go/GO:0006461"
+  r4 hypernym "http://identifiers.org/go/GO:0006461"
+  r5 hypernym "http://identifiers.org/go/GO:0043241"
+  r6 hypernym "http://identifiers.org/go/GO:0006461"
+  r7 hypernym "http://identifiers.org/go/GO:0006412"
+  r8 hypernym "http://identifiers.org/go/GO:0009851"
+  r9 hypernym "http://identifiers.org/go/GO:0009299"
+end
+
+muraro1 is "muraro1"

@@ -1,0 +1,41 @@
+// Created by libAntimony v2.13.2
+model *callaway1()
+
+  // Compartments and Species:
+  species Cstar, T, Tstar, V;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v10: V -> ; c*V;
+  v2: T -> ; d*T;
+  v3: T -> ; k*(1 - kappa)*T*V;
+  v4:  -> Tstar; (1 - alpha)*k*(1 - kappa)*T*V;
+  v5: Tstar -> ; delta*Tstar;
+  v6:  -> Cstar; alpha*k*(1 - kappa)*T*V;
+  v7: Cstar -> ; mu*Cstar;
+  v8:  -> V; delta*NT*Tstar;
+  v9:  -> V; mu*NC*Cstar;
+
+  // Species initializations:
+  Cstar = 22285.7142857;
+  T = 200000;
+  Tstar = 9200.00000002;
+  V = 50000;
+
+  // Variable initializations:
+  NC = 4.11;
+  NT = 100;
+  alpha = 0.195;
+  c = 13;
+  d = 0.01;
+  delta = 0.7;
+  k = 8e-07;
+  kappa = 0.7827;
+  lambda = 10000;
+  mu = 0.07;
+
+  // Other declarations:
+  var NC, NT, alpha, c, d, delta, k, kappa, lambda, mu;
+end
+
+callaway1 is "callaway1"

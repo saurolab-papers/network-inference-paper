@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *martins()
+
+  // Compartments and Species:
+  species GSH, HTA, $Lac, $MG, SLG;
+
+  // Reactions:
+  v_1: $MG + GSH -> HTA; k1neHTA*MG*GSH - k2neHTA*HTA;
+  v_2: HTA -> SLG; (VfGlxI*HTA/KmGlxIHTA - VrGlxI*SLG/KmGlxISLG)/(1 + HTA/KmGlxIHTA + SLG/KmGlxISLG + GSH/KmGlxIGSH);
+  v_3: SLG -> $Lac + GSH; (VGlxII/KmGlxIISLG)*(SLG - Lac*GSH/KeqGlxII)/(1 + SLG/KmGlxIISLG + Lac/KmGlxIILac + GSH/KmGlxIIGSH + HTA/KiGlxIIHTA);
+
+  // Species initializations:
+  GSH = 8;
+  HTA = 0;
+  Lac = 0;
+  MG = 0.01;
+  SLG = 0;
+
+  // Variable initializations:
+  KeqGlxII = 440000;
+  KiGlxIIHTA = 0.3;
+  KmGlxIGSH = 5;
+  KmGlxIHTA = 0.53;
+  KmGlxIIGSH = 0.0228;
+  KmGlxIILac = 10000;
+  KmGlxIISLG = 0.32;
+  KmGlxISLG = 1.9;
+  VGlxII = 0.00103;
+  VfGlxI = 0.0318;
+  VrGlxI = 3.26e-05;
+  k1neHTA = 0.34;
+  k2neHTA = 1.01;
+
+  // Other declarations:
+  var KeqGlxII, KiGlxIIHTA, KmGlxIGSH, KmGlxIHTA, KmGlxIIGSH, KmGlxIILac;
+  var KmGlxIISLG, KmGlxISLG, VGlxII, VfGlxI, VrGlxI, k1neHTA, k2neHTA;
+end
+
+martins is "martins"

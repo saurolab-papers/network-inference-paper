@@ -1,0 +1,87 @@
+// Created by libAntimony v2.13.2
+model *chance2()
+
+  // Compartments and Species:
+  compartment cell;
+  species $a in cell, e in cell, p in cell, p1 in cell, p2 in cell, x in cell;
+
+  // Reactions:
+  r1: e + x -> p; cell*(k1*e*x - k2*p);
+  r2: p + x => e + p1; cell*k4_prime*p*x;
+  r3: p + $a => e + p2; cell*k4*p*a;
+
+  // Species initializations:
+  a = 0;
+  e = 1.36/cell;
+  p = 0;
+  p1 = 0;
+  p2 = 0;
+  x = 2/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  k1 = 11;
+  k2 = 0;
+  k4 = 0.72;
+  k4_prime = 16.6;
+
+  // Other declarations:
+  const cell, k1, k2, k4, k4_prime;
+
+  // Unit definitions:
+  unit micromole = 1e-6 mole;
+  unit per_micromolar_per_second = 1e1 litre / (1e-6 mole * 1e1 second);
+  unit per_second = 1 / 1e1 second;
+
+  // Display Names:
+  per_micromolar_per_second is "per micromolar per second";
+  per_second is "per second";
+  a is "donor AH2";
+  e is "enzyme E (catalase)";
+  p is "enzyme-substrate complex ES (catalase - hydrogen peroxide)";
+  p1 is "product 1";
+  p2 is "product 2";
+  x is "substrate S (hydrogen peroxide)";
+
+  // SBO terms:
+  cell.sboTerm = 290
+  a.sboTerm = 247
+  e.sboTerm = 252
+  p.sboTerm = 297
+  p1.sboTerm = 247
+  p2.sboTerm = 247
+  x.sboTerm = 247
+  k1.sboTerm = 339
+  k2.sboTerm = 338
+  k4.sboTerm = 36
+  k4_prime.sboTerm = 36
+  r1.sboTerm = 177
+  r2.sboTerm = 200
+  r3.sboTerm = 200
+
+  // CV terms:
+  cell identity "http://identifiers.org/go/GO:0005623"
+  a hypernym "http://identifiers.org/chebi/CHEBI:15734",
+             "http://identifiers.org/chebi/CHEBI:35681"
+  e property "http://identifiers.org/go/GO:0004096",
+             "http://identifiers.org/uniprot/P04040",
+             "http://identifiers.org/interpro/IPR002226",
+             "http://identifiers.org/uniprot/Q65YZ0"
+  p version "http://identifiers.org/chebi/CHEBI:16240",
+            "http://identifiers.org/interpro/IPR002226"
+  p1 version "http://identifiers.org/chebi/CHEBI:15377",
+             "http://identifiers.org/chebi/CHEBI:15379"
+  p2 version "http://identifiers.org/chebi/CHEBI:15377",
+             "http://identifiers.org/chebi/CHEBI:36586"
+  x identity "http://identifiers.org/chebi/CHEBI:16240",
+             "http://identifiers.org/kegg.compound/C00027"
+  r1 parthood "http://identifiers.org/ec-code/1.11.1.6"
+  r2 hypernym "http://identifiers.org/go/GO:0016491",
+              "http://identifiers.org/ec-code/1.11.1.6"
+  r3 hypernym "http://identifiers.org/go/GO:0016614",
+              "http://identifiers.org/ec-code/1.11.1.6"
+end
+
+chance2 is "chance2"

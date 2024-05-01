@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *srivastava1()
+
+  // Compartments and Species:
+  species T, T1star, Tstar, $V, VI, VNI;
+
+  // Assignment Rules:
+  V := VI + VNI;
+
+  // Reactions:
+  v1:  -> T; s;
+  v10: VI -> VNI; delta*epsilon*NN*Tstar;
+  v11: VI -> ; c*VI;
+  v12: VNI -> ; c*VNI;
+  v2: T -> ; mu*T;
+  v3: T -> T1star; k*T*VI;
+  v4: Tstar -> T; alpha*eta*T1star;
+  v5: T1star -> T; b*T1star;
+  v6: T1star -> ; mu1*T1star;
+  v7: T1star -> Tstar; alpha*T1star;
+  v8: Tstar -> ; delta*Tstar;
+  v9:  -> VI; delta*NN*Tstar;
+
+  // Species initializations:
+  T = 600;
+  T1star = 0;
+  Tstar = 0;
+  VI = 0.1;
+  VNI = 0;
+
+  // Variable initializations:
+  NN = 500;
+  alpha = 4;
+  b = 0.05;
+  c = 4;
+  delta = 0.26;
+  epsilon = 0.5;
+  eta = 0.6;
+  k = 2.4e-05;
+  mu = 0.01;
+  mu1 = 0.015;
+  s = 10;
+
+  // Other declarations:
+  var NN, alpha, b, c, delta, epsilon, eta, k, mu, mu1, s;
+end
+
+srivastava1 is "srivastava1"

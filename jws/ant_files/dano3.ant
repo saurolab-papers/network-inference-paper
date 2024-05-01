@@ -1,0 +1,52 @@
+// Created by libAntimony v2.13.2
+model *dano3()
+
+  // Compartments and Species:
+  species ADP, ATP, BPG, $sink, trioseP;
+
+  // Assignment Rules:
+  V2t := CGlc*67.7113/6.38837;
+  k7t := CGlc*9.65605/6.38837;
+
+  // Reactions:
+  v_1: 2 ATP -> 2 trioseP + 2 ADP; V2t*ATP/(1 + (ATP/Ki)^q);
+  v_2: trioseP -> $sink; k8t*trioseP;
+  v_3: trioseP -> BPG; k3t*trioseP;
+  v_4: BPG + 2 ADP -> 2 ATP; k4*BPG*ADP;
+  v_5: ATP -> ADP; k6*ATP;
+  v_6: 2 ATP -> 2 ADP; k7t*ATP;
+
+  // Species initializations:
+  ADP = 1.49718;
+  ATP = 2.102827439;
+  BPG = 0.0002755097167;
+  sink = 0;
+  trioseP = 5;
+
+  // Variable initializations:
+  Atot = 3.6;
+  CGlc = 6.38837;
+  CNAD = 0.65;
+  CNADH = 0.33;
+  Ki = 1.24463685;
+  k3t = 6.65022;
+  k4 = 126518.518519;
+  k6 = 3.2;
+  k8t = 0.61778;
+  q = 2.64;
+
+  // Other declarations:
+  var Atot, CGlc, CNAD, CNADH, Ki, V2t, k3t, k4, k6, k7t, k8t, q;
+
+  // Unit definitions:
+  unit L = litre;
+  unit mM = 1e-3 mole / litre;
+  unit mmol = 1e-3 mole;
+  unit min = 60 second;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+dano3 is "dano3"

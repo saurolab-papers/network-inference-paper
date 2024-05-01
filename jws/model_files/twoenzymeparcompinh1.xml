@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="twoEnzymeParCompInh1" name="two enzyme pathway with inhibitor, host-parasite">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="i1" name="inhibitor" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" id="p" name="product" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_3" id="s" name="substrate" compartment="default" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_4" id="xH" name="intermediate host" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="xP" name="intermediate parasite" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_6" id="K1I1" name="Affinity enzyme 1 for inhibitor I" value="1" constant="false"/>
+      <parameter metaid="metaid_7" id="Keq1" name="Equilibrium constant reaction 1" value="10" constant="false"/>
+      <parameter metaid="metaid_8" id="Km1S1" name="Affinity enzyme 1 for S1" value="1" constant="false"/>
+      <parameter metaid="metaid_9" id="Km1X" name="Affinity enzyme 1 for X" value="2" constant="false"/>
+      <parameter metaid="metaid_10" id="Km2X" name="Affinity enzyme 2 for X" value="1" constant="false"/>
+      <parameter metaid="metaid_11" id="Vmax1H" name="Max velocity enzyme 1" value="10" constant="false"/>
+      <parameter metaid="metaid_12" id="Vmax1P" value="10" constant="false"/>
+      <parameter metaid="metaid_13" id="Vmax2" name="Max velocity enzyme 2" value="10" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_17" id="v1H" name="v1H" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_14" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_15" species="xH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_16" sboTerm="SBO:0000206" species="i1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vmax1H </ci>
+                    <ci> s </ci>
+                  </apply>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> xH </ci>
+                    <apply>
+                      <times/>
+                      <ci> s </ci>
+                      <ci> Keq1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> s </ci>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> xH </ci>
+                  <ci> Km1X </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> i1 </ci>
+                  <ci> K1I1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_21" id="v1P" name="v1P" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_18" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_19" species="xP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_20" sboTerm="SBO:0000206" species="i1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vmax1P </ci>
+                    <ci> s </ci>
+                  </apply>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> xP </ci>
+                    <apply>
+                      <times/>
+                      <ci> s </ci>
+                      <ci> Keq1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> s </ci>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> xP </ci>
+                  <ci> Km1X </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> i1 </ci>
+                  <ci> K1I1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_24" id="v2H" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_22" species="xH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_23" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vmax2 </ci>
+                  <ci> xH </ci>
+                </apply>
+                <ci> Km2X </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> xH </ci>
+                  <ci> Km2X </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_27" id="v2P" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_25" species="xP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_26" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vmax2 </ci>
+                  <ci> xP </ci>
+                </apply>
+                <ci> Km2X </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> xP </ci>
+                  <ci> Km2X </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

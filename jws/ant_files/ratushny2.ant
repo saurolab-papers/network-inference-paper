@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *ratushny2()
+
+  // Compartments and Species:
+  compartment univ;
+  species P in univ;
+
+  // Assignment Rules:
+  dspksp := (Ksp/2)*(1 + (s + P*univ)/Ksp - ((1 + (s + P*univ)/Ksp)^2 - 4*s*P*univ/Ksp^2)^0.5);
+  dspspkd := (Kd/2)*(1 + 2*dspksp/Kd - ((1 + 2*dspksp/Kd)^2 - 4*dspksp^2/Kd^2)^0.5);
+
+  // Reactions:
+  ___r1:  => P; ks*(k0 + (dspspkd/ka)^h)/(1 + (dspspkd/ka)^h);
+  ___r2: P => ; ___r2___RATE__*P;
+
+  // Species initializations:
+  P = 0;
+
+  // Compartment initializations:
+  univ = 1;
+
+  // Variable initializations:
+  Kd = 1e-05;
+  Ksp = 0.001;
+  s = 1000;
+  h = 2;
+  k0 = 0.1;
+  ka = 40;
+  ks = 10;
+  ku = 0.1;
+  ___r2___RATE__ = 0.1;
+
+  // Other declarations:
+  var dspksp, dspspkd;
+  const univ, Kd, Ksp, s, h, k0, ka, ks, ku;
+
+  // SBO terms:
+  univ.sboTerm = 290
+  P.sboTerm = 252
+
+  // CV terms:
+  univ container "http://identifiers.org/obo.go/GO:0005623"
+  P hypernym "http://identifiers.org/obo.go/GO:0003675"
+end
+
+ratushny2 is "ratushny2"

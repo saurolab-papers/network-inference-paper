@@ -1,0 +1,473 @@
+// Created by libAntimony v2.13.2
+model *goldbeter7()
+
+  // Compartments and Species:
+  compartment cytosol;
+  species A in cytosol, $AK in cytosol, Kt in cytosol, K in cytosol, B in cytosol;
+  species BN in cytosol, Bp in cytosol, D in cytosol, Dusp in cytosol, ERKa in cytosol;
+  species $ERKi in cytosol, ERKt in cytosol, F in cytosol, Fgf in cytosol;
+  species MAx in cytosol, MDusp in cytosol, MF in cytosol, N in cytosol, Na in cytosol;
+  species Nan in cytosol, Rasa in cytosol, $Rasi in cytosol, Rast in cytosol;
+  species Xa in cytosol, $Xi in cytosol, Xt in cytosol;
+
+  // Assignment Rules:
+  AK := Kt - K;
+  ERKi := ERKt - ERKa;
+  Rasi := Rast - Rasa;
+  Xi := Xt - Xa;
+  vsFK := vsF*(KIG1/(KIG1 + K));
+
+  // Reactions:
+  AK_dissoc: $AK -> A + K; theta*cytosol*(d1*AK - a1*A*K);
+  A_degradation: A => ; theta*cytosol*vdAx*A/(KdAx + A);
+  A_translation:  => A; theta*cytosol*ksAx*MAx;
+  BP_dephosphorylation: Bp => B; theta*cytosol*VMP*Bp/(K2 + Bp);
+  B_degradation: B => ; theta*cytosol*kd1*B;
+  B_phosphorylation: B => Bp; ((theta*cytosol*VMK*KID/(KID + D))*B/(K1 + B))*AK/Kt;
+  B_shuttling: BN -> B; theta*cytosol*(kt4*BN - kt3*B);
+  B_synth:  => B; theta*cytosol*vsB;
+  Bp_degradation: Bp => ; theta*cytosol*kd2*Bp;
+  Dusp_degradation: Dusp => ; eta*cytosol*vdDusp*Dusp/(KdDusp + Dusp);
+  Dusp_translation:  => Dusp; eta*cytosol*ksDusp*MDusp;
+  Erk_activation:  => ERKa; (eta*cytosol*VMaErk*Rasa/Rast)*ERKi/(KaErk + ERKi);
+  Erk_inactivation: ERKa => ; eta*cytosol*kcDusp*Dusp*ERKa/(KdErk + ERKa);
+  F_degradation: F => ; epsilon*cytosol*vdF*F/(KdF + F);
+  F_translation:  => F; epsilon*cytosol*ksF*MF;
+  MAx_degradation: MAx => ; theta*cytosol*vmd*MAx/(Kmd + MAx);
+  MAx_trans_BN:  => MAx; theta*cytosol*(vMB*BN^n/(KaB^n + BN^n));
+  MAx_trans_Xa:  => MAx; theta*cytosol*(vMXa*Xa^m/(KaXa^m + Xa^m));
+  MAx_trans_basal:  => MAx; theta*cytosol*v0;
+  MDusp_degradation: MDusp => ; eta*cytosol*VMdMDusp*MDusp/(KdMDusp + MDusp);
+  MDusp_transkription:  => MDusp; eta*cytosol*VMsMDusp*Xa^q/(KaMDusp^q + Xa^q);
+  MF_degradation: MF => ; epsilon*cytosol*vmF*MF/(KdMF + MF);
+  MF_transkription:  => MF; epsilon*cytosol*vsFK*Nan^p/(KA^p + Nan^p);
+  N_activation: N => Na; epsilon*cytosol*kc*N*KIF^j/(KIF^j + F^j);
+  N_degradation: N => ; epsilon*cytosol*vdN*N/(KdN + N);
+  Na_degradation: Na => ; epsilon*cytosol*VdNa*Na/(KdNa + Na);
+  Na_transport: Na -> Nan; epsilon*cytosol*(kt1*Na - kt2*Nan);
+  Nan_degradation: Nan => ; epsilon*cytosol*VdNan*Nan/(KdNan + Nan);
+  Ras_activation:  => Rasa; (eta*cytosol*VMaRas*Fgf^r/(KaFgf^r + Fgf^r))*Rasi/(KaRas + Rasi);
+  Ras_inactivation: Rasa => ; eta*cytosol*VMdRas*Rasa/(KdRas + Rasa);
+  X_activation:  => Xa; (eta*cytosol*VMaX*ERKa/ERKt)*Xi/(KaX + Xi);
+  X_inactivation: Xa => ; eta*cytosol*VMdX*Xa/(KdX + Xa);
+  n_synth:  => N; cytosol*epsilon*vsN;
+
+  // Species initializations:
+  A = 0.1/cytosol;
+  Kt = 3/cytosol;
+  K = 3/cytosol;
+  B = 0.1/cytosol;
+  BN = 0.001/cytosol;
+  Bp = 0.1/cytosol;
+  D = 2/cytosol;
+  Dusp = 0.1/cytosol;
+  ERKa = 0.2/cytosol;
+  ERKt = 2/cytosol;
+  F = 0.001/cytosol;
+  Fgf = 1/cytosol;
+  MAx = 0.1/cytosol;
+  MDusp = 0.1/cytosol;
+  MF = 0.1/cytosol;
+  N = 0.5/cytosol;
+  Na = 0.2/cytosol;
+  Nan = 0;
+  Rasa = 0.5/cytosol;
+  Rast = 2/cytosol;
+  Xa = 0.1/cytosol;
+  Xt = 2/cytosol;
+
+  // Compartment initializations:
+  cytosol = 1;
+  cytosol has litre;
+
+  // Variable initializations:
+  K1 = 0.28;
+  K1 has nanomolar;
+  K2 = 0.03;
+  K2 has nanomolar;
+  KA = 0.05;
+  KA has nanomolar;
+  KID = 0.5;
+  KID has nanomolar;
+  KIF = 0.5;
+  KIF has nanomolar;
+  KIG1 = 2.5;
+  KIG1 has nanomolar;
+  KaB = 0.7;
+  KaB has nanomolar;
+  KaErk = 0.05;
+  KaErk has nanomolar;
+  KaFgf = 0.5;
+  KaFgf has nanomolar;
+  KaMDusp = 0.5;
+  KaMDusp has nanomolar;
+  KaRas = 0.103;
+  KaRas has nanomolar;
+  KaX = 0.05;
+  KaX has nanomolar;
+  KaXa = 0.05;
+  KaXa has nanomolar;
+  KdAx = 0.63;
+  KdAx has nanomolar;
+  KdDusp = 0.5;
+  KdDusp has nanomolar;
+  KdErk = 0.05;
+  KdErk has nanomolar;
+  KdF = 0.37;
+  KdF has nanomolar;
+  KdMDusp = 0.5;
+  KdMDusp has nanomolar;
+  KdMF = 0.768;
+  KdMF has nanomolar;
+  KdN = 1.4;
+  KdN has nanomolar;
+  KdNa = 0.001;
+  KdNa has nanomolar;
+  KdNan = 0.001;
+  KdNan has nanomolar;
+  KdRas = 0.1;
+  KdRas has nanomolar;
+  KdX = 0.05;
+  KdX has nanomolar;
+  Kmd = 0.48;
+  Kmd has nanomolar;
+  VMK = 5.08;
+  VMK has flux;
+  VMP = 1;
+  VMP has flux;
+  VMaErk = 3.3;
+  VMaErk has flux;
+  VMaRas = 4.968;
+  VMaRas has flux;
+  VMaX = 1.6;
+  VMaX has flux;
+  VMdMDusp = 0.5;
+  VMdMDusp has flux;
+  VMdRas = 0.41;
+  VMdRas has flux;
+  VMdX = 0.5;
+  VMdX has flux;
+  VMsMDusp = 0.9;
+  VMsMDusp has flux;
+  VdNa = 0.01;
+  VdNa has flux;
+  VdNan = 0.1;
+  VdNan has flux;
+  a1 = 1.8;
+  a1 has second_order_rate_constant;
+  d1 = 0.1;
+  d1 has first_order_rate_constant;
+  epsilon = 0.3;
+  epsilon has dimensionless;
+  eta = 0.3;
+  eta has dimensionless;
+  j = 2;
+  j has dimensionless;
+  kc = 3.45;
+  kc has first_order_rate_constant;
+  kcDusp = 1.35;
+  kcDusp has first_order_rate_constant;
+  kd1 = 0;
+  kd1 has first_order_rate_constant;
+  kd2 = 7.062;
+  kd2 has first_order_rate_constant;
+  ksAx = 0.02;
+  ksAx has first_order_rate_constant;
+  ksDusp = 0.5;
+  ksDusp has first_order_rate_constant;
+  ksF = 0.3;
+  ksF has first_order_rate_constant;
+  kt1 = 0.1;
+  kt1 has first_order_rate_constant;
+  kt2 = 0.1;
+  kt2 has first_order_rate_constant;
+  kt3 = 0.7;
+  kt3 has first_order_rate_constant;
+  kt4 = 1.5;
+  kt4 has first_order_rate_constant;
+  m = 2;
+  m has dimensionless;
+  n = 2;
+  n has dimensionless;
+  p = 2;
+  p has dimensionless;
+  q = 2;
+  q has dimensionless;
+  r = 2;
+  r has dimensionless;
+  theta = 1.5;
+  theta has dimensionless;
+  v0 = 0.06;
+  v0 has flux;
+  vMB = 1.64;
+  vMB has flux;
+  vMXa = 0.5;
+  vMXa has flux;
+  vdAx = 0.6;
+  vdAx has flux;
+  vdDusp = 2;
+  vdDusp has flux;
+  vdF = 0.39;
+  vdF has flux;
+  vdN = 2.82;
+  vdN has flux;
+  vmF = 1.92;
+  vmF has flux;
+  vmd = 0.8;
+  vmd has flux;
+  vsB = 0.087;
+  vsB has flux;
+  vsF = 3;
+  vsF has flux;
+  vsFK has flux;
+  vsN = 0.23;
+  vsN has flux;
+
+  // Other declarations:
+  var vsFK;
+  const cytosol, K1, K2, KA, KID, KIF, KIG1, KaB, KaErk, KaFgf, KaMDusp, KaRas;
+  const KaX, KaXa, KdAx, KdDusp, KdErk, KdF, KdMDusp, KdMF, KdN, KdNa, KdNan;
+  const KdRas, KdX, Kmd, VMK, VMP, VMaErk, VMaRas, VMaX, VMdMDusp, VMdRas;
+  const VMdX, VMsMDusp, VdNa, VdNan, a1, d1, epsilon, eta, j, kc, kcDusp;
+  const kd1, kd2, ksAx, ksDusp, ksF, kt1, kt2, kt3, kt4, m, n, p, q, r, theta;
+  const v0, vMB, vMXa, vdAx, vdDusp, vdF, vdN, vmF, vmd, vsB, vsF, vsN;
+
+  // Unit definitions:
+  unit nanomole = 1e-9 mole;
+  unit minute = 60 second;
+  unit first_order_rate_constant = 1 / 60 second;
+  unit second_order_rate_constant = litre / (1e-9 mole * 60 second);
+  unit flux = 1e-9 mole / (litre * 60 second);
+  unit nanomolar = 1e-9 mole / litre;
+
+  // Display Names:
+  A is "Axin2 protein";
+  AK is "Axin2/Gsk3 destruction complex";
+  K is "Gsk3";
+  B is "beta-catenin";
+  BN is "nuclear beta-catenin";
+  Bp is "phosph. beta-catenin";
+  D is "Dsh protein";
+  Dusp is "Dusp6 protein";
+  ERKa is "active ERK";
+  ERKi is "inactive ERK";
+  ERKt is "ERK total";
+  F is "Lunatic Fringe protein";
+  MAx is "Axin2 mRNA";
+  MDusp is "Dusp6 mRNA";
+  MF is "Lunatic fringe mRNA";
+  N is "Notch protein";
+  Na is "cytosolic NicD";
+  Nan is "nuclear NicD";
+  Rasa is "active Ras";
+  Rasi is "inactive Ras";
+  Rast is "Ras total";
+  Xa is "active TF X";
+  Xi is "inactive TF X";
+  Xt is "X total";
+  N_activation is "Notch_activation";
+  n_synth is "Notch_synthesis";
+
+  // SBO terms:
+  A.sboTerm = 252
+  AK.sboTerm = 297
+  Kt.sboTerm = 252
+  K.sboTerm = 252
+  B.sboTerm = 252
+  BN.sboTerm = 252
+  Bp.sboTerm = 252
+  D.sboTerm = 252
+  Dusp.sboTerm = 252
+  ERKa.sboTerm = 252
+  ERKi.sboTerm = 252
+  ERKt.sboTerm = 252
+  F.sboTerm = 252
+  Fgf.sboTerm = 252
+  MAx.sboTerm = 250
+  MDusp.sboTerm = 250
+  MF.sboTerm = 250
+  N.sboTerm = 252
+  Na.sboTerm = 252
+  Nan.sboTerm = 252
+  Rasa.sboTerm = 252
+  Rasi.sboTerm = 252
+  Rast.sboTerm = 252
+  Xa.sboTerm = 252
+  Xi.sboTerm = 252
+  Xt.sboTerm = 252
+  K1.sboTerm = 27
+  K2.sboTerm = 27
+  KID.sboTerm = 27
+  KIF.sboTerm = 191
+  KaErk.sboTerm = 27
+  KaFgf.sboTerm = 191
+  KaMDusp.sboTerm = 191
+  KaRas.sboTerm = 27
+  KaX.sboTerm = 27
+  KaXa.sboTerm = 27
+  KdAx.sboTerm = 27
+  KdDusp.sboTerm = 27
+  KdErk.sboTerm = 27
+  KdF.sboTerm = 27
+  KdMDusp.sboTerm = 27
+  KdMF.sboTerm = 27
+  KdN.sboTerm = 27
+  KdNa.sboTerm = 27
+  KdNan.sboTerm = 27
+  KdRas.sboTerm = 27
+  KdX.sboTerm = 27
+  VMK.sboTerm = 186
+  VMP.sboTerm = 186
+  VMaErk.sboTerm = 186
+  VMaRas.sboTerm = 186
+  VMaX.sboTerm = 186
+  VMdMDusp.sboTerm = 186
+  VMdRas.sboTerm = 186
+  VMdX.sboTerm = 186
+  VMsMDusp.sboTerm = 186
+  VdNa.sboTerm = 186
+  VdNan.sboTerm = 186
+  a1.sboTerm = 23
+  d1.sboTerm = 338
+  epsilon.sboTerm = 381
+  eta.sboTerm = 381
+  j.sboTerm = 191
+  kc.sboTerm = 22
+  kcDusp.sboTerm = 22
+  kd1.sboTerm = 22
+  kd2.sboTerm = 22
+  ksAx.sboTerm = 22
+  ksDusp.sboTerm = 22
+  ksF.sboTerm = 22
+  kt1.sboTerm = 22
+  kt2.sboTerm = 32
+  kt3.sboTerm = 22
+  kt4.sboTerm = 32
+  m.sboTerm = 190
+  n.sboTerm = 190
+  p.sboTerm = 191
+  q.sboTerm = 190
+  r.sboTerm = 191
+  theta.sboTerm = 381
+  v0.sboTerm = 186
+  vMB.sboTerm = 186
+  vMXa.sboTerm = 186
+  vdAx.sboTerm = 186
+  vdDusp.sboTerm = 186
+  vdF.sboTerm = 186
+  vdN.sboTerm = 324
+  vmF.sboTerm = 186
+  vmd.sboTerm = 186
+  vsB.sboTerm = 186
+  vsF.sboTerm = 186
+  vsFK.sboTerm = 186
+  vsN.sboTerm = 48
+  AK_dissoc.sboTerm = 180
+  A_degradation.sboTerm = 179
+  A_translation.sboTerm = 184
+  BP_dephosphorylation.sboTerm = 330
+  B_degradation.sboTerm = 179
+  B_phosphorylation.sboTerm = 216
+  B_shuttling.sboTerm = 185
+  Bp_degradation.sboTerm = 179
+  Dusp_degradation.sboTerm = 179
+  Dusp_translation.sboTerm = 184
+  F_degradation.sboTerm = 179
+  F_translation.sboTerm = 184
+  MAx_degradation.sboTerm = 179
+  MAx_trans_BN.sboTerm = 183
+  MAx_trans_Xa.sboTerm = 183
+  MAx_trans_basal.sboTerm = 183
+  MDusp_degradation.sboTerm = 179
+  MDusp_transkription.sboTerm = 183
+  MF_degradation.sboTerm = 179
+  MF_transkription.sboTerm = 183
+  N_activation.sboTerm = 178
+  N_degradation.sboTerm = 179
+  Na_degradation.sboTerm = 179
+  Na_transport.sboTerm = 185
+  Nan_degradation.sboTerm = 179
+
+  // CV terms:
+  cytosol identity "http://identifiers.org/obo.go/GO:0005829"
+  A homolog "http://identifiers.org/uniprot/Q9Y2T1"
+  AK part "http://identifiers.org/uniprot/Q9Y2T1",
+          "http://identifiers.org/uniprot/P49841"
+  Kt homolog "http://identifiers.org/uniprot/P49841"
+  K homolog "http://identifiers.org/uniprot/P49841"
+  B hypernym "http://identifiers.org/interpro/IPR013284"
+  BN homolog "http://identifiers.org/uniprot/P35222",
+             "http://identifiers.org/interpro/IPR013284"
+  Bp homolog "http://identifiers.org/uniprot/P35222",
+             "http://identifiers.org/interpro/IPR013284",
+             "http://identifiers.org/kegg.compound/C00562"
+  D hypernym "http://identifiers.org/interpro/IPR003351",
+             "http://identifiers.org/uniprot/O14640"
+  Dusp homolog "http://identifiers.org/uniprot/Q16828"
+  ERKa hypernym "http://identifiers.org/interpro/IPR008349"
+  ERKi hypernym "http://identifiers.org/interpro/IPR008349"
+  ERKt hypernym "http://identifiers.org/interpro/IPR008349"
+  F hypernym "http://identifiers.org/interpro/IPR017374",
+             "http://identifiers.org/uniprot/Q8NES3"
+  Fgf hypernym "http://identifiers.org/interpro/IPR017338"
+  MAx hypernym "http://identifiers.org/chebi/CHEBI:33699",
+               "http://identifiers.org/ensembl/ENSG00000168646",
+               "http://identifiers.org/uniprot/Q9Y2T1"
+  MDusp encodement "http://identifiers.org/uniprot/Q16828",
+                   "http://identifiers.org/ensembl/ENSG00000139318"
+  MF hypernym "http://identifiers.org/chebi/CHEBI:33699",
+              "http://identifiers.org/uniprot/Q8NES3",
+              "http://identifiers.org/interpro/IPR017374"
+  N homolog "http://identifiers.org/uniprot/P46531",
+            "http://identifiers.org/interpro/IPR008297"
+  Na parthood "http://identifiers.org/interpro/IPR008297"
+  Nan parthood "http://identifiers.org/interpro/IPR008297"
+  Rasa version "http://identifiers.org/chebi/CHEBI:15996",
+               "http://identifiers.org/interpro/IPR001806"
+  Rasi version "http://identifiers.org/chebi/CHEBI:17552",
+               "http://identifiers.org/interpro/IPR001806"
+  Rast hypernym "http://identifiers.org/interpro/IPR001806"
+  Xa hypernym "http://identifiers.org/interpro/IPR006715"
+  Xi hypernym "http://identifiers.org/interpro/IPR006715"
+  Xt hypernym "http://identifiers.org/interpro/IPR006715"
+  AK_dissoc hypernym "http://identifiers.org/obo.go/GO:0043241"
+  A_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  A_translation hypernym "http://identifiers.org/obo.go/GO:0006412"
+  BP_dephosphorylation hypernym "http://identifiers.org/obo.go/GO:0006470"
+  B_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  B_phosphorylation hypernym "http://identifiers.org/reactome/REACT_11065.1",
+                             "http://identifiers.org/obo.go/GO:0006468"
+  B_shuttling hypernym "http://identifiers.org/obo.go/GO:0006913"
+  B_synth hypernym "http://identifiers.org/obo.go/GO:0010467"
+  Bp_degradation hypernym "http://identifiers.org/reactome/REACT_11063.1",
+                          "http://identifiers.org/obo.go/GO:0030163"
+  Dusp_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  Dusp_translation hypernym "http://identifiers.org/obo.go/GO:0006412"
+  Erk_activation hypernym "http://identifiers.org/reactome/REACT_1482.4"
+  Erk_inactivation hypernym "http://identifiers.org/reactome/REACT_12436.1"
+  F_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  F_translation hypernym "http://identifiers.org/obo.go/GO:0006412"
+  MAx_degradation hypernym "http://identifiers.org/obo.go/GO:0006402"
+  MAx_trans_BN hypernym "http://identifiers.org/obo.go/GO:0009299"
+  MAx_trans_Xa hypernym "http://identifiers.org/obo.go/GO:0009299"
+  MAx_trans_basal hypernym "http://identifiers.org/obo.go/GO:0009299"
+  MDusp_degradation hypernym "http://identifiers.org/obo.go/GO:0006402"
+  MDusp_transkription hypernym "http://identifiers.org/obo.go/GO:0009299"
+  MF_degradation hypernym "http://identifiers.org/obo.go/GO:0006402"
+  MF_transkription hypernym "http://identifiers.org/obo.go/GO:0009299"
+  N_activation hypernym "http://identifiers.org/reactome/REACT_691.2",
+                        "http://identifiers.org/obo.go/GO:0007220"
+  N_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  Na_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  Na_transport hypernym "http://identifiers.org/reactome/REACT_2155.3",
+                        "http://identifiers.org/obo.go/GO:0006913"
+  Nan_degradation hypernym "http://identifiers.org/obo.go/GO:0030163"
+  Ras_activation hypernym "http://identifiers.org/reactome/REACT_2010.5",
+                          "http://identifiers.org/obo.go/GO:0032856"
+  Ras_inactivation hypernym "http://identifiers.org/obo.go/GO:0034261"
+  X_activation hypernym "http://identifiers.org/obo.go/GO:0051091"
+  X_inactivation hypernym "http://identifiers.org/obo.go/GO:0043433"
+  n_synth hypernym "http://identifiers.org/obo.go/GO:0010467"
+end
+
+goldbeter7 is "goldbeter7"

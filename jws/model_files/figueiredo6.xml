@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="figueiredo6" name="figueiredo6" substanceUnits="mmol" timeUnits="min" volumeUnits="L" extentUnits="mM">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="min" name="min">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="mmol" name="mmol">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="mM" name="mM">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="L" name="L">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_4" sboTerm="SBO:0000410" id="default" name="default" spatialDimensions="3" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="BPG" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="DGAT" compartment="default" initialConcentration="0.0909529453696715" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="GA" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="GAP" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="Glci" compartment="default" initialConcentration="0.218082943949036" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="Gly" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="KDG" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="KDPG" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="PEP" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="PG2" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="PG3" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="Pyr" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_17" id="ADP" value="0.8" constant="false"/>
+      <parameter metaid="metaid_18" id="ATP" value="1" constant="false"/>
+      <parameter metaid="metaid_19" id="Glci0" value="0" constant="false"/>
+      <parameter metaid="metaid_20" id="KO" value="1" constant="false"/>
+      <parameter metaid="metaid_21" id="KdegBPG" value="0" constant="false"/>
+      <parameter metaid="metaid_22" id="KdegBPG80" value="3.9261" constant="false"/>
+      <parameter metaid="metaid_23" id="KdegGAP" value="0" constant="false"/>
+      <parameter metaid="metaid_24" id="KdegGAP80" value="0.3464" constant="false"/>
+      <parameter metaid="metaid_25" id="KdegPEP" value="0" constant="false"/>
+      <parameter metaid="metaid_26" id="KdegPEP80" value="0.034253" constant="false"/>
+      <parameter metaid="metaid_27" id="KiADPvPGK" value="1.142" constant="false"/>
+      <parameter metaid="metaid_28" id="KiGlyvG2K" value="0.1" constant="false"/>
+      <parameter metaid="metaid_29" id="KmADPvPGK" value="0.085" constant="false"/>
+      <parameter metaid="metaid_30" id="KmADPvPK" value="0.07" constant="false"/>
+      <parameter metaid="metaid_31" id="KmADPvPK70" value="0.24" constant="false"/>
+      <parameter metaid="metaid_32" id="KmATPvKDGKi" value="2.8" constant="false"/>
+      <parameter metaid="metaid_33" id="KmATPvPEPS" value="0.61" constant="false"/>
+      <parameter metaid="metaid_34" id="KmATPvPGK" value="9.7" constant="false"/>
+      <parameter metaid="metaid_35" id="KmBPGvGAPDH" value="0.00041" constant="false"/>
+      <parameter metaid="metaid_36" id="KmBPGvPGK" value="5.59" constant="false"/>
+      <parameter metaid="metaid_37" id="KmGAPvGAPDH" value="0.84" constant="false"/>
+      <parameter metaid="metaid_38" id="KmGAPvGAPN" value="0.5" constant="false"/>
+      <parameter metaid="metaid_39" id="KmGAPvKDPGA2" value="3.9" constant="false"/>
+      <parameter metaid="metaid_40" id="KmGAvGAOR" value="0.09" constant="false"/>
+      <parameter metaid="metaid_41" id="KmGAvKDPGA1" value="3.9" constant="false"/>
+      <parameter metaid="metaid_42" id="KmGlcvGDH" value="1.5" constant="false"/>
+      <parameter metaid="metaid_43" id="KmKDGvKDGKi" value="3.6" constant="false"/>
+      <parameter metaid="metaid_44" id="KmKDGvKDPGA1" value="25.7" constant="false"/>
+      <parameter metaid="metaid_45" id="KmKDPGvKDPGA2" value="0.1" constant="false"/>
+      <parameter metaid="metaid_46" id="KmNADPHvGAPDH" value="0.074" constant="false"/>
+      <parameter metaid="metaid_47" id="KmNADPvGAPDH" value="0.27" constant="false"/>
+      <parameter metaid="metaid_48" id="KmNADPvGAPN" value="0.09" constant="false"/>
+      <parameter metaid="metaid_49" id="KmPEPvENOa" value="0.42" constant="false"/>
+      <parameter metaid="metaid_50" id="KmPEPvPK" value="0.09" constant="false"/>
+      <parameter metaid="metaid_51" id="KmPG2vENOc" value="0.09" constant="false"/>
+      <parameter metaid="metaid_52" id="KmPG2vIPGAMa" value="0.15" constant="false"/>
+      <parameter metaid="metaid_53" id="KmPG3vIPGAMc" value="0.1" constant="false"/>
+      <parameter metaid="metaid_54" id="KmPG3vPGK" value="0.54" constant="false"/>
+      <parameter metaid="metaid_55" id="KmPhivGAPDH" value="408.5" constant="false"/>
+      <parameter metaid="metaid_56" id="KmPyrvKDPGA1" value="1" constant="false"/>
+      <parameter metaid="metaid_57" id="KmPyrvKDPGA2" value="1" constant="false"/>
+      <parameter metaid="metaid_58" id="KmPyrvPEPS" value="0.46" constant="false"/>
+      <parameter metaid="metaid_59" id="KmvDGatvGAD" value="0.45" constant="false"/>
+      <parameter metaid="metaid_60" id="KmvDGatvGAD2" value="1.57" constant="false"/>
+      <parameter metaid="metaid_61" id="KsATPvG2K" value="1.5" constant="false"/>
+      <parameter metaid="metaid_62" id="KsGlyvG2K" value="48" constant="false"/>
+      <parameter metaid="metaid_63" id="KsinkGAP" value="8.9852" constant="false"/>
+      <parameter metaid="metaid_64" id="KsinkPyr" value="3.6326" constant="false"/>
+      <parameter metaid="metaid_65" id="NADP" value="0.2" constant="false"/>
+      <parameter metaid="metaid_66" id="NADPH" value="5" constant="false"/>
+      <parameter metaid="metaid_67" id="Phi" value="1000" constant="false"/>
+      <parameter metaid="metaid_68" id="SMALL" value="0.0001" constant="false"/>
+      <parameter metaid="metaid_69" id="VmBPGvGAPDH" value="0" constant="false"/>
+      <parameter metaid="metaid_70" id="VmBPGvGAPDH80" value="933.91" constant="false"/>
+      <parameter metaid="metaid_71" id="VmBPGvPGK" value="0" constant="false"/>
+      <parameter metaid="metaid_72" id="VmBPGvPGK80" value="217.4" constant="false"/>
+      <parameter metaid="metaid_73" id="VmDGatvGAD" value="0" constant="false"/>
+      <parameter metaid="metaid_74" id="VmDGatvGAD80" value="185.29" constant="false"/>
+      <parameter metaid="metaid_75" id="VmGAPvGAPDH" value="0" constant="false"/>
+      <parameter metaid="metaid_76" id="VmGAPvGAPDH80" value="82.915" constant="false"/>
+      <parameter metaid="metaid_77" id="VmGAPvGAPN" value="0" constant="false"/>
+      <parameter metaid="metaid_78" id="VmGAPvGAPN80" value="36.76" constant="false"/>
+      <parameter metaid="metaid_79" id="VmGAPvKDPGA2" value="0" constant="false"/>
+      <parameter metaid="metaid_80" id="VmGAPvKDPGA280" value="115.22" constant="false"/>
+      <parameter metaid="metaid_81" id="VmGAvGAOR" value="0" constant="false"/>
+      <parameter metaid="metaid_82" id="VmGAvGAOR80" value="959.63" constant="false"/>
+      <parameter metaid="metaid_83" id="VmGAvKDPGA1" value="0" constant="false"/>
+      <parameter metaid="metaid_84" id="VmGAvKDPGA180" value="119.36" constant="false"/>
+      <parameter metaid="metaid_85" id="VmGlcUp" value="0" constant="false"/>
+      <parameter metaid="metaid_86" id="VmGlcUp80" value="31.154" constant="false"/>
+      <parameter metaid="metaid_87" id="VmGlcvGDH" value="0" constant="false"/>
+      <parameter metaid="metaid_88" id="VmGlcvGDH80" value="245.44" constant="false"/>
+      <parameter metaid="metaid_89" id="VmGlyvG2K" value="0" constant="false"/>
+      <parameter metaid="metaid_90" id="VmGlyvG2K80" value="872.36" constant="false"/>
+      <parameter metaid="metaid_91" id="VmKDGvKDGKi" value="0" constant="false"/>
+      <parameter metaid="metaid_92" id="VmKDGvKDGKi80" value="943.31" constant="false"/>
+      <parameter metaid="metaid_93" id="VmKDGvKDPGA1" value="0" constant="false"/>
+      <parameter metaid="metaid_94" id="VmKDGvKDPGA180" value="952.4" constant="false"/>
+      <parameter metaid="metaid_95" id="VmKDPGvKDPGA2" value="0" constant="false"/>
+      <parameter metaid="metaid_96" id="VmKDPGvKDPGA280" value="908.77" constant="false"/>
+      <parameter metaid="metaid_97" id="VmPEPvENOa" value="0" constant="false"/>
+      <parameter metaid="metaid_98" id="VmPEPvENOa80" value="10.007" constant="false"/>
+      <parameter metaid="metaid_99" id="VmPEPvPK" value="0" constant="false"/>
+      <parameter metaid="metaid_100" id="VmPEPvPK80" value="144" constant="false"/>
+      <parameter metaid="metaid_101" id="VmPG2vENOc" value="0" constant="false"/>
+      <parameter metaid="metaid_102" id="VmPG2vENOc80" value="937.97" constant="false"/>
+      <parameter metaid="metaid_103" id="VmPG2vIPGAMa" value="0" constant="false"/>
+      <parameter metaid="metaid_104" id="VmPG2vIPGAMa80" value="169.76" constant="false"/>
+      <parameter metaid="metaid_105" id="VmPG3vIPGAMc" value="0" constant="false"/>
+      <parameter metaid="metaid_106" id="VmPG3vIPGAMc80" value="78.97" constant="false"/>
+      <parameter metaid="metaid_107" id="VmPG3vPGK" value="0" constant="false"/>
+      <parameter metaid="metaid_108" id="VmPG3vPGK80" value="110.25" constant="false"/>
+      <parameter metaid="metaid_109" id="VmPyrvKDPGA1" value="0" constant="false"/>
+      <parameter metaid="metaid_110" id="VmPyrvKDPGA180" value="121.88" constant="false"/>
+      <parameter metaid="metaid_111" id="VmPyrvKDPGA2" value="0" constant="false"/>
+      <parameter metaid="metaid_112" id="VmPyrvKDPGA280" value="114.7" constant="false"/>
+      <parameter metaid="metaid_113" id="VmPyrvPEPS" value="0" constant="false"/>
+      <parameter metaid="metaid_114" id="VmPyrvPEPS80" value="26.138" constant="false"/>
+      <parameter metaid="metaid_115" id="alpha" value="1" constant="false"/>
+      <parameter metaid="metaid_116" id="kdeg" value="1" constant="false"/>
+      <parameter metaid="metaid_117" id="kiATPvG2K" value="61" constant="false"/>
+      <parameter metaid="metaid_118" id="n" value="1.5" constant="false"/>
+      <parameter metaid="metaid_119" id="range" value="1.2" constant="false"/>
+      <parameter metaid="metaid_120" id="volFactor" value="0.25" constant="false"/>
+      <parameter metaid="metaid_121" id="volFactor2" value="250000" constant="false"/>
+      <parameter metaid="metaid_122" id="vrange" value="0.1" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_123" variable="VmGAvGAOR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGAvGAOR80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_124" variable="VmGAvKDPGA1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGAvKDPGA180 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_125" variable="VmKDGvKDPGA1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmKDGvKDPGA180 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_126" variable="KdegBPG">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> KdegBPG80 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_127" variable="VmPyrvKDPGA1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPyrvKDPGA180 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_128" variable="VmKDPGvKDPGA2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmKDPGvKDPGA280 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_129" variable="VmGlcUp">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGlcUp80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_130" variable="VmGlyvG2K">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGlyvG2K80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_131" variable="VmKDGvKDGKi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmKDGvKDGKi80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_132" variable="VmPG3vIPGAMc">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPG3vIPGAMc80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_133" variable="VmPyrvPEPS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPyrvPEPS80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_134" variable="VmGAPvKDPGA2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGAPvKDPGA280 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_135" variable="VmPEPvENOa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPEPvENOa80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_136" variable="KdegGAP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> KdegGAP80 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_137" variable="VmPG3vPGK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPG3vPGK80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_138" variable="VmPEPvPK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPEPvPK80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_139" variable="VmPyrvKDPGA2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPyrvKDPGA280 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_140" variable="VmBPGvPGK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmBPGvPGK80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_141" variable="KdegPEP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> KdegPEP80 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_142" variable="VmDGatvGAD">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmDGatvGAD80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_143" variable="VmGAPvGAPDH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGAPvGAPDH80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_144" variable="VmGlcvGDH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGlcvGDH80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_145" variable="VmPG2vIPGAMa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPG2vIPGAMa80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_146" variable="VmGAPvGAPN">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmGAPvGAPN80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_147" variable="Glci0">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> KmGlcvGDH </ci>
+              <ci> VmGlcUp </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <ci> VmGlcUp </ci>
+              </apply>
+              <ci> VmGlcvGDH </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_148" variable="VmBPGvGAPDH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmBPGvGAPDH80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_149" variable="VmPG2vENOc">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> VmPG2vENOc80 </ci>
+            <ci> volFactor </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_152" id="vENOf" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_150" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_151" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmPG2vENOc </ci>
+                <ci> PG2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmPG2vENOc </ci>
+                <ci> PG2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_155" id="vENOr" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmPEPvENOa </ci>
+                <ci> PEP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmPEPvENOa </ci>
+                <ci> PEP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_158" id="vG2K" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_156" species="Gly" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_157" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmGlyvG2K </ci>
+                <apply>
+                  <power/>
+                  <ci> Gly </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> alpha </ci>
+                      <ci> KO </ci>
+                      <ci> Gly </ci>
+                    </apply>
+                    <ci> KiGlyvG2K </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KsGlyvG2K </ci>
+                <apply>
+                  <power/>
+                  <ci> Gly </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> KO </ci>
+                    <apply>
+                      <power/>
+                      <ci> Gly </ci>
+                      <cn type="integer"> 3 </cn>
+                    </apply>
+                  </apply>
+                  <ci> KiGlyvG2K </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="vGAD" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_159" species="DGAT" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_160" species="KDG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmDGatvGAD </ci>
+                <ci> DGAT </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmvDGatvGAD </ci>
+                <ci> DGAT </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_164" id="vGAOR" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="GA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_163" species="Gly" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmGAvGAOR </ci>
+                <ci> GA </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmGAvGAOR </ci>
+                <ci> GA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_167" id="vGAPDH" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_165" species="BPG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_166" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> NADP </ci>
+                        <ci> Phi </ci>
+                        <ci> VmGAPvGAPDH </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> KmGAPvGAPDH </ci>
+                        <ci> KmNADPvGAPDH </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> NADPH </ci>
+                      <ci> VmBPGvGAPDH </ci>
+                      <ci> BPG </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KmBPGvGAPDH </ci>
+                      <ci> KmNADPHvGAPDH </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <divide/>
+                      <ci> BPG </ci>
+                      <ci> KmBPGvGAPDH </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> KmPhivGAPDH </ci>
+                        <ci> Phi </ci>
+                        <ci> GAP </ci>
+                      </apply>
+                      <ci> KmGAPvGAPDH </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <minus/>
+                      <cn type="integer"> 1 </cn>
+                    </apply>
+                    <ci> n </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NADP </ci>
+                    <ci> KmNADPvGAPDH </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> NADPH </ci>
+                    <ci> KmNADPHvGAPDH </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Phi </ci>
+                      <ci> KmPhivGAPDH </ci>
+                    </apply>
+                    <ci> n </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> BPG </ci>
+                      <ci> KmBPGvGAPDH </ci>
+                    </apply>
+                    <ci> n </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> GAP </ci>
+                      <ci> KmGAPvGAPDH </ci>
+                    </apply>
+                    <ci> n </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> KmPhivGAPDH </ci>
+                        <ci> Phi </ci>
+                        <ci> GAP </ci>
+                      </apply>
+                      <ci> KmGAPvGAPDH </ci>
+                    </apply>
+                    <ci> n </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_170" id="vGAPN" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_168" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_169" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> NADP </ci>
+                <ci> VmGAPvGAPN </ci>
+                <ci> GAP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> KmGAPvGAPN </ci>
+                  <ci> KmNADPvGAPN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmGAPvGAPN </ci>
+                  <ci> NADP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmNADPvGAPN </ci>
+                  <ci> GAP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> NADP </ci>
+                  <ci> GAP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="vGDH" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_171" species="Glci" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_172" species="DGAT" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmGlcvGDH </ci>
+                <ci> Glci </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmGlcvGDH </ci>
+                <ci> Glci </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_175" id="vGlcUp" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_174" species="Glci" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> VmGlcUp </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_178" id="vIPGAMf" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_176" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_177" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmPG3vIPGAMc </ci>
+                <ci> PG3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmPG3vIPGAMc </ci>
+                <ci> PG3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_181" id="vIPGAMr" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_180" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmPG2vIPGAMa </ci>
+                <ci> PG2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmPG2vIPGAMa </ci>
+                <ci> PG2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_184" id="vKDGKi" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_182" species="KDG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_183" species="KDPG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ATP </ci>
+                <ci> VmKDGvKDGKi </ci>
+                <ci> KDG </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> KmKDGvKDGKi </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmATPvKDGKi </ci>
+                  <ci> KmKDGvKDGKi </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> KDG </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmATPvKDGKi </ci>
+                  <ci> KDG </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_188" id="vKDPGA1f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_185" species="KDG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="Pyr" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_187" species="GA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmKDGvKDPGA1 </ci>
+                <ci> KDG </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmKDGvKDPGA1 </ci>
+                <ci> KDG </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_192" id="vKDPGA1r" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_189" species="Pyr" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_190" species="GA" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_191" species="KDG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmGAvKDPGA1 </ci>
+                <ci> GA </ci>
+                <ci> Pyr </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> KmGAvKDPGA1 </ci>
+                  <ci> KmPyrvKDPGA1 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmPyrvKDPGA1 </ci>
+                  <ci> GA </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmGAvKDPGA1 </ci>
+                  <ci> Pyr </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> GA </ci>
+                  <ci> Pyr </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_196" id="vKDPGA2f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="KDPG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_194" species="Pyr" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_195" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmKDPGvKDPGA2 </ci>
+                <ci> KDPG </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> KmKDPGvKDPGA2 </ci>
+                <ci> KDPG </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_200" id="vKDPGA2r" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_197" species="Pyr" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_198" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_199" species="KDPG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> VmGAPvKDPGA2 </ci>
+                <ci> GAP </ci>
+                <ci> Pyr </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> KmGAPvKDPGA2 </ci>
+                  <ci> KmPyrvKDPGA2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmPyrvKDPGA2 </ci>
+                  <ci> GAP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmGAPvKDPGA2 </ci>
+                  <ci> Pyr </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> GAP </ci>
+                  <ci> Pyr </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_203" id="vPEPS" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_201" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_202" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ATP </ci>
+                <ci> VmPyrvPEPS </ci>
+                <ci> Pyr </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> KmPyrvPEPS </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmATPvPEPS </ci>
+                  <ci> KmPyrvPEPS </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> Pyr </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmATPvPEPS </ci>
+                  <ci> Pyr </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_206" id="vPGK" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_204" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_205" species="BPG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> ADP </ci>
+                      <ci> VmBPGvPGK </ci>
+                      <ci> BPG </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> KmATPvPGK </ci>
+                      <ci> KmBPGvPGK </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> ATP </ci>
+                    <ci> VmPG3vPGK </ci>
+                    <ci> PG3 </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> KmATPvPGK </ci>
+                    <ci> KmPG3vPGK </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> ADP </ci>
+                    <ci> KiADPvPGK </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> ADP </ci>
+                          <ci> KmADPvPGK </ci>
+                        </apply>
+                      </apply>
+                      <ci> BPG </ci>
+                    </apply>
+                    <ci> KmBPGvPGK </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> ATP </ci>
+                          <ci> KmATPvPGK </ci>
+                        </apply>
+                      </apply>
+                      <ci> PG3 </ci>
+                    </apply>
+                    <ci> KmPG3vPGK </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_209" id="vPK" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_207" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_208" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ADP </ci>
+                <ci> VmPEPvPK </ci>
+                <ci> PEP </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> ADP </ci>
+                  <ci> KmPEPvPK </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmADPvPK </ci>
+                  <ci> KmPEPvPK </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ADP </ci>
+                  <ci> PEP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KmADPvPK </ci>
+                  <ci> PEP </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_211" id="vdegBPG" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_210" species="BPG" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KdegBPG </ci>
+              <ci> BPG </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_213" id="vdegGAP" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_212" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KdegGAP </ci>
+              <ci> GAP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_215" id="vdegPEP" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_214" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KdegPEP </ci>
+              <ci> PEP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_217" id="vsinkGAP" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_216" species="GAP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KsinkGAP </ci>
+              <ci> GAP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_219" id="vsinkPyr" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_218" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> KsinkPyr </ci>
+              <ci> Pyr </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

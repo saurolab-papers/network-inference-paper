@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="komarova1" name="komarova1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="x1" compartment="default" initialConcentration="5.08098" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="x2" compartment="default" initialConcentration="1397.73" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="z" compartment="default" initialConcentration="90" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_4" id="Fig7AR1alphaOnOff" value="1" constant="false"/>
+      <parameter metaid="metaid_5" id="Ratex1appearance" value="0" constant="false"/>
+      <parameter metaid="metaid_6" id="Ratex1appearanceOnOff" value="0" constant="false"/>
+      <parameter metaid="metaid_7" id="Ratex1appearanceOnOffPiecewise" value="0" constant="false"/>
+      <parameter metaid="metaid_8" id="Ratex1appearanceduration" value="1" constant="false"/>
+      <parameter metaid="metaid_9" id="Ratex1appearancemagnitude" value="7" constant="false"/>
+      <parameter metaid="metaid_10" id="Ratex1appearancetimefirst" value="10" constant="false"/>
+      <parameter metaid="metaid_11" id="Ratex1appearancetimesecond" value="150" constant="false"/>
+      <parameter metaid="metaid_12" id="alpha1" value="7" constant="false"/>
+      <parameter metaid="metaid_13" id="alpha2" value="7" constant="false"/>
+      <parameter metaid="metaid_14" id="beta1" value="0" constant="false"/>
+      <parameter metaid="metaid_15" id="beta1basalvalue" value="0.2" constant="false"/>
+      <parameter metaid="metaid_16" id="beta1increaseOnOff" value="1" constant="false"/>
+      <parameter metaid="metaid_17" id="beta1increaseOntime" value="500" constant="false"/>
+      <parameter metaid="metaid_18" id="beta1increasevalue" value="0" constant="false"/>
+      <parameter metaid="metaid_19" id="beta1increasevalue2" value="0.03" constant="false"/>
+      <parameter metaid="metaid_20" id="beta2" value="0.02" constant="false"/>
+      <parameter metaid="metaid_21" id="flagformation" value="1" constant="false"/>
+      <parameter metaid="metaid_22" id="flagresorption" value="1" constant="false"/>
+      <parameter metaid="metaid_23" id="g11" value="1.09" constant="false"/>
+      <parameter metaid="metaid_24" id="g12" value="1" constant="false"/>
+      <parameter metaid="metaid_25" id="g21" value="-0.5" constant="false"/>
+      <parameter metaid="metaid_26" id="g22" value="0.09" constant="false"/>
+      <parameter metaid="metaid_27" id="gamma" value="0" constant="false"/>
+      <parameter metaid="metaid_28" id="initialvaluex1" value="5.08098" constant="false"/>
+      <parameter metaid="metaid_29" id="initialvaluex2" value="1397.73" constant="false"/>
+      <parameter metaid="metaid_30" id="initialvaluez" value="90" constant="false"/>
+      <parameter metaid="metaid_31" id="k1" value="0.26" constant="false"/>
+      <parameter metaid="metaid_32" id="k2" value="0.0008" constant="false"/>
+      <parameter metaid="metaid_33" id="plotx2yaxis" value="0" constant="false"/>
+      <parameter metaid="metaid_34" id="plotzyaxis" value="0" constant="false"/>
+      <parameter metaid="metaid_35" id="plotzyaxisdenominator" value="113.749" constant="false"/>
+      <parameter metaid="metaid_36" id="x1bar" value="0" constant="false"/>
+      <parameter metaid="metaid_37" id="x1variable" value="0" constant="false"/>
+      <parameter metaid="metaid_38" id="x2bar" value="0" constant="false"/>
+      <parameter metaid="metaid_39" id="x2variable" value="0" constant="false"/>
+      <parameter metaid="metaid_40" id="y1" value="0" constant="false"/>
+      <parameter metaid="metaid_41" id="y2" value="0" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_42" variable="y1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> flagresorption </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <ci> x1bar </ci>
+              </apply>
+              <ci> x1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_43" variable="x2bar">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <ci> beta1 </ci>
+                <ci> alpha1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> g12 </ci>
+                <ci> gamma </ci>
+              </apply>
+            </apply>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <ci> beta2 </ci>
+                <ci> alpha2 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <cn> 1 </cn>
+                  <ci> g11 </ci>
+                </apply>
+                <ci> gamma </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_44" variable="x1variable">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> x1 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_45" variable="Ratex1appearance">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> Ratex1appearancemagnitude </ci>
+            <ci> Ratex1appearanceOnOff </ci>
+            <ci> Ratex1appearanceOnOffPiecewise </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_46" variable="y2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> flagformation </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <ci> x2bar </ci>
+              </apply>
+              <ci> x2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_47" variable="x2variable">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> x2 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_48" variable="gamma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <ci> g12 </ci>
+              <ci> g21 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <ci> g11 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <ci> g22 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_49" variable="beta1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> beta1basalvalue </ci>
+            <apply>
+              <times/>
+              <ci> beta1increaseOnOff </ci>
+              <ci> beta1increasevalue </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_50" variable="plotzyaxis">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 100 </cn>
+              <ci> z </ci>
+            </apply>
+            <ci> plotzyaxisdenominator </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_51" variable="x1bar">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <ci> beta1 </ci>
+                <ci> alpha1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <cn> 1 </cn>
+                  <ci> g22 </ci>
+                </apply>
+                <ci> gamma </ci>
+              </apply>
+            </apply>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <ci> beta2 </ci>
+                <ci> alpha2 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> g21 </ci>
+                <ci> gamma </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_52" variable="plotx2yaxis">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <minus/>
+              <ci> initialvaluex2 </ci>
+            </apply>
+            <ci> y2 </ci>
+            <ci> x2 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_55" id="R1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="x1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_54" species="x2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <ci> Ratex1appearance </ci>
+              <apply>
+                <times/>
+                <ci> alpha1 </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> Fig7AR1alphaOnOff </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> Fig7AR1alphaOnOff </ci>
+                    <apply>
+                      <power/>
+                      <ci> x1 </ci>
+                      <ci> g11 </ci>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <ci> x2 </ci>
+                      <ci> g21 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_57" id="R2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="x1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> beta1 </ci>
+              <ci> x1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_60" id="R3" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_58" species="x2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_59" species="x1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> alpha2 </ci>
+              <apply>
+                <power/>
+                <ci> x1 </ci>
+                <ci> g12 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <ci> x2 </ci>
+                <ci> g22 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_62" id="R4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_61" species="x2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> beta2 </ci>
+              <ci> x2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_64" id="R5" reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_64">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0045453"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_63" species="z" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> y1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" id="R6" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_65" species="z" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> y2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event metaid="metaid_67" id="y2_gt_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <ci> x2 </ci>
+              <ci> x2bar </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_68" variable="flagformation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_69" id="Rx1_geq_2nd_trig" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> Ratex1appearancetimesecond </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_70" variable="Ratex1appearanceOnOffPiecewise">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_71" id="y1_gt_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <ci> x1 </ci>
+              <ci> x1bar </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_72" variable="flagresorption">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_73" id="y1_leq_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <leq/>
+              <ci> x1 </ci>
+              <ci> x1bar </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_74" variable="flagresorption">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_75" id="Rx1_gt_1stdur_trig" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <apply>
+                <plus/>
+                <ci> Ratex1appearanceduration </ci>
+                <ci> Ratex1appearancetimefirst </ci>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_76" variable="Ratex1appearanceOnOffPiecewise">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_77" id="Rx1_lt_1st_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <lt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> Ratex1appearancetimefirst </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_78" variable="Ratex1appearanceOnOffPiecewise">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_79" id="beta1_geq_on_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> beta1increaseOntime </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_80" variable="beta1increasevalue">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <ci> beta1increasevalue2 </ci>
+            </math>
+          </eventAssignment>
+          <eventAssignment metaid="metaid_81" variable="flagresorption">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_82" id="Rx1_geq_1st_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <geq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> Ratex1appearancetimefirst </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_83" variable="Ratex1appearanceOnOffPiecewise">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_84" id="Rx1_gt_2nddur_trig" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <apply>
+                <plus/>
+                <ci> Ratex1appearanceduration </ci>
+                <ci> Ratex1appearancetimesecond </ci>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_85" variable="Ratex1appearanceOnOffPiecewise">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event metaid="metaid_86" id="y2_leq_trigger" useValuesFromTriggerTime="true">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <leq/>
+              <ci> x2 </ci>
+              <ci> x2bar </ci>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_87" variable="flagformation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

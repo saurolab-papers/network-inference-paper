@@ -1,0 +1,117 @@
+// Created by libAntimony v2.13.2
+model *balagadde1()
+
+  // Compartments and Species:
+  compartment environment;
+  species A1 in environment, A2 in environment, C1 in environment, C2 in environment;
+  species IPTG in environment, $sink in environment, $source in environment;
+
+  // Assignment Rules:
+  d1 := 0.5 + IPTG^2/(5^2 + IPTG^2);
+  kA2 := 0.02 + 0.03*(IPTG^2/(5^2 + IPTG^2));
+
+  // Reactions:
+  J0: $source => C1; environment*kc1*C1*(1 - (C1 + C2)/Cm);
+  J1: C1 => $sink; environment*(D + d1*K1/(K1 + A2^2))*C1;
+  J2: $source => C2; environment*kc2*C2*(1 - (C1 + C2)/Cm);
+  J3: C2 => $sink; environment*(D + d2*A1^2/(K2 + A1^2))*C2;
+  J4: $source => A1; environment*kA1*C1;
+  J5: A1 => $sink; environment*(dAA1 + D)*A1;
+  J6: $source => A2; environment*kA2*C2;
+  J7: A2 => $sink; environment*(dAA2 + D)*A2;
+
+  // Species initializations:
+  A1 = 0.1/environment;
+  A2 = 0.1/environment;
+  C1 = 20/environment;
+  C2 = 20/environment;
+  IPTG = 5/environment;
+  sink = 0;
+  source = 0;
+
+  // Compartment initializations:
+  environment = 1;
+
+  // Variable initializations:
+  Cm = 100;
+  D = 0.1125;
+  K1 = 10;
+  K2 = 10;
+  d2 = 0.3;
+  dAA1 = 0.017;
+  dAA2 = 0.11;
+  kA1 = 0.1;
+  kc1 = 0.8;
+  kc2 = 0.4;
+
+  // Other declarations:
+  var d1, kA2;
+  const environment, Cm, D, K1, K2, d2, dAA1, dAA2, kA1, kc1, kc2;
+
+  // Unit definitions:
+  unit nanomole = 1e-9 mole;
+  unit hour = 3600 second;
+
+  // Display Names:
+  hour is "hours";
+  J0 is "predator growth";
+  J1 is "predator death";
+  J2 is "prey growth";
+  J3 is "prey death";
+  J4 is "3OC12HSL synthesis";
+  J5 is "3OC12HSL removal";
+  J6 is "3OC6HSL synthesis";
+  J7 is "3OC6HSL removal";
+
+  // SBO terms:
+  environment.sboTerm = 290
+  A1.sboTerm = 247
+  A2.sboTerm = 247
+  C1.sboTerm = 240
+  C2.sboTerm = 240
+  IPTG.sboTerm = 247
+  sink.sboTerm = 291
+  source.sboTerm = 291
+  Cm.sboTerm = 196
+  D.sboTerm = 356
+  K1.sboTerm = 191
+  K2.sboTerm = 191
+  d1.sboTerm = 356
+  d2.sboTerm = 356
+  dAA1.sboTerm = 356
+  dAA2.sboTerm = 356
+  kA1.sboTerm = 35
+  kA2.sboTerm = 35
+  kc1.sboTerm = 35
+  kc2.sboTerm = 35
+  J0.sboTerm = 375
+  J1.sboTerm = 179
+  J2.sboTerm = 375
+  J3.sboTerm = 179
+  J4.sboTerm = 205
+  J5.sboTerm = 179
+  J6.sboTerm = 205
+  J7.sboTerm = 179
+
+  // CV terms:
+  environment identity "http://identifiers.org/go/GO:0005576"
+  A1 identity "http://identifiers.org/chebi/CHEBI:56080"
+  A2 identity "http://identifiers.org/chebi/CHEBI:55474",
+              "http://identifiers.org/kegg.compound/C18049"
+  C1 hypernym "http://identifiers.org/taxonomy/562"
+  C2 hypernym "http://identifiers.org/taxonomy/562"
+  IPTG identity "http://identifiers.org/chebi/CHEBI:61448",
+                "http://identifiers.org/pubchem.compound/656894"
+  J0 hypernym "http://identifiers.org/go/GO:0008283"
+  J1 hypernym "http://identifiers.org/go/GO:0008219"
+  J2 identity "http://identifiers.org/go/GO:0008283"
+  J3 hypernym "http://identifiers.org/go/GO:0008219"
+  J4 version "http://identifiers.org/ec-code/2.3.1.184",
+             "http://identifiers.org/go/GO:0009058"
+  J5 hypernym "http://identifiers.org/go/GO:0009056"
+  J6 identity "http://identifiers.org/go/GO:0009058",
+              "http://identifiers.org/ec-code/2.3.1.184"
+  J7 hypernym "http://identifiers.org/go/GO:0009056"
+end
+
+balagadde1 is "balaggade1"

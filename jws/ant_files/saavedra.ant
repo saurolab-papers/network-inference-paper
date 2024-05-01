@@ -1,0 +1,167 @@
+// Created by libAntimony v2.13.2
+model *saavedra()
+
+  // Compartments and Species:
+  species ADP, AMP, ATP, DHAP, F6P, FBP, G3P, G6P, $Glu, NAD, NADH, PEP, $PPhi;
+  species $Phi, acald, $etoh, $glycogen, n13BPG, n2PG, n3PG, $n3POHpyr, pyr;
+
+  // Reactions:
+  v_1: $Glu + ATP -> ADP + G6P; (HKrevparVmf/(HKrevparalfa*HKrevparKa*HKrevparKb))*(Glu*ATP - G6P*ADP/HKrevparKeq)/(1 + Glu/HKrevparKa + ATP/HKrevparKb + Glu*ATP/(HKrevparalfa*HKrevparKa*HKrevparKb) + AMP/HKrevparKi + Glu*AMP/(HKrevparbeta*HKrevparKa*HKrevparKi) + AMP*ATP/(HKrevpargama*HKrevparKi*HKrevparKb) + G6P/HKrevparKp + ADP/HKrevparKq + G6P*ADP/(HKrevparalfa*HKrevparKp*HKrevparKq));
+  v_10: NAD + n3PG -> NADH + $n3POHpyr; n3PGDHparVm*NAD*n3PG/(n3PGDHparKa*n3PGDHparKb + n3PGDHparKb*NAD + NAD*n3PG);
+  v_11: n3PG -> n2PG; (PGAMparVf*n3PG/PGAMparKms - PGAMparVr*n2PG/PGAMparKmp)/(1 + n3PG/PGAMparKms + n2PG/PGAMparKmp);
+  v_12: n2PG -> PEP; (ENOparVf*n2PG/ENOparKms - ENOparVr*PEP/ENOparKmp)/(1 + n2PG/ENOparKms + PEP/ENOparKmp);
+  v_13: PEP + AMP + $PPhi -> pyr + ATP + $Phi; (PPDKparVmf*(PEP*AMP*PPhi/(PPDKparalfa*PPDKparKa*PPDKparKb*PPDKparKc)) - PPDKparVmr*(pyr*ATP*Phi/(PPDKparbeta*PPDKparKp*PPDKparKq*PPDKparKr)))/(1 + PEP/PPDKparKa + PEP*AMP/(PPDKparalfa*PPDKparKa*PPDKparKb) + PEP*AMP*PPhi/(PPDKparalfa*PPDKparbeta*PPDKparKa*PPDKparKb*PPDKparKc) + pyr*ATP*Phi/(PPDKparalfa*PPDKparbeta*PPDKparKp*PPDKparKq*PPDKparKr) + ATP*Phi/(PPDKparalfa*PPDKparKq*PPDKparKr) + Phi/PPDKparKr);
+  v_14: NADH + pyr -> NAD + acald; (PFORALDHparVmf*(NADH*pyr/(PFORALDHparalfa*PFORALDHparKa*PFORALDHparKb)) - PFORALDHparVmr*(acald*NAD/(PFORALDHparbeta*PFORALDHparKp*PFORALDHparKq)))/(1 + NADH/PFORALDHparKa + pyr/PFORALDHparKb + NADH*pyr/(PFORALDHparalfa*PFORALDHparKa*PFORALDHparKb) + acald*NAD/(PFORALDHparbeta*PFORALDHparKp*PFORALDHparKq) + acald/PFORALDHparKp + NAD/PFORALDHparKq);
+  v_15: NADH + acald -> NAD + $etoh; ADHparVm*NADH*acald/(ADHparKa*ADHparKb + ADHparKb*NADH + NADH*acald);
+  v_16: 2 ADP -> AMP + ATP; AKpark1*ADP^2 - AKpark2*ATP*AMP;
+  v_17: ATP -> ADP; ATPasesparK*ATP;
+  v_18: ATP -> AMP + $PPhi; PPhisynthesispark*ATP;
+  v_19: NAD -> NADH; DHasespark1*NAD - DHasespark2*NADH;
+  v_2: $glycogen + $Phi -> G6P; glycogendegradationpark*glycogen*Phi;
+  v_3: ATP + G6P -> ADP + $PPhi + $glycogen; glycogensynthesispark*G6P*ATP;
+  v_4: G6P -> F6P; (HPhiparVf*G6P/HPhiparKms - HPhiparVr*F6P/HPhiparKmp)/(1 + G6P/HPhiparKms + F6P/HPhiparKmp);
+  v_5: $PPhi + F6P -> FBP + $Phi; (PPhiPFKparVmf*(F6P*PPhi/(PPhiPFKparalfa*PPhiPFKparKa*PPhiPFKparKb)) - PPhiPFKparVmr*(FBP*Phi/(PPhiPFKparbeta*PPhiPFKparKp*PPhiPFKparKq)))/(1 + F6P/PPhiPFKparKa + PPhi/PPhiPFKparKb + F6P*PPhi/(PPhiPFKparalfa*PPhiPFKparKa*PPhiPFKparKb) + FBP*Phi/(PPhiPFKparbeta*PPhiPFKparKp*PPhiPFKparKq) + FBP/PPhiPFKparKp + Phi/PPhiPFKparKq);
+  v_6: FBP -> G3P + DHAP; (ALDOparVmf*(FBP/ALDOparKs) - ALDOparVmr*(DHAP*G3P/(ALDOparKp + ALDOparKq)))/(1 + FBP/ALDOparKs + DHAP/ALDOparKp + G3P/ALDOparKq + DHAP*G3P/(ALDOparKp*ALDOparKq));
+  v_7: DHAP -> G3P; (TPhiparVf*DHAP/TPhiparKms - TPhiparVr*G3P/TPhiparKmp)/(1 + DHAP/TPhiparKms + G3P/TPhiparKmp);
+  v_8: G3P + NAD -> NADH + n13BPG; (GAPDHparVmf*(NAD*G3P/(GAPDHparalfa*GAPDHparKa*GAPDHparKb)) - GAPDHparVmr*(n13BPG*NADH/(GAPDHparbeta*GAPDHparKp*GAPDHparKq)))/(1 + NAD/GAPDHparKa + G3P/GAPDHparKb + NAD*G3P/(GAPDHparalfa*GAPDHparKa*GAPDHparKb) + n13BPG*NADH/(GAPDHparbeta*GAPDHparKp*GAPDHparKq) + n13BPG/GAPDHparKp + NADH/GAPDHparKq);
+  v_9: ADP + n13BPG -> n3PG + ATP; (PGKparVmf*(n13BPG*ADP/(PGKparalfa*PGKparKa*PGKparKb)) - PGKparVmr*(n3PG*ATP/(PGKparbeta*PGKparKp*PGKparKq)))/(1 + n13BPG/PGKparKa + ADP/PGKparKb + n13BPG*ADP/(PGKparalfa*PGKparKa*PGKparKb) + n3PG*ATP/(PGKparbeta*PGKparKp*PGKparKq) + n3PG/PGKparKp + ATP/PGKparKq);
+
+  // Species initializations:
+  ADP = 3.3;
+  AMP = 1.6;
+  ATP = 5;
+  DHAP = 1.15;
+  F6P = 1.1;
+  FBP = 0.43;
+  G3P = 0.36;
+  G6P = 6.2;
+  Glu = 5;
+  NAD = 1.5;
+  NADH = 0.05;
+  PEP = 1;
+  PPhi = 0.45;
+  Phi = 5;
+  acald = 0.001;
+  etoh = 10;
+  glycogen = 1;
+  n13BPG = 1;
+  n2PG = 1;
+  n3PG = 1;
+  n3POHpyr = 1;
+  pyr = 0.92;
+
+  // Variable initializations:
+  ADHparKa = 0.05;
+  ADHparKb = 0.15;
+  ADHparVm = 0.4;
+  AKpark1 = 2.26;
+  AKpark2 = 1;
+  ALDOparKp = 0.21;
+  ALDOparKq = 0.26;
+  ALDOparKs = 0.028;
+  ALDOparVmf = 0.16;
+  ALDOparVmr = 0.284;
+  ATPasesparK = 0.002;
+  DHasespark1 = 0.1;
+  DHasespark2 = 1.5;
+  ENOparKmp = 0.102;
+  ENOparKms = 0.06;
+  ENOparVf = 0.508;
+  ENOparVr = 0.103;
+  GAPDHparKa = 0.083;
+  GAPDHparKb = 0.043;
+  GAPDHparKp = 0.016;
+  GAPDHparKq = 0.06;
+  GAPDHparVmf = 0.405;
+  GAPDHparVmr = 3.68;
+  GAPDHparalfa = 1;
+  GAPDHparbeta = 1;
+  HKrevparKa = 0.025;
+  HKrevparKb = 0.121;
+  HKrevparKeq = 656;
+  HKrevparKi = 0.036;
+  HKrevparKp = 1;
+  HKrevparKq = 0.235;
+  HKrevparVmf = 0.095;
+  HKrevparalfa = 1;
+  HKrevparbeta = 1;
+  HKrevpargama = 1;
+  HPhiparKmp = 0.46;
+  HPhiparKms = 0.61;
+  HPhiparVf = 0.233;
+  HPhiparVr = 0.206;
+  PFORALDHparKa = 0.18;
+  PFORALDHparKb = 0.14;
+  PFORALDHparKp = 0.1;
+  PFORALDHparKq = 0.2;
+  PFORALDHparVmf = 0.3;
+  PFORALDHparVmr = 0.01;
+  PFORALDHparalfa = 1;
+  PFORALDHparbeta = 1;
+  PGAMparKmp = 0.106;
+  PGAMparKms = 0.83;
+  PGAMparVf = 0.116;
+  PGAMparVr = 0.104;
+  PGKparKa = 0.125;
+  PGKparKb = 0.04;
+  PGKparKp = 0.505;
+  PGKparKq = 0.061;
+  PGKparVmf = 3.182;
+  PGKparVmr = 1.742;
+  PGKparalfa = 1;
+  PGKparbeta = 1;
+  PPDKparKa = 0.03;
+  PPDKparKb = 0.002;
+  PPDKparKc = 0.091;
+  PPDKparKp = 0.3;
+  PPDKparKq = 0.28;
+  PPDKparKr = 1;
+  PPDKparVmf = 0.304;
+  PPDKparVmr = 0.019;
+  PPDKparalfa = 0.01;
+  PPDKparbeta = 2;
+  PPhiPFKparKa = 0.695;
+  PPhiPFKparKb = 0.38;
+  PPhiPFKparKp = 0.109;
+  PPhiPFKparKq = 2.3;
+  PPhiPFKparVmf = 0.213;
+  PPhiPFKparVmr = 0.346;
+  PPhiPFKparalfa = 0.5;
+  PPhiPFKparbeta = 2;
+  PPhisynthesispark = 0.0065;
+  TPhiparKmp = 0.32;
+  TPhiparKms = 0.445;
+  TPhiparVf = 4.366;
+  TPhiparVr = 6.098;
+  glycogendegradationpark = 0.0001;
+  glycogensynthesispark = 0.0015;
+  n3PGDHparKa = 0.087;
+  n3PGDHparKb = 0.212;
+  n3PGDHparVm = 0.01;
+
+  // Other declarations:
+  var ADHparKa, ADHparKb, ADHparVm, AKpark1, AKpark2, ALDOparKp, ALDOparKq;
+  var ALDOparKs, ALDOparVmf, ALDOparVmr, ATPasesparK, DHasespark1, DHasespark2;
+  var ENOparKmp, ENOparKms, ENOparVf, ENOparVr, GAPDHparKa, GAPDHparKb, GAPDHparKp;
+  var GAPDHparKq, GAPDHparVmf, GAPDHparVmr, GAPDHparalfa, GAPDHparbeta, HKrevparKa;
+  var HKrevparKb, HKrevparKeq, HKrevparKi, HKrevparKp, HKrevparKq, HKrevparVmf;
+  var HKrevparalfa, HKrevparbeta, HKrevpargama, HPhiparKmp, HPhiparKms, HPhiparVf;
+  var HPhiparVr, PFORALDHparKa, PFORALDHparKb, PFORALDHparKp, PFORALDHparKq;
+  var PFORALDHparVmf, PFORALDHparVmr, PFORALDHparalfa, PFORALDHparbeta, PGAMparKmp;
+  var PGAMparKms, PGAMparVf, PGAMparVr, PGKparKa, PGKparKb, PGKparKp, PGKparKq;
+  var PGKparVmf, PGKparVmr, PGKparalfa, PGKparbeta, PPDKparKa, PPDKparKb;
+  var PPDKparKc, PPDKparKp, PPDKparKq, PPDKparKr, PPDKparVmf, PPDKparVmr;
+  var PPDKparalfa, PPDKparbeta, PPhiPFKparKa, PPhiPFKparKb, PPhiPFKparKp;
+  var PPhiPFKparKq, PPhiPFKparVmf, PPhiPFKparVmr, PPhiPFKparalfa, PPhiPFKparbeta;
+  var PPhisynthesispark, TPhiparKmp, TPhiparKms, TPhiparVf, TPhiparVr, glycogendegradationpark;
+  var glycogensynthesispark, n3PGDHparKa, n3PGDHparKb, n3PGDHparVm;
+
+  // Unit definitions:
+  unit mM = 1e-3 mole / litre;
+  unit min = 60 second;
+  unit substance = mM;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+saavedra is "saavedra"

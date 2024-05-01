@@ -1,0 +1,32 @@
+// Created by libAntimony v2.13.2
+model *pankavich1()
+
+  // Compartments and Species:
+  species II, T, V;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v2: T -> ; dT*T;
+  v3: T -> II; k*T*V;
+  v4: II -> ; dI*II;
+  v5:  -> V; dI*NN*II;
+  v6: V -> ; dV*V;
+
+  // Species initializations:
+  II = 0;
+  T = 400000;
+  V = 100000;
+
+  // Variable initializations:
+  NN = 2000;
+  dI = 1;
+  dT = 0.01;
+  dV = 23;
+  k = 2.4e-08;
+  lambda = 10000;
+
+  // Other declarations:
+  var NN, dI, dT, dV, k, lambda;
+end
+
+pankavich1 is "pankavich1"

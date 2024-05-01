@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model id="tan1" name="tan1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" id="cell" name="cell" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_0">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005623"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="c" name="ribosome concentration" compartment="cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">
+        c represents concentration of ribosomes C</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P0A7L0"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P0AG67"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction metaid="metaid_4" id="reaction_1" name="reaction_1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_3" species="c" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> alpha </ci>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_2" id="alpha" name="alpha" value="0.001">
+              <notes>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+              alpha represents the basal synthesis rate of c</p>
+              </notes>
+            </parameter>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_8" id="reaction_2" name="reaction_2" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_6" species="c" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_7" species="c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> c </ci>
+              <apply>
+                <plus/>
+                <ci> kappa </ci>
+                <ci> c </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_5" id="kappa" name="kappa" value="0.5">
+              <notes>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+              kappa represents the concentration of c rliciting half-maximal activation of its positive feedback</p>
+              </notes>
+            </parameter>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_12" id="reaction_3" name="reaction_3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_10" species="c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_11" species="c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd </ci>
+              <ci> c </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_9" id="kd" name="kd" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_18" id="reaction_4" name="reaction_4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_16" species="c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_17" species="c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> phi </ci>
+                <ci> c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> delta </ci>
+                <apply>
+                  <times/>
+                  <ci> gamma </ci>
+                  <ci> c </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_13" id="gamma" name="gamma" value="1e-05">
+              <notes>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+              gamma represents the bacterial density</p>
+              </notes>
+            </parameter>
+            <parameter metaid="metaid_14" id="delta" name="delta" value="1e-05">
+              <notes>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+              the parameter delta lumps the effects of multiple reactions: it increases with decreasing rates of intrinsic or antibiotic-induced degradation of C (ribosomes), increasing dissociation between the antibiotic and C, and increasing export rate of the antibiotic.</p>
+              </notes>
+            </parameter>
+            <parameter metaid="metaid_15" id="phi" name="phi" value="5e-06">
+              <notes>
+                <p xmlns="http://www.w3.org/1999/xhtml">
+              phi represents the applied anitbiotic concentration</p>
+              </notes>
+            </parameter>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

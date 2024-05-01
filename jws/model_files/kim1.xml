@@ -1,0 +1,3173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="kim1" name="kim1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="FC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="FN" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="FRN1" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="FRN10" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="FRN11" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="FRN12" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="FRN2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="FRN3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="FRN4" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="FRN5" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="FRN6" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="FRN7" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="FRN8" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="FRN9" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="MC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="MN" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="RC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="RN" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="SC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="SN" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="SRN1" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="SRN10" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="SRN11" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="SRN12" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="SRN2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="SRN3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="SRN4" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_28" id="SRN5" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_29" id="SRN6" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="SRN7" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="SRN8" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="SRN9" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_33" id="TC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" id="TN" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" id="x" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_36" id="KTat" value="28.57" constant="false"/>
+      <parameter metaid="metaid_37" id="NCFactor" value="0" constant="false"/>
+      <parameter metaid="metaid_38" id="NMolarity" value="0" constant="false"/>
+      <parameter metaid="metaid_39" id="NumMolecules" value="1" constant="false"/>
+      <parameter metaid="metaid_40" id="PV" value="1" constant="false"/>
+      <parameter metaid="metaid_41" id="Tcadd" value="24.75" constant="false"/>
+      <parameter metaid="metaid_42" id="Tcb" value="0.25" constant="false"/>
+      <parameter metaid="metaid_43" id="Trr" value="4.5" constant="false"/>
+      <parameter metaid="metaid_44" id="VolNTCell" value="0" constant="false"/>
+      <parameter metaid="metaid_45" id="dF1" value="0.8" constant="false"/>
+      <parameter metaid="metaid_46" id="dF10" value="0.8" constant="false"/>
+      <parameter metaid="metaid_47" id="dF11" value="0.8" constant="false"/>
+      <parameter metaid="metaid_48" id="dF12" value="0.8" constant="false"/>
+      <parameter metaid="metaid_49" id="dF2" value="0.8" constant="false"/>
+      <parameter metaid="metaid_50" id="dF3" value="0.8" constant="false"/>
+      <parameter metaid="metaid_51" id="dF4" value="0.8" constant="false"/>
+      <parameter metaid="metaid_52" id="dF5" value="0.8" constant="false"/>
+      <parameter metaid="metaid_53" id="dF6" value="0.8" constant="false"/>
+      <parameter metaid="metaid_54" id="dF7" value="0.8" constant="false"/>
+      <parameter metaid="metaid_55" id="dF8" value="0.8" constant="false"/>
+      <parameter metaid="metaid_56" id="dF9" value="0.8" constant="false"/>
+      <parameter metaid="metaid_57" id="dS1" value="0.8" constant="false"/>
+      <parameter metaid="metaid_58" id="dS10" value="0.8" constant="false"/>
+      <parameter metaid="metaid_59" id="dS11" value="0.8" constant="false"/>
+      <parameter metaid="metaid_60" id="dS12" value="0.8" constant="false"/>
+      <parameter metaid="metaid_61" id="dS2" value="0.8" constant="false"/>
+      <parameter metaid="metaid_62" id="dS3" value="0.8" constant="false"/>
+      <parameter metaid="metaid_63" id="dS4" value="0.8" constant="false"/>
+      <parameter metaid="metaid_64" id="dS5" value="0.8" constant="false"/>
+      <parameter metaid="metaid_65" id="dS6" value="0.8" constant="false"/>
+      <parameter metaid="metaid_66" id="dS7" value="0.8" constant="false"/>
+      <parameter metaid="metaid_67" id="dS8" value="0.8" constant="false"/>
+      <parameter metaid="metaid_68" id="dS9" value="0.8" constant="false"/>
+      <parameter metaid="metaid_69" id="fMrev" value="0.19" constant="false"/>
+      <parameter metaid="metaid_70" id="fMtat" value="0.05" constant="false"/>
+      <parameter metaid="metaid_71" id="fRev" value="0.5" constant="false"/>
+      <parameter metaid="metaid_72" id="fStat" value="0.05" constant="false"/>
+      <parameter metaid="metaid_73" id="fTat" value="1" constant="false"/>
+      <parameter metaid="metaid_74" id="kFexp1" value="0" constant="false"/>
+      <parameter metaid="metaid_75" id="kFexp10" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_76" id="kFexp11" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_77" id="kFexp12" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_78" id="kFexp2" value="0" constant="false"/>
+      <parameter metaid="metaid_79" id="kFexp3" value="0" constant="false"/>
+      <parameter metaid="metaid_80" id="kFexp4" value="0" constant="false"/>
+      <parameter metaid="metaid_81" id="kFexp5" value="0" constant="false"/>
+      <parameter metaid="metaid_82" id="kFexp6" value="0" constant="false"/>
+      <parameter metaid="metaid_83" id="kFexp7" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_84" id="kFexp8" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_85" id="kFexp9" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_86" id="kFsp" value="2.5" constant="false"/>
+      <parameter metaid="metaid_87" id="kMexp" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_88" id="kProdegC" value="0.1733" constant="false"/>
+      <parameter metaid="metaid_89" id="kProdegN" value="0.0433" constant="false"/>
+      <parameter metaid="metaid_90" id="kRNAdegC" value="0.0029" constant="false"/>
+      <parameter metaid="metaid_91" id="kRNAdegN" value="0.0029" constant="false"/>
+      <parameter metaid="metaid_92" id="kRexp" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_93" id="kRimp" value="0.347" constant="false"/>
+      <parameter metaid="metaid_94" id="kSexp1" value="0" constant="false"/>
+      <parameter metaid="metaid_95" id="kSexp10" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_96" id="kSexp11" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_97" id="kSexp12" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_98" id="kSexp2" value="0" constant="false"/>
+      <parameter metaid="metaid_99" id="kSexp3" value="0" constant="false"/>
+      <parameter metaid="metaid_100" id="kSexp4" value="0" constant="false"/>
+      <parameter metaid="metaid_101" id="kSexp5" value="0" constant="false"/>
+      <parameter metaid="metaid_102" id="kSexp6" value="0" constant="false"/>
+      <parameter metaid="metaid_103" id="kSexp7" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_104" id="kSexp8" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_105" id="kSexp9" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_106" id="kSsp" value="2.5" constant="false"/>
+      <parameter metaid="metaid_107" id="kTexp" value="0.0347" constant="false"/>
+      <parameter metaid="metaid_108" id="kTimp" value="0.347" constant="false"/>
+      <parameter metaid="metaid_109" id="ka1" value="250000" constant="false"/>
+      <parameter metaid="metaid_110" id="ka10" value="440000" constant="false"/>
+      <parameter metaid="metaid_111" id="ka11" value="440000" constant="false"/>
+      <parameter metaid="metaid_112" id="ka12" value="440000" constant="false"/>
+      <parameter metaid="metaid_113" id="ka2" value="440000" constant="false"/>
+      <parameter metaid="metaid_114" id="ka3" value="440000" constant="false"/>
+      <parameter metaid="metaid_115" id="ka4" value="440000" constant="false"/>
+      <parameter metaid="metaid_116" id="ka5" value="440000" constant="false"/>
+      <parameter metaid="metaid_117" id="ka6" value="440000" constant="false"/>
+      <parameter metaid="metaid_118" id="ka7" value="440000" constant="false"/>
+      <parameter metaid="metaid_119" id="ka8" value="440000" constant="false"/>
+      <parameter metaid="metaid_120" id="ka9" value="440000" constant="false"/>
+      <parameter metaid="metaid_121" id="kd1" value="3e-05" constant="false"/>
+      <parameter metaid="metaid_122" id="kd10" value="0.038" constant="false"/>
+      <parameter metaid="metaid_123" id="kd11" value="0.038" constant="false"/>
+      <parameter metaid="metaid_124" id="kd12" value="0.038" constant="false"/>
+      <parameter metaid="metaid_125" id="kd2" value="0.038" constant="false"/>
+      <parameter metaid="metaid_126" id="kd3" value="0.038" constant="false"/>
+      <parameter metaid="metaid_127" id="kd4" value="0.038" constant="false"/>
+      <parameter metaid="metaid_128" id="kd5" value="0.038" constant="false"/>
+      <parameter metaid="metaid_129" id="kd6" value="0.038" constant="false"/>
+      <parameter metaid="metaid_130" id="kd7" value="0.038" constant="false"/>
+      <parameter metaid="metaid_131" id="kd8" value="0.038" constant="false"/>
+      <parameter metaid="metaid_132" id="kd9" value="0.038" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_133" variable="NMolarity">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> NumMolecules </ci>
+              <ci> VolNTCell </ci>
+            </apply>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <cn> 6.02 </cn>
+            </apply>
+            <apply>
+              <power/>
+              <cn type="integer"> 10 </cn>
+              <apply>
+                <minus/>
+                <cn type="integer"> 23 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_134" variable="VolNTCell">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <cn type="integer"> 4 </cn>
+              <cn type="integer"> 3 </cn>
+            </apply>
+            <pi/>
+            <apply>
+              <power/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 6 </cn>
+                  <apply>
+                    <power/>
+                    <cn type="integer"> 10 </cn>
+                    <apply>
+                      <minus/>
+                      <cn type="integer"> 6 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <cn type="integer"> 2 </cn>
+              </apply>
+              <cn type="integer"> 3 </cn>
+            </apply>
+            <apply>
+              <power/>
+              <cn type="integer"> 10 </cn>
+              <cn type="integer"> 3 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_135" variable="NCFactor">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> NMolarity </ci>
+            <apply>
+              <power/>
+              <cn type="integer"> 10 </cn>
+              <cn type="integer"> 6 </cn>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_138" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_136" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_137" species="FN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Tcb </ci>
+              <ci> PV </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_139" species="SN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_140" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka1 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="MN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="MC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kMexp </ci>
+              <ci> MN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="MN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> MN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_151" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="FC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegC </ci>
+              <ci> FC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_154" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="SC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegC </ci>
+              <ci> SC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_155" species="MC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_156" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegC </ci>
+              <ci> MC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_158" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_159" species="FN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_160" species="TN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Tcadd </ci>
+                <ci> PV </ci>
+                <ci> KTat </ci>
+                <ci> TN </ci>
+                <ci> NCFactor </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <ci> KTat </ci>
+                  <ci> TN </ci>
+                  <ci> NCFactor </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" id="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_163" species="RC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_164" species="MC"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> fRev </ci>
+              <ci> Trr </ci>
+              <ci> fMrev </ci>
+              <ci> MC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_168" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_166" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_167" species="RC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRexp </ci>
+              <ci> RN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_171" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_169" species="RC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_170" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRimp </ci>
+              <ci> RC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_174" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_172" species="RC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_173" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kProdegC </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> RC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_178" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_175" species="FRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="FN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_177" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd1 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_182" id="v_30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_180" species="TC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_181" species="SC"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> fTat </ci>
+              <ci> Trr </ci>
+              <ci> fStat </ci>
+              <ci> SC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_186" id="v_31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_183" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_184" species="TC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_185" species="MC"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> fTat </ci>
+              <ci> Trr </ci>
+              <ci> fMtat </ci>
+              <ci> MC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="v_32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_187" species="TN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_188" species="TC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kTexp </ci>
+              <ci> TN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_192" id="v_33" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_190" species="TC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_191" species="TN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kTimp </ci>
+              <ci> TC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="v_34" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="TC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_194" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kProdegC </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> TC </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_198" id="v_35" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kProdegN </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> RN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_201" id="v_36" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_199" species="TN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_200" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kProdegN </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> TN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_204" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_202" species="FN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_203" species="SN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kFsp </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_207" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_205" species="FN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_206" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_211" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_208" species="FN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_209" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_210" species="FRN1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka1 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_215" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_212" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_213" species="SN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_214" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd1 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_218" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_216" species="SN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_217" species="MN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> kSsp </ci>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_221" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_219" species="SN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_220" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SN </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_225" id="v_a13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_222" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_223" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_224" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS1 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_229" id="v_a14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_226" species="FRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_227" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_228" species="RC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp1 </ci>
+              <ci> FRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_233" id="v_a16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_230" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_231" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_232" species="RC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp1 </ci>
+              <ci> SRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_237" id="v_a19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_234" species="FRN1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_235" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_236" species="FRN2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka2 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_241" id="v_a20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_238" species="FRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_239" species="FRN1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_240" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd2 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_244" id="v_a21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_242" species="FRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_243" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF1 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_247" id="v_a22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_245" species="FRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_246" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_251" id="v_a23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_248" species="SRN1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_249" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_250" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka2 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_255" id="v_a24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_252" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_253" species="SRN1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_254" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd2 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_258" id="v_a25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_256" species="SRN1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_257" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_262" id="v_b13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_259" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_260" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_261" species="RN" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS2 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_266" id="v_b14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_263" species="FRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_264" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_265" species="RC" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp2 </ci>
+              <ci> FRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_270" id="v_b16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_267" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_269" species="RC" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp2 </ci>
+              <ci> SRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_274" id="v_b19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_271" species="FRN2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_272" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_273" species="FRN3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka3 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_278" id="v_b20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_275" species="FRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_276" species="FRN2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_277" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd3 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_281" id="v_b21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_279" species="FRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_280" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF2 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_284" id="v_b22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_282" species="FRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_283" species="RN" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_288" id="v_b23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_285" species="SRN2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_286" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_287" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka3 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_292" id="v_b24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_289" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_290" species="SRN2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_291" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd3 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_295" id="v_b25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_293" species="SRN2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_294" species="RN" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_299" id="v_c13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_296" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_297" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_298" species="RN" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS3 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_303" id="v_c14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_300" species="FRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_301" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_302" species="RC" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp3 </ci>
+              <ci> FRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_307" id="v_c16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_304" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_305" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_306" species="RC" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp3 </ci>
+              <ci> SRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_311" id="v_c19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_308" species="FRN3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_309" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_310" species="FRN4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka4 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_315" id="v_c20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_312" species="FRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_313" species="FRN3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_314" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd4 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_318" id="v_c21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_316" species="FRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_317" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF3 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_321" id="v_c22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_319" species="FRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_320" species="RN" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_325" id="v_c23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_322" species="SRN3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_323" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_324" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka4 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_329" id="v_c24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_326" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_327" species="SRN3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_328" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd4 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_332" id="v_c25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_330" species="SRN3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_331" species="RN" stoichiometry="3" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_336" id="v_d13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_333" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_334" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_335" species="RN" stoichiometry="4" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS4 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_340" id="v_d14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_337" species="FRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_338" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_339" species="RC" stoichiometry="4" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp4 </ci>
+              <ci> FRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_344" id="v_d16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_341" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_342" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_343" species="RC" stoichiometry="4" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp4 </ci>
+              <ci> SRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_348" id="v_d19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_345" species="FRN4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_346" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_347" species="FRN5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka5 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_352" id="v_d20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_349" species="FRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_350" species="FRN4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_351" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd5 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_355" id="v_d21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_353" species="FRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_354" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF4 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_358" id="v_d22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_356" species="FRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_357" species="RN" stoichiometry="4" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_362" id="v_d23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_359" species="SRN4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_360" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_361" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka5 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_366" id="v_d24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_363" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_364" species="SRN4" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_365" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd5 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_369" id="v_d25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_367" species="SRN4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_368" species="RN" stoichiometry="4" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_373" id="v_e13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_370" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_371" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_372" species="RN" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS5 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_377" id="v_e14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_374" species="FRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_375" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_376" species="RC" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp5 </ci>
+              <ci> FRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_381" id="v_e16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_378" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_379" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_380" species="RC" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp5 </ci>
+              <ci> SRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_385" id="v_e19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_382" species="FRN5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_383" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_384" species="FRN6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka6 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_389" id="v_e20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_386" species="FRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_387" species="FRN5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_388" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd6 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_392" id="v_e21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_390" species="FRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_391" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF5 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_395" id="v_e22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_393" species="FRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_394" species="RN" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_399" id="v_e23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_396" species="SRN5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_397" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_398" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka6 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_403" id="v_e24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_400" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_401" species="SRN5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_402" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd6 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_406" id="v_e25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_404" species="SRN5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_405" species="RN" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_410" id="v_f13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_407" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_408" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_409" species="RN" stoichiometry="6" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS6 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_414" id="v_f14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_411" species="FRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_412" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_413" species="RC" stoichiometry="6" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp6 </ci>
+              <ci> FRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_418" id="v_f16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_415" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_416" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_417" species="RC" stoichiometry="6" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp6 </ci>
+              <ci> SRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_422" id="v_f19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_419" species="FRN6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_420" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_421" species="FRN7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka7 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_426" id="v_f20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_423" species="FRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_424" species="FRN6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_425" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd7 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_429" id="v_f21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_427" species="FRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_428" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF6 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_432" id="v_f22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_430" species="FRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_431" species="RN" stoichiometry="6" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_436" id="v_f23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_433" species="SRN6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_434" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_435" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka7 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_440" id="v_f24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_437" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_438" species="SRN6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_439" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd7 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_443" id="v_f25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_441" species="SRN6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_442" species="RN" stoichiometry="6" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN6 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_447" id="v_g13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_444" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_445" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_446" species="RN" stoichiometry="7" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS7 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_451" id="v_g14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_448" species="FRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_449" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_450" species="RC" stoichiometry="7" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp7 </ci>
+              <ci> FRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_455" id="v_g16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_452" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_453" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_454" species="RC" stoichiometry="7" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp7 </ci>
+              <ci> SRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_459" id="v_g19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_456" species="FRN7" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_457" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_458" species="FRN8" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka8 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_463" id="v_g20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_460" species="FRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_461" species="FRN7" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_462" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd8 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_466" id="v_g21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_464" species="FRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_465" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF7 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_469" id="v_g22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_467" species="FRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_468" species="RN" stoichiometry="7" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_473" id="v_g23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_470" species="SRN7" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_471" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_472" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka8 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_477" id="v_g24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_474" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_475" species="SRN7" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_476" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd8 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_480" id="v_g25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_478" species="SRN7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_479" species="RN" stoichiometry="7" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_484" id="v_h13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_481" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_482" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_483" species="RN" stoichiometry="8" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS8 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_488" id="v_h14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_485" species="FRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_486" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_487" species="RC" stoichiometry="8" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp8 </ci>
+              <ci> FRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_492" id="v_h16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_489" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_490" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_491" species="RC" stoichiometry="8" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp8 </ci>
+              <ci> SRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_496" id="v_h19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_493" species="FRN8" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_494" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_495" species="FRN9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka9 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_500" id="v_h20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_497" species="FRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_498" species="FRN8" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_499" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd9 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_503" id="v_h21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_501" species="FRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_502" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF8 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_506" id="v_h22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_504" species="FRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_505" species="RN" stoichiometry="8" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_510" id="v_h23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_507" species="SRN8" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_508" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_509" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka9 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_514" id="v_h24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_511" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_512" species="SRN8" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_513" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd9 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_517" id="v_h25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_515" species="SRN8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_516" species="RN" stoichiometry="8" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN8 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_521" id="v_i13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_518" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_519" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_520" species="RN" stoichiometry="9" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS9 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_525" id="v_i14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_522" species="FRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_523" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_524" species="RC" stoichiometry="9" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp9 </ci>
+              <ci> FRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_529" id="v_i16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_526" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_527" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_528" species="RC" stoichiometry="9" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp9 </ci>
+              <ci> SRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_533" id="v_i19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_530" species="FRN9" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_531" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_532" species="FRN10" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka10 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_537" id="v_i20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_534" species="FRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_535" species="FRN9" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_536" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd10 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_540" id="v_i21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_538" species="FRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_539" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF9 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_543" id="v_i22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_541" species="FRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_542" species="RN" stoichiometry="9" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_547" id="v_i23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_544" species="SRN9" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_545" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_546" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka10 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_551" id="v_i24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_548" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_549" species="SRN9" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_550" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd10 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_554" id="v_i25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_552" species="SRN9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_553" species="RN" stoichiometry="9" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN9 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_558" id="v_j13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_555" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_556" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_557" species="RN" stoichiometry="10" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS10 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_562" id="v_j14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_559" species="FRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_560" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_561" species="RC" stoichiometry="10" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp10 </ci>
+              <ci> FRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_566" id="v_j16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_563" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_564" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_565" species="RC" stoichiometry="10" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp10 </ci>
+              <ci> SRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_570" id="v_j19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_567" species="FRN10" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_568" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_569" species="FRN11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka11 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_574" id="v_j20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_571" species="FRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_572" species="FRN10" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_573" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd11 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_577" id="v_j21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_575" species="FRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_576" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF10 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_580" id="v_j22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_578" species="FRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_579" species="RN" stoichiometry="10" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_584" id="v_j23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_581" species="SRN10" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_582" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_583" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka11 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_588" id="v_j24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_585" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_586" species="SRN10" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_587" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd11 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_591" id="v_j25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_589" species="SRN10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_590" species="RN" stoichiometry="10" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN10 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_595" id="v_k13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_592" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_593" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_594" species="RN" stoichiometry="11" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS11 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_599" id="v_k14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_596" species="FRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_597" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_598" species="RC" stoichiometry="11" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp11 </ci>
+              <ci> FRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_603" id="v_k16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_600" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_601" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_602" species="RC" stoichiometry="11" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp11 </ci>
+              <ci> SRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_607" id="v_k19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_604" species="FRN11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_605" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_606" species="FRN12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka12 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> FRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_611" id="v_k20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_608" species="FRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_609" species="FRN11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_610" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd12 </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> FRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_614" id="v_k21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_612" species="FRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_613" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF11 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_617" id="v_k22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_615" species="FRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_616" species="RN" stoichiometry="11" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_621" id="v_k23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_618" species="SRN11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_619" species="RN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_620" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ka12 </ci>
+              <ci> NMolarity </ci>
+              <cn type="integer"> 60 </cn>
+              <ci> RN </ci>
+              <ci> SRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_625" id="v_k24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_622" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_623" species="SRN11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_624" species="RN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kd12 </ci>
+              <cn> 1.5 </cn>
+              <cn type="integer"> 60 </cn>
+              <ci> SRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_628" id="v_k25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_626" species="SRN11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_627" species="RN" stoichiometry="11" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_632" id="v_l13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_629" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_630" species="MN" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_631" species="RN" stoichiometry="12" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dS12 </ci>
+                  </apply>
+                  <ci> kSsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> SRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_636" id="v_l14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_633" species="FRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_634" species="FC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_635" species="RC" stoichiometry="12" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp12 </ci>
+              <ci> FRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_640" id="v_l16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_637" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_638" species="SC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_639" species="RC" stoichiometry="12" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kFexp12 </ci>
+              <ci> SRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_643" id="v_l21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_641" species="FRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_642" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> dF11 </ci>
+                  </apply>
+                  <ci> kFsp </ci>
+                </apply>
+                <cn type="integer"> 60 </cn>
+              </apply>
+              <ci> FRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_646" id="v_l22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_644" species="FRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_645" species="RN" stoichiometry="12" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> FRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_649" id="v_l25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_647" species="SRN12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_648" species="RN" stoichiometry="12" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kRNAdegN </ci>
+              <ci> SRN12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

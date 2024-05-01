@@ -1,0 +1,128 @@
+// Created by libAntimony v2.13.2
+model *nielsen()
+
+  // Compartments and Species:
+  species ACA, ADP, $ADPo, AMP, ATP, $ATPo, BPG, EtOH, F6P, FBP, GAP, Glc;
+  species $Glco, NAD, NADH, $NADHo, $NADo, $P, PEP, Pyr;
+
+  // Reactions:
+  v_1: $Glco -> Glc; k0*Glco;
+  v_10: EtOH -> $P; k0*EtOH;
+  v_11: ACA -> $P; k0*ACA;
+  v_12: Pyr -> $P; k0*Pyr;
+  v_13: PEP -> $P; k0*PEP;
+  v_14: BPG -> $P; k0*BPG;
+  v_15: GAP -> $P; k0*GAP;
+  v_16: FBP -> $P; k0*FBP;
+  v_17: F6P -> $P; k0*F6P;
+  v_18: F6P -> $P; kf10*F6P;
+  v_19: Glc -> $P; k0*Glc;
+  v_2: Glc + ATP -> F6P + ADP; V1m*ATP*Glc/(K1Glc + Glc)/(K1ATP + ATP);
+  v_20: $NADo -> NAD; k0*NADo;
+  v_21: NAD -> $P; k0*NAD;
+  v_22: $NADHo -> NADH; k0*NADHo;
+  v_23: NADH -> $P; k0*NADH;
+  v_24: $ADPo -> ADP; k0*ADPo;
+  v_25: ADP -> $P; k0*ADP;
+  v_26: $ATPo -> ATP; k0*ATPo;
+  v_27: ATP -> $P; k0*ATP;
+  v_28: AMP -> $P; k0*AMP;
+  v_29: AMP + ATP -> 2 ADP; kf9*AMP*ATP - kr9*ADP^2;
+  v_3: F6P + ATP -> FBP + ADP; (V2m*F6P^2/(K2 + K2*kappa2*ATP^2/AMP^2 + F6P^2))*(ATP/(K2mATP + ATP));
+  v_4: FBP -> 2 GAP; k3f*FBP - k3b*GAP^2;
+  v_5: GAP + NAD -> BPG + NADH; V4m*GAP*NAD/(K4G + GAP)/(K4N + NAD);
+  v_6: BPG + ADP -> PEP + ATP; k5f*BPG*ADP - k5r*PEP*ATP;
+  v_7: PEP + ADP -> Pyr + ATP; V6m*ADP*PEP/(K6PEP + PEP)/(K6ADP + ADP);
+  v_8: Pyr -> ACA; V7m*Pyr/(K7 + Pyr);
+  v_9: ACA + NADH -> EtOH + NAD; k8f*ACA*NADH - k8r*EtOH*NAD;
+
+  // Species initializations:
+  ACA = 0.0738334;
+  ADP = 0.108367;
+  ADPo = 1.1;
+  AMP = 0.00261149;
+  ATP = 4.49064;
+  ATPo = 3.5;
+  BPG = 0.299109;
+  EtOH = 0.339813;
+  F6P = 0.65939;
+  FBP = 0.00770135;
+  GAP = 0.00190919;
+  Glc = 0.0112817;
+  Glco = 50;
+  NAD = 3.62057;
+  NADH = 0.616118;
+  NADHo = 0.24;
+  NADo = 4;
+  P = 0;
+  PEP = 0.00211259;
+  Pyr = 0.00422702;
+
+  // Variable initializations:
+  K1ATP = 0.063;
+  K1Glc = 0.1;
+  K2 = 0.0016;
+  K2mATP = 0.01;
+  K4G = 1;
+  K4N = 1;
+  K6ADP = 0.3;
+  K6PEP = 0.2;
+  K7 = 0.3;
+  V1m = 0.5;
+  V2m = 1.5;
+  V4m = 10;
+  V6m = 10;
+  V7m = 2;
+  k0 = 0.011;
+  k3b = 50;
+  k3f = 1;
+  k5f = 1;
+  k5r = 0.5;
+  k8f = 1;
+  k8r = 0.000143;
+  kappa2 = 0.017;
+  kf10 = 0.05;
+  kf9 = 10;
+  kr9 = 10;
+
+  // Other declarations:
+  var K1ATP, K1Glc, K2, K2mATP, K4G, K4N, K6ADP, K6PEP, K7, V1m, V2m, V4m;
+  var V6m, V7m, k0, k3b, k3f, k5f, k5r, k8f, k8r, kappa2, kf10, kf9, kr9;
+
+  // CV terms:
+  ACA identity "http://identifiers.org/obo.chebi/CHEBI%3A15343",
+               "http://identifiers.org/kegg.compound/C00084"
+  ADP identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+               "http://identifiers.org/kegg.compound/C00008"
+  ADPo identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+                "http://identifiers.org/kegg.compound/C00008"
+  AMP identity "http://identifiers.org/obo.chebi/CHEBI%3A16027",
+               "http://identifiers.org/kegg.compound/C00020"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  ATPo identity "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+                "http://identifiers.org/kegg.compound/C00002"
+  BPG identity "http://identifiers.org/obo.chebi/CHEBI%3A19324"
+  EtOH identity "http://identifiers.org/obo.chebi/CHEBI%3A16236",
+                "http://identifiers.org/kegg.compound/C00469"
+  F6P identity "http://identifiers.org/obo.chebi/CHEBI%3A15946",
+               "http://identifiers.org/kegg.compound/C00085"
+  FBP identity "http://identifiers.org/obo.chebi/CHEBI%3A16905",
+               "http://identifiers.org/kegg.compound/C00354"
+  GAP identity "http://identifiers.org/obo.chebi/CHEBI%3A29052",
+               "http://identifiers.org/kegg.compound/C00118"
+  Glc identity "http://identifiers.org/kegg.compound/C00293",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  NAD encodement "http://identifiers.org/obo.chebi/CHEBI%3A13389"
+  NADH identity "http://identifiers.org/obo.chebi/CHEBI%3A16908",
+                "http://identifiers.org/kegg.compound/C00004"
+  NADHo identity "http://identifiers.org/obo.chebi/CHEBI%3A16908",
+                 "http://identifiers.org/kegg.compound/C00004"
+  NADo identity "http://identifiers.org/obo.chebi/CHEBI%3A13389"
+  PEP identity "http://identifiers.org/obo.chebi/CHEBI%3A44897",
+               "http://identifiers.org/kegg.compound/C00074"
+  Pyr identity "http://identifiers.org/obo.chebi/CHEBI%3A32816",
+               "http://identifiers.org/kegg.compound/C00022"
+end
+
+nielsen is "nielsen"

@@ -1,0 +1,59 @@
+// Created by libAntimony v2.13.2
+model *tyson4()
+
+  // Compartments and Species:
+  species Cdc20A, Cdc20T, Cdh1, CycB, IEP, m, $p, $s;
+
+  // Reactions:
+  v_1: $s -> CycB; k1;
+  v_10: $s -> IEP; k9*m*CycB*(1 - IEP);
+  v_11: IEP -> $p; k10*IEP;
+  v_12: $s -> m; mu*m;
+  v_2: CycB -> $p; (k21 + k22*Cdh1)*CycB;
+  v_3: $s -> Cdh1; (k31 + k32*Cdc20A)*(1 - Cdh1)/(J3 + 1 - Cdh1);
+  v_4: Cdh1 -> $p; k4*m*CycB*Cdh1/(J4 + Cdh1);
+  v_5: $s -> Cdc20T; k51 + k52*(CycB*m/J5)^n/(1 + (CycB*m/J5)^n);
+  v_6: Cdc20T -> $p; k6*Cdc20T;
+  v_7: $s -> Cdc20A; k7*IEP*(Cdc20T - Cdc20A)/(J7 + Cdc20T - Cdc20A);
+  v_8: Cdc20A -> $p; k8*MAD*Cdc20A/(J8 + Cdc20A);
+  v_9: Cdc20A -> $p; k6*Cdc20A;
+
+  // Species initializations:
+  Cdc20A = 0.935469093882139;
+  Cdc20T = 1.69938514520911;
+  Cdh1 = 0.0392444916828213;
+  CycB = 0.637371934649104;
+  IEP = 0.663879909818661;
+  m = 0.899285830753446;
+  p = 1;
+  s = 1;
+
+  // Variable initializations:
+  J3 = 0.04;
+  J4 = 0.04;
+  J5 = 0.3;
+  J7 = 0.001;
+  J8 = 0.001;
+  MAD = 1;
+  k1 = 0.04;
+  k10 = 0.02;
+  k21 = 0.04;
+  k22 = 1;
+  k31 = 1;
+  k32 = 10;
+  k4 = 35;
+  k51 = 0.005;
+  k52 = 0.2;
+  k6 = 0.1;
+  k7 = 1;
+  k8 = 0.5;
+  k9 = 0.1;
+  mu = 0.01;
+  n = 4;
+
+  // Other declarations:
+  var J3, J4, J5, J7, J8, MAD, k1, k10, k21, k22, k31, k32, k4, k51, k52;
+  var k6, k7, k8, k9, mu, n;
+end
+
+tyson4 is "tyson4"

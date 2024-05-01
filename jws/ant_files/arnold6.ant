@@ -1,0 +1,108 @@
+// Created by libAntimony v2.13.2
+function function_2(Vm, s1, s2, K1, K2)
+  Vm*s1*s2/((s1 + K1)*(s2 + K2));
+end
+
+function_2 is "MM s2 - reg"
+
+function function_1(substrate, Km, V)
+  V*substrate/(Km + substrate);
+end
+
+function_1 is "Henri-Michaelis-Menten (irreversible)"
+
+
+model *arnold6()
+
+  // Compartments and Species:
+  compartment chloroplast;
+  species $ADP in chloroplast, $ATP in chloroplast, DPGA in chloroplast, GAP in chloroplast;
+  species PGA in chloroplast, $Pi in chloroplast, RuBP in chloroplast, Ru5P in chloroplast;
+
+  // Assignment Rules:
+  Pi := 15 - 2*(RuBP + DPGA + ATP) - (PGA + GAP + Ru5P + ADP);
+
+  // Reactions:
+  GAP2Ru5P: GAP => 0.6 Ru5P; chloroplast*function_1(GAP, GAP2Ru5P_Km, GAP2Ru5P_V);
+  GAP2sink: GAP => ; chloroplast*function_1(GAP, GAP2sink_Km, GAP2sink_V);
+  GAP_DH: DPGA => GAP + $Pi; chloroplast*function_1(DPGA, GAP_DH_Km, GAP_DH_V);
+  PGA2sink: PGA => ; chloroplast*function_1(PGA, PGA2sink_Km, PGA2sink_V);
+  PGA_K: PGA + $ATP => $ADP + DPGA; chloroplast*function_2(PGA_K_Vm, PGA, ATP, PGA_K_K1, PGA_K_K2);
+  Ru5P_K: Ru5P + $ATP => RuBP + $ADP; chloroplast*function_2(Ru5P_K_Vm, Ru5P, ATP, Ru5P_K_K1, Ru5P_K_K2);
+  RuBisCO: RuBP => 2 PGA; chloroplast*function_1(RuBP, RuBisCO_Km, RuBisCO_V);
+
+  // Species initializations:
+  ADP = 0.82;
+  ATP = 0.68;
+  DPGA = 0.0011/chloroplast;
+  GAP = 0.02/chloroplast;
+  PGA = 2.4/chloroplast;
+  RuBP = 2/chloroplast;
+  Ru5P = 0.0501/chloroplast;
+
+  // Compartment initializations:
+  chloroplast = 1;
+
+  // Variable initializations:
+  GAP2Ru5P_Km = 0.84;
+  GAP2Ru5P_V = 3.05;
+  GAP2sink_Km = 5;
+  GAP2sink_V = 0.1;
+  GAP_DH_Km = 0.5;
+  GAP_DH_V = 5.04;
+  PGA2sink_Km = 0.75;
+  PGA2sink_V = 3;
+  PGA_K_Vm = 11.75;
+  PGA_K_K1 = 0.24;
+  PGA_K_K2 = 0.39;
+  Ru5P_K_Vm = 8;
+  Ru5P_K_K1 = 0.15;
+  Ru5P_K_K2 = 0.059;
+  RuBisCO_Km = 1;
+  RuBisCO_V = 3.78;
+
+  // Other declarations:
+  const chloroplast;
+
+  // Unit definitions:
+  unit volume = litre;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  GAP2Ru5P is "GAP to Ru5P";
+  GAP2sink is "GAP to sink";
+  GAP_DH is "GAP dehydrogenase";
+  PGA2sink is "PGA to sink";
+  PGA_K is "PGA kinase";
+  Ru5P_K is "Ru5P kinase";
+
+  // SBO terms:
+  GAP2Ru5P_Km.sboTerm = 27
+  GAP2Ru5P_V.sboTerm = 9
+  GAP2sink_Km.sboTerm = 27
+  GAP2sink_V.sboTerm = 9
+  GAP_DH_Km.sboTerm = 27
+  GAP_DH_V.sboTerm = 9
+  PGA2sink_Km.sboTerm = 27
+  PGA2sink_V.sboTerm = 9
+  PGA_K_Vm.sboTerm = 9
+  PGA_K_K1.sboTerm = 9
+  PGA_K_K2.sboTerm = 9
+  Ru5P_K_Vm.sboTerm = 9
+  Ru5P_K_K1.sboTerm = 9
+  Ru5P_K_K2.sboTerm = 9
+  RuBisCO_Km.sboTerm = 27
+  RuBisCO_V.sboTerm = 9
+
+  // CV terms:
+  ADP hypernym "http://identifiers.org/obo.chebi/CHEBI:16761"
+  ATP hypernym "http://identifiers.org/obo.chebi/CHEBI:15422"
+  DPGA hypernym "http://identifiers.org/obo.chebi/CHEBI:22902"
+  GAP hypernym "http://identifiers.org/obo.chebi/CHEBI:17138"
+  PGA hypernym "http://identifiers.org/obo.chebi/CHEBI:17050"
+  Pi hypernym "http://identifiers.org/obo.chebi/CHEBI:43474"
+  RuBP hypernym "http://identifiers.org/obo.chebi/CHEBI:16710"
+  Ru5P hypernym "http://identifiers.org/obo.chebi/CHEBI:17363"
+end
+
+arnold6 is "arnold6"

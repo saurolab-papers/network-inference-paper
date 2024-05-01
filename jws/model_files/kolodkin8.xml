@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="kolodkin8" name="kolodkin8" substanceUnits="nmol" timeUnits="min" volumeUnits="L" extentUnits="nM">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="nmol" name="nmol">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-9" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="nM" name="nM">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-9" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="L" name="L">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="min" name="min">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_4" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="Deg" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="ImpNRLc" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="ImpNRLn" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="Impc" compartment="default_compartment" initialConcentration="0.84" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="Impn" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="NRLcyt" compartment="default_compartment" initialConcentration="0.84" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="NRLnuc" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="RE" compartment="default_compartment" initialConcentration="3.7" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="RENRLnuc" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_14" id="EXTERNAL" value="0" constant="false"/>
+      <parameter metaid="metaid_15" id="Kap2b" value="5.4e-12" constant="false"/>
+      <parameter metaid="metaid_16" id="Kap2f" value="5.4e-12" constant="false"/>
+      <parameter metaid="metaid_17" id="Kap3b" value="5.4e-12" constant="false"/>
+      <parameter metaid="metaid_18" id="Kap3f" value="5.4e-12" constant="false"/>
+      <parameter metaid="metaid_19" id="Vcytosol" value="1.55e-12" constant="false"/>
+      <parameter metaid="metaid_20" id="Vnucleus" value="4.5e-13" constant="false"/>
+      <parameter metaid="metaid_21" id="k1b" value="300" constant="false"/>
+      <parameter metaid="metaid_22" id="k1f" value="60" constant="false"/>
+      <parameter metaid="metaid_23" id="k4b" value="300" constant="false"/>
+      <parameter metaid="metaid_24" id="k4f" value="60" constant="false"/>
+      <parameter metaid="metaid_25" id="k5b" value="60" constant="false"/>
+      <parameter metaid="metaid_26" id="k5f" value="60" constant="false"/>
+      <parameter metaid="metaid_27" id="k6" value="0.1" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_31" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_28" species="NRLnuc" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_29" species="RE" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_30" species="RENRLnuc" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k5f </ci>
+                <ci> NRLnuc </ci>
+                <ci> RE </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k5b </ci>
+                <ci> RENRLnuc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_35" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_32" species="Impn" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_33" species="NRLnuc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_34" species="ImpNRLn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k4b </ci>
+                  <ci> ImpNRLn </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k4f </ci>
+                <ci> Impn </ci>
+                <ci> NRLnuc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_39" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_36" species="Impc" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_37" species="NRLcyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_38" species="ImpNRLc" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1b </ci>
+                  <ci> ImpNRLc </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k1f </ci>
+                <ci> Impc </ci>
+                <ci> NRLcyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_42" id="v_4" name="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_40" species="Impc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_41" species="Impn" stoichiometry="3.44444444444444" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> Kap3f </ci>
+                  <ci> Impc </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kap3b </ci>
+                  <ci> Impn </ci>
+                </apply>
+              </apply>
+              <ci> Vcytosol </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_45" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_43" species="ImpNRLc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_44" species="ImpNRLn" stoichiometry="3.44444444444444" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> Kap2f </ci>
+                  <ci> ImpNRLc </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kap2b </ci>
+                  <ci> ImpNRLn </ci>
+                </apply>
+              </apply>
+              <ci> Vcytosol </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="v_6" name="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_46" species="RENRLnuc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_47" species="Deg" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_48" species="RE" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_49" species="ImpNRLc"/>
+          <modifierSpeciesReference metaid="metaid_50" species="ImpNRLn"/>
+          <modifierSpeciesReference metaid="metaid_51" species="Impc"/>
+          <modifierSpeciesReference metaid="metaid_52" species="Impn"/>
+          <modifierSpeciesReference metaid="metaid_53" species="NRLcyt"/>
+          <modifierSpeciesReference metaid="metaid_54" species="NRLnuc"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k6 </ci>
+                <ci> RENRLnuc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> NRLnuc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> RE </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Impn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Impc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> NRLcyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> ImpNRLc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> RENRLnuc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> ImpNRLn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Deg </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> NRLnuc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> RE </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Impn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Impc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> NRLcyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> ImpNRLc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> RENRLnuc </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> ImpNRLn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <cn type="integer"> 0 </cn>
+                <ci> Deg </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

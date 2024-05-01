@@ -1,0 +1,65 @@
+// Created by libAntimony v2.13.2
+model *zatorskye()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species x in compartment_, y in compartment_, y0 in compartment_;
+
+  // Reactions:
+  R1:  => x; compartment_*beta_x*psi;
+  R2: x => ; compartment_*alpha_x*x;
+  R3: x => ; compartment_*alpha_xy*y*x;
+  R4:  => y0; compartment_*beta_y*x*psi;
+  R5: y0 => y; compartment_*alpha_0*y0;
+  R6: y -> ; compartment_*alpha_y*y;
+
+  // Species initializations:
+  x = 0;
+  y = 0;
+  y0 = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  alpha_0 = 0.1;
+  alpha_x = 0;
+  alpha_xy = 3.2;
+  alpha_y = 0.1;
+  beta_x = 0.3;
+  beta_y = 0.4;
+  psi = 1;
+
+  // Other declarations:
+  const compartment_, alpha_0, alpha_x, alpha_xy, alpha_y, beta_x, beta_y;
+  const psi;
+
+  // Unit definitions:
+  unit hour = 3600 second;
+
+  // Display Names:
+  hour is "hours";
+  compartment_ is "cell";
+  x is "p53";
+  y is "Mdm2";
+  y0 is "precursor Mdm2";
+  R1 is "p53 production";
+  R2 is "Mdm2 independent p53 degradation";
+  R3 is "Mdm2 dependent p53 degradation";
+  R4 is "p53 dependent Mdm2 precursor production";
+  R5 is "Mdm2 synthesis from precursor";
+  R6 is "Mdm2 degradation";
+
+  // CV terms:
+  compartment_ hypernym "http://identifiers.org/bto/BTO:0000093"
+  x hypernym "http://identifiers.org/uniprot/P04637"
+  y hypernym "http://identifiers.org/uniprot/Q00987"
+  R1 hypernym "http://identifiers.org/go/GO:0006412"
+  R2 hypernym "http://identifiers.org/go/GO:0042176"
+  R3 hypernym "http://identifiers.org/go/GO:0042176"
+  R4 hypernym "http://identifiers.org/go/GO:0006351"
+  R5 hypernym "http://identifiers.org/go/GO:0006412"
+  R6 hypernym "http://identifiers.org/go/GO:0044257"
+end
+
+zatorskye is "zatorskye"

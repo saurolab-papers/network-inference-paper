@@ -1,0 +1,27 @@
+// Created by libAntimony v2.13.2
+model *fan1()
+
+  // Compartments and Species:
+  species x, y;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v2: x -> y; beta*x*y;
+  v3: x -> ; d*x;
+  v4: y -> ; a*y;
+
+  // Species initializations:
+  x = 2.5;
+  y = 1;
+
+  // Variable initializations:
+  a = 0.4;
+  beta = 0.2;
+  d = 0.02;
+  lambda = 0.2;
+
+  // Other declarations:
+  var a, beta, d, lambda;
+end
+
+fan1 is "fan1"

@@ -1,0 +1,55 @@
+// Created by libAntimony v2.13.2
+model *hernandezvargas1()
+
+  // Compartments and Species:
+  species M, MStar, T, TStar, V;
+
+  // Assignment Rules:
+  CD4plusTcells := T + TStar;
+  viruscopiesperml := V*1000;
+
+  // Reactions:
+  v1:  -> T; sT;
+  v10: MStar -> ; deltaMStar*MStar;
+  v11:  -> V; pT*TStar;
+  v12:  -> V; pM*MStar;
+  v13: V -> ; deltaV*V;
+  v2:  -> T; rhoT*T*V/(CT + V);
+  v3: T -> TStar; kT*T*V;
+  v4: T -> ; deltaT*T;
+  v5: TStar -> ; deltaTStar*TStar;
+  v6:  -> M; sM;
+  v7:  -> M; rhoM*M*V/(CM + V);
+  v8: M -> MStar; kM*M*V;
+  v9: M -> ; deltaM*M;
+
+  // Species initializations:
+  M = 150;
+  MStar = 0;
+  T = 1000;
+  TStar = 0;
+  V = 10;
+
+  // Variable initializations:
+  CM = 220;
+  CT = 300;
+  deltaM = 0.001;
+  deltaMStar = 0.001;
+  deltaT = 0.01;
+  deltaTStar = 0.4;
+  deltaV = 2.4;
+  kM = 4.33e-08;
+  kT = 4.57e-05;
+  pM = 35;
+  pT = 38;
+  rhoM = 0.003;
+  rhoT = 0.01;
+  sM = 0.15;
+  sT = 10;
+
+  // Other declarations:
+  var CD4plusTcells, CM, CT, deltaM, deltaMStar, deltaT, deltaTStar, deltaV;
+  var kM, kT, pM, pT, rhoM, rhoT, sM, sT, viruscopiesperml;
+end
+
+hernandezvargas1 is "hernandez-vargas1"

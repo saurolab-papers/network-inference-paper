@@ -1,0 +1,446 @@
+// Created by libAntimony v2.13.2
+model *machado1()
+
+  // Compartments and Species:
+  compartment cytosol, extracellular;
+  species accoa in cytosol, cdhap in cytosol, ce4p in cytosol, cf6p in cytosol;
+  species cfdp in cytosol, cg1p in cytosol, cg6p in cytosol, cgap in cytosol;
+  species cglcex in extracellular, cpep in cytosol, cpg in cytosol, cpg2 in cytosol;
+  species cpg3 in cytosol, cpgp in cytosol, cpyr in cytosol, crib5p in cytosol;
+  species cribu5p in cytosol, csed7p in cytosol, cur in cytosol, cur_ext in extracellular;
+  species cxyl5p in cytosol, fer in cytosol, fer_ext in extracellular, fercoa in cytosol;
+  species ferdicoa in cytosol, malcoa in cytosol;
+
+  // Reactions:
+  ACCOAC: accoa => malcoa; cytosol*ACCOAC_rmaxACCOAC*accoa/(ACCOAC_K_ACCOAC_accoa*(1 + malcoa/ACCOAC_Ki_ACCOAC_malcoa) + accoa);
+  CURS: ferdicoa + fercoa => cur; CURS_E_CURS*CURS_kcat_CURS*(fercoa/(CURS_Km_CURS_fercoa + fercoa))*(ferdicoa/(CURS_Km_CURS_ferdicoa + ferdicoa));
+  CUR_t: cur -> cur_ext; cytosol*CUR_t_k_CUR_t*(cur - cur_ext/CUR_t_Keq_CUR_t);
+  DCS: malcoa + fercoa => ferdicoa; DCS_E_DCS*DCS_kcat_DCS*(fercoa^DCS_n_DCS_fercoa/(DCS_Km_DCS_fercoa^DCS_n_DCS_fercoa + fercoa^DCS_n_DCS_fercoa))*(malcoa/(DCS_Km_DCS_malcoa + malcoa));
+  EX_CUR: cur_ext => ; extracellular*Dil*cur_ext;
+  EX_FER:  => fer_ext; extracellular*Dil*(EX_FER_cfeed_fer - fer_ext);
+  FER_t: fer_ext -> fer; extracellular*FER_t_k_FER_t*(fer_ext - fer/FER_t_Keq_FER_t);
+  R4CL: fer => fercoa; R4CL_E_4CL*R4CL_kcat_4CL*fer/(R4CL_Km_4CL + fer);
+  Synth3: accoa => ; cytosol*Synth3_rmaxSynth3*accoa/(Synth3_KSynth3accoa + accoa);
+  Synth4: malcoa => ; cytosol*Synth4_rmaxSynth4*malcoa/(Synth4_KSynth4malcoa + malcoa);
+  vACCOA: accoa -> ; cytosol*Dil*accoa;
+  vALDO: cfdp -> cgap + cdhap; cytosol*vALDO_rmaxALDO*(cfdp - cgap*cdhap/vALDO_kALDOeq)/(vALDO_kALDOfdp + cfdp + vALDO_kALDOgap*cdhap/(vALDO_kALDOeq*vALDO_VALDOblf) + vALDO_kALDOdhap*cgap/(vALDO_kALDOeq*vALDO_VALDOblf) + cfdp*cgap/vALDO_kALDOgapinh + cgap*cdhap/(vALDO_VALDOblf*vALDO_kALDOeq));
+  vCUR: cur -> ; cytosol*Dil*cur;
+  vDAHPS: cpep + ce4p => ; cytosol*vDAHPS_rmaxDAHPS*ce4p^vDAHPS_nDAHPSe4p*cpep^vDAHPS_nDAHPSpep/((vDAHPS_KDAHPSe4p + ce4p^vDAHPS_nDAHPSe4p)*(vDAHPS_KDAHPSpep + cpep^vDAHPS_nDAHPSpep));
+  vDHAP: cdhap -> ; cytosol*Dil*cdhap;
+  vE4P: ce4p -> ; cytosol*Dil*ce4p;
+  vENO: cpg2 -> cpep; cytosol*vENO_rmaxENO*(cpg2 - cpep/vENO_KENOeq)/(vENO_KENOpg2*(1 + cpep/vENO_KENOpep) + cpg2);
+  vEXTER:  => cglcex; extracellular*Dil*(vEXTER_cfeed_glc - cglcex);
+  vFER: fer -> ; cytosol*Dil*fer;
+  vFERCOA: fercoa -> ; cytosol*Dil*fercoa;
+  vFERDICOA: ferdicoa -> ; cytosol*Dil*ferdicoa;
+  vG1PAT: cg1p => ; cytosol*vG1PAT_rmaxG1PAT*cg1p*catp*(1 + (cfdp/vG1PAT_KG1PATfdp)^vG1PAT_nG1PATfdp)/((vG1PAT_KG1PATatp + catp)*(vG1PAT_KG1PATg1p + cg1p));
+  vG3PDH: cdhap => ; cytosol*vG3PDH_rmaxG3PDH*cdhap/(vG3PDH_KG3PDHdhap + cdhap);
+  vG6P: cg6p -> ; cytosol*Dil*cg6p;
+  vG6PDH: cg6p => cpg; cytosol*vG6PDH_rmaxG6PDH*cg6p*cnadp/((cg6p + vG6PDH_KG6PDHg6p)*(1 + cnadph/vG6PDH_KG6PDHnadphg6pinh)*(vG6PDH_KG6PDHnadp*(1 + cnadph/vG6PDH_KG6PDHnadphnadpinh) + cnadp));
+  vGAP: cgap -> ; cytosol*Dil*cgap;
+  vGAPDH: cgap -> cpgp; cytosol*vGAPDH_rmaxGAPDH*(cgap*cnad - cpgp*cnadh/vGAPDH_KGAPDHeq)/((vGAPDH_KGAPDHgap*(1 + cpgp/vGAPDH_KGAPDHpgp) + cgap)*(vGAPDH_KGAPDHnad*(1 + cnadh/vGAPDH_KGAPDHnadh) + cnad));
+  vGLP: cg1p -> ; cytosol*Dil*cg1p;
+  vMALCOA: malcoa -> ; cytosol*Dil*malcoa;
+  vMURSyNTH: 2 cf6p => ; cytosol*vMURSyNTH_rmaxMurSynth;
+  vMethSynth:  => cpyr; cytosol*vMethSynth_rmaxMetSynth;
+  vPDH: cpyr => accoa; cytosol*vPDH_rmaxPDH*cpyr^vPDH_nPDH/(vPDH_KPDHpyr*(1 + accoa/vPDH_Ki_PDH_accoa) + cpyr^vPDH_nPDH);
+  vPEP: cpep -> ; cytosol*Dil*cpep;
+  vPFK: cf6p => cfdp; cytosol*vPFK_rmaxPFK*catp*cf6p/((catp + vPFK_KPFKatps*(1 + cadp/vPFK_KPFKadpc))*(cf6p + vPFK_KPFKf6ps*(1 + cpep/vPFK_KPFKpep + cadp/vPFK_KPFKadpb + camp/vPFK_KPFKampb)/(1 + cadp/vPFK_KPFKadpa + camp/vPFK_KPFKampa))*(1 + vPFK_LPFK/(1 + cf6p*(1 + cadp/vPFK_KPFKadpa + camp/vPFK_KPFKampa)/(vPFK_KPFKf6ps*(1 + cpep/vPFK_KPFKpep + cadp/vPFK_KPFKadpb + camp/vPFK_KPFKampb)))^vPFK_nPFK));
+  vPG: cpg -> ; cytosol*Dil*cpg;
+  vPG3: cpg3 -> ; cytosol*Dil*cpg3;
+  vPGDH: cpg => cribu5p; cytosol*vPGDH_rmaxPGDH*cpg*cnadp/((cpg + vPGDH_KPGDHpg)*(cnadp + vPGDH_KPGDHnadp*(1 + cnadph/vPGDH_KPGDHnadphinh)*(1 + catp/vPGDH_KPGDHatpinh)));
+  vPGI: cg6p -> cf6p; cytosol*vPGI_rmaxPGI*(cg6p - cf6p/vPGI_KPGIeq)/(vPGI_KPGIg6p*(1 + cf6p/(vPGI_KPGIf6p*(1 + cpg/vPGI_KPGIf6ppginh)) + cpg/vPGI_KPGIg6ppginh) + cg6p);
+  vPGK: cpgp -> cpg3; cytosol*vPGK_rmaxPGK*(cadp*cpgp - catp*cpg3/vPGK_KPGKeq)/((vPGK_KPGKadp*(1 + catp/vPGK_KPGKatp) + cadp)*(vPGK_KPGKpgp*(1 + cpg3/vPGK_KPGKpg3) + cpgp));
+  vPGM: cg6p -> cg1p; cytosol*vPGM_rmaxPGM*(cg6p - cg1p/vPGM_KPGMeq)/(vPGM_KPGMg6p*(1 + cg1p/vPGM_KPGMg1p) + cg6p);
+  vPGP: cpgp -> ; cytosol*Dil*cpgp;
+  vPK: cpep => cpyr; cytosol*vPK_rmaxPK*cpep*(cpep/vPK_KPKpep + 1)^(vPK_nPK - 1)*cadp/(vPK_KPKpep*(vPK_LPK*((1 + catp/vPK_KPKatp)/(cfdp/vPK_KPKfdp + camp/vPK_KPKamp + 1))^vPK_nPK + (cpep/vPK_KPKpep + 1)^vPK_nPK)*(cadp + vPK_KPKadp));
+  vPPK: crib5p => ; cytosol*vPPK_rmaxRPPK*crib5p/(vPPK_KRPPKrib5p + crib5p);
+  vPTS: cpep + cglcex => cpyr + cg6p; extracellular*vPTS_rmaxPTS*cglcex*(cpep/cpyr)/((vPTS_KPTSa1 + vPTS_KPTSa2*(cpep/cpyr) + vPTS_KPTSa3*cglcex + cglcex*(cpep/cpyr))*(1 + cg6p^vPTS_nPTSg6p/vPTS_KPTSg6p));
+  vR5PI: cribu5p -> crib5p; cytosol*vR5PI_rmaxR5PI*(cribu5p - crib5p/vR5PI_KR5PIeq);
+  vRIB5P: crib5p -> ; cytosol*Dil*crib5p;
+  vRibu5p: cribu5p -> ; cytosol*Dil*cribu5p;
+  vRu5P: cribu5p -> cxyl5p; cytosol*vRu5P_rmaxRu5P*(cribu5p - cxyl5p/vRu5P_KRu5Peq);
+  vSED7P: csed7p -> ; cytosol*Dil*csed7p;
+  vSynth1: cpep => ; cytosol*vSynth1_rmaxSynth1*cpep/(vSynth1_KSynth1pep + cpep);
+  vSynth2: cpyr => ; cytosol*vSynth2_rmaxSynth2*cpyr/(vSynth2_KSynth2pyr + cpyr);
+  vTA: csed7p + cgap -> ce4p + cf6p; cytosol*vTA_rmaxTA*(cgap*csed7p - ce4p*cf6p/vTA_KTAeq);
+  vTIS: cdhap -> cgap; cytosol*vTIS_rmaxTIS*(cdhap - cgap/vTIS_kTISeq)/(vTIS_kTISdhap*(1 + cgap/vTIS_kTISgap) + cdhap);
+  vTKA: cxyl5p + crib5p -> csed7p + cgap; cytosol*vTKA_rmaxTKa*(crib5p*cxyl5p - csed7p*cgap/vTKA_KTKaeq);
+  vTKB: cxyl5p + ce4p -> cf6p + cgap; cytosol*vTKB_rmaxTKb*(cxyl5p*ce4p - cf6p*cgap/vTKB_KTKbeq);
+  vTRPSYNTH:  => cgap + cpyr; cytosol*vTRPSYNTH_rmaxTrpSynth;
+  vXYL5P: cxyl5p -> ; cytosol*Dil*cxyl5p;
+  vf6P: cf6p -> ; cytosol*Dil*cf6p;
+  vfdP: cfdp -> ; cytosol*Dil*cfdp;
+  vpepCxylase: cpep => ; cytosol*vpepCxylase_rmaxpepCxylase*cpep*(1 + (cfdp/vpepCxylase_KpepCxylasefdp)^vpepCxylase_npepCxylasefdp)/(vpepCxylase_KpepCxylasepep + cpep);
+  vpg2: cpg2 -> ; cytosol*Dil*cpg2;
+  vpyr: cpyr -> ; cytosol*Dil*cpyr;
+  vrpGluMu: cpg3 -> cpg2; cytosol*vrpGluMu_rmaxPGluMu*(cpg3 - cpg2/vrpGluMu_KPGluMueq)/(vrpGluMu_KPGluMupg3*(1 + cpg2/vrpGluMu_KPGluMupg2) + cpg3);
+  vsersynth: cpg3 => ; cytosol*vsersynth_rmaxSerSynth*cpg3/(vsersynth_KSerSynthpg3 + cpg3);
+
+  // Species initializations:
+  accoa = 1/cytosol;
+  cdhap = 0.167/cytosol;
+  ce4p = 0.098/cytosol;
+  cf6p = 0.6/cytosol;
+  cfdp = 0.272/cytosol;
+  cg1p = 0.653/cytosol;
+  cg6p = 3.48/cytosol;
+  cgap = 0.218/cytosol;
+  cglcex = 3607.5/extracellular;
+  cpep = 2.67/cytosol;
+  cpg = 0.808/cytosol;
+  cpg2 = 0.399/cytosol;
+  cpg3 = 2.13/cytosol;
+  cpgp = 0.008/cytosol;
+  cpyr = 2.67/cytosol;
+  crib5p = 0.398/cytosol;
+  cribu5p = 0.111/cytosol;
+  csed7p = 0.276/cytosol;
+  cur = 0;
+  cur_ext = 0;
+  cxyl5p = 0.138/cytosol;
+  fer = 0;
+  fer_ext = 17647.5/extracellular;
+  fercoa = 0;
+  ferdicoa = 0;
+  malcoa = 1/cytosol;
+
+  // Compartment initializations:
+  cytosol = 1;
+  extracellular = 65;
+
+  // Variable initializations:
+  Dil = 0;
+  Dil has second_inverse;
+  cadp = 0.595;
+  camp = 0.955;
+  catp = 4.27;
+  cnad = 1.47;
+  cnadh = 0.1;
+  cnadp = 0.195;
+  cnadph = 0.062;
+  ACCOAC_Ki_ACCOAC_malcoa = 0.1;
+  ACCOAC_K_ACCOAC_accoa = 0.0003;
+  ACCOAC_rmaxACCOAC = 0.04634;
+  ACCOAC_rmaxACCOAC has mM_per_second;
+  CURS_Km_CURS_ferdicoa = 0.018;
+  CURS_Km_CURS_fercoa = 0.018;
+  CURS_kcat_CURS = 0.02163;
+  CURS_E_CURS = 100;
+  CUR_t_Keq_CUR_t = 1;
+  CUR_t_Keq_CUR_t has dimensionless;
+  CUR_t_k_CUR_t = 1000;
+  CUR_t_k_CUR_t has second_inverse;
+  DCS_n_DCS_fercoa = 1.8;
+  DCS_Km_DCS_malcoa = 0.0084;
+  DCS_Km_DCS_fercoa = 0.046;
+  DCS_kcat_DCS = 0.01343;
+  DCS_E_DCS = 100;
+  EX_FER_cfeed_fer = 500;
+  FER_t_Keq_FER_t = 1;
+  FER_t_Keq_FER_t has dimensionless;
+  FER_t_k_FER_t = 1000;
+  FER_t_k_FER_t has second_inverse;
+  R4CL_Km_4CL = 0.026;
+  R4CL_kcat_4CL = 9.572;
+  R4CL_E_4CL = 100;
+  Synth3_KSynth3accoa = 1;
+  Synth3_rmaxSynth3 = 0.284;
+  Synth3_rmaxSynth3 has mM_per_second;
+  Synth4_KSynth4malcoa = 1;
+  Synth4_rmaxSynth4 = 0.092372;
+  Synth4_rmaxSynth4 has mM_per_second;
+  vALDO_kALDOgapinh = 0.6;
+  vALDO_kALDOdhap = 0.088;
+  vALDO_VALDOblf = 2;
+  vALDO_VALDOblf has dimensionless;
+  vALDO_kALDOgap = 0.088;
+  vALDO_kALDOfdp = 1.75;
+  vALDO_kALDOeq = 0.144;
+  vALDO_rmaxALDO = 17.41464425;
+  vALDO_rmaxALDO has mM_per_second;
+  vDAHPS_KDAHPSpep = 0.0053;
+  vDAHPS_KDAHPSe4p = 0.035;
+  vDAHPS_nDAHPSpep = 2.2;
+  vDAHPS_nDAHPSpep has dimensionless;
+  vDAHPS_nDAHPSe4p = 2.6;
+  vDAHPS_nDAHPSe4p has dimensionless;
+  vDAHPS_rmaxDAHPS = 0.1079531227;
+  vDAHPS_rmaxDAHPS has mM_per_second;
+  vENO_KENOpep = 0.135;
+  vENO_KENOpg2 = 0.1;
+  vENO_KENOeq = 6.73;
+  vENO_rmaxENO = 330.4476151;
+  vENO_rmaxENO has mM_per_second;
+  vEXTER_cfeed_glc = 110.96;
+  vG1PAT_KG1PATg1p = 3.2;
+  vG1PAT_KG1PATatp = 4.42;
+  vG1PAT_nG1PATfdp = 1.2;
+  vG1PAT_KG1PATfdp = 0.119;
+  vG1PAT_rmaxG1PAT = 0.007525458026;
+  vG1PAT_rmaxG1PAT has mM_per_second;
+  vG3PDH_KG3PDHdhap = 1;
+  vG3PDH_rmaxG3PDH = 0.01162042696;
+  vG3PDH_rmaxG3PDH has mM_per_second;
+  vG6PDH_KG6PDHnadphnadpinh = 0.01;
+  vG6PDH_KG6PDHnadp = 0.0246;
+  vG6PDH_KG6PDHnadphg6pinh = 6.43;
+  vG6PDH_KG6PDHg6p = 14.4;
+  vG6PDH_rmaxG6PDH = 1.380196955;
+  vG6PDH_rmaxG6PDH has mM_per_second;
+  vGAPDH_KGAPDHnadh = 1.09;
+  vGAPDH_KGAPDHnad = 0.252;
+  vGAPDH_KGAPDHpgp = 1.04e-05;
+  vGAPDH_KGAPDHgap = 0.683;
+  vGAPDH_KGAPDHeq = 0.63;
+  vGAPDH_KGAPDHeq has dimensionless;
+  vGAPDH_rmaxGAPDH = 921.5942861;
+  vGAPDH_rmaxGAPDH has mM_per_second;
+  vMURSyNTH_rmaxMurSynth = 0;
+  vMURSyNTH_rmaxMurSynth has mM_per_second;
+  vMethSynth_rmaxMetSynth = 0.0022627;
+  vMethSynth_rmaxMetSynth has mM_per_second;
+  vPDH_Ki_PDH_accoa = 0.0222222;
+  vPDH_KPDHpyr = 1159;
+  vPDH_nPDH = 3.68;
+  vPDH_nPDH has dimensionless;
+  vPDH_rmaxPDH = 270.27734;
+  vPDH_rmaxPDH has mM_per_second;
+  vPFK_nPFK = 11.1;
+  vPFK_nPFK has dimensionless;
+  vPFK_LPFK = 5629067;
+  vPFK_LPFK has dimensionless;
+  vPFK_KPFKampa = 19.1;
+  vPFK_KPFKadpa = 128;
+  vPFK_KPFKampb = 3.2;
+  vPFK_KPFKadpb = 3.89;
+  vPFK_KPFKpep = 3.26;
+  vPFK_KPFKf6ps = 0.325;
+  vPFK_KPFKadpc = 4.14;
+  vPFK_KPFKatps = 0.123;
+  vPFK_rmaxPFK = 1840.584747;
+  vPFK_rmaxPFK has mM_per_second;
+  vPGDH_KPGDHatpinh = 208;
+  vPGDH_KPGDHnadphinh = 0.0138;
+  vPGDH_KPGDHnadp = 0.0506;
+  vPGDH_KPGDHpg = 37.5;
+  vPGDH_rmaxPGDH = 16.23235977;
+  vPGDH_rmaxPGDH has mM_per_second;
+  vPGI_KPGIg6ppginh = 0.2;
+  vPGI_KPGIf6ppginh = 0.2;
+  vPGI_KPGIf6p = 0.266;
+  vPGI_KPGIg6p = 2.9;
+  vPGI_KPGIeq = 0.1725;
+  vPGI_KPGIeq has dimensionless;
+  vPGI_rmaxPGI = 650.9878687;
+  vPGI_rmaxPGI has mM_per_second;
+  vPGK_KPGKpg3 = 0.473;
+  vPGK_KPGKpgp = 0.0468;
+  vPGK_KPGKatp = 0.653;
+  vPGK_KPGKadp = 0.185;
+  vPGK_KPGKeq = 1934.4;
+  vPGK_KPGKeq has dimensionless;
+  vPGK_rmaxPGK = 3021.773771;
+  vPGK_rmaxPGK has mM_per_second;
+  vPGM_KPGMg1p = 0.0136;
+  vPGM_KPGMg6p = 1.038;
+  vPGM_KPGMeq = 0.196;
+  vPGM_KPGMeq has dimensionless;
+  vPGM_rmaxPGM = 0.8398242773;
+  vPGM_rmaxPGM has mM_per_second;
+  vPK_KPKadp = 0.26;
+  vPK_KPKamp = 0.2;
+  vPK_KPKfdp = 0.19;
+  vPK_KPKatp = 22.5;
+  vPK_LPK = 1000;
+  vPK_LPK has dimensionless;
+  vPK_nPK = 4;
+  vPK_nPK has dimensionless;
+  vPK_KPKpep = 0.31;
+  vPK_rmaxPK = 0.06113150238;
+  vPK_rmaxPK has mM_per_second;
+  vPPK_KRPPKrib5p = 0.1;
+  vPPK_rmaxRPPK = 0.01290045226;
+  vPPK_rmaxRPPK has mM_per_second;
+  vPTS_KPTSg6p = 2.15;
+  vPTS_nPTSg6p = 3.66;
+  vPTS_nPTSg6p has dimensionless;
+  vPTS_KPTSa3 = 245.3;
+  vPTS_KPTSa3 has dimensionless;
+  vPTS_KPTSa2 = 0.01;
+  vPTS_KPTSa1 = 3082.3;
+  vPTS_rmaxPTS = 7829.78;
+  vPTS_rmaxPTS has mM_per_second;
+  vR5PI_KR5PIeq = 4;
+  vR5PI_KR5PIeq has dimensionless;
+  vR5PI_rmaxR5PI = 4.83841193;
+  vR5PI_rmaxR5PI has second_inverse;
+  vRu5P_KRu5Peq = 1.4;
+  vRu5P_KRu5Peq has dimensionless;
+  vRu5P_rmaxRu5P = 6.739029475;
+  vRu5P_rmaxRu5P has second_inverse;
+  vSynth1_KSynth1pep = 1;
+  vSynth1_rmaxSynth1 = 0.01953897003;
+  vSynth1_rmaxSynth1 has mM_per_second;
+  vSynth2_KSynth2pyr = 1;
+  vSynth2_rmaxSynth2 = 0.07361855055;
+  vSynth2_rmaxSynth2 has mM_per_second;
+  vTA_KTAeq = 1.05;
+  vTA_KTAeq has dimensionless;
+  vTA_rmaxTA = 10.87164108;
+  vTA_rmaxTA has per_mM_per_second;
+  vTIS_kTISgap = 0.3;
+  vTIS_kTISdhap = 2.8;
+  vTIS_kTISeq = 1.39;
+  vTIS_kTISeq has dimensionless;
+  vTIS_rmaxTIS = 68.67474392;
+  vTIS_rmaxTIS has mM_per_second;
+  vTKA_KTKaeq = 1.2;
+  vTKA_KTKaeq has dimensionless;
+  vTKA_rmaxTKa = 9.473384783;
+  vTKA_rmaxTKa has per_mM_per_second;
+  vTKB_KTKbeq = 10;
+  vTKB_KTKbeq has dimensionless;
+  vTKB_rmaxTKb = 86.55855855;
+  vTKB_rmaxTKb has per_mM_per_second;
+  vTRPSYNTH_rmaxTrpSynth = 0.001037;
+  vTRPSYNTH_rmaxTrpSynth has mM_per_second;
+  vpepCxylase_KpepCxylasepep = 4.07;
+  vpepCxylase_npepCxylasefdp = 4.21;
+  vpepCxylase_npepCxylasefdp has dimensionless;
+  vpepCxylase_KpepCxylasefdp = 0.7;
+  vpepCxylase_rmaxpepCxylase = 0.1070205858;
+  vpepCxylase_rmaxpepCxylase has mM_per_second;
+  vrpGluMu_KPGluMupg2 = 0.369;
+  vrpGluMu_KPGluMupg3 = 0.2;
+  vrpGluMu_KPGluMueq = 0.188;
+  vrpGluMu_KPGluMueq has dimensionless;
+  vrpGluMu_rmaxPGluMu = 89.04965407;
+  vrpGluMu_rmaxPGluMu has mM_per_second;
+  vsersynth_KSerSynthpg3 = 1;
+  vsersynth_rmaxSerSynth = 0.025712107;
+  vsersynth_rmaxSerSynth has mM_per_second;
+
+  // Other declarations:
+  const cytosol, extracellular, Dil, cadp, camp, catp, cnad, cnadh, cnadp;
+  const cnadph;
+
+  // Unit definitions:
+  unit per_mM_per_second = litre / (second * 1e-3 mole);
+  unit mM_per_second = 1e-3 mole / (second * litre);
+  unit second_inverse = 1 / second;
+  unit milli_Molar = 1e-3 mole / litre;
+  unit millimole = 1e-3 mole;
+
+  // Display Names:
+  per_mM_per_second is "per mM per second";
+  mM_per_second is "mM per second";
+  second_inverse is "second inverse";
+  milli_Molar is "milli Molar";
+  cdhap is "Dihydroxyacetonephosphate";
+  ce4p is "Erythrose-4-phosphate";
+  cf6p is "Fructose-6-Phosphate";
+  cfdp is "Fructose-1,6-bisphosphate";
+  cg1p is "Glucose-1-Phosphate";
+  cg6p is "Glucose-6-Phosphate";
+  cgap is "Glyceraldehyde-3-Phosphate";
+  cglcex is "Extracellular Glucose";
+  cpep is "Phosphoenol pyruvate";
+  cpg is "6-Phosphogluconate";
+  cpg2 is "2-Phosphoglycerate";
+  cpg3 is "3-Phosphoglycerate";
+  cpgp is "1,3-diphosphosphoglycerate";
+  cpyr is "Pyruvate";
+  crib5p is "Ribose-5-phosphate";
+  cribu5p is "Ribulose-5-phosphate";
+  csed7p is "sedoheptulose-7-phosphate";
+  cxyl5p is "Xylulose-5-phosphate";
+  Synth3 is "Synthesis 3";
+  Synth4 is "Synthesis 4";
+  vACCOA is "ACCOA dilution";
+  vALDO is "Aldolase";
+  vCUR is "CUR dilution";
+  vDAHPS is "DAHP synthesis";
+  vDHAP is "DHAP degradation";
+  vE4P is "E4P dilution";
+  vENO is "Enolase";
+  vEXTER is "Extracellular glucose kinetics";
+  vFER is "FER dilution";
+  vFERCOA is "FERCOA dilution";
+  vFERDICOA is "FERDICOA dilution";
+  vG1PAT is "Glucose-1-phosphate adenyltransferase";
+  vG3PDH is "Glycerol-3-phosphate dehydrogenase";
+  vG6P is "G6P degradation";
+  vG6PDH is "Glucose-6-phosphate dehydrogenase";
+  vGAP is "GAP degradation";
+  vGAPDH is "Glyceraldehyde-3-phosphate dehydrogenase";
+  vGLP is "GLP dilution";
+  vMALCOA is "MALCOA dilution";
+  vMURSyNTH is "Mureine synthesis";
+  vMethSynth is "Methionine synthesis";
+  vPDH is "Pyruvate dehydrogenase";
+  vPEP is "PEP degradation";
+  vPFK is "Phosphofructokinase";
+  vPG is "PG dilution";
+  vPG3 is "PG3 degradation";
+  vPGDH is "6-Phosphogluconate dehydrogenase";
+  vPGI is "Glucose-6-phosphate isomerase";
+  vPGK is "Phosphoglycerate kinase";
+  vPGM is "Phosphoglucomutase";
+  vPGP is "PGP degradation";
+  vPK is "Pyruvate kinase";
+  vPPK is "Ribose phosphate pyrophosphokinase";
+  vPTS is "Phosphotransferase system";
+  vR5PI is "Ribose-phosphate isomerase";
+  vRIB5P is "Rib5P dilution";
+  vRibu5p is "Ribu5P dilution";
+  vRu5P is "Ribulose-phosphate epimerase";
+  vSED7P is "SED7P dilution";
+  vSynth1 is "Synthesis 1";
+  vSynth2 is "Synthesis 2";
+  vTA is "Transaldolase";
+  vTIS is "Triosephosphate isomerase";
+  vTKA is "Transketolase a";
+  vTKB is "Transketolase b";
+  vTRPSYNTH is "Tryptophan synthesis";
+  vXYL5P is "XYL5P dilution";
+  vf6P is "F6P degradation";
+  vfdP is "FDP degradation";
+  vpepCxylase is "PEP carboxylase";
+  vpg2 is "PG2 degradation";
+  vpyr is "Pyruvate dilution";
+  vrpGluMu is "Phosphoglycerate mutase";
+  vsersynth is "Serine synthesis";
+
+  // CV terms:
+  cytosol hypernym "http://identifiers.org/go/GO:0005829"
+  extracellular hypernym "http://identifiers.org/go/GO:0005576"
+  accoa hypernym "http://identifiers.org/chebi/CHEBI:15351"
+  cdhap hypernym "http://identifiers.org/chebi/CHEBI:57642"
+  ce4p hypernym "http://identifiers.org/chebi/CHEBI:48153"
+  cf6p hypernym "http://identifiers.org/chebi/CHEBI:78697"
+  cfdp hypernym "http://identifiers.org/chebi/CHEBI:40595"
+  cg1p hypernym "http://identifiers.org/chebi/CHEBI:16077"
+  cg6p hypernym "http://identifiers.org/chebi/CHEBI:14314"
+  cgap hypernym "http://identifiers.org/chebi/CHEBI:17138"
+  cglcex hypernym "http://identifiers.org/chebi/CHEBI:17234"
+  cpep hypernym "http://identifiers.org/chebi/CHEBI:44897"
+  cpg hypernym "http://identifiers.org/chebi/CHEBI:48928"
+  cpg2 hypernym "http://identifiers.org/chebi/CHEBI:24344"
+  cpg3 hypernym "http://identifiers.org/chebi/CHEBI:17794"
+  cpgp hypernym "http://identifiers.org/pubchem.compound/683"
+  cpyr hypernym "http://identifiers.org/chebi/CHEBI:32816"
+  crib5p hypernym "http://identifiers.org/chebi/CHEBI:58273"
+  cribu5p hypernym "http://identifiers.org/chebi/CHEBI:58121"
+  csed7p hypernym "http://identifiers.org/chebi/CHEBI:15721"
+  cur hypernym "http://identifiers.org/chebi/CHEBI:3962"
+  cur_ext hypernym "http://identifiers.org/chebi/CHEBI:3962"
+  cxyl5p hypernym "http://identifiers.org/chebi/CHEBI:57737"
+  fer hypernym "http://identifiers.org/chebi/CHEBI:17620"
+  fer_ext hypernym "http://identifiers.org/chebi/CHEBI:17620"
+  fercoa hypernym "http://identifiers.org/chebi/CHEBI:14261"
+  ferdicoa hypernym "http://identifiers.org/chebi/CHEBI:71236"
+  malcoa hypernym "http://identifiers.org/chebi/CHEBI:15531"
+end
+
+machado1 is "machado1"

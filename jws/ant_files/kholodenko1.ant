@@ -1,0 +1,121 @@
+// Created by libAntimony v2.13.2
+model *kholodenko1()
+
+  // Compartments and Species:
+  species EGF, GS, Grb, PLCg, PLCgP, PLCgl, R, R2, RG, RGS, RP, RPLCg, RPLCgP;
+  species RSh, RShG, RShGS, RShP, Ra, SOS, ShG, ShGS, ShP, Shc;
+
+  // Reactions:
+  v_1: EGF + R -> Ra; k1f*R*EGF - k1b*Ra;
+  v_10: RG + SOS -> RGS; k10f*RG*SOS - k10b*RGS;
+  v_11: RGS -> GS + RP; k11f*RGS - k11b*RP*GS;
+  v_12: GS -> Grb + SOS; k12f*GS - k12b*Grb*SOS;
+  v_13: RP + Shc -> RSh; k13f*RP*Shc - k13b*RSh;
+  v_14: RSh -> RShP; k14f*RSh - k14b*RShP;
+  v_15: RShP -> RP + ShP; k15f*RShP - k15b*ShP*RP;
+  v_16: ShP -> Shc; V16*ShP/(K16 + ShP);
+  v_17: RShP + Grb -> RShG; k17f*RShP*Grb - k17b*RShG;
+  v_18: RShG -> ShG + RP; k18f*RShG - k18b*RP*ShG;
+  v_19: RShG + SOS -> RShGS; k19f*RShG*SOS - k19b*RShGS;
+  v_2: 2 Ra -> R2; k2f*Ra*Ra - k2b*R2;
+  v_20: RShGS -> RP + ShGS; k20f*RShGS - k20b*ShGS*RP;
+  v_21: ShP + Grb -> ShG; k21f*ShP*Grb - k21b*ShG;
+  v_22: ShG + SOS -> ShGS; k22f*ShG*SOS - k22b*ShGS;
+  v_23: ShGS -> GS + ShP; k23f*ShGS - k23b*ShP*GS;
+  v_24: RShP + GS -> RShGS; k24f*RShP*GS - k24b*RShGS;
+  v_25: PLCgP -> PLCgl; k25f*PLCgP - k25b*PLCgl;
+  v_3: R2 -> RP; k3f*R2 - k3b*RP;
+  v_4: RP -> R2; V4*RP/(K4 + RP);
+  v_5: RP + PLCg -> RPLCg; k5f*RP*PLCg - k5b*RPLCg;
+  v_6: RPLCg -> RPLCgP; k6f*RPLCg*ATP - k6b*ADP*RPLCgP;
+  v_7: RPLCgP -> RP + PLCgP; k7f*RPLCgP - k7b*RP*PLCgP;
+  v_8: PLCgP -> PLCg; V8*PLCgP/(K8 + PLCgP);
+  v_9: RP + Grb -> RG; k9f*RP*Grb - k9b*RG;
+
+  // Species initializations:
+  EGF = 680;
+  GS = 0;
+  Grb = 85;
+  PLCg = 105;
+  PLCgP = 0;
+  PLCgl = 0;
+  R = 100;
+  R2 = 0;
+  RG = 0;
+  RGS = 0;
+  RP = 0;
+  RPLCg = 0;
+  RPLCgP = 0;
+  RSh = 0;
+  RShG = 0;
+  RShGS = 0;
+  RShP = 0;
+  Ra = 0;
+  SOS = 34;
+  ShG = 0;
+  ShGS = 0;
+  ShP = 0;
+  Shc = 150;
+
+  // Variable initializations:
+  ADP = 1;
+  ATP = 1;
+  K16 = 340;
+  K4 = 50;
+  K8 = 100;
+  V16 = 1.7;
+  V4 = 450;
+  V8 = 1;
+  k10b = 0.06;
+  k10f = 0.01;
+  k11b = 0.0045;
+  k11f = 0.03;
+  k12b = 0.0001;
+  k12f = 0.0015;
+  k13b = 0.6;
+  k13f = 0.09;
+  k14b = 0.06;
+  k14f = 6;
+  k15b = 0.0009;
+  k15f = 0.3;
+  k17b = 0.1;
+  k17f = 0.003;
+  k18b = 0.0009;
+  k18f = 0.3;
+  k19b = 0.0214;
+  k19f = 0.01;
+  k1b = 0.06;
+  k1f = 0.003;
+  k20b = 0.00024;
+  k20f = 0.12;
+  k21b = 0.1;
+  k21f = 0.003;
+  k22b = 0.064;
+  k22f = 0.03;
+  k23b = 0.021;
+  k23f = 0.1;
+  k24b = 0.0429;
+  k24f = 0.009;
+  k25b = 0.03;
+  k25f = 1;
+  k2b = 0.1;
+  k2f = 0.01;
+  k3b = 0.01;
+  k3f = 1;
+  k5b = 0.2;
+  k5f = 0.06;
+  k6b = 0.05;
+  k6f = 1;
+  k7b = 0.006;
+  k7f = 0.3;
+  k9b = 0.05;
+  k9f = 0.003;
+
+  // Other declarations:
+  var ADP, ATP, K16, K4, K8, V16, V4, V8, k10b, k10f, k11b, k11f, k12b, k12f;
+  var k13b, k13f, k14b, k14f, k15b, k15f, k17b, k17f, k18b, k18f, k19b, k19f;
+  var k1b, k1f, k20b, k20f, k21b, k21f, k22b, k22f, k23b, k23f, k24b, k24f;
+  var k25b, k25f, k2b, k2f, k3b, k3f, k5b, k5f, k6b, k6f, k7b, k7f, k9b, k9f;
+end
+
+kholodenko1 is "kholodenko1"

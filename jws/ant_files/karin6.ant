@@ -1,0 +1,34 @@
+// Created by libAntimony v2.13.2
+model *karin6()
+
+  // Compartments and Species:
+  species zd, zs, zsm;
+
+  // Assignment Rules:
+  pr := 1/(1 + (k_pr*zd)^0.5);
+  prm := 1/(1 + (k_prm*zd)^0.5);
+
+  // Reactions:
+  v1:  -> zs; (2*pr - 1)*lp*zs;
+  v2:  -> zsm; (2*prm - 1)*lp*zsm;
+  v3:  -> zd; 2*(1 - pr)*lp*zs + 2*(1 - prm)*lp*zsm - lm*zd;
+
+  // Events:
+  _E0: at 0 after time == 10, t0=false, persistent=false, fromTrigger=false: zsm = 0.01;
+
+  // Species initializations:
+  zd = 1;
+  zs = 0.5;
+  zsm = 0;
+
+  // Variable initializations:
+  k_pr = 1;
+  k_prm = 0.15;
+  lm = 0.5;
+  lp = 1;
+
+  // Other declarations:
+  var k_pr, k_prm, lm, lp, pr, prm;
+end
+
+karin6 is "karin6"

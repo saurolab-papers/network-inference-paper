@@ -1,0 +1,283 @@
+// Created by libAntimony v2.13.2
+model *assmus()
+
+  // Compartments and Species:
+  species ADPGam, ADPam, ADPcyt, ATPam, ATPcyt, DHAPcyt, F16BPcyt, F6Pcyt;
+  species Fructose, G1Pam, G1Pcyt, G6Pam, G6Pcyt, GAPcyt, Glucoseam, Glucosecyt;
+  species PEPcyt, PGA2cyt, PGA3am, PGA3cyt, PPam, PPcyt, Pam, Pcyt, Sucrose;
+  species UDPGcyt, UDPcyt, UTPcyt, $xpyruvate, $xstarch, $xsucrose;
+
+  // Reactions:
+  v_1: $xsucrose -> Sucrose; VSucUpt*(kforwardSucUpt*xsucrose - kbackwardSucUpt*Sucrose);
+  v_10: 6 GAPcyt + 17 ADPcyt + 17 Pcyt -> 6 PGA3cyt + 17 ATPcyt; (VmaxGAPDH/6)*(1 - PGA3cyt*ATPcyt/(GAPcyt*Pcyt*ADPcyt)/KeqGAPDH);
+  v_11: ATPcyt -> ADPcyt + Pcyt; VATPcons*kATPcons*(ATPcyt/ADPcyt);
+  v_12: PGA3cyt -> PGA2cyt; VmaxPGlyM*(PGA3cyt - PGA2cyt/KeqPGlyM)/(KmPGA3PGlyM + PGA3cyt + PGA2cyt*KmPGA3PGlyM/KmPGA2PGlyM);
+  v_13: PGA2cyt -> PEPcyt; Vmaxeno*(PGA2cyt - PEPcyt/Keqeno)/(KmPGA2eno + PGA2cyt + PEPcyt*KmPGA2eno/KmPEPeno);
+  v_14: PEPcyt + ADPcyt -> $xpyruvate + ATPcyt; VmaxPK*PEPcyt*ADPcyt/(KmPEPPK*KmADPPK)/(1 + PEPcyt/KmPEPPK + PEPcyt*ADPcyt/(KmPEPPK*KmADPPK) + ATPcyt/KmATPPK + xpyruvate*ATPcyt/(KmpyruvatePK*KmATPPK));
+  v_15: ATPcyt + UDPcyt -> ADPcyt + UTPcyt; VNDPK*(kforwardNDPK*ATPcyt*UDPcyt - kbackwardNDPK*ADPcyt*UTPcyt);
+  v_16: Pam -> Pcyt; VPexp*(kforwardPexp*Pam - kbackwardPexp*Pcyt);
+  v_17: PPam -> 2 Pam; VmaxpPPase*(1 - Pam*Pam/PPam/KeqpPPase);
+  v_18: G1Pam + ATPam -> ADPGam + PPam; VmaxAGPase*(G1Pam*ATPam - ADPGam*PPam)*(1 + PGA3am/KaPGA3AGPase)/((KmG1PAGPase*(1 + PPam/KmPPAGPase) + G1Pam)*(KmATPAGPase*(1 + ADPGam/KmADPGAGPase) + ATPam))/(1 + Pam/KiPAGPase);
+  v_19: ADPam + ATPcyt -> ATPam + ADPcyt; VAT*(kforwardAT*ATPcyt*ADPam - kbackwardAT*ATPam*ADPcyt);
+  v_2: Sucrose -> Fructose + Glucosecyt; Vmaxinv*(Sucrose/KmSucroseinv)/((1 + Sucrose/KmSucroseinv + Fructose/KiFructoseinv)*(1 + Glucosecyt/KiGlucoseinv));
+  v_20: ADPGam + $xstarch -> ADPam; VmaxStSynth*ADPGam/(KmADPGStSynth + ADPGam);
+  v_21: $xstarch + Pam -> G1Pam; VforwardStPase*(Pam - G1Pam/KeqStPase)/(KmPStPase + Pam + G1Pam*KmPStPase/KmG1PStPase);
+  v_22: $xstarch -> Glucoseam; Vmaxdegr/(1 + Glucoseam/KiGlucosedegr);
+  v_23: G1Pam -> G6Pam; VmaxpPGM*(1 - G6Pam/G1Pam/KeqpPGM);
+  v_24: Glucoseam -> Glucosecyt; VGexp*(kforwardGexp*Glucoseam - kbackwardGexp*Glucosecyt);
+  v_25: G6Pam + Pcyt -> G6Pcyt + Pam; VG6Pexp*(kforwardG6Pexp*G6Pam*Pcyt - kbackwardG6Pexp*G6Pcyt*Pam);
+  v_26: PGA3cyt + G6Pam -> PGA3am + G6Pcyt; VPGA3imp*(kforwardPGA3imp*PGA3cyt*G6Pam - kbackwardPGA3imp*PGA3am*G6Pcyt);
+  v_27: Glucosecyt + ATPcyt -> G6Pcyt + ADPcyt; (VmaxGK/2)*(Glucosecyt*ATPcyt/(KmGlucoseHK1*KmATPHK1))/((1 + Glucosecyt/KmGlucoseHK1 + Fructose/KmFructoseHK1)*(1 + ATPcyt/KmATPHK1 + ADPcyt/KiADPHK1)*(1 + G6Pcyt/KiG6PHK1)) + (VmaxGK/2)*(Glucosecyt*ATPcyt/(KmGlucoseHK2*KmATPHK2))/((1 + Glucosecyt/KmGlucoseHK2 + Fructose/KmFructoseHK2)*(1 + ATPcyt/KmATPHK2 + ADPcyt/KiADPHK2));
+  v_28: G6Pcyt -> F6Pcyt; VmaxPGI*(G6Pcyt - F6Pcyt/KeqPGI)/(KmG6PPGI + G6Pcyt + F6Pcyt*KmG6PPGI/KmF6PPGI + F16BPcyt*KmG6PPGI/KiF16BPPGI + PEPcyt*KmG6PPGI/KiPEPPGI);
+  v_29: G1Pcyt -> G6Pcyt; VmaxcPGM*(1 - G6Pcyt/G1Pcyt/KeqcPGM);
+  v_3: Fructose + UDPGcyt -> Sucrose + UDPcyt; VmaxSSynth*(Fructose*UDPGcyt/(KmSSynthFructose*KmSSynthUDPG))*(1 - Sucrose*UDPcyt/Fructose/UDPGcyt/KeqSSynth)/(1 + Fructose*UDPGcyt/(KmSSynthFructose*KmSSynthUDPG) + Sucrose*UDPcyt/(KmSSynthSucrose*KmSSynthUDP))/(1 + Glucosecyt/KiSSynthGlucose);
+  v_30: G1Pcyt + UTPcyt -> UDPGcyt + PPcyt; VforwardUGPase*(G1Pcyt*UTPcyt - UDPGcyt*PPcyt/KeqUGPase)/((KmG1PUGPase*(1 + PPcyt/KmPPUGPase) + G1Pcyt)*(KmUTPUGPase*(1 + UDPGcyt/KmUDPGUGPase) + UTPcyt));
+  v_4: Fructose + ATPcyt -> F6Pcyt + ADPcyt; VmaxFK*(Fructose*ATPcyt/(KmFructoseFK*KmATPFK))/((1 + Fructose/KmFructoseFK)*(1 + Fructose/KiFructoseFK)*(1 + F6Pcyt/KmF6PFK)*(1 + ATPcyt/KmATPFK + Fructose/KiFructoseFK + ADPcyt/KmADPFK));
+  v_5: F6Pcyt + UDPGcyt -> Sucrose + Pcyt + UDPcyt; VappSPSSPP*(F6Pcyt*UDPGcyt - UDPcyt*Pcyt/KeqSPSSPP)/(KmF6PSPSSPP*KmUDPGSPSSPP + F6Pcyt*UDPGcyt + UDPcyt*Pcyt*VratioSPSSPP/KeqSPSSPP + Sucrose*KmF6PSPSSPP*KmUDPGSPSSPP/KiSucroseSPSSPP);
+  v_6: F6Pcyt + PPcyt -> F16BPcyt + Pcyt; VmaxPFP*(1/KmF6PPFP/KmPPPFP)*(F6Pcyt*PPcyt - F16BPcyt*Pcyt/KeqPFP)/(1 + F6Pcyt/KmF6PPFP + PPcyt/KmPPPFP + F16BPcyt/KmF16BPPFP + Pcyt/KmPPFP);
+  v_7: F6Pcyt + ATPcyt -> F16BPcyt + ADPcyt; VmaxPFK*(F6Pcyt/KmF6PPFK)*(1 + F6Pcyt/KmF6PPFK)^(nPFK - 1)/((1 + F6Pcyt/KmF6PPFK)^nPFK + LPFK*(1 + PEPcyt/KiPEPPFK)^nPFK);
+  v_8: F16BPcyt -> GAPcyt + DHAPcyt; Vmaxald*(F16BPcyt/KmF16BPald)*(1 - GAPcyt*DHAPcyt/F16BPcyt/Keqald)/(1 + F16BPcyt/KmF16BPald + GAPcyt/KmGAPald + DHAPcyt/KmDHAPald + F16BPcyt*GAPcyt/(KmF16BPald*KiGAPald) + GAPcyt*DHAPcyt/(KmGAPald*KmDHAPald));
+  v_9: DHAPcyt -> GAPcyt; VmaxTPI*(DHAPcyt - GAPcyt/KeqTPI)/(KmDHAPTPI + DHAPcyt + GAPcyt*KmGAPTPI/KmGAPTPI);
+
+  // Species initializations:
+  ADPGam = 100;
+  ADPam = 100;
+  ADPcyt = 180;
+  ATPam = 150;
+  ATPcyt = 200;
+  DHAPcyt = 5;
+  F16BPcyt = 1;
+  F6Pcyt = 160;
+  Fructose = 20;
+  G1Pam = 30;
+  G1Pcyt = 30;
+  G6Pam = 550;
+  G6Pcyt = 500;
+  GAPcyt = 1;
+  Glucoseam = 3000;
+  Glucosecyt = 150;
+  PEPcyt = 10;
+  PGA2cyt = 20;
+  PGA3am = 160;
+  PGA3cyt = 150;
+  PPam = 5;
+  PPcyt = 1;
+  Pam = 2000;
+  Pcyt = 2000;
+  Sucrose = 88000;
+  UDPGcyt = 870;
+  UDPcyt = 10;
+  UTPcyt = 20;
+  xpyruvate = 10;
+  xstarch = 1000000;
+  xsucrose = 90000;
+
+  // Variable initializations:
+  KaPGA3AGPase = 10;
+  KeqGAPDH = 1.724;
+  KeqPFP = 3.3;
+  KeqPGI = 0.25;
+  KeqPGlyM = 0.16;
+  KeqSPSSPP = 7770;
+  KeqSSynth = 2.4;
+  KeqStPase = 0.18;
+  KeqTPI = 0.0455;
+  KeqUGPase = 0.15;
+  Keqald = 81;
+  KeqcPGM = 17;
+  Keqeno = 6.3;
+  KeqpPGM = 17;
+  KeqpPPase = 750000;
+  KiADPHK1 = 20;
+  KiADPHK2 = 100;
+  KiF16BPPGI = 7500;
+  KiFructoseFK = 5000;
+  KiFructoseinv = 180;
+  KiG6PHK1 = 4100;
+  KiGAPald = 1000;
+  KiGlucosedegr = 100;
+  KiGlucoseinv = 1000;
+  KiPAGPase = 160;
+  KiPEPPFK = 18;
+  KiPEPPGI = 1100;
+  KiPSPP = 4000;
+  KiSSynthGlucose = 12000;
+  KiSucroseSPSSPP = 5000;
+  KiUDPSPS = 1000;
+  KmADPFK = 13;
+  KmADPGAGPase = 280;
+  KmADPGStSynth = 150;
+  KmADPPK = 20;
+  KmATPAGPase = 180;
+  KmATPFK = 35;
+  KmATPHK1 = 80;
+  KmATPHK2 = 280;
+  KmATPPK = 86;
+  KmDHAPTPI = 880;
+  KmDHAPald = 100;
+  KmF16BPPFP = 10;
+  KmF16BPald = 6;
+  KmF6PFK = 1300;
+  KmF6PPFK = 290;
+  KmF6PPFP = 500;
+  KmF6PPGI = 150;
+  KmF6PSPS = 5000;
+  KmF6PSPSSPP = 900;
+  KmFructoseFK = 90;
+  KmFructoseHK1 = 11000;
+  KmFructoseHK2 = 22000;
+  KmG1PAGPase = 100;
+  KmG1PStPase = 2600;
+  KmG1PUGPase = 80;
+  KmG6PPGI = 270;
+  KmGAPTPI = 440;
+  KmGAPald = 100;
+  KmGlucoseHK1 = 41;
+  KmGlucoseHK2 = 130;
+  KmPEPPK = 20;
+  KmPEPeno = 150;
+  KmPGA2PGlyM = 60;
+  KmPGA2eno = 150;
+  KmPGA3PGlyM = 330;
+  KmPPAGPase = 260;
+  KmPPFP = 10;
+  KmPPPFP = 25;
+  KmPPUGPase = 130;
+  KmPStPase = 6200;
+  KmSSynthFructose = 5900;
+  KmSSynthSucrose = 55000;
+  KmSSynthUDP = 140;
+  KmSSynthUDPG = 1650;
+  KmSucroseinv = 28000;
+  KmUDPGSPS = 3000;
+  KmUDPGSPSSPP = 2000;
+  KmUDPGUGPase = 140;
+  KmUTPUGPase = 120;
+  KmpyruvatePK = 1000;
+  LPFK = 1;
+  VAT = 1;
+  VATPcons = 1;
+  VG6Pexp = 1;
+  VGexp = 1;
+  VNDPK = 1;
+  VPGA3imp = 1;
+  VPexp = 1;
+  VSucUpt = 1;
+  VappSPSSPP = 797;
+  VforwardStPase = 200;
+  VforwardUGPase = 8100;
+  VmaxAGPase = 312;
+  VmaxFK = 376;
+  VmaxGAPDH = 301;
+  VmaxGK = 160;
+  VmaxHK1 = 80;
+  VmaxHK2 = 80;
+  VmaxPFK = 135;
+  VmaxPFP = 1266;
+  VmaxPGI = 1086;
+  VmaxPGlyM = 541;
+  VmaxPK = 127;
+  VmaxSPS = 1000;
+  VmaxSSynth = 100;
+  VmaxStSynth = 171;
+  VmaxTPI = 4438;
+  Vmaxald = 430;
+  VmaxcPGM = 1842;
+  Vmaxdegr = 114;
+  Vmaxeno = 448;
+  Vmaxinv = 33;
+  VmaxpPGM = 1542;
+  VmaxpPPase = 500;
+  VratioSPSSPP = 1000;
+  kATPcons = 3;
+  kbackwardAT = 0.002;
+  kbackwardG6Pexp = 0.01;
+  kbackwardGexp = 0.001;
+  kbackwardNDPK = 0.001;
+  kbackwardPGA3imp = 0.01;
+  kbackwardPexp = 0.1;
+  kbackwardSucUpt = 0.01;
+  kforwardAT = 0.002;
+  kforwardG6Pexp = 0.01;
+  kforwardGexp = 0.001;
+  kforwardNDPK = 0.001;
+  kforwardPGA3imp = 0.01;
+  kforwardPexp = 0.3;
+  kforwardSucUpt = 0.01;
+  nPFK = 2;
+
+  // Other declarations:
+  var KaPGA3AGPase, KeqGAPDH, KeqPFP, KeqPGI, KeqPGlyM, KeqSPSSPP, KeqSSynth;
+  var KeqStPase, KeqTPI, KeqUGPase, Keqald, KeqcPGM, Keqeno, KeqpPGM, KeqpPPase;
+  var KiADPHK1, KiADPHK2, KiF16BPPGI, KiFructoseFK, KiFructoseinv, KiG6PHK1;
+  var KiGAPald, KiGlucosedegr, KiGlucoseinv, KiPAGPase, KiPEPPFK, KiPEPPGI;
+  var KiPSPP, KiSSynthGlucose, KiSucroseSPSSPP, KiUDPSPS, KmADPFK, KmADPGAGPase;
+  var KmADPGStSynth, KmADPPK, KmATPAGPase, KmATPFK, KmATPHK1, KmATPHK2, KmATPPK;
+  var KmDHAPTPI, KmDHAPald, KmF16BPPFP, KmF16BPald, KmF6PFK, KmF6PPFK, KmF6PPFP;
+  var KmF6PPGI, KmF6PSPS, KmF6PSPSSPP, KmFructoseFK, KmFructoseHK1, KmFructoseHK2;
+  var KmG1PAGPase, KmG1PStPase, KmG1PUGPase, KmG6PPGI, KmGAPTPI, KmGAPald;
+  var KmGlucoseHK1, KmGlucoseHK2, KmPEPPK, KmPEPeno, KmPGA2PGlyM, KmPGA2eno;
+  var KmPGA3PGlyM, KmPPAGPase, KmPPFP, KmPPPFP, KmPPUGPase, KmPStPase, KmSSynthFructose;
+  var KmSSynthSucrose, KmSSynthUDP, KmSSynthUDPG, KmSucroseinv, KmUDPGSPS;
+  var KmUDPGSPSSPP, KmUDPGUGPase, KmUTPUGPase, KmpyruvatePK, LPFK, VAT, VATPcons;
+  var VG6Pexp, VGexp, VNDPK, VPGA3imp, VPexp, VSucUpt, VappSPSSPP, VforwardStPase;
+  var VforwardUGPase, VmaxAGPase, VmaxFK, VmaxGAPDH, VmaxGK, VmaxHK1, VmaxHK2;
+  var VmaxPFK, VmaxPFP, VmaxPGI, VmaxPGlyM, VmaxPK, VmaxSPS, VmaxSSynth, VmaxStSynth;
+  var VmaxTPI, Vmaxald, VmaxcPGM, Vmaxdegr, Vmaxeno, Vmaxinv, VmaxpPGM, VmaxpPPase;
+  var VratioSPSSPP, kATPcons, kbackwardAT, kbackwardG6Pexp, kbackwardGexp;
+  var kbackwardNDPK, kbackwardPGA3imp, kbackwardPexp, kbackwardSucUpt, kforwardAT;
+  var kforwardG6Pexp, kforwardGexp, kforwardNDPK, kforwardPGA3imp, kforwardPexp;
+  var kforwardSucUpt, nPFK;
+
+  // Unit definitions:
+  unit umol = 1e-6 mole;
+  unit uM = 1e-6 mole / litre;
+  unit nmolpergDW = 1e-9 mole / gram;
+  unit min = 60 second;
+  unit L = litre;
+  unit volume = L;
+  unit substance = umol;
+  unit extent = nmolpergDW;
+  unit time_unit = min;
+
+  // Display Names:
+  nmolpergDW is "nmol/gDW";
+
+  // CV terms:
+  ADPGam identity "http://identifiers.org/kegg.compound/C00498",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A15751"
+  ADPam identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+                 "http://identifiers.org/kegg.compound/C00008"
+  ADPcyt identity "http://identifiers.org/kegg.compound/C00008",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A16761"
+  ATPam identity "http://identifiers.org/kegg.compound/C00002",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A15422"
+  ATPcyt identity "http://identifiers.org/kegg.compound/C00002",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A15422"
+  DHAPcyt identity "http://identifiers.org/kegg.compound/C00111",
+                   "http://identifiers.org/obo.chebi/CHEBI%3A16108"
+  F16BPcyt identity "http://identifiers.org/kegg.compound/C00354",
+                    "http://identifiers.org/obo.chebi/CHEBI%3A16905"
+  F6Pcyt identity "http://identifiers.org/kegg.compound/C00085",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A15946"
+  Fructose identity "http://identifiers.org/obo.chebi/CHEBI%3A28757",
+                    "http://identifiers.org/kegg.compound/C01496"
+  G1Pam identity "http://identifiers.org/kegg.compound/C00103",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A16077"
+  G1Pcyt identity "http://identifiers.org/kegg.compound/C00103",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A16077"
+  G6Pam identity "http://identifiers.org/kegg.compound/C00092",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A4170"
+  G6Pcyt identity "http://identifiers.org/kegg.compound/C00092",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A4170"
+  GAPcyt identity "http://identifiers.org/kegg.compound/C00118",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A29052"
+  Glucoseam identity "http://identifiers.org/obo.chebi/CHEBI%3A17234",
+                     "http://identifiers.org/kegg.compound/C00293"
+  Glucosecyt identity "http://identifiers.org/obo.chebi/CHEBI%3A17234",
+                      "http://identifiers.org/kegg.compound/C00293"
+  PEPcyt identity "http://identifiers.org/kegg.compound/C00074",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A44897"
+end
+
+assmus is "assmus"

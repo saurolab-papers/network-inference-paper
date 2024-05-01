@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="kolmeisky1" name="kolmeisky1">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="molecules" name="molecules">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="micromole" name="micromole">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="uM" name="uM">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_3" sboTerm="SBO:0000290" id="compartment_" spatialDimensions="3" size="1e-15" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_4" sboTerm="SBO:0000247" id="ADP" compartment="compartment_" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00008"/>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16761"/>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3310"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_5" sboTerm="SBO:0000247" id="ATP" compartment="compartment_" initialConcentration="20" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:15422"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/3304"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_6" sboTerm="SBO:0000247" id="Pi_" compartment="compartment_" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:18367"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_7" sboTerm="SBO:0000297" id="S0" compartment="compartment_" initialAmount="10" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031475"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" sboTerm="SBO:0000297" id="S1" compartment="compartment_" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16761"/>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031475"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" sboTerm="SBO:0000409" id="back_step1" compartment="compartment_" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" sboTerm="SBO:0000409" id="back_step2" compartment="compartment_" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" sboTerm="SBO:0000409" id="fwd_step1" compartment="compartment_" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" sboTerm="SBO:0000409" id="fwd_step2" compartment="compartment_" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_13" id="Force" value="0" constant="true"/>
+      <parameter metaid="metaid_14" sboTerm="SBO:0000360" id="S_tot" value="0" constant="false"/>
+      <parameter metaid="metaid_15" id="V" value="0" constant="false"/>
+      <parameter metaid="metaid_16" id="V_ave" value="0" constant="false"/>
+      <parameter metaid="metaid_17" sboTerm="SBO:0000466" id="d" value="36" constant="true"/>
+      <parameter metaid="metaid_18" id="kT" value="4.1164" constant="true"/>
+      <parameter metaid="metaid_19" sboTerm="SBO:0000023" id="k_1" value="0.7" constant="true"/>
+      <parameter metaid="metaid_20" sboTerm="SBO:0000022" id="k_2" value="12" constant="true"/>
+      <parameter metaid="metaid_21" sboTerm="SBO:0000023" id="k_3" value="5e-06" constant="true"/>
+      <parameter metaid="metaid_22" sboTerm="SBO:0000022" id="k_4" value="6e-06" constant="true"/>
+      <parameter metaid="metaid_23" sboTerm="SBO:0000347" id="tau" value="0" constant="false"/>
+      <parameter metaid="metaid_24" sboTerm="SBO:0000380" id="th_1" value="-0.01" constant="true"/>
+      <parameter metaid="metaid_25" sboTerm="SBO:0000380" id="th_2" value="0.045" constant="true"/>
+      <parameter metaid="metaid_26" sboTerm="SBO:0000380" id="th_3" value="0.58" constant="true"/>
+      <parameter metaid="metaid_27" sboTerm="SBO:0000380" id="th_4" value="0.385" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_28" variable="tau">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k_1 </ci>
+                <ci> ATP </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> th_1 </ci>
+                      </apply>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_2 </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> th_2 </ci>
+                      </apply>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_3 </ci>
+                <ci> ATP </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> th_3 </ci>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_4 </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> th_4 </ci>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k_1 </ci>
+                <ci> ATP </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> th_1 </ci>
+                      </apply>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+                <ci> k_2 </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> th_2 </ci>
+                      </apply>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_3 </ci>
+                <ci> ATP </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> th_3 </ci>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+                <ci> k_4 </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> th_4 </ci>
+                      <ci> Force </ci>
+                      <ci> d </ci>
+                    </apply>
+                    <ci> kT </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_29" variable="V_ave">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> d </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> fwd_step1 </ci>
+                    <ci> fwd_step2 </ci>
+                  </apply>
+                  <cn> 2 </cn>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> back_step1 </ci>
+                    <ci> back_step2 </ci>
+                  </apply>
+                  <cn> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> S_tot </ci>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_30" variable="V">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> d </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> Fw_1st_step </ci>
+                    <ci> Fw_2nd_step </ci>
+                  </apply>
+                  <cn> 2 </cn>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> Bw_1st_step </ci>
+                    <ci> Bw_2nd_step </ci>
+                  </apply>
+                  <cn> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+            <ci> S_tot </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_31" variable="S_tot">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> S0 </ci>
+            <ci> S1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_37" sboTerm="SBO:0000376" id="Bw_1st_step" reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_37">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/3.6.4.1"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_32" species="S0" stoichiometry="1"/>
+          <speciesReference metaid="metaid_33" species="ATP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_34" species="S1" stoichiometry="1"/>
+          <speciesReference metaid="metaid_35" species="Pi_" stoichiometry="1"/>
+          <speciesReference metaid="metaid_36" species="back_step1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_3 </ci>
+              <ci> S0 </ci>
+              <ci> ATP </ci>
+              <apply>
+                <exp/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> th_3 </ci>
+                    <ci> Force </ci>
+                    <ci> d </ci>
+                  </apply>
+                  <ci> kT </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_42" sboTerm="SBO:0000180" id="Bw_2nd_step" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_38" species="S1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_39" species="S0" stoichiometry="1"/>
+          <speciesReference metaid="metaid_40" species="ADP" stoichiometry="1"/>
+          <speciesReference metaid="metaid_41" species="back_step2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_4 </ci>
+              <ci> S1 </ci>
+              <apply>
+                <exp/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> th_4 </ci>
+                    <ci> Force </ci>
+                    <ci> d </ci>
+                  </apply>
+                  <ci> kT </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_48" sboTerm="SBO:0000376" id="Fw_1st_step" reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_48">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/3.6.4.1"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_43" species="S0" stoichiometry="1"/>
+          <speciesReference metaid="metaid_44" species="ATP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_45" species="S1" stoichiometry="1"/>
+          <speciesReference metaid="metaid_46" species="Pi_" stoichiometry="1"/>
+          <speciesReference metaid="metaid_47" species="fwd_step1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_1 </ci>
+              <ci> S0 </ci>
+              <ci> ATP </ci>
+              <apply>
+                <exp/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> th_1 </ci>
+                    </apply>
+                    <ci> Force </ci>
+                    <ci> d </ci>
+                  </apply>
+                  <ci> kT </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_53" sboTerm="SBO:0000180" id="Fw_2nd_step" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_49" species="S1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_50" species="S0" stoichiometry="1"/>
+          <speciesReference metaid="metaid_51" species="ADP" stoichiometry="1"/>
+          <speciesReference metaid="metaid_52" species="fwd_step2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_2 </ci>
+              <ci> S1 </ci>
+              <apply>
+                <exp/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> th_2 </ci>
+                    </apply>
+                    <ci> Force </ci>
+                    <ci> d </ci>
+                  </apply>
+                  <ci> kT </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

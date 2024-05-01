@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *fraser1()
+
+  // Compartments and Species:
+  species a1, a2, a3, x1, x2, x3;
+
+  // Reactions:
+  v1:  -> a1; eta1*a1;
+  v10: a3 -> ; sigma*a3*x3;
+  v11:  -> x3; mu*x3;
+  v12:  -> x3; (-mu + p)*a3*x3/(at_ + a3);
+  v13: x1 -> ; mu*x1^2/gamma_;
+  v14: x2 -> ; mu*x2^2/gamma_;
+  v15: x3 -> ; mu*x3^2/gamma_;
+  v2: a1 -> ; sigma*a1*x1;
+  v3:  -> x1; mu*x1;
+  v4:  -> x1; a1*x1/(at_ + a1);
+  v5:  -> a2; eta2*a2;
+  v6: a2 -> ; sigma*a2*x2;
+  v7:  -> x2; mu*x2;
+  v8:  -> x2; (-mu + p)*a2*x2/(at_ + a2);
+  v9:  -> a3; eta3*a3;
+
+  // Species initializations:
+  a1 = 1;
+  a2 = 1;
+  a3 = 1;
+  x1 = 0.01;
+  x2 = 0.01;
+  x3 = 0.01;
+
+  // Variable initializations:
+  at_ = 0.0001;
+  eta1 = 0;
+  eta2 = 1;
+  eta3 = 5.1;
+  gamma_ = 0.01;
+  mu = 0.001;
+  p = 1;
+  sigma = 0.5;
+
+  // Other declarations:
+  var at_, eta1, eta2, eta3, gamma_, mu, p, sigma;
+end

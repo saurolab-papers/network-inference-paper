@@ -1,0 +1,42 @@
+// Created by libAntimony v2.13.2
+model *iwami1()
+
+  // Compartments and Species:
+  species v50, vRNA, x, y;
+
+  // Reactions:
+  v1: x -> y; beta50*v50*x;
+  v10: v50 -> ; rI*v50;
+  v11: v50 -> ; rRNA*v50;
+  v12: v50 -> ; rc*v50;
+  v2: x -> ; d*x;
+  v3: x -> ; delta*x;
+  v4: y -> ; a*y;
+  v5: y -> ; delta*y;
+  v6:  -> vRNA; k*y;
+  v7: vRNA -> ; rRNA*vRNA;
+  v8: vRNA -> ; rc*vRNA;
+  v9:  -> v50; k50*y;
+
+  // Species initializations:
+  v50 = 43.1;
+  vRNA = 9150000;
+  x = 6550000;
+  y = 647;
+
+  // Variable initializations:
+  a = 1.18;
+  beta50 = 4.95e-05;
+  d = 0.21;
+  delta = 0.057;
+  k = 26100;
+  k50 = 0.22;
+  rI = 0.93;
+  rRNA = 0.039;
+  rc = 7.31;
+
+  // Other declarations:
+  var a, beta50, d, delta, k, k50, rI, rRNA, rc;
+end
+
+iwami1 is "iwami1"

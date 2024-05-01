@@ -1,0 +1,80 @@
+// Created by libAntimony v2.13.2
+model *jullesson2()
+
+  // Compartments and Species:
+  species IR, IRS1, IRS1p, IRS1ser307, IRS1ser307p, IRi, IRp, S6, S6K, S6KDN;
+  species S6Kp, S6p, mTOR, mTORp, mTORpS6KDN;
+
+  // Assignment Rules:
+  fig3b_IRS1ser307p := IRS1ser307p*110.795803138294;
+  fig3b_S6p := S6p*140.688371115354;
+  fig6a_IRS1p := IRS1p*28765.5323430673;
+  fig6b_S6Kp := S6Kp*4455.78636783405;
+  fig6c_IRS1ser307p := IRS1ser307p*2.60412436101051;
+  fig6d_S6p := S6p*5.0036269004157;
+  fig6e_IRS1p := ((IRS1p - 0.000106747023438893)/0.00119368779760948)*100;
+  fig6f_S6p := ((S6p - 0.000106747023438893)/0.447502452553838)*100;
+  fig6g_IRS1ser307p := ((IRS1ser307p - 0.538627018751669)/0.352962547646749)*100;
+
+  // Reactions:
+  v1: IR -> IRp; IRbasal*IR + IR*Ins*k1;
+  v1m: IRp -> IR; IRp*k1m;
+  v2: IRS1 -> IRS1p; IRS1*IRp*k2;
+  v2m: IRS1p -> IRS1; IRS1p*k2m;
+  v3: IRS1ser307 -> IRS1ser307p; IRS1ser307*k3*S6Kp;
+  v3m: IRS1ser307p -> IRS1ser307; IRS1ser307p*k3m;
+  v4: mTOR -> mTORp; k4*IRS1p*mTOR;
+  v4m: mTORp -> mTOR; mTORp*k4m;
+  v5: S6K -> S6Kp; S6K*mTORp*k5;
+  v5T: S6KDN + mTORp -> mTORpS6KDN; S6KDN*mTORp*I;
+  v5m: S6Kp -> S6K; S6Kp*k5m;
+  v6: S6 -> S6p; S6*k6*S6Kp;
+  v6m: S6p -> S6; S6p*k6m;
+  v7: IRi -> IR; IRi*k7;
+  v7m: IRp -> IRi; IRp*k7m;
+  vM5T: mTORpS6KDN -> S6KDN + mTORp; mTORpS6KDN*k5tm;
+
+  // Species initializations:
+  IR = 0.9181;
+  IRS1 = 0.9999;
+  IRS1p = 0.0001;
+  IRS1ser307 = 0.5408;
+  IRS1ser307p = 0.4592;
+  IRi = 0.0818;
+  IRp = 0.0001;
+  S6 = 0.7765;
+  S6K = 0.9999;
+  S6KDN = 99.7272;
+  S6Kp = 8.035e-05;
+  S6p = 0.2235;
+  mTOR = 0.7271;
+  mTORp = 8.045e-05;
+  mTORpS6KDN = 0.2728;
+
+  // Variable initializations:
+  I = 0.0006;
+  IRbasal = 0.0635;
+  Ins = 100;
+  k1 = 6.0982;
+  k1m = 366.2795;
+  k2 = 0.4397;
+  k2m = 0.5174;
+  k3 = 20660.1506;
+  k3m = 1.9552;
+  k4 = 0.085;
+  k4m = 0.082;
+  k5 = 0.1965;
+  k5m = 0.1968;
+  k5tm = 1.7709e-05;
+  k6 = 35.9042;
+  k6m = 0.0138;
+  k7 = 0.1499;
+  k7m = 97.5553;
+
+  // Other declarations:
+  var I, IRbasal, Ins, fig3b_IRS1ser307p, fig3b_S6p, fig6a_IRS1p, fig6b_S6Kp;
+  var fig6c_IRS1ser307p, fig6d_S6p, fig6e_IRS1p, fig6f_S6p, fig6g_IRS1ser307p;
+  var k1, k1m, k2, k2m, k3, k3m, k4, k4m, k5, k5m, k5tm, k6, k6m, k7, k7m;
+end
+
+jullesson2 is "jullesson2"

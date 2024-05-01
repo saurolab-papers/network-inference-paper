@@ -1,0 +1,52 @@
+// Created by libAntimony v2.13.2
+model *landi1()
+
+  // Compartments and Species:
+  species r, v, w, x, y, z;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v10:  -> v; k*y;
+  v11: v -> ; fP*k*muP*y;
+  v12: v -> ; mu*v;
+  v13:  -> r; r0;
+  v14: r -> ; fT*muT;
+  v2: x -> ; d*x;
+  v3: x -> y; r*v*x;
+  v4: y -> ; a*y;
+  v5: y -> ; p*y*z;
+  v6:  -> w; c*w*x*y;
+  v7: w -> z; c*q*w*y;
+  v8: w -> ; b*w;
+  v9: z -> ; h*z;
+
+  // Species initializations:
+  r = 4e-07;
+  v = 104;
+  w = 0.001;
+  x = 1000;
+  y = 0;
+  z = 1e-07;
+
+  // Variable initializations:
+  a = 0.0999;
+  b = 0.003;
+  c = 5e-06;
+  d = 0.007;
+  fP = 0;
+  fT = 0;
+  h = 0.01;
+  k = 300;
+  lambda = 7;
+  mu = 0.2;
+  muP = 0.7;
+  muT = 9e-10;
+  p = 2;
+  q = 120;
+  r0 = 1e-09;
+
+  // Other declarations:
+  var a, b, c, d, fP, fT, h, k, lambda, mu, muP, muT, p, q, r0;
+end
+
+landi1 is "landi1"

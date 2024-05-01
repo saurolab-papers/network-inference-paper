@@ -1,0 +1,63 @@
+// Created by libAntimony v2.13.2
+model *chance3()
+
+  // Compartments and Species:
+  compartment cell;
+  species E in cell, P in cell, Q in cell, X in cell;
+
+  // Reactions:
+  r1: X + E -> P; cell*(E*X - K2*P);
+  r2: P => E + Q; cell*K3*P;
+
+  // Species initializations:
+  E = 1/cell;
+  P = 0;
+  Q = 0;
+  X = 8/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  K2 = 0;
+  K2 has dimensionless;
+  K3 = 0.5;
+  K3 has dimensionless;
+
+  // Other declarations:
+  const cell, K2, K3;
+
+  // Unit definitions:
+  unit substance = dimensionless;
+  unit time_unit = dimensionless;
+  unit volume = dimensionless;
+
+  // Display Names:
+  time_unit is "time";
+
+  // SBO terms:
+  cell.sboTerm = 290
+  E.sboTerm = 252
+  P.sboTerm = 297
+  Q.sboTerm = 247
+  X.sboTerm = 247
+  r1.sboTerm = 177
+  r2.sboTerm = 200
+
+  // CV terms:
+  cell identity "http://identifiers.org/go/GO:0005623"
+  E hypernym "http://identifiers.org/uniprot/P00433",
+             "http://identifiers.org/uniprot/P15233",
+             "http://identifiers.org/uniprot/P15232",
+             "http://identifiers.org/interpro/IPR000823"
+  P version "http://identifiers.org/chebi/CHEBI:16240",
+            "http://identifiers.org/interpro/IPR000823"
+  Q identity "http://identifiers.org/chebi/CHEBI:15377"
+  X identity "http://identifiers.org/chebi/CHEBI:16240",
+             "http://identifiers.org/kegg.compound/C00027"
+  r1 parthood "http://identifiers.org/ec-code/1.11.1.7"
+  r2 parthood "http://identifiers.org/ec-code/1.11.1.7",
+              "http://identifiers.org/go/GO:0042744"
+end
+
+chance3 is "chance3"

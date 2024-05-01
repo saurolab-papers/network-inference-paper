@@ -1,0 +1,141 @@
+// Created by libAntimony v2.13.2
+model *leroux()
+
+  // Compartments and Species:
+  species $A, $B, $C, P, Q, $R, $S, XC, XCB, XCR, XQ, XQB, XQR, e, eA, eAB;
+  species eABC, eABQ, eAC, eAQ, eB, eBC, eBQ, eC, eQ_, eR, eeQ;
+
+  // Reactions:
+  v1: e + $A -> eA; (A*k1*e - k1a*eA)/Cell;
+  v10: eAQ + $B -> eABQ; (-(k10a*eABQ) + B*k10*eAQ)/Cell;
+  v11: eQ_ + $B -> eBQ; (-(k11a*eBQ) + B*k11*eQ_)/Cell;
+  v12: eBQ + $A -> eABQ; (-(k12a*eABQ) + A*k12*eBQ)/Cell;
+  v13: eABQ -> P + XQ; k13*eABQ/Cell;
+  v14: XQ -> eR; (-(k14a*eR) + k14*XQ)/Cell;
+  v15: eR -> e + $R; (-(k15a*R*e) + k15*eR)/Cell;
+  v16: XQ + $B -> XQB; (B*k16*XQ - k16a*XQB)/Cell;
+  v17: XQ + $R -> XQR; (k17*R*XQ - k17a*XQR)/Cell;
+  v19: e + $C -> eC; (C*k19*e - k19a*eC)/Cell;
+  v2: eA + $B -> eAB; (B*k2*eA - k2a*eAB)/Cell;
+  v20: eC + $A -> eAC; (-(k20a*eAC) + A*k20*eC)/Cell;
+  v21: eAC + $B -> eABC; (-(k21a*eABC) + B*k21*eAC)/Cell;
+  v22: eC + $B -> eBC; (-(k22a*eBC) + B*k22*eC)/Cell;
+  v23: eBC + $A -> eABC; (-(k23a*eABC) + A*k23*eBC)/Cell;
+  v24: eA + $C -> eAC; (C*k24*eA - k24a*eAC)/Cell;
+  v25: eB + $C -> eBC; (C*k25*eB - k25a*eBC)/Cell;
+  v26: eAB + $C -> eABC; (C*k26*eAB - k26a*eABC)/Cell;
+  v27: eABC -> P + XC; k27*eABC/Cell;
+  v28: XC -> eeQ; (-(k28a*eeQ) + k28*XC)/Cell;
+  v29: eeQ -> e + Q; (k29*eeQ - k29a*e*Q)/Cell;
+  v3: e + $B -> eB; (B*k3*e - k3a*eB)/Cell;
+  v30: XC + $B -> XCB; (B*k30*XC - k30a*XCB)/Cell;
+  v31: XC + $R -> XCR; (k31*R*XC - k31a*XCR)/Cell;
+  v32: P -> $S; k32*P/Cell;
+  v4: eB + $A -> eAB; (-(k4a*eAB) + A*k4*eB)/Cell;
+  v5: eAB + Q -> eABQ; (-(k5a*eABQ) + k5*eAB*Q)/Cell;
+  v6: eA + Q -> eAQ; (-(k6a*eAQ) + k6*eA*Q)/Cell;
+  v7: eB + Q -> eBQ; (-(k7a*eBQ) + k7*eB*Q)/Cell;
+  v8: e + Q -> eQ_; (-(k8a*eQ_) + k8*e*Q)/Cell;
+  v9: eQ_ + $A -> eAQ; (-(k9a*eAQ) + A*k9*eQ_)/Cell;
+
+  // Species initializations:
+  A = 2300;
+  B = 300;
+  C = 8000;
+  P = 0;
+  Q = 0;
+  R = 0;
+  S = 0;
+  XC = 0;
+  XCB = 0;
+  XCR = 0;
+  XQ = 0;
+  XQB = 0;
+  XQR = 0;
+  e = 1;
+  eA = 0;
+  eAB = 0;
+  eABC = 0;
+  eABQ = 0;
+  eAC = 0;
+  eAQ = 0;
+  eB = 0;
+  eBC = 0;
+  eBQ = 0;
+  eC = 0;
+  eQ_ = 0;
+  eR = 0;
+  eeQ = 0;
+
+  // Variable initializations:
+  Cell = 1;
+  eXTeRNAL = 0;
+  k1 = 13.4953706168796;
+  k10 = 261.19;
+  k10a = 7289.2804823;
+  k11 = 6210.12345627707;
+  k11a = 315.68381975;
+  k12 = 29.9958100432;
+  k12a = 1330.84779006;
+  k13 = 2.27895805686;
+  k14 = 543.476605024;
+  k14a = 1e-10;
+  k15 = 34.9267638563;
+  k15a = 4941.84508678;
+  k16 = 488.901949443;
+  k16a = 2199.40597503;
+  k17 = 48.5266386368;
+  k17a = 82.5043501462;
+  k19 = 0.01739668189544;
+  k19a = 868.323556017581;
+  k1a = 134.2939838;
+  k2 = 6317.116733;
+  k20 = 2.005267865347e-06;
+  k20a = 1e-10;
+  k21 = 94.6031417823562;
+  k21a = 56632.7173679014;
+  k22 = 897.73729266064;
+  k22a = 26.8002418488192;
+  k23 = 1e-10;
+  k23a = 1e-10;
+  k24 = 54684.4190465446;
+  k24a = 13678.3788270169;
+  k25 = 8.61285612366646e-14;
+  k25a = 1e-10;
+  k26 = 0.0474957203508858;
+  k26a = 1058.42481633921;
+  k27 = 15.1770330320787;
+  k28 = 455.465653318972;
+  k28a = 290.422551587577;
+  k29 = 30247.7736950703;
+  k29a = 200.14320986275;
+  k2a = 42.4469248983;
+  k3 = 223.401281347;
+  k30 = 234.236580254189;
+  k30a = 1218.73611055286;
+  k31 = 1e-10;
+  k31a = 420.551496677673;
+  k32 = 14253.4745502918;
+  k3a = 286.7064474;
+  k4 = 762.2665647;
+  k4a = 39.71496125;
+  k5 = 22.91729291;
+  k5a = 1465.04965;
+  k6 = 6.4969834151108e-09;
+  k6a = 1e-10;
+  k7 = 7067.22002146676;
+  k7a = 530.538761235;
+  k8 = 125.296650629147;
+  k8a = 237.469413308;
+  k9 = 369.688932945;
+  k9a = 29.8763965658;
+
+  // Other declarations:
+  var Cell, eXTeRNAL, k1, k10, k10a, k11, k11a, k12, k12a, k13, k14, k14a;
+  var k15, k15a, k16, k16a, k17, k17a, k19, k19a, k1a, k2, k20, k20a, k21;
+  var k21a, k22, k22a, k23, k23a, k24, k24a, k25, k25a, k26, k26a, k27, k28;
+  var k28a, k29, k29a, k2a, k3, k30, k30a, k31, k31a, k32, k3a, k4, k4a, k5;
+  var k5a, k6, k6a, k7, k7a, k8, k8a, k9, k9a;
+end
+
+leroux is "leroux"

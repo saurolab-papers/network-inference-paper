@@ -1,0 +1,158 @@
+// Created by libAntimony v2.13.2
+model *chen3()
+
+  // Compartments and Species:
+  compartment Cytoplasm, ER, PM;
+  species Ca_Cyt in Cytoplasm, Ca_ER in ER, IP3_Cyt in Cytoplasm, O_o in PM;
+  species Oc in PM, $Orai1 in PM, $S2 in ER, S2a in ER, S4 in ER;
+
+  // Assignment Rules:
+  Orai1 := Orai1_t - (r_hill*Oc + r_hill*O_o);
+  S2 := (K1^2/(Ca_ER^2 + K1^2))*(St - S2a);
+
+  // Rate Rules:
+  h' = A*(Kd - (Ca_Cyt + Kd)*h);
+
+  // Reactions:
+  ER_Channel: Ca_ER => Ca_Cyt; Cytoplasm*(L + P_IP3R*IP3_Cyt^3*Ca_Cyt^3*h^3/((IP3_Cyt + Ki)^3*(Ca_Cyt + Ka)^3))*(Ca_ER - Ca_Cyt);
+  PLC:  => IP3_Cyt; Cytoplasm*(V_PLC*Ca_Cyt^2/(K_PLC^2 + Ca_Cyt^2));
+  PMCA: Ca_Cyt => ; Cytoplasm*(V_PMCA*Ca_Cyt^q/(K_PMCA^q + Ca_Cyt^q));
+  PM_Channel:  => Ca_Cyt; Cytoplasm*(k_soc*O_o + V_PMleak)*(Ca_ec - Ca_Cyt);
+  SERCA: Ca_Cyt => Ca_ER; Cytoplasm*(V_SERCA*Ca_Cyt^p/(K_SERCA^p + Ca_Cyt^p));
+  act_apoSTIM1_deg: S2a => ; ER*k_i*S2a;
+  act_apoSTIM1_syn:  => S2a; ER*k_a*S2;
+  apoSTIM1_oligo_deg: S4 => ; ER*kd_oligo*S4;
+  apoSTIM1_oligo_syn:  => S4; ER*(Vs4*S2^2/(S2^2 + K2^2));
+  close_CRAC_prod:  => Oc; PM*(Vcp*Orai1^n_hill/(Kc^n_hill + Orai1^n_hill));
+  closed_CRAC_channel_deg: Oc => ; PM*kdc*Oc;
+  deg: IP3_Cyt => ; Cytoplasm*(kdeg*Ca_Cyt^2/(K_deg^2 + Ca_Cyt^2))*IP3_Cyt;
+  open_CRAC_channel_deg: O_o => ; PM*kdo*O_o;
+  open_CRAC_channel_prod: Oc => O_o; PM*(kop*S2a^l_hill*Oc/(Ko^l_hill + S2a^l_hill));
+  open_to_closed: O_o => Oc; PM*kod*O_o;
+
+  // Species initializations:
+  Ca_Cyt = 0;
+  Ca_ER = 0;
+  IP3_Cyt = 0;
+  O_o = 0;
+  Oc = 0;
+  S2a = 0.0111/ER;
+  S4 = 0;
+
+  // Compartment initializations:
+  Cytoplasm = 1;
+  ER = 0.185;
+  PM = 1;
+
+  // Variable initializations:
+  Orai1_t = 0.001;
+  Orai1_t has uM;
+  r_hill = 4;
+  r_hill has dimensionless;
+  K1 = 5;
+  K1 has uM;
+  St = 0.6;
+  St has uM;
+  A = 0.5;
+  A has uM_1_s_1;
+  Ca_ec = 1500;
+  Ca_ec has uM;
+  K2 = 0.14;
+  K2 has uM;
+  K_PLC = 0.12;
+  K_PLC has uM;
+  K_PMCA = 0.45;
+  K_PMCA has uM;
+  K_SERCA = 0.15;
+  K_SERCA has uM;
+  K_deg = 0.1;
+  K_deg has uM;
+  Ka = 0.4;
+  Ka has uM;
+  Kc = 2e-05;
+  Kc has uM;
+  Kd = 0.4;
+  Kd has uM;
+  Ki = 1;
+  Ki has uM;
+  Ko = 0.2;
+  Ko has uM;
+  L = 0.00093;
+  L has s_1;
+  P_IP3R = 66.6;
+  P_IP3R has s_1;
+  V_PLC = 0.5;
+  V_PLC has uM_s_1;
+  V_PMCA = 1;
+  V_PMCA has uM_s_1;
+  V_PMleak = 5e-07;
+  V_PMleak has s_1;
+  V_SERCA = 1;
+  V_SERCA has uM_s_1;
+  Vcp = 0.00018;
+  Vcp has uM_s_1;
+  Vs4 = 0.25;
+  Vs4 has uM_s_1;
+  h = 0;
+  h has dimensionless;
+  k_a = 4;
+  k_a has s_1;
+  k_i = 6;
+  k_i has s_1;
+  k_soc = 2.3;
+  k_soc has uM_1_s_1;
+  kd_oligo = 0.8;
+  kd_oligo has s_1;
+  kdc = 0.5;
+  kdc has s_1;
+  kdeg = 0.5;
+  kdeg has s_1;
+  kdo = 0.6;
+  kdo has s_1;
+  kod = 1;
+  kod has s_1;
+  kop = 0.5;
+  kop has s_1;
+  l_hill = 1;
+  l_hill has dimensionless;
+  n_hill = 3;
+  n_hill has dimensionless;
+  p = 2;
+  p has dimensionless;
+  q = 2;
+  q has dimensionless;
+
+  // Other declarations:
+  var h;
+  const Cytoplasm, ER, PM, Orai1_t, r_hill, K1, St, A, Ca_ec, K2, K_PLC, K_PMCA;
+  const K_SERCA, K_deg, Ka, Kc, Kd, Ki, Ko, L, P_IP3R, V_PLC, V_PMCA, V_PMleak;
+  const V_SERCA, Vcp, Vs4, k_a, k_i, k_soc, kd_oligo, kdc, kdeg, kdo, kod;
+  const kop, l_hill, n_hill, p, q;
+
+  // Unit definitions:
+  unit micromole = 1e-6 mole;
+  unit uM = 1e-6 mole / litre;
+  unit s_1 = 1 / second;
+  unit uM_s_1 = 1e-6 mole / (litre * second);
+  unit uM_1_s_1 = litre / (1e-6 mole * second);
+
+  // CV terms:
+  Ca_Cyt identity "http://identifiers.org/chebi/CHEBI:29108",
+                  "http://identifiers.org/kegg.compound/C00076"
+  Ca_ER identity "http://identifiers.org/chebi/CHEBI:29108",
+                 "http://identifiers.org/kegg.compound/C00076"
+  IP3_Cyt identity "http://identifiers.org/chebi/CHEBI:16595",
+                   "http://identifiers.org/kegg.compound/C01245"
+  Orai1 hypernym "http://identifiers.org/uniprot/Q96D31"
+  S2 hypernym "http://identifiers.org/uniprot/Q13586"
+  S2a hypernym "http://identifiers.org/uniprot/Q13586"
+  S4 hypernym "http://identifiers.org/uniprot/Q13586"
+  ER_Channel hypernym "http://identifiers.org/go/GO:0048763"
+  PLC hypernym "http://identifiers.org/go/GO:0050429"
+  PMCA hypernym "http://identifiers.org/go/GO:0005388"
+  PM_Channel hypernym "http://identifiers.org/go/GO:0051928"
+  SERCA hypernym "http://identifiers.org/go/GO:0005388"
+  act_apoSTIM1_syn hypernym "http://identifiers.org/go/GO:0032237"
+end
+
+chen3 is "chen3"

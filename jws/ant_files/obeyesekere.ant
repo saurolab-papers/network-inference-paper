@@ -1,0 +1,67 @@
+// Created by libAntimony v2.13.2
+model *obeyesekere()
+
+  // Compartments and Species:
+  species CYCD1cdk4, CYCEcdk2, MPF, RbE2F, Rbhypo, freeE2F, $sink, $source;
+  species unphosRb;
+
+  // Reactions:
+  v_1: $source -> CYCD1cdk4; aD*(GF/(h + GF));
+  v_10: $source -> MPF; g*MPF*MPF*CYCEcdk2;
+  v_11: MPF -> $sink; dM*MPF;
+  v_2: CYCD1cdk4 -> $sink; dD*CYCEcdk2*CYCD1cdk4;
+  v_3: $source -> CYCEcdk2; aE*(1 + alpha1*GF/(beta1 + GF))*(1 + alpha2*RT/(beta2 + RT))*(ET - RbE2F);
+  v_4: CYCEcdk2 -> $sink; dE*MPF*CYCEcdk2;
+  v_5: $source -> Rbhypo + unphosRb; pM*(RT - RbE2F - Rbhypo)*MPF/(qM + (RT - RbE2F - Rbhypo) + MPF);
+  v_6: Rbhypo + freeE2F -> RbE2F; pS*(ET - RbE2F)*Rbhypo;
+  v_7: RbE2F + unphosRb -> freeE2F; pD*RbE2F*CYCD1cdk4/(qD + RbE2F + CYCD1cdk4) + pE*RbE2F*CYCEcdk2/(qE + RbE2F + CYCEcdk2);
+  v_8: $source -> MPF; aM*CYCEcdk2;
+  v_9: $source -> MPF; f*(ET - RbE2F);
+
+  // Species initializations:
+  CYCD1cdk4 = 0.5;
+  CYCEcdk2 = 0.3;
+  MPF = 0.7;
+  RbE2F = 0.8;
+  Rbhypo = 0.2;
+  freeE2F = 0.7;
+  sink = 1;
+  source = 1;
+  unphosRb = 1;
+
+  // Variable initializations:
+  ET = 1.5;
+  GF = 1;
+  RT = 2;
+  aD = 0.1;
+  aE = 0.038;
+  aM = 0.02;
+  alpha1 = 0.2;
+  alpha2 = 11;
+  beta1 = 2;
+  beta2 = 44;
+  dD = 0.1;
+  dE = 0.05;
+  dM = 0.26;
+  f = 0.05;
+  g = 0.132;
+  h = 0.01;
+  pD = 0.12;
+  pE = 0.024;
+  pM = 0.12;
+  pS = 0.15;
+  qD = 0.6;
+  qE = 0.6;
+  qM = 0.8;
+
+  // Other declarations:
+  var ET, GF, RT, aD, aE, aM, alpha1, alpha2, beta1, beta2, dD, dE, dM, f;
+  var g, h, pD, pE, pM, pS, qD, qE, qM;
+
+  // CV terms:
+  CYCD1cdk4 identity "http://identifiers.org/ec-code/2.7.11.22"
+  CYCEcdk2 identity "http://identifiers.org/ec-code/2.7.11.22"
+  freeE2F parthood "http://identifiers.org/interpro/IPR015633"
+end
+
+obeyesekere is "obeyesekere"

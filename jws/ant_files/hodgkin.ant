@@ -1,0 +1,86 @@
+// Created by libAntimony v2.13.2
+model *hodgkin()
+
+  // Compartments and Species:
+  substanceOnly species V, h, m, n;
+
+  // Assignment Rules:
+  alphah := Q10^((T - 6.3)/10)*ah*exp(-(V - valphah)/kalphah);
+  alpham := piecewise(Q10^((T - 6.3)/10)*0.1, V == valpham, Q10^((T - 6.3)/10)*am*(V - valpham)/(1 - exp(-(V - valpham)/kalpham)));
+  alphan := piecewise(Q10^((T - 6.3)/10)*0.1, V == valphan, Q10^((T - 6.3)/10)*an*(V - valphan)/(1 - exp(-(V - valphan)/kalphan)));
+  betah := Q10^((T - 6.3)/10)*bh/(1 + exp(-(V - vbetah)/kbetah));
+  betam := Q10^((T - 6.3)/10)*bm*exp(-(V - vbetam)/kbetam);
+  betan := Q10^((T - 6.3)/10)*bn*exp(-(V - vbetan)/kbetan);
+  extInput := piecewise(stim1, (t1 <= time) && (time < t2), stim2, (t3 <= time) && (time < t4), 0);
+  t2 := t1 + dur1;
+  t3 := t1 + dur1 + delay1;
+  t4 := t3 + dur2;
+
+  // Reactions:
+  v_vH:  -> h; alphah*(1 - h) - betah*h;
+  v_vM:  -> m; alpham*(1 - m) - betam*m;
+  v_vN:  -> n; alphan*(1 - n) - betan*n;
+  v_vV:  -> V; barGna*m^3*h*(ENa - V) + barGk*n^4*(EK - V) + barGleak*(ELeak - V) + extInput;
+
+  // Species initializations:
+  V = -60;
+  h = 0.587915337258;
+  h has dimensionless_per_volume;
+  m = 0.0580917142295;
+  m has dimensionless_per_volume;
+  n = 0.321283379998;
+  n has dimensionless_per_volume;
+
+  // Variable initializations:
+  EK = -72;
+  ELeak = -49.387;
+  ENa = 55;
+  Q10 = 3;
+  T = 6.3;
+  ah = 0.07;
+  valphah = -60;
+  kalphah = 20;
+  valpham = -36;
+  am = 0.1;
+  kalpham = 10;
+  valphan = -50;
+  an = 0.01;
+  kalphan = 10;
+  barGk = 36;
+  barGleak = 0.3;
+  barGna = 120;
+  bh = 1;
+  vbetah = -30;
+  kbetah = 10;
+  bm = 4;
+  vbetam = -60;
+  kbetam = 18;
+  bn = 0.125;
+  vbetan = -60;
+  kbetan = 80;
+  delay1 = 0;
+  dur1 = 60;
+  dur2 = 0;
+  stim1 = 6;
+  t1 = 5;
+  t1 has ms;
+  t2 has ms;
+  stim2 = 0;
+  t3 has ms;
+  t4 has ms;
+
+  // Other declarations:
+  var EK, ELeak, ENa, Q10, T, ah, alphah, valphah, kalphah, alpham, valpham;
+  var am, kalpham, alphan, valphan, an, kalphan, barGk, barGleak, barGna;
+  var betah, bh, vbetah, kbetah, betam, bm, vbetam, kbetam, betan, bn, vbetan;
+  var kbetan, delay1, dur1, dur2, extInput, stim1, t1, t2, stim2, t3, t4;
+
+  // Unit definitions:
+  unit ms = 1e-3 second;
+  unit mV = 1e-3 volt;
+  unit time_unit = ms;
+  unit volume = litre;
+  unit dimensionless_per_volume = dimensionless / litre;
+end
+
+hodgkin is "hodgkin"

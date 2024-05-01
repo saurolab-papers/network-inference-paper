@@ -1,0 +1,87 @@
+// Created by libAntimony v2.13.2
+model *band1()
+
+  // Compartments and Species:
+  compartment cell;
+  species TIR1 in cell, VENUS in cell, auxin in cell, auxinTIR1 in cell, auxinTIR1VENUS in cell;
+
+  // Reactions:
+  VENUSphotobleachingdecay: VENUS => ; lambda*VENUS;
+  VENUSproduction:  => VENUS; delta;
+  auxin_TIR1_VENUSassociation: auxinTIR1 + VENUS => auxinTIR1VENUS; la*auxinTIR1*VENUS;
+  auxin_TIR1_VENUSdissociation: auxinTIR1VENUS => auxinTIR1 + VENUS; ld*auxinTIR1VENUS;
+  auxin_TIR1_VENUSdissociationleadingtoubiquitination: auxinTIR1VENUS => auxinTIR1; lm*auxinTIR1VENUS;
+  auxin_TIR1association: auxin + TIR1 => auxinTIR1; ka*auxin*TIR1;
+  auxin_TIR1dissociation: auxinTIR1 => auxin + TIR1; kd*auxinTIR1;
+  auxindecay: auxin => ; mu*auxin;
+  auxinproduction:  => auxin; alpha_tr;
+
+  // Species initializations:
+  TIR1 = 15.4/cell;
+  VENUS = 40.4/cell;
+  auxin = 7.38/cell;
+  auxinTIR1 = 0.28/cell;
+  auxinTIR1VENUS = 2.78/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  TIR1T = 18.5;
+  alpha_tr = 30.5;
+  delta = 0.486;
+  ka = 0.000822;
+  kd = 0.334;
+  la = 1.15;
+  lambda = 0.00316;
+  ld = 4.49;
+  lm = 0.175;
+  mu = 0.79;
+
+  // Other declarations:
+  const cell, TIR1T, alpha_tr, delta, ka, kd, la, lambda, ld, lm, mu;
+
+  // SBO terms:
+  cell.sboTerm = 290
+  TIR1.sboTerm = 252
+  VENUS.sboTerm = 297
+  auxin.sboTerm = 252
+  auxinTIR1.sboTerm = 297
+  auxinTIR1VENUS.sboTerm = 297
+  VENUSphotobleachingdecay.sboTerm = 179
+  VENUSproduction.sboTerm = 393
+  auxin_TIR1_VENUSassociation.sboTerm = 526
+  auxin_TIR1_VENUSdissociation.sboTerm = 180
+  auxin_TIR1_VENUSdissociationleadingtoubiquitination.sboTerm = 180
+  auxin_TIR1association.sboTerm = 526
+  auxin_TIR1dissociation.sboTerm = 180
+  auxindecay.sboTerm = 179
+  auxinproduction.sboTerm = 393
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  TIR1 hypernym "http://identifiers.org/uniprot/Q570C0",
+                "http://identifiers.org/uniprot/Q9ZR12",
+                "http://identifiers.org/uniprot/Q9LW29",
+                "http://identifiers.org/uniprot/Q9LPW7"
+  VENUS part "http://identifiers.org/uniprot/Q940U6",
+             "http://identifiers.org/uniprot/Q9XFM0"
+  auxin hypernym "http://identifiers.org/uniprot/P49677"
+  auxinTIR1 part "http://identifiers.org/uniprot/P49677",
+                 "http://identifiers.org/uniprot/Q570C0"
+  auxinTIR1VENUS part "http://identifiers.org/uniprot/P49677",
+                      "http://identifiers.org/uniprot/Q570C0",
+                      "http://identifiers.org/uniprot/Q9XFM0",
+                      "http://identifiers.org/uniprot/Q940U6"
+  VENUSphotobleachingdecay hypernym "http://identifiers.org/go/GO:0030163"
+  VENUSproduction hypernym "http://identifiers.org/go/GO:0006412"
+  auxin_TIR1_VENUSassociation hypernym "http://identifiers.org/go/GO:0006461"
+  auxin_TIR1_VENUSdissociation hypernym "http://identifiers.org/go/GO:0043241"
+  auxin_TIR1_VENUSdissociationleadingtoubiquitination hypernym "http://identifiers.org/go/GO:0043241"
+  auxin_TIR1association hypernym "http://identifiers.org/go/GO:0006461"
+  auxin_TIR1dissociation hypernym "http://identifiers.org/go/GO:0043241"
+  auxindecay hypernym "http://identifiers.org/go/GO:0030163"
+  auxinproduction hypernym "http://identifiers.org/go/GO:0006412"
+end
+
+band1 is "band1"

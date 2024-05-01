@@ -1,0 +1,50 @@
+// Created by libAntimony v2.13.2
+model *curien1()
+
+  // Compartments and Species:
+  species $Cys, $Cystathionine, $Hser, $Phi, Phser, $Thr;
+
+  // Reactions:
+  v_1: $Hser -> Phser; V1;
+  v_2: Phser + $Cys -> $Cystathionine + $Phi; CGS*(kcat2/(1 + KmCYS/Cys))*Phser/(Phser + KmPHSER*(1 + Phi/Ki2)/(1 + KmCYS/Cys));
+  v_3: Phser -> $Thr + $Phi; TS*((0.42 + 3.5*AdoMet^2/73)/(1 + AdoMet^2/73))*Phser/((1 + Phi/Ki3)*(250*(1 + AdoMet/0.5)/(1 + AdoMet/1.09))/(1 + AdoMet^2/142) + Phser);
+
+  // Species initializations:
+  Cys = 15;
+  Cystathionine = 0;
+  Hser = 0;
+  Phi = 10000;
+  Phser = 0;
+  Thr = 0;
+
+  // Variable initializations:
+  AdoMet = 20;
+  CGS = 0.7;
+  Ki2 = 2000;
+  Ki3 = 1000;
+  KmCYS = 460;
+  KmPHSER = 2500;
+  TS = 5;
+  V1 = 1;
+  kcat2 = 30;
+
+  // Other declarations:
+  var AdoMet, CGS, Ki2, Ki3, KmCYS, KmPHSER, TS, V1, kcat2;
+
+  // Unit definitions:
+  unit umol = 1e-6 mole;
+  unit s = second;
+  unit L = litre;
+  unit uM = 1e-6 mole / litre;
+  unit volume = L;
+  unit substance = umol;
+  unit extent = uM;
+  unit time_unit = s;
+
+  // CV terms:
+  Cys identity "http://identifiers.org/obo.chebi/CHEBI%3A32460"
+  Cystathionine identity "http://identifiers.org/kegg.compound/C00542"
+  Thr identity "http://identifiers.org/obo.chebi/CHEBI%3A32835"
+end
+
+curien1 is "curien1"

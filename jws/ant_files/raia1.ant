@@ -1,0 +1,206 @@
+// Created by libAntimony v2.13.2
+model *raia1()
+
+  // Compartments and Species:
+  compartment cell;
+  species CD274mRNA in cell, DecoyR in cell, $IL13 in cell, IL13_DecoyR in cell;
+  species IL13_Rec in cell, JAK2 in cell, Rec in cell, Rec_i in cell, SHP1 in cell;
+  species SOCS3 in cell, SOCS3mRNA in cell, STAT5 in cell, pJAK2 in cell;
+  species pSTAT5 in cell, p_IL13_Rec in cell, p_IL13_Rec_i in cell;
+
+  // Assignment Rules:
+  IL13 := 2.265*IL13stimulation;
+
+  // Reactions:
+  reaction_1: Rec => IL13_Rec; Kon_IL13Rec*IL13*Rec*cell;
+  reaction_10: STAT5 => pSTAT5; STAT5_phosphorylation*STAT5*pJAK2*cell;
+  reaction_11: pSTAT5 => STAT5; pSTAT5_dephosphorylation*pSTAT5*SHP1*cell;
+  reaction_12: DecoyR => IL13_DecoyR; DecoyR_binding*IL13*DecoyR*cell;
+  reaction_13:  => SOCS3mRNA; pSTAT5*SOCS3mRNA_production*cell;
+  reaction_14:  => SOCS3; (SOCS3mRNA*SOCS3_translation/(SOCS3_accumulation + SOCS3mRNA))*cell;
+  reaction_15: SOCS3 => ; SOCS3_degradation*SOCS3*cell;
+  reaction_16:  => CD274mRNA; pSTAT5*CD274mRNA_production*cell;
+  reaction_2: Rec => Rec_i; Rec_intern*Rec*cell;
+  reaction_3: Rec_i => Rec; Rec_recycle*Rec_i*cell;
+  reaction_4: IL13_Rec => p_IL13_Rec; Rec_phosphorylation*IL13_Rec*pJAK2*cell;
+  reaction_5: JAK2 => pJAK2; (JAK2_phosphorylation*IL13_Rec*JAK2/(1 + JAK2_p_inhibition*SOCS3))*cell;
+  reaction_6: JAK2 => pJAK2; (JAK2_phosphorylation*p_IL13_Rec*JAK2/(1 + JAK2_p_inhibition*SOCS3))*cell;
+  reaction_7: p_IL13_Rec => p_IL13_Rec_i; pRec_intern*p_IL13_Rec*cell;
+  reaction_8: p_IL13_Rec_i => ; pRec_degradation*p_IL13_Rec_i*cell;
+  reaction_9: pJAK2 => JAK2; pJAK2_dephosphorylation*pJAK2*SHP1*cell;
+
+  // Species initializations:
+  CD274mRNA = 0;
+  DecoyR = 0.34/cell;
+  IL13_DecoyR = 0;
+  IL13_Rec = 0;
+  JAK2 = 2.8/cell;
+  Rec = 1.3/cell;
+  Rec_i = 113.194/cell;
+  SHP1 = 91/cell;
+  SOCS3 = 0;
+  SOCS3mRNA = 0;
+  STAT5 = 165/cell;
+  pJAK2 = 0;
+  pSTAT5 = 0;
+  p_IL13_Rec = 0;
+  p_IL13_Rec_i = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  IL13stimulation = 1;
+  IL13stimulation has ng_per_ml;
+  CD274mRNA_production = 8.21752e-05;
+  DecoyR_binding = 0.000124391;
+  JAK2_p_inhibition = 0.0168268;
+  JAK2_phosphorylation = 0.157057;
+  Kon_IL13Rec = 0.00341992;
+  Rec_intern = 0.103346;
+  Rec_phosphorylation = 999.631;
+  Rec_recycle = 0.00135598;
+  SOCS3_accumulation = 3.70803;
+  SOCS3_degradation = 0.0429186;
+  SOCS3_translation = 11.9086;
+  SOCS3mRNA_production = 0.00215826;
+  STAT5_phosphorylation = 0.0382596;
+  pJAK2_dephosphorylation = 0.000621906;
+  pRec_degradation = 0.172928;
+  pRec_intern = 0.15254;
+  pSTAT5_dephosphorylation = 0.000343392;
+
+  // Other declarations:
+  const cell, IL13stimulation, CD274mRNA_production, DecoyR_binding, JAK2_p_inhibition;
+  const JAK2_phosphorylation, Kon_IL13Rec, Rec_intern, Rec_phosphorylation;
+  const Rec_recycle, SOCS3_accumulation, SOCS3_degradation, SOCS3_translation;
+  const SOCS3mRNA_production, STAT5_phosphorylation, pJAK2_dephosphorylation;
+  const pRec_degradation, pRec_intern, pSTAT5_dephosphorylation;
+
+  // Unit definitions:
+  unit ng_per_ml = 1e-3 litre * 1e-9 gram;
+  unit cell_volume = 60e-15 litre;
+  unit minute = 60 second;
+  unit molecule = item;
+
+  // Display Names:
+  cell_volume is "cell_volumes";
+  minute is "minutes";
+  molecule is "molecules";
+
+  // SBO terms:
+  cell.sboTerm = 290
+  CD274mRNA.sboTerm = 250
+  DecoyR.sboTerm = 297
+  IL13.sboTerm = 252
+  IL13stimulation.sboTerm = 228
+  IL13_DecoyR.sboTerm = 297
+  IL13_Rec.sboTerm = 297
+  JAK2.sboTerm = 252
+  Rec.sboTerm = 297
+  Rec_i.sboTerm = 297
+  SHP1.sboTerm = 252
+  SOCS3.sboTerm = 252
+  SOCS3mRNA.sboTerm = 250
+  STAT5.sboTerm = 252
+  pJAK2.sboTerm = 252
+  pSTAT5.sboTerm = 252
+  p_IL13_Rec.sboTerm = 297
+  p_IL13_Rec_i.sboTerm = 297
+  CD274mRNA_production.sboTerm = 35
+  DecoyR_binding.sboTerm = 339
+  JAK2_p_inhibition.sboTerm = 308
+  JAK2_phosphorylation.sboTerm = 36
+  Kon_IL13Rec.sboTerm = 339
+  Rec_intern.sboTerm = 35
+  Rec_phosphorylation.sboTerm = 36
+  Rec_recycle.sboTerm = 35
+  SOCS3_accumulation.sboTerm = 27
+  SOCS3_degradation.sboTerm = 356
+  SOCS3_translation.sboTerm = 324
+  SOCS3mRNA_production.sboTerm = 35
+  STAT5_phosphorylation.sboTerm = 36
+  pJAK2_dephosphorylation.sboTerm = 36
+  pRec_degradation.sboTerm = 356
+  pRec_intern.sboTerm = 35
+  pSTAT5_dephosphorylation.sboTerm = 36
+  reaction_1.sboTerm = 177
+  reaction_10.sboTerm = 216
+  reaction_11.sboTerm = 330
+  reaction_12.sboTerm = 177
+  reaction_13.sboTerm = 183
+  reaction_14.sboTerm = 181
+  reaction_15.sboTerm = 179
+  reaction_16.sboTerm = 183
+  reaction_2.sboTerm = 185
+  reaction_3.sboTerm = 185
+  reaction_4.sboTerm = 216
+  reaction_5.sboTerm = 216
+  reaction_6.sboTerm = 216
+  reaction_7.sboTerm = 185
+  reaction_8.sboTerm = 179
+  reaction_9.sboTerm = 330
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/bto/BTO:0001518",
+                "http://identifiers.org/go/GO:0005623"
+  CD274mRNA identity "http://identifiers.org/uniprot/P20963",
+                     "http://identifiers.org/kegg.compound/C00046",
+                     "http://identifiers.org/chebi/CHEBI:33699"
+  DecoyR hypernym "http://identifiers.org/uniprot/Q14627"
+  IL13 hypernym "http://identifiers.org/go/GO:0005144",
+                "http://identifiers.org/uniprot/P35225"
+  IL13stimulation hypernym "http://identifiers.org/uniprot/P35225"
+  IL13_DecoyR part "http://identifiers.org/uniprot/Q14627",
+                   "http://identifiers.org/uniprot/P35225"
+  IL13_Rec part "http://identifiers.org/go/GO:0016516",
+                "http://identifiers.org/uniprot/P29597",
+                "http://identifiers.org/uniprot/P24394",
+                "http://identifiers.org/uniprot/P78552",
+                "http://identifiers.org/uniprot/P35225"
+  JAK2 hypernym "http://identifiers.org/uniprot/O60674"
+  Rec identity "http://identifiers.org/go/GO:0019973",
+               "http://identifiers.org/uniprot/P78552",
+               "http://identifiers.org/uniprot/P24394",
+               "http://identifiers.org/uniprot/P29597",
+               "http://identifiers.org/go/GO:0016516"
+  Rec_i part "http://identifiers.org/uniprot/P24394",
+             "http://identifiers.org/go/GO:0031623",
+             "http://identifiers.org/uniprot/P78552",
+             "http://identifiers.org/go/GO:0016516",
+             "http://identifiers.org/uniprot/P29597"
+  SHP1 hypernym "http://identifiers.org/uniprot/P29350"
+  SOCS3 hypernym "http://identifiers.org/uniprot/O14543"
+  SOCS3mRNA identity "http://identifiers.org/uniprot/O14543",
+                     "http://identifiers.org/kegg.compound/C00046",
+                     "http://identifiers.org/chebi/CHEBI:33699"
+  STAT5 hypernym "http://identifiers.org/uniprot/P51692",
+                 "http://identifiers.org/uniprot/P42229"
+  pJAK2 version "http://identifiers.org/mod/MOD%3A00048",
+                "http://identifiers.org/kegg.compound/C00562",
+                "http://identifiers.org/uniprot/O60674",
+                "http://identifiers.org/psimod/MOD:00048"
+  pSTAT5 version "http://identifiers.org/kegg.compound/C00562",
+                 "http://identifiers.org/uniprot/P42229",
+                 "http://identifiers.org/mod/MOD%3A00048",
+                 "http://identifiers.org/uniprot/P51692",
+                 "http://identifiers.org/psimod/MOD:00048"
+  p_IL13_Rec part "http://identifiers.org/mod/MOD%3A00048",
+                  "http://identifiers.org/go/GO:0016516",
+                  "http://identifiers.org/uniprot/P29597",
+                  "http://identifiers.org/kegg.compound/C00562",
+                  "http://identifiers.org/uniprot/P78552",
+                  "http://identifiers.org/uniprot/P24394",
+                  "http://identifiers.org/uniprot/P35225",
+                  "http://identifiers.org/psimod/MOD:00048"
+  p_IL13_Rec_i part "http://identifiers.org/go/GO:0031623",
+                    "http://identifiers.org/uniprot/P78552",
+                    "http://identifiers.org/uniprot/P24394",
+                    "http://identifiers.org/go/GO:0016516",
+                    "http://identifiers.org/mod/MOD%3A00048",
+                    "http://identifiers.org/uniprot/P29597",
+                    "http://identifiers.org/uniprot/P35225",
+                    "http://identifiers.org/psimod/MOD:00048"
+end
+
+raia1 is "raia1"

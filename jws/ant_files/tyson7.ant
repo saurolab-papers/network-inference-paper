@@ -1,0 +1,159 @@
+// Created by libAntimony v2.13.2
+function GK(A1, A2, A3, A4)
+  2*A4*A1/((A2 - A1) + A3*A2 + A4*A1 + sqrt(((A2 - A1) + A3*A2 + A4*A1)^2 - 4*(A2 - A1)*A4*A1));
+end
+
+GK is "Goldbeter Koshland Function"
+
+
+model *tyson7()
+
+  // Compartments and Species:
+  compartment cell;
+  substanceOnly species CKIt in cell, Cdc20a in cell, Cdc20t in cell, Cdh1 in cell;
+  substanceOnly species $CycB in cell, CycBt in cell, IEP in cell, $Mad in cell;
+  substanceOnly species SK in cell, $Trimer in cell, m in cell;
+
+  // Assignment Rules:
+  CycB := CycBt - 2*CycBt*CKIt/(CycBt + CKIt + 1/Keq + ((CycBt + CKIt + 1/Keq)^2 - 4*CycBt*CKIt)^(1/2));
+  Mad := 1;
+  Trimer := 2*CycBt*CKIt/(CycBt + CKIt + 1/Keq + ((CycBt + CKIt + 1/Keq)^2 - 4*CycBt*CKIt)^(1/2));
+  TF := GK(k15p*m + k15pp*SK, k16p + k16pp*m*CycB, J15, J16);
+
+  // Reactions:
+  CKIdegradation: CKIt => ; k12p*CKIt;
+  CKItphosphorilationviaSK: CKIt => ; k12pp*SK*CKIt;
+  CKItsynthesis:  => CKIt; k11;
+  Cdc20activation:  => Cdc20a; k7*IEP*(Cdc20t - Cdc20a)/(J7 + Cdc20t - Cdc20a);
+  Cdc20adegradation: Cdc20a => ; k6*Cdc20a;
+  Cdc20ainhibition: Cdc20a => ; k8*Mad*Cdc20a/(J8 + Cdc20a);
+  Cdc20t_deg: Cdc20t => ; k6*Cdc20t;
+  Cdc20tsynthesis:  => Cdc20t; k5p + k5pp*(CycB*m/J5)^n/(1 + (CycB*m/J5)^n);
+  Cdh1degradation: Cdh1 => ; (k4p*SK*Cdh1 + k4*m*CycB*Cdh1)/(J4 + Cdh1);
+  Cdh1synthesis:  => Cdh1; (k3p + k3pp*Cdc20a)*(1 - Cdh1)/(J3 + 1 - Cdh1);
+  CycBdegradation: CycBt => ; k2p*CycBt;
+  CycBdegradationviaCdh1: CycBt => ; k2pp*Cdh1*CycBt;
+  CycBt_synthesis:  => CycBt; k1;
+  CycBtdegradationviaCdc20a: CycBt => ; k2ppp*Cdc20a*CycBt;
+  IEPdegradation: IEP => ; k10*IEP;
+  IEPsynthesis:  => IEP; k9*m*CycB*(1 - IEP);
+  SKdegradation: SK => ; k14*SK;
+  SKsynthesis:  => SK; k13*TF;
+  eq_7: CKIt => ; k12ppp*m*CycB*CKIt;
+  growth:  => m; mu*m*(1 - m/mmax);
+
+  // Events:
+  Cell_division: at 0 after CycB < 0.1: m = m/2;
+
+  // Species initializations:
+  CKIt = 0.001/cell;
+  Cdc20a = 0.001/cell;
+  Cdc20t = 0.001/cell;
+  Cdh1 = 0.001/cell;
+  CycBt = 0.001/cell;
+  IEP = 0.001/cell;
+  SK = 0.001/cell;
+  m = 0.25/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  Keq = 1000;
+  J15 = 0.01;
+  J16 = 0.01;
+  J3 = 0.04;
+  J4 = 0.04;
+  J5 = 0.3;
+  J7 = 0.001;
+  J8 = 0.001;
+  k15p = 1.5;
+  k15pp = 0.05;
+  k16p = 1;
+  k16pp = 3;
+  k1 = 0.04;
+  k10 = 0.02;
+  k11 = 1;
+  k12p = 0.2;
+  k12pp = 50;
+  k12ppp = 100;
+  k13 = 1;
+  k14 = 1;
+  k2p = 0.04;
+  k2pp = 1;
+  k2ppp = 1;
+  k3p = 1;
+  k3pp = 10;
+  k4 = 35;
+  k4p = 2;
+  k5p = 0.005;
+  k5pp = 0.2;
+  k6 = 0.1;
+  k7 = 1;
+  k8 = 0.5;
+  k9 = 0.1;
+  mmax = 10;
+  mu = 0.005;
+  n = 4;
+
+  // Other declarations:
+  var TF;
+  const cell, Keq, J15, J16, J3, J4, J5, J7, J8, k15p, k15pp, k16p, k16pp;
+  const k1, k10, k11, k12p, k12pp, k12ppp, k13, k14, k2p, k2pp, k2ppp, k3p;
+  const k3pp, k4, k4p, k5p, k5pp, k6, k7, k8, k9, mmax, mu, n;
+
+  // Unit definitions:
+  unit minute = 60 second;
+  unit normalized = dimensionless;
+
+  // Display Names:
+  minute is "minutes";
+  Cell_division is "Cell division";
+  CKIdegradation is "CKIt degradation";
+  CKItphosphorilationviaSK is "CKIt phosphorilation via SK";
+  CKItsynthesis is "CKIt synthesis";
+  Cdc20activation is "Cdc20 activation";
+  Cdc20adegradation is "Cdc20a degradation";
+  Cdc20ainhibition is "Cdc20a inhibition";
+  Cdc20t_deg is "Cdc20t degradation";
+  Cdc20tsynthesis is "Cdc20t synthesis";
+  Cdh1degradation is "Cdh1 degradation";
+  Cdh1synthesis is "Cdh1 synthesis";
+  CycBdegradation is "CycBt degradation";
+  CycBdegradationviaCdh1 is "CycBt degradation via Cdh1";
+  CycBt_synthesis is "CycBt synthesis";
+  CycBtdegradationviaCdc20a is "CycBt degradation via Cdc20a";
+  IEPdegradation is "IEP degradation";
+  IEPsynthesis is "IEP synthesis";
+  SKdegradation is "SK degradation";
+  SKsynthesis is "SK synthesis";
+  eq_7 is "CKIt Trimer sequestred";
+
+  // CV terms:
+  cell identity "http://identifiers.org/go/GO:0005623"
+  CKIt hypernym "http://identifiers.org/uniprot/P38634"
+  Cdc20a hypernym "http://identifiers.org/uniprot/P26309"
+  Cdc20t hypernym "http://identifiers.org/uniprot/P26309"
+  Cdh1 hypernym "http://identifiers.org/uniprot/P53197"
+  CycB part "http://identifiers.org/interpro/IPR015454",
+            "http://identifiers.org/uniprot/P00546"
+  CycBt part "http://identifiers.org/uniprot/P24868",
+             "http://identifiers.org/uniprot/P24869",
+             "http://identifiers.org/uniprot/P24870",
+             "http://identifiers.org/uniprot/P24871",
+             "http://identifiers.org/uniprot/P30283",
+             "http://identifiers.org/uniprot/P32943",
+             "http://identifiers.org/go/GO:0000307",
+             "http://identifiers.org/interpro/IPR015454",
+             "http://identifiers.org/uniprot/P00546"
+  Mad hypernym "http://identifiers.org/uniprot/P40957"
+  SK hypernym "http://identifiers.org/interpro/IPR014399",
+              "http://identifiers.org/uniprot/P20438",
+              "http://identifiers.org/uniprot/P20437"
+  Trimer part "http://identifiers.org/interpro/IPR015454",
+              "http://identifiers.org/uniprot/P38634",
+              "http://identifiers.org/uniprot/P00546"
+  m hypernym "http://identifiers.org/go/GO:0016049"
+end
+
+tyson7 is "tyson7"

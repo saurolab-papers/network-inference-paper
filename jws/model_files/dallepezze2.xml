@@ -1,0 +1,2318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="dallepezze2" name="dallepezze2">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="function_4_reaction_5_1" name="function_4_reaction_5_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> AMPK_pT172 </ci>
+            </bvar>
+            <bvar>
+              <ci> AMPK_pT172_dephos_by_Mito_membr_pot_old </ci>
+            </bvar>
+            <bvar>
+              <ci> Mito_membr_pot_old </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> AMPK_pT172_dephos_by_Mito_membr_pot_old </ci>
+              <ci> AMPK_pT172 </ci>
+              <ci> Mito_membr_pot_old </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_7_1" name="function_4_reaction_7_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt_pS473 </ci>
+            </bvar>
+            <bvar>
+              <ci> Amino_Acids </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_S2448_phos_by_AA_n_Akt_pS473 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mTORC1_S2448_phos_by_AA_n_Akt_pS473 </ci>
+              <ci> mTORC1 </ci>
+              <ci> Amino_Acids </ci>
+              <ci> Akt_pS473 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_9_1" name="function_4_reaction_9_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> AMPK_pT172 </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a </ci>
+            </bvar>
+            <bvar>
+              <ci> mitophagy_activ_by_FoxO3a_n_AMPK_pT172 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mitophagy_activ_by_FoxO3a_n_AMPK_pT172 </ci>
+              <ci> FoxO3a </ci>
+              <ci> AMPK_pT172 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_12_1" name="function_4_reaction_12_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> FoxO3a_pS253 </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a_phos_by_JNK_pT183 </ci>
+            </bvar>
+            <bvar>
+              <ci> JNK_pT183 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> FoxO3a_phos_by_JNK_pT183 </ci>
+              <ci> FoxO3a_pS253 </ci>
+              <ci> JNK_pT183 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_16_1" name="function_4_reaction_16_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt_pS473 </ci>
+            </bvar>
+            <bvar>
+              <ci> CDKN1A </ci>
+            </bvar>
+            <bvar>
+              <ci> CDKN1A_inactiv_by_Akt_pS473 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> CDKN1A_inactiv_by_Akt_pS473 </ci>
+              <ci> CDKN1A </ci>
+              <ci> Akt_pS473 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_18_1" name="function_4_reaction_18_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt_pS473 </ci>
+            </bvar>
+            <bvar>
+              <ci> CDKN1B </ci>
+            </bvar>
+            <bvar>
+              <ci> CDKN1B_inactiv_by_Akt_pS473 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> CDKN1B_inactiv_by_Akt_pS473 </ci>
+              <ci> CDKN1B </ci>
+              <ci> Akt_pS473 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_23_1" name="function_4_reaction_23_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_membr_pot_old </ci>
+            </bvar>
+            <bvar>
+              <ci> ROS_prod_by_Mito_membr_pot_old </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> ROS_prod_by_Mito_membr_pot_old </ci>
+              <ci> Mito_membr_pot_old </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_27_1" name="function_4_reaction_27_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ROS </ci>
+            </bvar>
+            <bvar>
+              <ci> sen_ass_beta_gal_inc_by_ROS </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> sen_ass_beta_gal_inc_by_ROS </ci>
+              <ci> ROS </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_31_1" name="function_4_reaction_31_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_turnover </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448 </ci>
+            </bvar>
+            <bvar>
+              <ci> mito_biogenesis_by_AMPK_pT172 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mito_biogenesis_by_AMPK_pT172 </ci>
+              <ci> Mito_mass_turnover </ci>
+              <ci> mTORC1_pS2448 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_34_1" name="function_4_reaction_34_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> CDKN1A </ci>
+            </bvar>
+            <bvar>
+              <ci> Mito_mass_new </ci>
+            </bvar>
+            <bvar>
+              <ci> mito_dysfunction </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mito_dysfunction </ci>
+              <ci> Mito_mass_new </ci>
+              <ci> CDKN1A </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_41_1" name="function_4_reaction_41_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Amino_Acids </ci>
+            </bvar>
+            <bvar>
+              <ci> IKKbeta </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_S2448_phos_by_AA_n_IKKbeta </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mTORC1_S2448_phos_by_AA_n_IKKbeta </ci>
+              <ci> mTORC1 </ci>
+              <ci> Amino_Acids </ci>
+              <ci> IKKbeta </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_39_1" name="function_4_reaction_39_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> IKKbeta_activ_by_ROS </ci>
+            </bvar>
+            <bvar>
+              <ci> ROS </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> IKKbeta_activ_by_ROS </ci>
+              <ci> ROS </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_36_1" name="function_4_reaction_36_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_old </ci>
+            </bvar>
+            <bvar>
+              <ci> mito_membr_pot_old_inc </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mito_membr_pot_old_inc </ci>
+              <ci> Mito_mass_old </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_35_1" name="function_4_reaction_35_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_new </ci>
+            </bvar>
+            <bvar>
+              <ci> mito_membr_pot_new_inc </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mito_membr_pot_new_inc </ci>
+              <ci> Mito_mass_new </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_33_1" name="function_4_reaction_33_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_old </ci>
+            </bvar>
+            <bvar>
+              <ci> Mitophagy </ci>
+            </bvar>
+            <bvar>
+              <ci> mitophagy_old </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mitophagy_old </ci>
+              <ci> Mito_mass_old </ci>
+              <ci> Mitophagy </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_32_1" name="function_4_reaction_32_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_new </ci>
+            </bvar>
+            <bvar>
+              <ci> Mitophagy </ci>
+            </bvar>
+            <bvar>
+              <ci> mitophagy_new </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mitophagy_new </ci>
+              <ci> Mito_mass_new </ci>
+              <ci> Mitophagy </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_30_1" name="function_4_reaction_30_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_mass_turnover </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448 </ci>
+            </bvar>
+            <bvar>
+              <ci> mito_biogenesis_by_mTORC1_pS2448 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mito_biogenesis_by_mTORC1_pS2448 </ci>
+              <ci> Mito_mass_turnover </ci>
+              <ci> mTORC1_pS2448 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_28_1" name="function_4_reaction_28_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mitophagy </ci>
+            </bvar>
+            <bvar>
+              <ci> sen_ass_beta_gal_inc_by_Mitophagy </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> sen_ass_beta_gal_inc_by_Mitophagy </ci>
+              <ci> Mitophagy </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_25_1" name="function_4_reaction_25_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> JNK </ci>
+            </bvar>
+            <bvar>
+              <ci> JNK_activ_by_ROS </ci>
+            </bvar>
+            <bvar>
+              <ci> ROS </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> JNK_activ_by_ROS </ci>
+              <ci> JNK </ci>
+              <ci> ROS </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_22_1" name="function_4_reaction_22_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mito_membr_pot_new </ci>
+            </bvar>
+            <bvar>
+              <ci> ROS_prod_by_Mito_membr_pot_new </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> ROS_prod_by_Mito_membr_pot_new </ci>
+              <ci> Mito_membr_pot_new </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_20_1" name="function_4_reaction_20_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> DNA_damaged_by_ROS </ci>
+            </bvar>
+            <bvar>
+              <ci> ROS </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> DNA_damaged_by_ROS </ci>
+              <ci> ROS </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_19_1" name="function_4_reaction_19_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> DNA_damaged_by_irradiation </ci>
+            </bvar>
+            <bvar>
+              <ci> Irradiation </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> DNA_damaged_by_irradiation </ci>
+              <ci> Irradiation </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_17_1" name="function_4_reaction_17_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> CDKN1B_transcr_by_FoxO3a_n_DNA_damage </ci>
+            </bvar>
+            <bvar>
+              <ci> DNA_damage </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> CDKN1B_transcr_by_FoxO3a_n_DNA_damage </ci>
+              <ci> DNA_damage </ci>
+              <ci> FoxO3a </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_15_1" name="function_4_reaction_15_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> CDKN1A_transcr_by_FoxO3a_n_DNA_damage </ci>
+            </bvar>
+            <bvar>
+              <ci> DNA_damage </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> CDKN1A_transcr_by_FoxO3a_n_DNA_damage </ci>
+              <ci> DNA_damage </ci>
+              <ci> FoxO3a </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_11_1" name="function_4_reaction_11_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt_pS473 </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a </ci>
+            </bvar>
+            <bvar>
+              <ci> FoxO3a_phos_by_Akt_pS473 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> FoxO3a_phos_by_Akt_pS473 </ci>
+              <ci> FoxO3a </ci>
+              <ci> Akt_pS473 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_10_1" name="function_4_reaction_10_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Mitophagy </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448 </ci>
+            </bvar>
+            <bvar>
+              <ci> mitophagy_inactiv_by_mTORC1_pS2448 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mitophagy_inactiv_by_mTORC1_pS2448 </ci>
+              <ci> Mitophagy </ci>
+              <ci> mTORC1_pS2448 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_8_1" name="function_4_reaction_8_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> AMPK_pT172 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448_dephos_by_AMPK_pT172 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mTORC1_pS2448_dephos_by_AMPK_pT172 </ci>
+              <ci> mTORC1_pS2448 </ci>
+              <ci> AMPK_pT172 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_6_1" name="function_4_reaction_6_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Amino_Acids </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_S2448_phos_by_AA </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> mTORC1_S2448_phos_by_AA </ci>
+              <ci> mTORC1 </ci>
+              <ci> Amino_Acids </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_4_1" name="function_4_reaction_4_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> AMPK_pT172 </ci>
+            </bvar>
+            <bvar>
+              <ci> AMPK_pT172_dephos_by_Mito_membr_pot_new </ci>
+            </bvar>
+            <bvar>
+              <ci> Mito_membr_pot_new </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> AMPK_pT172_dephos_by_Mito_membr_pot_new </ci>
+              <ci> AMPK_pT172 </ci>
+              <ci> Mito_membr_pot_new </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_2_1" name="function_4_reaction_2_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt_pS473 </ci>
+            </bvar>
+            <bvar>
+              <ci> Akt_pS473_dephos_by_mTORC1_pS2448 </ci>
+            </bvar>
+            <bvar>
+              <ci> mTORC1_pS2448 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Akt_pS473_dephos_by_mTORC1_pS2448 </ci>
+              <ci> Akt_pS473 </ci>
+              <ci> mTORC1_pS2448 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4_reaction_1_1" name="function_4_reaction_1_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt </ci>
+            </bvar>
+            <bvar>
+              <ci> Akt_S473_phos_by_insulin </ci>
+            </bvar>
+            <bvar>
+              <ci> Insulin </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Akt_S473_phos_by_insulin </ci>
+              <ci> Akt </ci>
+              <ci> Insulin </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_2" name="Constant flux (irreversible)">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <ci> v </ci>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="86400"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_3" id="Cell" name="Cell" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_4" id="AMPK" name="AMPK" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P54646"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9Y478"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_5" id="AMPK_pT172" name="AMPK_pT172" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P54646"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9Y478"/>
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_6" id="AMPK_pT172_obs" name="AMPK_pT172_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="Akt" name="Akt" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P31749"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_8" id="Akt_pS473" name="Akt_pS473" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P31749"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_9" id="Akt_pS473_obs" name="Akt_pS473_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_10" id="Amino_Acids" name="Amino_Acids" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:33709"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" id="CDKN1A" name="CDKN1A" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P38936"/>
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" id="CDKN1A_obs" name="CDKN1A_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_13" id="CDKN1B" name="CDKN1B" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q6I9V6"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" id="CDKN1B_obs" name="CDKN1B_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_15" id="DNA_damage" name="DNA_damage" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:16991"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_16" id="DNA_damage_gammaH2AX_obs" name="DNA_damage_gammaH2AX_obs" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_17" id="FoxO3a" name="FoxO3a" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/O43524"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_18" id="FoxO3a_pS253" name="FoxO3a_pS253" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_18">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/O43524"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_19" id="FoxO3a_pS253_obs" name="FoxO3a_pS253_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="FoxO3a_total_obs" name="FoxO3a_total_obs" compartment="Cell" initialConcentration="20" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_21" id="IKKbeta" name="IKKbeta" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_21">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/O14920"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_22" id="Insulin" name="Insulin" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_22">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:5931"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_23" id="Irradiation" name="Irradiation" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_23">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000405"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_24" id="JNK" name="JNK" compartment="Cell" initialConcentration="25" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_24">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P45983"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_25" id="JNK_pT183" name="JNK_pT183" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_25">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P45983"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_26" id="JNK_pT183_obs" name="JNK_pT183_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_27" id="Mito_Mass_obs" name="Mito_Mass_obs" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_28" id="Mito_Membr_Pot_obs" name="Mito_Membr_Pot_obs" compartment="Cell" initialConcentration="12.12" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_29" id="Mito_mass_new" name="Mito_mass_new" compartment="Cell" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005739"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_30" id="Mito_mass_old" name="Mito_mass_old" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_30">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005739"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_31" id="Mito_mass_turnover" name="Mito_mass_turnover" compartment="Cell" initialConcentration="25" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_31">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005739"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_32" id="Mito_membr_pot_new" name="Mito_membr_pot_new" compartment="Cell" initialConcentration="12.12" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_32">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005739"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_33" id="Mito_membr_pot_old" name="Mito_membr_pot_old" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_33">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005739"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_34" id="Mitophagy" name="Mitophagy" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_34">
+              <bqbiol:hasProperty>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0000422"/>
+                </rdf:Bag>
+              </bqbiol:hasProperty>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_35" id="Mitophagy_obs" name="Mitophagy_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_36" id="Nil" name="Nil" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_36">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000291"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_37" id="ROS" name="ROS" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_37">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/chebi/CHEBI:26523"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_38" id="ROS_obs" name="ROS_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_39" id="SA_beta_gal" name="SA_beta_gal" compartment="Cell" initialConcentration="0.81" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_39">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P16278"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_40" id="SA_beta_gal_obs" name="SA_beta_gal_obs" compartment="Cell" initialConcentration="0.81" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_41" id="mTORC1" name="mTORC1" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_41">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031931"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_42" id="mTORC1_pS2448" name="mTORC1_pS2448" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_42">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0031931"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_43" id="mTOR_pS2448_obs" name="mTOR_pS2448_obs" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_44" id="AMPK_T172_phos" name="AMPK_T172_phos" value="0.355183987378767" constant="true"/>
+      <parameter metaid="metaid_45" id="AMPK_pT172_dephos_by_Mito_membr_pot_new" name="AMPK_pT172_dephos_by_Mito_membr_pot_new" value="0.117744691539618" constant="true"/>
+      <parameter metaid="metaid_46" id="AMPK_pT172_dephos_by_Mito_membr_pot_old" name="AMPK_pT172_dephos_by_Mito_membr_pot_old" value="1.00000000000003e-06" constant="true"/>
+      <parameter metaid="metaid_47" id="Akt_S473_phos_by_insulin" name="Akt_S473_phos_by_insulin" value="0.588783148144923" constant="true"/>
+      <parameter metaid="metaid_48" id="Akt_pS473_dephos_by_mTORC1_pS2448" name="Akt_pS473_dephos_by_mTORC1_pS2448" value="0.114598191621279" constant="true"/>
+      <parameter metaid="metaid_49" id="CDKN1A_inactiv_by_Akt_pS473" name="CDKN1A_inactiv_by_Akt_pS473" value="0.0667971061916905" constant="true"/>
+      <parameter metaid="metaid_50" id="CDKN1A_transcr_by_FoxO3a_n_DNA_damage" name="CDKN1A_transcr_by_FoxO3a_n_DNA_damage" value="0.0852182335681166" constant="true"/>
+      <parameter metaid="metaid_51" id="CDKN1B_inactiv_by_Akt_pS473" name="CDKN1B_inactiv_by_Akt_pS473" value="0.0596841598127919" constant="true"/>
+      <parameter metaid="metaid_52" id="CDKN1B_transcr_by_FoxO3a_n_DNA_damage" name="CDKN1B_transcr_by_FoxO3a_n_DNA_damage" value="0.0920526565951487" constant="true"/>
+      <parameter metaid="metaid_53" id="DNA_damaged_by_ROS" name="DNA_damaged_by_ROS" value="0.118873655169353" constant="true"/>
+      <parameter metaid="metaid_54" id="DNA_damaged_by_irradiation" name="DNA_damaged_by_irradiation" value="9237.72311545872" constant="true"/>
+      <parameter metaid="metaid_55" id="DNA_repair" name="DNA_repair" value="0.325724769122274" constant="true"/>
+      <parameter metaid="metaid_56" id="FoxO3a_pS253_degrad" name="FoxO3a_pS253_degrad" value="39.4068609318082" constant="true"/>
+      <parameter metaid="metaid_57" id="FoxO3a_phos_by_Akt_pS473" name="FoxO3a_phos_by_Akt_pS473" value="6.83511123229576" constant="true"/>
+      <parameter metaid="metaid_58" id="FoxO3a_phos_by_JNK_pT183" name="FoxO3a_phos_by_JNK_pT183" value="0.112877630496044" constant="true"/>
+      <parameter metaid="metaid_59" id="FoxO3a_synthesis" name="FoxO3a_synthesis" value="407.307409980937" constant="true"/>
+      <parameter metaid="metaid_60" id="IKKbeta_activ_by_ROS" name="IKKbeta_activ_by_ROS" value="1" constant="true"/>
+      <parameter metaid="metaid_61" id="IKKbeta_inactiv" name="IKKbeta_inactiv" value="1" constant="true"/>
+      <parameter metaid="metaid_62" id="JNK_activ_by_ROS" name="JNK_activ_by_ROS" value="0.00502329152478409" constant="true"/>
+      <parameter metaid="metaid_63" id="JNK_pT183_inactiv" name="JNK_pT183_inactiv" value="0.0718429173444438" constant="true"/>
+      <parameter metaid="metaid_64" id="ROS_prod_by_Mito_membr_pot_new" name="ROS_prod_by_Mito_membr_pot_new" value="4.55464788075885" constant="true"/>
+      <parameter metaid="metaid_65" id="ROS_prod_by_Mito_membr_pot_old" name="ROS_prod_by_Mito_membr_pot_old" value="772.829490967078" constant="true"/>
+      <parameter metaid="metaid_66" id="ROS_turnover" name="ROS_turnover" value="3.23082321168464" constant="true"/>
+      <parameter metaid="metaid_67" id="mTORC1_S2448_phos_by_AA" name="mTORC1_S2448_phos_by_AA" value="1.00008999860285e-06" constant="true"/>
+      <parameter metaid="metaid_68" id="mTORC1_S2448_phos_by_AA_n_Akt_pS473" name="mTORC1_S2448_phos_by_AA_n_Akt_pS473" value="162.471039450073" constant="true"/>
+      <parameter metaid="metaid_69" id="mTORC1_S2448_phos_by_AA_n_IKKbeta" name="mTORC1_S2448_phos_by_AA_n_IKKbeta" value="1.00008996727694e-05" constant="true"/>
+      <parameter metaid="metaid_70" id="mTORC1_pS2448_dephos_by_AMPK_pT172" name="mTORC1_pS2448_dephos_by_AMPK_pT172" value="191.297262771509" constant="true"/>
+      <parameter metaid="metaid_71" id="mito_biogenesis_by_AMPK_pT172" name="mito_biogenesis_by_AMPK_pT172" value="5.8915457309741e-05" constant="true"/>
+      <parameter metaid="metaid_72" id="mito_biogenesis_by_mTORC1_pS2448" name="mito_biogenesis_by_mTORC1_pS2448" value="0.0133620123598202" constant="true"/>
+      <parameter metaid="metaid_73" id="mito_dysfunction" name="mito_dysfunction" value="0.0270695257507146" constant="true"/>
+      <parameter metaid="metaid_74" id="mito_membr_pot_new_dec" name="mito_membr_pot_new_dec" value="1094.58423149719" constant="true"/>
+      <parameter metaid="metaid_75" id="mito_membr_pot_new_inc" name="mito_membr_pot_new_inc" value="9882.02736076158" constant="true"/>
+      <parameter metaid="metaid_76" id="mito_membr_pot_old_dec" name="mito_membr_pot_old_dec" value="0.954903499913184" constant="true"/>
+      <parameter metaid="metaid_77" id="mito_membr_pot_old_inc" name="mito_membr_pot_old_inc" value="0.00586017882122243" constant="true"/>
+      <parameter metaid="metaid_78" id="mitophagy_activ_by_FoxO3a_n_AMPK_pT172" name="mitophagy_activ_by_FoxO3a_n_AMPK_pT172" value="1319.84219165251" constant="true"/>
+      <parameter metaid="metaid_79" id="mitophagy_inactiv_by_mTORC1_pS2448" name="mitophagy_inactiv_by_mTORC1_pS2448" value="645.999307230137" constant="true"/>
+      <parameter metaid="metaid_80" id="mitophagy_new" name="mitophagy_new" value="0.22465992989378" constant="true"/>
+      <parameter metaid="metaid_81" id="mitophagy_old" name="mitophagy_old" value="0.00122607614891116" constant="true"/>
+      <parameter metaid="metaid_82" id="scale_AMPK_pT172_obs" name="scale_AMPK_pT172_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_83" id="scale_Akt_pS473_obs" name="scale_Akt_pS473_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_84" id="scale_CDKN1A_obs" name="scale_CDKN1A_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_85" id="scale_CDKN1B_obs" name="scale_CDKN1B_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_86" id="scale_DNA_damage_gammaH2AX_obs" name="scale_DNA_damage_gammaH2AX_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_87" id="scale_FoxO3a_pS253_obs" name="scale_FoxO3a_pS253_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_88" id="scale_FoxO3a_total_obs" name="scale_FoxO3a_total_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_89" id="scale_JNK_pT183_obs" name="scale_JNK_pT183_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_90" id="scale_Mito_Mass_obs" name="scale_Mito_Mass_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_91" id="scale_Mito_Membr_Pot_obs" name="scale_Mito_Membr_Pot_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_92" id="scale_Mitophagy_obs" name="scale_Mitophagy_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_93" id="scale_ROS_obs" name="scale_ROS_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_94" id="scale_SA_beta_gal_obs" name="scale_SA_beta_gal_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_95" id="scale_mTOR_pS2448_obs" name="scale_mTOR_pS2448_obs" value="1" constant="true"/>
+      <parameter metaid="metaid_96" id="sen_ass_beta_gal_dec" name="sen_ass_beta_gal_dec" value="0.154821166783837" constant="true"/>
+      <parameter metaid="metaid_97" id="sen_ass_beta_gal_inc_by_Mitophagy" name="sen_ass_beta_gal_inc_by_Mitophagy" value="1.00000000000011e-06" constant="true"/>
+      <parameter metaid="metaid_98" id="sen_ass_beta_gal_inc_by_ROS" name="sen_ass_beta_gal_inc_by_ROS" value="0.0701139988718817" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_99" variable="mTOR_pS2448_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_mTOR_pS2448_obs </ci>
+            <ci> mTORC1_pS2448 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_100" variable="FoxO3a_pS253_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_FoxO3a_pS253_obs </ci>
+            <ci> FoxO3a_pS253 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_101" variable="AMPK_pT172_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_AMPK_pT172_obs </ci>
+            <ci> AMPK_pT172 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_102" variable="Mito_Mass_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_Mito_Mass_obs </ci>
+            <apply>
+              <plus/>
+              <ci> Mito_mass_new </ci>
+              <ci> Mito_mass_old </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_103" variable="CDKN1A_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_CDKN1A_obs </ci>
+            <ci> CDKN1A </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_104" variable="CDKN1B_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_CDKN1B_obs </ci>
+            <ci> CDKN1B </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_105" variable="Mito_Membr_Pot_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_Mito_Membr_Pot_obs </ci>
+            <apply>
+              <plus/>
+              <ci> Mito_membr_pot_new </ci>
+              <ci> Mito_membr_pot_old </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_106" variable="Mitophagy_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_Mitophagy_obs </ci>
+            <ci> Mitophagy </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_107" variable="FoxO3a_total_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_FoxO3a_total_obs </ci>
+            <apply>
+              <plus/>
+              <ci> FoxO3a </ci>
+              <ci> FoxO3a_pS253 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_108" variable="ROS_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_ROS_obs </ci>
+            <ci> ROS </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_109" variable="JNK_pT183_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_JNK_pT183_obs </ci>
+            <ci> JNK_pT183 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_110" variable="SA_beta_gal_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_SA_beta_gal_obs </ci>
+            <ci> SA_beta_gal </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_111" variable="Akt_pS473_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_Akt_pS473_obs </ci>
+            <ci> Akt_pS473 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_112" variable="Irradiation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <cn> 0 </cn>
+              <apply>
+                <lt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <apply>
+                  <minus/>
+                  <cn> 1 </cn>
+                </apply>
+              </apply>
+            </piece>
+            <otherwise>
+              <piecewise>
+                <piece>
+                  <cn> 0 </cn>
+                  <apply>
+                    <lt/>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <cn> 0 </cn>
+                  </apply>
+                </piece>
+                <otherwise>
+                  <piecewise>
+                    <piece>
+                      <cn> 1 </cn>
+                      <apply>
+                        <lt/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <cn> 0.003472 </cn>
+                      </apply>
+                    </piece>
+                    <otherwise>
+                      <cn> 0 </cn>
+                    </otherwise>
+                  </piecewise>
+                </otherwise>
+              </piecewise>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_113" variable="Amino_Acids">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <cn> 1 </cn>
+              <apply>
+                <lt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <apply>
+                  <minus/>
+                  <cn> 1 </cn>
+                </apply>
+              </apply>
+            </piece>
+            <otherwise>
+              <piecewise>
+                <piece>
+                  <cn> 1 </cn>
+                  <apply>
+                    <lt/>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <cn> 0 </cn>
+                  </apply>
+                </piece>
+                <otherwise>
+                  <cn> 1 </cn>
+                </otherwise>
+              </piecewise>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_114" variable="Insulin">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <cn> 1 </cn>
+              <apply>
+                <lt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <apply>
+                  <minus/>
+                  <cn> 1 </cn>
+                </apply>
+              </apply>
+            </piece>
+            <otherwise>
+              <piecewise>
+                <piece>
+                  <cn> 1 </cn>
+                  <apply>
+                    <lt/>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <cn> 0 </cn>
+                  </apply>
+                </piece>
+                <otherwise>
+                  <cn> 1 </cn>
+                </otherwise>
+              </piecewise>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_115" variable="DNA_damage_gammaH2AX_obs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> scale_DNA_damage_gammaH2AX_obs </ci>
+            <ci> DNA_damage </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_121" id="reaction_1" name="reaction_1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_116" species="Akt" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_117" species="Akt_pS473" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_118" species="Insulin"/>
+          <modifierSpeciesReference metaid="metaid_119" species="Akt"/>
+          <modifierSpeciesReference metaid="metaid_120" species="Insulin"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_1_1 </ci>
+                <ci> Akt </ci>
+                <ci> Akt_S473_phos_by_insulin </ci>
+                <ci> Insulin </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_127" id="reaction_10" name="reaction_10" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="Mitophagy" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_124" species="mTORC1_pS2448"/>
+          <modifierSpeciesReference metaid="metaid_125" species="Mitophagy"/>
+          <modifierSpeciesReference metaid="metaid_126" species="mTORC1_pS2448"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_10_1 </ci>
+                <ci> Mitophagy </ci>
+                <ci> mTORC1_pS2448 </ci>
+                <ci> mitophagy_inactiv_by_mTORC1_pS2448 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_133" id="reaction_11" name="reaction_11" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_128" species="FoxO3a" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="FoxO3a_pS253" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_130" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_131" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_132" species="Akt_pS473"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_11_1 </ci>
+                <ci> Akt_pS473 </ci>
+                <ci> FoxO3a </ci>
+                <ci> FoxO3a_phos_by_Akt_pS473 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="reaction_12" name="reaction_12" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_134" species="FoxO3a_pS253" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="FoxO3a" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_136" species="JNK_pT183"/>
+          <modifierSpeciesReference metaid="metaid_137" species="FoxO3a_pS253"/>
+          <modifierSpeciesReference metaid="metaid_138" species="JNK_pT183"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_12_1 </ci>
+                <ci> FoxO3a_pS253 </ci>
+                <ci> FoxO3a_phos_by_JNK_pT183 </ci>
+                <ci> JNK_pT183 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_143" id="reaction_13" name="reaction_13" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="FoxO3a_pS253" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_141" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_142" species="FoxO3a_pS253"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> FoxO3a_pS253_degrad </ci>
+              <ci> FoxO3a_pS253 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="reaction_14" name="reaction_14" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="FoxO3a" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_2 </ci>
+                <ci> FoxO3a_synthesis </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_151" id="reaction_15" name="reaction_15" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_146" species="CDKN1A" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_147" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_148" species="DNA_damage"/>
+          <modifierSpeciesReference metaid="metaid_149" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_150" species="DNA_damage"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_15_1 </ci>
+                <ci> CDKN1A_transcr_by_FoxO3a_n_DNA_damage </ci>
+                <ci> DNA_damage </ci>
+                <ci> FoxO3a </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="reaction_16" name="reaction_16" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="CDKN1A" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_154" species="CDKN1A"/>
+          <modifierSpeciesReference metaid="metaid_155" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_156" species="Akt_pS473"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_16_1 </ci>
+                <ci> Akt_pS473 </ci>
+                <ci> CDKN1A </ci>
+                <ci> CDKN1A_inactiv_by_Akt_pS473 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="reaction_17" name="reaction_17" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_158" species="CDKN1B" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_159" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_160" species="DNA_damage"/>
+          <modifierSpeciesReference metaid="metaid_161" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_162" species="DNA_damage"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_17_1 </ci>
+                <ci> CDKN1B_transcr_by_FoxO3a_n_DNA_damage </ci>
+                <ci> DNA_damage </ci>
+                <ci> FoxO3a </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_169" id="reaction_18" name="reaction_18" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="CDKN1B" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_165" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_166" species="CDKN1B"/>
+          <modifierSpeciesReference metaid="metaid_167" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_168" species="Akt_pS473"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_18_1 </ci>
+                <ci> Akt_pS473 </ci>
+                <ci> CDKN1B </ci>
+                <ci> CDKN1B_inactiv_by_Akt_pS473 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="reaction_19" name="reaction_19" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_170" species="DNA_damage" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_171" species="Irradiation"/>
+          <modifierSpeciesReference metaid="metaid_172" species="Irradiation"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_19_1 </ci>
+                <ci> DNA_damaged_by_irradiation </ci>
+                <ci> Irradiation </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_179" id="reaction_2" name="reaction_2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_174" species="Akt_pS473" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_175" species="Akt" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_176" species="mTORC1_pS2448"/>
+          <modifierSpeciesReference metaid="metaid_177" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_178" species="mTORC1_pS2448"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_2_1 </ci>
+                <ci> Akt_pS473 </ci>
+                <ci> Akt_pS473_dephos_by_mTORC1_pS2448 </ci>
+                <ci> mTORC1_pS2448 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="reaction_20" name="reaction_20" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_180" species="DNA_damage" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_181" species="ROS"/>
+          <modifierSpeciesReference metaid="metaid_182" species="ROS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_20_1 </ci>
+                <ci> DNA_damaged_by_ROS </ci>
+                <ci> ROS </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_187" id="reaction_21" name="reaction_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="DNA_damage" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_185" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_186" species="DNA_damage"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> DNA_repair </ci>
+              <ci> DNA_damage </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_191" id="reaction_22" name="reaction_22" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_188" species="ROS" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_189" species="Mito_membr_pot_new"/>
+          <modifierSpeciesReference metaid="metaid_190" species="Mito_membr_pot_new"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_22_1 </ci>
+                <ci> Mito_membr_pot_new </ci>
+                <ci> ROS_prod_by_Mito_membr_pot_new </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="reaction_23" name="reaction_23" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_192" species="ROS" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_193" species="Mito_membr_pot_old"/>
+          <modifierSpeciesReference metaid="metaid_194" species="Mito_membr_pot_old"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_23_1 </ci>
+                <ci> Mito_membr_pot_old </ci>
+                <ci> ROS_prod_by_Mito_membr_pot_old </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_199" id="reaction_24" name="reaction_24" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="ROS" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_198" species="ROS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> ROS_turnover </ci>
+              <ci> ROS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="reaction_25" name="reaction_25" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_200" species="JNK" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_201" species="JNK_pT183" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_202" species="ROS"/>
+          <modifierSpeciesReference metaid="metaid_203" species="JNK"/>
+          <modifierSpeciesReference metaid="metaid_204" species="ROS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_25_1 </ci>
+                <ci> JNK </ci>
+                <ci> JNK_activ_by_ROS </ci>
+                <ci> ROS </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_209" id="reaction_26" name="reaction_26" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="JNK_pT183" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_207" species="JNK" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_208" species="JNK_pT183"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> JNK_pT183_inactiv </ci>
+              <ci> JNK_pT183 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_213" id="reaction_27" name="reaction_27" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_210" species="SA_beta_gal" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_211" species="ROS"/>
+          <modifierSpeciesReference metaid="metaid_212" species="ROS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_27_1 </ci>
+                <ci> ROS </ci>
+                <ci> sen_ass_beta_gal_inc_by_ROS </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_217" id="reaction_28" name="reaction_28" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_214" species="SA_beta_gal" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_215" species="Mitophagy"/>
+          <modifierSpeciesReference metaid="metaid_216" species="Mitophagy"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_28_1 </ci>
+                <ci> Mitophagy </ci>
+                <ci> sen_ass_beta_gal_inc_by_Mitophagy </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_220" id="reaction_29" name="reaction_29" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_218" species="SA_beta_gal" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_219" species="SA_beta_gal"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> sen_ass_beta_gal_dec </ci>
+              <ci> SA_beta_gal </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_224" id="reaction_3" name="reaction_3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_221" species="AMPK" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_222" species="AMPK_pT172" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_223" species="AMPK"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> AMPK_T172_phos </ci>
+              <ci> AMPK </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_230" id="reaction_30" name="reaction_30" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_225" species="Mito_mass_turnover" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_226" species="Mito_mass_new" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_227" species="mTORC1_pS2448"/>
+          <modifierSpeciesReference metaid="metaid_228" species="Mito_mass_turnover"/>
+          <modifierSpeciesReference metaid="metaid_229" species="mTORC1_pS2448"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_30_1 </ci>
+                <ci> Mito_mass_turnover </ci>
+                <ci> mTORC1_pS2448 </ci>
+                <ci> mito_biogenesis_by_mTORC1_pS2448 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_236" id="reaction_31" name="reaction_31" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_231" species="Mito_mass_turnover" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_232" species="Mito_mass_new" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_233" species="mTORC1_pS2448"/>
+          <modifierSpeciesReference metaid="metaid_234" species="Mito_mass_turnover"/>
+          <modifierSpeciesReference metaid="metaid_235" species="mTORC1_pS2448"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_31_1 </ci>
+                <ci> Mito_mass_turnover </ci>
+                <ci> mTORC1_pS2448 </ci>
+                <ci> mito_biogenesis_by_AMPK_pT172 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_242" id="reaction_32" name="reaction_32" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_237" species="Mito_mass_new" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_238" species="Mito_mass_turnover" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_239" species="Mitophagy"/>
+          <modifierSpeciesReference metaid="metaid_240" species="Mito_mass_new"/>
+          <modifierSpeciesReference metaid="metaid_241" species="Mitophagy"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_32_1 </ci>
+                <ci> Mito_mass_new </ci>
+                <ci> Mitophagy </ci>
+                <ci> mitophagy_new </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_248" id="reaction_33" name="reaction_33" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_243" species="Mito_mass_old" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_244" species="Mito_mass_turnover" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_245" species="Mitophagy"/>
+          <modifierSpeciesReference metaid="metaid_246" species="Mito_mass_old"/>
+          <modifierSpeciesReference metaid="metaid_247" species="Mitophagy"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_33_1 </ci>
+                <ci> Mito_mass_old </ci>
+                <ci> Mitophagy </ci>
+                <ci> mitophagy_old </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_254" id="reaction_34" name="reaction_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_249" species="Mito_mass_new" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_250" species="Mito_mass_old" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_251" species="Mito_mass_new"/>
+          <modifierSpeciesReference metaid="metaid_252" species="CDKN1A"/>
+          <modifierSpeciesReference metaid="metaid_253" species="CDKN1A"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_34_1 </ci>
+                <ci> CDKN1A </ci>
+                <ci> Mito_mass_new </ci>
+                <ci> mito_dysfunction </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_258" id="reaction_35" name="reaction_35" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_255" species="Mito_membr_pot_new" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_256" species="Mito_mass_new"/>
+          <modifierSpeciesReference metaid="metaid_257" species="Mito_mass_new"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_35_1 </ci>
+                <ci> Mito_mass_new </ci>
+                <ci> mito_membr_pot_new_inc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_262" id="reaction_36" name="reaction_36" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_259" species="Mito_membr_pot_old" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_260" species="Mito_mass_old"/>
+          <modifierSpeciesReference metaid="metaid_261" species="Mito_mass_old"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_36_1 </ci>
+                <ci> Mito_mass_old </ci>
+                <ci> mito_membr_pot_old_inc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_266" id="reaction_37" name="reaction_37" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_263" species="Mito_membr_pot_new" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_264" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_265" species="Mito_membr_pot_new"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> mito_membr_pot_new_dec </ci>
+              <ci> Mito_membr_pot_new </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_270" id="reaction_38" name="reaction_38" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_267" species="Mito_membr_pot_old" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_269" species="Mito_membr_pot_old"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> mito_membr_pot_old_dec </ci>
+              <ci> Mito_membr_pot_old </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_274" id="reaction_39" name="reaction_39" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_271" species="IKKbeta" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_272" species="ROS"/>
+          <modifierSpeciesReference metaid="metaid_273" species="ROS"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_39_1 </ci>
+                <ci> IKKbeta_activ_by_ROS </ci>
+                <ci> ROS </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_280" id="reaction_4" name="reaction_4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_275" species="AMPK_pT172" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_276" species="AMPK" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_277" species="Mito_membr_pot_new"/>
+          <modifierSpeciesReference metaid="metaid_278" species="AMPK_pT172"/>
+          <modifierSpeciesReference metaid="metaid_279" species="Mito_membr_pot_new"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_4_1 </ci>
+                <ci> AMPK_pT172 </ci>
+                <ci> AMPK_pT172_dephos_by_Mito_membr_pot_new </ci>
+                <ci> Mito_membr_pot_new </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_284" id="reaction_40" name="reaction_40" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_281" species="IKKbeta" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_282" species="Nil" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_283" species="IKKbeta"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <ci> IKKbeta_inactiv </ci>
+              <ci> IKKbeta </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_292" id="reaction_41" name="reaction_41" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_285" species="mTORC1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_286" species="mTORC1_pS2448" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_287" species="mTORC1"/>
+          <modifierSpeciesReference metaid="metaid_288" species="IKKbeta"/>
+          <modifierSpeciesReference metaid="metaid_289" species="Amino_Acids"/>
+          <modifierSpeciesReference metaid="metaid_290" species="IKKbeta"/>
+          <modifierSpeciesReference metaid="metaid_291" species="Amino_Acids"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_41_1 </ci>
+                <ci> Amino_Acids </ci>
+                <ci> IKKbeta </ci>
+                <ci> mTORC1 </ci>
+                <ci> mTORC1_S2448_phos_by_AA_n_IKKbeta </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_298" id="reaction_5" name="reaction_5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_293" species="AMPK_pT172" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_294" species="AMPK" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_295" species="Mito_membr_pot_old"/>
+          <modifierSpeciesReference metaid="metaid_296" species="AMPK_pT172"/>
+          <modifierSpeciesReference metaid="metaid_297" species="Mito_membr_pot_old"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_5_1 </ci>
+                <ci> AMPK_pT172 </ci>
+                <ci> AMPK_pT172_dephos_by_Mito_membr_pot_old </ci>
+                <ci> Mito_membr_pot_old </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_304" id="reaction_6" name="reaction_6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_299" species="mTORC1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_300" species="mTORC1_pS2448" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_301" species="mTORC1"/>
+          <modifierSpeciesReference metaid="metaid_302" species="Amino_Acids"/>
+          <modifierSpeciesReference metaid="metaid_303" species="Amino_Acids"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_6_1 </ci>
+                <ci> Amino_Acids </ci>
+                <ci> mTORC1 </ci>
+                <ci> mTORC1_S2448_phos_by_AA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_312" id="reaction_7" name="reaction_7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_305" species="mTORC1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_306" species="mTORC1_pS2448" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_307" species="mTORC1"/>
+          <modifierSpeciesReference metaid="metaid_308" species="Amino_Acids"/>
+          <modifierSpeciesReference metaid="metaid_309" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_310" species="Akt_pS473"/>
+          <modifierSpeciesReference metaid="metaid_311" species="Amino_Acids"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_7_1 </ci>
+                <ci> Akt_pS473 </ci>
+                <ci> Amino_Acids </ci>
+                <ci> mTORC1 </ci>
+                <ci> mTORC1_S2448_phos_by_AA_n_Akt_pS473 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_318" id="reaction_8" name="reaction_8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_313" species="mTORC1_pS2448" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_314" species="mTORC1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_315" species="mTORC1_pS2448"/>
+          <modifierSpeciesReference metaid="metaid_316" species="AMPK_pT172"/>
+          <modifierSpeciesReference metaid="metaid_317" species="AMPK_pT172"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_8_1 </ci>
+                <ci> AMPK_pT172 </ci>
+                <ci> mTORC1_pS2448 </ci>
+                <ci> mTORC1_pS2448_dephos_by_AMPK_pT172 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_324" id="reaction_9" name="reaction_9" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_319" species="Mitophagy" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_320" species="FoxO3a"/>
+          <modifierSpeciesReference metaid="metaid_321" species="AMPK_pT172"/>
+          <modifierSpeciesReference metaid="metaid_322" species="AMPK_pT172"/>
+          <modifierSpeciesReference metaid="metaid_323" species="FoxO3a"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Cell </ci>
+              <apply>
+                <ci> function_4_reaction_9_1 </ci>
+                <ci> AMPK_pT172 </ci>
+                <ci> FoxO3a </ci>
+                <ci> mitophagy_activ_by_FoxO3a_n_AMPK_pT172 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

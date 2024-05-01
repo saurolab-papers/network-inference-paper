@@ -1,0 +1,32 @@
+// Created by libAntimony v2.13.2
+model *dixit1()
+
+  // Compartments and Species:
+  species T, TStar, V;
+
+  // Reactions:
+  v1:  -> T; lambda*T;
+  v2: T -> ; mu*T;
+  v3: T -> TStar; k0*T*V;
+  v4: TStar -> ; delta*TStar;
+  v5:  -> V; delta*NN*TStar;
+  v6: V -> ; c*V;
+
+  // Species initializations:
+  T = 1000000;
+  TStar = 0;
+  V = 100000000;
+
+  // Variable initializations:
+  NN = 1000;
+  c = 0.35;
+  delta = 1.44;
+  k0 = 2e-09;
+  lambda = 0.624;
+  mu = 0.018;
+
+  // Other declarations:
+  var NN, c, delta, k0, lambda, mu;
+end
+
+dixit1 is "dixit1"

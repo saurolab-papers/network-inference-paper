@@ -1,0 +1,96 @@
+// Created by libAntimony v2.13.2
+model *kouril2()
+
+  // Compartments and Species:
+  species $adp, $atp, bpg, dhap, $f6p, gap, $nadp, $nadph, $p3g;
+
+  // Reactions:
+  v_1: $atp + $p3g -> bpg + $adp; protPGK*(-VmrPGK*adp*bpg/(KpgkADP*KpgkbisP) + VmfPGK*atp*p3g/(KpgkATP*KpgkP3G))/((1 + adp/KiADP)*(1 + (p3g/KpgkP3G)*(1 + atp/KpgkATP) + (bpg/KpgkbisP)*(1 + adp/KpgkADP)));
+  v_2: bpg + $nadph -> gap + $nadp; protGAPdh*(-Vmarev*(gap*nadp/(Kgap*Knadp))*(pi_/Kpi) + Vmfor*bpg*nadph/(KbisP*Knadph))*((gap/Kgap)*pi_/Kpi + bpg/KbisP)^(n - 1)/((1 + nadp/Knadp + nadph/Knadph)*(1 + (gap/Kgap)^n + (pi_/Kpi)^n + ((gap/Kgap)*(pi_/Kpi) + bpg/KbisP)^n));
+  v_3: gap -> dhap; protTIM*(-VmrTIM*dhap/KtimDHAP + VmfTIM*gap/KtimGAP)/(1 + dhap/KtimDHAP + gap/KtimGAP + pep/KtimPEP + p3g/KtimP3G);
+  v_4: dhap + gap -> $f6p; protALDPase*(VmfALD*gap*dhap/(KaldGAP*KaldDHAP))/(1 + gap/KaldGAP + dhap/KaldDHAP + gap*dhap/(KaldGAP*KaldDHAP) + f6p/KaldF6P);
+  v_5: gap -> ; kdgap*gap;
+  v_6: dhap -> ; kddhap*dhap;
+  v_7: bpg -> ; kdbpg*bpg;
+
+  // Species initializations:
+  adp = 0;
+  atp = 10;
+  bpg = 0;
+  dhap = 0;
+  f6p = 0;
+  gap = 0;
+  nadp = 0;
+  nadph = 0.2;
+  p3g = 2;
+
+  // Variable initializations:
+  KaldDHAP = 0.170995;
+  KaldF6P = 1;
+  KaldGAP = 0.0522437;
+  KbisP = 0.000406744;
+  Kgap = 0.83766;
+  KiADP = 1.14174;
+  Knadp = 0.271013;
+  Knadph = 0.0735253;
+  KpgkADP = 0.0848049;
+  KpgkATP = 9.68404;
+  KpgkP3G = 0.541454;
+  KpgkbisP = 5.59;
+  Kpi = 408.523;
+  KtimDHAP = 0.811626;
+  KtimGAP = 0.245106;
+  KtimP3G = 0.399822;
+  KtimPEP = 0.660519;
+  Vmarev = 24.054;
+  VmfALD = 2.64096;
+  VmfPGK = 17.3221;
+  VmfTIM = 239.835;
+  Vmfor = 20.6526;
+  VmrPGK = 30.04;
+  VmrTIM = 239.414;
+  kGDH = 10;
+  kPK = 10;
+  kdbpg = 1.05824;
+  kddhap = 0.0225;
+  kdgap = 0.0559;
+  n = 1.56416;
+  pep = 5;
+  pi_ = 0;
+  protALDPase = 0.0036;
+  protGAPdh = 0.0421;
+  protPGK = 0.0034;
+  protTIM = 0.00085;
+
+  // Other declarations:
+  var KaldDHAP, KaldF6P, KaldGAP, KbisP, Kgap, KiADP, Knadp, Knadph, KpgkADP;
+  var KpgkATP, KpgkP3G, KpgkbisP, Kpi, KtimDHAP, KtimGAP, KtimP3G, KtimPEP;
+  var Vmarev, VmfALD, VmfPGK, VmfTIM, Vmfor, VmrPGK, VmrTIM, kGDH, kPK, kdbpg;
+  var kddhap, kdgap, n, pep, pi_, protALDPase, protGAPdh, protPGK, protTIM;
+
+  // Unit definitions:
+  unit Ln = litre;
+  unit min = 60 second;
+  unit mmol = 1e-3 mole;
+  unit mM = 1e-3 mole / litre;
+  unit volume = Ln;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+
+  // Display Names:
+  Ln is "L";
+
+  // CV terms:
+  adp identity "http://identifiers.org/kegg.compound/C00008"
+  atp identity "http://identifiers.org/kegg.compound/C00002"
+  bpg identity "http://identifiers.org/kegg.compound/C00236"
+  dhap identity "http://identifiers.org/kegg.compound/C00111"
+  f6p identity "http://identifiers.org/kegg.compound/C05345"
+  gap identity "http://identifiers.org/kegg.compound/C00118"
+  nadp identity "http://identifiers.org/kegg.compound/C00006"
+  nadph identity "http://identifiers.org/kegg.compound/C00004"
+  p3g identity "http://identifiers.org/kegg.compound/C00197"
+end
+
+kouril2 is "kouril2"

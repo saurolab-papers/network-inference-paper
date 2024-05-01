@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="wortel4" name="wortel4">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="a" compartment="default_compartment" initialConcentration="43.6059113414968" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="b" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="c" compartment="default_compartment" initialConcentration="39.152640553106" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="d" compartment="default_compartment" initialConcentration="875.728067679313" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="fm" compartment="default_compartment" initialConcentration="0.0627769167303887" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="g" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="p" compartment="default_compartment" initialConcentration="1.071877291459" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_8" id="EXTERNAL" value="1" constant="false"/>
+      <parameter metaid="metaid_9" id="aext" value="2.32175122459047" constant="false"/>
+      <parameter metaid="metaid_10" id="bext" value="1.82097585950486" constant="false"/>
+      <parameter metaid="metaid_11" id="e1" value="1.97972425219533" constant="false"/>
+      <parameter metaid="metaid_12" id="e10" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_13" id="e11" value="0.548430069295763" constant="false"/>
+      <parameter metaid="metaid_14" id="e2" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_15" id="e3" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_16" id="e4" value="1.8765818035848" constant="false"/>
+      <parameter metaid="metaid_17" id="e5" value="0.154469876349102" constant="false"/>
+      <parameter metaid="metaid_18" id="e6" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_19" id="e7" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_20" id="e8" value="12.9070774037041" constant="false"/>
+      <parameter metaid="metaid_21" id="e9" value="1e-06" constant="false"/>
+      <parameter metaid="metaid_22" id="ftot" value="5" constant="false"/>
+      <parameter metaid="metaid_23" id="kaa2" value="0.537724121637483" constant="false"/>
+      <parameter metaid="metaid_24" id="kac5" value="0.45109181910517" constant="false"/>
+      <parameter metaid="metaid_25" id="kcat1" value="4.35128295344753" constant="false"/>
+      <parameter metaid="metaid_26" id="kcat10" value="2.04583181726299" constant="false"/>
+      <parameter metaid="metaid_27" id="kcat11" value="15.6308547611266" constant="false"/>
+      <parameter metaid="metaid_28" id="kcat2" value="2.08470697013596" constant="false"/>
+      <parameter metaid="metaid_29" id="kcat3" value="0.659201960419019" constant="false"/>
+      <parameter metaid="metaid_30" id="kcat4" value="1.21740513898481" constant="false"/>
+      <parameter metaid="metaid_31" id="kcat5" value="7.48882370581632" constant="false"/>
+      <parameter metaid="metaid_32" id="kcat6" value="0.26424160469917" constant="false"/>
+      <parameter metaid="metaid_33" id="kcat7" value="0.515186023045187" constant="false"/>
+      <parameter metaid="metaid_34" id="kcat8" value="0.148031799420018" constant="false"/>
+      <parameter metaid="metaid_35" id="kcat9" value="4.00713635555074" constant="false"/>
+      <parameter metaid="metaid_36" id="keq2" value="2" constant="false"/>
+      <parameter metaid="metaid_37" id="keq4" value="2" constant="false"/>
+      <parameter metaid="metaid_38" id="keq6" value="2" constant="false"/>
+      <parameter metaid="metaid_39" id="kic7" value="1.01557360659626" constant="false"/>
+      <parameter metaid="metaid_40" id="kma1" value="2.65103841264887" constant="false"/>
+      <parameter metaid="metaid_41" id="kma3" value="0.183420075929795" constant="false"/>
+      <parameter metaid="metaid_42" id="kma4" value="6.89306707926306" constant="false"/>
+      <parameter metaid="metaid_43" id="kma5" value="0.329345484841003" constant="false"/>
+      <parameter metaid="metaid_44" id="kmaext1" value="0.232175122459047" constant="false"/>
+      <parameter metaid="metaid_45" id="kmb2" value="0.190218968479388" constant="false"/>
+      <parameter metaid="metaid_46" id="kmb3" value="0.965624239632328" constant="false"/>
+      <parameter metaid="metaid_47" id="kmb6" value="0.890368839214066" constant="false"/>
+      <parameter metaid="metaid_48" id="kmb7" value="5.5364593839414" constant="false"/>
+      <parameter metaid="metaid_49" id="kmbext2" value="18.2097585950486" constant="false"/>
+      <parameter metaid="metaid_50" id="kmc4" value="6.56779619616803" constant="false"/>
+      <parameter metaid="metaid_51" id="kmc6" value="55.7611490930134" constant="false"/>
+      <parameter metaid="metaid_52" id="kmc8" value="4.70771101695726" constant="false"/>
+      <parameter metaid="metaid_53" id="kmd10" value="0.417200201130384" constant="false"/>
+      <parameter metaid="metaid_54" id="kmd5" value="33.0655370631572" constant="false"/>
+      <parameter metaid="metaid_55" id="kmd8" value="1.79688793384447" constant="false"/>
+      <parameter metaid="metaid_56" id="kmd9" value="0.104280856663846" constant="false"/>
+      <parameter metaid="metaid_57" id="kmfm11" value="0.140510704125535" constant="false"/>
+      <parameter metaid="metaid_58" id="kmfm2" value="8.42083191123236" constant="false"/>
+      <parameter metaid="metaid_59" id="kmfm8" value="0.660727064408495" constant="false"/>
+      <parameter metaid="metaid_60" id="kmfp11" value="7.26391447299304" constant="false"/>
+      <parameter metaid="metaid_61" id="kmfp2" value="1.27736476875397" constant="false"/>
+      <parameter metaid="metaid_62" id="kmfp8" value="3.23838653900196" constant="false"/>
+      <parameter metaid="metaid_63" id="kmg10" value="1.38293464784513" constant="false"/>
+      <parameter metaid="metaid_64" id="kmg9" value="0.43294178975732" constant="false"/>
+      <parameter metaid="metaid_65" id="kmp11" value="0.571956386391092" constant="false"/>
+      <parameter metaid="metaid_66" id="kmp7" value="11.3398543717022" constant="false"/>
+      <parameter metaid="metaid_67" id="kmp8" value="6.64006979927262" constant="false"/>
+      <parameter metaid="metaid_68" id="kmpext11" value="1.32831286086816" constant="false"/>
+      <parameter metaid="metaid_69" id="pext" value="0.132831286086816" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_71" id="v_1" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_70" species="a" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> aext </ci>
+                <ci> e1 </ci>
+                <ci> kcat1 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmaext1 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> aext </ci>
+                    <ci> kmaext1 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> kma1 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_74" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_72" species="g" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_73" species="d" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e10 </ci>
+                <ci> kcat10 </ci>
+                <ci> g </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmg10 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> d </ci>
+                    <ci> kmd10 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> g </ci>
+                    <ci> kmg10 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_77" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_75" species="fm" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_76" species="p" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e11 </ci>
+                <ci> kcat11 </ci>
+                <ci> fm </ci>
+                <ci> p </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmfm11 </ci>
+                <ci> kmp11 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> ftot </ci>
+                      <ci> fm </ci>
+                    </apply>
+                    <ci> kmfp11 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> fm </ci>
+                    <ci> kmfm11 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> pext </ci>
+                    <ci> kmpext11 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> p </ci>
+                    <ci> kmp11 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_81" id="v_2" name="v_2" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_78" species="b" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_79" species="fm" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_80" species="a"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> bext </ci>
+                <ci> e2 </ci>
+                <ci> kcat2 </ci>
+                <ci> a </ci>
+                <apply>
+                  <minus/>
+                  <ci> ftot </ci>
+                  <ci> fm </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> b </ci>
+                      <ci> fm </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> bext </ci>
+                      <ci> keq2 </ci>
+                      <apply>
+                        <minus/>
+                        <ci> ftot </ci>
+                        <ci> fm </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kaa2 </ci>
+                <ci> kmbext2 </ci>
+                <ci> kmfp2 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> kaa2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> bext </ci>
+                    <ci> kmbext2 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> b </ci>
+                    <ci> kmb2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> ftot </ci>
+                      <ci> fm </ci>
+                    </apply>
+                    <ci> kmfp2 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> fm </ci>
+                    <ci> kmfm2 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_84" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_82" species="a" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_83" species="b" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e3 </ci>
+                <ci> kcat3 </ci>
+                <ci> a </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kma3 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> kma3 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> b </ci>
+                    <ci> kmb3 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_87" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_85" species="a" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="c" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e4 </ci>
+                <ci> kcat4 </ci>
+                <ci> a </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <apply>
+                      <times/>
+                      <ci> keq4 </ci>
+                      <ci> a </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kma4 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> kma4 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <ci> kmc4 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_91" id="v_5" name="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_88" species="a" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_89" species="d" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_90" species="c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e5 </ci>
+                <ci> kcat5 </ci>
+                <ci> a </ci>
+                <ci> c </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kac5 </ci>
+                <ci> kma5 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <ci> kac5 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> a </ci>
+                    <ci> kma5 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> d </ci>
+                    <ci> kmd5 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_94" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_92" species="b" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_93" species="c" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e6 </ci>
+                <ci> kcat6 </ci>
+                <ci> b </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <apply>
+                      <times/>
+                      <ci> keq6 </ci>
+                      <ci> b </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmb6 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> b </ci>
+                    <ci> kmb6 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <ci> kmc6 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_98" id="v_7" name="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="b" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_96" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_97" species="c"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e7 </ci>
+                <ci> kcat7 </ci>
+                <ci> b </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmb7 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <ci> kic7 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> b </ci>
+                    <ci> kmb7 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> p </ci>
+                    <ci> kmp7 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_103" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_99" species="c" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_100" species="d" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_101" species="fm" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_102" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e8 </ci>
+                <ci> kcat8 </ci>
+                <ci> c </ci>
+                <ci> d </ci>
+                <apply>
+                  <minus/>
+                  <ci> ftot </ci>
+                  <ci> fm </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmc8 </ci>
+                <ci> kmd8 </ci>
+                <ci> kmfp8 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> d </ci>
+                    <ci> kmd8 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> ftot </ci>
+                      <ci> fm </ci>
+                    </apply>
+                    <ci> kmfp8 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> fm </ci>
+                    <ci> kmfm8 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> c </ci>
+                    <ci> kmc8 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> p </ci>
+                    <ci> kmp8 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="d" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_105" species="g" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> e9 </ci>
+                <ci> kcat9 </ci>
+                <ci> d </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kmd9 </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> d </ci>
+                    <ci> kmd9 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> g </ci>
+                    <ci> kmg9 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

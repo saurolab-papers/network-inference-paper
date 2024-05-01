@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *bachar1()
+
+  // Compartments and Species:
+  species $EXT, I1, I2, S;
+
+  // Assignment Rules:
+  N := S + I1 + I2;
+
+  // Reactions:
+  v_1: $EXT -> S; b*(S + I1 + I2);
+  v_2: S -> I1; c*Beta*(I1 + a*I2)*S/(S + I1 + I2);
+  v_3: S -> $EXT; d*S;
+  v_4: I1 -> $EXT; d*I1;
+  v_5: I1 -> I2; k1*I1;
+  v_6: I2 -> I1; Alpha*I2;
+  v_7: I2 -> $EXT; d*I2;
+  v_8: I2 -> $EXT; k2*I2;
+
+  // Species initializations:
+  EXT = 1;
+  I1 = 50;
+  I2 = 0;
+  S = 4950;
+
+  // Variable initializations:
+  Alpha = 0.2;
+  Beta = 0.5;
+  a = 0.6;
+  b = 0.001;
+  c = 0.3;
+  d = 0.0006;
+  k1 = 0.019;
+  k2 = 0.0159;
+
+  // Other declarations:
+  var Alpha, Beta, N, a, b, c, d, k1, k2;
+
+  // Display Names:
+  I1 is "Infectious stage 1";
+  I2 is "Infectious stage 2";
+  S is "Susceptible";
+end
+
+bachar1 is "bachar1"

@@ -1,0 +1,89 @@
+// Created by libAntimony v2.13.2
+model *dupont1()
+
+  // Compartments and Species:
+  compartment Cytosol, extracellular, intracellular_Ca_storepool;
+  species y in intracellular_Ca_storepool, z in Cytosol;
+
+  // Assignment Rules:
+  beta := flag*0.96*exp(-0.2*(time - tstim));
+
+  // Reactions:
+  reaction_0000001:  => z; v1*beta*Cytosol;
+  reaction_0000002:  => z; v0*Cytosol;
+  reaction_0000003: y => z; kf*y*Cytosol;
+  reaction_0000004: z => y; intracellular_Ca_storepool*VM2*z^n/(K2^n + z^n);
+  reaction_0000005: y => z; Cytosol*VM3*(y^m/(KR^m + y^m))*(z^p/(KA^p + z^p));
+  reaction_0000006: z => ; k*z*extracellular;
+
+  // Events:
+  event_0000001: at time > tstim: flag = 1;
+
+  // Species initializations:
+  y = 1.4/intracellular_Ca_storepool;
+  z = 0.1/Cytosol;
+
+  // Compartment initializations:
+  Cytosol = 1;
+  extracellular = 1;
+  intracellular_Ca_storepool = 1;
+
+  // Variable initializations:
+  tstim = 4;
+  flag = 0;
+  K2 = 1;
+  KA = 0.9;
+  KR = 2;
+  VM2 = 65;
+  VM3 = 500;
+  k = 10;
+  kf = 1;
+  m = 2;
+  n = 2;
+  p = 4;
+  v0 = 1;
+  v1 = 7.3;
+
+  // Other declarations:
+  var flag, beta;
+  const Cytosol, extracellular, intracellular_Ca_storepool, tstim, K2, KA;
+  const KR, VM2, VM3, k, kf, m, n, p, v0, v1;
+
+  // Unit definitions:
+  unit microM = 1e-6 mole;
+
+  // Display Names:
+  y is "Ca in the InsP3-insensitive pool";
+  z is "Ca in the cytosol";
+  tstim is "stimulation time";
+  reaction_0000001 is "InsP3 modulated release of Ca from the InsP3 sensitive store";
+  reaction_0000002 is "Constant input of Ca from the extracellular medium";
+  reaction_0000003 is "Leak Ca from pool to cytosol";
+  reaction_0000004 is "Pumping Ca into the InsP3-insensitive store";
+  reaction_0000005 is "Release of Ca from the pool into the cytosol";
+  reaction_0000006 is "Transport of cytosolic ca into the extracellular medium";
+
+  // CV terms:
+  Cytosol hypernym "http://identifiers.org/obo.go/GO:0005829"
+  extracellular hypernym "http://identifiers.org/obo.go/GO:0005576"
+  intracellular_Ca_storepool hypernym "http://identifiers.org/obo.go/GO:0044424"
+  y identity "http://identifiers.org/obo.chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  z identity "http://identifiers.org/obo.chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  reaction_0000001 hypernym "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0007204"
+  reaction_0000002 hypernym "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0007204"
+  reaction_0000003 hypernym "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0007204"
+  reaction_0000004 hypernym "http://identifiers.org/obo.go/GO:0005388",
+                            "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0051481"
+  reaction_0000005 hypernym "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0007204"
+  reaction_0000006 hypernym "http://identifiers.org/obo.go/GO:0006816",
+                            "http://identifiers.org/obo.go/GO:0051481"
+end
+
+dupont1 is "dupont1"

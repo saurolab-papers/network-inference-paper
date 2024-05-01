@@ -1,0 +1,102 @@
+// Created by libAntimony v2.13.2
+model *wortel4()
+
+  // Compartments and Species:
+  species a, b, c, d, fm, g, p;
+
+  // Reactions:
+  v_1:  -> a; aext*e1*kcat1/(kmaext1*(1 + aext/kmaext1 + a/kma1));
+  v_10: g -> d; e10*kcat10*g/(kmg10*(1 + d/kmd10 + g/kmg10));
+  v_11: fm + p -> ; e11*kcat11*fm*p/(kmfm11*kmp11*(1 + (ftot - fm)/kmfp11 + fm/kmfm11)*(1 + pext/kmpext11 + p/kmp11));
+  v_2:  -> b + fm; bext*e2*kcat2*a*(ftot - fm)*(1 - b*fm/(bext*keq2*(ftot - fm)))/(kaa2*kmbext2*kmfp2*(1 + a/kaa2)*(1 + bext/kmbext2 + b/kmb2)*(1 + (ftot - fm)/kmfp2 + fm/kmfm2));
+  v_3: a -> b; e3*kcat3*a/(kma3*(1 + a/kma3 + b/kmb3));
+  v_4: a -> c; e4*kcat4*a*(1 - c/(keq4*a))/(kma4*(1 + a/kma4 + c/kmc4));
+  v_5: a -> d; e5*kcat5*a*c/(kac5*kma5*(1 + c/kac5)*(1 + a/kma5 + d/kmd5));
+  v_6: b -> c; e6*kcat6*b*(1 - c/(keq6*b))/(kmb6*(1 + b/kmb6 + c/kmc6));
+  v_7: b -> p; e7*kcat7*b/(kmb7*(1 + c/kic7)*(1 + b/kmb7 + p/kmp7));
+  v_8: c + d -> fm + p; e8*kcat8*c*d*(ftot - fm)/(kmc8*kmd8*kmfp8*(1 + d/kmd8)*(1 + (ftot - fm)/kmfp8 + fm/kmfm8)*(1 + c/kmc8 + p/kmp8));
+  v_9: d -> g; e9*kcat9*d/(kmd9*(1 + d/kmd9 + g/kmg9));
+
+  // Species initializations:
+  a = 43.6059113414968;
+  b = 1;
+  c = 39.152640553106;
+  d = 875.728067679313;
+  fm = 0.0627769167303887;
+  g = 1;
+  p = 1.071877291459;
+
+  // Variable initializations:
+  EXTERNAL = 1;
+  aext = 2.32175122459047;
+  bext = 1.82097585950486;
+  e1 = 1.97972425219533;
+  e10 = 1e-06;
+  e11 = 0.548430069295763;
+  e2 = 1e-06;
+  e3 = 1e-06;
+  e4 = 1.8765818035848;
+  e5 = 0.154469876349102;
+  e6 = 1e-06;
+  e7 = 1e-06;
+  e8 = 12.9070774037041;
+  e9 = 1e-06;
+  ftot = 5;
+  kaa2 = 0.537724121637483;
+  kac5 = 0.45109181910517;
+  kcat1 = 4.35128295344753;
+  kcat10 = 2.04583181726299;
+  kcat11 = 15.6308547611266;
+  kcat2 = 2.08470697013596;
+  kcat3 = 0.659201960419019;
+  kcat4 = 1.21740513898481;
+  kcat5 = 7.48882370581632;
+  kcat6 = 0.26424160469917;
+  kcat7 = 0.515186023045187;
+  kcat8 = 0.148031799420018;
+  kcat9 = 4.00713635555074;
+  keq2 = 2;
+  keq4 = 2;
+  keq6 = 2;
+  kic7 = 1.01557360659626;
+  kma1 = 2.65103841264887;
+  kma3 = 0.183420075929795;
+  kma4 = 6.89306707926306;
+  kma5 = 0.329345484841003;
+  kmaext1 = 0.232175122459047;
+  kmb2 = 0.190218968479388;
+  kmb3 = 0.965624239632328;
+  kmb6 = 0.890368839214066;
+  kmb7 = 5.5364593839414;
+  kmbext2 = 18.2097585950486;
+  kmc4 = 6.56779619616803;
+  kmc6 = 55.7611490930134;
+  kmc8 = 4.70771101695726;
+  kmd10 = 0.417200201130384;
+  kmd5 = 33.0655370631572;
+  kmd8 = 1.79688793384447;
+  kmd9 = 0.104280856663846;
+  kmfm11 = 0.140510704125535;
+  kmfm2 = 8.42083191123236;
+  kmfm8 = 0.660727064408495;
+  kmfp11 = 7.26391447299304;
+  kmfp2 = 1.27736476875397;
+  kmfp8 = 3.23838653900196;
+  kmg10 = 1.38293464784513;
+  kmg9 = 0.43294178975732;
+  kmp11 = 0.571956386391092;
+  kmp7 = 11.3398543717022;
+  kmp8 = 6.64006979927262;
+  kmpext11 = 1.32831286086816;
+  pext = 0.132831286086816;
+
+  // Other declarations:
+  var EXTERNAL, aext, bext, e1, e10, e11, e2, e3, e4, e5, e6, e7, e8, e9;
+  var ftot, kaa2, kac5, kcat1, kcat10, kcat11, kcat2, kcat3, kcat4, kcat5;
+  var kcat6, kcat7, kcat8, kcat9, keq2, keq4, keq6, kic7, kma1, kma3, kma4;
+  var kma5, kmaext1, kmb2, kmb3, kmb6, kmb7, kmbext2, kmc4, kmc6, kmc8, kmd10;
+  var kmd5, kmd8, kmd9, kmfm11, kmfm2, kmfm8, kmfp11, kmfp2, kmfp8, kmg10;
+  var kmg9, kmp11, kmp7, kmp8, kmpext11, pext;
+end
+
+wortel4 is "wortel4"

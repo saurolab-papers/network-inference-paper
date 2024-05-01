@@ -1,0 +1,90 @@
+// Created by libAntimony v2.13.2
+model *wortel1()
+
+  // Compartments and Species:
+  species a, b, c, d, e, p, w;
+
+  // Reactions:
+  v_1:  -> a; aext*e1*kcat1/(kmaext1*(1 + aext/kmaext1 + a/kma1));
+  v_10: w -> ; e10*kcat10*w/(kmw10*(1 + wext/kmwext10 + w/kmw10));
+  v_2: a -> b + w; e2*kcat2*a/(kma2*(1 + a/kma2 + b/kmb2)*(1 + w/kmw2));
+  v_3: a -> c; e3*kcat3*a/(kma3*(1 + sext/kmsext3)^2*(1 + a/kma3 + c/kmc3));
+  v_4: a -> d; e4*kcat4*a/(kma4*(1 + a/kma4 + d/kmd4));
+  v_5: c -> b; e5*kcat5*c/(kmc5*(1 + b/kmb5 + c/kmc5));
+  v_6: b -> p; e6*kcat6*b/(kmb6*(1 + b/kmb6 + p/kmp6));
+  v_7: c + d -> e; e7*kcat7*c*d/(kmc7*kmd7*(1 + uext/kmuext7 + d/kmd7)*(1 + c/kmc7 + e/kme7));
+  v_8: e -> p + 2 w; e8*kcat8*e/(kme8*(1 + e/kme8 + p/kmp8)*(1 + w/kmw8));
+  v_9: p -> w; e9*kcat9*p/(kmp9*(1 + fext/kmfext9 + p/kmp9)*(1 + w/kmw9));
+
+  // Species initializations:
+  a = 61.4274855570532;
+  b = 25.0461652186299;
+  c = 1;
+  d = 1;
+  e = 1;
+  p = 17.0663407928578;
+  w = 1.76742036253853;
+
+  // Variable initializations:
+  EXTERNAL = 1;
+  aext = 100;
+  e1 = 1.17533712011841;
+  e10 = 4.08468285189287;
+  e2 = 1.47281664811495;
+  e3 = 0;
+  e4 = 0;
+  e5 = 0;
+  e6 = 0.764727360489035;
+  e7 = 0;
+  e8 = 0;
+  e9 = 2.50243601938474;
+  fext = 2;
+  kcat1 = 1;
+  kcat10 = 1;
+  kcat2 = 2;
+  kcat3 = 6;
+  kcat4 = 1;
+  kcat5 = 15;
+  kcat6 = 2;
+  kcat7 = 1;
+  kcat8 = 1;
+  kcat9 = 1;
+  kma1 = 1;
+  kma2 = 1;
+  kma3 = 0.1;
+  kma4 = 1;
+  kmaext1 = 1;
+  kmb2 = 1;
+  kmb5 = 10;
+  kmb6 = 1;
+  kmc3 = 10;
+  kmc5 = 0.1;
+  kmc7 = 1;
+  kmd4 = 1;
+  kmd7 = 1;
+  kme7 = 1;
+  kme8 = 1;
+  kmfext9 = 1;
+  kmp6 = 1;
+  kmp8 = 1;
+  kmp9 = 1;
+  kmsext3 = 10;
+  kmuext7 = 1;
+  kmw10 = 1;
+  kmw2 = 1;
+  kmw8 = 1;
+  kmw9 = 1;
+  kmwext10 = 1;
+  sext = 0;
+  uext = 2;
+  wext = 2;
+
+  // Other declarations:
+  var EXTERNAL, aext, e1, e10, e2, e3, e4, e5, e6, e7, e8, e9, fext, kcat1;
+  var kcat10, kcat2, kcat3, kcat4, kcat5, kcat6, kcat7, kcat8, kcat9, kma1;
+  var kma2, kma3, kma4, kmaext1, kmb2, kmb5, kmb6, kmc3, kmc5, kmc7, kmd4;
+  var kmd7, kme7, kme8, kmfext9, kmp6, kmp8, kmp9, kmsext3, kmuext7, kmw10;
+  var kmw2, kmw8, kmw9, kmwext10, sext, uext, wext;
+end
+
+wortel1 is "wortel1"

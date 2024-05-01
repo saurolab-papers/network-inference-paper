@@ -1,0 +1,107 @@
+// Created by libAntimony v2.13.2
+model *akman2()
+
+  // Compartments and Species:
+  compartment cytoplasm, nucleus;
+  species FC in cytoplasm, FCp in cytoplasm, FN in nucleus, FNp in nucleus;
+  species MF in nucleus;
+
+  // Assignment Rules:
+  Tot_FRQ := FC + FCp + FN + FNp;
+
+  // Reactions:
+  FCdeg: FC => ; vd*FC;
+  FCpdeg: FCp => ; vdp*FCp;
+  FCptrl:  => FCp; ksp*MF;
+  FCptrs: FCp -> FNp; k1np*FCp - k2np*FNp;
+  FCtrl:  => FC; ks*MF;
+  FCtrs: FC -> FN; k1n*FC - k2n*FN;
+  MFdeg: MF => ; vm*MF/(km + MF);
+  MFtrn:  => MF; (vs + amp*((1 + tanh(2*(time - 24*floor(time/24) - dawn)))*(1 - tanh(2*(time - 24*floor(time/24) - dusk)))/4))*ki^n/(ki^n + (FN + FNp)^n);
+
+  // Species initializations:
+  FC = 2.46246334204771/cytoplasm;
+  FCp = 2.7123114824279/cytoplasm;
+  FN = 1.84400040515923/nucleus;
+  FNp = 2.74224951500791/nucleus;
+  MF = 0.725579308537909/nucleus;
+
+  // Compartment initializations:
+  cytoplasm = 1;
+  nucleus = 1;
+
+  // Variable initializations:
+  amp = 0;
+  dawn = 6;
+  dusk = 18;
+  k1n = 0.222636680929471;
+  k1np = 0.272306464006464;
+  k2n = 0.331484503209686;
+  k2np = 0.295420749525813;
+  ki = 5.04543346939346;
+  km = 0.0846004096489894;
+  ks = 0.313846476998244;
+  ksp = 0.294840169149965;
+  n = 6.3958;
+  vd = 0.161111487362275;
+  vdp = 0.139750313979272;
+  vm = 0.885376326739544;
+  vs = 1.2236333742524;
+
+  // Other declarations:
+  var Tot_FRQ;
+  const cytoplasm, nucleus, amp, dawn, dusk, k1n, k1np, k2n, k2np, ki, km;
+  const ks, ksp, n, vd, vdp, vm, vs;
+
+  // SBO terms:
+  cytoplasm.sboTerm = 290
+  nucleus.sboTerm = 290
+  FC.sboTerm = 245
+  FCp.sboTerm = 245
+  FN.sboTerm = 245
+  FNp.sboTerm = 245
+  MF.sboTerm = 278
+  amp.sboTerm = 492
+  dawn.sboTerm = 2
+  dusk.sboTerm = 2
+  k1n.sboTerm = 27
+  k1np.sboTerm = 9
+  k2n.sboTerm = 27
+  k2np.sboTerm = 9
+  ki.sboTerm = 9
+  km.sboTerm = 27
+  ks.sboTerm = 9
+  ksp.sboTerm = 9
+  n.sboTerm = 190
+  vd.sboTerm = 9
+  vdp.sboTerm = 9
+  vm.sboTerm = 186
+  vs.sboTerm = 186
+  FCdeg.sboTerm = 179
+  FCpdeg.sboTerm = 179
+  FCptrl.sboTerm = 184
+  FCptrs.sboTerm = 185
+  FCtrl.sboTerm = 184
+  FCtrs.sboTerm = 185
+  MFdeg.sboTerm = 179
+  MFtrn.sboTerm = 183
+
+  // CV terms:
+  cytoplasm hypernym "http://identifiers.org/go/GO:0005737"
+  nucleus hypernym "http://identifiers.org/go/GO:0005634"
+  FC hypernym "http://identifiers.org/uniprot/P19970"
+  FCp hypernym "http://identifiers.org/uniprot/P19970"
+  FN hypernym "http://identifiers.org/uniprot/P19970"
+  FNp hypernym "http://identifiers.org/uniprot/P19970"
+  MF encodement "http://identifiers.org/uniprot/P19970"
+  FCdeg hypernym "http://identifiers.org/go/GO:0009056"
+  FCpdeg hypernym "http://identifiers.org/go/GO:0009056"
+  FCptrl hypernym "http://identifiers.org/go/GO:0006412"
+  FCptrs hypernym "http://identifiers.org/go/GO:0006810"
+  FCtrl hypernym "http://identifiers.org/go/GO:0006412"
+  FCtrs hypernym "http://identifiers.org/go/GO:0006810"
+  MFdeg hypernym "http://identifiers.org/go/GO:0009056"
+  MFtrn hypernym "http://identifiers.org/go/GO:0006351"
+end
+
+akman2 is "akman2"

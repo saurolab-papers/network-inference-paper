@@ -1,0 +1,69 @@
+// Created by libAntimony v2.13.2
+model *somogyi1()
+
+  // Compartments and Species:
+  compartment ER, cytoplasm, extracellular;
+  species x in ER, y in cytoplasm;
+
+  // Assignment Rules:
+  fy := y^n/(a^n + y^n);
+
+  // Reactions:
+  reaction_0000001:  => y; gamma_*cytoplasm;
+  reaction_0000002: x -> y; k*x*cytoplasm - k1*y*ER;
+  reaction_0000003: y => ; beta*y*extracellular;
+  reaction_0000004: x => y; alpha*fy*x*cytoplasm;
+
+  // Species initializations:
+  x = 1/ER;
+  y = 1/cytoplasm;
+
+  // Compartment initializations:
+  ER = 1;
+  cytoplasm = 1;
+  extracellular = 1;
+
+  // Variable initializations:
+  a = 3;
+  alpha = 5;
+  beta = 1;
+  n = 4;
+  gamma_ = 1;
+  k = 0.01;
+  k1 = 2;
+
+  // Other declarations:
+  var fy;
+  const ER, cytoplasm, extracellular, a, alpha, beta, n, gamma_, k, k1;
+
+  // Display Names:
+  ER is "endoplasmic reticulum";
+  x is "Ca_ER";
+  y is "Ca_Cyt";
+  reaction_0000001 is "Ca flux into the cell";
+  reaction_0000002 is "Ca translocation between cytoplasm and ER";
+  reaction_0000003 is "Ca pumped out of the cell";
+  reaction_0000004 is "InsP3 channel";
+
+  // CV terms:
+  ER hypernym "http://identifiers.org/go/GO:0005783"
+  cytoplasm hypernym "http://identifiers.org/go/GO:0005737"
+  extracellular hypernym "http://identifiers.org/go/GO:0005576"
+  x identity "http://identifiers.org/kegg.compound/C00076",
+             "http://identifiers.org/chebi/CHEBI:29108"
+  y identity "http://identifiers.org/kegg.compound/C00076",
+             "http://identifiers.org/chebi/CHEBI:29108"
+  reaction_0000001 hypernym "http://identifiers.org/go/GO:0006816",
+                            "http://identifiers.org/go/GO:0007204"
+  reaction_0000002 hypernym "http://identifiers.org/go/GO:0006816",
+                            "http://identifiers.org/go/GO:0007204",
+                            "http://identifiers.org/go/GO:0032471"
+  reaction_0000003 hypernym "http://identifiers.org/go/GO:0006816",
+                            "http://identifiers.org/go/GO:0051481",
+                            "http://identifiers.org/go/GO:0005388"
+  reaction_0000004 hypernym "http://identifiers.org/go/GO:0051482",
+                            "http://identifiers.org/go/GO:0005220",
+                            "http://identifiers.org/go/GO:0006816"
+end
+
+somogyi1 is "somogyi1"

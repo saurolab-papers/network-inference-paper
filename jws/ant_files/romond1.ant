@@ -1,0 +1,151 @@
+// Created by libAntimony v2.13.2
+model *romond1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species C1 in compartment_, C2 in compartment_;
+  substanceOnly species $M1 in compartment_, $M2 in compartment_, $X1 in compartment_;
+  substanceOnly species $X2 in compartment_;
+
+  // Assignment Rules:
+  V1 := (C1/(Kc1 + C1))*V_M1;
+  U1 := (C2/(Kc2 + C2))*U_M1;
+  V3 := M1*V_M3;
+  U3 := M2*U_M3;
+
+  // Rate Rules:
+  M1' = V1*(1 - M1)/(K1 + (1 - M1)) - V2*M1/(K2 + M1);
+  M2' = U1*(1 - M2)/(H1 + (1 - M2)) - U2*M2/(H2 + M2);
+  X1' = V3*(1 - X1)/(K3 + (1 - X1)) - V4*X1/(K4 + X1);
+  X2' = U3*(1 - X2)/(H3 + (1 - X2)) - U4*X2/(H4 + X2);
+
+  // Reactions:
+  R1:  => C1; compartment_*vi1*Kim1/(Kim1 + M2);
+  R10: C2 => ; compartment_*kd2*C2;
+  R2: C1 => ; compartment_*vd1*X1*C1/(K_d1 + C1);
+  R3: C1 => ; compartment_*kd1*C1;
+  R8:  => C2; compartment_*vi2*Kim2/(Kim2 + M1);
+  R9: C2 => ; compartment_*vd2*X2*C2/(K_d2 + C2);
+
+  // Species initializations:
+  C1 = 2/compartment_;
+  C1 has uM;
+  C2 = 0;
+  C2 has uM;
+  M1 = 1/compartment_;
+  M1 has dimensionless_per_volume;
+  M2 = 0;
+  M2 has dimensionless_per_volume;
+  X1 = 0;
+  X1 has dimensionless_per_volume;
+  X2 = 0;
+  X2 has dimensionless_per_volume;
+
+  // Compartment initializations:
+  compartment_ = 1;
+  V1 has min_1;
+
+  // Variable initializations:
+  K1 = 0.01;
+  K1 has dimensionless;
+  V2 = 0.15;
+  V2 has min_1;
+  K2 = 0.01;
+  K2 has dimensionless;
+  U1 has min_1;
+  H1 = 0.01;
+  H1 has dimensionless;
+  U2 = 0.15;
+  U2 has min_1;
+  H2 = 0.01;
+  H2 has dimensionless;
+  V3 has min_1;
+  K3 = 0.01;
+  K3 has dimensionless;
+  V4 = 0.05;
+  V4 has min_1;
+  K4 = 0.01;
+  K4 has dimensionless;
+  U3 has min_1;
+  H3 = 0.01;
+  H3 has dimensionless;
+  U4 = 0.05;
+  U4 has min_1;
+  H4 = 0.01;
+  H4 has dimensionless;
+  K_d1 = 0.02;
+  K_d1 has uM;
+  K_d2 = 0.02;
+  K_d2 has uM;
+  Kc1 = 0.5;
+  Kc1 has uM;
+  Kc2 = 0.5;
+  Kc2 has uM;
+  Kim1 = 0.03;
+  Kim1 has dimensionless;
+  Kim2 = 0.03;
+  Kim2 has dimensionless;
+  U_M1 = 0.3;
+  U_M1 has min_1;
+  U_M3 = 0.1;
+  U_M3 has min_1;
+  V_M1 = 0.3;
+  V_M1 has min_1;
+  V_M3 = 0.1;
+  V_M3 has min_1;
+  kd1 = 0.001;
+  kd1 has min_1;
+  kd2 = 0.001;
+  kd2 has min_1;
+  vd1 = 0.025;
+  vd1 has uM_min_1;
+  vd2 = 0.025;
+  vd2 has uM_min_1;
+  vi1 = 0.05;
+  vi1 has uM_min_1;
+  vi2 = 0.05;
+  vi2 has uM_min_1;
+
+  // Other declarations:
+  var V1, U1, V3, U3;
+  const compartment_, K1, V2, K2, H1, U2, H2, K3, V4, K4, H3, U4, H4, K_d1;
+  const K_d2, Kc1, Kc2, Kim1, Kim2, U_M1, U_M3, V_M1, V_M3, kd1, kd2, vd1;
+  const vd2, vi1, vi2;
+
+  // Unit definitions:
+  unit uM_min_1 = 1e-6 mole / (60 second * litre);
+  unit min_1 = 1 / 60 second;
+  unit micromole = 1e-6 mole;
+  unit uM = 1e-6 mole / litre;
+  unit minute = 60 second;
+  unit dimensionless_per_volume = dimensionless / litre;
+
+  // Display Names:
+  C1 is "cyclinB";
+  C2 is "cyclinE";
+  M1 is "cdk1";
+  M2 is "cdk2";
+  X1 is "ubiquitin ligase";
+  X2 is "Ubiquitin ligase 2";
+  R1 is "cdk2 mediated cyclinB synthesis";
+  R10 is "cyclinE degradation";
+  R2 is "Ubiquitin ligase mediated cyclinB degradation";
+  R3 is "cyclinB degradation";
+  R8 is "cyclinE synthesis";
+  R9 is "Ubiquitin ligase mediated cyclinE degradation";
+
+  // CV terms:
+  C1 hypernym "http://identifiers.org/uniprot/Q8WWL7"
+  C2 hypernym "http://identifiers.org/uniprot/P24864"
+  M1 hypernym "http://identifiers.org/uniprot/P06493"
+  M2 hypernym "http://identifiers.org/uniprot/P24941"
+  X1 hypernym "http://identifiers.org/uniprot/Q9UBT2"
+  X2 hypernym "http://identifiers.org/uniprot/Q9UBT2"
+  R1 hypernym "http://identifiers.org/obo.go/GO:0004693"
+  R10 hypernym "http://identifiers.org/obo.go/GO:0008054"
+  R2 hypernym "http://identifiers.org/obo.go/GO:0008054"
+  R3 hypernym "http://identifiers.org/obo.go/GO:0008054"
+  R9 hypernym "http://identifiers.org/obo.go/GO:0008054"
+end
+
+romond1 is "romond1"

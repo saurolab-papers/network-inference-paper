@@ -1,0 +1,373 @@
+// Created by libAntimony v2.13.2
+function function_31(Akt, PI3K_inhibitor, active_PI3K, c1, kdphos_pAkt, kphos_PI3KAkt, pAkt)
+  (kphos_PI3KAkt*active_PI3K*PI3K_inhibitor*c1*Akt - kdphos_pAkt*pAkt)/c1;
+end
+
+function function_11(c1, kf_dpMEK, pMEKcyt)
+  kf_dpMEK*pMEKcyt/c1;
+end
+
+function function_32(TSC, c1, kdphos_pTSC, kphos_AktTSC, kphos_RSKTSC, pAkt, pRSK, pTSC)
+  (kphos_AktTSC*pAkt*TSC + kphos_RSKTSC*pRSK*TSC - kdphos_pTSC*pTSC)/c1;
+end
+
+function function_28(Ras_GTP, Ras_Shoc2, Shoc2, c1, kb_Ras_Shoc2, kf_Ras_Shoc2)
+  (kf_Ras_Shoc2*Ras_GTP*Shoc2 - kb_Ras_Shoc2*Ras_Shoc2)/c1;
+end
+
+function function_25(c2, kexport_pYERK, kimport_pYERK, pYERK_cyt, pYERK_nuc)
+  kimport_pYERK*pYERK_cyt - c2*kexport_pYERK*pYERK_nuc;
+end
+
+function function_21(c1, kdphos_pY_np_cyt, pYERK_cyt)
+  kdphos_pY_np_cyt*pYERK_cyt/c1;
+end
+
+function function_19(c1, kdphos_pTpY_pT_cyt, pTpYERK_cyt)
+  kdphos_pTpY_pT_cyt*pTpYERK_cyt/c1;
+end
+
+function function_17(MEK_inhibitor, c1, kphos_np_pY, pMEK_ERK_cyt)
+  kphos_np_pY*pMEK_ERK_cyt*MEK_inhibitor*c1/c1;
+end
+
+function function_16(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_ppppSos, pTpYERK_cyt, pppSos, ppppSos)
+  kfb_ppppSos*(kcat_pERKcyt*pppSos*pTpYERK_cyt/(Km_pERKcyt + pppSos) - kb_pSos*ppppSos)/c1;
+end
+
+function function_13(Km_pERKcyt, Sos1_2, c1, kb_pSos, kcat_pERKcyt, kf_pSos, pSos, pTpYERK_cyt)
+  (kf_pSos*kcat_pERKcyt*Sos1_2*pTpYERK_cyt/(Km_pERKcyt + Sos1_2) - kb_pSos*pSos)/c1;
+end
+
+function function_9(c2, kexport_pTpYERK, kimport_pTpYERK, pTpYERK_cyt, pTpYERK_nuc)
+  kimport_pTpYERK*pTpYERK_cyt - c2*kexport_pTpYERK*pTpYERK_nuc;
+end
+
+function function_33(Rheb_GDP, Rheb_GTP, TSC, c1, kact_Rheb, kdact_TSCRheb)
+  (kdact_TSCRheb*TSC*Rheb_GTP - kact_Rheb*Rheb_GDP)/c1;
+end
+
+function function_29(Ras_Shoc2, Ras_Shoc2_cRaf, c1, cRaf, kb_RasRaf_Shoc2, kf_RasRaf_Shoc2)
+  (kf_RasRaf_Shoc2*Ras_Shoc2*cRaf - kb_RasRaf_Shoc2*Ras_Shoc2_cRaf)/c1;
+end
+
+function function_26(c2, kexport_pTERK, kimport_pTERK, pTERK_cyt, pTERK_nuc)
+  kimport_pTERK*pTERK_cyt - c2*kexport_pTERK*pTERK_nuc;
+end
+
+function function_24(MEK_inhibitor, c1, kphos_pT_pTpY, pMEKcyt, pTERK_cyt)
+  kphos_pT_pTpY*pMEKcyt*MEK_inhibitor*c1*pTERK_cyt/c1;
+end
+
+function function_23(MEK_inhibitor, c1, kphos_pY_pTpY, pMEKcyt, pYERK_cyt)
+  kphos_pY_pTpY*pYERK_cyt*pMEKcyt*MEK_inhibitor*c1/c1;
+end
+
+function function_22(c1, kdphos_pT_np_cyt, pTERK_cyt)
+  kdphos_pT_np_cyt*pTERK_cyt/c1;
+end
+
+function function_20(c1, kdphos_pTpY_pY_cyt, pTpYERK_cyt)
+  kdphos_pTpY_pY_cyt*pTpYERK_cyt/c1;
+end
+
+function function_18(MEK_inhibitor, c1, kphos_pY_pTpY_MEKERK, pMEK_pYERK)
+  kphos_pY_pTpY_MEKERK*pMEK_pYERK*MEK_inhibitor*c1/c1;
+end
+
+function function_15(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_pppSos, pTpYERK_cyt, ppSos, pppSos)
+  kfb_pppSos*(kcat_pERKcyt*ppSos*pTpYERK_cyt/(Km_pERKcyt + ppSos) - kb_pSos*pppSos)/c1;
+end
+
+function function_14(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_ppSos, pSos, pTpYERK_cyt, ppSos)
+  kfb_ppSos*(kcat_pERKcyt*pSos*pTpYERK_cyt/(Km_pERKcyt + pSos) - kb_pSos*ppSos)/c1;
+end
+
+function function_7(ERKcyt, MEK_ERK_cyt, MEKcyt, c1, kb_MEKERK, kf_MEKERK)
+  (kf_MEKERK*MEKcyt*ERKcyt - kb_MEKERK*MEK_ERK_cyt)/c1;
+end
+
+function function_36(Rheb_GTP, c1, cRaf, inactive_cRaf, kact_RhebRaf, kdact_RhebRaf)
+  (kdact_RhebRaf*Rheb_GTP*cRaf - kact_RhebRaf*inactive_cRaf)/c1;
+end
+
+function function_1(EGF, EGFR, kf_EGFEGFR, kphos_EGFR_mutant)
+  kf_EGFEGFR*EGF*EGFR + kphos_EGFR_mutant*EGFR;
+end
+
+function function_5(RasGAP, Ras_GTP, c1, kf_RasGAP, mutated_Ras)
+  kf_RasGAP*(Ras_GTP - mutated_Ras)*RasGAP/c1;
+end
+
+function function_10(ERKcyt, ERKnuc, c2, kexport_ERK, kimport_ERK)
+  kimport_ERK*ERKcyt - c2*kexport_ERK*ERKnuc;
+end
+
+function function_8(ERKcyt, c1, kb_MEKERK, kf_MEKERK, pMEK_ERK_cyt, pMEKcyt)
+  (kf_MEKERK*ERKcyt*pMEKcyt - kb_MEKERK*pMEK_ERK_cyt)/c1;
+end
+
+function function_6(Ras_GTP, Ras_Raf, c1, cRaf, kb_RasRaf, kf_RasRaf)
+  (kf_RasRaf*cRaf*Ras_GTP - kb_RasRaf*Ras_Raf)/c1;
+end
+
+function function_38(PI3K_inhibitor, active_PI3K, c1, inactive_cRaf, kact_PI3KRaf)
+  kact_PI3KRaf*active_PI3K*PI3K_inhibitor*c1*inactive_cRaf/c1;
+end
+
+function function_35(RSK, c1, kdphos_pRSK, kphos_ERKRSK, pRSK, pTpYERK_cyt)
+  (kphos_ERKRSK*pTpYERK_cyt*RSK - kdphos_pRSK*pRSK)/c1;
+end
+
+function function_37(EGF_EGFR, c1, kf_degra_ERKEGFR, pTpYERK_cyt)
+  kf_degra_ERKEGFR*pTpYERK_cyt*EGF_EGFR/c1;
+end
+
+function function_27(BRaf, BRaf_inhibitor, MEKcyt, Ras_Raf, Ras_Shoc2_cRaf, c1, kf_pMEK, kphos_BRafMEK)
+  (kf_pMEK*(Ras_Raf + Ras_Shoc2_cRaf)*MEKcyt + kphos_BRafMEK*BRaf*BRaf_inhibitor*c1)/c1;
+end
+
+function function_4(EGFR_Sos, RasGEF, Ras_GDP, c1, kf_RasGEF, kf_Sos_Ras)
+  (kf_Sos_Ras*EGFR_Sos*Ras_GDP + kf_RasGEF*RasGEF*Ras_GDP)/c1;
+end
+
+function function_3(EGFR_Sos, EGFR_inhibitor, EGF_EGFR, Sos1_2, c1, kb_Sos, kf_Sos)
+  (kf_Sos*EGF_EGFR*EGFR_inhibitor*c1*Sos1_2 - kb_Sos*EGFR_Sos)/c1;
+end
+
+function function_2(EGF_EGFR, c1, degra_EGF_pEGFR, kb_degra, kf_degra)
+  (kf_degra*EGF_EGFR - kb_degra*degra_EGF_pEGFR)/c1;
+end
+
+function function_12(RasEffector, RassEffector, Ras_GTP, c1, kb_RasEffector, kf_RasEffector)
+  (kf_RasEffector*Ras_GTP*RasEffector - kb_RasEffector*RassEffector)/c1;
+end
+
+function function_30(EGFR_inhibitor, EGF_EGFR, PI3K, Ras_GTP, active_PI3K, c1, kact_EGFRRasPI3K, kdact_PI3K, mutated_PI3K)
+  (kact_EGFRRasPI3K*EGF_EGFR*Ras_GTP*EGFR_inhibitor*c1*PI3K - kdact_PI3K*(active_PI3K - mutated_PI3K))/c1;
+end
+
+function function_34(Rheb_GTP, S6K, c1, kdphos_pS6K, kphos_RhebS6K, pS6K)
+  (kphos_RhebS6K*Rheb_GTP*S6K - kdphos_pS6K*pS6K)/c1;
+end
+
+
+model *fujita()
+
+  // Compartments and Species:
+  compartment c1, c2, default;
+  species Akt in c1, BRaf in c1, BRaf_inhibitor in c1, $EGF in default, EGFR in c1;
+  species EGFR_Sos in c1, EGFR_inhibitor in c1, EGF_EGFR in c1, ERKcyt in c1;
+  species ERKnuc in c2, MEK_ERK_cyt in c1, MEK_inhibitor in c1, MEKcyt in c1;
+  species PI3K in c1, PI3K_inhibitor in c1, RSK in c1, RasEffector in c1;
+  species RasGAP in c1, RasGEF in c1, Ras_GDP in c1, Ras_GTP in c1, Ras_Raf in c1;
+  species Ras_Shoc2 in c1, Ras_Shoc2_cRaf in c1, RassEffector in c1, Rheb_GDP in c1;
+  species Rheb_GTP in c1, S6K in c1, Shoc2 in c1, Sos1_2 in c1, TSC in c1;
+  species active_PI3K in c1, cRaf in c1, degra_EGF_pEGFR in c1, inactive_cRaf in c1;
+  species mutated_PI3K in c1, mutated_Ras in c1, pAkt in c1, pMEK_ERK_cyt in c1;
+  species pMEK_pYERK in c1, pMEKcyt in c1, pRSK in c1, pS6K in c1, pSos in c1;
+  species pTERK_cyt in c1, pTERK_nuc in c2, pTSC in c1, pTpYERK_cyt in c1;
+  species pTpYERK_nuc in c2, pYERK_cyt in c1, pYERK_nuc in c2, ppSos in c1;
+  species pppSos in c1, ppppSos in c1;
+
+  // Reactions:
+  re1: EGFR + $EGF => EGF_EGFR; function_1(EGF, EGFR, kf_EGFEGFR, kphos_EGFR_mutant);
+  re12: pMEKcyt + ERKcyt => pMEK_ERK_cyt; c1*function_8(ERKcyt, c1, kb_MEKERK, kf_MEKERK, pMEK_ERK_cyt, pMEKcyt);
+  re15: pTpYERK_cyt => pTpYERK_nuc; function_9(c2, kexport_pTpYERK, kimport_pTpYERK, pTpYERK_cyt, pTpYERK_nuc);
+  re16: ERKcyt => ERKnuc; function_10(ERKcyt, ERKnuc, c2, kexport_ERK, kimport_ERK);
+  re2: EGF_EGFR => degra_EGF_pEGFR; c1*function_2(EGF_EGFR, c1, degra_EGF_pEGFR, kb_degra, kf_degra);
+  re22: pMEKcyt => MEKcyt; c1*function_11(c1, kf_dpMEK, pMEKcyt);
+  re27: RasEffector + Ras_GTP => RassEffector; c1*function_12(RasEffector, RassEffector, Ras_GTP, c1, kb_RasEffector, kf_RasEffector);
+  re28: Sos1_2 => pSos; c1*function_13(Km_pERKcyt, Sos1_2, c1, kb_pSos, kcat_pERKcyt, kf_pSos, pSos, pTpYERK_cyt);
+  re3: Sos1_2 + EGF_EGFR => EGFR_Sos; c1*function_3(EGFR_Sos, EGFR_inhibitor, EGF_EGFR, Sos1_2, c1, kb_Sos, kf_Sos);
+  re30: pSos => ppSos; c1*function_14(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_ppSos, pSos, pTpYERK_cyt, ppSos);
+  re31: ppSos => pppSos; c1*function_15(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_pppSos, pTpYERK_cyt, ppSos, pppSos);
+  re32: pppSos => ppppSos; c1*function_16(Km_pERKcyt, c1, kb_pSos, kcat_pERKcyt, kfb_ppppSos, pTpYERK_cyt, pppSos, ppppSos);
+  re4: Ras_GDP => Ras_GTP; c1*function_4(EGFR_Sos, RasGEF, Ras_GDP, c1, kf_RasGEF, kf_Sos_Ras);
+  re42: pMEK_ERK_cyt => pMEK_pYERK; c1*function_17(MEK_inhibitor, c1, kphos_np_pY, pMEK_ERK_cyt);
+  re43: pMEK_pYERK => pMEKcyt + pTpYERK_cyt; c1*function_18(MEK_inhibitor, c1, kphos_pY_pTpY_MEKERK, pMEK_pYERK);
+  re44: pTpYERK_cyt => pTERK_cyt; c1*function_19(c1, kdphos_pTpY_pT_cyt, pTpYERK_cyt);
+  re45: pTpYERK_cyt => pYERK_cyt; c1*function_20(c1, kdphos_pTpY_pY_cyt, pTpYERK_cyt);
+  re46: pYERK_cyt => ERKcyt; c1*function_21(c1, kdphos_pY_np_cyt, pYERK_cyt);
+  re47: pTERK_cyt => ERKcyt; c1*function_22(c1, kdphos_pT_np_cyt, pTERK_cyt);
+  re48: pYERK_cyt => pTpYERK_cyt; c1*function_23(MEK_inhibitor, c1, kphos_pY_pTpY, pMEKcyt, pYERK_cyt);
+  re49: pTERK_cyt => pTpYERK_cyt; c1*function_24(MEK_inhibitor, c1, kphos_pT_pTpY, pMEKcyt, pTERK_cyt);
+  re5: Ras_GTP => Ras_GDP; c1*function_5(RasGAP, Ras_GTP, c1, kf_RasGAP, mutated_Ras);
+  re50: pYERK_cyt => pYERK_nuc; function_25(c2, kexport_pYERK, kimport_pYERK, pYERK_cyt, pYERK_nuc);
+  re51: pTERK_cyt => pTERK_nuc; function_26(c2, kexport_pTERK, kimport_pTERK, pTERK_cyt, pTERK_nuc);
+  re52: pTpYERK_nuc => pYERK_nuc; c2*kdphos_pTpY_pY_nuc*pTpYERK_nuc;
+  re53: pTpYERK_nuc => pTERK_nuc; c2*kdphos_pTpY_pT_nuc*pTpYERK_nuc;
+  re54: pYERK_nuc => ERKnuc; c2*kdphos_pY_np_nuc*pYERK_nuc;
+  re55: pTERK_nuc => ERKnuc; c2*kdphos_pT_np_nuc*pTERK_nuc;
+  re56: MEKcyt => pMEKcyt; c1*function_27(BRaf, BRaf_inhibitor, MEKcyt, Ras_Raf, Ras_Shoc2_cRaf, c1, kf_pMEK, kphos_BRafMEK);
+  re57: Shoc2 + Ras_GTP => Ras_Shoc2; c1*function_28(Ras_GTP, Ras_Shoc2, Shoc2, c1, kb_Ras_Shoc2, kf_Ras_Shoc2);
+  re58: cRaf + Ras_Shoc2 => Ras_Shoc2_cRaf; c1*function_29(Ras_Shoc2, Ras_Shoc2_cRaf, c1, cRaf, kb_RasRaf_Shoc2, kf_RasRaf_Shoc2);
+  re6: cRaf + Ras_GTP => Ras_Raf; c1*function_6(Ras_GTP, Ras_Raf, c1, cRaf, kb_RasRaf, kf_RasRaf);
+  re62: PI3K => active_PI3K; c1*function_30(EGFR_inhibitor, EGF_EGFR, PI3K, Ras_GTP, active_PI3K, c1, kact_EGFRRasPI3K, kdact_PI3K, mutated_PI3K);
+  re63: Akt => pAkt; c1*function_31(Akt, PI3K_inhibitor, active_PI3K, c1, kdphos_pAkt, kphos_PI3KAkt, pAkt);
+  re64: TSC => pTSC; c1*function_32(TSC, c1, kdphos_pTSC, kphos_AktTSC, kphos_RSKTSC, pAkt, pRSK, pTSC);
+  re65: Rheb_GTP => Rheb_GDP; c1*function_33(Rheb_GDP, Rheb_GTP, TSC, c1, kact_Rheb, kdact_TSCRheb);
+  re66: S6K => pS6K; c1*function_34(Rheb_GTP, S6K, c1, kdphos_pS6K, kphos_RhebS6K, pS6K);
+  re67: RSK => pRSK; c1*function_35(RSK, c1, kdphos_pRSK, kphos_ERKRSK, pRSK, pTpYERK_cyt);
+  re68: cRaf => inactive_cRaf; c1*function_36(Rheb_GTP, c1, cRaf, inactive_cRaf, kact_RhebRaf, kdact_RhebRaf);
+  re69: EGF_EGFR => degra_EGF_pEGFR; c1*function_37(EGF_EGFR, c1, kf_degra_ERKEGFR, pTpYERK_cyt);
+  re70: inactive_cRaf => cRaf; c1*function_38(PI3K_inhibitor, active_PI3K, c1, inactive_cRaf, kact_PI3KRaf);
+  re9: ERKcyt + MEKcyt => MEK_ERK_cyt; c1*function_7(ERKcyt, MEK_ERK_cyt, MEKcyt, c1, kb_MEKERK, kf_MEKERK);
+
+  // Events:
+  EGFtrig: at 0 after time == 6000, t0=false, persistent=false, fromTrigger=false: EGF = 0.0016;
+
+  // Species initializations:
+  Akt = 1/c1;
+  BRaf = 0;
+  BRaf_inhibitor = 1/c1;
+  EGF = 0;
+  EGFR = 0.42/c1;
+  EGFR_Sos = 0;
+  EGFR_inhibitor = 1/c1;
+  EGF_EGFR = 0;
+  ERKcyt = 0.96/c1;
+  ERKnuc = 0;
+  MEK_ERK_cyt = 0;
+  MEK_inhibitor = 1/c1;
+  MEKcyt = 1.4/c1;
+  PI3K = 1/c1;
+  PI3K_inhibitor = 1/c1;
+  RSK = 1/c1;
+  RasEffector = 2/c1;
+  RasGAP = 1/c1;
+  RasGEF = 1/c1;
+  Ras_GDP = 0.43/c1;
+  Ras_GTP = 0;
+  Ras_Raf = 0;
+  Ras_Shoc2 = 0;
+  Ras_Shoc2_cRaf = 0;
+  RassEffector = 0;
+  Rheb_GDP = 1/c1;
+  Rheb_GTP = 0;
+  S6K = 1/c1;
+  Shoc2 = 0.67/c1;
+  Sos1_2 = 0.12/c1;
+  TSC = 1/c1;
+  active_PI3K = 0;
+  cRaf = 0.013/c1;
+  degra_EGF_pEGFR = 0;
+  inactive_cRaf = 0;
+  mutated_PI3K = 0;
+  mutated_Ras = 0;
+  pAkt = 0;
+  pMEK_ERK_cyt = 0;
+  pMEK_pYERK = 0;
+  pMEKcyt = 0;
+  pRSK = 0;
+  pS6K = 0;
+  pSos = 0;
+  pTERK_cyt = 0;
+  pTERK_nuc = 0;
+  pTSC = 0;
+  pTpYERK_cyt = 0;
+  pTpYERK_nuc = 0;
+  pYERK_cyt = 0;
+  pYERK_nuc = 0;
+  ppSos = 0;
+  pppSos = 0;
+  ppppSos = 0;
+
+  // Compartment initializations:
+  c1 = 1;
+  c2 = 0.2;
+  default = 1;
+
+  // Variable initializations:
+  Km_pERKcyt = 3;
+  kact_EGFRRasPI3K = 3;
+  kact_PI3KRaf = 1.8;
+  kact_Rheb = 0.0021;
+  kact_RhebRaf = 0.04;
+  kb_MEKERK = 0.27;
+  kb_RafMEK = 0.065;
+  kb_RasEffector = 0.1;
+  kb_RasRaf = 0.0049;
+  kb_RasRaf_Shoc2 = 0.049;
+  kb_Ras_Shoc2 = 0.1;
+  kb_Sos = 0.1;
+  kb_degra = 0.001;
+  kb_pSos = 0.0025;
+  kcat_pERKcyt = 0.075;
+  kdact_PI3K = 0.028;
+  kdact_RhebRaf = 4;
+  kdact_TSCRheb = 0.097;
+  kdphos_pAkt = 0.048;
+  kdphos_pRSK = 0.3;
+  kdphos_pS6K = 0.001;
+  kdphos_pTSC = 0.0088;
+  kdphos_pT_np_cyt = 0.0068;
+  kdphos_pT_np_nuc = 0.0058;
+  kdphos_pTpY_pT_cyt = 0.0055;
+  kdphos_pTpY_pT_nuc = 0.0038;
+  kdphos_pTpY_pY_cyt = 0.004;
+  kdphos_pTpY_pY_nuc = 0.0032;
+  kdphos_pY_np_cyt = 0.0067;
+  kdphos_pY_np_nuc = 0.0077;
+  kexport_ERK = 0.013;
+  kexport_pTERK = 0.049;
+  kexport_pTpYERK = 0.0076;
+  kexport_pYERK = 0.017;
+  kf_EGFEGFR = 10;
+  kf_MEKERK = 0.18;
+  kf_RafMEK = 0.65;
+  kf_RasEffector = 1;
+  kf_RasGAP = 0.05;
+  kf_RasGEF = 9e-05;
+  kf_RasRaf = 0.049;
+  kf_RasRaf_Shoc2 = 0.49;
+  kf_Ras_Shoc2 = 1;
+  kf_Sos = 0.1;
+  kf_Sos_Ras = 1;
+  kf_degra = 0.0014;
+  kf_degra_ERKEGFR = 0.02;
+  kf_dpMEK = 0.0096;
+  kf_pMEK = 2;
+  kf_pSos = 1;
+  kfb_ppSos = 1;
+  kfb_pppSos = 1;
+  kfb_ppppSos = 1;
+  kimport_ERK = 0.0017;
+  kimport_pTERK = 0.0022;
+  kimport_pTpYERK = 0.0082;
+  kimport_pYERK = 0.0025;
+  kphos_AktTSC = 1.2;
+  kphos_BRafMEK = 0.01;
+  kphos_EGFR_mutant = 0;
+  kphos_ERKRSK = 0.7;
+  kphos_PI3KAkt = 0.1;
+  kphos_RSKTSC = 0.6;
+  kphos_RhebS6K = 0.002;
+  kphos_np_pY = 0.073;
+  kphos_pT_pTpY = 0.02;
+  kphos_pY_pTpY = 0.02;
+  kphos_pY_pTpY_MEKERK = 0.05;
+
+  // Other declarations:
+  const c1, c2, default, Km_pERKcyt, kact_EGFRRasPI3K, kact_PI3KRaf, kact_Rheb;
+  const kact_RhebRaf, kb_MEKERK, kb_RafMEK, kb_RasEffector, kb_RasRaf, kb_RasRaf_Shoc2;
+  const kb_Ras_Shoc2, kb_Sos, kb_degra, kb_pSos, kcat_pERKcyt, kdact_PI3K;
+  const kdact_RhebRaf, kdact_TSCRheb, kdphos_pAkt, kdphos_pRSK, kdphos_pS6K;
+  const kdphos_pTSC, kdphos_pT_np_cyt, kdphos_pT_np_nuc, kdphos_pTpY_pT_cyt;
+  const kdphos_pTpY_pT_nuc, kdphos_pTpY_pY_cyt, kdphos_pTpY_pY_nuc, kdphos_pY_np_cyt;
+  const kdphos_pY_np_nuc, kexport_ERK, kexport_pTERK, kexport_pTpYERK, kexport_pYERK;
+  const kf_EGFEGFR, kf_MEKERK, kf_RafMEK, kf_RasEffector, kf_RasGAP, kf_RasGEF;
+  const kf_RasRaf, kf_RasRaf_Shoc2, kf_Ras_Shoc2, kf_Sos, kf_Sos_Ras, kf_degra;
+  const kf_degra_ERKEGFR, kf_dpMEK, kf_pMEK, kf_pSos, kfb_ppSos, kfb_pppSos;
+  const kfb_ppppSos, kimport_ERK, kimport_pTERK, kimport_pTpYERK, kimport_pYERK;
+  const kphos_AktTSC, kphos_BRafMEK, kphos_EGFR_mutant, kphos_ERKRSK, kphos_PI3KAkt;
+  const kphos_RSKTSC, kphos_RhebS6K, kphos_np_pY, kphos_pT_pTpY, kphos_pY_pTpY;
+  const kphos_pY_pTpY_MEKERK;
+
+  // Display Names:
+  c1 is "PM";
+  c2 is "Nuc";
+  Sos1_2 is "Sos1";
+end
+
+fujita is "fujita"

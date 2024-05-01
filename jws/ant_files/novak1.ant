@@ -1,0 +1,192 @@
+// Created by libAntimony v2.13.2
+model *novak1()
+
+  // Compartments and Species:
+  compartment cytoplasm;
+  species $IE in cytoplasm, IE_p in cytoplasm, $UbE in cytoplasm, UbE_star in cytoplasm;
+  species $cdc2 in cytoplasm, dimer in cytoplasm, p_dimer in cytoplasm, p_dimer_p in cytoplasm;
+  species dimer_p in cytoplasm, $cdc25 in cytoplasm, cdc25_p in cytoplasm;
+  species cyclin in cytoplasm, $wee1 in cytoplasm, wee1_p in cytoplasm;
+
+  // Assignment Rules:
+  IE := total_IE - IE_p;
+  UbE := total_UbE - UbE_star;
+  cdc2 := total_cdc2 - (dimer + p_dimer + p_dimer_p + dimer_p);
+  cdc25 := total_cdc25 - cdc25_p;
+  wee1 := total_wee1 - wee1_p;
+  Y15P := p_dimer + p_dimer_p;
+  k2 := V2_prime*(total_UbE - UbE_star) + V2_double_prime*UbE_star;
+  k25 := V25_prime*(total_cdc25 - cdc25_p) + V25_double_prime*cdc25_p;
+  kwee := Vwee_prime*wee1_p + Vwee_double_prime*(total_wee1 - wee1_p);
+  total_cyclin := cyclin + dimer + dimer_p + p_dimer + p_dimer_p;
+
+  // Reactions:
+  R1:  => cyclin; k1AA;
+  R10: p_dimer => ; k2*p_dimer;
+  R11: p_dimer_p => p_dimer; kinh*p_dimer_p;
+  R12: dimer_p => p_dimer_p; kwee*dimer_p;
+  R13: p_dimer_p => dimer_p; k25*p_dimer_p;
+  R14: p_dimer_p => ; k2*p_dimer_p;
+  R15: dimer_p => ; k2*dimer_p;
+  R17: $cdc25 => cdc25_p; ka*dimer_p*(total_cdc25 - cdc25_p)/(K_a + total_cdc25 - cdc25_p);
+  R18: cdc25_p => $cdc25; kbPPase*cdc25_p/(K_b + cdc25_p);
+  R19: $wee1 => wee1_p; ke*dimer_p*(total_wee1 - wee1_p)/(K_e + total_wee1 - wee1_p);
+  R2: cyclin => ; k2*cyclin;
+  R20: wee1_p => $wee1; kfPPase*wee1_p/(K_f + wee1_p);
+  R21: $IE => IE_p; kg*dimer_p*(total_IE - IE_p)/(K_g + total_IE - IE_p);
+  R22: IE_p => $IE; khPPAse*IE_p/(K_h + IE_p);
+  R23: $UbE => UbE_star; kc*IE_p*(total_UbE - UbE_star)/(K_c + total_UbE - UbE_star);
+  R24: UbE_star => $UbE; kd_anti_IE*UbE_star/(K_d + UbE_star);
+  R3: cyclin + $cdc2 => dimer; k3*cyclin*cdc2;
+  R4: dimer_p => dimer; kinh*dimer_p;
+  R5: dimer => p_dimer; kwee*dimer;
+  R6: dimer => dimer_p; kcak*dimer;
+  R7: dimer => ; k2*dimer;
+  R8: p_dimer => dimer; k25*p_dimer;
+  R9: p_dimer => p_dimer_p; kcak*p_dimer;
+
+  // Species initializations:
+  IE_p = 0;
+  UbE_star = 0;
+  dimer = 0;
+  p_dimer = 0;
+  p_dimer_p = 0;
+  dimer_p = 0;
+  cdc25_p = 0;
+  cyclin = 100/cytoplasm;
+  wee1_p = 0;
+
+  // Compartment initializations:
+  cytoplasm = 1;
+
+  // Variable initializations:
+  total_IE = 1;
+  total_UbE = 1;
+  total_cdc2 = 100;
+  total_cdc25 = 1;
+  total_wee1 = 1;
+  K_a = 0.1;
+  K_b = 0.1;
+  K_c = 0.01;
+  K_d = 0.01;
+  K_e = 0.3;
+  K_f = 0.3;
+  K_g = 0.01;
+  K_h = 0.01;
+  V25_double_prime = 2;
+  V25_prime = 0.1;
+  V2_double_prime = 1;
+  V2_prime = 0.015;
+  Vwee_double_prime = 1;
+  Vwee_prime = 0.1;
+  k1AA = 1;
+  k3 = 0.01;
+  ka = 0.01;
+  kbPPase = 0.125;
+  kc = 0.1;
+  kcak = 0.25;
+  kd_anti_IE = 0.095;
+  ke = 0.0133;
+  kfPPase = 0.1;
+  kg = 0.0065;
+  khPPAse = 0.087;
+  kinh = 0.025;
+
+  // Other declarations:
+  var Y15P, k2, k25, kwee, total_cyclin;
+  const cytoplasm, total_IE, total_UbE, total_cdc2, total_cdc25, total_wee1;
+  const K_a, K_b, K_c, K_d, K_e, K_f, K_g, K_h, V25_double_prime, V25_prime;
+  const V2_double_prime, V2_prime, Vwee_double_prime, Vwee_prime, k1AA, k3;
+  const ka, kbPPase, kc, kcak, kd_anti_IE, ke, kfPPase, kg, khPPAse, kinh;
+
+  // Unit definitions:
+  unit nanomole = 1e-9 mole;
+  unit minute = 60 second;
+
+  // Display Names:
+  minute is "minutes";
+  IE is "intermediary enzyme";
+  IE_p is "phosphorylated intermediary enzyme";
+  UbE is "ubiquitin conjugating enzyme";
+  UbE_star is "ubiquitin conjugating enzyme";
+  dimer is "cyclin-cdc2 dimer";
+  p_dimer is "Tyr15 phosphorylated dimer";
+  p_dimer_p is "Thr161-Tyr15 phosphorylated dimer";
+  dimer_p is "Thr161 phosphorylated dimer(active MPF)";
+  cdc25_p is "phosphorylated cdc25";
+  wee1_p is "phosphorylated wee1";
+  R1 is "cyclin synthesis";
+  R10 is "cyclin degradation";
+  R11 is "Thr161 dephosphorylation";
+  R12 is "Tyr15 phosphorylation";
+  R13 is "Tyr15 dephosphorylation";
+  R14 is "cyclin degradation";
+  R15 is "cyclin degradation";
+  R17 is "cdc25 activation";
+  R18 is "cdc25 deactivation";
+  R19 is "wee1 deactivation";
+  R2 is "cyclin degradation";
+  R20 is "wee1 activation";
+  R21 is "intermediary enzyme activation";
+  R22 is "intermediary enzyme deactivation";
+  R23 is "ubiquitin conjugating enzyme activation";
+  R24 is "ubiquitin conjugating enzyme deactivation";
+  R3 is "cyclin-cdc2 dimer formation";
+  R4 is "Thr161 dephosphorylation";
+  R5 is "Tyr15 phosphorylation";
+  R6 is "Thr161 phosphorylation";
+  R7 is "cyclin degradation";
+  R8 is "Tyr15 dephosphorylation";
+  R9 is "Thr161 phosphorylation";
+
+  // CV terms:
+  cytoplasm identity "http://identifiers.org/go/GO:0005737"
+  UbE hypernym "http://identifiers.org/go/GO:0031371"
+  UbE_star hypernym "http://identifiers.org/go/GO:0031371"
+  cdc2 hypernym "http://identifiers.org/uniprot/P35567"
+  dimer part "http://identifiers.org/uniprot/P35567",
+             "http://identifiers.org/interpro/IPR015454"
+  p_dimer part "http://identifiers.org/uniprot/P35567",
+               "http://identifiers.org/interpro/IPR015454"
+  p_dimer_p part "http://identifiers.org/uniprot/P35567",
+                 "http://identifiers.org/interpro/IPR015454"
+  dimer_p part "http://identifiers.org/uniprot/P35567",
+               "http://identifiers.org/interpro/IPR015454"
+  cdc25 hypernym "http://identifiers.org/uniprot/P30311"
+  cdc25_p hypernym "http://identifiers.org/uniprot/P30311"
+  cyclin identity "http://identifiers.org/interpro/IPR015454"
+  wee1 hypernym "http://identifiers.org/uniprot/P47817"
+  wee1_p hypernym "http://identifiers.org/uniprot/P47817"
+  R1 hypernym "http://identifiers.org/go/GO:0006412"
+  R10 hypernym "http://identifiers.org/go/GO:0008054"
+  R11 hypernym "http://identifiers.org/go/GO:0000079"
+  R12 hypernym "http://identifiers.org/go/GO:0045736",
+               "http://identifiers.org/reactome/REACT_6178",
+               "http://identifiers.org/ec-code/2.7.10.2"
+  R13 hypernym "http://identifiers.org/go/GO:0045737",
+               "http://identifiers.org/reactome/REACT_6257.1",
+               "http://identifiers.org/ec-code/3.1.3.48"
+  R14 hypernym "http://identifiers.org/go/GO:0008054"
+  R15 hypernym "http://identifiers.org/go/GO:0008054"
+  R17 hypernym "http://identifiers.org/go/GO:0004674",
+               "http://identifiers.org/ec-code/2.7.11.22"
+  R18 hypernym "http://identifiers.org/go/GO:0044257"
+  R19 identity "http://identifiers.org/ec-code/2.7.11.22",
+               "http://identifiers.org/go/GO:0044257"
+  R2 hypernym "http://identifiers.org/go/GO:0008054"
+  R21 identity "http://identifiers.org/ec-code/2.7.11.22"
+  R22 hypernym "http://identifiers.org/go/GO:0044257"
+  R3 hypernym "http://identifiers.org/go/GO:0030332"
+  R4 hypernym "http://identifiers.org/go/GO:0045736"
+  R5 hypernym "http://identifiers.org/go/GO:0045736",
+              "http://identifiers.org/reactome/REACT_6178",
+              "http://identifiers.org/ec-code/2.7.10.2"
+  R6 hypernym "http://identifiers.org/go/GO:0045737"
+  R7 hypernym "http://identifiers.org/go/GO:0008054"
+  R8 hypernym "http://identifiers.org/go/GO:0045737",
+              "http://identifiers.org/reactome/REACT_6257.1",
+              "http://identifiers.org/ec-code/3.1.3.48"
+  R9 hypernym "http://identifiers.org/go/GO:0000079"
+end
+
+novak1 is "novak1"

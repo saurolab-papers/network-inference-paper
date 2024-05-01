@@ -1,0 +1,138 @@
+// Created by libAntimony v2.13.2
+model *piedrafita1()
+
+  // Compartments and Species:
+  compartment env;
+  species $S in env, ST in env, STU in env, STUS in env, STUST in env, STUSU in env;
+  species SU in env, SUST in env, SUSTU in env, $T in env, $U in env;
+
+  // Assignment Rules:
+  k11 := k4;
+  k8 := k4;
+
+  // Reactions:
+  reaction1: STU + $S -> STUS; env*(k1*S*STU - k1r*STUS);
+  reaction10: STUSU -> SU + STU; env*(k10*STUSU - k10r*STU*SU);
+  reaction11: ST => ; env*k11*ST;
+  reaction2: STUS + $T -> STUST; env*(k2*T*STUS - k2r*STUST);
+  reaction3: STUST -> STU + ST; env*(k3*STUST - k3r*ST*STU);
+  reaction4: STU => ; env*k4*STU;
+  reaction5: ST + SU -> SUST; env*(k5*ST*SU - k5r*SUST);
+  reaction6: SUST + $U -> SUSTU; env*(k6*U*SUST - k6r*SUSTU);
+  reaction7: SUSTU -> SU + STU; env*(k7*SUSTU - k7r*STU*SU);
+  reaction8: SU => ; env*k8*SU;
+  reaction9: STUS + $U -> STUSU; env*(k9*U*STUS - k9r*STUSU);
+
+  // Species initializations:
+  S = 4;
+  ST = 0;
+  STU = 5/env;
+  STUS = 0;
+  STUST = 0;
+  STUSU = 0;
+  SU = 0;
+  SUST = 0;
+  SUSTU = 0;
+  T = 2;
+  U = 1;
+
+  // Compartment initializations:
+  env = 1;
+
+  // Variable initializations:
+  k1 = 10;
+  k1 has per_time_per_M;
+  k10 = 0.05;
+  k10 has per_time;
+  k10r = 0.05;
+  k10r has per_time_per_M;
+  k11 has per_time;
+  k4 = 0.3;
+  k4 has per_time;
+  k1r = 10;
+  k1r has per_time;
+  k2 = 10;
+  k2 has per_time_per_M;
+  k2r = 10;
+  k2r has per_time;
+  k3 = 2;
+  k3 has per_time;
+  k3r = 1;
+  k3r has per_time_per_M;
+  k5 = 1;
+  k5 has per_time_per_M;
+  k5r = 1;
+  k5r has per_time;
+  k6 = 1;
+  k6 has per_time_per_M;
+  k6r = 1;
+  k6r has per_time;
+  k7 = 0.1;
+  k7 has per_time;
+  k7r = 0.1;
+  k7r has per_time_per_M;
+  k8 has per_time;
+  k9 = 0.1;
+  k9 has per_time_per_M;
+  k9r = 0.05;
+  k9r has per_time;
+
+  // Other declarations:
+  var k11, k8;
+  const env, k1, k10, k10r, k4, k1r, k2, k2r, k3, k3r, k5, k5r, k6, k6r, k7;
+  const k7r, k9, k9r;
+
+  // Unit definitions:
+  unit per_time_per_M = litre / (second * mole);
+  unit per_time = 1 / second;
+  unit sec = second;
+
+  // Display Names:
+  env is "environment";
+
+  // SBO terms:
+  env.sboTerm = 290
+  S.sboTerm = 240
+  ST.sboTerm = 240
+  STU.sboTerm = 240
+  STUS.sboTerm = 240
+  STUST.sboTerm = 240
+  STUSU.sboTerm = 240
+  SU.sboTerm = 240
+  SUST.sboTerm = 240
+  SUSTU.sboTerm = 240
+  T.sboTerm = 240
+  U.sboTerm = 240
+  k1.sboTerm = 339
+  k10.sboTerm = 35
+  k10r.sboTerm = 39
+  k11.sboTerm = 35
+  k4.sboTerm = 35
+  k1r.sboTerm = 38
+  k2.sboTerm = 339
+  k2r.sboTerm = 38
+  k3.sboTerm = 35
+  k3r.sboTerm = 39
+  k5.sboTerm = 339
+  k5r.sboTerm = 38
+  k6.sboTerm = 339
+  k6r.sboTerm = 38
+  k7.sboTerm = 35
+  k7r.sboTerm = 39
+  k8.sboTerm = 35
+  k9.sboTerm = 339
+  k9r.sboTerm = 38
+  reaction1.sboTerm = 210
+  reaction10.sboTerm = 178
+  reaction11.sboTerm = 179
+  reaction2.sboTerm = 210
+  reaction3.sboTerm = 178
+  reaction4.sboTerm = 179
+  reaction5.sboTerm = 210
+  reaction6.sboTerm = 210
+  reaction7.sboTerm = 178
+  reaction8.sboTerm = 179
+  reaction9.sboTerm = 210
+end
+
+piedrafita1 is "piedrafita1"

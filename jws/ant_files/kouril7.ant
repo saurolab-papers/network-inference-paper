@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *kouril7()
+
+  // Compartments and Species:
+  species ADP, ATP, BPG, $GA, Glc, NAD, NADH, P3G, gap, pep, pyr;
+
+  // Reactions:
+  v1: ATP + P3G -> ADP + BPG; -(VmPGK*(KeqPGK*BPG*ADP - ATP*P3G))/(KmPGKATP*KmPGKP3G*(1 + ADP/KmPGKADP + ATP/KmPGKATP)*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G));
+  v2: ADP + pep -> ATP + pyr; kPK*ADP*pep;
+  v4: NADH + BPG -> NAD + gap; -(-(VmGAPDHr*BPG*NADH/(KmGAPDHBPG*KmGAPDHNADH)) + VmGAPDHf*NAD*gap/(KmGAPDHGAP*KmGAPDHNAD))/((1 + NAD/KmGAPDHNAD + NADH/KmGAPDHNADH)*(1 + BPG/KmGAPDHBPG + gap/KmGAPDHGAP));
+  v5: NAD + Glc -> NADH + $GA; kGDH*Glc*NAD;
+
+  // Species initializations:
+  ADP = 0;
+  ATP = 10;
+  BPG = 0;
+  GA = 0;
+  Glc = 10;
+  NAD = 0;
+  NADH = 0.2;
+  P3G = 3;
+  gap = 0.365;
+  pep = 10;
+  pyr = 0.15;
+
+  // Variable initializations:
+  KeqPGK = 3200;
+  KmGAPDHBPG = 0.0098;
+  KmGAPDHGAP = 0.21;
+  KmGAPDHNAD = 0.09;
+  KmGAPDHNADH = 0.06;
+  KmPGKADP = 0.2;
+  KmPGKATP = 0.3;
+  KmPGKBPG = 0.003;
+  KmPGKP3G = 0.53;
+  VmGAPDHf = 0.188086;
+  VmGAPDHr = 1.04;
+  VmPGK = 0.038;
+  kGDH = 10;
+  kPK = 10;
+
+  // Other declarations:
+  var KeqPGK, KmGAPDHBPG, KmGAPDHGAP, KmGAPDHNAD, KmGAPDHNADH, KmPGKADP, KmPGKATP;
+  var KmPGKBPG, KmPGKP3G, VmGAPDHf, VmGAPDHr, VmPGK, kGDH, kPK;
+end

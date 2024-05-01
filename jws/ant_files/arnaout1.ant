@@ -1,0 +1,38 @@
+// Created by libAntimony v2.13.2
+model *arnaout1()
+
+  // Compartments and Species:
+  species x, y, z;
+
+  // Assignment Rules:
+  v := 1000000*y;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v2: x -> ; d*x;
+  v3: x -> y; beta*s*x*y;
+  v4: y -> ; a*y;
+  v5: y -> ; p*y*z;
+  v6:  -> z; c*y;
+  v7: z -> ; b*z;
+
+  // Species initializations:
+  x = 2.5;
+  y = 0.07;
+  z = 0.5;
+
+  // Variable initializations:
+  a = 0.02;
+  b = 0.15;
+  beta = 0.5;
+  c = 1;
+  d = 0.02;
+  lambda = 0.05;
+  p = 1;
+  s = 0;
+
+  // Other declarations:
+  var a, b, beta, c, d, lambda, p, s, v;
+end
+
+arnaout1 is "arnaout1"

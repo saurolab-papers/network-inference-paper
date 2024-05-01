@@ -1,0 +1,183 @@
+// Created by libAntimony v2.13.2
+model *vanHeerden1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species ACE in compartment_, $ATP in compartment_, Prb in compartment_;
+  species BPG in compartment_, $CO2 in compartment_, $ETOH in compartment_;
+  species F16P in compartment_, F6P in compartment_, G6P in compartment_;
+  species GLCi in compartment_, $GLCo in compartment_, $GLY in compartment_;
+  species $Glyc in compartment_, $NAD in compartment_, NADH in compartment_;
+  species P2G in compartment_, P3G in compartment_, PEP in compartment_, PHOS in compartment_;
+  species PYR in compartment_, $SUCC in compartment_, TRIO in compartment_;
+  species $Trh in compartment_, $X in compartment_;
+
+  // Assignment Rules:
+  ATP := (-SUMAXP + (1 - 4*KEQAK)*Prb + (4*(1 - 4*KEQAK)*KEQAK*Prb^2 + (SUMAXP - (1 - 4*KEQAK)*Prb)^2)^0.5)/(2*(1 - 4*KEQAK));
+
+  // Reactions:
+  v1: GLCi + Prb -> G6P; VMAXHK*(GLCi*(-SUMAXP + (1 - 4*KEQAK)*Prb + (4*(1 - 4*KEQAK)*KEQAK*Prb^2 + (SUMAXP - (1 - 4*KEQAK)*Prb)^2)^0.5)/(2*(1 - 4*KEQAK)*KMHKATP*KMHKGLCi) - G6P*(Prb - (-SUMAXP + (1 - 4*KEQAK)*Prb + (4*(1 - 4*KEQAK)*KEQAK*Prb^2 + (SUMAXP - (1 - 4*KEQAK)*Prb)^2)^0.5)/(1 - 4*KEQAK))/(KEQHK*KMHKATP*KMHKGLCi))/(compartment_*(1 + G6P/KMHKG6P + wt*G6P/KiHKG6P + GLCi/KMHKGLCi)*(1 + (-SUMAXP + (1 - 4*KEQAK)*Prb + (4*(1 - 4*KEQAK)*KEQAK*Prb^2 + (SUMAXP - (1 - 4*KEQAK)*Prb)^2)^0.5)/(2*(1 - 4*KEQAK)*KMHKATP) + (Prb - (-SUMAXP + (1 - 4*KEQAK)*Prb + (4*(1 - 4*KEQAK)*KEQAK*Prb^2 + (SUMAXP - (1 - 4*KEQAK)*Prb)^2)^0.5)/(1 - 4*KEQAK))/KMHKADP));
+  v10: P2G -> PEP; VmENO*(P2G - PEP/KeqENO)/(compartment_*KmENOP2G*(1 + P2G/KmENOP2G + PEP/KmENOPEP));
+  v11: PEP -> Prb + PYR; VmPYK*PEP*(1 + PEP/KmPYKPEP)^(-1 + npyk)*(Prb - (-SUMAXP + (1 - 4*KeqAK)*Prb + (4*(1 - 4*KeqAK)*KeqAK*Prb^2 + (SUMAXP - (1 - 4*KeqAK)*Prb)^2)^0.5)/(1 - 4*KeqAK))/(compartment_*KmPYKPEP*(KmPYKADP + Prb - (-SUMAXP + (1 - 4*KeqAK)*Prb + (4*(1 - 4*KeqAK)*KeqAK*Prb^2 + (SUMAXP - (1 - 4*KeqAK)*Prb)^2)^0.5)/(1 - 4*KeqAK))*((1 + PEP/KmPYKPEP)^npyk + L0PYK*((1 + (-SUMAXP + (1 - 4*KeqAK)*Prb + (4*(1 - 4*KeqAK)*KeqAK*Prb^2 + (SUMAXP - (1 - 4*KeqAK)*Prb)^2)^0.5)/(2*(1 - 4*KeqAK)*KmPYKATP))/(1 + F16P/KmPYKF16P))^npyk));
+  v12: PYR -> ACE + $CO2; VmPDC*PYR^nPDC/(compartment_*KmPDCPYR^nPDC*(1 + PYR^nPDC/KmPDCPYR^nPDC));
+  v13: 2 ACE + 3 $NAD -> $SUCC + 3 NADH; KSUCC*ACE/compartment_;
+  v14: $GLCo -> GLCi; VmGLT*(GLCo - GLCi/KeqGLT)/(compartment_*KmGLTGLCo*(1 + GLCo/KmGLTGLCo + GLCi/KmGLTGLCi + 0.91*GLCo*GLCi/(KmGLTGLCi*KmGLTGLCo)));
+  v15: ACE + NADH -> $ETOH + $NAD; -(VmADH*(ETOH*(NADt - NADH) - ACE*NADH/KeqADH)/(compartment_*KiADHNAD*KmADHETOH*(1 + ETOH*KmADHNAD/(KiADHNAD*KmADHETOH) + KmADHNADH*ACE/(KiADHNADH*KmADHACE) + (NADt - NADH)/KiADHNAD + ETOH*(NADt - NADH)/(KiADHNAD*KmADHETOH) + ETOH*ACE*(NADt - NADH)/(KiADHACE*KiADHNAD*KmADHETOH) + KmADHNADH*ACE*(NADt - NADH)/(KiADHNAD*KiADHNADH*KmADHACE) + NADH/KiADHNADH + ETOH*KmADHNAD*NADH/(KiADHNAD*KiADHNADH*KmADHETOH) + ACE*NADH/(KiADHNADH*KmADHACE) + ETOH*ACE*NADH/(KiADHETOH*KiADHNADH*KmADHACE))));
+  v16: NADH + TRIO -> PHOS + $GLY + $NAD; VmG3PDH*(-(GLY*(NADt - NADH)/KeqG3PDH) + NADH*TRIO/(1 + KeqTPI))/(compartment_*KmG3PDHDHAP*KmG3PDHNADH*(1 + (NADt - NADH)/KmG3PDHNAD + NADH/KmG3PDHNADH)*(1 + GLY/KmG3PDHGLY + TRIO/((1 + KeqTPI)*KmG3PDHDHAP)));
+  v17: Prb -> PHOS; KATPASE*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(compartment_*(2 - 8*KeqAK));
+  v18: $X -> PHOS; KPHOS*(pT - PHOS)/compartment_;
+  v2: G6P -> F6P; VmPGI*(-(F6P/KeqPGI) + G6P)/(compartment_*KmPGIG6P*(1 + F6P/KmPGIF6P + G6P/KmPGIG6P));
+  v3: G6P + Prb -> $Glyc + 2 PHOS; KmGLYCOGEN*G6P/compartment_;
+  v4: Prb + 2 G6P -> $Trh + 3 PHOS; wt*KTREHALOSE*G6P/compartment_;
+  v5: F6P + Prb -> F16P; gR*VmPFK*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)*(1 + F6P/KmPFKF6P + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP) + gR*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP*KmPFKF6P))/(compartment_*(2 - 8*KeqAK)*KmPFKATP*KmPFKF6P*(L0*(1 + CPFKF26BP*F26BP/KPFKF26BP + CPFKF16BP*F16P/KPFKF16BP)^2*(1 + 2*CPFKAMP*KeqAK*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)^2/((-1 + 4*KeqAK)*KPFKAMP*((SUMAXP - Prb) + 4*KeqAK*Prb - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)))^2*(1 + CiPFKATP*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KiPFKATP))^2*(1 + CPFKATP*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP))^2/((1 + F26BP/KPFKF26BP + F16P/KPFKF16BP)^2*(1 + 2*KeqAK*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)^2/((-1 + 4*KeqAK)*KPFKAMP*((SUMAXP - Prb) + 4*KeqAK*Prb - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)))^2*(1 + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KiPFKATP))^2) + (1 + F6P/KmPFKF6P + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP) + gR*F6P*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPFKATP*KmPFKF6P))^2));
+  v6: F16P -> 2 TRIO; VmALD*(F16P - KeqTPI*TRIO^2/(KeqALD*(1 + KeqTPI)^2))/(compartment_*KmALDF16P*(1 + F16P/KmALDF16P + TRIO/((1 + KeqTPI)*KmALDDHAP) + KeqTPI*TRIO/((1 + KeqTPI)*KmALDGAP) + KeqTPI*F16P*TRIO/((1 + KeqTPI)*KmALDF16P*KmALDGAPi) + KeqTPI*TRIO^2/((1 + KeqTPI)^2*KmALDDHAP*KmALDGAP)));
+  v7: PHOS + TRIO + $NAD -> BPG + NADH; (-(VmGAPDHr*BPG*NADH/(KmGAPDHBPG*KmGAPDHNADH)) + KeqTPI*VmGAPDHf*(NADt - NADH)*PHOS*TRIO/((1 + KeqTPI)*KmGAPDHGAP*KmGAPDHNAD))/(compartment_*(1 + (NADt - NADH)/KmGAPDHNAD + NADH/KmGAPDHNADH)*(1 + PHOS)*(1 + BPG/KmGAPDHBPG + KeqTPI*TRIO/((1 + KeqTPI)*KmGAPDHGAP)));
+  v8: BPG -> P3G + Prb; VmPGK*(KeqPGK*BPG*(SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(1 - 4*KeqAK) - P3G*((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/(2 - 8*KeqAK))/(compartment_*KmPGKATP*KmPGKP3G*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G)*(1 + (SUMAXP - ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((1 - 4*KeqAK)*KmPGKADP) + ((-SUMAXP + Prb - 4*KeqAK*Prb) + ((SUMAXP^2 - 2*SUMAXP*Prb) + 8*KeqAK*SUMAXP*Prb + Prb^2 - 4*KeqAK*Prb^2)^0.5)/((2 - 8*KeqAK)*KmPGKATP)));
+  v9: P3G -> P2G; VmPGM*(-(P2G/KeqPGM) + P3G)/(compartment_*KmPGMP3G*(1 + P2G/KmPGMP2G + P3G/KmPGMP3G));
+
+  // Species initializations:
+  ACE = 0.0474837/compartment_;
+  Prb = 5/compartment_;
+  BPG = 0.111/compartment_;
+  CO2 = 1;
+  ETOH = 0;
+  F16P = 0.836/compartment_;
+  F6P = 0.75247/compartment_;
+  G6P = 3.085/compartment_;
+  GLCi = 0.087/compartment_;
+  GLCo = 110;
+  GLY = 0.15;
+  Glyc = 0;
+  NAD = 0;
+  NADH = 0.044/compartment_;
+  P2G = 0.13771/compartment_;
+  P3G = 0.825/compartment_;
+  PEP = 0.1404/compartment_;
+  PHOS = 10/compartment_;
+  PYR = 0.884031/compartment_;
+  SUCC = 0;
+  TRIO = 0.5177/compartment_;
+  Trh = 0;
+  X = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  SUMAXP = 3.1;
+  KEQAK = 0.45;
+  CPFKAMP = 0.0845;
+  CPFKATP = 3;
+  CPFKF16BP = 0.397;
+  CPFKF26BP = 0.0174;
+  CPFKF6P = 0;
+  CiPFKATP = 100;
+  F26BP = 0.02;
+  KATPASE = 39.5;
+  KEQHK = 3800;
+  KMHKADP = 0.23;
+  KMHKATP = 0.15;
+  KMHKG6P = 30;
+  KMHKGLCi = 0.08;
+  KPFKAMP = 0.0995;
+  KPFKF16BP = 0.111;
+  KPFKF26BP = 0.000682;
+  KPHOS = 0.1;
+  KSUCC = 21.4;
+  KTREHALOSE = 2.32;
+  KeqADH = 6.9e-05;
+  KeqAK = 0.45;
+  KeqALD = 0.069;
+  KeqENO = 6.7;
+  KeqG3PDH = 4300;
+  KeqGLT = 1;
+  KeqPGI = 0.314;
+  KeqPGK = 3200;
+  KeqPGM = 0.19;
+  KeqPYK = 6500;
+  KeqTPI = 0.045;
+  KiADHACE = 1.1;
+  KiADHETOH = 90;
+  KiADHNAD = 0.92;
+  KiADHNADH = 0.031;
+  KiHKG6P = 0.07;
+  KiPFKATP = 0.65;
+  KmADHACE = 1.11;
+  KmADHETOH = 17;
+  KmADHNAD = 0.17;
+  KmADHNADH = 0.11;
+  KmALDDHAP = 2.4;
+  KmALDF16P = 0.3;
+  KmALDGAP = 2;
+  KmALDGAPi = 10;
+  KmENOP2G = 0.04;
+  KmENOPEP = 0.5;
+  KmG3PDHDHAP = 0.4;
+  KmG3PDHGLY = 1;
+  KmG3PDHNAD = 0.93;
+  KmG3PDHNADH = 0.023;
+  KmGAPDHBPG = 0.0098;
+  KmGAPDHGAP = 0.21;
+  KmGAPDHNAD = 0.09;
+  KmGAPDHNADH = 0.06;
+  KmGLTGLCi = 1.1918;
+  KmGLTGLCo = 1.1918;
+  KmGLYCOGEN = 5.8;
+  KmPDCPYR = 4.33;
+  KmPFKATP = 0.71;
+  KmPFKF6P = 0.1;
+  KmPGIF6P = 0.3;
+  KmPGIG6P = 1.4;
+  KmPGKADP = 0.2;
+  KmPGKATP = 0.3;
+  KmPGKBPG = 0.003;
+  KmPGKP3G = 0.53;
+  KmPGMP2G = 0.08;
+  KmPGMP3G = 1.2;
+  KmPYKADP = 0.3;
+  KmPYKATP = 9.3;
+  KmPYKF16P = 0.2;
+  KmPYKPEP = 0.19;
+  L0 = 0.66;
+  L0PYK = 60000;
+  NADt = 1.59;
+  VMAXHK = 226.452;
+  VmADH = 810;
+  VmALD = 322.258;
+  VmENO = 365.806;
+  VmG3PDH = 70.15;
+  VmGAPDHf = 1184.52;
+  VmGAPDHr = 6549.68;
+  VmGLT = 198;
+  VmPDC = 1062.58;
+  VmPFK = 182.903;
+  VmPGI = 339.677;
+  VmPGK = 1306.45;
+  VmPGM = 2525.81;
+  VmPYK = 1088.71;
+  gR = 5.12;
+  nPDC = 1.9;
+  npyk = 4;
+  pT = 10;
+  wt = 1;
+
+  // Other declarations:
+  const compartment_, SUMAXP, KEQAK, CPFKAMP, CPFKATP, CPFKF16BP, CPFKF26BP;
+  const CPFKF6P, CiPFKATP, F26BP, KATPASE, KEQHK, KMHKADP, KMHKATP, KMHKG6P;
+  const KMHKGLCi, KPFKAMP, KPFKF16BP, KPFKF26BP, KPHOS, KSUCC, KTREHALOSE;
+  const KeqADH, KeqAK, KeqALD, KeqENO, KeqG3PDH, KeqGLT, KeqPGI, KeqPGK, KeqPGM;
+  const KeqPYK, KeqTPI, KiADHACE, KiADHETOH, KiADHNAD, KiADHNADH, KiHKG6P;
+  const KiPFKATP, KmADHACE, KmADHETOH, KmADHNAD, KmADHNADH, KmALDDHAP, KmALDF16P;
+  const KmALDGAP, KmALDGAPi, KmENOP2G, KmENOPEP, KmG3PDHDHAP, KmG3PDHGLY;
+  const KmG3PDHNAD, KmG3PDHNADH, KmGAPDHBPG, KmGAPDHGAP, KmGAPDHNAD, KmGAPDHNADH;
+  const KmGLTGLCi, KmGLTGLCo, KmGLYCOGEN, KmPDCPYR, KmPFKATP, KmPFKF6P, KmPGIF6P;
+  const KmPGIG6P, KmPGKADP, KmPGKATP, KmPGKBPG, KmPGKP3G, KmPGMP2G, KmPGMP3G;
+  const KmPYKADP, KmPYKATP, KmPYKF16P, KmPYKPEP, L0, L0PYK, NADt, VMAXHK;
+  const VmADH, VmALD, VmENO, VmG3PDH, VmGAPDHf, VmGAPDHr, VmGLT, VmPDC, VmPFK;
+  const VmPGI, VmPGK, VmPGM, VmPYK, gR, nPDC, npyk, pT, wt;
+
+  // Display Names:
+  compartment_ is "compartment";
+end
+
+vanHeerden1 is "vanHeerden1"

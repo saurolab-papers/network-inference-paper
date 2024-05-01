@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *devos()
+
+  // Compartments and Species:
+  species h, hm, hmm, hmmm, $s, $x, $xm, $xmm, $xmmm;
+
+  // Assignment Rules:
+  H := h/(h + hm + hmm + hmmm);
+  HM := hm/(h + hm + hmm + hmmm);
+  HMM := hmm/(h + hm + hmm + hmmm);
+  HMMM := hmmm/(h + hm + hmm + hmmm);
+  gamma_ := mu*125;
+
+  // Reactions:
+  v_1: $s -> h; gamma_;
+  v_2: h -> hm; dot*k0*h;
+  v_3: hm -> hmm; dot*k1*hm;
+  v_4: hmm -> hmmm; dot*k2*hmm;
+  v_5: h -> $x; mu*h;
+  v_6: hm -> $xm; mu*hm;
+  v_7: hmm -> $xmm; mu*hmm;
+  v_8: hmmm -> $xmmm; mu*hmmm;
+
+  // Species initializations:
+  h = 0;
+  hm = 0;
+  hmm = 0;
+  hmmm = 0;
+  s = 0;
+  x = 0;
+  xm = 0;
+  xmm = 0;
+  xmmm = 0;
+
+  // Variable initializations:
+  dot = 0.00625;
+  mu = 0.00483333;
+  k0 = 0.055;
+  k1 = 0.019;
+  k2 = 0.0087;
+
+  // Other declarations:
+  var H, HM, HMM, HMMM, dot, gamma_, mu, k0, k1, k2;
+end
+
+devos is "devos"

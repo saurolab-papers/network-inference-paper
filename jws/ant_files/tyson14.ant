@@ -1,0 +1,70 @@
+// Created by libAntimony v2.13.2
+model *tyson14()
+
+  // Compartments and Species:
+  compartment env;
+  species R in env, $S in env, X in env;
+
+  // Assignment Rules:
+  S := 1*floor(time/tau);
+
+  // Reactions:
+  r1:  => R; env*k1*S;
+  r2: R => ; env*k2*R*X;
+  r3:  => X; env*k3*S;
+  r4: X => ; env*k4*X;
+
+  // Species initializations:
+  R = k1*k4/(k2*k3);
+  X = 0;
+
+  // Compartment initializations:
+  env = 1;
+
+  // Variable initializations:
+  k1 = 2;
+  k1 has per_s;
+  k4 = 1;
+  k4 has per_s;
+  k2 = 2;
+  k2 has per_M_per_s;
+  k3 = 1;
+  k3 has per_s;
+  tau = 4;
+
+  // Other declarations:
+  const env, k1, k4, k2, k3, tau;
+
+  // Unit definitions:
+  unit per_M_per_s = litre / (second * mole);
+  unit M = mole / litre;
+  unit M_per_s = mole / (litre * second);
+  unit per_s = 1 / second;
+  unit s = second;
+
+  // SBO terms:
+  env.sboTerm = 270
+  R.sboTerm = 252
+  k1.sboTerm = 35
+  k4.sboTerm = 356
+  k2.sboTerm = 36
+  k3.sboTerm = 35
+  S.sboTerm = 285
+  tau.sboTerm = 2
+  X.sboTerm = 252
+  r1.sboTerm = 176
+  r2.sboTerm = 179
+  r3.sboTerm = 176
+  r4.sboTerm = 179
+
+  // CV terms:
+  env hypernym "http://identifiers.org/go/GO:0005623"
+  R hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  X hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  r1 hypernym "http://identifiers.org/go/GO:0009058"
+  r2 hypernym "http://identifiers.org/go/GO:0009056"
+  r3 hypernym "http://identifiers.org/go/GO:0009058"
+  r4 hypernym "http://identifiers.org/go/GO:0009056"
+end
+
+tyson14 is "tyson14"

@@ -1,0 +1,281 @@
+// Created by libAntimony v2.13.2
+model *queralt1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species $AA in compartment_, $Cdc14 in compartment_, Net1Cdc14 in compartment_;
+  species Cdc15 in compartment_, $Cdc15_i in compartment_, Cdc20 in compartment_;
+  species Cdh1 in compartment_, $Cdh1_i in compartment_, Clb2 in compartment_;
+  species MEN in compartment_, Net1 in compartment_, $Net1P in compartment_;
+  species $PP2A in compartment_, $separase in compartment_, Polo in compartment_;
+  species PoloT in compartment_, $Polo_i in compartment_, Tem1 in compartment_;
+  species $Tem1_i in compartment_, $degr in compartment_, $securin in compartment_;
+  species securinT in compartment_, securinseparase in compartment_, separaseT in compartment_;
+
+  // Assignment Rules:
+  Cdc14 := Cdc14T - Net1Cdc14;
+  Cdc15_i := Cdc15T - Cdc15;
+  Cdh1_i := Cdh1T - Cdh1;
+  Net1P := Net1T - Net1 - Net1Cdc14;
+  PP2A := ((1 + kpp*ki*separase)/(1 + ki*separase))*PP2AT;
+  separase := separaseT - securinseparase;
+  Polo_i := PoloT - Polo;
+  Tem1_i := Tem1T - Tem1;
+  securin := securinT - securinseparase;
+  Cdk := Clb2/(1 + Inh);
+
+  // Reactions:
+  securinseparase_securindegradation: securinseparase -> $separase; (kdsecurin + kadsecurin*Cdc20)*securinseparase;
+  securinseparase_separase_degradation: securinseparase -> $securin; kdseparase*securinseparase;
+  v1: $AA -> Clb2; ksclb2;
+  v10: $separase + separaseT -> $degr; kdseparase*separaseT;
+  v11: $separase + $securin -> securinseparase; lasecurin*securin*separase - ldsecurin*securinseparase;
+  v13: $Net1P -> Net1; (kad*Cdc14 + kd*PP2A)*(Net1P/(Jnet + Net1P));
+  v14: Net1 -> $Net1P; (kp*Cdk + kap*MEN)*(Net1/(Jnet + Net1 + Net1Cdc14));
+  v15: Net1 -> Net1Cdc14; lanet*Net1*Cdc14;
+  v16: Net1Cdc14 -> Net1; ldnet*Net1Cdc14;
+  v17: Net1Cdc14 -> $Net1P; (kp*Cdk + kap*MEN)*(Net1Cdc14/(Jnet + Net1 + Net1Cdc14));
+  v18: $AA -> $Polo_i + PoloT; kspolo;
+  v19: $Polo_i + PoloT -> $degr; (kdpolo + kadpolo*Cdh1)*PoloT;
+  v2: Clb2 -> $degr; (kdclb2 + kadclb2*Cdc20 + kaadclb2*Cdh1)*Clb2;
+  v20: $Polo_i -> Polo; (kapolo + kaapolo*Cdk)*((PoloT - Polo)/(Jpolo + PoloT - Polo));
+  v21: Polo -> $Polo_i; kipolo*(Polo/(Jpolo + Polo));
+  v22: Polo -> $degr; (kdpolo + kadpolo*Cdh1)*Polo;
+  v23: $Tem1_i -> Tem1; (katem + kaatem*Polo)*((Tem1T - Tem1)/(Jtem1 + Tem1T - Tem1));
+  v24: Tem1 -> $Tem1_i; (kitem + kaitem*PP2A)*(Tem1/(Jtem1 + Tem1));
+  v25: $Cdc15_i -> Cdc15; (kacdc15 + kaacdc15*Cdc14)*((Cdc15T - Cdc15)/(Jcdc15 + Cdc15T - Cdc15));
+  v26: Cdc15 -> $Cdc15_i; (kicdc15 + kaicdc15*Cdk)*(Cdc15/(Jcdc15 + Cdc15));
+  v27: $AA -> MEN; lamen*(Tem1 - MEN)*(Cdc15 - MEN);
+  v28: MEN -> $degr; ldmen*MEN;
+  v29: MEN -> ; (kitem + kaitem*PP2A)*(MEN/(Jtem1 + Tem1));
+  v3: $AA -> Cdc20; kscdc20;
+  v30: MEN -> ; (kicdc15 + kaicdc15*Cdk)*(MEN/(Jcdc15 + Cdc15));
+  v4: Cdc20 -> $degr; (kdcdc20 + kadcdc20*Cdh1)*Cdc20;
+  v5: $Cdh1_i -> Cdh1; (kdcdh + kadcdh*Cdc14)*((Cdh1T - Cdh1)/(Jcdh + Cdh1T - Cdh1));
+  v6: Cdh1 -> $Cdh1_i; kapcdh*Cdk*(Cdh1/(Jcdh + Cdh1));
+  v7: $AA -> $securin + securinT; kssecurin;
+  v8: $securin + securinT -> $degr; (kdsecurin + kadsecurin*Cdc20)*securinT;
+  v9: $AA -> $separase + separaseT; ksseparase;
+
+  // Species initializations:
+  AA = 1;
+  Net1Cdc14 = 0.485/compartment_;
+  Cdc15 = 0.0257/compartment_;
+  Cdc20 = 0;
+  Cdh1 = 3.8e-05/compartment_;
+  Clb2 = 0.997/compartment_;
+  MEN = 8e-06/compartment_;
+  Net1 = 0.098/compartment_;
+  Polo = 0.945/compartment_;
+  PoloT = 0.99/compartment_;
+  Tem1 = 0.00389/compartment_;
+  degr = 1;
+  securinT = 0.6/compartment_;
+  securinseparase = 0.248/compartment_;
+  separaseT = 0.25/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  Cdc14T = 0.5;
+  Cdc15T = 1;
+  Cdh1T = 1;
+  Net1T = 1;
+  kpp = 0.1;
+  ki = 20;
+  PP2AT = 1;
+  Tem1T = 1;
+  Inh = 0;
+  Jcdc15 = 0.2;
+  Jcdh = 0.0015;
+  Jnet = 0.2;
+  Jpolo = 0.25;
+  Jtem1 = 0.005;
+  kaacdc15 = 0.5;
+  kaadclb2 = 2;
+  kaapolo = 0.5;
+  kaatem = 0.5;
+  kacdc15 = 0.02;
+  kad = 0.1;
+  kadcdc20 = 2;
+  kadcdh = 1;
+  kadclb2 = 0.2;
+  kadpolo = 0.25;
+  kadsecurin = 2;
+  kaicdc15 = 0.2;
+  kaitem = 1;
+  kap = 2;
+  kapcdh = 1;
+  kapolo = 0;
+  katem = 0;
+  kd = 0.45;
+  kdcdc20 = 0.05;
+  kdcdh = 0.01;
+  kdclb2 = 0.03;
+  kdpolo = 0.01;
+  kdsecurin = 0.05;
+  kdseparase = 0.004;
+  kicdc15 = 0;
+  kipolo = 0.1;
+  kitem = 0.1;
+  kp = 0.4;
+  kscdc20 = 0.015;
+  ksclb2 = 0.03;
+  kspolo = 0.01;
+  kssecurin = 0.03;
+  ksseparase = 0.001;
+  lamen = 10;
+  lanet = 500;
+  lasecurin = 500;
+  ldmen = 0.1;
+  ldnet = 1;
+  ldsecurin = 1;
+
+  // Other declarations:
+  var Cdk;
+  const compartment_, Cdc14T, Cdc15T, Cdh1T, Net1T, kpp, ki, PP2AT, Tem1T;
+  const Inh, Jcdc15, Jcdh, Jnet, Jpolo, Jtem1, kaacdc15, kaadclb2, kaapolo;
+  const kaatem, kacdc15, kad, kadcdc20, kadcdh, kadclb2, kadpolo, kadsecurin;
+  const kaicdc15, kaitem, kap, kapcdh, kapolo, katem, kd, kdcdc20, kdcdh;
+  const kdclb2, kdpolo, kdsecurin, kdseparase, kicdc15, kipolo, kitem, kp;
+  const kscdc20, ksclb2, kspolo, kssecurin, ksseparase, lamen, lanet, lasecurin;
+  const ldmen, ldnet, ldsecurin;
+
+  // Display Names:
+  compartment_ is "compartment";
+  Cdc15_i is "inactive Cdc15";
+  Cdh1_i is "inactive Cdh1";
+  Polo_i is "inactive Polo";
+  Tem1_i is "inactive Tem1";
+  securinseparase is "securin:separase";
+  Cdk is "Cdk activity";
+  securinseparase_securindegradation is "securinseparase securindegradation";
+  securinseparase_separase_degradation is "securin:separase separase degradation";
+  v13 is "Net1P dephosphorylation";
+  v14 is "Net1 phosphorylation";
+  v17 is "Net1Cdc14 phosphorylation";
+  v29 is "Tem1 degradation in MEN";
+  v30 is "Cdc15 degradation in MEN";
+
+  // SBO terms:
+  compartment_.sboTerm = 290
+  AA.sboTerm = 291
+  Cdc14.sboTerm = 252
+  Net1Cdc14.sboTerm = 297
+  Cdc15.sboTerm = 252
+  Cdc15_i.sboTerm = 252
+  Cdc20.sboTerm = 252
+  Cdh1.sboTerm = 252
+  Cdh1_i.sboTerm = 252
+  Clb2.sboTerm = 252
+  MEN.sboTerm = 297
+  Net1.sboTerm = 252
+  Net1P.sboTerm = 297
+  PP2A.sboTerm = 252
+  separase.sboTerm = 252
+  Polo.sboTerm = 252
+  PoloT.sboTerm = 252
+  Polo_i.sboTerm = 252
+  Tem1.sboTerm = 252
+  Tem1_i.sboTerm = 252
+  degr.sboTerm = 291
+  securin.sboTerm = 252
+  securinT.sboTerm = 252
+  securinseparase.sboTerm = 297
+  separaseT.sboTerm = 252
+  securinseparase_securindegradation.sboTerm = 179
+  securinseparase_separase_degradation.sboTerm = 179
+  v1.sboTerm = 393
+  v10.sboTerm = 179
+  v11.sboTerm = 526
+  v13.sboTerm = 330
+  v14.sboTerm = 216
+  v15.sboTerm = 526
+  v16.sboTerm = 180
+  v17.sboTerm = 216
+  v18.sboTerm = 393
+  v19.sboTerm = 179
+  v2.sboTerm = 179
+  v20.sboTerm = 181
+  v21.sboTerm = 181
+  v22.sboTerm = 179
+  v23.sboTerm = 181
+  v24.sboTerm = 181
+  v25.sboTerm = 181
+  v26.sboTerm = 181
+  v27.sboTerm = 393
+  v28.sboTerm = 179
+  v29.sboTerm = 179
+  v3.sboTerm = 393
+  v30.sboTerm = 179
+  v4.sboTerm = 179
+  v5.sboTerm = 181
+  v6.sboTerm = 181
+  v7.sboTerm = 393
+  v8.sboTerm = 179
+  v9.sboTerm = 393
+
+  // CV terms:
+  compartment_ hypernym "http://identifiers.org/obo.go/GO:0005623"
+  AA hypernym "http://identifiers.org/obo.chebi/CHEBI:33704"
+  Cdc14 hypernym "http://identifiers.org/uniprot/Q00684"
+  Net1Cdc14 part "http://identifiers.org/uniprot/Q00684",
+                 "http://identifiers.org/uniprot/P47035"
+  Cdc15 hypernym "http://identifiers.org/uniprot/P27636"
+  Cdc15_i hypernym "http://identifiers.org/uniprot/P27636"
+  Cdc20 hypernym "http://identifiers.org/uniprot/P26309"
+  Cdh1 hypernym "http://identifiers.org/uniprot/P53197"
+  Cdh1_i hypernym "http://identifiers.org/uniprot/P53197"
+  Clb2 hypernym "http://identifiers.org/uniprot/P24869"
+  MEN part "http://identifiers.org/uniprot/P27636",
+           "http://identifiers.org/uniprot/P38987"
+  Net1 hypernym "http://identifiers.org/uniprot/P47035"
+  Net1P hypernym "http://identifiers.org/kegg.compound/C00562",
+                 "http://identifiers.org/uniprot/P47035"
+  PP2A hypernym "http://identifiers.org/uniprot/Q00362"
+  separase hypernym "http://identifiers.org/uniprot/Q03018"
+  Polo hypernym "http://identifiers.org/uniprot/P32562"
+  PoloT hypernym "http://identifiers.org/uniprot/P32562"
+  Polo_i hypernym "http://identifiers.org/uniprot/P32562"
+  Tem1 hypernym "http://identifiers.org/uniprot/P38987"
+  Tem1_i hypernym "http://identifiers.org/uniprot/P38987"
+  securin hypernym "http://identifiers.org/uniprot/P40316"
+  securinT hypernym "http://identifiers.org/uniprot/P40316"
+  securinseparase part "http://identifiers.org/uniprot/Q03018",
+                       "http://identifiers.org/uniprot/P40316"
+  separaseT hypernym "http://identifiers.org/uniprot/Q03018"
+  securinseparase_securindegradation hypernym "http://identifiers.org/obo.go/GO:0043241"
+  securinseparase_separase_degradation hypernym "http://identifiers.org/obo.go/GO:0043241"
+  v1 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  v10 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v11 hypernym "http://identifiers.org/obo.go/GO:0006461"
+  v13 hypernym "http://identifiers.org/obo.go/GO:0016311"
+  v14 hypernym "http://identifiers.org/obo.go/GO:0016310"
+  v15 hypernym "http://identifiers.org/obo.go/GO:0006461"
+  v16 hypernym "http://identifiers.org/obo.go/GO:0043241"
+  v17 hypernym "http://identifiers.org/obo.go/GO:0016310"
+  v18 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  v19 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v2 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v20 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v21 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v22 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v23 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v24 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v25 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v26 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v27 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  v28 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v29 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v3 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  v30 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v4 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v5 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v6 hypernym "http://identifiers.org/obo.go/GO:0006464"
+  v7 hypernym "http://identifiers.org/obo.go/GO:0006412"
+  v8 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  v9 hypernym "http://identifiers.org/obo.go/GO:0006412"
+end
+
+queralt1 is "queralt1"

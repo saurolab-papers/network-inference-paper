@@ -1,0 +1,132 @@
+// Created by libAntimony v2.13.2
+model *wu1()
+
+  // Compartments and Species:
+  compartment cell;
+  species c in cell, cer in cell;
+
+  // Assignment Rules:
+  ica := gca*minf*(V - vca);
+  ik := gk*n*(V - vk);
+  ikca := gkca*w*(V - vk);
+  ikatp := gkatp*a*(V - vk);
+  iir := gir*nIR*rIR*(V - vir);
+  ainf := 1/(1 + exp((r - c)/sa));
+  alphaIRn := 0.09/(1 + exp(0.11*(V + 100)));
+  alphaIRr := 30/(1 + exp(0.04*(V + 230)));
+  betaIRn := 0.00035*exp(0.07*(V + 25));
+  betaIRr := 0.15/(1 + exp(-0.05*(V + 120)));
+  minf := 1/(1 + exp((vm - V)/sm));
+  w := c^5/(c^5 + kd^5);
+  jer := jleak + jip3 - jserca;
+  jleak := pleak*(cer - c);
+  jip3 := oinf*(cer - c);
+  jserca := kserca*c;
+  oinf := (c/(dact + c))*(ip3/(dip3 + ip3))*(dinact/(dinact + c));
+  jmem := -(alpha*ica + kpmca*c);
+  ninf := 1/(1 + exp((vn - V)/sn));
+  nIRinf := 1/(1 + betaIRn/alphaIRn);
+  tauIRn := 1/(alphaIRn + betaIRn);
+  rIRinf := 1/(1 + betaIRr/alphaIRr);
+  tauIRr := 1/(alphaIRr + betaIRr);
+
+  // Rate Rules:
+  V' = -(ica + ik + ikca + ikatp + iir)/cm;
+  a' = (ainf - a)/taua;
+  nIR' = (nIRinf - nIR)/tauIRn;
+  rIR' = (rIRinf - rIR)/tauIRr;
+  n' = (ninf - n)/taun;
+
+  // Reactions:
+  reaction_0000005:  => c; cell*fcyt*(jmem + jer);
+  reaction_0000006:  => cer; -fer*vcytver*jer*cell;
+
+  // Events:
+  event_0000001: at time > 3e4: gkatp = 530;
+
+  // Species initializations:
+  c = 0.1/cell;
+  cer = 100/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  gkatp = 500;
+  V = -60;
+  cm = 5300;
+  a = 0.46;
+  taua = 300000;
+  r = 0.14;
+  sa = 0.1;
+  alpha = 4.5e-06;
+  dact = 0.35;
+  dinact = 0.4;
+  dip3 = 0.5;
+  fcyt = 0.01;
+  fer = 0.01;
+  gca = 1000;
+  gir = 5;
+  gk = 1400;
+  gkca = 900;
+  vca = 50;
+  nIR = 0.008;
+  rIR = 0.282;
+  vir = -75;
+  n = 0.01;
+  vk = -75;
+  ip3 = 0;
+  pleak = 0.0005;
+  kpmca = 0.2;
+  kserca = 0.4;
+  kd = 0.3;
+  vm = -20;
+  sm = 12;
+  taun = 16;
+  vn = -16;
+  sn = 5;
+  vcytver = 5;
+
+  // Other declarations:
+  var gkatp, V, ica, ik, ikca, ikatp, iir, a, ainf, alphaIRn, alphaIRr, betaIRn;
+  var betaIRr, minf, nIR, rIR, n, w, jer, jleak, jip3, jserca, oinf, jmem;
+  var ninf, nIRinf, tauIRn, rIRinf, tauIRr;
+  const cell, cm, taua, r, sa, alpha, dact, dinact, dip3, fcyt, fer, gca;
+  const gir, gk, gkca, vca, vir, vk, ip3, pleak, kpmca, kserca, kd, vm, sm;
+  const taun, vn, sn, vcytver;
+
+  // Unit definitions:
+  unit micromole = 1e-6 mole;
+  unit millivolt = 1e-3 volt;
+  unit millisecond = 1e-3 second;
+
+  // Display Names:
+  cell is "GH3 cell";
+  c is "cytosolic free ca concentration";
+  cer is "ER ca concentration";
+  ica is "calcium current";
+  ik is "delayed rectifier k current";
+  ikca is "ca dependent k current";
+  ikatp is "nucleotide sensitive k current";
+  iir is "erg like k current";
+  cm is "membrane capacitance";
+  gca is "ca current conductance";
+  gir is "erg k current conductance";
+  gk is "k current conductance";
+  gkca is "ca activated k conductance";
+  vca is "ca reversal potential";
+  vk is "k reversal potential";
+  reaction_0000005 is "cytosolic free Ca2+ concentration";
+  reaction_0000006 is "ER Ca2+ concentration";
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  c identity "http://identifiers.org/kegg.compound/C00076",
+             "http://identifiers.org/chebi/CHEBI:29108"
+  cer identity "http://identifiers.org/kegg.compound/C00076",
+               "http://identifiers.org/chebi/CHEBI:29108"
+  reaction_0000005 hypernym "http://identifiers.org/go/GO:0051924"
+  reaction_0000006 hypernym "http://identifiers.org/go/GO:0051924"
+end
+
+wu1 is "wu1"

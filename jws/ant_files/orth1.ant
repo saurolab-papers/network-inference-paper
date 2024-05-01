@@ -1,0 +1,720 @@
+// Created by libAntimony v2.13.2
+model *orth1()
+
+  // Compartments and Species:
+  compartment C_c, C_e;
+  species M_acald_c_C_c in C_c, M_nad_c_C_c in C_c, M_nadh_c_C_c in C_c, M_accoa_c_C_c in C_c;
+  species M_h_c_C_c in C_c, M_coa_c_C_c in C_c, M_acald_e_C_e in C_e, M_adp_c_C_c in C_c;
+  species M_actp_c_C_c in C_c, M_atp_c_C_c in C_c, M_ac_c_C_c in C_c, M_h2o_c_C_c in C_c;
+  species M_acon_C_c in C_c, M_cit_c_C_c in C_c, M_icit_c_C_c in C_c, M_ac_e_C_e in C_e;
+  species M_h_e_C_e in C_e, M_amp_c_C_c in C_c, M_akg_c_C_c in C_c, M_co2_c_C_c in C_c;
+  species M_succoa_c_C_c in C_c, M_akg_e_C_e in C_e, M_etoh_c_C_c in C_c;
+  species M_pi_c_C_c in C_c, M_f6p_c_C_c in C_c, M_glu_L_c_C_c in C_c, M_nadph_c_C_c in C_c;
+  species M_pyr_c_C_c in C_c, M_3pg_c_C_c in C_c, M_g6p_c_C_c in C_c, M_gln_L_c_C_c in C_c;
+  species M_pep_c_C_c in C_c, M_oaa_c_C_c in C_c, M_e4p_c_C_c in C_c, M_nadp_c_C_c in C_c;
+  species M_g3p_c_C_c in C_c, M_r5p_c_C_c in C_c, M_co2_e_C_e in C_e, M_q8h2_c_C_c in C_c;
+  species M_o2_c_C_c in C_c, M_q8_c_C_c in C_c, M_lac_D_e_C_e in C_e, M_lac_D_c_C_c in C_c;
+  species M_2pg_c_C_c in C_c, M_etoh_e_C_e in C_e, M_for_e_C_e in C_e, M_fru_e_C_e in C_e;
+  species M_fum_e_C_e in C_e, M_glc_D_e_C_e in C_e, M_gln_L_e_C_e in C_e;
+  species M_glu_L_e_C_e in C_e, M_h2o_e_C_e in C_e, M_mal_L_e_C_e in C_e;
+  species M_nh4_e_C_e in C_e, M_o2_e_C_e in C_e, M_pi_e_C_e in C_e, M_pyr_e_C_e in C_e;
+  species M_succ_e_C_e in C_e, M_dhap_c_C_c in C_c, M_fdp_c_C_c in C_c, M_for_c_C_c in C_c;
+  species M_fum_c_C_c in C_c, M_succ_c_C_c in C_c, M_mal_L_c_C_c in C_c, M_6pgl_c_C_c in C_c;
+  species M_13dpg_c_C_c in C_c, M_nh4_c_C_c in C_c, M_6pgc_c_C_c in C_c, M_ru5p_D_c_C_c in C_c;
+  species M_glx_c_C_c in C_c, M_xu5p_D_c_C_c in C_c, M_s7p_c_C_c in C_c, $M_ac_e_C_e_boundary in C_e;
+  species $M_acald_e_C_e_boundary in C_e, $M_akg_e_C_e_boundary in C_e, $M_co2_e_C_e_boundary in C_e;
+  species $M_etoh_e_C_e_boundary in C_e, $M_for_e_C_e_boundary in C_e, $M_fru_e_C_e_boundary in C_e;
+  species $M_fum_e_C_e_boundary in C_e, $M_glc_D_e_C_e_boundary in C_e, $M_gln_L_e_C_e_boundary in C_e;
+  species $M_glu_L_e_C_e_boundary in C_e, $M_h2o_e_C_e_boundary in C_e, $M_h_e_C_e_boundary in C_e;
+  species $M_lac_D_e_C_e_boundary in C_e, $M_mal_L_e_C_e_boundary in C_e;
+  species $M_nh4_e_C_e_boundary in C_e, $M_o2_e_C_e_boundary in C_e, $M_pi_e_C_e_boundary in C_e;
+  species $M_pyr_e_C_e_boundary in C_e, $M_succ_e_C_e_boundary in C_e;
+
+  // Reactions:
+  R_ACALD: M_acald_c_C_c + M_nad_c_C_c + M_coa_c_C_c -> M_nadh_c_C_c + M_accoa_c_C_c + M_h_c_C_c; ;
+  R_ACALDt: M_acald_e_C_e -> M_acald_c_C_c; ;
+  R_ACKr: M_atp_c_C_c + M_ac_c_C_c -> M_adp_c_C_c + M_actp_c_C_c; ;
+  R_ACONTa: M_cit_c_C_c -> M_h2o_c_C_c + M_acon_C_c; ;
+  R_ACONTb: M_h2o_c_C_c + M_acon_C_c -> M_icit_c_C_c; ;
+  R_ACt2r: M_ac_e_C_e + M_h_e_C_e -> M_h_c_C_c + M_ac_c_C_c; ;
+  R_ADK1: M_amp_c_C_c + M_atp_c_C_c -> 2 M_adp_c_C_c; ;
+  R_AKGDH: M_akg_c_C_c + M_nad_c_C_c + M_coa_c_C_c => M_co2_c_C_c + M_nadh_c_C_c + M_succoa_c_C_c; ;
+  R_AKGt2r: M_akg_e_C_e + M_h_e_C_e -> M_akg_c_C_c + M_h_c_C_c; ;
+  R_ALCD2x: M_etoh_c_C_c + M_nad_c_C_c -> M_nadh_c_C_c + M_acald_c_C_c + M_h_c_C_c; ;
+  R_ATPM: M_h2o_c_C_c + M_atp_c_C_c => M_pi_c_C_c + M_adp_c_C_c + M_h_c_C_c; ;
+  R_ATPS4r: M_adp_c_C_c + M_pi_c_C_c + 4 M_h_e_C_e -> 3 M_h_c_C_c + M_atp_c_C_c + M_h2o_c_C_c; ;
+  R_Biomass_Ecoli_core_w_GAM: 0.0709 M_f6p_c_C_c + 3.547 M_nad_c_C_c + 4.9414 M_glu_L_c_C_c + 13.0279 M_nadph_c_C_c + 2.8328 M_pyr_c_C_c + 1.496 M_3pg_c_C_c + 59.81 M_atp_c_C_c + 0.205 M_g6p_c_C_c + 0.2557 M_gln_L_c_C_c + 59.81 M_h2o_c_C_c + 3.7478 M_accoa_c_C_c + 0.5191 M_pep_c_C_c + 1.7867 M_oaa_c_C_c + 0.361 M_e4p_c_C_c + 0.129 M_g3p_c_C_c + 0.8977 M_r5p_c_C_c => 59.81 M_h_c_C_c + 3.7478 M_coa_c_C_c + 59.81 M_adp_c_C_c + 3.547 M_nadh_c_C_c + 4.1182 M_akg_c_C_c + 59.81 M_pi_c_C_c + 13.0279 M_nadp_c_C_c; ;
+  R_CO2t: M_co2_e_C_e -> M_co2_c_C_c; ;
+  R_CS: M_oaa_c_C_c + M_accoa_c_C_c + M_h2o_c_C_c => M_h_c_C_c + M_cit_c_C_c + M_coa_c_C_c; ;
+  R_CYTBD: M_q8h2_c_C_c + 2 M_h_c_C_c + 0.5 M_o2_c_C_c => 2 M_h_e_C_e + M_h2o_c_C_c + M_q8_c_C_c; ;
+  R_D_LACt2: M_lac_D_e_C_e + M_h_e_C_e -> M_lac_D_c_C_c + M_h_c_C_c; ;
+  R_ENO: M_2pg_c_C_c -> M_pep_c_C_c + M_h2o_c_C_c; ;
+  R_ETOHt2r: M_h_e_C_e + M_etoh_e_C_e -> M_etoh_c_C_c + M_h_c_C_c; ;
+  R_EX_ac_e: M_ac_e_C_e => $M_ac_e_C_e_boundary; ;
+  R_EX_acald_e: M_acald_e_C_e => $M_acald_e_C_e_boundary; ;
+  R_EX_akg_e: M_akg_e_C_e => $M_akg_e_C_e_boundary; ;
+  R_EX_co2_e: M_co2_e_C_e -> $M_co2_e_C_e_boundary; ;
+  R_EX_etoh_e: M_etoh_e_C_e => $M_etoh_e_C_e_boundary; ;
+  R_EX_for_e: M_for_e_C_e => $M_for_e_C_e_boundary; ;
+  R_EX_fru_e: M_fru_e_C_e => $M_fru_e_C_e_boundary; ;
+  R_EX_fum_e: M_fum_e_C_e => $M_fum_e_C_e_boundary; ;
+  R_EX_glc_e: M_glc_D_e_C_e -> $M_glc_D_e_C_e_boundary; ;
+  R_EX_gln_L_e: M_gln_L_e_C_e => $M_gln_L_e_C_e_boundary; ;
+  R_EX_glu_L_e: M_glu_L_e_C_e => $M_glu_L_e_C_e_boundary; ;
+  R_EX_h2o_e: M_h2o_e_C_e -> $M_h2o_e_C_e_boundary; ;
+  R_EX_h_e: M_h_e_C_e -> $M_h_e_C_e_boundary; ;
+  R_EX_lac_D_e: M_lac_D_e_C_e => $M_lac_D_e_C_e_boundary; ;
+  R_EX_mal_L_e: M_mal_L_e_C_e => $M_mal_L_e_C_e_boundary; ;
+  R_EX_nh4_e: M_nh4_e_C_e -> $M_nh4_e_C_e_boundary; ;
+  R_EX_o2_e: M_o2_e_C_e -> $M_o2_e_C_e_boundary; ;
+  R_EX_pi_e: M_pi_e_C_e -> $M_pi_e_C_e_boundary; ;
+  R_EX_pyr_e: M_pyr_e_C_e => $M_pyr_e_C_e_boundary; ;
+  R_EX_succ_e: M_succ_e_C_e => $M_succ_e_C_e_boundary; ;
+  R_FBA: M_fdp_c_C_c -> M_g3p_c_C_c + M_dhap_c_C_c; ;
+  R_FBP: M_h2o_c_C_c + M_fdp_c_C_c => M_f6p_c_C_c + M_pi_c_C_c; ;
+  R_FORt2: M_h_e_C_e + M_for_e_C_e => M_for_c_C_c + M_h_c_C_c; ;
+  R_FORti: M_for_c_C_c => M_for_e_C_e; ;
+  R_FRD7: M_q8h2_c_C_c + M_fum_c_C_c => M_q8_c_C_c + M_succ_c_C_c; ;
+  R_FRUpts2: M_pep_c_C_c + M_fru_e_C_e => M_f6p_c_C_c + M_pyr_c_C_c; ;
+  R_FUM: M_h2o_c_C_c + M_fum_c_C_c -> M_mal_L_c_C_c; ;
+  R_FUMt2_2: M_fum_e_C_e + 2 M_h_e_C_e => M_fum_c_C_c + 2 M_h_c_C_c; ;
+  R_G6PDH2r: M_nadp_c_C_c + M_g6p_c_C_c -> M_nadph_c_C_c + M_h_c_C_c + M_6pgl_c_C_c; ;
+  R_GAPD: M_g3p_c_C_c + M_nad_c_C_c + M_pi_c_C_c -> M_h_c_C_c + M_13dpg_c_C_c + M_nadh_c_C_c; ;
+  R_GLCpts: M_pep_c_C_c + M_glc_D_e_C_e => M_g6p_c_C_c + M_pyr_c_C_c; ;
+  R_GLNS: M_nh4_c_C_c + M_atp_c_C_c + M_glu_L_c_C_c => M_gln_L_c_C_c + M_h_c_C_c + M_adp_c_C_c + M_pi_c_C_c; ;
+  R_GLNabc: M_gln_L_e_C_e + M_atp_c_C_c + M_h2o_c_C_c => M_gln_L_c_C_c + M_h_c_C_c + M_adp_c_C_c + M_pi_c_C_c; ;
+  R_GLUDy: M_glu_L_c_C_c + M_h2o_c_C_c + M_nadp_c_C_c -> M_akg_c_C_c + M_nh4_c_C_c + M_h_c_C_c + M_nadph_c_C_c; ;
+  R_GLUN: M_h2o_c_C_c + M_gln_L_c_C_c => M_glu_L_c_C_c + M_nh4_c_C_c; ;
+  R_GLUSy: M_akg_c_C_c + M_gln_L_c_C_c + M_h_c_C_c + M_nadph_c_C_c => 2 M_glu_L_c_C_c + M_nadp_c_C_c; ;
+  R_GLUt2r: M_glu_L_e_C_e + M_h_e_C_e -> M_glu_L_c_C_c + M_h_c_C_c; ;
+  R_GND: M_nadp_c_C_c + M_6pgc_c_C_c => M_nadph_c_C_c + M_co2_c_C_c + M_ru5p_D_c_C_c; ;
+  R_H2Ot: M_h2o_e_C_e -> M_h2o_c_C_c; ;
+  R_ICDHyr: M_nadp_c_C_c + M_icit_c_C_c -> M_nadph_c_C_c + M_akg_c_C_c + M_co2_c_C_c; ;
+  R_ICL: M_icit_c_C_c => M_succ_c_C_c + M_glx_c_C_c; ;
+  R_LDH_D: M_nad_c_C_c + M_lac_D_c_C_c -> M_nadh_c_C_c + M_h_c_C_c + M_pyr_c_C_c; ;
+  R_MALS: M_glx_c_C_c + M_accoa_c_C_c + M_h2o_c_C_c => M_h_c_C_c + M_coa_c_C_c + M_mal_L_c_C_c; ;
+  R_MALt2_2: 2 M_h_e_C_e + M_mal_L_e_C_e => M_mal_L_c_C_c + 2 M_h_c_C_c; ;
+  R_MDH: M_mal_L_c_C_c + M_nad_c_C_c -> M_oaa_c_C_c + M_nadh_c_C_c + M_h_c_C_c; ;
+  R_ME1: M_nad_c_C_c + M_mal_L_c_C_c => M_co2_c_C_c + M_nadh_c_C_c + M_pyr_c_C_c; ;
+  R_ME2: M_nadp_c_C_c + M_mal_L_c_C_c => M_nadph_c_C_c + M_co2_c_C_c + M_pyr_c_C_c; ;
+  R_NADH16: 4 M_h_c_C_c + M_nadh_c_C_c + M_q8_c_C_c => M_q8h2_c_C_c + M_nad_c_C_c + 3 M_h_e_C_e; ;
+  R_NADTRHD: M_nadph_c_C_c + M_nad_c_C_c => M_nadp_c_C_c + M_nadh_c_C_c; ;
+  R_NH4t: M_nh4_e_C_e -> M_nh4_c_C_c; ;
+  R_O2t: M_o2_e_C_e -> M_o2_c_C_c; ;
+  R_PDH: M_pyr_c_C_c + M_nad_c_C_c + M_coa_c_C_c => M_nadh_c_C_c + M_accoa_c_C_c + M_co2_c_C_c; ;
+  R_PFK: M_atp_c_C_c + M_f6p_c_C_c => M_adp_c_C_c + M_fdp_c_C_c + M_h_c_C_c; ;
+  R_PFL: M_coa_c_C_c + M_pyr_c_C_c => M_for_c_C_c + M_accoa_c_C_c; ;
+  R_PGI: M_g6p_c_C_c -> M_f6p_c_C_c; ;
+  R_PGK: M_atp_c_C_c + M_3pg_c_C_c -> M_adp_c_C_c + M_13dpg_c_C_c; ;
+  R_PGL: M_6pgl_c_C_c + M_h2o_c_C_c => M_h_c_C_c + M_6pgc_c_C_c; ;
+  R_PGM: M_2pg_c_C_c -> M_3pg_c_C_c; ;
+  R_PIt2r: M_pi_e_C_e + M_h_e_C_e -> M_h_c_C_c + M_pi_c_C_c; ;
+  R_PPC: M_pep_c_C_c + M_co2_c_C_c + M_h2o_c_C_c => M_h_c_C_c + M_oaa_c_C_c + M_pi_c_C_c; ;
+  R_PPCK: M_oaa_c_C_c + M_atp_c_C_c => M_pep_c_C_c + M_co2_c_C_c + M_adp_c_C_c; ;
+  R_PPS: M_pyr_c_C_c + M_atp_c_C_c + M_h2o_c_C_c => M_pep_c_C_c + 2 M_h_c_C_c + M_pi_c_C_c + M_amp_c_C_c; ;
+  R_PTAr: M_accoa_c_C_c + M_pi_c_C_c -> M_actp_c_C_c + M_coa_c_C_c; ;
+  R_PYK: M_pep_c_C_c + M_h_c_C_c + M_adp_c_C_c => M_atp_c_C_c + M_pyr_c_C_c; ;
+  R_PYRt2r: M_pyr_e_C_e + M_h_e_C_e -> M_h_c_C_c + M_pyr_c_C_c; ;
+  R_RPE: M_ru5p_D_c_C_c -> M_xu5p_D_c_C_c; ;
+  R_RPI: M_r5p_c_C_c -> M_ru5p_D_c_C_c; ;
+  R_SUCCt2_2: M_succ_e_C_e + 2 M_h_e_C_e => 2 M_h_c_C_c + M_succ_c_C_c; ;
+  R_SUCCt3: M_h_e_C_e + M_succ_c_C_c => M_succ_e_C_e + M_h_c_C_c; ;
+  R_SUCDi: M_q8_c_C_c + M_succ_c_C_c => M_q8h2_c_C_c + M_fum_c_C_c; ;
+  R_SUCOAS: M_atp_c_C_c + M_succ_c_C_c + M_coa_c_C_c -> M_adp_c_C_c + M_pi_c_C_c + M_succoa_c_C_c; ;
+  R_TALA: M_g3p_c_C_c + M_s7p_c_C_c -> M_e4p_c_C_c + M_f6p_c_C_c; ;
+  R_THD2: M_nadp_c_C_c + 2 M_h_e_C_e + M_nadh_c_C_c => M_nad_c_C_c + 2 M_h_c_C_c + M_nadph_c_C_c; ;
+  R_TKT1: M_r5p_c_C_c + M_xu5p_D_c_C_c -> M_g3p_c_C_c + M_s7p_c_C_c; ;
+  R_TKT2: M_e4p_c_C_c + M_xu5p_D_c_C_c -> M_g3p_c_C_c + M_f6p_c_C_c; ;
+  R_TPI: M_dhap_c_C_c -> M_g3p_c_C_c; ;
+
+  // The objective function (for FBC analysis):
+  obj: maximize R_Biomass_Ecoli_core_w_GAM;
+
+  // Constraints:
+  R_ACALD >= -1000
+  R_ACALD <= 1000
+  R_ACALDt >= -1000
+  R_ACALDt <= 1000
+  R_ACKr >= -1000
+  R_ACKr <= 1000
+  R_ACONTa >= -1000
+  R_ACONTa <= 1000
+  R_ACONTb >= -1000
+  R_ACONTb <= 1000
+  R_ACt2r >= -1000
+  R_ACt2r <= 1000
+  R_ADK1 >= -1000
+  R_ADK1 <= 1000
+  R_AKGDH >= 0
+  R_AKGDH <= 1000
+  R_AKGt2r >= -1000
+  R_AKGt2r <= 1000
+  R_ALCD2x >= -1000
+  R_ALCD2x <= 1000
+  R_ATPM >= 8.39
+  R_ATPM <= 1000
+  R_ATPS4r >= -1000
+  R_ATPS4r <= 1000
+  R_Biomass_Ecoli_core_w_GAM >= 0
+  R_Biomass_Ecoli_core_w_GAM <= 1000
+  R_CO2t >= -1000
+  R_CO2t <= 1000
+  R_CS >= 0
+  R_CS <= 1000
+  R_CYTBD >= 0
+  R_CYTBD <= 1000
+  R_D_LACt2 >= -1000
+  R_D_LACt2 <= 1000
+  R_ENO >= -1000
+  R_ENO <= 1000
+  R_ETOHt2r >= -1000
+  R_ETOHt2r <= 1000
+  R_EX_ac_e >= 0
+  R_EX_ac_e <= 1000
+  R_EX_acald_e >= 0
+  R_EX_acald_e <= 1000
+  R_EX_akg_e >= 0
+  R_EX_akg_e <= 1000
+  R_EX_co2_e >= -1000
+  R_EX_co2_e <= 1000
+  R_EX_etoh_e >= 0
+  R_EX_etoh_e <= 1000
+  R_EX_for_e >= 0
+  R_EX_for_e <= 1000
+  R_EX_fru_e >= 0
+  R_EX_fru_e <= 1000
+  R_EX_fum_e >= 0
+  R_EX_fum_e <= 1000
+  R_EX_glc_e >= -10
+  R_EX_glc_e <= 1000
+  R_EX_gln_L_e >= 0
+  R_EX_gln_L_e <= 1000
+  R_EX_glu_L_e >= 0
+  R_EX_glu_L_e <= 1000
+  R_EX_h2o_e >= -1000
+  R_EX_h2o_e <= 1000
+  R_EX_h_e >= -1000
+  R_EX_h_e <= 1000
+  R_EX_lac_D_e >= 0
+  R_EX_lac_D_e <= 1000
+  R_EX_mal_L_e >= 0
+  R_EX_mal_L_e <= 1000
+  R_EX_nh4_e >= -1000
+  R_EX_nh4_e <= 1000
+  R_EX_o2_e >= -1000
+  R_EX_o2_e <= 1000
+  R_EX_pi_e >= -1000
+  R_EX_pi_e <= 1000
+  R_EX_pyr_e >= 0
+  R_EX_pyr_e <= 1000
+  R_EX_succ_e >= 0
+  R_EX_succ_e <= 1000
+  R_FBA >= -1000
+  R_FBA <= 1000
+  R_FBP >= 0
+  R_FBP <= 1000
+  R_FORt2 >= 0
+  R_FORt2 <= 1000
+  R_FORti >= 0
+  R_FORti <= 1000
+  R_FRD7 >= 0
+  R_FRD7 <= 1000
+  R_FRUpts2 >= 0
+  R_FRUpts2 <= 1000
+  R_FUM >= -1000
+  R_FUM <= 1000
+  R_FUMt2_2 >= 0
+  R_FUMt2_2 <= 1000
+  R_G6PDH2r >= -1000
+  R_G6PDH2r <= 1000
+  R_GAPD >= -1000
+  R_GAPD <= 1000
+  R_GLCpts >= 0
+  R_GLCpts <= 1000
+  R_GLNS >= 0
+  R_GLNS <= 1000
+  R_GLNabc >= 0
+  R_GLNabc <= 1000
+  R_GLUDy >= -1000
+  R_GLUDy <= 1000
+  R_GLUN >= 0
+  R_GLUN <= 1000
+  R_GLUSy >= 0
+  R_GLUSy <= 1000
+  R_GLUt2r >= -1000
+  R_GLUt2r <= 1000
+  R_GND >= 0
+  R_GND <= 1000
+  R_H2Ot >= -1000
+  R_H2Ot <= 1000
+  R_ICDHyr >= -1000
+  R_ICDHyr <= 1000
+  R_ICL >= 0
+  R_ICL <= 1000
+  R_LDH_D >= -1000
+  R_LDH_D <= 1000
+  R_MALS >= 0
+  R_MALS <= 1000
+  R_MALt2_2 >= 0
+  R_MALt2_2 <= 1000
+  R_MDH >= -1000
+  R_MDH <= 1000
+  R_ME1 >= 0
+  R_ME1 <= 1000
+  R_ME2 >= 0
+  R_ME2 <= 1000
+  R_NADH16 >= 0
+  R_NADH16 <= 1000
+  R_NADTRHD >= 0
+  R_NADTRHD <= 1000
+  R_NH4t >= -1000
+  R_NH4t <= 1000
+  R_O2t >= -1000
+  R_O2t <= 1000
+  R_PDH >= 0
+  R_PDH <= 1000
+  R_PFK >= 0
+  R_PFK <= 1000
+  R_PFL >= 0
+  R_PFL <= 1000
+  R_PGI >= -1000
+  R_PGI <= 1000
+  R_PGK >= -1000
+  R_PGK <= 1000
+  R_PGL >= 0
+  R_PGL <= 1000
+  R_PGM >= -1000
+  R_PGM <= 1000
+  R_PIt2r >= -1000
+  R_PIt2r <= 1000
+  R_PPC >= 0
+  R_PPC <= 1000
+  R_PPCK >= 0
+  R_PPCK <= 1000
+  R_PPS >= 0
+  R_PPS <= 1000
+  R_PTAr >= -1000
+  R_PTAr <= 1000
+  R_PYK >= 0
+  R_PYK <= 1000
+  R_PYRt2r >= -1000
+  R_PYRt2r <= 1000
+  R_RPE >= -1000
+  R_RPE <= 1000
+  R_RPI >= -1000
+  R_RPI <= 1000
+  R_SUCCt2_2 >= 0
+  R_SUCCt2_2 <= 1000
+  R_SUCCt3 >= 0
+  R_SUCCt3 <= 1000
+  R_SUCDi >= 0
+  R_SUCDi <= 1000
+  R_SUCOAS >= -1000
+  R_SUCOAS <= 1000
+  R_TALA >= -1000
+  R_TALA <= 1000
+  R_THD2 >= 0
+  R_THD2 <= 1000
+  R_TKT1 >= -1000
+  R_TKT1 <= 1000
+  R_TKT2 >= -1000
+  R_TKT2 <= 1000
+  R_TPI >= -1000
+  R_TPI <= 1000
+
+  // Species initializations:
+  M_acald_c_C_c = 0;
+  M_acald_c_C_c has substance_per_volume;
+  M_nad_c_C_c = 0;
+  M_nad_c_C_c has substance_per_volume;
+  M_nadh_c_C_c = 0;
+  M_nadh_c_C_c has substance_per_volume;
+  M_accoa_c_C_c = 0;
+  M_accoa_c_C_c has substance_per_volume;
+  M_h_c_C_c = 0;
+  M_h_c_C_c has substance_per_volume;
+  M_coa_c_C_c = 0;
+  M_coa_c_C_c has substance_per_volume;
+  M_acald_e_C_e = 0;
+  M_acald_e_C_e has substance_per_volume;
+  M_adp_c_C_c = 0;
+  M_adp_c_C_c has substance_per_volume;
+  M_actp_c_C_c = 0;
+  M_actp_c_C_c has substance_per_volume;
+  M_atp_c_C_c = 0;
+  M_atp_c_C_c has substance_per_volume;
+  M_ac_c_C_c = 0;
+  M_ac_c_C_c has substance_per_volume;
+  M_h2o_c_C_c = 0;
+  M_h2o_c_C_c has substance_per_volume;
+  M_acon_C_c = 0;
+  M_acon_C_c has substance_per_volume;
+  M_cit_c_C_c = 0;
+  M_cit_c_C_c has substance_per_volume;
+  M_icit_c_C_c = 0;
+  M_icit_c_C_c has substance_per_volume;
+  M_ac_e_C_e = 0;
+  M_ac_e_C_e has substance_per_volume;
+  M_h_e_C_e = 0;
+  M_h_e_C_e has substance_per_volume;
+  M_amp_c_C_c = 0;
+  M_amp_c_C_c has substance_per_volume;
+  M_akg_c_C_c = 0;
+  M_akg_c_C_c has substance_per_volume;
+  M_co2_c_C_c = 0;
+  M_co2_c_C_c has substance_per_volume;
+  M_succoa_c_C_c = 0;
+  M_succoa_c_C_c has substance_per_volume;
+  M_akg_e_C_e = 0;
+  M_akg_e_C_e has substance_per_volume;
+  M_etoh_c_C_c = 0;
+  M_etoh_c_C_c has substance_per_volume;
+  M_pi_c_C_c = 0;
+  M_pi_c_C_c has substance_per_volume;
+  M_f6p_c_C_c = 0;
+  M_f6p_c_C_c has substance_per_volume;
+  M_glu_L_c_C_c = 0;
+  M_glu_L_c_C_c has substance_per_volume;
+  M_nadph_c_C_c = 0;
+  M_nadph_c_C_c has substance_per_volume;
+  M_pyr_c_C_c = 0;
+  M_pyr_c_C_c has substance_per_volume;
+  M_3pg_c_C_c = 0;
+  M_3pg_c_C_c has substance_per_volume;
+  M_g6p_c_C_c = 0;
+  M_g6p_c_C_c has substance_per_volume;
+  M_gln_L_c_C_c = 0;
+  M_gln_L_c_C_c has substance_per_volume;
+  M_pep_c_C_c = 0;
+  M_pep_c_C_c has substance_per_volume;
+  M_oaa_c_C_c = 0;
+  M_oaa_c_C_c has substance_per_volume;
+  M_e4p_c_C_c = 0;
+  M_e4p_c_C_c has substance_per_volume;
+  M_nadp_c_C_c = 0;
+  M_nadp_c_C_c has substance_per_volume;
+  M_g3p_c_C_c = 0;
+  M_g3p_c_C_c has substance_per_volume;
+  M_r5p_c_C_c = 0;
+  M_r5p_c_C_c has substance_per_volume;
+  M_co2_e_C_e = 0;
+  M_co2_e_C_e has substance_per_volume;
+  M_q8h2_c_C_c = 0;
+  M_q8h2_c_C_c has substance_per_volume;
+  M_o2_c_C_c = 0;
+  M_o2_c_C_c has substance_per_volume;
+  M_q8_c_C_c = 0;
+  M_q8_c_C_c has substance_per_volume;
+  M_lac_D_e_C_e = 0;
+  M_lac_D_e_C_e has substance_per_volume;
+  M_lac_D_c_C_c = 0;
+  M_lac_D_c_C_c has substance_per_volume;
+  M_2pg_c_C_c = 0;
+  M_2pg_c_C_c has substance_per_volume;
+  M_etoh_e_C_e = 0;
+  M_etoh_e_C_e has substance_per_volume;
+  M_for_e_C_e = 0;
+  M_for_e_C_e has substance_per_volume;
+  M_fru_e_C_e = 0;
+  M_fru_e_C_e has substance_per_volume;
+  M_fum_e_C_e = 0;
+  M_fum_e_C_e has substance_per_volume;
+  M_glc_D_e_C_e = 0;
+  M_glc_D_e_C_e has substance_per_volume;
+  M_gln_L_e_C_e = 0;
+  M_gln_L_e_C_e has substance_per_volume;
+  M_glu_L_e_C_e = 0;
+  M_glu_L_e_C_e has substance_per_volume;
+  M_h2o_e_C_e = 0;
+  M_h2o_e_C_e has substance_per_volume;
+  M_mal_L_e_C_e = 0;
+  M_mal_L_e_C_e has substance_per_volume;
+  M_nh4_e_C_e = 0;
+  M_nh4_e_C_e has substance_per_volume;
+  M_o2_e_C_e = 0;
+  M_o2_e_C_e has substance_per_volume;
+  M_pi_e_C_e = 0;
+  M_pi_e_C_e has substance_per_volume;
+  M_pyr_e_C_e = 0;
+  M_pyr_e_C_e has substance_per_volume;
+  M_succ_e_C_e = 0;
+  M_succ_e_C_e has substance_per_volume;
+  M_dhap_c_C_c = 0;
+  M_dhap_c_C_c has substance_per_volume;
+  M_fdp_c_C_c = 0;
+  M_fdp_c_C_c has substance_per_volume;
+  M_for_c_C_c = 0;
+  M_for_c_C_c has substance_per_volume;
+  M_fum_c_C_c = 0;
+  M_fum_c_C_c has substance_per_volume;
+  M_succ_c_C_c = 0;
+  M_succ_c_C_c has substance_per_volume;
+  M_mal_L_c_C_c = 0;
+  M_mal_L_c_C_c has substance_per_volume;
+  M_6pgl_c_C_c = 0;
+  M_6pgl_c_C_c has substance_per_volume;
+  M_13dpg_c_C_c = 0;
+  M_13dpg_c_C_c has substance_per_volume;
+  M_nh4_c_C_c = 0;
+  M_nh4_c_C_c has substance_per_volume;
+  M_6pgc_c_C_c = 0;
+  M_6pgc_c_C_c has substance_per_volume;
+  M_ru5p_D_c_C_c = 0;
+  M_ru5p_D_c_C_c has substance_per_volume;
+  M_glx_c_C_c = 0;
+  M_glx_c_C_c has substance_per_volume;
+  M_xu5p_D_c_C_c = 0;
+  M_xu5p_D_c_C_c has substance_per_volume;
+  M_s7p_c_C_c = 0;
+  M_s7p_c_C_c has substance_per_volume;
+  M_ac_e_C_e_boundary = 0;
+  M_ac_e_C_e_boundary has substance_per_volume;
+  M_acald_e_C_e_boundary = 0;
+  M_acald_e_C_e_boundary has substance_per_volume;
+  M_akg_e_C_e_boundary = 0;
+  M_akg_e_C_e_boundary has substance_per_volume;
+  M_co2_e_C_e_boundary = 0;
+  M_co2_e_C_e_boundary has substance_per_volume;
+  M_etoh_e_C_e_boundary = 0;
+  M_etoh_e_C_e_boundary has substance_per_volume;
+  M_for_e_C_e_boundary = 0;
+  M_for_e_C_e_boundary has substance_per_volume;
+  M_fru_e_C_e_boundary = 0;
+  M_fru_e_C_e_boundary has substance_per_volume;
+  M_fum_e_C_e_boundary = 0;
+  M_fum_e_C_e_boundary has substance_per_volume;
+  M_glc_D_e_C_e_boundary = 0;
+  M_glc_D_e_C_e_boundary has substance_per_volume;
+  M_gln_L_e_C_e_boundary = 0;
+  M_gln_L_e_C_e_boundary has substance_per_volume;
+  M_glu_L_e_C_e_boundary = 0;
+  M_glu_L_e_C_e_boundary has substance_per_volume;
+  M_h2o_e_C_e_boundary = 0;
+  M_h2o_e_C_e_boundary has substance_per_volume;
+  M_h_e_C_e_boundary = 0;
+  M_h_e_C_e_boundary has substance_per_volume;
+  M_lac_D_e_C_e_boundary = 0;
+  M_lac_D_e_C_e_boundary has substance_per_volume;
+  M_mal_L_e_C_e_boundary = 0;
+  M_mal_L_e_C_e_boundary has substance_per_volume;
+  M_nh4_e_C_e_boundary = 0;
+  M_nh4_e_C_e_boundary has substance_per_volume;
+  M_o2_e_C_e_boundary = 0;
+  M_o2_e_C_e_boundary has substance_per_volume;
+  M_pi_e_C_e_boundary = 0;
+  M_pi_e_C_e_boundary has substance_per_volume;
+  M_pyr_e_C_e_boundary = 0;
+  M_pyr_e_C_e_boundary has substance_per_volume;
+  M_succ_e_C_e_boundary = 0;
+  M_succ_e_C_e_boundary has substance_per_volume;
+
+  // Compartment initializations:
+  C_c = 1;
+  C_c has volume;
+  C_e = 1;
+  C_e has volume;
+
+  // Other declarations:
+  const C_c, C_e;
+
+  // Unit definitions:
+  unit mmol_per_gDW_per_hr = 1e-3 mole / (gram * 0.000277778 second);
+  unit volume = litre;
+  unit substance = mole;
+  unit area = metre^2;
+  unit length = metre;
+  unit extent = substance;
+  unit time_unit = second;
+  unit substance_per_volume = mole / litre;
+
+  // Display Names:
+  C_c is "Cytoplasm";
+  C_e is "Extracellular";
+  M_acald_c_C_c is "Acetaldehyde";
+  M_nad_c_C_c is "Nicotinamide-adenine-dinucleotide";
+  M_nadh_c_C_c is "Nicotinamide-adenine-dinucleotide-reduced";
+  M_accoa_c_C_c is "Acetyl-CoA";
+  M_h_c_C_c is "H";
+  M_coa_c_C_c is "Coenzyme-A";
+  M_acald_e_C_e is "Acetaldehyde";
+  M_adp_c_C_c is "ADP";
+  M_actp_c_C_c is "Acetyl-phosphate";
+  M_atp_c_C_c is "ATP";
+  M_ac_c_C_c is "Acetate";
+  M_h2o_c_C_c is "H2O";
+  M_acon_C_c is "cis-Aconitate";
+  M_cit_c_C_c is "Citrate";
+  M_icit_c_C_c is "Isocitrate";
+  M_ac_e_C_e is "Acetate";
+  M_h_e_C_e is "H";
+  M_amp_c_C_c is "AMP";
+  M_akg_c_C_c is "2-Oxoglutarate";
+  M_co2_c_C_c is "CO2";
+  M_succoa_c_C_c is "Succinyl-CoA";
+  M_akg_e_C_e is "2-Oxoglutarate";
+  M_etoh_c_C_c is "Ethanol";
+  M_pi_c_C_c is "Phosphate";
+  M_f6p_c_C_c is "D-Fructose-6-phosphate";
+  M_glu_L_c_C_c is "L-Glutamate";
+  M_nadph_c_C_c is "Nicotinamide-adenine-dinucleotide-phosphate-reduced";
+  M_pyr_c_C_c is "Pyruvate";
+  M_3pg_c_C_c is "3-Phospho-D-glycerate";
+  M_g6p_c_C_c is "D-Glucose-6-phosphate";
+  M_gln_L_c_C_c is "L-Glutamine";
+  M_pep_c_C_c is "Phosphoenolpyruvate";
+  M_oaa_c_C_c is "Oxaloacetate";
+  M_e4p_c_C_c is "D-Erythrose-4-phosphate";
+  M_nadp_c_C_c is "Nicotinamide-adenine-dinucleotide-phosphate";
+  M_g3p_c_C_c is "Glyceraldehyde-3-phosphate";
+  M_r5p_c_C_c is "alpha-D-Ribose-5-phosphate";
+  M_co2_e_C_e is "CO2";
+  M_q8h2_c_C_c is "Ubiquinol-8";
+  M_o2_c_C_c is "O2";
+  M_q8_c_C_c is "Ubiquinone-8";
+  M_lac_D_e_C_e is "D-Lactate";
+  M_lac_D_c_C_c is "D-Lactate";
+  M_2pg_c_C_c is "D-Glycerate-2-phosphate";
+  M_etoh_e_C_e is "Ethanol";
+  M_for_e_C_e is "Formate";
+  M_fru_e_C_e is "D-Fructose";
+  M_fum_e_C_e is "Fumarate";
+  M_glc_D_e_C_e is "D-Glucose";
+  M_gln_L_e_C_e is "L-Glutamine";
+  M_glu_L_e_C_e is "L-Glutamate";
+  M_h2o_e_C_e is "H2O";
+  M_mal_L_e_C_e is "L-Malate";
+  M_nh4_e_C_e is "Ammonium";
+  M_o2_e_C_e is "O2";
+  M_pi_e_C_e is "Phosphate";
+  M_pyr_e_C_e is "Pyruvate";
+  M_succ_e_C_e is "Succinate";
+  M_dhap_c_C_c is "Dihydroxyacetone-phosphate";
+  M_fdp_c_C_c is "D-Fructose-1-6-bisphosphate";
+  M_for_c_C_c is "Formate";
+  M_fum_c_C_c is "Fumarate";
+  M_succ_c_C_c is "Succinate";
+  M_mal_L_c_C_c is "L-Malate";
+  M_6pgl_c_C_c is "6-phospho-D-glucono-1-5-lactone";
+  M_13dpg_c_C_c is "3-Phospho-D-glyceroyl-phosphate";
+  M_nh4_c_C_c is "Ammonium";
+  M_6pgc_c_C_c is "6-Phospho-D-gluconate";
+  M_ru5p_D_c_C_c is "D-Ribulose-5-phosphate";
+  M_glx_c_C_c is "Glyoxylate";
+  M_xu5p_D_c_C_c is "D-Xylulose-5-phosphate";
+  M_s7p_c_C_c is "Sedoheptulose-7-phosphate";
+  M_ac_e_C_e_boundary is "Acetate";
+  M_acald_e_C_e_boundary is "Acetaldehyde";
+  M_akg_e_C_e_boundary is "2-Oxoglutarate";
+  M_co2_e_C_e_boundary is "CO2";
+  M_etoh_e_C_e_boundary is "Ethanol";
+  M_for_e_C_e_boundary is "Formate";
+  M_fru_e_C_e_boundary is "D-Fructose";
+  M_fum_e_C_e_boundary is "Fumarate";
+  M_glc_D_e_C_e_boundary is "D-Glucose";
+  M_gln_L_e_C_e_boundary is "L-Glutamine";
+  M_glu_L_e_C_e_boundary is "L-Glutamate";
+  M_h2o_e_C_e_boundary is "H2O";
+  M_h_e_C_e_boundary is "H";
+  M_lac_D_e_C_e_boundary is "D-Lactate";
+  M_mal_L_e_C_e_boundary is "L-Malate";
+  M_nh4_e_C_e_boundary is "Ammonium";
+  M_o2_e_C_e_boundary is "O2";
+  M_pi_e_C_e_boundary is "Phosphate";
+  M_pyr_e_C_e_boundary is "Pyruvate";
+  M_succ_e_C_e_boundary is "Succinate";
+  R_ACALD is "acetaldehyde dehydrogenase (acetylating)";
+  R_ACALDt is "acetaldehyde reversible transport";
+  R_ACKr is "acetate kinase";
+  R_ACONTa is "aconitase (half-reaction A, Citrate hydro-lyase)";
+  R_ACONTb is "aconitase (half-reaction B, Isocitrate hydro-lyase)";
+  R_ACt2r is "acetate reversible transport via proton symport";
+  R_ADK1 is "adenylate kinase";
+  R_AKGDH is "2-Oxoglutarate dehydrogenase";
+  R_AKGt2r is "2-oxoglutarate reversible transport via symport";
+  R_ALCD2x is "alcohol dehydrogenase (ethanol)";
+  R_ATPM is "ATP maintenance requirement";
+  R_ATPS4r is "ATP synthase (four protons for one ATP)";
+  R_Biomass_Ecoli_core_w_GAM is "Biomass Objective Function with GAM";
+  R_CO2t is "CO2 transporter via diffusion";
+  R_CS is "citrate synthase";
+  R_CYTBD is "cytochrome oxidase bd (ubiquinol-8: 2 protons)";
+  R_D_LACt2 is "D-lactate transport via proton symport";
+  R_ENO is "enolase";
+  R_ETOHt2r is "ethanol reversible transport via proton symport";
+  R_EX_ac_e is "Acetate exchange";
+  R_EX_acald_e is "Acetaldehyde exchange";
+  R_EX_akg_e is "2-Oxoglutarate exchange";
+  R_EX_co2_e is "CO2 exchange";
+  R_EX_etoh_e is "Ethanol exchange";
+  R_EX_for_e is "Formate exchange";
+  R_EX_fru_e is "D-Fructose exchange";
+  R_EX_fum_e is "Fumarate exchange";
+  R_EX_glc_e is "D-Glucose exchange";
+  R_EX_gln_L_e is "L-Glutamine exchange";
+  R_EX_glu_L_e is "L-Glutamate exchange";
+  R_EX_h2o_e is "H2O exchange";
+  R_EX_h_e is "H+ exchange";
+  R_EX_lac_D_e is "D-Lactate exchange";
+  R_EX_mal_L_e is "L-Malate exchange";
+  R_EX_nh4_e is "Ammonium exchange";
+  R_EX_o2_e is "O2 exchange";
+  R_EX_pi_e is "Phosphate exchange";
+  R_EX_pyr_e is "Pyruvate exchange";
+  R_EX_succ_e is "Succinate exchange";
+  R_FBA is "fructose-bisphosphate aldolase";
+  R_FBP is "fructose-bisphosphatase";
+  R_FORt2 is "formate transport via proton symport (uptake only)";
+  R_FORti is "formate transport via diffusion";
+  R_FRD7 is "fumarate reductase";
+  R_FRUpts2 is "Fructose transport via PEP:Pyr PTS (f6p generating)";
+  R_FUM is "fumarase";
+  R_FUMt2_2 is "Fumarate transport via proton symport (2 H)";
+  R_G6PDH2r is "glucose 6-phosphate dehydrogenase";
+  R_GAPD is "glyceraldehyde-3-phosphate dehydrogenase";
+  R_GLCpts is "D-glucose transport via PEP:Pyr PTS";
+  R_GLNS is "glutamine synthetase";
+  R_GLNabc is "L-glutamine transport via ABC system";
+  R_GLUDy is "glutamate dehydrogenase (NADP)";
+  R_GLUN is "glutaminase";
+  R_GLUSy is "glutamate synthase (NADPH)";
+  R_GLUt2r is "L-glutamate transport via proton symport, reversible (periplasm)";
+  R_GND is "phosphogluconate dehydrogenase";
+  R_H2Ot is "H2O transport via diffusion";
+  R_ICDHyr is "isocitrate dehydrogenase (NADP)";
+  R_ICL is "Isocitrate lyase";
+  R_LDH_D is "D lactate dehydrogenase";
+  R_MALS is "malate synthase";
+  R_MALt2_2 is "Malate transport via proton symport (2 H)";
+  R_MDH is "malate dehydrogenase";
+  R_ME1 is "malic enzyme (NAD)";
+  R_ME2 is "malic enzyme (NADP)";
+  R_NADH16 is "NADH dehydrogenase (ubiquinone-8 & 3 protons)";
+  R_NADTRHD is "NAD transhydrogenase";
+  R_NH4t is "ammonia reversible transport";
+  R_O2t is "o2 transport via diffusion";
+  R_PDH is "pyruvate dehydrogenase";
+  R_PFK is "phosphofructokinase";
+  R_PFL is "pyruvate formate lyase";
+  R_PGI is "glucose-6-phosphate isomerase";
+  R_PGK is "phosphoglycerate kinase";
+  R_PGL is "6-phosphogluconolactonase";
+  R_PGM is "phosphoglycerate mutase";
+  R_PIt2r is "phosphate reversible transport via proton symport";
+  R_PPC is "phosphoenolpyruvate carboxylase";
+  R_PPCK is "phosphoenolpyruvate carboxykinase";
+  R_PPS is "phosphoenolpyruvate synthase";
+  R_PTAr is "phosphotransacetylase";
+  R_PYK is "pyruvate kinase";
+  R_PYRt2r is "pyruvate reversible transport via proton symport";
+  R_RPE is "ribulose 5-phosphate 3-epimerase";
+  R_RPI is "ribose-5-phosphate isomerase";
+  R_SUCCt2_2 is "succinate transport via proton symport (2 H)";
+  R_SUCCt3 is "succinate transport out via proton antiport";
+  R_SUCDi is "succinate dehydrogenase (irreversible)";
+  R_SUCOAS is "succinyl-CoA synthetase (ADP-forming)";
+  R_TALA is "transaldolase";
+  R_THD2 is "NAD(P) transhydrogenase";
+  R_TKT1 is "transketolase";
+  R_TKT2 is "transketolase";
+  R_TPI is "triose-phosphate isomerase";
+end

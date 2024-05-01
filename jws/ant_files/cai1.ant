@@ -1,0 +1,47 @@
+// Created by libAntimony v2.13.2
+model *cai1()
+
+  // Compartments and Species:
+  species A, $EXT, I, J, S;
+
+  // Reactions:
+  v_1: $EXT -> S; Mu*K;
+  v_10: A -> $EXT; d*A;
+  v_2: S -> I; c*Beta*(I + b*J)*S;
+  v_3: S -> $EXT; Mu*S;
+  v_4: I -> $EXT; Mu*I;
+  v_5: I -> J; k1*I;
+  v_6: J -> I; Alpha*J;
+  v_7: J -> $EXT; Mu*J;
+  v_8: J -> A; k2*J;
+  v_9: A -> $EXT; Mu*A;
+
+  // Species initializations:
+  A = 0;
+  EXT = 1;
+  I = 30;
+  J = 20;
+  S = 150;
+
+  // Variable initializations:
+  Alpha = 0.01;
+  Beta = 0.0005;
+  K = 120;
+  Mu = 0.02;
+  b = 0.3;
+  c = 3;
+  d = 0.333;
+  k1 = 0.01;
+  k2 = 0.02;
+
+  // Other declarations:
+  var Alpha, Beta, K, Mu, b, c, d, k1, k2;
+
+  // Display Names:
+  A is "AIDS";
+  I is "Asymptomatic infected";
+  J is "Symptomatic infected";
+  S is "Susceptible";
+end
+
+cai1 is "cai1"

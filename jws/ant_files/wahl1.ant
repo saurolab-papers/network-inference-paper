@@ -1,0 +1,67 @@
+// Created by libAntimony v2.13.2
+model *wahl1()
+
+  // Compartments and Species:
+  species w, x, y1, y2, y3, z1, z2, z3;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v10: y2 -> ; p*y2*z2;
+  v11: y2 -> ; q*w*y2;
+  v12: y3 -> ; a*y3;
+  v13: y3 -> ; p*y3*z3;
+  v14: y3 -> ; q*w*y3;
+  v15:  -> z1; c1*y1*z1;
+  v16: z1 -> ; b*z1;
+  v17:  -> z2; c2*y2*z2;
+  v18: z2 -> ; b*z2;
+  v19:  -> z3; c3*y3*z3;
+  v2: x -> ; d*x;
+  v20: z3 -> ; b*z3;
+  v21:  -> w; k1*w*y1;
+  v22:  -> w; k2*w*y2;
+  v23:  -> w; k3*w*y3;
+  v24: w -> ; b*w;
+  v3: x -> y1; beta1*x*y1;
+  v4: x -> y2; beta2*x*y2;
+  v5: x -> y3; beta3*x*y3;
+  v6: y1 -> ; a*y1;
+  v7: y1 -> ; p*y1*z1;
+  v8: y1 -> ; q*w*y1;
+  v9: y2 -> ; a*y2;
+
+  // Events:
+  _E0: at 0 after time > 2499, t0=false, persistent=false, fromTrigger=false: w = 0.0215649, z1 = 0.00992693, y1 = 0.15;
+
+  // Species initializations:
+  w = 0;
+  x = 2;
+  y1 = 0;
+  y2 = 0.45;
+  y3 = 0.45;
+  z1 = 0;
+  z2 = 0.072103;
+  z3 = 0.0180258;
+
+  // Variable initializations:
+  a = 0.1;
+  b = 0.4;
+  beta1 = 0.08;
+  beta2 = 0.075;
+  beta3 = 0.06;
+  c1 = 0.9;
+  c2 = 0.9;
+  c3 = 0.9;
+  d = 0.5;
+  k1 = 0.4;
+  k2 = 0.4;
+  k3 = 0.4;
+  lambda = 1;
+  p = 0.3;
+  q = 0.2;
+
+  // Other declarations:
+  var a, b, beta1, beta2, beta3, c1, c2, c3, d, k1, k2, k3, lambda, p, q;
+end
+
+wahl1 is "wahl1"

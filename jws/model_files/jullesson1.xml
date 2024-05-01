@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="jullesson1" name="jullesson1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" name="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="IR" name="IR" compartment="default" initialConcentration="0.9181" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="IRS1" name="IRS1" compartment="default" initialConcentration="0.9999" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="IRS1p" name="IRS1p" compartment="default" initialConcentration="0.0001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="IRS1ser307" name="IRS1ser307" compartment="default" initialConcentration="0.4614" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="IRS1ser307p" name="IRS1ser307p" compartment="default" initialConcentration="0.5386" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="IRi" name="IRi" compartment="default" initialConcentration="0.0818" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="IRp" name="IRp" compartment="default" initialConcentration="0.0001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="S6" name="S6" compartment="default" initialConcentration="0.7765" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="S6K" name="S6K" compartment="default" initialConcentration="0.9999" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="S6KDN" name="S6KDN" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="S6Kp" name="S6Kp" compartment="default" initialConcentration="0.0001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="S6p" name="S6p" compartment="default" initialConcentration="0.2235" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="mTOR" name="mTOR" compartment="default" initialConcentration="0.9999" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="mTORp" name="mTORp" compartment="default" initialConcentration="0.0001" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="mTORpS6KDN" name="mTORpS6KDN" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_16" id="I" name="I" value="0.0006" constant="false"/>
+      <parameter metaid="metaid_17" id="IRbasal" name="IRbasal" value="0.0635" constant="false"/>
+      <parameter metaid="metaid_18" id="Ins" name="Ins" value="100" constant="false"/>
+      <parameter metaid="metaid_19" id="fig3b_IRS1ser307p" name="fig3b_IRS1ser307p" value="0" constant="false"/>
+      <parameter metaid="metaid_20" id="fig3b_S6p" name="fig3b_S6p" value="0" constant="false"/>
+      <parameter metaid="metaid_21" id="fig6a_IRS1p" name="fig6a_IRS1p" value="0" constant="false"/>
+      <parameter metaid="metaid_22" id="fig6b_S6Kp" name="fig6b_S6Kp" value="0" constant="false"/>
+      <parameter metaid="metaid_23" id="fig6c_IRS1ser307p" name="fig6c_IRS1ser307p" value="0" constant="false"/>
+      <parameter metaid="metaid_24" id="fig6d_S6p" name="fig6d_S6p" value="0" constant="false"/>
+      <parameter metaid="metaid_25" id="fig6e_IRS1p" name="fig6e_IRS1p" value="0" constant="false"/>
+      <parameter metaid="metaid_26" id="fig6f_S6p" name="fig6f_S6p" value="0" constant="false"/>
+      <parameter metaid="metaid_27" id="fig6g_IRS1ser307p" name="fig6g_IRS1ser307p" value="0" constant="false"/>
+      <parameter metaid="metaid_28" id="k1" name="k1" value="6.0982" constant="false"/>
+      <parameter metaid="metaid_29" id="k1m" name="k1m" value="366.2795" constant="false"/>
+      <parameter metaid="metaid_30" id="k2" name="k2" value="0.4397" constant="false"/>
+      <parameter metaid="metaid_31" id="k2m" name="k2m" value="0.5174" constant="false"/>
+      <parameter metaid="metaid_32" id="k3" name="k3" value="20660.1506" constant="false"/>
+      <parameter metaid="metaid_33" id="k3m" name="k3m" value="1.9552" constant="false"/>
+      <parameter metaid="metaid_34" id="k4" name="k4" value="0.085" constant="false"/>
+      <parameter metaid="metaid_35" id="k4m" name="k4m" value="0.082" constant="false"/>
+      <parameter metaid="metaid_36" id="k5" name="k5" value="0.1965" constant="false"/>
+      <parameter metaid="metaid_37" id="k5m" name="k5m" value="0.1968" constant="false"/>
+      <parameter metaid="metaid_38" id="k5tm" name="k5tm" value="1.7709" constant="false"/>
+      <parameter metaid="metaid_39" id="k6" name="k6" value="35.9042" constant="false"/>
+      <parameter metaid="metaid_40" id="k6m" name="k6m" value="0.0138" constant="false"/>
+      <parameter metaid="metaid_41" id="k7" name="k7" value="0.1499" constant="false"/>
+      <parameter metaid="metaid_42" id="k7m" name="k7m" value="97.5553" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_43" variable="fig6c_IRS1ser307p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> IRS1ser307p </ci>
+            <cn> 2.60412436101051 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_44" variable="fig6g_IRS1ser307p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <ci> IRS1ser307p </ci>
+                <cn> 0.538627018751669 </cn>
+              </apply>
+              <cn> 0.352962547646749 </cn>
+            </apply>
+            <cn type="integer"> 100 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_45" variable="fig6f_S6p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <ci> S6p </ci>
+                <cn> 0.000106747023438893 </cn>
+              </apply>
+              <cn> 0.447502452553838 </cn>
+            </apply>
+            <cn type="integer"> 100 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_46" variable="fig6e_IRS1p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <ci> IRS1p </ci>
+                <cn> 0.000106747023438893 </cn>
+              </apply>
+              <cn> 0.00119368779760948 </cn>
+            </apply>
+            <cn type="integer"> 100 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_47" variable="fig6d_S6p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> S6p </ci>
+            <cn> 5.0036269004157 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_48" variable="fig6a_IRS1p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> IRS1p </ci>
+            <cn> 28765.5323430673 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_49" variable="fig3b_S6p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> S6p </ci>
+            <cn> 140.688371115354 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_50" variable="fig3b_IRS1ser307p">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> IRS1ser307p </ci>
+            <cn> 110.795803138294 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_51" variable="fig6b_S6Kp">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> S6Kp </ci>
+            <cn> 4455.78636783405 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_54" id="v1" name="v1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_52" species="IR" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="IRp" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> IRbasal </ci>
+                <ci> IR </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> IR </ci>
+                <ci> Ins </ci>
+                <ci> k1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_57" id="v1m" name="v1m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="IRp" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_56" species="IR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRp </ci>
+              <ci> k1m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="v2" name="v2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_58" species="IRS1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_59" species="IRS1p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_60" species="IRp"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRS1 </ci>
+              <ci> IRp </ci>
+              <ci> k2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_64" id="v2m" name="v2m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="IRS1p" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="IRS1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRS1p </ci>
+              <ci> k2m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_68" id="v3" name="v3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_65" species="IRS1ser307" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_66" species="IRS1ser307p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_67" species="S6Kp"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRS1ser307 </ci>
+              <ci> k3 </ci>
+              <ci> S6Kp </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_71" id="v3m" name="v3m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_69" species="IRS1ser307p" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_70" species="IRS1ser307" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRS1ser307p </ci>
+              <ci> k3m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_75" id="v4" name="v4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_72" species="mTOR" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_73" species="mTORp" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_74" species="IRS1p"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> IRS1p </ci>
+              <ci> mTOR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_78" id="v4m" name="v4m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_76" species="mTORp" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_77" species="mTOR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mTORp </ci>
+              <ci> k4m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_82" id="v5" name="v5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_79" species="S6K" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_80" species="S6Kp" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_81" species="mTORp"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> S6K </ci>
+              <ci> mTORp </ci>
+              <ci> k5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_86" id="v5T" name="v5T" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_83" species="mTORp" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_84" species="S6KDN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_85" species="mTORpS6KDN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> S6KDN </ci>
+              <ci> mTORp </ci>
+              <ci> I </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_89" id="v5m" name="v5m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_87" species="S6Kp" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_88" species="S6K" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> S6Kp </ci>
+              <ci> k5m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_93" id="v6" name="v6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_90" species="S6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_91" species="S6p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_92" species="S6Kp"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> S6 </ci>
+              <ci> k6 </ci>
+              <ci> S6Kp </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="v6m" name="v6m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_94" species="S6p" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="S6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> S6p </ci>
+              <ci> k6m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="v7" name="v7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_97" species="IRi" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_98" species="IR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRi </ci>
+              <ci> k7 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_102" id="v7m" name="v7m" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_100" species="IRp" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_101" species="IRi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IRp </ci>
+              <ci> k7m </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="vM5T" name="vM5T" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_103" species="mTORpS6KDN" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_104" species="mTORp" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_105" species="S6KDN" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mTORpS6KDN </ci>
+              <ci> k5tm </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

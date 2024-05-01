@@ -1,0 +1,70 @@
+// Created by libAntimony v2.13.2
+model *martins2()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species $SigCtot in compartment_;
+  substanceOnly species PsbA1 in compartment_, PsbA1mut in compartment_, SigC in compartment_;
+  substanceOnly species SigC_a in compartment_;
+
+  // Assignment Rules:
+  SigCtot := SigC + SigC_a;
+  theta := bas + (A - bas)*((1/2)*(1 + cos(2*pi*time/Tc)))^m;
+
+  // Reactions:
+  v1: SigC -> SigC_a; kf*SigC;
+  v2: SigC_a -> SigC; kb*SigC_a;
+  v3: SigC_a -> ; (1/Td + 1/Ts)*ln(2)*SigC_a;
+  v4: SigC -> ; (1/Td + 1/Ts)*ln(2)*SigC;
+  v5:  -> SigC; Vs*(theta/K_theta_s)^h_theta_s/(1 + (theta/K_theta_s)^h_theta_s + delcc*(SigC_a/Kss)^hss + delcc*(theta/K_theta_s)^h_theta_s*(SigC_a/Kss)^hss);
+  v6: PsbA1 -> ; (1/Td + 1/Ty)*ln(2)*PsbA1;
+  v7:  -> PsbA1; Vp*(theta/K_theta_p)^h_theta_p/(1 + (theta/K_theta_p)^h_theta_p + delcp*(SigC_a/Ksp)^hsp + delcp*(theta/K_theta_p)^h_theta_p*(SigC_a/Ksp)^hsp);
+  v8:  -> PsbA1mut; Vp*(theta/K_theta_p)^h_theta_p/(1 + (theta/K_theta_p)^h_theta_p + 0*(SigC_a/Ksp)^hsp + 0*(theta/K_theta_p)^h_theta_p*(SigC_a/Ksp)^hsp);
+  v9: PsbA1mut -> ; (1/Td + 1/Ty)*ln(2)*PsbA1mut;
+
+  // Species initializations:
+  PsbA1 = 0;
+  PsbA1mut = 0;
+  SigC = 0;
+  SigC_a = 0;
+
+  // Compartment initializations:
+  compartment_ = 1;
+  compartment_ has litre;
+
+  // Variable initializations:
+  A = 1;
+  K_theta_p = 0.1;
+  K_theta_s = 0.9;
+  Ksp = 2.5;
+  Kss = 1.4;
+  Tc = 24;
+  Td = 19.5;
+  Ts = 6;
+  Ty = 5.6;
+  Vp = 0.2;
+  Vs = 3.7;
+  bas = 0;
+  delcc = 1;
+  delcp = 1;
+  h_theta_p = 2;
+  h_theta_s = 5;
+  hsp = 5;
+  hss = 2;
+  kb = 0.1;
+  kf = 10;
+  m = 1;
+
+  // Other declarations:
+  var K_theta_p, K_theta_s, Ksp, Kss, Vp, Vs, h_theta_p, h_theta_s, hsp, hss;
+  var theta;
+  const compartment_, A, Tc, Td, Ts, Ty, bas, delcc, delcp, kb, kf, m;
+
+  // Unit definitions:
+  unit per_hour = 3600 second;
+  unit substance = mole;
+  unit extent = mole;
+  unit time_unit = second;
+end
+
+martins2 is "martins2"

@@ -1,0 +1,2750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="fujita" name="fujita">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="function_31">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Akt </ci>
+            </bvar>
+            <bvar>
+              <ci> PI3K_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> active_PI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pAkt </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_PI3KAkt </ci>
+            </bvar>
+            <bvar>
+              <ci> pAkt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kphos_PI3KAkt </ci>
+                  <ci> active_PI3K </ci>
+                  <ci> PI3K_inhibitor </ci>
+                  <ci> c1 </ci>
+                  <ci> Akt </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kdphos_pAkt </ci>
+                  <ci> pAkt </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_11">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_dpMEK </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEKcyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kf_dpMEK </ci>
+                <ci> pMEKcyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_32">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> TSC </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pTSC </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_AktTSC </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_RSKTSC </ci>
+            </bvar>
+            <bvar>
+              <ci> pAkt </ci>
+            </bvar>
+            <bvar>
+              <ci> pRSK </ci>
+            </bvar>
+            <bvar>
+              <ci> pTSC </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> kphos_AktTSC </ci>
+                    <ci> pAkt </ci>
+                    <ci> TSC </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> kphos_RSKTSC </ci>
+                    <ci> pRSK </ci>
+                    <ci> TSC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kdphos_pTSC </ci>
+                  <ci> pTSC </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_28">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Ras_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_Shoc2 </ci>
+            </bvar>
+            <bvar>
+              <ci> Shoc2 </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_Ras_Shoc2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_Ras_Shoc2 </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_Ras_Shoc2 </ci>
+                  <ci> Ras_GTP </ci>
+                  <ci> Shoc2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_Ras_Shoc2 </ci>
+                  <ci> Ras_Shoc2 </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_25">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kexport_pYERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kimport_pYERK </ci>
+            </bvar>
+            <bvar>
+              <ci> pYERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pYERK_nuc </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kimport_pYERK </ci>
+                <ci> pYERK_cyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> c2 </ci>
+                <ci> kexport_pYERK </ci>
+                <ci> pYERK_nuc </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_21">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pY_np_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdphos_pY_np_cyt </ci>
+                <ci> pYERK_cyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_19">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pTpY_pT_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdphos_pTpY_pT_cyt </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_17">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> MEK_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_np_pY </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEK_ERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kphos_np_pY </ci>
+                <ci> pMEK_ERK_cyt </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_16">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Km_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> kcat_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> kfb_ppppSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pppSos </ci>
+            </bvar>
+            <bvar>
+              <ci> ppppSos </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kfb_ppppSos </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> kcat_pERKcyt </ci>
+                      <ci> pppSos </ci>
+                      <ci> pTpYERK_cyt </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> Km_pERKcyt </ci>
+                      <ci> pppSos </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> kb_pSos </ci>
+                    <ci> ppppSos </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_13">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Km_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> Sos1_2 </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> kcat_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> kf_pSos </ci>
+                    <ci> kcat_pERKcyt </ci>
+                    <ci> Sos1_2 </ci>
+                    <ci> pTpYERK_cyt </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Km_pERKcyt </ci>
+                    <ci> Sos1_2 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_pSos </ci>
+                  <ci> pSos </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_9">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kexport_pTpYERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kimport_pTpYERK </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_nuc </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kimport_pTpYERK </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> c2 </ci>
+                <ci> kexport_pTpYERK </ci>
+                <ci> pTpYERK_nuc </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_33">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Rheb_GDP </ci>
+            </bvar>
+            <bvar>
+              <ci> Rheb_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> TSC </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kact_Rheb </ci>
+            </bvar>
+            <bvar>
+              <ci> kdact_TSCRheb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kdact_TSCRheb </ci>
+                  <ci> TSC </ci>
+                  <ci> Rheb_GTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kact_Rheb </ci>
+                  <ci> Rheb_GDP </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_29">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Ras_Shoc2 </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_Shoc2_cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_RasRaf_Shoc2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_RasRaf_Shoc2 </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_RasRaf_Shoc2 </ci>
+                  <ci> Ras_Shoc2 </ci>
+                  <ci> cRaf </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_RasRaf_Shoc2 </ci>
+                  <ci> Ras_Shoc2_cRaf </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_26">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kexport_pTERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kimport_pTERK </ci>
+            </bvar>
+            <bvar>
+              <ci> pTERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTERK_nuc </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kimport_pTERK </ci>
+                <ci> pTERK_cyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> c2 </ci>
+                <ci> kexport_pTERK </ci>
+                <ci> pTERK_nuc </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_24">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> MEK_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_pT_pTpY </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kphos_pT_pTpY </ci>
+                <ci> pMEKcyt </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> pTERK_cyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_23">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> MEK_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_pY_pTpY </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kphos_pY_pTpY </ci>
+                <ci> pYERK_cyt </ci>
+                <ci> pMEKcyt </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_22">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pT_np_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdphos_pT_np_cyt </ci>
+                <ci> pTERK_cyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_20">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pTpY_pY_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdphos_pTpY_pY_cyt </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_18">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> MEK_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_pY_pTpY_MEKERK </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEK_pYERK </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kphos_pY_pTpY_MEKERK </ci>
+                <ci> pMEK_pYERK </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_15">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Km_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> kcat_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> kfb_pppSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> ppSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pppSos </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kfb_pppSos </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> kcat_pERKcyt </ci>
+                      <ci> ppSos </ci>
+                      <ci> pTpYERK_cyt </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> Km_pERKcyt </ci>
+                      <ci> ppSos </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> kb_pSos </ci>
+                    <ci> pppSos </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_14">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Km_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> kcat_pERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> kfb_ppSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pSos </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> ppSos </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kfb_ppSos </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> kcat_pERKcyt </ci>
+                      <ci> pSos </ci>
+                      <ci> pTpYERK_cyt </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <ci> Km_pERKcyt </ci>
+                      <ci> pSos </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> kb_pSos </ci>
+                    <ci> ppSos </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_7">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> MEK_ERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> MEKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_MEKERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_MEKERK </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_MEKERK </ci>
+                  <ci> MEKcyt </ci>
+                  <ci> ERKcyt </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_MEKERK </ci>
+                  <ci> MEK_ERK_cyt </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_36">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Rheb_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> inactive_cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kact_RhebRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kdact_RhebRaf </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kdact_RhebRaf </ci>
+                  <ci> Rheb_GTP </ci>
+                  <ci> cRaf </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kact_RhebRaf </ci>
+                  <ci> inactive_cRaf </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGF </ci>
+            </bvar>
+            <bvar>
+              <ci> EGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_EGFEGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_EGFR_mutant </ci>
+            </bvar>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> kf_EGFEGFR </ci>
+                <ci> EGF </ci>
+                <ci> EGFR </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kphos_EGFR_mutant </ci>
+                <ci> EGFR </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_5">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> RasGAP </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_RasGAP </ci>
+            </bvar>
+            <bvar>
+              <ci> mutated_Ras </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kf_RasGAP </ci>
+                <apply>
+                  <minus/>
+                  <ci> Ras_GTP </ci>
+                  <ci> mutated_Ras </ci>
+                </apply>
+                <ci> RasGAP </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_10">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> ERKnuc </ci>
+            </bvar>
+            <bvar>
+              <ci> c2 </ci>
+            </bvar>
+            <bvar>
+              <ci> kexport_ERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kimport_ERK </ci>
+            </bvar>
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kimport_ERK </ci>
+                <ci> ERKcyt </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> c2 </ci>
+                <ci> kexport_ERK </ci>
+                <ci> ERKnuc </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_8">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ERKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_MEKERK </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_MEKERK </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEK_ERK_cyt </ci>
+            </bvar>
+            <bvar>
+              <ci> pMEKcyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_MEKERK </ci>
+                  <ci> ERKcyt </ci>
+                  <ci> pMEKcyt </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_MEKERK </ci>
+                  <ci> pMEK_ERK_cyt </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_6">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Ras_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_Raf </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_RasRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_RasRaf </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_RasRaf </ci>
+                  <ci> cRaf </ci>
+                  <ci> Ras_GTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_RasRaf </ci>
+                  <ci> Ras_Raf </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_38">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> PI3K_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> active_PI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> inactive_cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> kact_PI3KRaf </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kact_PI3KRaf </ci>
+                <ci> active_PI3K </ci>
+                <ci> PI3K_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> inactive_cRaf </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_35">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> RSK </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pRSK </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_ERKRSK </ci>
+            </bvar>
+            <bvar>
+              <ci> pRSK </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kphos_ERKRSK </ci>
+                  <ci> pTpYERK_cyt </ci>
+                  <ci> RSK </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kdphos_pRSK </ci>
+                  <ci> pRSK </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_37">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGF_EGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_degra_ERKEGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> pTpYERK_cyt </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kf_degra_ERKEGFR </ci>
+                <ci> pTpYERK_cyt </ci>
+                <ci> EGF_EGFR </ci>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_27">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> BRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> BRaf_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> MEKcyt </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_Raf </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_Shoc2_cRaf </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_pMEK </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_BRafMEK </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> kf_pMEK </ci>
+                  <apply>
+                    <plus/>
+                    <ci> Ras_Raf </ci>
+                    <ci> Ras_Shoc2_cRaf </ci>
+                  </apply>
+                  <ci> MEKcyt </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kphos_BRafMEK </ci>
+                  <ci> BRaf </ci>
+                  <ci> BRaf_inhibitor </ci>
+                  <ci> c1 </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGFR_Sos </ci>
+            </bvar>
+            <bvar>
+              <ci> RasGEF </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_GDP </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_RasGEF </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_Sos_Ras </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> kf_Sos_Ras </ci>
+                  <ci> EGFR_Sos </ci>
+                  <ci> Ras_GDP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kf_RasGEF </ci>
+                  <ci> RasGEF </ci>
+                  <ci> Ras_GDP </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGFR_Sos </ci>
+            </bvar>
+            <bvar>
+              <ci> EGFR_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> EGF_EGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> Sos1_2 </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_Sos </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_Sos </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_Sos </ci>
+                  <ci> EGF_EGFR </ci>
+                  <ci> EGFR_inhibitor </ci>
+                  <ci> c1 </ci>
+                  <ci> Sos1_2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_Sos </ci>
+                  <ci> EGFR_Sos </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGF_EGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> degra_EGF_pEGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_degra </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_degra </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_degra </ci>
+                  <ci> EGF_EGFR </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_degra </ci>
+                  <ci> degra_EGF_pEGFR </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_12">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> RasEffector </ci>
+            </bvar>
+            <bvar>
+              <ci> RassEffector </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kb_RasEffector </ci>
+            </bvar>
+            <bvar>
+              <ci> kf_RasEffector </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kf_RasEffector </ci>
+                  <ci> Ras_GTP </ci>
+                  <ci> RasEffector </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kb_RasEffector </ci>
+                  <ci> RassEffector </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_30">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> EGFR_inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> EGF_EGFR </ci>
+            </bvar>
+            <bvar>
+              <ci> PI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> Ras_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> active_PI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kact_EGFRRasPI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> kdact_PI3K </ci>
+            </bvar>
+            <bvar>
+              <ci> mutated_PI3K </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kact_EGFRRasPI3K </ci>
+                  <ci> EGF_EGFR </ci>
+                  <ci> Ras_GTP </ci>
+                  <ci> EGFR_inhibitor </ci>
+                  <ci> c1 </ci>
+                  <ci> PI3K </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kdact_PI3K </ci>
+                  <apply>
+                    <minus/>
+                    <ci> active_PI3K </ci>
+                    <ci> mutated_PI3K </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_34">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Rheb_GTP </ci>
+            </bvar>
+            <bvar>
+              <ci> S6K </ci>
+            </bvar>
+            <bvar>
+              <ci> c1 </ci>
+            </bvar>
+            <bvar>
+              <ci> kdphos_pS6K </ci>
+            </bvar>
+            <bvar>
+              <ci> kphos_RhebS6K </ci>
+            </bvar>
+            <bvar>
+              <ci> pS6K </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> kphos_RhebS6K </ci>
+                  <ci> Rheb_GTP </ci>
+                  <ci> S6K </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> kdphos_pS6K </ci>
+                  <ci> pS6K </ci>
+                </apply>
+              </apply>
+              <ci> c1 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_0" id="c1" name="PM" spatialDimensions="3" size="1" constant="true"/>
+      <compartment metaid="metaid_1" id="c2" name="Nuc" spatialDimensions="3" size="0.2" constant="true"/>
+      <compartment metaid="metaid_2" id="default" name="default" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_3" id="Akt" name="Akt" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="BRaf" name="BRaf" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="BRaf_inhibitor" name="BRaf_inhibitor" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="EGF" name="EGF" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="EGFR" name="EGFR" compartment="c1" initialConcentration="0.42" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="EGFR_Sos" name="EGFR_Sos" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="EGFR_inhibitor" name="EGFR_inhibitor" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="EGF_EGFR" name="EGF_EGFR" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="ERKcyt" name="ERKcyt" compartment="c1" initialConcentration="0.96" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="ERKnuc" name="ERKnuc" compartment="c2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="MEK_ERK_cyt" name="MEK_ERK_cyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="MEK_inhibitor" name="MEK_inhibitor" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="MEKcyt" name="MEKcyt" compartment="c1" initialConcentration="1.4" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="PI3K" name="PI3K" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="PI3K_inhibitor" name="PI3K_inhibitor" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="RSK" name="RSK" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="RasEffector" name="RasEffector" compartment="c1" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="RasGAP" name="RasGAP" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="RasGEF" name="RasGEF" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="Ras_GDP" name="Ras_GDP" compartment="c1" initialConcentration="0.43" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="Ras_GTP" name="Ras_GTP" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="Ras_Raf" name="Ras_Raf" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="Ras_Shoc2" name="Ras_Shoc2" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="Ras_Shoc2_cRaf" name="Ras_Shoc2_cRaf" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="RassEffector" name="RassEffector" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_28" id="Rheb_GDP" name="Rheb_GDP" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_29" id="Rheb_GTP" name="Rheb_GTP" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="S6K" name="S6K" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="Shoc2" name="Shoc2" compartment="c1" initialConcentration="0.67" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="Sos1_2" name="Sos1" compartment="c1" initialConcentration="0.12" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_33" id="TSC" name="TSC" compartment="c1" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" id="active_PI3K" name="active_PI3K" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" id="cRaf" name="cRaf" compartment="c1" initialConcentration="0.013" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_36" id="degra_EGF_pEGFR" name="degra_EGF_pEGFR" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_37" id="inactive_cRaf" name="inactive_cRaf" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_38" id="mutated_PI3K" name="mutated_PI3K" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_39" id="mutated_Ras" name="mutated_Ras" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_40" id="pAkt" name="pAkt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_41" id="pMEK_ERK_cyt" name="pMEK_ERK_cyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_42" id="pMEK_pYERK" name="pMEK_pYERK" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_43" id="pMEKcyt" name="pMEKcyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_44" id="pRSK" name="pRSK" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_45" id="pS6K" name="pS6K" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_46" id="pSos" name="pSos" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_47" id="pTERK_cyt" name="pTERK_cyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_48" id="pTERK_nuc" name="pTERK_nuc" compartment="c2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_49" id="pTSC" name="pTSC" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_50" id="pTpYERK_cyt" name="pTpYERK_cyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_51" id="pTpYERK_nuc" name="pTpYERK_nuc" compartment="c2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_52" id="pYERK_cyt" name="pYERK_cyt" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_53" id="pYERK_nuc" name="pYERK_nuc" compartment="c2" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_54" id="ppSos" name="ppSos" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_55" id="pppSos" name="pppSos" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_56" id="ppppSos" name="ppppSos" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_57" id="Km_pERKcyt" name="Km_pERKcyt" value="3" constant="true"/>
+      <parameter metaid="metaid_58" id="kact_EGFRRasPI3K" name="kact_EGFRRasPI3K" value="3" constant="true"/>
+      <parameter metaid="metaid_59" id="kact_PI3KRaf" name="kact_PI3KRaf" value="1.8" constant="true"/>
+      <parameter metaid="metaid_60" id="kact_Rheb" name="kact_Rheb" value="0.0021" constant="true"/>
+      <parameter metaid="metaid_61" id="kact_RhebRaf" name="kact_RhebRaf" value="0.04" constant="true"/>
+      <parameter metaid="metaid_62" id="kb_MEKERK" name="kb_MEKERK" value="0.27" constant="true"/>
+      <parameter metaid="metaid_63" id="kb_RafMEK" name="kb_RafMEK" value="0.065" constant="true"/>
+      <parameter metaid="metaid_64" id="kb_RasEffector" name="kb_RasEffector" value="0.1" constant="true"/>
+      <parameter metaid="metaid_65" id="kb_RasRaf" name="kb_RasRaf" value="0.0049" constant="true"/>
+      <parameter metaid="metaid_66" id="kb_RasRaf_Shoc2" name="kb_RasRaf_Shoc2" value="0.049" constant="true"/>
+      <parameter metaid="metaid_67" id="kb_Ras_Shoc2" name="kb_Ras_Shoc2" value="0.1" constant="true"/>
+      <parameter metaid="metaid_68" id="kb_Sos" name="kb_Sos" value="0.1" constant="true"/>
+      <parameter metaid="metaid_69" id="kb_degra" name="kb_degra" value="0.001" constant="true"/>
+      <parameter metaid="metaid_70" id="kb_pSos" name="kb_pSos" value="0.0025" constant="true"/>
+      <parameter metaid="metaid_71" id="kcat_pERKcyt" name="kcat_pERKcyt" value="0.075" constant="true"/>
+      <parameter metaid="metaid_72" id="kdact_PI3K" name="kdact_PI3K" value="0.028" constant="true"/>
+      <parameter metaid="metaid_73" id="kdact_RhebRaf" name="kdact_RhebRaf" value="4" constant="true"/>
+      <parameter metaid="metaid_74" id="kdact_TSCRheb" name="kdact_TSCRheb" value="0.097" constant="true"/>
+      <parameter metaid="metaid_75" id="kdphos_pAkt" name="kdphos_pAkt" value="0.048" constant="true"/>
+      <parameter metaid="metaid_76" id="kdphos_pRSK" name="kdphos_pRSK" value="0.3" constant="true"/>
+      <parameter metaid="metaid_77" id="kdphos_pS6K" name="kdphos_pS6K" value="0.001" constant="true"/>
+      <parameter metaid="metaid_78" id="kdphos_pTSC" name="kdphos_pTSC" value="0.0088" constant="true"/>
+      <parameter metaid="metaid_79" id="kdphos_pT_np_cyt" name="kdphos_pT_np_cyt" value="0.0068" constant="true"/>
+      <parameter metaid="metaid_80" id="kdphos_pT_np_nuc" name="kdphos_pT_np_nuc" value="0.0058" constant="true"/>
+      <parameter metaid="metaid_81" id="kdphos_pTpY_pT_cyt" name="kdphos_pTpY_pT_cyt" value="0.0055" constant="true"/>
+      <parameter metaid="metaid_82" id="kdphos_pTpY_pT_nuc" name="kdphos_pTpY_pT_nuc" value="0.0038" constant="true"/>
+      <parameter metaid="metaid_83" id="kdphos_pTpY_pY_cyt" name="kdphos_pTpY_pY_cyt" value="0.004" constant="true"/>
+      <parameter metaid="metaid_84" id="kdphos_pTpY_pY_nuc" name="kdphos_pTpY_pY_nuc" value="0.0032" constant="true"/>
+      <parameter metaid="metaid_85" id="kdphos_pY_np_cyt" name="kdphos_pY_np_cyt" value="0.0067" constant="true"/>
+      <parameter metaid="metaid_86" id="kdphos_pY_np_nuc" name="kdphos_pY_np_nuc" value="0.0077" constant="true"/>
+      <parameter metaid="metaid_87" id="kexport_ERK" name="kexport_ERK" value="0.013" constant="true"/>
+      <parameter metaid="metaid_88" id="kexport_pTERK" name="kexport_pTERK" value="0.049" constant="true"/>
+      <parameter metaid="metaid_89" id="kexport_pTpYERK" name="kexport_pTpYERK" value="0.0076" constant="true"/>
+      <parameter metaid="metaid_90" id="kexport_pYERK" name="kexport_pYERK" value="0.017" constant="true"/>
+      <parameter metaid="metaid_91" id="kf_EGFEGFR" name="kf_EGFEGFR" value="10" constant="true"/>
+      <parameter metaid="metaid_92" id="kf_MEKERK" name="kf_MEKERK" value="0.18" constant="true"/>
+      <parameter metaid="metaid_93" id="kf_RafMEK" name="kf_RafMEK" value="0.65" constant="true"/>
+      <parameter metaid="metaid_94" id="kf_RasEffector" name="kf_RasEffector" value="1" constant="true"/>
+      <parameter metaid="metaid_95" id="kf_RasGAP" name="kf_RasGAP" value="0.05" constant="true"/>
+      <parameter metaid="metaid_96" id="kf_RasGEF" name="kf_RasGEF" value="9e-05" constant="true"/>
+      <parameter metaid="metaid_97" id="kf_RasRaf" name="kf_RasRaf" value="0.049" constant="true"/>
+      <parameter metaid="metaid_98" id="kf_RasRaf_Shoc2" name="kf_RasRaf_Shoc2" value="0.49" constant="true"/>
+      <parameter metaid="metaid_99" id="kf_Ras_Shoc2" name="kf_Ras_Shoc2" value="1" constant="true"/>
+      <parameter metaid="metaid_100" id="kf_Sos" name="kf_Sos" value="0.1" constant="true"/>
+      <parameter metaid="metaid_101" id="kf_Sos_Ras" name="kf_Sos_Ras" value="1" constant="true"/>
+      <parameter metaid="metaid_102" id="kf_degra" name="kf_degra" value="0.0014" constant="true"/>
+      <parameter metaid="metaid_103" id="kf_degra_ERKEGFR" name="kf_degra_ERKEGFR" value="0.02" constant="true"/>
+      <parameter metaid="metaid_104" id="kf_dpMEK" name="kf_dpMEK" value="0.0096" constant="true"/>
+      <parameter metaid="metaid_105" id="kf_pMEK" name="kf_pMEK" value="2" constant="true"/>
+      <parameter metaid="metaid_106" id="kf_pSos" name="kf_pSos" value="1" constant="true"/>
+      <parameter metaid="metaid_107" id="kfb_ppSos" name="kfb_ppSos" value="1" constant="true"/>
+      <parameter metaid="metaid_108" id="kfb_pppSos" name="kfb_pppSos" value="1" constant="true"/>
+      <parameter metaid="metaid_109" id="kfb_ppppSos" name="kfb_ppppSos" value="1" constant="true"/>
+      <parameter metaid="metaid_110" id="kimport_ERK" name="kimport_ERK" value="0.0017" constant="true"/>
+      <parameter metaid="metaid_111" id="kimport_pTERK" name="kimport_pTERK" value="0.0022" constant="true"/>
+      <parameter metaid="metaid_112" id="kimport_pTpYERK" name="kimport_pTpYERK" value="0.0082" constant="true"/>
+      <parameter metaid="metaid_113" id="kimport_pYERK" name="kimport_pYERK" value="0.0025" constant="true"/>
+      <parameter metaid="metaid_114" id="kphos_AktTSC" name="kphos_AktTSC" value="1.2" constant="true"/>
+      <parameter metaid="metaid_115" id="kphos_BRafMEK" name="kphos_BRafMEK" value="0.01" constant="true"/>
+      <parameter metaid="metaid_116" id="kphos_EGFR_mutant" name="kphos_EGFR_mutant" value="0" constant="true"/>
+      <parameter metaid="metaid_117" id="kphos_ERKRSK" name="kphos_ERKRSK" value="0.7" constant="true"/>
+      <parameter metaid="metaid_118" id="kphos_PI3KAkt" name="kphos_PI3KAkt" value="0.1" constant="true"/>
+      <parameter metaid="metaid_119" id="kphos_RSKTSC" name="kphos_RSKTSC" value="0.6" constant="true"/>
+      <parameter metaid="metaid_120" id="kphos_RhebS6K" name="kphos_RhebS6K" value="0.002" constant="true"/>
+      <parameter metaid="metaid_121" id="kphos_np_pY" name="kphos_np_pY" value="0.073" constant="true"/>
+      <parameter metaid="metaid_122" id="kphos_pT_pTpY" name="kphos_pT_pTpY" value="0.02" constant="true"/>
+      <parameter metaid="metaid_123" id="kphos_pY_pTpY" name="kphos_pY_pTpY" value="0.02" constant="true"/>
+      <parameter metaid="metaid_124" id="kphos_pY_pTpY_MEKERK" name="kphos_pY_pTpY_MEKERK" value="0.05" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_128" id="re1" name="re1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="EGFR" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_126" species="EGF" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="EGF_EGFR" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> function_1 </ci>
+              <ci> EGF </ci>
+              <ci> EGFR </ci>
+              <ci> kf_EGFEGFR </ci>
+              <ci> kphos_EGFR_mutant </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_132" id="re12" name="re12" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_129" species="pMEKcyt" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_130" species="ERKcyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_131" species="pMEK_ERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_8 </ci>
+                <ci> ERKcyt </ci>
+                <ci> c1 </ci>
+                <ci> kb_MEKERK </ci>
+                <ci> kf_MEKERK </ci>
+                <ci> pMEK_ERK_cyt </ci>
+                <ci> pMEKcyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_135" id="re15" name="re15" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_133" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_134" species="pTpYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> function_9 </ci>
+              <ci> c2 </ci>
+              <ci> kexport_pTpYERK </ci>
+              <ci> kimport_pTpYERK </ci>
+              <ci> pTpYERK_cyt </ci>
+              <ci> pTpYERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_138" id="re16" name="re16" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_136" species="ERKcyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_137" species="ERKnuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> function_10 </ci>
+              <ci> ERKcyt </ci>
+              <ci> ERKnuc </ci>
+              <ci> c2 </ci>
+              <ci> kexport_ERK </ci>
+              <ci> kimport_ERK </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_141" id="re2" name="re2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_139" species="EGF_EGFR" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_140" species="degra_EGF_pEGFR" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_2 </ci>
+                <ci> EGF_EGFR </ci>
+                <ci> c1 </ci>
+                <ci> degra_EGF_pEGFR </ci>
+                <ci> kb_degra </ci>
+                <ci> kf_degra </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_144" id="re22" name="re22" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="pMEKcyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_143" species="MEKcyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_11 </ci>
+                <ci> c1 </ci>
+                <ci> kf_dpMEK </ci>
+                <ci> pMEKcyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="re27" name="re27" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_145" species="RasEffector" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_146" species="Ras_GTP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="RassEffector" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_12 </ci>
+                <ci> RasEffector </ci>
+                <ci> RassEffector </ci>
+                <ci> Ras_GTP </ci>
+                <ci> c1 </ci>
+                <ci> kb_RasEffector </ci>
+                <ci> kf_RasEffector </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_152" id="re28" name="re28" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="Sos1_2" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="pSos" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_151" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_13 </ci>
+                <ci> Km_pERKcyt </ci>
+                <ci> Sos1_2 </ci>
+                <ci> c1 </ci>
+                <ci> kb_pSos </ci>
+                <ci> kcat_pERKcyt </ci>
+                <ci> kf_pSos </ci>
+                <ci> pSos </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="re3" name="re3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="Sos1_2" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_154" species="EGF_EGFR" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_155" species="EGFR_Sos" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_156" species="EGFR_inhibitor"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_3 </ci>
+                <ci> EGFR_Sos </ci>
+                <ci> EGFR_inhibitor </ci>
+                <ci> EGF_EGFR </ci>
+                <ci> Sos1_2 </ci>
+                <ci> c1 </ci>
+                <ci> kb_Sos </ci>
+                <ci> kf_Sos </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="re30" name="re30" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_158" species="pSos" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_159" species="ppSos" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_160" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_14 </ci>
+                <ci> Km_pERKcyt </ci>
+                <ci> c1 </ci>
+                <ci> kb_pSos </ci>
+                <ci> kcat_pERKcyt </ci>
+                <ci> kfb_ppSos </ci>
+                <ci> pSos </ci>
+                <ci> pTpYERK_cyt </ci>
+                <ci> ppSos </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" id="re31" name="re31" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="ppSos" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_163" species="pppSos" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_164" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_15 </ci>
+                <ci> Km_pERKcyt </ci>
+                <ci> c1 </ci>
+                <ci> kb_pSos </ci>
+                <ci> kcat_pERKcyt </ci>
+                <ci> kfb_pppSos </ci>
+                <ci> pTpYERK_cyt </ci>
+                <ci> ppSos </ci>
+                <ci> pppSos </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_169" id="re32" name="re32" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_166" species="pppSos" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_167" species="ppppSos" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_168" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_16 </ci>
+                <ci> Km_pERKcyt </ci>
+                <ci> c1 </ci>
+                <ci> kb_pSos </ci>
+                <ci> kcat_pERKcyt </ci>
+                <ci> kfb_ppppSos </ci>
+                <ci> pTpYERK_cyt </ci>
+                <ci> pppSos </ci>
+                <ci> ppppSos </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_174" id="re4" name="re4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_170" species="Ras_GDP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_171" species="Ras_GTP" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_172" species="RasGEF"/>
+          <modifierSpeciesReference metaid="metaid_173" species="EGFR_Sos"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_4 </ci>
+                <ci> EGFR_Sos </ci>
+                <ci> RasGEF </ci>
+                <ci> Ras_GDP </ci>
+                <ci> c1 </ci>
+                <ci> kf_RasGEF </ci>
+                <ci> kf_Sos_Ras </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_178" id="re42" name="re42" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_175" species="pMEK_ERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="pMEK_pYERK" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_177" species="MEK_inhibitor"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_17 </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> kphos_np_pY </ci>
+                <ci> pMEK_ERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_183" id="re43" name="re43" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="pMEK_pYERK" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_180" species="pMEKcyt" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_181" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_182" species="MEK_inhibitor"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_18 </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> kphos_pY_pTpY_MEKERK </ci>
+                <ci> pMEK_pYERK </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_186" id="re44" name="re44" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_184" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_185" species="pTERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_19 </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pTpY_pT_cyt </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="re45" name="re45" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_187" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_188" species="pYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_20 </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pTpY_pY_cyt </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_192" id="re46" name="re46" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_190" species="pYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_191" species="ERKcyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_21 </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pY_np_cyt </ci>
+                <ci> pYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_195" id="re47" name="re47" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_193" species="pTERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_194" species="ERKcyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_22 </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pT_np_cyt </ci>
+                <ci> pTERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_200" id="re48" name="re48" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_196" species="pYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_197" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_198" species="MEK_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_199" species="pMEKcyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_23 </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> kphos_pY_pTpY </ci>
+                <ci> pMEKcyt </ci>
+                <ci> pYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="re49" name="re49" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_201" species="pTERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_202" species="pTpYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_203" species="MEK_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_204" species="pMEKcyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_24 </ci>
+                <ci> MEK_inhibitor </ci>
+                <ci> c1 </ci>
+                <ci> kphos_pT_pTpY </ci>
+                <ci> pMEKcyt </ci>
+                <ci> pTERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_210" id="re5" name="re5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="Ras_GTP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_207" species="Ras_GDP" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_208" species="mutated_Ras"/>
+          <modifierSpeciesReference metaid="metaid_209" species="RasGAP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_5 </ci>
+                <ci> RasGAP </ci>
+                <ci> Ras_GTP </ci>
+                <ci> c1 </ci>
+                <ci> kf_RasGAP </ci>
+                <ci> mutated_Ras </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_213" id="re50" name="re50" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_211" species="pYERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_212" species="pYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> function_25 </ci>
+              <ci> c2 </ci>
+              <ci> kexport_pYERK </ci>
+              <ci> kimport_pYERK </ci>
+              <ci> pYERK_cyt </ci>
+              <ci> pYERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_216" id="re51" name="re51" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_214" species="pTERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_215" species="pTERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> function_26 </ci>
+              <ci> c2 </ci>
+              <ci> kexport_pTERK </ci>
+              <ci> kimport_pTERK </ci>
+              <ci> pTERK_cyt </ci>
+              <ci> pTERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_219" id="re52" name="re52" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_217" species="pTpYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_218" species="pYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c2 </ci>
+              <ci> kdphos_pTpY_pY_nuc </ci>
+              <ci> pTpYERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_222" id="re53" name="re53" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_220" species="pTpYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_221" species="pTERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c2 </ci>
+              <ci> kdphos_pTpY_pT_nuc </ci>
+              <ci> pTpYERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_225" id="re54" name="re54" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_223" species="pYERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_224" species="ERKnuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c2 </ci>
+              <ci> kdphos_pY_np_nuc </ci>
+              <ci> pYERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_228" id="re55" name="re55" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_226" species="pTERK_nuc" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_227" species="ERKnuc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c2 </ci>
+              <ci> kdphos_pT_np_nuc </ci>
+              <ci> pTERK_nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_235" id="re56" name="re56" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_229" species="MEKcyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_230" species="pMEKcyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_231" species="BRaf_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_232" species="BRaf"/>
+          <modifierSpeciesReference metaid="metaid_233" species="Ras_Shoc2_cRaf"/>
+          <modifierSpeciesReference metaid="metaid_234" species="Ras_Raf"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_27 </ci>
+                <ci> BRaf </ci>
+                <ci> BRaf_inhibitor </ci>
+                <ci> MEKcyt </ci>
+                <ci> Ras_Raf </ci>
+                <ci> Ras_Shoc2_cRaf </ci>
+                <ci> c1 </ci>
+                <ci> kf_pMEK </ci>
+                <ci> kphos_BRafMEK </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_239" id="re57" name="re57" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_236" species="Shoc2" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_237" species="Ras_GTP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_238" species="Ras_Shoc2" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_28 </ci>
+                <ci> Ras_GTP </ci>
+                <ci> Ras_Shoc2 </ci>
+                <ci> Shoc2 </ci>
+                <ci> c1 </ci>
+                <ci> kb_Ras_Shoc2 </ci>
+                <ci> kf_Ras_Shoc2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_243" id="re58" name="re58" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_240" species="cRaf" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_241" species="Ras_Shoc2" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_242" species="Ras_Shoc2_cRaf" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_29 </ci>
+                <ci> Ras_Shoc2 </ci>
+                <ci> Ras_Shoc2_cRaf </ci>
+                <ci> c1 </ci>
+                <ci> cRaf </ci>
+                <ci> kb_RasRaf_Shoc2 </ci>
+                <ci> kf_RasRaf_Shoc2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_247" id="re6" name="re6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_244" species="cRaf" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_245" species="Ras_GTP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_246" species="Ras_Raf" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_6 </ci>
+                <ci> Ras_GTP </ci>
+                <ci> Ras_Raf </ci>
+                <ci> c1 </ci>
+                <ci> cRaf </ci>
+                <ci> kb_RasRaf </ci>
+                <ci> kf_RasRaf </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_254" id="re62" name="re62" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_248" species="PI3K" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_249" species="active_PI3K" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_250" species="Ras_GTP"/>
+          <modifierSpeciesReference metaid="metaid_251" species="mutated_PI3K"/>
+          <modifierSpeciesReference metaid="metaid_252" species="EGFR_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_253" species="EGF_EGFR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_30 </ci>
+                <ci> EGFR_inhibitor </ci>
+                <ci> EGF_EGFR </ci>
+                <ci> PI3K </ci>
+                <ci> Ras_GTP </ci>
+                <ci> active_PI3K </ci>
+                <ci> c1 </ci>
+                <ci> kact_EGFRRasPI3K </ci>
+                <ci> kdact_PI3K </ci>
+                <ci> mutated_PI3K </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_259" id="re63" name="re63" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_255" species="Akt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_256" species="pAkt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_257" species="PI3K_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_258" species="active_PI3K"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_31 </ci>
+                <ci> Akt </ci>
+                <ci> PI3K_inhibitor </ci>
+                <ci> active_PI3K </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pAkt </ci>
+                <ci> kphos_PI3KAkt </ci>
+                <ci> pAkt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_264" id="re64" name="re64" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_260" species="TSC" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_261" species="pTSC" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_262" species="pRSK"/>
+          <modifierSpeciesReference metaid="metaid_263" species="pAkt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_32 </ci>
+                <ci> TSC </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pTSC </ci>
+                <ci> kphos_AktTSC </ci>
+                <ci> kphos_RSKTSC </ci>
+                <ci> pAkt </ci>
+                <ci> pRSK </ci>
+                <ci> pTSC </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_268" id="re65" name="re65" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_265" species="Rheb_GTP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_266" species="Rheb_GDP" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_267" species="TSC"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_33 </ci>
+                <ci> Rheb_GDP </ci>
+                <ci> Rheb_GTP </ci>
+                <ci> TSC </ci>
+                <ci> c1 </ci>
+                <ci> kact_Rheb </ci>
+                <ci> kdact_TSCRheb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_272" id="re66" name="re66" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_269" species="S6K" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_270" species="pS6K" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_271" species="Rheb_GTP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_34 </ci>
+                <ci> Rheb_GTP </ci>
+                <ci> S6K </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pS6K </ci>
+                <ci> kphos_RhebS6K </ci>
+                <ci> pS6K </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_276" id="re67" name="re67" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_273" species="RSK" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_274" species="pRSK" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_275" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_35 </ci>
+                <ci> RSK </ci>
+                <ci> c1 </ci>
+                <ci> kdphos_pRSK </ci>
+                <ci> kphos_ERKRSK </ci>
+                <ci> pRSK </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_280" id="re68" name="re68" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_277" species="cRaf" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_278" species="inactive_cRaf" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_279" species="Rheb_GTP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_36 </ci>
+                <ci> Rheb_GTP </ci>
+                <ci> c1 </ci>
+                <ci> cRaf </ci>
+                <ci> inactive_cRaf </ci>
+                <ci> kact_RhebRaf </ci>
+                <ci> kdact_RhebRaf </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_284" id="re69" name="re69" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_281" species="EGF_EGFR" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_282" species="degra_EGF_pEGFR" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_283" species="pTpYERK_cyt"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_37 </ci>
+                <ci> EGF_EGFR </ci>
+                <ci> c1 </ci>
+                <ci> kf_degra_ERKEGFR </ci>
+                <ci> pTpYERK_cyt </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_289" id="re70" name="re70" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_285" species="inactive_cRaf" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_286" species="cRaf" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_287" species="PI3K_inhibitor"/>
+          <modifierSpeciesReference metaid="metaid_288" species="active_PI3K"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_38 </ci>
+                <ci> PI3K_inhibitor </ci>
+                <ci> active_PI3K </ci>
+                <ci> c1 </ci>
+                <ci> inactive_cRaf </ci>
+                <ci> kact_PI3KRaf </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_293" id="re9" name="re9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_290" species="ERKcyt" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_291" species="MEKcyt" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_292" species="MEK_ERK_cyt" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <apply>
+                <ci> function_7 </ci>
+                <ci> ERKcyt </ci>
+                <ci> MEK_ERK_cyt </ci>
+                <ci> MEKcyt </ci>
+                <ci> c1 </ci>
+                <ci> kb_MEKERK </ci>
+                <ci> kf_MEKERK </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event metaid="metaid_294" id="EGFtrig" name="EGFtrig" useValuesFromTriggerTime="false">
+        <trigger initialValue="false" persistent="false">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <eq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 6000 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 0 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment metaid="metaid_295" variable="EGF">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.0016 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

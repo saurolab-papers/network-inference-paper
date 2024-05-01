@@ -1,0 +1,88 @@
+// Created by libAntimony v2.13.2
+model *dupont2()
+
+  // Compartments and Species:
+  compartment cytosol, store;
+  species W_star in cytosol, Wt in cytosol, Y in store, Z in cytosol;
+
+  // Assignment Rules:
+  vk := vMK*Z^q/(Ka^q + Z^q);
+
+  // Reactions:
+  Protein_Phosphorylation:  -> W_star; cytosol*(vp/Wt)*((vk/vp)*((1 - W_star)/(K1 + 1 - W_star)) - W_star/(K2 + W_star));
+  R0:  => Z; cytosol*v0;
+  R1:  => Z; cytosol*v1_beta;
+  R2: Z => Y; cytosol*(Vm2*Z^n/(Kp^n + Z^n));
+  R3: Y => Z; store*(Vm3*Y^m*Z^p/((Kr^m + Y^m)*(K_A^p + Z^p)));
+  R_eff: Z => ; cytosol*k*Z;
+  Rf: Y => Z; store*kf*Y;
+
+  // Species initializations:
+  W_star = 0;
+  Wt = 1/cytosol;
+  Y = 1.6/store;
+  Z = 0.15/cytosol;
+
+  // Compartment initializations:
+  cytosol = 1;
+  store = 1;
+
+  // Variable initializations:
+  K1 = 0.01;
+  K2 = 0.01;
+  K_A = 0.9;
+  Ka = 2.5;
+  Kp = 1;
+  Kr = 2;
+  Vm2 = 65;
+  Vm3 = 500;
+  k = 10;
+  kf = 1;
+  m = 2;
+  n = 2;
+  p = 4;
+  q = 1;
+  v0 = 1;
+  v1_beta = 2.7;
+  vMK = 20;
+  vp = 2.5;
+
+  // Other declarations:
+  var vMK, vk;
+  const cytosol, store, K1, K2, K_A, Ka, Kp, Kr, Vm2, Vm3, k, kf, m, n, p;
+  const q, v0, v1_beta, vp;
+
+  // Unit definitions:
+  unit micromole = 1e-6 mole;
+  unit minute = 60 second;
+
+  // Display Names:
+  minute is "minutes";
+  W_star is "Phosphorylated protein";
+  Wt is "Total Protein";
+  Protein_Phosphorylation is "Protein Phosphorylation";
+  R0 is "Calcium influx";
+  R1 is "InsP3 dependent Ca influx";
+  R2 is "ATP driven pumping of Ca into store";
+  R3 is "ATP driven pumping into cytosol";
+  R_eff is "Ca efflux";
+  Rf is "Calcium leak";
+
+  // CV terms:
+  cytosol identity "http://identifiers.org/go/GO:0005829"
+  store identity "http://identifiers.org/go/GO:0005783"
+  Y identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Z identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Protein_Phosphorylation identity "http://identifiers.org/go/GO:0042327"
+  R0 identity "http://identifiers.org/go/GO:0006816"
+  R1 identity "http://identifiers.org/go/GO:0005220"
+  R2 identity "http://identifiers.org/go/GO:0032470"
+  R3 identity "http://identifiers.org/go/GO:0048763",
+              "http://identifiers.org/go/GO:0007204"
+  R_eff identity "http://identifiers.org/go/GO:0006816"
+  Rf identity "http://identifiers.org/go/GO:0006816"
+end
+
+dupont2 is "dupont2"

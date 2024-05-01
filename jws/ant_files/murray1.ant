@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *murray1()
+
+  // Compartments and Species:
+  species II, L, M, V;
+
+  // Assignment Rules:
+  HIV_DNA := M + L;
+
+  // Reactions:
+  v1:  -> V; NN*II;
+  v10: L -> ; muL*L;
+  v2:  -> V; Nm*M;
+  v3: V -> ; c*V;
+  v4:  -> II; (1 - eff)*(1 - effi)*kM*M;
+  v5:  -> II; (1 - eff)*(1 - effi)*kL*L;
+  v6: II -> ; delta*II;
+  v7:  -> M; (1 - eff)*(1 - effi)*k2*V;
+  v8: M -> ; muM*M;
+  v9:  -> L; (1 - eff)*(1 - effi)*k2L*V;
+
+  // Species initializations:
+  II = 316;
+  L = 1000;
+  M = 10000;
+  V = 32000;
+
+  // Variable initializations:
+  NN = 300;
+  Nm = 0;
+  c = 3;
+  delta = 0.69;
+  eff = 0.985;
+  effi = 0.82;
+  k2 = 0.016;
+  k2L = 0.00016;
+  kL = 0.011;
+  kM = 0.022;
+  muL = 0.0035;
+  muM = 0.05;
+
+  // Other declarations:
+  var HIV_DNA, NN, Nm, c, delta, eff, effi, k2, k2L, kL, kM, muL, muM;
+end
+
+murray1 is "murray1"

@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="galazzo1" name="galazzo1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ATP" compartment="default_compartment" initialConcentration="1.1278" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A15422"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_2" id="Carbo" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_3" id="EtOH" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A16236"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00469"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_4" id="FDP" compartment="default_compartment" initialConcentration="9.144" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A16905"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00354"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_5" id="G6P" compartment="default_compartment" initialConcentration="1.011" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A4170"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00092"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_6" id="Glci" compartment="default_compartment" initialConcentration="0.0345" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="Glco" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_8" id="Gly" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_9" id="PEP" compartment="default_compartment" initialConcentration="0.0095" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A44897"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00074"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" id="X" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_11" id="K3Gly" value="2" constant="false"/>
+      <parameter metaid="metaid_12" id="K4AMP" value="0.025" constant="false"/>
+      <parameter metaid="metaid_13" id="K4ATP" value="0.06" constant="false"/>
+      <parameter metaid="metaid_14" id="K4F6P" value="1" constant="false"/>
+      <parameter metaid="metaid_15" id="K5ADP" value="1.5" constant="false"/>
+      <parameter metaid="metaid_16" id="K5AMP" value="1.1" constant="false"/>
+      <parameter metaid="metaid_17" id="K5ATP" value="2.5" constant="false"/>
+      <parameter metaid="metaid_18" id="K5G3P" value="0.0025" constant="false"/>
+      <parameter metaid="metaid_19" id="K5NAD" value="0.18" constant="false"/>
+      <parameter metaid="metaid_20" id="K5NADH" value="0.0003" constant="false"/>
+      <parameter metaid="metaid_21" id="K6ADP" value="5" constant="false"/>
+      <parameter metaid="metaid_22" id="K6FDP" value="0.2" constant="false"/>
+      <parameter metaid="metaid_23" id="K6PEP" value="0.00793966" constant="false"/>
+      <parameter metaid="metaid_24" id="Ki1G6P" value="3.7" constant="false"/>
+      <parameter metaid="metaid_25" id="Km2ATP" value="0.1" constant="false"/>
+      <parameter metaid="metaid_26" id="Km2Glc" value="0.11" constant="false"/>
+      <parameter metaid="metaid_27" id="Km30" value="1" constant="false"/>
+      <parameter metaid="metaid_28" id="Km3G6P" value="1.1" constant="false"/>
+      <parameter metaid="metaid_29" id="Ks2Glc" value="0.0062" constant="false"/>
+      <parameter metaid="metaid_30" id="L40" value="3342" constant="false"/>
+      <parameter metaid="metaid_31" id="L60" value="164.084" constant="false"/>
+      <parameter metaid="metaid_32" id="NAD" value="1.91939" constant="false"/>
+      <parameter metaid="metaid_33" id="NADH" value="0.0806142" constant="false"/>
+      <parameter metaid="metaid_34" id="Vm1" value="19.7" constant="false"/>
+      <parameter metaid="metaid_35" id="Vm2" value="68.5" constant="false"/>
+      <parameter metaid="metaid_36" id="Vm3" value="14.31" constant="false"/>
+      <parameter metaid="metaid_37" id="Vm4" value="31.7" constant="false"/>
+      <parameter metaid="metaid_38" id="Vm5" value="49.9" constant="false"/>
+      <parameter metaid="metaid_39" id="Vm6" value="3440" constant="false"/>
+      <parameter metaid="metaid_40" id="Vm7" value="203" constant="false"/>
+      <parameter metaid="metaid_41" id="Vm8" value="25.1" constant="false"/>
+      <parameter metaid="metaid_42" id="c4AMP" value="0.019" constant="false"/>
+      <parameter metaid="metaid_43" id="c4ATP" value="1" constant="false"/>
+      <parameter metaid="metaid_44" id="c4F6P" value="0.0005" constant="false"/>
+      <parameter metaid="metaid_45" id="c6ADP" value="1" constant="false"/>
+      <parameter metaid="metaid_46" id="c6FDP" value="0.01" constant="false"/>
+      <parameter metaid="metaid_47" id="c6PEP" value="0.000158793" constant="false"/>
+      <parameter metaid="metaid_48" id="g4R" value="10" constant="false"/>
+      <parameter metaid="metaid_49" id="g6R" value="0.1" constant="false"/>
+      <parameter metaid="metaid_50" id="g6T" value="1" constant="false"/>
+      <parameter metaid="metaid_51" id="gT" value="1" constant="false"/>
+      <parameter metaid="metaid_52" id="h6" value="1.14815e-07" constant="false"/>
+      <parameter metaid="metaid_53" id="n3" value="8.25" constant="false"/>
+      <parameter metaid="metaid_54" id="q6" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_58" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="Glco" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_56" species="Glci" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_57" species="G6P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <ci> Vm1 </ci>
+              <apply>
+                <times/>
+                <ci> Ki1G6P </ci>
+                <ci> G6P </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_62" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="Glci" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_60" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_61" species="G6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> Vm2 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> Km2Glc </ci>
+                  <ci> Glci </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> Km2ATP </ci>
+                  <ci> ATP </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Ks2Glc </ci>
+                    <ci> Km2ATP </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> Glci </ci>
+                    <ci> ATP </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_63" species="G6P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_64" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_65" species="Carbo" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 1.1 </cn>
+                  <ci> Vm3 </ci>
+                  <apply>
+                    <power/>
+                    <ci> G6P </ci>
+                    <ci> n3 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <ci> K3Gly </ci>
+                    <ci> n3 </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <ci> G6P </ci>
+                    <ci> n3 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> Km30 </ci>
+                    <cn> 0.7 </cn>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Km3G6P </ci>
+                      <ci> G6P </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_70" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_67" species="G6P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_68" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_69" species="FDP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Vm4 </ci>
+                        <ci> g4R </ci>
+                        <cn> 0.3 </cn>
+                        <ci> G6P </ci>
+                      </apply>
+                      <ci> K4F6P </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> K4ATP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn> 0.3 </cn>
+                      <ci> G6P </ci>
+                    </apply>
+                    <ci> K4F6P </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> ATP </ci>
+                    <ci> K4ATP </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> g4R </ci>
+                          <cn> 0.3 </cn>
+                          <ci> G6P </ci>
+                        </apply>
+                        <ci> K4F6P </ci>
+                      </apply>
+                      <ci> ATP </ci>
+                    </apply>
+                    <ci> K4ATP </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <cn> 0.3 </cn>
+                        <ci> G6P </ci>
+                      </apply>
+                      <ci> K4F6P </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> ATP </ci>
+                      <ci> K4ATP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> g4R </ci>
+                            <cn> 0.3 </cn>
+                            <ci> G6P </ci>
+                          </apply>
+                          <ci> K4F6P </ci>
+                        </apply>
+                        <ci> ATP </ci>
+                      </apply>
+                      <ci> K4ATP </ci>
+                    </apply>
+                  </apply>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> L40 </ci>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> c4AMP </ci>
+                            <apply>
+                              <minus/>
+                              <apply>
+                                <minus/>
+                                <cn type="integer"> 3 </cn>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <times/>
+                                <cn> 0.5 </cn>
+                                <apply>
+                                  <plus/>
+                                  <apply>
+                                    <minus/>
+                                    <ci> ATP </ci>
+                                  </apply>
+                                  <apply>
+                                    <power/>
+                                    <apply>
+                                      <minus/>
+                                      <apply>
+                                        <times/>
+                                        <cn type="integer"> 12 </cn>
+                                        <ci> ATP </ci>
+                                      </apply>
+                                      <apply>
+                                        <times/>
+                                        <cn type="integer"> 3 </cn>
+                                        <apply>
+                                          <power/>
+                                          <ci> ATP </ci>
+                                          <cn type="integer"> 2 </cn>
+                                        </apply>
+                                      </apply>
+                                    </apply>
+                                    <cn> 0.5 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K4AMP </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <minus/>
+                            <apply>
+                              <minus/>
+                              <cn type="integer"> 3 </cn>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <times/>
+                              <cn> 0.5 </cn>
+                              <apply>
+                                <plus/>
+                                <apply>
+                                  <minus/>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <power/>
+                                  <apply>
+                                    <minus/>
+                                    <apply>
+                                      <times/>
+                                      <cn type="integer"> 12 </cn>
+                                      <ci> ATP </ci>
+                                    </apply>
+                                    <apply>
+                                      <times/>
+                                      <cn type="integer"> 3 </cn>
+                                      <apply>
+                                        <power/>
+                                        <ci> ATP </ci>
+                                        <cn type="integer"> 2 </cn>
+                                      </apply>
+                                    </apply>
+                                  </apply>
+                                  <cn> 0.5 </cn>
+                                </apply>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K4AMP </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c4F6P </ci>
+                          <cn> 0.3 </cn>
+                          <ci> G6P </ci>
+                        </apply>
+                        <ci> K4F6P </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c4ATP </ci>
+                          <ci> ATP </ci>
+                        </apply>
+                        <ci> K4ATP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> gT </ci>
+                              <ci> c4F6P </ci>
+                              <cn> 0.3 </cn>
+                              <ci> G6P </ci>
+                            </apply>
+                            <ci> K4F6P </ci>
+                          </apply>
+                          <ci> c4ATP </ci>
+                          <ci> ATP </ci>
+                        </apply>
+                        <ci> K4ATP </ci>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_75" id="v_5" name="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_71" species="FDP" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_72" species="Gly" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_73" species="PEP"/>
+          <modifierSpeciesReference metaid="metaid_74" species="ATP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Vm7 </ci>
+                        <ci> PEP </ci>
+                      </apply>
+                      <ci> K6PEP </ci>
+                    </apply>
+                    <cn> 0.5 </cn>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <minus/>
+                        <ci> ATP </ci>
+                      </apply>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <minus/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 12 </cn>
+                            <ci> ATP </ci>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> ATP </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <cn> 0.5 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <ci> K6ADP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> g6R </ci>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> PEP </ci>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6R </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> q6 </ci>
+                            <ci> L60 </ci>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <divide/>
+                                <apply>
+                                  <plus/>
+                                  <cn type="integer"> 1 </cn>
+                                  <apply>
+                                    <divide/>
+                                    <apply>
+                                      <times/>
+                                      <ci> c6FDP </ci>
+                                      <ci> FDP </ci>
+                                    </apply>
+                                    <ci> K6FDP </ci>
+                                  </apply>
+                                </apply>
+                                <apply>
+                                  <plus/>
+                                  <cn type="integer"> 1 </cn>
+                                  <apply>
+                                    <divide/>
+                                    <ci> FDP </ci>
+                                    <ci> K6FDP </ci>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                            <ci> g6T </ci>
+                            <ci> c6PEP </ci>
+                            <ci> PEP </ci>
+                          </apply>
+                          <ci> K6PEP </ci>
+                        </apply>
+                        <ci> c6ADP </ci>
+                        <cn> 0.5 </cn>
+                        <apply>
+                          <plus/>
+                          <apply>
+                            <minus/>
+                            <ci> ATP </ci>
+                          </apply>
+                          <apply>
+                            <power/>
+                            <apply>
+                              <minus/>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 12 </cn>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 3 </cn>
+                                <apply>
+                                  <power/>
+                                  <ci> ATP </ci>
+                                  <cn type="integer"> 2 </cn>
+                                </apply>
+                              </apply>
+                            </apply>
+                            <cn> 0.5 </cn>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> K6ADP </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c6PEP </ci>
+                          <ci> PEP </ci>
+                        </apply>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c6ADP </ci>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6T </ci>
+                              <ci> c6PEP </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <ci> c6ADP </ci>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn> 9.55 </cn>
+                      <apply>
+                        <power/>
+                        <cn type="integer"> 10 </cn>
+                        <apply>
+                          <minus/>
+                          <cn type="integer"> 9 </cn>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <ci> h6 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> PEP </ci>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6R </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> L60 </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> c6FDP </ci>
+                              <ci> FDP </ci>
+                            </apply>
+                            <ci> K6FDP </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> FDP </ci>
+                            <ci> K6FDP </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> c6PEP </ci>
+                            <ci> PEP </ci>
+                          </apply>
+                          <ci> K6PEP </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> c6ADP </ci>
+                            <cn> 0.5 </cn>
+                            <apply>
+                              <plus/>
+                              <apply>
+                                <minus/>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <power/>
+                                <apply>
+                                  <minus/>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 12 </cn>
+                                    <ci> ATP </ci>
+                                  </apply>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 3 </cn>
+                                    <apply>
+                                      <power/>
+                                      <ci> ATP </ci>
+                                      <cn type="integer"> 2 </cn>
+                                    </apply>
+                                  </apply>
+                                </apply>
+                                <cn> 0.5 </cn>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K6ADP </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> g6T </ci>
+                                <ci> c6PEP </ci>
+                                <ci> PEP </ci>
+                              </apply>
+                              <ci> K6PEP </ci>
+                            </apply>
+                            <ci> c6ADP </ci>
+                            <cn> 0.5 </cn>
+                            <apply>
+                              <plus/>
+                              <apply>
+                                <minus/>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <power/>
+                                <apply>
+                                  <minus/>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 12 </cn>
+                                    <ci> ATP </ci>
+                                  </apply>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 3 </cn>
+                                    <apply>
+                                      <power/>
+                                      <ci> ATP </ci>
+                                      <cn type="integer"> 2 </cn>
+                                    </apply>
+                                  </apply>
+                                </apply>
+                                <cn> 0.5 </cn>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K6ADP </ci>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_79" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_76" species="FDP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_77" species="PEP" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_78" species="ATP" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> Vm5 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> K5G3P </ci>
+                  <apply>
+                    <times/>
+                    <cn> 0.01 </cn>
+                    <ci> FDP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <divide/>
+                      <ci> K5NAD </ci>
+                      <ci> NAD </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> K5G3P </ci>
+                        <ci> K5NAD </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> NAD </ci>
+                        <cn> 0.01 </cn>
+                        <ci> FDP </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> K5G3P </ci>
+                        <ci> K5NAD </ci>
+                        <ci> NADH </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> NAD </ci>
+                        <cn> 0.01 </cn>
+                        <ci> FDP </ci>
+                        <ci> K5NADH </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <cn> 0.5 </cn>
+                        <apply>
+                          <plus/>
+                          <apply>
+                            <minus/>
+                            <ci> ATP </ci>
+                          </apply>
+                          <apply>
+                            <power/>
+                            <apply>
+                              <minus/>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 12 </cn>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 3 </cn>
+                                <apply>
+                                  <power/>
+                                  <ci> ATP </ci>
+                                  <cn type="integer"> 2 </cn>
+                                </apply>
+                              </apply>
+                            </apply>
+                            <cn> 0.5 </cn>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> K5ADP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <minus/>
+                          <cn type="integer"> 3 </cn>
+                          <ci> ATP </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> K5AMP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> ATP </ci>
+                      <ci> K5ATP </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_84" id="v_7" name="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="EtOH" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_82" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_83" species="FDP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Vm6 </ci>
+                        <ci> PEP </ci>
+                      </apply>
+                      <ci> K6PEP </ci>
+                    </apply>
+                    <cn> 0.5 </cn>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <minus/>
+                        <ci> ATP </ci>
+                      </apply>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <minus/>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 12 </cn>
+                            <ci> ATP </ci>
+                          </apply>
+                          <apply>
+                            <times/>
+                            <cn type="integer"> 3 </cn>
+                            <apply>
+                              <power/>
+                              <ci> ATP </ci>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <cn> 0.5 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <ci> K6ADP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> g6R </ci>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> PEP </ci>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6R </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> q6 </ci>
+                            <ci> L60 </ci>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <divide/>
+                                <apply>
+                                  <plus/>
+                                  <cn type="integer"> 1 </cn>
+                                  <apply>
+                                    <divide/>
+                                    <apply>
+                                      <times/>
+                                      <ci> c6FDP </ci>
+                                      <ci> FDP </ci>
+                                    </apply>
+                                    <ci> K6FDP </ci>
+                                  </apply>
+                                </apply>
+                                <apply>
+                                  <plus/>
+                                  <cn type="integer"> 1 </cn>
+                                  <apply>
+                                    <divide/>
+                                    <ci> FDP </ci>
+                                    <ci> K6FDP </ci>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn type="integer"> 2 </cn>
+                            </apply>
+                            <ci> g6T </ci>
+                            <ci> c6PEP </ci>
+                            <ci> PEP </ci>
+                          </apply>
+                          <ci> K6PEP </ci>
+                        </apply>
+                        <ci> c6ADP </ci>
+                        <cn> 0.5 </cn>
+                        <apply>
+                          <plus/>
+                          <apply>
+                            <minus/>
+                            <ci> ATP </ci>
+                          </apply>
+                          <apply>
+                            <power/>
+                            <apply>
+                              <minus/>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 12 </cn>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <times/>
+                                <cn type="integer"> 3 </cn>
+                                <apply>
+                                  <power/>
+                                  <ci> ATP </ci>
+                                  <cn type="integer"> 2 </cn>
+                                </apply>
+                              </apply>
+                            </apply>
+                            <cn> 0.5 </cn>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <ci> K6ADP </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c6PEP </ci>
+                          <ci> PEP </ci>
+                        </apply>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> c6ADP </ci>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6T </ci>
+                              <ci> c6PEP </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <ci> c6ADP </ci>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <cn> 9.55 </cn>
+                      <apply>
+                        <power/>
+                        <cn type="integer"> 10 </cn>
+                        <apply>
+                          <minus/>
+                          <cn type="integer"> 9 </cn>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <ci> h6 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> PEP </ci>
+                        <ci> K6PEP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> g6R </ci>
+                              <ci> PEP </ci>
+                            </apply>
+                            <ci> K6PEP </ci>
+                          </apply>
+                          <cn> 0.5 </cn>
+                          <apply>
+                            <plus/>
+                            <apply>
+                              <minus/>
+                              <ci> ATP </ci>
+                            </apply>
+                            <apply>
+                              <power/>
+                              <apply>
+                                <minus/>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 12 </cn>
+                                  <ci> ATP </ci>
+                                </apply>
+                                <apply>
+                                  <times/>
+                                  <cn type="integer"> 3 </cn>
+                                  <apply>
+                                    <power/>
+                                    <ci> ATP </ci>
+                                    <cn type="integer"> 2 </cn>
+                                  </apply>
+                                </apply>
+                              </apply>
+                              <cn> 0.5 </cn>
+                            </apply>
+                          </apply>
+                        </apply>
+                        <ci> K6ADP </ci>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> L60 </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <apply>
+                              <times/>
+                              <ci> c6FDP </ci>
+                              <ci> FDP </ci>
+                            </apply>
+                            <ci> K6FDP </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> FDP </ci>
+                            <ci> K6FDP </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> c6PEP </ci>
+                            <ci> PEP </ci>
+                          </apply>
+                          <ci> K6PEP </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> c6ADP </ci>
+                            <cn> 0.5 </cn>
+                            <apply>
+                              <plus/>
+                              <apply>
+                                <minus/>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <power/>
+                                <apply>
+                                  <minus/>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 12 </cn>
+                                    <ci> ATP </ci>
+                                  </apply>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 3 </cn>
+                                    <apply>
+                                      <power/>
+                                      <ci> ATP </ci>
+                                      <cn type="integer"> 2 </cn>
+                                    </apply>
+                                  </apply>
+                                </apply>
+                                <cn> 0.5 </cn>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K6ADP </ci>
+                        </apply>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <apply>
+                              <divide/>
+                              <apply>
+                                <times/>
+                                <ci> g6T </ci>
+                                <ci> c6PEP </ci>
+                                <ci> PEP </ci>
+                              </apply>
+                              <ci> K6PEP </ci>
+                            </apply>
+                            <ci> c6ADP </ci>
+                            <cn> 0.5 </cn>
+                            <apply>
+                              <plus/>
+                              <apply>
+                                <minus/>
+                                <ci> ATP </ci>
+                              </apply>
+                              <apply>
+                                <power/>
+                                <apply>
+                                  <minus/>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 12 </cn>
+                                    <ci> ATP </ci>
+                                  </apply>
+                                  <apply>
+                                    <times/>
+                                    <cn type="integer"> 3 </cn>
+                                    <apply>
+                                      <power/>
+                                      <ci> ATP </ci>
+                                      <cn type="integer"> 2 </cn>
+                                    </apply>
+                                  </apply>
+                                </apply>
+                                <cn> 0.5 </cn>
+                              </apply>
+                            </apply>
+                          </apply>
+                          <ci> K6ADP </ci>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_87" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_85" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="X" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Vm8 </ci>
+              <ci> ATP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

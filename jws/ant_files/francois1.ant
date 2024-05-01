@@ -1,0 +1,112 @@
+// Created by libAntimony v2.13.2
+function transcription_and_translation(k, X)
+  k*X;
+end
+
+transcription_and_translation is "transcription and translation"
+
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+
+model *francois1()
+
+  // Compartments and Species:
+  compartment cell;
+  species A in cell, AB in cell, AgB in cell, B in cell, gB in cell, rB in cell;
+
+  // Reactions:
+  A_binds_gB: gB + A => AgB; cell*alpha*A*gB;
+  basal_transcription_B:  => rB; cell*transcription_and_translation(rhof, gB);
+  degradation_A: A => ; cell*deltaA*A;
+  degradation_B: B => ; cell*deltaB*B;
+  degradation_dimer: AB => ; cell*deltaAB*AB;
+  degradation_mRNA_B: rB => ; cell*deltar*rB;
+  formation_dimer: B + A => AB; cell*gamma_*A*B;
+  gB_releases_A: AgB => gB + A; cell*theta*AgB;
+  production_A:  => A; cell*Constant_flux__irreversible(rhoA);
+  stim_transcription_B:  => rB; cell*transcription_and_translation(rhob, AgB);
+  translation_B:  => B; cell*transcription_and_translation(beta, rB);
+
+  // Species initializations:
+  A = 40/cell;
+  A has mole_per_litre;
+  AB = 0;
+  AB has mole_per_litre;
+  AgB = 0;
+  AgB has mole_per_litre;
+  B = 0;
+  B has mole_per_litre;
+  gB = 1/cell;
+  gB has mole_per_litre;
+  rB = 0;
+  rB has mole_per_litre;
+
+  // Compartment initializations:
+  cell = 1;
+  cell has litre;
+
+  // Variable initializations:
+  alpha = 0.001;
+  beta = 3;
+  deltaA = 0.01;
+  deltaAB = 0.01;
+  deltaB = 0.01;
+  deltar = 0.03;
+  gamma_ = 1;
+  rhoA = 100;
+  rhob = 5;
+  rhof = 0.1;
+  theta = 0.04;
+
+  // Other declarations:
+  const cell, alpha, beta, deltaA, deltaAB, deltaB, deltar, gamma_, rhoA;
+  const rhob, rhof, theta;
+
+  // Unit definitions:
+  unit substance = item;
+  unit time_unit = time_unit;
+  unit volume = 1e-12 litre;
+  unit area = metre^2;
+  unit length = metre;
+  unit extent = substance;
+  unit mole_per_litre = mole / litre;
+
+  // Display Names:
+  time_unit is "time";
+  gamma_ is "gamma";
+  A_binds_gB is "A binds gB";
+  basal_transcription_B is "basal transcription B";
+  degradation_A is "degradation A";
+  degradation_B is "degradation B";
+  degradation_dimer is "degradation dimer";
+  degradation_mRNA_B is "degradation mRNA B";
+  formation_dimer is "formation dimer";
+  gB_releases_A is "gB releases A";
+  production_A is "production A";
+  stim_transcription_B is "stim transcription B";
+  translation_B is "translation B";
+
+  // CV terms:
+  A identity "http://identifiers.org/chebi/CHEBI:36080"
+  AB identity "http://identifiers.org/go/GO:0043234"
+  AgB identity "http://identifiers.org/so/SO:0000704"
+  B identity "http://identifiers.org/chebi/CHEBI:36080"
+  gB identity "http://identifiers.org/so/SO:0000704"
+  rB identity "http://identifiers.org/chebi/CHEBI:33699"
+  A_binds_gB hypernym "http://identifiers.org/go/GO:0008134"
+  basal_transcription_B hypernym "http://identifiers.org/go/GO:0009299"
+  degradation_A hypernym "http://identifiers.org/go/GO:0030163"
+  degradation_B hypernym "http://identifiers.org/go/GO:0030163"
+  degradation_dimer hypernym "http://identifiers.org/go/GO:0030163"
+  degradation_mRNA_B hypernym "http://identifiers.org/go/GO:0006402"
+  formation_dimer hypernym "http://identifiers.org/go/GO:0006461"
+  production_A hypernym "http://identifiers.org/go/GO:0006412"
+  stim_transcription_B hypernym "http://identifiers.org/go/GO:0009299"
+  translation_B hypernym "http://identifiers.org/go/GO:0006412"
+end
+
+francois1 is "francois1"

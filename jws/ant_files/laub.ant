@@ -1,0 +1,58 @@
+// Created by libAntimony v2.13.2
+model *laub()
+
+  // Compartments and Species:
+  species ACA, CAR1, ERK2, PKA, REGA, cAMP, excAMP, $p, $s;
+
+  // Reactions:
+  v_1: $s -> ACA; k1*CAR1;
+  v_10: cAMP -> $p; k10*REGA*cAMP;
+  v_11: $s -> excAMP; k11*ACA;
+  v_12: excAMP -> $p; k12*excAMP;
+  v_13: $s -> CAR1; k13*excAMP;
+  v_14: CAR1 -> $p; k14*CAR1;
+  v_2: ACA -> $p; k2*ACA*PKA;
+  v_3: $s -> PKA; k3*cAMP;
+  v_4: PKA -> $p; k4*PKA;
+  v_5: $s -> ERK2; k5*CAR1;
+  v_6: ERK2 -> $p; k6*PKA*ERK2;
+  v_7: $s -> REGA; k7;
+  v_8: REGA -> $p; k8*ERK2*REGA;
+  v_9: $s -> cAMP; k9*ACA;
+
+  // Species initializations:
+  ACA = 3.39;
+  CAR1 = 2.45;
+  ERK2 = 1.13;
+  PKA = 2.2;
+  REGA = 1.24;
+  cAMP = 1.38;
+  excAMP = 0.48;
+  p = 1;
+  s = 1;
+
+  // Variable initializations:
+  k1 = 2;
+  k10 = 0.8;
+  k11 = 0.7;
+  k12 = 4.9;
+  k13 = 23;
+  k14 = 4.5;
+  k2 = 0.9;
+  k3 = 2.5;
+  k4 = 1.5;
+  k5 = 0.6;
+  k6 = 0.8;
+  k7 = 1;
+  k8 = 1.3;
+  k9 = 0.3;
+
+  // Other declarations:
+  var k1, k10, k11, k12, k13, k14, k2, k3, k4, k5, k6, k7, k8, k9;
+
+  // Unit definitions:
+  unit min = 60 second;
+  unit time_unit = min;
+end
+
+laub is "laub"

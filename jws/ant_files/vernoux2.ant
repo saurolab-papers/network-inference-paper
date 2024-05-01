@@ -1,0 +1,142 @@
+// Created by libAntimony v2.13.2
+model *vernoux2()
+
+  // Compartments and Species:
+  compartment compartment_0000001;
+  species A in compartment_0000001, D_IA in compartment_0000001, D_II in compartment_0000001;
+  species I in compartment_0000001, R in compartment_0000001, $aux in compartment_0000001;
+
+  // Assignment Rules:
+  aux := 1.11*sin((2*3.1416/800)*(time - 200)) + 1.11;
+  aux_basal := 1/(K_aux*(gamma_I - 1));
+  kprime_IA := K_IA*k_IA;
+  kprime_II := K_II*k_II;
+
+  // Reactions:
+  reac_DIA: I + A -> D_IA; k_IA*I*A - kprime_IA*D_IA;
+  reac_DIAxA: D_IA => A; (gamma_I*d_I*K_aux*aux/(K_aux*aux + 1))*D_IA;
+  reac_DII: I + I -> D_II; k_II*I*I - kprime_II*D_II;
+  reac_DIIxI: D_II => I; (gamma_I*d_I*K_aux*aux/(K_aux*aux + 1))*D_II;
+  reac_degrA: A => ; d_A*A;
+  reac_degrDIA: D_IA => ; d_IA*D_IA;
+  reac_degrDII: D_II => ; d_II*D_II;
+  reac_degrI: I => ; (gamma_I*d_I*K_aux*aux/(K_aux*aux + 1))*I;
+  reac_degrR: R => ; d_r*R;
+  reac_prodA:  => A; pi_A;
+  reac_prodI:  => I; pi_I*R;
+  reac_prodR:  => R; (1 + (f_c/B_d)*A*(1 + w_A*f_A*A/B_d))/(1 + (A/B_d)*(1 + w_A*A/B_d) + w_I*A*I/(K_IA*B_d) + w_D*D_IA/B_d + k_Am);
+
+  // Species initializations:
+  A = 10/compartment_0000001;
+  D_IA = 10/compartment_0000001;
+  D_II = 10/compartment_0000001;
+  I = 10/compartment_0000001;
+  R = 1/compartment_0000001;
+
+  // Compartment initializations:
+  compartment_0000001 = 1;
+
+  // Variable initializations:
+  B_d = 100;
+  K_IA = 10;
+  K_II = 10;
+  K_aux = 1;
+  gamma_I = 10;
+  d_A = 0.003;
+  d_I = 0.05;
+  d_IA = 0.003;
+  d_II = 0.003;
+  d_r = 0.007;
+  f_A = 10;
+  f_c = 10;
+  k_Am = 10;
+  k_IA = 1;
+  k_II = 1;
+  pi_A = 1;
+  pi_I = 1;
+  w_A = 10;
+  w_D = 10;
+  w_I = 10;
+
+  // Other declarations:
+  var aux_basal, kprime_IA, kprime_II;
+  const compartment_0000001, B_d, K_IA, K_II, K_aux, gamma_I, d_A, d_I, d_IA;
+  const d_II, d_r, f_A, f_c, k_Am, k_IA, k_II, pi_A, pi_I, w_A, w_D, w_I;
+
+  // Display Names:
+  compartment_0000001 is "c_1";
+  A is "ARF";
+  D_IA is "Aux/IAA:ARF";
+  D_II is "Aux/IAA:Aux/IAA";
+  I is "Aux/IAA";
+  R is "mRNA";
+  aux is "auxin";
+
+  // SBO terms:
+  compartment_0000001.sboTerm = 290
+  A.sboTerm = 252
+  D_IA.sboTerm = 297
+  D_II.sboTerm = 286
+  I.sboTerm = 252
+  R.sboTerm = 278
+  aux.sboTerm = 252
+  B_d.sboTerm = 282
+  K_IA.sboTerm = 282
+  K_II.sboTerm = 282
+  K_aux.sboTerm = 282
+  aux_basal.sboTerm = 9
+  gamma_I.sboTerm = 9
+  d_A.sboTerm = 356
+  d_I.sboTerm = 356
+  d_IA.sboTerm = 356
+  d_II.sboTerm = 356
+  d_r.sboTerm = 356
+  f_A.sboTerm = 9
+  f_c.sboTerm = 9
+  k_Am.sboTerm = 9
+  k_IA.sboTerm = 341
+  k_II.sboTerm = 341
+  kprime_IA.sboTerm = 338
+  kprime_II.sboTerm = 338
+  pi_A.sboTerm = 153
+  pi_I.sboTerm = 153
+  w_A.sboTerm = 481
+  w_D.sboTerm = 481
+  w_I.sboTerm = 481
+  reac_DIA.sboTerm = 526
+  reac_DIAxA.sboTerm = 180
+  reac_DII.sboTerm = 526
+  reac_DIIxI.sboTerm = 180
+  reac_degrA.sboTerm = 179
+  reac_degrDIA.sboTerm = 179
+  reac_degrDII.sboTerm = 179
+  reac_degrI.sboTerm = 179
+  reac_degrR.sboTerm = 179
+  reac_prodA.sboTerm = 393
+  reac_prodI.sboTerm = 393
+  reac_prodR.sboTerm = 393
+
+  // CV terms:
+  compartment_0000001 hypernym "http://identifiers.org/obo.go/GO:0005623"
+  A hypernym "http://identifiers.org/uniprot/Q94JM3"
+  D_IA part "http://identifiers.org/uniprot/Q94JM3",
+            "http://identifiers.org/uniprot/P49677"
+  D_II part "http://identifiers.org/uniprot/P49677"
+  I hypernym "http://identifiers.org/uniprot/P49677"
+  R hypernym "http://identifiers.org/obo.chebi/CHEBI:33699"
+  aux hypernym "http://identifiers.org/uniprot/Q96247"
+  reac_DIA hypernym "http://identifiers.org/obo.go/GO:0006461"
+  reac_DIAxA hypernym "http://identifiers.org/obo.go/GO:0043241"
+  reac_DII hypernym "http://identifiers.org/obo.go/GO:0006461"
+  reac_DIIxI hypernym "http://identifiers.org/obo.go/GO:0043241"
+  reac_degrA hypernym "http://identifiers.org/obo.go/GO:0009056"
+  reac_degrDIA hypernym "http://identifiers.org/obo.go/GO:0009056"
+  reac_degrDII hypernym "http://identifiers.org/obo.go/GO:0009056"
+  reac_degrI hypernym "http://identifiers.org/obo.go/GO:0009056"
+  reac_degrR hypernym "http://identifiers.org/obo.go/GO:0009056"
+  reac_prodA hypernym "http://identifiers.org/obo.go/GO:0009058"
+  reac_prodI hypernym "http://identifiers.org/obo.go/GO:0009058"
+  reac_prodR hypernym "http://identifiers.org/obo.go/GO:0009299"
+end
+
+vernoux2 is "vernoux2"

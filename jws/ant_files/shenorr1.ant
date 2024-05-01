@@ -1,0 +1,81 @@
+// Created by libAntimony v2.13.2
+function F(X, T)
+  piecewise(1, X >= T, 0);
+end
+
+
+model *shenorr1()
+
+  // Compartments and Species:
+  compartment cell;
+  species $X in cell, Y in cell, Z in cell;
+
+  // Reactions:
+  r1:  -> Y; F(X, r1_Ty);
+  r2: Y -> ; r2_a*Y;
+  r3:  -> Z; F(X, r3_Ty)*F(Y, r3_Tz);
+  r4: Z -> ; r4_a*Z;
+
+  // Events:
+  e1: at time >= 3: X = 1;
+  e2: at time >= 3.5: X = 0;
+  e3: at time >= 10: X = 1;
+  e4: at time >= 15: X = 0;
+
+  // Species initializations:
+  X = 0;
+  Y = 0;
+  Z = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  r1_Ty = 0.5;
+  r1_Ty has dimensionless;
+  r2_a = 1;
+  r2_a has dimensionless;
+  r3_Tz = 0.5;
+  r3_Tz has dimensionless;
+  r3_Ty = 0.5;
+  r3_Ty has dimensionless;
+  r4_a = 1;
+  r4_a has dimensionless;
+
+  // Other declarations:
+  const cell;
+
+  // Unit definitions:
+  unit volume = dimensionless;
+  unit time_unit = dimensionless;
+  unit substance = dimensionless;
+
+  // Display Names:
+  time_unit is "time";
+
+  // SBO terms:
+  cell.sboTerm = 290
+  X.sboTerm = 252
+  Y.sboTerm = 252
+  Z.sboTerm = 252
+  r1.sboTerm = 183
+  r2.sboTerm = 179
+  r3.sboTerm = 183
+  r4.sboTerm = 179
+
+  // CV terms:
+  cell identity "http://identifiers.org/obo.go/GO:0005622"
+  X hypernym "http://identifiers.org/obo.go/GO:0016563",
+             "http://identifiers.org/obo.chebi/CHEBI:36080"
+  Y hypernym "http://identifiers.org/obo.go/GO:0016563",
+             "http://identifiers.org/obo.chebi/CHEBI:36080"
+  Z hypernym "http://identifiers.org/obo.chebi/CHEBI:36080"
+  r1 hypernym "http://identifiers.org/obo.go/GO:0045893",
+              "http://identifiers.org/obo.go/GO:0010467"
+  r2 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  r3 hypernym "http://identifiers.org/obo.go/GO:0045893",
+              "http://identifiers.org/obo.go/GO:0010467"
+  r4 hypernym "http://identifiers.org/obo.go/GO:0030163"
+end
+
+shenorr1 is "shenorr1"

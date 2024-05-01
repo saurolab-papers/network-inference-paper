@@ -1,0 +1,31 @@
+// Created by libAntimony v2.13.2
+model *lin2()
+
+  // Compartments and Species:
+  species $p, $s, x2;
+
+  // Reactions:
+  v1: $s -> x2; Vm1*(s - x2/Keq1)/(K1s*(1 + s/K1s + x2/K1x2));
+  v2: x2 -> $p; Vm2*(x2 - p/Keq2)/(K2x2*(1 + x2/K2x2 + p/K2p));
+
+  // Species initializations:
+  p = 0;
+  s = 1;
+  x2 = 0;
+
+  // Variable initializations:
+  K1s = 1;
+  K1x2 = 1;
+  K2p = 1;
+  K2x2 = 1;
+  Keq1 = 10;
+  Keq2 = 10;
+  Vm1 = 1;
+  Vm2 = 1;
+  defaultcompartment = 1;
+
+  // Other declarations:
+  var K1s, K1x2, K2p, K2x2, Keq1, Keq2, Vm1, Vm2, defaultcompartment;
+end
+
+lin2 is "lin2"

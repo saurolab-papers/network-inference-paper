@@ -1,0 +1,164 @@
+// Created by libAntimony v2.13.2
+function function_1(v)
+  v;
+end
+
+function_1 is "irreversilbe Constant flux (Suc synth)"
+
+
+model *arnold7()
+
+  // Compartments and Species:
+  compartment chloroplast, cytosol, phloem, vacuole;
+  species ADP in chloroplast, ATP in chloroplast, $CO2 in chloroplast, $E in phloem;
+  species E4P in chloroplast, GG in chloroplast, HeP in chloroplast, HePc in cytosol;
+  species PGA in chloroplast, Pi in chloroplast, Pic in cytosol, $Resp in chloroplast;
+  species Ru5P in chloroplast, RuBP in chloroplast, S7P in chloroplast, Suc in cytosol;
+  species SucV in vacuole, TP in chloroplast, TPGA in chloroplast, TPc in cytosol;
+  species UDP in chloroplast, UTP in chloroplast;
+
+  // Assignment Rules:
+  v_15 := 0.0258*HePc*UTP;
+
+  // Reactions:
+  ATP_S: ADP + Pi => ATP; chloroplast*ATP_S_k1*ADP*Pi;
+  Diffu: Suc -> SucV; D*Suc - D*SucV;
+  F6P_TK1: HeP => TPGA + E4P; chloroplast*F6P_TK1_k1*HeP;
+  FBP_A_ase: 2 TP -> HeP + Pi; chloroplast*(FBP_A_ase_k1*TP^2 - FBP_A_ase_k2*HeP*Pi);
+  FBPc_A_ase: 2 TPc => HePc + Pic; cytosol*FBPc_A_ase_k1*TPc^2;
+  PGA_red: PGA + ATP => TP + ADP + Pi; chloroplast*PGA_red_k1*PGA*ATP;
+  Respi: Suc => $Resp; r*Suc;
+  Ru5P_K: Ru5P + ATP => RuBP + ADP; chloroplast*Ru5P_K_k1*Ru5P*ATP;
+  RuBisCO: RuBP + $CO2 => 2 PGA; chloroplast*RuBisCO_k1*RuBP*CO2;
+  S7P_TK1_R5P_I: S7P => TPGA + Ru5P; chloroplast*S7P_TK1_R5P_I_k1*S7P;
+  SBP_A_ase: E4P + TP => S7P + Pi; chloroplast*SBP_A_ase_k1*E4P*TP;
+  Starch_P: GG + Pi => HeP; chloroplast*Starch_P_k1*GG*Pi;
+  Starch_S: ATP + HeP => GG + ADP + 2 Pi; chloroplast*Starch_S_k1*ATP*HeP;
+  Suc_S: 2 HePc + UTP => Suc + UDP + 3 Pic; function_1(v_15);
+  TK2_Ru5P_E: TPGA + TP => Ru5P; chloroplast*TK2_Ru5P_E_k1*TPGA*TP;
+  TPT: TP + Pic => TPc + Pi; TPT_k1*TP*Pic;
+  Transl: Suc -> $E; phi*Suc - phi*E;
+  UTP_S: UDP + Pic => UTP; UTP_S_k1*UDP*Pic;
+
+  // Species initializations:
+  ADP = 0.53/chloroplast;
+  ATP = 3.875/chloroplast;
+  CO2 = 31;
+  E = 0.5;
+  E4P = 0.05/chloroplast;
+  GG = 99.9999999999999/chloroplast;
+  HeP = 2.2/chloroplast;
+  HePc = 0.1/cytosol;
+  PGA = 2.4/chloroplast;
+  Pi = 2.5/chloroplast;
+  Pic = 0.8/cytosol;
+  Resp = 1;
+  Ru5P = 0.05/chloroplast;
+  RuBP = 2/chloroplast;
+  S7P = 2/chloroplast;
+  Suc = 77.31/cytosol;
+  SucV = 77.31/vacuole;
+  TP = 0.5/chloroplast;
+  TPGA = 0.2/chloroplast;
+  TPc = 0.114/cytosol;
+  UDP = 1.613/chloroplast;
+  UTP = 3.871/chloroplast;
+
+  // Compartment initializations:
+  chloroplast = 1;
+  cytosol = 1;
+  phloem = 1;
+  vacuole = 1;
+
+  // Variable initializations:
+  D = 0.0001;
+  phi = 0.0001;
+  r = 3e-05;
+  ATP_S_k1 = 0.279;
+  F6P_TK1_k1 = 0.031;
+  FBP_A_ase_k1 = 4;
+  FBP_A_ase_k2 = 0;
+  FBPc_A_ase_k1 = 1.55;
+  PGA_red_k1 = 0.0207;
+  Ru5P_K_k1 = 0.031;
+  RuBisCO_k1 = 0.006;
+  S7P_TK1_R5P_I_k1 = 0.31;
+  SBP_A_ase_k1 = 3.1;
+  Starch_P_k1 = 4e-05;
+  Starch_S_k1 = 0.002;
+  TK2_Ru5P_E_k1 = 6.2;
+  TPT_k1 = 0.5;
+  UTP_S_k1 = 0.00755;
+
+  // Other declarations:
+  var v_15;
+  const chloroplast, cytosol, phloem, vacuole, D, phi, r;
+
+  // Unit definitions:
+  unit volume = 1e-3 litre;
+  unit substance = 1e-3 mole;
+
+  // Display Names:
+  v_15 is "v(15)";
+  ATP_S is "ATP synthase";
+  Diffu is "diffusion rate";
+  F6P_TK1 is "F6P trans I";
+  FBP_A_ase is "FBP ald + ase";
+  FBPc_A_ase is "FBPc ald + ase";
+  PGA_red is "PGA reduction";
+  Respi is "respiration rate";
+  Ru5P_K is "Ru5P kinase";
+  S7P_TK1_R5P_I is "S7P trans I + R5P iso";
+  SBP_A_ase is "SBP ald + ase";
+  Starch_P is "starch phosphorylase";
+  Starch_S is "starch synthetase";
+  Suc_S is "sucrose synthetase";
+  TK2_Ru5P_E is "trans II + Ru5P epi";
+  TPT is "TP translocator";
+  Transl is "translocation rate";
+  UTP_S is "UTP synthase";
+
+  // SBO terms:
+  E.sboTerm = 9
+  D.sboTerm = 9
+  phi.sboTerm = 9
+  r.sboTerm = 9
+  v_15.sboTerm = 9
+  ATP_S_k1.sboTerm = 9
+  F6P_TK1_k1.sboTerm = 9
+  FBP_A_ase_k1.sboTerm = 9
+  FBP_A_ase_k2.sboTerm = 9
+  FBPc_A_ase_k1.sboTerm = 9
+  PGA_red_k1.sboTerm = 9
+  Ru5P_K_k1.sboTerm = 9
+  RuBisCO_k1.sboTerm = 9
+  S7P_TK1_R5P_I_k1.sboTerm = 9
+  SBP_A_ase_k1.sboTerm = 9
+  Starch_P_k1.sboTerm = 9
+  Starch_S_k1.sboTerm = 9
+  TK2_Ru5P_E_k1.sboTerm = 9
+  TPT_k1.sboTerm = 9
+  UTP_S_k1.sboTerm = 9
+
+  // CV terms:
+  CO2 hypernym "http://identifiers.org/obo.chebi/CHEBI:16526"
+  E4P hypernym "http://identifiers.org/pubchem.compound/122357"
+  HeP hypernym "http://identifiers.org/obo.chebi/CHEBI:15965"
+  HePc hypernym "http://identifiers.org/obo.chebi/CHEBI:15965"
+  PGA hypernym "http://identifiers.org/obo.chebi/CHEBI:17050"
+  Pi hypernym "http://identifiers.org/obo.chebi/CHEBI:43474"
+  Pic hypernym "http://identifiers.org/obo.chebi/CHEBI:43474"
+  Ru5P hypernym "http://identifiers.org/obo.chebi/CHEBI:17363"
+  RuBP hypernym "http://identifiers.org/obo.chebi/CHEBI:16710"
+  S7P hypernym "http://identifiers.org/pubchem.compound/165007"
+  Suc hypernym "http://identifiers.org/obo.chebi/CHEBI:17992"
+  SucV hypernym "http://identifiers.org/obo.chebi/CHEBI:17992"
+  TP hypernym "http://identifiers.org/interpro/IPR000652"
+  TPGA part "http://identifiers.org/pubchem.compound/15938963",
+            "http://identifiers.org/pubchem.compound/756"
+  TPc hypernym "http://identifiers.org/pubchem.compound/24794350"
+  UDP hypernym "http://identifiers.org/obo.chebi/CHEBI:17659"
+  UTP hypernym "http://identifiers.org/obo.chebi/CHEBI:15713"
+end
+
+arnold7 is "arnold7"

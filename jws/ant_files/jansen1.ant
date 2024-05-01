@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *jansen1()
+
+  // Compartments and Species:
+  species B, II, T, V;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v2: T -> II; beta*T*V;
+  v3: T -> ; delta*T;
+  v4: II -> ; gamma_*II;
+  v5:  -> V; c*gamma_*II;
+  v6: V -> ; phi*V;
+  v7: V -> ; k*B*V;
+  v8:  -> B; a*B*V;
+  v9: B -> ; mu*B;
+
+  // Species initializations:
+  B = 50;
+  II = 0;
+  T = 560000;
+  V = 0.04;
+
+  // Variable initializations:
+  a = 2.22e-07;
+  beta = 1e-07;
+  c = 4000;
+  delta = 0.0025;
+  gamma_ = 0.25;
+  k = 0.025;
+  lambda = 1400;
+  mu = 0;
+  phi = 32;
+
+  // Other declarations:
+  var a, beta, c, delta, gamma_, k, lambda, mu, phi;
+end
+
+jansen1 is "jansen1"

@@ -1,0 +1,60 @@
+// Created by libAntimony v2.13.2
+model *nguyen()
+
+  // Compartments and Species:
+  species A4, DHEA, $Ext, OH17P4, OH17P5, P4, P5;
+
+  // Reactions:
+  v0: $Ext -> P5; kSup;
+  v1: P5 -> P4; Vm3BHSD*P5/KmBP5/(1 + OH17P5/KmBOH17P5 + DHEA/KmBDHEA + P4/KmBP4 + OH17P4/KmBOH17P4 + A4/KmBA4 + P5/KmBP5);
+  v10: P4 -> $Ext; kSec*P4;
+  v11: OH17P4 -> $Ext; kSec*OH17P4;
+  v12: A4 -> $Ext; kSec*A4;
+  v2: OH17P5 -> OH17P4; Vm3BHSD*OH17P5/KmBOH17P5/(1 + OH17P5/KmBOH17P5 + DHEA/KmBDHEA + P4/KmBP4 + OH17P4/KmBOH17P4 + A4/KmBA4 + P5/KmBP5);
+  v3: DHEA -> A4; Vm3BHSD*DHEA/KmBDHEA/(1 + OH17P5/KmBOH17P5 + DHEA/KmBDHEA + P4/KmBP4 + OH17P4/KmBOH17P4 + A4/KmBA4 + P5/KmBP5);
+  v4: P5 -> OH17P5; VmHyd*P5/KmCP5/(1 + P4/KmCP4 + OH17P5/KmCOH17P5 + P5/KmCP5);
+  v5: OH17P5 -> DHEA; VmLya*OH17P5/KmCOH17P5/(1 + P4/KmCP4 + OH17P5/KmCOH17P5 + P5/KmCP5);
+  v6: P4 -> OH17P4; VmHyd*P4/KmCP4/(1 + P4/KmCP4 + OH17P5/KmCOH17P5 + P5/KmCP5);
+  v7: P5 -> $Ext; kSec*P5;
+  v8: OH17P5 -> $Ext; kSec*OH17P5;
+  v9: DHEA -> $Ext; kSec*DHEA;
+
+  // Species initializations:
+  A4 = 0;
+  DHEA = 0;
+  Ext = 0;
+  OH17P4 = 0;
+  OH17P5 = 0;
+  P4 = 0;
+  P5 = 0;
+
+  // Variable initializations:
+  KmBA4 = 1;
+  KmBDHEA = 3.7;
+  KmBOH17P4 = 3;
+  KmBOH17P5 = 3.5;
+  KmBP4 = 3;
+  KmBP5 = 2.8;
+  KmCOH17P5 = 0.83;
+  KmCP4 = 0.73;
+  KmCP5 = 0.79;
+  Vm3BHSD = 1;
+  VmHyd = 3;
+  VmLya = 1;
+  kSec = 0.1;
+  kSup = 0.1;
+
+  // Other declarations:
+  var KmBA4, KmBDHEA, KmBOH17P4, KmBOH17P5, KmBP4, KmBP5, KmCOH17P5, KmCP4;
+  var KmCP5, Vm3BHSD, VmHyd, VmLya, kSec, kSup;
+
+  // Unit definitions:
+  unit umol = 1e-6 mole;
+  unit s = second;
+  unit L = litre;
+  unit volume = L;
+  unit substance = umol;
+  unit time_unit = s;
+end
+
+nguyen is "P450 androstenedione synthesis"

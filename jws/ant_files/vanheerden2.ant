@@ -1,0 +1,59 @@
+// Created by libAntimony v2.13.2
+model *vanHeerden2()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species $EtOH in compartment_, $Glycerol in compartment_, $PiVac in compartment_;
+  species atp in compartment_, fbp in compartment_, $g6p in compartment_;
+  species phos in compartment_;
+
+  // Reactions:
+  v1: 2 atp + $g6p -> fbp; VMAXPFK*atp/(KMPFKATP + atp*(1 + atp/KiPFKATP));
+  v2: 2 phos + fbp -> 4 atp + 2 $EtOH; VMAXLG*(fbp/(KMLGF16P + fbp))*((atot - atp)/KMLGADP)*(phos/KMLGP)/((1 + (atot - atp)/KMLGADP)*(1 + phos/KMLGP));
+  v3: atp -> phos; KATPASE*atp;
+  v4: $PiVac -> phos; k6*(pT - phos);
+  v5: fbp -> $Glycerol + 2 phos; VMAXGLYC*(fbp/(KMLGF16P + fbp));
+
+  // Species initializations:
+  EtOH = 0;
+  Glycerol = 0;
+  PiVac = 0;
+  atp = 1/compartment_;
+  fbp = 2/compartment_;
+  g6p = 0;
+  phos = 10/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  KATPASE = 10;
+  KMLGADP = 0.1;
+  KMLGF16P = 1;
+  KMLGP = 2;
+  KMPFKATP = 0.1;
+  KiPFKATP = 3;
+  VMAXGLYC = 0;
+  VMAXLG = 10;
+  VMAXPFK = 10;
+  atot = 5;
+  k6 = 0.3;
+  pT = 10;
+
+  // Other declarations:
+  const compartment_, KATPASE, KMLGADP, KMLGF16P, KMLGP, KMPFKATP, KiPFKATP;
+  const VMAXGLYC, VMAXLG, VMAXPFK, atot, k6, pT;
+
+  // Unit definitions:
+  unit volume = litre;
+  unit length = metre;
+  unit substance = mole;
+  unit time_unit = second;
+  unit area = metre^2;
+
+  // Display Names:
+  time_unit is "time";
+  compartment_ is "compartment";
+end
+
+vanHeerden2 is "vanHeerden2"

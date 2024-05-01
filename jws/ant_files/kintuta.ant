@@ -1,0 +1,34 @@
+// Created by libAntimony v2.13.2
+model *kintuta()
+
+  // Compartments and Species:
+  species S1, S2, S3, S4, $X0, $X5, $X6, $X7;
+
+  // Reactions:
+  v_1: $X0 + S1 -> S2 + $X5; k1f*X0*S1 - k1r*X5*S2;
+  v_2: S3 + S2 -> S1 + S4; k2f*S2*S3 - k2r*S1*S4;
+  v_3: $X6 + S4 -> S3 + $X7; k3f*S4*X6 - k3r*X7*S3;
+
+  // Species initializations:
+  S1 = 1;
+  S2 = 1;
+  S3 = 1;
+  S4 = 1;
+  X0 = 10;
+  X5 = 1;
+  X6 = 10;
+  X7 = 1;
+
+  // Variable initializations:
+  k1f = 1;
+  k1r = 1;
+  k2f = 1;
+  k2r = 1;
+  k3f = 1;
+  k3r = 1;
+
+  // Other declarations:
+  var k1f, k1r, k2f, k2r, k3f, k3r;
+end
+
+kintuta is "kintuta"

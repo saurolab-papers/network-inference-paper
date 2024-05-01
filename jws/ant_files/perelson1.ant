@@ -1,0 +1,31 @@
+// Created by libAntimony v2.13.2
+model *perelson1()
+
+  // Compartments and Species:
+  species Tstar, V, Vin, Vni;
+
+  // Reactions:
+  v1:  -> Tstar; k*T0*Vin;
+  v2: Tstar -> ; delta*Tstar;
+  v3: V + Vin -> ; c*Vin;
+  v4: V + Vni -> ; c*Vni;
+  v5:  -> V + Vni; delta*NN*Tstar;
+
+  // Species initializations:
+  Tstar = 15061.32075;
+  V = 1860000;
+  Vin = 1860000;
+  Vni = 0;
+
+  // Variable initializations:
+  NN = 480;
+  T0 = 11000;
+  c = 2.06;
+  delta = 0.53;
+  k = 3.9e-07;
+
+  // Other declarations:
+  var NN, T0, c, delta, k;
+end
+
+perelson1 is "perelson1"

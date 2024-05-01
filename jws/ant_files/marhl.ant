@@ -1,0 +1,84 @@
+// Created by libAntimony v2.13.2
+model *marhl()
+
+  // Compartments and Species:
+  compartment Cytosol, Endoplasmic_Reticulum, Mitochondria;
+  species CaER in Endoplasmic_Reticulum, CaM in Mitochondria, CaPr in Cytosol;
+  species Ca_cyt in Cytosol, Pr in Cytosol;
+
+  // Reactions:
+  v1: 0.25 CaER => Ca_cyt; Cytosol*(v1_Kch*Ca_cyt^2*(CaER - Ca_cyt)/(v1_K1^2 + Ca_cyt^2));
+  v11: CaPr => Pr + Ca_cyt; Cytosol*v11_Kminus*CaPr;
+  v12: Pr + Ca_cyt => CaPr; Cytosol*v12_Kplus*Ca_cyt*Pr;
+  v3: 0.25 CaER => Ca_cyt; Cytosol*v3_Kleak*(CaER - Ca_cyt);
+  v5: Ca_cyt => 0.25 CaER; Endoplasmic_Reticulum*v5_Kpump*Ca_cyt;
+  v7: 0.25 CaM => Ca_cyt; Cytosol*CaM*(v7_Kout*Ca_cyt^2/(v7_K3^2 + Ca_cyt^2) + v7_Km);
+  v9: Ca_cyt => 0.25 CaM; Mitochondria*(v9_Kin*Ca_cyt^8/(v9_K2^8 + Ca_cyt^8));
+
+  // Species initializations:
+  CaER = 0.76/Endoplasmic_Reticulum;
+  CaM = 0.29/Mitochondria;
+  CaPr = 85.45/Cytosol;
+  Ca_cyt = 0.35/Cytosol;
+  Pr = 34.55/Cytosol;
+
+  // Compartment initializations:
+  Cytosol = 1;
+  Endoplasmic_Reticulum = 1;
+  Mitochondria = 1;
+
+  // Variable initializations:
+  v1_Kch = 4100;
+  v1_K1 = 5;
+  v11_Kminus = 0.01;
+  v12_Kplus = 0.1;
+  v3_Kleak = 0.05;
+  v5_Kpump = 20;
+  v7_Kout = 125;
+  v7_K3 = 5;
+  v7_Km = 0.00625;
+  v9_Kin = 300;
+  v9_K2 = 0.8;
+
+  // Other declarations:
+  const Cytosol, Endoplasmic_Reticulum, Mitochondria;
+
+  // Unit definitions:
+  unit micromole_default = 1e-6 mole;
+
+  // Display Names:
+  micromole_default is "micromole (default)";
+  v1 is "Jch";
+  v11 is "dissociation of CaPr";
+  v12 is "binding of Ca on Pr";
+  v3 is "Jleak";
+  v5 is "Jpump";
+  v7 is "Jout";
+  v9 is "Jin";
+
+  // CV terms:
+  Cytosol identity "http://identifiers.org/go/GO:0005829"
+  Endoplasmic_Reticulum identity "http://identifiers.org/go/GO:0005790"
+  Mitochondria identity "http://identifiers.org/go/GO:0005739"
+  CaER identity "http://identifiers.org/chebi/CHEBI:29108"
+  CaM identity "http://identifiers.org/chebi/CHEBI:29108"
+  CaPr part "http://identifiers.org/chebi/CHEBI:29108",
+            "http://identifiers.org/kegg.compound/C00017"
+  Ca_cyt identity "http://identifiers.org/chebi/CHEBI:29108"
+  Pr hypernym "http://identifiers.org/kegg.compound/C00017"
+  v1 hypernym "http://identifiers.org/go/GO:0051482",
+              "http://identifiers.org/go/GO:0006816"
+  v11 hypernym "http://identifiers.org/go/GO:0007204"
+  v12 hypernym "http://identifiers.org/go/GO:0005509",
+               "http://identifiers.org/go/GO:0051481"
+  v3 hypernym "http://identifiers.org/go/GO:0006816",
+              "http://identifiers.org/go/GO:0007204"
+  v5 hypernym "http://identifiers.org/go/GO:0051481",
+              "http://identifiers.org/go/GO:0006816"
+  v7 identity "http://identifiers.org/go/GO:0006816",
+              "http://identifiers.org/go/GO:0007204"
+  v9 hypernym "http://identifiers.org/go/GO:0006816",
+              "http://identifiers.org/go/GO:0051481"
+end
+
+marhl is "marhl"

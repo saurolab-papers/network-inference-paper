@@ -1,0 +1,80 @@
+// Created by libAntimony v2.13.2
+model *borghans1()
+
+  // Compartments and Species:
+  compartment cytosol, extracellular, intravesicular;
+  species EC in extracellular, Fraction_Inactive_Channels in cytosol, Rho in cytosol;
+  species Y in intravesicular, Z in cytosol;
+
+  // Reactions:
+  v2: Z => Y; intravesicular*(v2_Vm2*Z^2/(v2_K2^2 + Z^2));
+  v3: Y => Z; cytosol*(beta*(Rho*(a/d)*Z^4/(1 + (a/d)*Z^4))*v3_Vm3*Y^2/(v3_Ky^2 + Y^2));
+  v4: Y => Z; cytosol*v4_Kf*Y;
+  v5: Z => EC; extracellular*v5_K*Z;
+  v6: Rho => Fraction_Inactive_Channels; cytosol*v6_Kd*Z^4*Rho;
+  v7: Fraction_Inactive_Channels => Rho; cytosol*v7_Kr*(1 - Rho);
+  vin: EC => Z; cytosol*(vin_v0 + vin_v1*beta);
+
+  // Species initializations:
+  EC = 0;
+  Fraction_Inactive_Channels = 0;
+  Rho = 0;
+  Y = 0.36/intravesicular;
+  Z = 0;
+
+  // Compartment initializations:
+  cytosol = 1;
+  extracellular = 1;
+  intravesicular = 1;
+
+  // Variable initializations:
+  a = 40000;
+  beta = 1;
+  d = 100;
+  v2_Vm2 = 6.5;
+  v2_K2 = 0.1;
+  v3_Vm3 = 50;
+  v3_Ky = 0.2;
+  v4_Kf = 1;
+  v5_K = 10;
+  v6_Kd = 5000;
+  v7_Kr = 5;
+  vin_v0 = 1;
+  vin_v1 = 1;
+
+  // Other declarations:
+  const cytosol, extracellular, intravesicular, a, beta, d;
+
+  // Unit definitions:
+  unit micromole_default = 1e-6 mole;
+  unit minute_default = 60 second;
+
+  // Display Names:
+  micromole_default is "micromole (default)";
+  minute_default is "minute (default)";
+
+  // CV terms:
+  cytosol hypernym "http://identifiers.org/obo.go/GO:0005829"
+  extracellular hypernym "http://identifiers.org/obo.go/GO:0005615"
+  intravesicular hypernym "http://identifiers.org/obo.go/GO:0005790"
+  EC identity "http://identifiers.org/chebi/CHEBI:29108",
+              "http://identifiers.org/kegg.compound/C00076"
+  Fraction_Inactive_Channels hypernym "http://identifiers.org/interpro/IPR000493",
+                                      "http://identifiers.org/pirsf/PIRSF002433"
+  Rho hypernym "http://identifiers.org/interpro/IPR016093",
+               "http://identifiers.org/interpro/IPR000493"
+  Y identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  Z identity "http://identifiers.org/chebi/CHEBI:29108",
+             "http://identifiers.org/kegg.compound/C00076"
+  v2 hypernym "http://identifiers.org/obo.go/GO:0051481"
+  v3 hypernym "http://identifiers.org/obo.go/GO:0007204"
+  v4 hypernym "http://identifiers.org/obo.go/GO:0007204"
+  v5 hypernym "http://identifiers.org/obo.go/GO:0051481"
+  v6 hypernym "http://identifiers.org/obo.go/GO:0005220"
+  v7 hypernym "http://identifiers.org/obo.go/GO:0005220"
+  vin hypernym "http://identifiers.org/obo.go/GO:0006816",
+               "http://identifiers.org/obo.go/GO:0007204"
+end
+
+borghans1 is "borghans1"

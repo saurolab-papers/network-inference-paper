@@ -1,0 +1,84 @@
+// Created by libAntimony v2.13.2
+model *ciliberto()
+
+  // Compartments and Species:
+  species APCP, APCPCdc20, Cdc20, Cdc25P, MPF, MPFtotal, Mad2Cdc20P, Wee;
+  species $p, $s;
+
+  // Assignment Rules:
+  APC := APCtotal - APCP - APCPCdc20;
+  Cdc20P := Cdc20total - Cdc20 - APCPCdc20 - Mad2Cdc20P;
+  Mad2 := Mad2active - Mad2Cdc20P;
+  k25 := Cdc25total*ka25 + (kaa25 - ka25)*Cdc25P;
+  kwee := Weetotal*kawee + (kaawee - kawee)*Wee;
+
+  // Reactions:
+  v_1: $s -> MPF + MPFtotal; kcycsyn;
+  v_10: $s -> Mad2Cdc20P; kass2*Mad2*Cdc20P;
+  v_11: Mad2Cdc20P -> $p; kdiss2*Mad2Cdc20P;
+  v_12: APCPCdc20 -> $p; (kdiss + kapcdeph + k20ph*MPF)*APCPCdc20;
+  v_13: $s -> APCP; kapcph*MPF*APC;
+  v_14: APCP -> $p; kapcdeph*APCP;
+  v_15: $s -> APCP; (kdiss + k20ph*MPF)*APCPCdc20;
+  v_16: $s -> Wee; Vawee*((Weetotal - Wee)/(Jwee + Weetotal - Wee));
+  v_17: Wee -> $p; Vaaiwee*MPF*Wee;
+  v_18: $s -> Cdc25P; Vapa25*MPF*(Cdc25total - Cdc25P);
+  v_19: Cdc25P -> $p; Vi25*Cdc25P/(J25 + Cdc25P);
+  v_2: MPF -> $p; kwee*MPF;
+  v_3: $s -> MPF; k25*(MPFtotal - MPF);
+  v_4: MPF -> $p; (kacycdeg + kcycdeg*(APCPCdc20/(Jcycdeg + MPFtotal)))*MPF;
+  v_5: MPFtotal -> $p; (kacycdeg + kcycdeg*(APCPCdc20/(Jcycdeg + MPFtotal)))*MPFtotal;
+  v_6: $s -> Cdc20; k20deph*Cdc20P;
+  v_7: Cdc20 -> $p; k20ph*MPF*Cdc20;
+  v_8: $s -> Cdc20; (kapcdeph + kdiss)*APCPCdc20;
+  v_9: Cdc20 + APCP -> APCPCdc20; kass*Cdc20*APCP;
+
+  // Species initializations:
+  APCP = 0.124;
+  APCPCdc20 = 0.32;
+  Cdc20 = 0.652;
+  Cdc25P = 0.281;
+  MPF = 0.015;
+  MPFtotal = 0.016;
+  Mad2Cdc20P = 0.009;
+  Wee = 0.718;
+  p = 1;
+  s = 1;
+
+  // Variable initializations:
+  APCtotal = 1;
+  Cdc20total = 1;
+  Cdc25total = 1;
+  J25 = 0.01;
+  Jcycdeg = 0.01;
+  Jwee = 0.01;
+  Mad2active = 0.01;
+  Vaaiwee = 1;
+  Vapa25 = 1;
+  Vawee = 0.2;
+  Vi25 = 0.2;
+  Weetotal = 1;
+  k20deph = 8;
+  k20ph = 10;
+  ka25 = 0.2;
+  kaa25 = 10;
+  kaawee = 4;
+  kacycdeg = 0.08;
+  kapcdeph = 0.04;
+  kapcph = 0.04;
+  kass = 80;
+  kass2 = 10;
+  kawee = 0.1;
+  kcycdeg = 2;
+  kcycsyn = 0.4;
+  kdiss = 20;
+  kdiss2 = 0.1;
+
+  // Other declarations:
+  var APC, APCtotal, Cdc20P, Cdc20total, Cdc25total, J25, Jcycdeg, Jwee, Mad2;
+  var Mad2active, Vaaiwee, Vapa25, Vawee, Vi25, Weetotal, k20deph, k20ph;
+  var k25, ka25, kaa25, kaawee, kacycdeg, kapcdeph, kapcph, kass, kass2, kawee;
+  var kcycdeg, kcycsyn, kdiss, kdiss2, kwee;
+end
+
+ciliberto is "ciliberto"

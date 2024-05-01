@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *karin5()
+
+  // Compartments and Species:
+  species beta, g, ins, mbeta, tamox;
+
+  // Assignment Rules:
+  ego := 1.44/(24*60);
+  gamma_ := 432/(24*60);
+  lambdamg := 0.2*(1/(1 + (g/4)^8) + 1/(1 + (15/g)^6));
+  lambdamgmut := 0.2*(1/(1 + (k*g/4)^8) + 1/(1 + (15/(k*g))^6));
+  lambdapg := 0.1/(1 + (8.4/g)^1.7);
+  lambdapgmut := 0.1/(1 + (8.4/(k*g))^1.7);
+  perMutatedBcells := 100*(mbeta/beta);
+  r0 := 864/(24*60)/18;
+  si := 0.72/(24*60);
+  sigma := 43.2/(24*60);
+
+  // Reactions:
+  v1:  -> g; r0 - (ego + si*ins)*g;
+  v2:  -> ins; beta*sigma*1/(1 + (alpha/g)^1.7) + mbeta*sigma*1/(1 + (alpha/(k*g))^1.7) - gamma_*ins;
+  v3:  -> beta; (1/(24*60))*beta*(lambdapg - lambdamg - tamox);
+  v4:  -> mbeta; (1/(24*60))*(mbeta*(lambdapgmut - lambdamgmut) + beta*tamox);
+  v5:  -> tamox; (1/(24*60))*-1.5*ln(2)*tamox;
+
+  // Species initializations:
+  beta = 400;
+  g = 4.966667;
+  ins = 11.42;
+  mbeta = 0;
+  tamox = 0.27;
+
+  // Variable initializations:
+  alpha = 8.4;
+  k = 6;
+
+  // Other declarations:
+  var alpha, ego, gamma_, k, lambdamg, lambdamgmut, lambdapg, lambdapgmut;
+  var perMutatedBcells, r0, si, sigma;
+
+  // Display Names:
+  gamma_ is "gamma";
+end
+
+karin5 is "karin5"

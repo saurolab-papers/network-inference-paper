@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *twoEnzymeCompInh1()
+
+  // Compartments and Species:
+  species $i1, $p, $s, x;
+
+  // Reactions:
+  v1: $s -> x; (Vmax1*s/Km1S1)*(1 - x/(s*Keq1))/(1 + s/Km1S1 + x/Km1X + i1/K1I1);
+  v2: x -> $p; Vmax2*x/Km2X/(1 + x/Km2X);
+
+  // Species initializations:
+  i1 = 0;
+  p = 0;
+  s = 5;
+  x = 0;
+
+  // Variable initializations:
+  K1I1 = 1;
+  Keq1 = 10;
+  Km1S1 = 1;
+  Km1X = 2;
+  Km2X = 1;
+  Vmax1 = 10;
+  Vmax2 = 10;
+
+  // Other declarations:
+  var K1I1, Keq1, Km1S1, Km1X, Km2X, Vmax1, Vmax2;
+
+  // Display Names:
+  i1 is "inhibitor";
+  p is "product";
+  s is "substrate";
+  x is "intermediate";
+  K1I1 is "Affinity enzyme 1 for inhibitor I";
+  Keq1 is "Equilibrium constant reaction 1";
+  Km1S1 is "Affinity enzyme 1 for S1";
+  Km1X is "Affinity enzyme 1 for X";
+  Km2X is "Affinity enzyme 2 for X";
+  Vmax1 is "Max velocity enzyme 1";
+  Vmax2 is "Max velocity enzyme 2";
+  v1 is "reaction 1";
+  v2 is "reaction 2";
+end
+
+twoEnzymeCompInh1 is "two enzyme pathway with inhibitor"

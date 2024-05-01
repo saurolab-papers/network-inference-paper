@@ -1,0 +1,90 @@
+// Created by libAntimony v2.13.2
+model *rovers1()
+
+  // Compartments and Species:
+  compartment c;
+  species $ADP in c, ATP in c, $NADP in c, NADPH in c, X in c, $Y in c;
+
+  // Assignment Rules:
+  ADP := A0 - ATP;
+  NADP := N0 - NADPH;
+
+  // Reactions:
+  v1: ATP + X => $ADP + $Y; c*k1*X;
+  v2: ATP + NADPH + $Y => $NADP + $ADP + X; c*k2*ATP;
+  v3: 2 $ADP => 2 ATP; c*k3*ADP*NADP;
+  v4: $NADP => NADPH; c*k4*NADP;
+
+  // Species initializations:
+  ATP = 0.5/c;
+  NADPH = 0.7/c;
+  X = 2/c;
+  Y = 1;
+
+  // Compartment initializations:
+  c = 1;
+  c has volume;
+
+  // Variable initializations:
+  A0 = 2.5;
+  A0 has mM;
+  N0 = 1.2;
+  N0 has mM;
+  k1 = 0.123;
+  k1 has per_s;
+  k2 = 0.625;
+  k2 has per_s;
+  k3 = 0.3;
+  k3 has per_mM_per_s;
+  k4 = 0.614;
+  k4 has per_s;
+
+  // Other declarations:
+  const c, A0, N0, k1, k2, k3, k4;
+
+  // Unit definitions:
+  unit time_unit = second;
+  unit length = metre;
+  unit area = metre^2;
+  unit volume = litre;
+  unit per_s = 1 / second;
+  unit per_mM_per_s = litre / (1e-3 mole * second);
+  unit mM = 1e-3 mole / litre;
+  unit mmole = 1e-3 mole;
+
+  // Display Names:
+  time_unit is "time";
+  NADP is "NADP_super_+";
+
+  // SBO terms:
+  c.sboTerm = 290
+  ADP.sboTerm = 247
+  A0.sboTerm = 472
+  ATP.sboTerm = 247
+  NADP.sboTerm = 247
+  N0.sboTerm = 472
+  NADPH.sboTerm = 247
+  X.sboTerm = 247
+  Y.sboTerm = 247
+  k1.sboTerm = 35
+  k2.sboTerm = 35
+  k3.sboTerm = 36
+  k4.sboTerm = 35
+  v1.sboTerm = 216
+  v2.sboTerm = 182
+  v3.sboTerm = 216
+  v4.sboTerm = 202
+
+  // CV terms:
+  c identity "http://identifiers.org/go/GO:0009570"
+  A0 identity "http://identifiers.org/kegg.compound/C00008",
+              "http://identifiers.org/kegg.compound/C00002",
+              "http://identifiers.org/chebi/CHEBI:15422",
+              "http://identifiers.org/chebi/CHEBI:16761"
+  N0 part "http://identifiers.org/kegg.compound/C00006",
+          "http://identifiers.org/kegg.compound/C00005",
+          "http://identifiers.org/chebi/CHEBI:18009",
+          "http://identifiers.org/chebi/CHEBI:16474"
+end
+
+rovers1 is "rovers1"

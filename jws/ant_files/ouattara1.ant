@@ -1,0 +1,33 @@
+// Created by libAntimony v2.13.2
+model *ouattara1()
+
+  // Compartments and Species:
+  species T, TStar, V;
+
+  // Assignment Rules:
+  TplusTStar := T + TStar;
+
+  // Reactions:
+  v1:  -> T; s;
+  v2: T -> ; delta*T;
+  v3: T -> TStar; beta*T*V;
+  v5: TStar -> ; mu*TStar;
+  v6:  -> V; k*TStar;
+  v7: V -> ; c*V;
+
+  // Species initializations:
+  T = 1000;
+  TStar = 50;
+  V = 100;
+
+  // Variable initializations:
+  beta = 1e-07;
+  c = 0.3;
+  delta = 0.01;
+  k = 1000;
+  mu = 0.09;
+  s = 10;
+
+  // Other declarations:
+  var TplusTStar, beta, c, delta, k, mu, s;
+end

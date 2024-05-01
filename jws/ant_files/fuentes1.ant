@@ -1,0 +1,28 @@
+// Created by libAntimony v2.13.2
+model *fuentes1()
+
+  // Compartments and Species:
+  species e, ez, w, z;
+
+  // Reactions:
+  v_1: z -> e + w; k1*z;
+  v_2: e + z -> ez; k21*e*z - k22*ez;
+  v_3: ez -> 2 e + w; k3*ez;
+
+  // Species initializations:
+  e = 0;
+  ez = 0;
+  w = 0;
+  z = 2.4e-05;
+
+  // Variable initializations:
+  k1 = 0.004;
+  k21 = 1000;
+  k22 = 0.00021;
+  k3 = 0.00054;
+
+  // Other declarations:
+  var k1, k21, k22, k3;
+end
+
+fuentes1 is "fuentes1"

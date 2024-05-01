@@ -1,0 +1,75 @@
+// Created by libAntimony v2.13.2
+function function1(k, Mvar, S)
+  k*Mvar*S;
+end
+
+function function2(k, Mvar)
+  k*Mvar;
+end
+
+
+model *figueiredo3()
+
+  // Compartments and Species:
+  species A, Ap, IL10e, IL10i, IL10m, X0, X1, X2, erk, erkp, $extVar, p38;
+  species p38p;
+
+  // Reactions:
+  v_1: erk -> erkp; ;
+  v_10: X2 -> X1 + Ap; k19*X2;
+  v_11: $extVar -> IL10m; function2(k10, X2);
+  v_12: IL10m -> $extVar; k111*IL10m;
+  v_13: $extVar -> IL10i; function2(k12, IL10m);
+  v_14: IL10i -> $extVar; k113*IL10i;
+  v_15: IL10i -> IL10e; k114*IL10i;
+  v_16: IL10e -> $extVar; k115*IL10e;
+  v_2: erkp -> erk; function1(k1, IL10e, erkp);
+  v_3: p38 -> p38p; function1(k2, stimulus, p38);
+  v_4: p38p -> p38; k3*p38p;
+  v_5: A -> Ap; function1(k4, p38p, A);
+  v_6: Ap -> A; k15*Ap;
+  v_7: X0 -> X1; function1(k6, erkp, X0);
+  v_8: X1 -> X0; k17*X1;
+  v_9: X1 + Ap -> X2; k18*X1*Ap;
+
+  // Species initializations:
+  A = 10;
+  Ap = 0;
+  IL10e = 0;
+  IL10i = 0;
+  IL10m = 0;
+  X0 = 10;
+  X1 = 0;
+  X2 = 0;
+  erk = 2;
+  erkp = 0;
+  extVar = 0;
+  p38 = 2;
+  p38p = 0;
+
+  // Variable initializations:
+  k = 0.0109247;
+  k1 = 92.3153;
+  k10 = 6.65679;
+  k111 = 1;
+  k113 = 0.00206857;
+  k114 = 0.36031;
+  k115 = 0.176392;
+  k12 = 0.890013;
+  k15 = 0.222572;
+  k17 = 100;
+  k18 = 26.8402;
+  k19 = 20.4462;
+  k2 = 60.976;
+  k3 = 36.052;
+  k4 = 0.27606;
+  k6 = 38.3749;
+  parameter1 = 0.006389035;
+  parameter2 = 0.044448794;
+  parameter3 = 0.001282198;
+  stimulus = 1;
+
+  // Other declarations:
+  var k, k1, k10, k111, k113, k114, k115, k12, k15, k17, k18, k19, k2, k3;
+  var k4, k6, parameter1, parameter2, parameter3, stimulus;
+end

@@ -1,0 +1,106 @@
+// Created by libAntimony v2.13.2
+model *banks1()
+
+  // Compartments and Species:
+  species E1, E2, T1, T2, Tstar1, Tstar2, Ttot, VI, VNI;
+
+  // Assignment Rules:
+  viruscopiesperml := VNI + VI;
+
+  // Reactions:
+  v1: T1 + Ttot -> ; d1*T1;
+  v10:  -> Tstar1 + Ttot; aTS*pT*Tstar2*VI/(KV + VI);
+  v11:  -> Tstar1 + Ttot; aAS*pT*Tstar2;
+  v12:  -> T2 + Ttot; KS*lambdaT/(KS + VI);
+  v13:  -> T2 + Ttot; gammaT*T1;
+  v14: T2 + Ttot -> ; d2*T2;
+  v15: T2 -> Tstar2; k2*T2*VI;
+  v16: Tstar2 -> T2; f*k2*zeta1*T2*VI;
+  v17: T2 + Ttot -> ; aT*T2*VI/(KV + VI);
+  v18: T2 + Ttot -> ; aA*T2;
+  v19: Tstar2 + Ttot -> ; d2*Tstar2;
+  v2: T1 -> Tstar1; k1*T1*VI;
+  v20: Tstar2 + Ttot -> ; aTS*Tstar2*VI/(KV + VI);
+  v21: Tstar2 + Ttot -> ; aAS*Tstar2;
+  v22:  -> VI; 1000*delta*NT*Tstar1;
+  v23: VI -> VNI; 1000*delta*NT*zeta2*Tstar1;
+  v24: VI -> ; c*VI;
+  v25: VI -> ; 1000*k1*rho1*T1*VI;
+  v26:  -> VI; 1000*k1*rho1*zeta1*T1*VI;
+  v27: VI -> ; 1000*k2*rho2*T2*VI;
+  v28:  -> VI; 1000*f*k2*rho2*zeta1*T2*VI;
+  v29: VNI -> ; c*VNI;
+  v3: Tstar1 -> T1; k1*zeta1*T1*VI;
+  v30:  -> E1; lambdaE;
+  v31:  -> E1; bE1*E1*Tstar1/(Kb1 + Tstar1);
+  v32: E1 -> ; dE*E1*Tstar1/(Kd + Tstar1);
+  v33: E1 -> ; deltaE1*E1;
+  v34: E1 -> E2; gammaE*E1*(T1 + Tstar1)/(Kgamma + T1 + Tstar1);
+  v35:  -> E1; aE*pE*E2*VI/(KV + VI);
+  v36:  -> E2; bE2*Kb2*E2/(Kb2 + E2);
+  v37: E2 -> ; deltaE2*E2;
+  v38: E2 -> ; aE*E2*VI/(KV + VI);
+  v4: T1 + Ttot -> ; gammaT*T1;
+  v5:  -> T1 + Ttot; aT*pT*T2*VI/(KV + VI);
+  v6:  -> T1 + Ttot; aA*pT*T2;
+  v7: Tstar1 + Ttot -> ; delta*Tstar1;
+  v8: Tstar1 + Ttot -> ; m*E1*Tstar1;
+  v9: Tstar1 -> Tstar2; gammaTS*Tstar1;
+
+  // Species initializations:
+  E1 = 0.0682;
+  E2 = 0.691;
+  T1 = 79.5;
+  T2 = 289;
+  Tstar1 = 58.2;
+  Tstar2 = 0.0654;
+  Ttot = 426.7654;
+  VI = 150000;
+  VNI = 3570;
+
+  // Variable initializations:
+  KS = 27900;
+  KV = 1060;
+  Kb1 = 0.0249;
+  Kb2 = 87;
+  Kd = 0.12;
+  Kgamma = 1.36;
+  NT = 11.7;
+  aA = 0.00407;
+  aAS = 9.58e-05;
+  aE = 0.0168;
+  aT = 0.00985;
+  aTS = 0.000449;
+  bE1 = 0.0693;
+  bE2 = 0.0061;
+  c = 12.7;
+  d1 = 0.0912;
+  d2 = 0.0031;
+  dE = 0.0472;
+  delta = 0.171;
+  deltaE1 = 0.0597;
+  deltaE2 = 0.00145;
+  f = 0.507;
+  gammaE = 0.000689;
+  gammaT = 0.000646;
+  gammaTS = 7.98e-06;
+  k1 = 7.97e-06;
+  k2 = 1.05e-08;
+  lambdaE = 0.000488;
+  lambdaT = 8.66;
+  m = 1.1;
+  pE = 0.395;
+  pT = 9.85;
+  rho1 = 1;
+  rho2 = 1;
+  zeta1 = 0.524;
+  zeta2 = 0.16;
+
+  // Other declarations:
+  var KS, KV, Kb1, Kb2, Kd, Kgamma, NT, aA, aAS, aE, aT, aTS, bE1, bE2, c;
+  var d1, d2, dE, delta, deltaE1, deltaE2, f, gammaE, gammaT, gammaTS, k1;
+  var k2, lambdaE, lambdaT, m, pE, pT, rho1, rho2, viruscopiesperml, zeta1;
+  var zeta2;
+end
+
+banks1 is "banks1"

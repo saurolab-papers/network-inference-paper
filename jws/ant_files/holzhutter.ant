@@ -1,0 +1,325 @@
+// Created by libAntimony v2.13.2
+model *holzhutter()
+
+  // Compartments and Species:
+  species ADPf, AMPf, ATPf, DHAP, E4P, Fru16P2, Fru6P, GSH, GSSG, Glc6P, GlcA6P;
+  species Glcin, $Glcout, GraP, Gri13P2, Gri23P2f, Gri2P, Gri3P, Lac, $Lacex;
+  species MgADP, MgAMP, MgATP, MgGri23P2, Mgf, NAD, NADH, NADPHf, NADPf, P1NADP;
+  species P1NADPH, P1f, P2NADP, P2NADPH, P2f, PEP, $PRPP, Phi, $Phiex, Pyr;
+  species $Pyrex, Rib5P, Rul5P, Sed7P, Xul5P;
+
+  // Reactions:
+  v_1: $Glcout -> Glcin; (Vmaxv0/KMoutv0)*(Glcout - Glcin/Keqv0)/(1 + Glcout/KMoutv0 + Glcin/KMinv0 + alfav0*Glcout*Glcin/KMoutv0/KMinv0);
+  v_10: Gri23P2f -> Gri3P + Phi; Vmaxv9*(Gri23P2f + MgGri23P2 - Gri3P/Keqv9)/(Gri23P2f + MgGri23P2 + K23P2Gv9);
+  v_11: Gri3P -> Gri2P; Vmaxv10*(Gri3P - Gri2P/Keqv10)/(Gri3P + K3PGv10*(1 + Gri2P/K2PGv10));
+  v_12: Gri2P -> PEP; Vmaxv11*(Gri2P - PEP/Keqv11)/(Gri2P + K2PGv11*(1 + PEP/KPEPv11));
+  v_13: PEP + MgADP -> Pyr + MgATP; Vmaxv12*(PEP*MgADP - Pyr*MgATP/Keqv12)/((PEP + KPEPv12)*(MgADP + KMgADPv12)*(1 + L0v12*(1 + (ATPf + MgATP)/KATPv12)^4/((1 + PEP/KPEPv12)^4*(1 + Fru16P2/KFru16P2v12)^4)));
+  v_14: Pyr + NADH -> Lac + NAD; Vmaxv13*(Pyr*NADH - Lac*NAD/Keqv13);
+  v_15: Pyr + NADPHf -> Lac + NADPf; kLDHv14*(Pyr*NADPHf - Lac*NADPf/Keqv14);
+  v_16: MgATP -> MgADP + Phi; kATPasev15*MgATP;
+  v_17: MgATP + AMPf -> MgADP + ADPf; (Vmaxv16/(KATPv16*KAMPv16))*(MgATP*AMPf - MgADP*ADPf/Keqv16)/((1 + MgATP/KATPv16)*(1 + AMPf/KAMPv16) + (MgADP + ADPf)/KADPv16 + MgADP*ADPf/KADPv16^2);
+  v_18: Glc6P + NADPf -> GlcA6P + NADPHf; (Vmaxv17/KG6Pv17/KNADPv17)*(Glc6P*NADPf - GlcA6P*NADPHf/Keqv17)/(1 + NADPf*(1 + Glc6P/KG6Pv17)/KNADPv17 + (ATPf + MgATP)/KATPv17 + NADPHf/KNADPHv17 + (Gri23P2f + MgGri23P2)/KPGA23v17);
+  v_19: GlcA6P + NADPf -> Rul5P + NADPHf; (Vmaxv18/K6PG1v18/KNADPv18)*(GlcA6P*NADPf - Rul5P*NADPHf/Keqv18)/((1 + NADPf/KNADPv18)*(1 + GlcA6P/K6PG1v18 + (Gri23P2f + MgGri23P2)/KPGA23v18) + (ATPf + MgATP)/KATPv18 + NADPHf*(1 + GlcA6P/K6PG2v18)/KNADPHv18);
+  v_2: Glcin + MgATP -> Glc6P + MgADP; (Inhibv1*Glcin/(Glcin + KMGlcv1))*(Vmax1v1/KMgATPv1)*(MgATP + (Vmax2v1/Vmax1v1)*MgATP*Mgf/KMgATPMgv1 - Glc6P*MgADP/Keqv1)/(1 + (MgATP/KMgATPv1)*(1 + Mgf/KMgATPMgv1) + Mgf/KMgv1 + (1.55 + Glc6P/KGlc6Pv1)*(1 + Mgf/KMgv1) + (Gri23P2f + MgGri23P2)/K23P2Gv1 + Mgf*(Gri23P2f + MgGri23P2)/(KMgv1*KMg23P2Gv1));
+  v_20: GSSG + NADPHf -> 2 GSH + NADPf; Vmaxv19*(GSSG*NADPHf/(KGSSGv19*KNADPHv19) - (GSH^2/KGSHv19^2)*NADPf/(KNADPv19*Keqv19))/(1 + NADPHf*(1 + GSSG/KGSSGv19)/KNADPHv19 + (NADPf/KNADPv19)*(1 + GSH*(1 + GSH/KGSHv19)/KGSHv19));
+  v_21: 2 GSH -> GSSG; Kv20*GSH;
+  v_22: Rul5P -> Xul5P; Vmaxv21*(Rul5P - Xul5P/Keqv21)/(Rul5P + KRu5Pv21*(1 + Xul5P/KX5Pv21));
+  v_23: Rul5P -> Rib5P; Vmaxv22*(Rul5P - Rib5P/Keqv22)/(Rul5P + KRu5Pv22*(1 + Rib5P/KR5Pv22));
+  v_24: Rib5P + Xul5P -> GraP + Sed7P; Vmaxv23*(Rib5P*Xul5P - GraP*Sed7P/Keqv23)/((K1v23 + Rib5P)*Xul5P + (K2v23 + K6v23*Sed7P)*Rib5P + (K3v23 + K5v23*Sed7P)*GraP + K4v23*Sed7P + K7v23*Xul5P*GraP);
+  v_25: Sed7P + GraP -> E4P + Fru6P; Vmaxv24*(Sed7P*GraP - E4P*Fru6P/Keqv24)/((K1v24 + GraP)*Sed7P + (K2v24 + K6v24*Fru6P)*GraP + (K3v24 + K5v24*Fru6P)*E4P + K4v24*Fru6P + K7v24*Sed7P*E4P);
+  v_26: Rib5P + MgATP -> $PRPP + MgAMP; Vmaxv25*(Rib5P*MgATP - PRPP*MgAMP/Keqv25)/((KATPv25 + MgATP)*(KR5Pv25 + Rib5P));
+  v_27: E4P + Xul5P -> GraP + Fru6P; Vmaxv26*(E4P*Xul5P - GraP*Fru6P/Keqv26)/((K1v26 + E4P)*Xul5P + (K2v26 + K6v26*Fru6P)*E4P + (K3v26 + K5v26*Fru6P)*GraP + K4v26*Fru6P + K7v26*Xul5P*GraP);
+  v_28: $Phiex -> Phi; Vmaxv27*(Phiex - Phi/Keqv27);
+  v_29: $Lacex -> Lac; Vmaxv28*(Lacex - Lac/Keqv28);
+  v_3: Glc6P -> Fru6P; Vmaxv2*(Glc6P - Fru6P/Keqv2)/(Glc6P + KGlc6Pv2*(1 + Fru6P/KFru6Pv2));
+  v_30: $Pyrex -> Pyr; Vmaxv29*(Pyrex - Pyr/Keqv29);
+  v_31: MgATP -> ATPf + Mgf; EqMult*(MgATP - Mgf*ATPf/KdATP);
+  v_32: MgADP -> ADPf + Mgf; EqMult*(MgADP - Mgf*ADPf/KdADP);
+  v_33: MgAMP -> AMPf + Mgf; EqMult*(MgAMP - Mgf*AMPf/KdAMP);
+  v_34: MgGri23P2 -> Gri23P2f + Mgf; EqMult*(MgGri23P2 - Mgf*Gri23P2f/Kd23P2G);
+  v_35: P1NADP -> P1f + NADPf; EqMult*(P1NADP - P1f*NADPf/Kd1);
+  v_36: P1NADPH -> P1f + NADPHf; EqMult*(P1NADPH - P1f*NADPHf/Kd3);
+  v_37: P2NADP -> P2f + NADPf; EqMult*(P2NADP - P2f*NADPf/Kd2);
+  v_38: P2NADPH -> P2f + NADPHf; EqMult*(P2NADPH - P2f*NADPHf/Kd4);
+  v_4: Fru6P + MgATP -> Fru16P2 + MgADP; Vmaxv3*(Fru6P*MgATP - Fru16P2*MgADP/Keqv3)/((Fru6P + KFru6Pv3)*(MgATP + KMgATPv3)*(1 + L0v3*((1 + ATPf/KATPv3)*(1 + Mgf/KMgv3)/((1 + (AMPf + MgAMP)/KAMPv3)*(1 + Fru6P/KFru6Pv3)))^4));
+  v_5: Fru16P2 -> GraP + DHAP; (Vmaxv4/KFru16P2v4)*(Fru16P2 - GraP*DHAP/Keqv4)/(1 + Fru16P2/KFru16P2v4 + GraP/KiGraPv4 + DHAP*(GraP + KGraPv4)/(KDHAPv4*KiGraPv4) + Fru16P2*GraP/(KFru16P2v4*KiiGraPv4));
+  v_6: DHAP -> GraP; Vmaxv5*(DHAP - GraP/Keqv5)/(DHAP + KDHAPv5*(1 + GraP/KGraPv5));
+  v_7: GraP + Phi + NAD -> Gri13P2 + NADH; (Vmaxv6/(KNADv6*KGraPv6*KPv6))*(NAD*GraP*Phi - Gri13P2*NADH/Keqv6)/((1 + NAD/KNADv6)*(1 + GraP/KGraPv6)*(1 + Phi/KPv6) + (1 + NADH/KNADHv6)*(1 + Gri13P2/K13P2Gv6) - 1);
+  v_8: Gri13P2 + MgADP -> Gri3P + MgATP; (Vmaxv7/(KMgADPv7*K13P2Gv7))*(MgADP*Gri13P2 - MgATP*Gri3P/Keqv7)/((1 + MgADP/KMgADPv7)*(1 + Gri13P2/K13P2Gv7) + (1 + MgATP/KMgATPv7)*(1 + Gri3P/K3PGv7) - 1);
+  v_9: Gri13P2 -> Gri23P2f; kDPGMv8*(Gri13P2 - (Gri23P2f + MgGri23P2)/Keqv8)/(1 + (Gri23P2f + MgGri23P2)/K23P2Gv8);
+
+  // Species initializations:
+  ADPf = 0.25;
+  AMPf = 0;
+  ATPf = 0.25;
+  DHAP = 0.1492;
+  E4P = 0.0063;
+  Fru16P2 = 0.0097;
+  Fru6P = 0.0153;
+  GSH = 3.1136;
+  GSSG = 0.0004;
+  Glc6P = 0.0394;
+  GlcA6P = 0.025;
+  Glcin = 4.5663;
+  Glcout = 5;
+  GraP = 0.0061;
+  Gri13P2 = 0.0005;
+  Gri23P2f = 2.0601;
+  Gri2P = 0.0084;
+  Gri3P = 0.0658;
+  Lac = 1.6803;
+  Lacex = 1.68;
+  MgADP = 0.1;
+  MgAMP = 0;
+  MgATP = 1.4;
+  MgGri23P2 = 0.5;
+  Mgf = 0.8;
+  NAD = 0.0653;
+  NADH = 0.0002;
+  NADPHf = 0.004;
+  NADPf = 0;
+  P1NADP = 0;
+  P1NADPH = 0.024;
+  P1f = 0;
+  P2NADP = 0;
+  P2NADPH = 0.024;
+  P2f = 0;
+  PEP = 0.0109;
+  PRPP = 1;
+  Phi = 0.9992;
+  Phiex = 1;
+  Pyr = 0.084;
+  Pyrex = 0.084;
+  Rib5P = 0.014;
+  Rul5P = 0.0047;
+  Sed7P = 0.0154;
+  Xul5P = 0.0127;
+
+  // Variable initializations:
+  Atot = 2;
+  EqMult = 1000;
+  GStotal = 3.114;
+  Inhibv1 = 1;
+  K13P2Gv6 = 0.0035;
+  K13P2Gv7 = 0.002;
+  K1v23 = 0.4177;
+  K1v24 = 0.00823;
+  K1v26 = 0.00184;
+  K23P2Gv1 = 2.7;
+  K23P2Gv8 = 0.04;
+  K23P2Gv9 = 0.2;
+  K2PGv10 = 1;
+  K2PGv11 = 1;
+  K2v23 = 0.3055;
+  K2v24 = 0.04765;
+  K2v26 = 0.3055;
+  K3PGv10 = 5;
+  K3PGv7 = 1.2;
+  K3v23 = 12.432;
+  K3v24 = 0.1733;
+  K3v26 = 0.0548;
+  K4v23 = 0.00496;
+  K4v24 = 0.006095;
+  K4v26 = 0.0003;
+  K5v23 = 0.41139;
+  K5v24 = 0.8683;
+  K5v26 = 0.0287;
+  K6PG1v18 = 0.01;
+  K6PG2v18 = 0.058;
+  K6v23 = 0.00774;
+  K6v24 = 0.4653;
+  K6v26 = 0.122;
+  K7v23 = 48.8;
+  K7v24 = 2.524;
+  K7v26 = 0.215;
+  KADPv16 = 0.11;
+  KAMPv16 = 0.08;
+  KAMPv3 = 0.033;
+  KATPv12 = 3.39;
+  KATPv16 = 0.09;
+  KATPv17 = 0.749;
+  KATPv18 = 0.154;
+  KATPv25 = 0.03;
+  KATPv3 = 0.01;
+  KDHAPv4 = 0.0364;
+  KDHAPv5 = 0.838;
+  KFru16P2v12 = 0.005;
+  KFru16P2v4 = 0.0071;
+  KFru6Pv2 = 0.071;
+  KFru6Pv3 = 0.1;
+  KG6Pv17 = 0.0667;
+  KGSHv19 = 20;
+  KGSSGv19 = 0.0652;
+  KGlc6Pv1 = 0.0045;
+  KGlc6Pv2 = 0.182;
+  KGraPv4 = 0.1906;
+  KGraPv5 = 0.428;
+  KGraPv6 = 0.005;
+  KMGlcv1 = 0.1;
+  KMg23P2Gv1 = 3.44;
+  KMgADPv12 = 0.474;
+  KMgADPv7 = 0.35;
+  KMgATPMgv1 = 1.14;
+  KMgATPv1 = 1.44;
+  KMgATPv3 = 0.068;
+  KMgATPv7 = 0.48;
+  KMgv1 = 1.03;
+  KMgv3 = 0.44;
+  KMinv0 = 6.9;
+  KMoutv0 = 1.7;
+  KNADHv6 = 0.0083;
+  KNADPHv17 = 0.00312;
+  KNADPHv18 = 0.0045;
+  KNADPHv19 = 0.00852;
+  KNADPv17 = 0.00367;
+  KNADPv18 = 0.018;
+  KNADPv19 = 0.07;
+  KNADv6 = 0.05;
+  KPEPv11 = 1;
+  KPEPv12 = 0.225;
+  KPGA23v17 = 2.289;
+  KPGA23v18 = 0.12;
+  KPv6 = 3.9;
+  KR5Pv22 = 2.2;
+  KR5Pv25 = 0.57;
+  KRu5Pv21 = 0.19;
+  KRu5Pv22 = 0.78;
+  KX5Pv21 = 0.5;
+  Kd1 = 0.0002;
+  Kd2 = 1e-05;
+  Kd23P2G = 1.667;
+  Kd3 = 1e-05;
+  Kd4 = 0.0002;
+  KdADP = 0.76;
+  KdAMP = 16.64;
+  KdATP = 0.072;
+  Keqv0 = 1;
+  Keqv1 = 3900;
+  Keqv10 = 0.145;
+  Keqv11 = 1.7;
+  Keqv12 = 13790;
+  Keqv13 = 9090;
+  Keqv14 = 14181.8;
+  Keqv16 = 0.25;
+  Keqv17 = 2000;
+  Keqv18 = 141.7;
+  Keqv19 = 1.04;
+  Keqv2 = 0.3925;
+  Keqv21 = 2.7;
+  Keqv22 = 3;
+  Keqv23 = 1.05;
+  Keqv24 = 1.05;
+  Keqv25 = 100000;
+  Keqv26 = 1.2;
+  Keqv27 = 1;
+  Keqv28 = 1;
+  Keqv29 = 1;
+  Keqv3 = 100000;
+  Keqv4 = 0.114;
+  Keqv5 = 0.0407;
+  Keqv6 = 0.000192;
+  Keqv7 = 1455;
+  Keqv8 = 100000;
+  Keqv9 = 100000;
+  KiGraPv4 = 0.0572;
+  KiiGraPv4 = 0.176;
+  Kv20 = 0.03;
+  L0v12 = 19;
+  L0v3 = 0.001072;
+  Mgtot = 2.8;
+  NADPtot = 0.052;
+  NADtot = 0.0655;
+  Vmax1v1 = 15.8;
+  Vmax2v1 = 33.2;
+  Vmaxv0 = 33.6;
+  Vmaxv10 = 2000;
+  Vmaxv11 = 1500;
+  Vmaxv12 = 570;
+  Vmaxv13 = 2800000;
+  Vmaxv16 = 1380;
+  Vmaxv17 = 162;
+  Vmaxv18 = 1575;
+  Vmaxv19 = 90;
+  Vmaxv2 = 935;
+  Vmaxv21 = 4634;
+  Vmaxv22 = 730;
+  Vmaxv23 = 23.5;
+  Vmaxv24 = 27.2;
+  Vmaxv25 = 1.1;
+  Vmaxv26 = 23.5;
+  Vmaxv27 = 100;
+  Vmaxv28 = 10000;
+  Vmaxv29 = 10000;
+  Vmaxv3 = 239;
+  Vmaxv4 = 98.91000366;
+  Vmaxv5 = 5456.600098;
+  Vmaxv6 = 4300;
+  Vmaxv7 = 5000;
+  Vmaxv9 = 0.53;
+  alfav0 = 0.54;
+  kATPasev15 = 1.68;
+  kDPGMv8 = 76000;
+  kLDHv14 = 243.4;
+  protein1 = 0.024;
+  protein2 = 0.024;
+
+  // Other declarations:
+  var Atot, EqMult, GStotal, Inhibv1, K13P2Gv6, K13P2Gv7, K1v23, K1v24, K1v26;
+  var K23P2Gv1, K23P2Gv8, K23P2Gv9, K2PGv10, K2PGv11, K2v23, K2v24, K2v26;
+  var K3PGv10, K3PGv7, K3v23, K3v24, K3v26, K4v23, K4v24, K4v26, K5v23, K5v24;
+  var K5v26, K6PG1v18, K6PG2v18, K6v23, K6v24, K6v26, K7v23, K7v24, K7v26;
+  var KADPv16, KAMPv16, KAMPv3, KATPv12, KATPv16, KATPv17, KATPv18, KATPv25;
+  var KATPv3, KDHAPv4, KDHAPv5, KFru16P2v12, KFru16P2v4, KFru6Pv2, KFru6Pv3;
+  var KG6Pv17, KGSHv19, KGSSGv19, KGlc6Pv1, KGlc6Pv2, KGraPv4, KGraPv5, KGraPv6;
+  var KMGlcv1, KMg23P2Gv1, KMgADPv12, KMgADPv7, KMgATPMgv1, KMgATPv1, KMgATPv3;
+  var KMgATPv7, KMgv1, KMgv3, KMinv0, KMoutv0, KNADHv6, KNADPHv17, KNADPHv18;
+  var KNADPHv19, KNADPv17, KNADPv18, KNADPv19, KNADv6, KPEPv11, KPEPv12, KPGA23v17;
+  var KPGA23v18, KPv6, KR5Pv22, KR5Pv25, KRu5Pv21, KRu5Pv22, KX5Pv21, Kd1;
+  var Kd2, Kd23P2G, Kd3, Kd4, KdADP, KdAMP, KdATP, Keqv0, Keqv1, Keqv10, Keqv11;
+  var Keqv12, Keqv13, Keqv14, Keqv16, Keqv17, Keqv18, Keqv19, Keqv2, Keqv21;
+  var Keqv22, Keqv23, Keqv24, Keqv25, Keqv26, Keqv27, Keqv28, Keqv29, Keqv3;
+  var Keqv4, Keqv5, Keqv6, Keqv7, Keqv8, Keqv9, KiGraPv4, KiiGraPv4, Kv20;
+  var L0v12, L0v3, Mgtot, NADPtot, NADtot, Vmax1v1, Vmax2v1, Vmaxv0, Vmaxv10;
+  var Vmaxv11, Vmaxv12, Vmaxv13, Vmaxv16, Vmaxv17, Vmaxv18, Vmaxv19, Vmaxv2;
+  var Vmaxv21, Vmaxv22, Vmaxv23, Vmaxv24, Vmaxv25, Vmaxv26, Vmaxv27, Vmaxv28;
+  var Vmaxv29, Vmaxv3, Vmaxv4, Vmaxv5, Vmaxv6, Vmaxv7, Vmaxv9, alfav0, kATPasev15;
+  var kDPGMv8, kLDHv14, protein1, protein2;
+
+  // CV terms:
+  ADPf identity "http://identifiers.org/kegg.compound/C00008"
+  AMPf identity "http://identifiers.org/kegg.compound/C00020"
+  ATPf identity "http://identifiers.org/kegg.compound/C00002"
+  DHAP identity "http://identifiers.org/kegg.compound/C00111"
+  E4P identity "http://identifiers.org/kegg.compound/C00279"
+  Fru16P2 identity "http://identifiers.org/kegg.compound/C00354"
+  Fru6P identity "http://identifiers.org/kegg.compound/C00085"
+  GSH identity "http://identifiers.org/kegg.compound/C00051"
+  GSSG identity "http://identifiers.org/kegg.compound/C00127"
+  Glc6P identity "http://identifiers.org/kegg.compound/C00092"
+  Glcin identity "http://identifiers.org/kegg.compound/C00092"
+  Glcout identity "http://identifiers.org/kegg.compound/C00293"
+  Gri13P2 identity "http://identifiers.org/kegg.compound/C00236"
+  Gri23P2f identity "http://identifiers.org/kegg.compound/C01159"
+  Gri2P identity "http://identifiers.org/kegg.compound/C00631"
+  Gri3P identity "http://identifiers.org/kegg.compound/C00197"
+  Lac identity "http://identifiers.org/kegg.compound/C01432"
+  Lacex identity "http://identifiers.org/kegg.compound/C01432"
+  Mgf identity "http://identifiers.org/kegg.compound/C00305"
+  NAD identity "http://identifiers.org/kegg.compound/C00003"
+  NADH identity "http://identifiers.org/kegg.compound/C00004"
+  NADPHf identity "http://identifiers.org/kegg.compound/C00005"
+  NADPf identity "http://identifiers.org/kegg.compound/C00006"
+  P1NADP identity "http://identifiers.org/kegg.compound/C00006"
+  P1NADPH identity "http://identifiers.org/kegg.compound/C00005"
+  P2NADP identity "http://identifiers.org/kegg.compound/C00006"
+  P2NADPH identity "http://identifiers.org/kegg.compound/C00005"
+  PEP identity "http://identifiers.org/kegg.compound/C00074"
+  Pyr identity "http://identifiers.org/kegg.compound/C00022"
+  Pyrex identity "http://identifiers.org/kegg.compound/C00022"
+  Rib5P identity "http://identifiers.org/kegg.compound/C00117"
+  Rul5P identity "http://identifiers.org/kegg.compound/C00199"
+  Sed7P identity "http://identifiers.org/kegg.compound/C05382"
+  Xul5P identity "http://identifiers.org/kegg.compound/C03291"
+end
+
+holzhutter is "holzhutter"

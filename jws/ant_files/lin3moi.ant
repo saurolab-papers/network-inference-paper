@@ -1,0 +1,43 @@
+// Created by libAntimony v2.13.2
+model *lin3moi()
+
+  // Compartments and Species:
+  species m1, m2, $p, $s, x2, x3;
+
+  // Reactions:
+  v_1: $s + m1 -> x2 + m2; (Vm1/(K1s*K1m1))*(s*m1 - x2*m2/Keq1)/((1 + s/K1s + x2/K1x2)*(1 + m1/K1m1 + m2/K1m2));
+  v_2: x2 -> x3; (Vm2/K2x2)*(x2 - x3/Keq2)/(1 + x2/K2x2 + x3/K2x3);
+  v_3: x3 + m2 -> $p + m1; (Vm3/(K3x3*K3m2))*(x3*m2 - p/Keq3)/((1 + x3/K3x3 + p/K3p)*(1 + m1/K3m1 + m2/K3m2));
+
+  // Species initializations:
+  m1 = 1;
+  m2 = 0;
+  p = 0;
+  s = 1;
+  x2 = 0;
+  x3 = 1;
+
+  // Variable initializations:
+  K1m1 = 1;
+  K1m2 = 1;
+  K1s = 1;
+  K1x2 = 1;
+  K2x2 = 1;
+  K2x3 = 1;
+  K3m1 = 1;
+  K3m2 = 1;
+  K3p = 1;
+  K3x3 = 1;
+  Keq1 = 1;
+  Keq2 = 1;
+  Keq3 = 1;
+  Vm1 = 1;
+  Vm2 = 1;
+  Vm3 = 1;
+
+  // Other declarations:
+  var K1m1, K1m2, K1s, K1x2, K2x2, K2x3, K3m1, K3m2, K3p, K3x3, Keq1, Keq2;
+  var Keq3, Vm1, Vm2, Vm3;
+end
+
+lin3moi is "lin3moi"

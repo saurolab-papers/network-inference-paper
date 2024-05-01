@@ -1,0 +1,27 @@
+// Created by libAntimony v2.13.2
+model *wortel2()
+
+  // Compartments and Species:
+  species x;
+
+  // Reactions:
+  v_0:  -> x; j;
+  v_1: x -> ; e1*kcat1*x/(x + km1);
+
+  // Species initializations:
+  x = 70;
+
+  // Variable initializations:
+  EXTERNAL = 1;
+  e1 = 5.25;
+  j = 10;
+  kcat1 = 2;
+  kcat2 = 1;
+  km1 = 5;
+  km2 = 0.5;
+
+  // Other declarations:
+  var EXTERNAL, e1, j, kcat1, kcat2, km1, km2;
+end
+
+wortel2 is "wortel2"

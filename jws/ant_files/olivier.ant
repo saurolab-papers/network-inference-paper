@@ -1,0 +1,47 @@
+// Created by libAntimony v2.13.2
+model *olivier()
+
+  // Compartments and Species:
+  species a, b, $p, $s;
+
+  // Reactions:
+  v_1: $s -> a; piecewise((V1*s/Ks)*(1 - a/(s*Keq1))*(1 + s/Ks + a/Ka)^(n - 1)/((1 + s/Ks + a/Ka)^n + L0*((1 + p/Kp)/(1 + Cp*p/Kp))^n), eq_ > 0, (V1*s/s05)*(1 - a/(s*Keq1))*(s/s05 + a/a05)^(h - 1)/((s/s05 + a/a05)^h + (1 + (p/p05)^h)/(1 + alfa*(p/p05)^h)));
+  v_2: a -> b; V2*(a - b/Keq2)/(a + K2a*(1 + b/K2b));
+  v_3: b -> $p; V3*(b - p/Keq3)/(b + K3b*(1 + p/K3p));
+
+  // Species initializations:
+  a = 10;
+  b = 10;
+  p = 1;
+  s = 1;
+
+  // Variable initializations:
+  Cp = 0.026;
+  K2a = 1;
+  K2b = 1;
+  K3b = 1;
+  K3p = 1;
+  Ka = 1000;
+  Keq1 = 400;
+  Keq2 = 10;
+  Keq3 = 10;
+  Kp = 0.1;
+  Ks = 0.01;
+  L0 = 10000;
+  V1 = 200;
+  V2 = 100;
+  V3 = 100;
+  a05 = 10000;
+  alfa = 0.01;
+  eq_ = 1;
+  h = 4;
+  n = 4;
+  p05 = 1;
+  s05 = 1;
+
+  // Other declarations:
+  var Cp, K2a, K2b, K3b, K3p, Ka, Keq1, Keq2, Keq3, Kp, Ks, L0, V1, V2, V3;
+  var a05, alfa, eq_, h, n, p05, s05;
+end
+
+olivier is "olivier"

@@ -1,0 +1,1079 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="leroux2" name="leroux2">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="A" compartment="default_compartment" initialConcentration="2300" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" id="B" compartment="default_compartment" initialConcentration="300" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_3" id="C" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_4" id="P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="Q" compartment="default_compartment" initialConcentration="500" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_6" id="R" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="S" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_8" id="XC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="XCB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="XCR" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="XQ" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="XQB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="XQR" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="e" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="eA" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="eAB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="eABC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="eABQ" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="eAC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="eAQ" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="eB" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="eBC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="eBQ" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="eC" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="eQ_" name="eQ_" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="eR" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="eeQ" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_28" id="Cell" value="1" constant="false"/>
+      <parameter metaid="metaid_29" id="eXTeRNAL" value="0" constant="false"/>
+      <parameter metaid="metaid_30" id="k1" value="13.4953706168796" constant="false"/>
+      <parameter metaid="metaid_31" id="k10" value="261.19" constant="false"/>
+      <parameter metaid="metaid_32" id="k10a" value="7289.2804823" constant="false"/>
+      <parameter metaid="metaid_33" id="k11" value="6210.12345627707" constant="false"/>
+      <parameter metaid="metaid_34" id="k11a" value="315.68381975" constant="false"/>
+      <parameter metaid="metaid_35" id="k12" value="29.9958100432" constant="false"/>
+      <parameter metaid="metaid_36" id="k12a" value="1330.84779006" constant="false"/>
+      <parameter metaid="metaid_37" id="k13" value="2.27895805686" constant="false"/>
+      <parameter metaid="metaid_38" id="k14" value="543.476605024" constant="false"/>
+      <parameter metaid="metaid_39" id="k14a" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_40" id="k15" value="34.9267638563" constant="false"/>
+      <parameter metaid="metaid_41" id="k15a" value="4941.84508678" constant="false"/>
+      <parameter metaid="metaid_42" id="k16" value="488.901949443" constant="false"/>
+      <parameter metaid="metaid_43" id="k16a" value="2199.40597503" constant="false"/>
+      <parameter metaid="metaid_44" id="k17" value="48.5266386368" constant="false"/>
+      <parameter metaid="metaid_45" id="k17a" value="82.5043501462" constant="false"/>
+      <parameter metaid="metaid_46" id="k19" value="0.01739668189544" constant="false"/>
+      <parameter metaid="metaid_47" id="k19a" value="868.323556017581" constant="false"/>
+      <parameter metaid="metaid_48" id="k1a" value="134.2939838" constant="false"/>
+      <parameter metaid="metaid_49" id="k2" value="6317.116733" constant="false"/>
+      <parameter metaid="metaid_50" id="k20" value="2.005267865347e-06" constant="false"/>
+      <parameter metaid="metaid_51" id="k20a" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_52" id="k21" value="94.6031417823562" constant="false"/>
+      <parameter metaid="metaid_53" id="k21a" value="56632.7173679014" constant="false"/>
+      <parameter metaid="metaid_54" id="k22" value="897.73729266064" constant="false"/>
+      <parameter metaid="metaid_55" id="k22a" value="26.8002418488192" constant="false"/>
+      <parameter metaid="metaid_56" id="k23" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_57" id="k23a" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_58" id="k24" value="54684.4190465446" constant="false"/>
+      <parameter metaid="metaid_59" id="k24a" value="13678.3788270169" constant="false"/>
+      <parameter metaid="metaid_60" id="k25" value="8.61285612366646e-14" constant="false"/>
+      <parameter metaid="metaid_61" id="k25a" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_62" id="k26" value="0.0474957203508858" constant="false"/>
+      <parameter metaid="metaid_63" id="k26a" value="1058.42481633921" constant="false"/>
+      <parameter metaid="metaid_64" id="k27" value="15.1770330320787" constant="false"/>
+      <parameter metaid="metaid_65" id="k28" value="455.465653318972" constant="false"/>
+      <parameter metaid="metaid_66" id="k28a" value="290.422551587577" constant="false"/>
+      <parameter metaid="metaid_67" id="k29" value="30247.7736950703" constant="false"/>
+      <parameter metaid="metaid_68" id="k29a" value="200.14320986275" constant="false"/>
+      <parameter metaid="metaid_69" id="k2a" value="42.4469248983" constant="false"/>
+      <parameter metaid="metaid_70" id="k3" value="223.401281347" constant="false"/>
+      <parameter metaid="metaid_71" id="k30" value="234.236580254189" constant="false"/>
+      <parameter metaid="metaid_72" id="k30a" value="1218.73611055286" constant="false"/>
+      <parameter metaid="metaid_73" id="k31" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_74" id="k31a" value="420.551496677673" constant="false"/>
+      <parameter metaid="metaid_75" id="k32" value="14253.4745502918" constant="false"/>
+      <parameter metaid="metaid_76" id="k3a" value="286.7064474" constant="false"/>
+      <parameter metaid="metaid_77" id="k4" value="762.2665647" constant="false"/>
+      <parameter metaid="metaid_78" id="k4a" value="39.71496125" constant="false"/>
+      <parameter metaid="metaid_79" id="k5" value="22.91729291" constant="false"/>
+      <parameter metaid="metaid_80" id="k5a" value="1465.04965" constant="false"/>
+      <parameter metaid="metaid_81" id="k6" value="6.4969834151108e-09" constant="false"/>
+      <parameter metaid="metaid_82" id="k6a" value="1e-10" constant="false"/>
+      <parameter metaid="metaid_83" id="k7" value="7067.22002146676" constant="false"/>
+      <parameter metaid="metaid_84" id="k7a" value="530.538761235" constant="false"/>
+      <parameter metaid="metaid_85" id="k8" value="125.296650629147" constant="false"/>
+      <parameter metaid="metaid_86" id="k8a" value="237.469413308" constant="false"/>
+      <parameter metaid="metaid_87" id="k9" value="369.688932945" constant="false"/>
+      <parameter metaid="metaid_88" id="k9a" value="29.8763965658" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_92" id="v1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_89" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_90" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_91" species="eA" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k1 </ci>
+                  <ci> e </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k1a </ci>
+                  <ci> eA </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="v10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_93" species="eAQ" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_94" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="eABQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k10a </ci>
+                    <ci> eABQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k10 </ci>
+                  <ci> eAQ </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_100" id="v11" name="v11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_97" species="eQ_" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_98" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_99" species="eBQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k11a </ci>
+                    <ci> eBQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k11 </ci>
+                  <ci> eQ_ </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="v12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_101" species="eBQ" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_102" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="eABQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k12a </ci>
+                    <ci> eABQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k12 </ci>
+                  <ci> eBQ </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_108" id="v13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_105" species="eABQ" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_106" species="P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_107" species="XQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k13 </ci>
+                <ci> eABQ </ci>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_111" id="v14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_109" species="XQ" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_110" species="eR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k14a </ci>
+                    <ci> eR </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k14 </ci>
+                  <ci> XQ </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_115" id="v15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_112" species="eR" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_113" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_114" species="R" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k15a </ci>
+                    <ci> R </ci>
+                    <ci> e </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k15 </ci>
+                  <ci> eR </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_119" id="v16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_116" species="XQ" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_117" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_118" species="XQB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k16 </ci>
+                  <ci> XQ </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k16a </ci>
+                  <ci> XQB </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_123" id="v17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_120" species="XQ" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_121" species="R" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_122" species="XQR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k17 </ci>
+                  <ci> R </ci>
+                  <ci> XQ </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k17a </ci>
+                  <ci> XQR </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_127" id="v19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_124" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_125" species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_126" species="eC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> C </ci>
+                  <ci> k19 </ci>
+                  <ci> e </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k19a </ci>
+                  <ci> eC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_131" id="v2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_128" species="eA" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_129" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_130" species="eAB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k2 </ci>
+                  <ci> eA </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2a </ci>
+                  <ci> eAB </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_135" id="v20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_132" species="eC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_133" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_134" species="eAC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k20a </ci>
+                    <ci> eAC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k20 </ci>
+                  <ci> eC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="v21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_136" species="eAC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_137" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="eABC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k21a </ci>
+                    <ci> eABC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k21 </ci>
+                  <ci> eAC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_143" id="v22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_140" species="eC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_141" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_142" species="eBC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k22a </ci>
+                    <ci> eBC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k22 </ci>
+                  <ci> eC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_147" id="v23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_144" species="eBC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_145" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_146" species="eABC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k23a </ci>
+                    <ci> eABC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k23 </ci>
+                  <ci> eBC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_151" id="v24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_148" species="eA" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_149" species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="eAC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> C </ci>
+                  <ci> k24 </ci>
+                  <ci> eA </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k24a </ci>
+                  <ci> eAC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_155" id="v25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="eB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_153" species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="eBC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> C </ci>
+                  <ci> k25 </ci>
+                  <ci> eB </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k25a </ci>
+                  <ci> eBC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_159" id="v26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_156" species="eAB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_157" species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_158" species="eABC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> C </ci>
+                  <ci> k26 </ci>
+                  <ci> eAB </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k26a </ci>
+                  <ci> eABC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="v27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_160" species="eABC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_162" species="XC" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k27 </ci>
+                <ci> eABC </ci>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_166" id="v28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="XC" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_165" species="eeQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k28a </ci>
+                    <ci> eeQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k28 </ci>
+                  <ci> XC </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_170" id="v29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_167" species="eeQ" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_168" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_169" species="Q" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k29 </ci>
+                  <ci> eeQ </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k29a </ci>
+                  <ci> e </ci>
+                  <ci> Q </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_174" id="v3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_171" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_172" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_173" species="eB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k3 </ci>
+                  <ci> e </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k3a </ci>
+                  <ci> eB </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_178" id="v30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_175" species="XC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_176" species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_177" species="XCB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> B </ci>
+                  <ci> k30 </ci>
+                  <ci> XC </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k30a </ci>
+                  <ci> XCB </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_182" id="v31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_179" species="XC" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_180" species="R" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_181" species="XCR" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k31 </ci>
+                  <ci> R </ci>
+                  <ci> XC </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k31a </ci>
+                  <ci> XCR </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_185" id="v32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_183" species="P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_184" species="S" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k32 </ci>
+                <ci> P </ci>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_189" id="v4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_186" species="eB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_187" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_188" species="eAB" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k4a </ci>
+                    <ci> eAB </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k4 </ci>
+                  <ci> eB </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_193" id="v5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_190" species="eAB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_191" species="Q" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_192" species="eABQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k5a </ci>
+                    <ci> eABQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k5 </ci>
+                  <ci> eAB </ci>
+                  <ci> Q </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_197" id="v6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_194" species="eA" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_195" species="Q" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_196" species="eAQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k6a </ci>
+                    <ci> eAQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k6 </ci>
+                  <ci> eA </ci>
+                  <ci> Q </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_201" id="v7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_198" species="eB" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_199" species="Q" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_200" species="eBQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k7a </ci>
+                    <ci> eBQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k7 </ci>
+                  <ci> eB </ci>
+                  <ci> Q </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_205" id="v8" name="v8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_202" species="e" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_203" species="Q" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_204" species="eQ_" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k8a </ci>
+                    <ci> eQ_ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k8 </ci>
+                  <ci> e </ci>
+                  <ci> Q </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_209" id="v9" name="v9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_206" species="eQ_" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_207" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_208" species="eAQ" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k9a </ci>
+                    <ci> eAQ </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> A </ci>
+                  <ci> k9 </ci>
+                  <ci> eQ_ </ci>
+                </apply>
+              </apply>
+              <ci> Cell </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

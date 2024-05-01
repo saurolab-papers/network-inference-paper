@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *rong2()
+
+  // Compartments and Species:
+  species T, Trr, Ts, Vr, Vs;
+
+  // Assignment Rules:
+  SumVsr := Vr + Vs;
+  TmicroL := T/1000;
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v10:  -> Vr; delta*Nr*Trr;
+  v11: Vr -> ; c*Vr;
+  v2: T -> ; d*T;
+  v3: T -> Ts; ks*T*Vs;
+  v4: T -> Trr; kr*T*Vr;
+  v5: Ts -> Trr; ks*mu*T*Vs;
+  v6: Ts -> ; delta*Ts;
+  v7:  -> Vs; delta*Ns*Ts;
+  v8: Vs -> ; c*Vs;
+  v9: Trr -> ; delta*Trr;
+
+  // Species initializations:
+  T = 1000000;
+  Trr = 0;
+  Ts = 0;
+  Vr = 0;
+  Vs = 1e-06;
+
+  // Variable initializations:
+  Nr = 2000;
+  Ns = 3000;
+  c = 23;
+  d = 0.01;
+  delta = 1;
+  kr = 2e-08;
+  ks = 2.4e-08;
+  lambda = 10000;
+  mu = 3e-05;
+
+  // Other declarations:
+  var Nr, Ns, SumVsr, TmicroL, c, d, delta, kr, ks, lambda, mu;
+end
+
+rong2 is "rong2"

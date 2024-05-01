@@ -1,0 +1,113 @@
+// Created by libAntimony v2.13.2
+model *alexander1()
+
+  // Compartments and Species:
+  compartment body;
+  substanceOnly species A in body, $A_im in body, E in body, G in body, R in body;
+
+  // Assignment Rules:
+  R0 := f*v*lambdaE*gamma_/(mG*mA*muE);
+  mG := muG + v;
+  mA := b1 + muA;
+
+  // Reactions:
+  r10: A => ; b1*A;
+  r11: A => ; sigma1*A*R;
+  r1a: G => ; v*G;
+  r1b: $A_im => A; f*v*G;
+  r2:  => G; gamma_*E;
+  r3:  => R; beta*A;
+  r4:  => R; pi1*E*A;
+  r5:  => E; lambdaE*A;
+  r6: A => ; muA*A;
+  r7: R => ; muR*R;
+  r8: E => ; muE*E;
+  r9: G => ; muG*G;
+
+  // Species initializations:
+  A = 1/body;
+  A_im = 0;
+  E = 0;
+  G = 100000000/body;
+  R = 0;
+
+  // Compartment initializations:
+  body = 1;
+  R0 has dimensionless;
+
+  // Variable initializations:
+  f = 0.0001;
+  f has dimensionless;
+  v = 0.0025;
+  v has per_day;
+  lambdaE = 1000;
+  lambdaE has per_day;
+  gamma_ = 2000;
+  gamma_ has per_day;
+  mG has per_day;
+  mA has per_day;
+  muE = 0.25;
+  muE has per_day;
+  b1 = 0.25;
+  b1 has per_day;
+  beta = 200;
+  beta has per_day;
+  muA = 0.25;
+  muA has per_day;
+  muG = 5;
+  muG has per_day;
+  muR = 0.25;
+  muR has per_day;
+  pi1 = 0.016;
+  pi1 has per_day_per_item;
+  sigma1 = 3e-06;
+  sigma1 has per_day_per_item;
+
+  // Other declarations:
+  var R0, mG, mA;
+  const body, f, v, lambdaE, gamma_, muE, b1, beta, muA, muG, muR, pi1, sigma1;
+
+  // Unit definitions:
+  unit number = item;
+  unit day = 86400 second;
+  unit per_day = 1 / 86400 second;
+  unit per_day_per_item = 1 / (86400 second * item);
+
+  // Display Names:
+  day is "days";
+  r10 is "r10: A suppression by Tregs of other specificity";
+  r11 is "r11: A suppression by R";
+  r1a is "r1a: self-antigen uptake";
+  r1b is "r1b: pAPC maturation";
+  r2 is "r2: self-antigen release triggered by E";
+  r3 is "r3: R activation by A";
+  r4 is "r4: R activation by A and E";
+  r5 is "r5: E generation by A";
+  r6 is "r6: A death";
+  r7 is "r7: R death";
+  r8 is "r8: E death";
+  r9 is "r9: G clearance";
+
+  // SBO terms:
+  r10.sboTerm = 169
+  r11.sboTerm = 169
+  r1a.sboTerm = 185
+  r1b.sboTerm = 182
+  r2.sboTerm = 185
+  r3.sboTerm = 170
+  r4.sboTerm = 170
+  r5.sboTerm = 393
+  r6.sboTerm = 394
+  r7.sboTerm = 394
+  r8.sboTerm = 394
+  r9.sboTerm = 394
+
+  // CV terms:
+  A hypernym "http://identifiers.org/cl/CL:0000145"
+  A_im hypernym "http://identifiers.org/cl/CL:0000473"
+  E hypernym "http://identifiers.org/cl/CL:0000911"
+  G hypernym "http://identifiers.org/chebi/CHEBI:59132"
+  R hypernym "http://identifiers.org/cl/CL:0000903"
+end
+
+alexander1 is "alexander1"

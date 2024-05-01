@@ -1,0 +1,95 @@
+// Created by libAntimony v2.13.2
+model *zhu1()
+
+  // Compartments and Species:
+  compartment cytoplasm, store;
+  species X in cytoplasm, Y in store, Z in cytoplasm;
+
+  // Assignment Rules:
+  Kd := Kd0/(1 + Z^4/Kb^4);
+  kf := kf0*(1 + gamma_*Z^4/(Ka^4 + Z^4));
+
+  // Reactions:
+  Calcium_Influx:  -> Z; Calcium_Influx_v0;
+  Calcium_Influx_stimulation:  -> Z; Calcium_Influx_stimulation_v1*Calcium_Influx_stimulation_beta;
+  Calcium_into_cytoplasm: Y -> Z; (Calcium_into_cytoplasm_Vm3*Y^Calcium_into_cytoplasm_m/(Calcium_into_cytoplasm_Kr^Calcium_into_cytoplasm_m + Y^Calcium_into_cytoplasm_m))*Z^Calcium_into_cytoplasm_p/(Calcium_into_cytoplasm_K_A^Calcium_into_cytoplasm_p + Z^Calcium_into_cytoplasm_p);
+  Calcium_into_store: Z -> Y; Calcium_into_store_Vm2*Z^Calcium_into_store_n/(Calcium_into_store_K2^Calcium_into_store_n + Z^Calcium_into_store_n);
+  Leakage: Y -> Z; Leakage_k1*Y;
+  Leakage_from_cytoplasm: Z -> ; Leakage_from_cytoplasm_k*Z;
+  TF_degradation: X -> ; TF_degradation_kd*X;
+  TF_synthesis:  -> X; kf*X^2/(X^2 + Kd);
+  TF_synthesis_basal:  -> X; TF_synthesis_basal_Rbas;
+
+  // Species initializations:
+  X = 15/cytoplasm;
+  Y = 0;
+  Z = 0.25/cytoplasm;
+
+  // Compartment initializations:
+  cytoplasm = 1;
+  store = 1;
+
+  // Variable initializations:
+  Ka = 0.5;
+  Kb = 0.5;
+  Kd0 = 10;
+  gamma_ = 9;
+  kf0 = 6;
+  Calcium_Influx_v0 = 1;
+  Calcium_Influx_stimulation_beta = 0.3;
+  Calcium_Influx_stimulation_v1 = 5.7;
+  Calcium_into_cytoplasm_p = 4;
+  Calcium_into_cytoplasm_m = 2;
+  Calcium_into_cytoplasm_K_A = 0.46;
+  Calcium_into_cytoplasm_Kr = 1.7;
+  Calcium_into_cytoplasm_Vm3 = 325;
+  Calcium_into_store_n = 2;
+  Calcium_into_store_K2 = 0.5;
+  Calcium_into_store_Vm2 = 30;
+  Leakage_k1 = 0.7;
+  Leakage_from_cytoplasm_k = 10;
+  TF_degradation_kd = 1;
+  TF_synthesis_basal_Rbas = 0.1;
+
+  // Other declarations:
+  var Kd, kf;
+  const cytoplasm, store, Ka, Kb, Kd0, gamma_, kf0;
+
+  // Unit definitions:
+  unit minute = 60 second;
+  unit micro_mole = 1e-6 mole;
+
+  // Display Names:
+  minute is "minutes";
+  micro_mole is "micro mole";
+  X is "TF_A";
+  Y is "Calcium in store";
+  Z is "Calcium in cytoplasm";
+  Calcium_Influx_stimulation is "Calcium Influx by stimulation";
+  Calcium_into_cytoplasm is "Calcium influx to cytoplasm";
+  Calcium_into_store is "Calcium Influx";
+  Leakage is "Calcium Leakage";
+  Leakage_from_cytoplasm is "Leakage from cytoplasm";
+  TF_degradation is "TF degradation";
+  TF_synthesis is "TF Synthesis";
+
+  // CV terms:
+  cytoplasm identity "http://identifiers.org/go/GO:0005829"
+  Y identity "http://identifiers.org/kegg.compound/C00076",
+             "http://identifiers.org/chebi/CHEBI:22984"
+  Z identity "http://identifiers.org/kegg.compound/C00076",
+             "http://identifiers.org/chebi/CHEBI:22984"
+  Calcium_Influx hypernym "http://identifiers.org/go/GO:0007204"
+  Calcium_Influx_stimulation hypernym "http://identifiers.org/go/GO:0007204"
+  Calcium_into_cytoplasm hypernym "http://identifiers.org/go/GO:0051209",
+                                  "http://identifiers.org/go/GO:0007204"
+  Calcium_into_store hypernym "http://identifiers.org/go/GO:0051481"
+  Leakage hypernym "http://identifiers.org/go/GO:0007204",
+                   "http://identifiers.org/go/GO:0051209"
+  Leakage_from_cytoplasm hypernym "http://identifiers.org/go/GO:0051481"
+  TF_degradation hypernym "http://identifiers.org/go/GO:0030163"
+  TF_synthesis hypernym "http://identifiers.org/go/GO:0006412"
+  TF_synthesis_basal hypernym "http://identifiers.org/go/GO:0006412"
+end
+
+zhu1 is "zhu1"

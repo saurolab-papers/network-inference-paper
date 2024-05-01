@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model id="mandlik1" name="mandlik1">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" id="DefaultCompartment" name="DefaultCompartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="AUR1" name="AUR1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" id="IPTG" name="IPTG" compartment="DefaultCompartment" initialConcentration="10000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="LACI" name="LACI" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_4" id="LAMDAR" name="LAMDAR" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_5" id="SLS1" name="SLS1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_6" id="SLS4" name="SLS4" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="TETR" name="TETR" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_8" id="as1" name="as1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_9" id="ia1_ActiveTF" name="ia1_ActiveTF" compartment="DefaultCompartment" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="ia1_InactiveTF" name="ia1_InactiveTF" compartment="DefaultCompartment" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="ope1" name="ope1" compartment="DefaultCompartment" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_12" id="p1" name="p1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="p2" name="p2" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="p3" name="p3" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="pAUR1" name="pAUR1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="pSLS1" name="pSLS1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="pSLS4" name="pSLS4" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="proAUR1" name="proAUR1" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="proLACI" name="proLACI" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="proLAMDAR" name="proLAMDAR" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="proSLS1" name="proSLS1" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="proSLS4" name="proSLS4" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="proTETR" name="proTETR" compartment="DefaultCompartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="rs1" name="rs1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_25" id="rs2" name="rs2" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_26" id="rs3" name="rs3" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_27" id="rs4" name="rs4" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_28" id="rs5" name="rs5" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_29" id="rs6" name="rs6" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_30" id="ter1" name="ter1" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="ter2" name="ter2" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="ter3" name="ter3" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_33" id="ter4" name="ter4" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" id="ter5" name="ter5" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" id="ter6" name="ter6" compartment="DefaultCompartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_36" id="ia1_Kd" name="ia1_Kd" value="0.001" constant="true"/>
+      <parameter metaid="metaid_37" id="ia1_repression_Kd" name="ia1_repression_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_38" id="ia1_repression_h" name="ia1_repression_h" value="2" constant="true"/>
+      <parameter metaid="metaid_39" id="p1_strength" name="p1_strength" value="2.5" constant="true"/>
+      <parameter metaid="metaid_40" id="p2_strength" name="p2_strength" value="2.4" constant="true"/>
+      <parameter metaid="metaid_41" id="p3_strength" name="p3_strength" value="2.5" constant="true"/>
+      <parameter metaid="metaid_42" id="pAUR1_strength" name="pAUR1_strength" value="2.014" constant="true"/>
+      <parameter metaid="metaid_43" id="pSLS1_strength" name="pSLS1_strength" value="2.5" constant="true"/>
+      <parameter metaid="metaid_44" id="pSLS4_strength" name="pSLS4_strength" value="2.57" constant="true"/>
+      <parameter metaid="metaid_45" id="pp2_translation_rate" name="pp2_translation_rate" value="1" constant="true"/>
+      <parameter metaid="metaid_46" id="pp3_translation_rate" name="pp3_translation_rate" value="1" constant="true"/>
+      <parameter metaid="metaid_47" id="pp4_translation_rate" name="pp4_translation_rate" value="1" constant="true"/>
+      <parameter metaid="metaid_48" id="pp5_translation_rate" name="pp5_translation_rate" value="1" constant="true"/>
+      <parameter metaid="metaid_49" id="pp6_translation_rate" name="pp6_translation_rate" value="1" constant="true"/>
+      <parameter metaid="metaid_50" id="proAUR1_degradation_rate" name="proAUR1_degradation_rate" value="0.1" constant="true"/>
+      <parameter metaid="metaid_51" id="proLACI_degradation_rate" name="proLACI_degradation_rate" value="0.07" constant="true"/>
+      <parameter metaid="metaid_52" id="proLAMDAR_degradation_rate" name="proLAMDAR_degradation_rate" value="0.0415" constant="true"/>
+      <parameter metaid="metaid_53" id="proSLS1_degradation_rate" name="proSLS1_degradation_rate" value="0.07" constant="true"/>
+      <parameter metaid="metaid_54" id="proSLS4_degradation_rate" name="proSLS4_degradation_rate" value="0.04" constant="true"/>
+      <parameter metaid="metaid_55" id="proTETR_degradation_rate" name="proTETR_degradation_rate" value="0.08" constant="true"/>
+      <parameter metaid="metaid_56" id="ta1_Kd" name="ta1_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_57" id="ta1_h" name="ta1_h" value="2" constant="true"/>
+      <parameter metaid="metaid_58" id="tr1_Kd" name="tr1_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_59" id="tr1_h" name="tr1_h" value="2" constant="true"/>
+      <parameter metaid="metaid_60" id="tr2_Kd" name="tr2_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_61" id="tr2_h" name="tr2_h" value="2" constant="true"/>
+      <parameter metaid="metaid_62" id="tr3_Kd" name="tr3_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_63" id="tr3_h" name="tr3_h" value="2" constant="true"/>
+      <parameter metaid="metaid_64" id="tr4_Kd" name="tr4_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_65" id="tr4_h" name="tr4_h" value="2" constant="true"/>
+      <parameter metaid="metaid_66" id="tr5_Kd" name="tr5_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_67" id="tr5_h" name="tr5_h" value="2" constant="true"/>
+      <parameter metaid="metaid_68" id="tr6_Kd" name="tr6_Kd" value="1" constant="true"/>
+      <parameter metaid="metaid_69" id="tr6_h" name="tr6_h" value="2" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_70" variable="rs3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLACI </ci>
+                  <ci> tr6_Kd </ci>
+                </apply>
+                <ci> tr6_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_71" variable="LAMDAR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> p1_strength </ci>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proTETR </ci>
+                  <ci> tr4_Kd </ci>
+                </apply>
+                <ci> tr4_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_72" variable="TETR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> p3_strength </ci>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLACI </ci>
+                  <ci> tr3_Kd </ci>
+                </apply>
+                <ci> tr3_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_73" variable="AUR1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> pAUR1_strength </ci>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proSLS1 </ci>
+                  <ci> tr1_Kd </ci>
+                </apply>
+                <ci> tr1_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_74" variable="SLS4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> pSLS4_strength </ci>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proAUR1 </ci>
+                  <ci> tr2_Kd </ci>
+                </apply>
+                <ci> tr2_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_75" variable="SLS1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> pSLS1_strength </ci>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <plus/>
+                          <cn> 1 </cn>
+                          <apply>
+                            <power/>
+                            <apply>
+                              <divide/>
+                              <ci> proSLS4 </ci>
+                              <ci> ta1_Kd </ci>
+                            </apply>
+                            <ci> ta1_h </ci>
+                          </apply>
+                        </apply>
+                        <cn> 1 </cn>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <cn> 1 </cn>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <divide/>
+                          <ci> proSLS4 </ci>
+                          <ci> ta1_Kd </ci>
+                        </apply>
+                        <ci> ta1_h </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <cn> 1 </cn>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> ia1_ActiveTF </ci>
+                      <ci> ia1_repression_Kd </ci>
+                    </apply>
+                    <ci> ia1_repression_h </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLACI </ci>
+                  <ci> tr6_Kd </ci>
+                </apply>
+                <ci> tr6_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_76" variable="as1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <cn> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> proSLS4 </ci>
+                    <ci> ta1_Kd </ci>
+                  </apply>
+                  <ci> ta1_h </ci>
+                </apply>
+              </apply>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proSLS4 </ci>
+                  <ci> ta1_Kd </ci>
+                </apply>
+                <ci> ta1_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_77" variable="ope1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ia1_ActiveTF </ci>
+                  <ci> ia1_repression_Kd </ci>
+                </apply>
+                <ci> ia1_repression_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_78" variable="rs2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proAUR1 </ci>
+                  <ci> tr2_Kd </ci>
+                </apply>
+                <ci> tr2_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_79" variable="rs1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proSLS1 </ci>
+                  <ci> tr1_Kd </ci>
+                </apply>
+                <ci> tr1_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_80" variable="LACI">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> p2_strength </ci>
+              <cn> 1 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLAMDAR </ci>
+                  <ci> tr5_Kd </ci>
+                </apply>
+                <ci> tr5_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_81" variable="rs5">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLACI </ci>
+                  <ci> tr3_Kd </ci>
+                </apply>
+                <ci> tr3_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_82" variable="rs4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proLAMDAR </ci>
+                  <ci> tr5_Kd </ci>
+                </apply>
+                <ci> tr5_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_83" variable="rs6">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn> 1 </cn>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> proTETR </ci>
+                  <ci> tr4_Kd </ci>
+                </apply>
+                <ci> tr4_h </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_89" id="ia1_bind_forward" name="ia1_bind_forward" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_84" species="ia1_ActiveTF" stoichiometry="1"/>
+          <speciesReference metaid="metaid_85" species="IPTG" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_86" species="ia1_InactiveTF" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_87" species="ia1_ActiveTF"/>
+          <modifierSpeciesReference metaid="metaid_88" species="IPTG"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IPTG </ci>
+              <ci> ia1_ActiveTF </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_94" id="ia1_bind_reverse" name="ia1_bind_reverse" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_90" species="ia1_InactiveTF" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_91" species="ia1_ActiveTF" stoichiometry="1"/>
+          <speciesReference metaid="metaid_92" species="IPTG" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_93" species="ia1_InactiveTF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ia1_Kd </ci>
+              <ci> ia1_InactiveTF </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="pp1_v1" name="pp1_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="proSLS1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="pp1_v2" name="pp1_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_97" species="proSLS1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_98" species="proSLS1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proSLS1_degradation_rate </ci>
+              <ci> proSLS1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_103" id="pp2_v1" name="pp2_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_100" species="proAUR1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_101" species="AUR1"/>
+          <modifierSpeciesReference metaid="metaid_102" species="AUR1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pp2_translation_rate </ci>
+              <ci> pAUR1_strength </ci>
+              <ci> AUR1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_106" id="pp2_v2" name="pp2_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="proAUR1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_105" species="proAUR1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proAUR1_degradation_rate </ci>
+              <ci> proAUR1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_110" id="pp3_v1" name="pp3_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_107" species="proSLS4" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_108" species="SLS4"/>
+          <modifierSpeciesReference metaid="metaid_109" species="SLS4"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pp3_translation_rate </ci>
+              <ci> pSLS4_strength </ci>
+              <ci> SLS4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_113" id="pp3_v2" name="pp3_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_111" species="proSLS4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_112" species="proSLS4"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proSLS4_degradation_rate </ci>
+              <ci> proSLS4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_117" id="pp4_v1" name="pp4_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_114" species="proLACI" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_115" species="LACI"/>
+          <modifierSpeciesReference metaid="metaid_116" species="LACI"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pp4_translation_rate </ci>
+              <ci> p2_strength </ci>
+              <ci> LACI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_120" id="pp4_v2" name="pp4_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_118" species="proLACI" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_119" species="proLACI"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proLACI_degradation_rate </ci>
+              <ci> proLACI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_124" id="pp5_v1" name="pp5_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_121" species="proLAMDAR" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_122" species="LAMDAR"/>
+          <modifierSpeciesReference metaid="metaid_123" species="LAMDAR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pp5_translation_rate </ci>
+              <ci> p1_strength </ci>
+              <ci> LAMDAR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_127" id="pp5_v2" name="pp5_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="proLAMDAR" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_126" species="proLAMDAR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proLAMDAR_degradation_rate </ci>
+              <ci> proLAMDAR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_131" id="pp6_v1" name="pp6_v1" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_128" species="proTETR" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_129" species="TETR"/>
+          <modifierSpeciesReference metaid="metaid_130" species="TETR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> pp6_translation_rate </ci>
+              <ci> p3_strength </ci>
+              <ci> TETR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_134" id="pp6_v2" name="pp6_v2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_132" species="proTETR" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_133" species="proTETR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> proTETR_degradation_rate </ci>
+              <ci> proTETR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

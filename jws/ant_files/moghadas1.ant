@@ -1,0 +1,53 @@
+// Created by libAntimony v2.13.2
+model *moghadas1()
+
+  // Compartments and Species:
+  species A, $EXT, X, Y1, Y2, Z;
+
+  // Assignment Rules:
+  N := X + Y1 + Y2 + A + Z;
+
+  // Reactions:
+  v_1: $EXT -> X; Pi;
+  v_10: A -> $EXT; d*A;
+  v_11: X -> Z; tau*c*beta1*Y1*X/N;
+  v_12: Z -> $EXT; mu*Z;
+  v_2: X -> $EXT; mu*X;
+  v_3: X -> Y1; (1 - tau)*c*beta1*Y1*X/N;
+  v_4: X -> Y2; c*beta2*Y2*X/N;
+  v_5: Y1 -> Y2; c*beta2*Y1*Y2/N;
+  v_6: Y1 -> $EXT; mu*Y1;
+  v_7: Y2 -> $EXT; mu*Y2;
+  v_8: Y2 -> A; nu*Y2;
+  v_9: A -> $EXT; mu*A;
+
+  // Species initializations:
+  A = 80000;
+  EXT = 1;
+  X = 120000;
+  Y1 = 10;
+  Y2 = 70100;
+  Z = 30;
+
+  // Variable initializations:
+  Pi = 2000;
+  beta1 = 0.05;
+  beta2 = 0.005;
+  c = 4;
+  d = 0.06;
+  mu = 0.031;
+  nu = 0.02;
+  tau = 0;
+
+  // Other declarations:
+  var N, Pi, beta1, beta2, c, d, mu, nu, tau;
+
+  // Display Names:
+  A is "AIDS";
+  X is "Susceptible";
+  Y1 is "Infected with the pathogen";
+  Y2 is "HIV infected";
+  Z is "Non-infectious";
+end
+
+moghadas1 is "moghadas1"

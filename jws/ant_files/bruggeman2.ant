@@ -1,0 +1,64 @@
+// Created by libAntimony v2.13.2
+model *bruggeman2()
+
+  // Compartments and Species:
+  species $P, $S, e, $esink, $esource, mR, $mRsink, $mRsource, x1, x2, x3;
+
+  // Reactions:
+  v_1: $S -> x1; e*k1*S*(1 - x1/(Keq1*S))*(((1 + S/K1s + x1/K1x1)/(1 + cs*S/K1s + cp*x1/K1x1))^n + cs*L*(1 + S/K1s + x1/K1x1)*(1 + x3/K1x3)^n/(1 + cs*S/K1s + cp*x1/K1x1))/(K1s*(1 + S/K1s + x1/K1x1)*(((1 + S/K1s + x1/K1x1)/(1 + cs*S/K1s + cp*x1/K1x1))^n + L*(1 + x3/K1x3)^n));
+  v_2: x1 -> x2; e*k2*x1*(1 - x2/(Keq2*x1))/(K2x1*(1 + x1/K2x1 + x2/K2x2));
+  v_3: x2 -> x3; e*k3*x2*(1 - x3/(Keq3*x2))/(K3x2*(1 + x2/K3x2 + x3/K3x3));
+  v_4: x3 -> $P; V4*(1 - P/(Keq4*x3))*x3/(K4x3*(1 + P/K4P + x3/K4x3));
+  v_5: $mRsource -> mR; (1 + (x3/Ktrx3)^ntr)^-1;
+  v_6: mR -> $mRsink; ktrscdeg*mR;
+  v_7: $esource -> e; ktrnlsyn*mR;
+  v_8: e -> $esink; e*ktrnldeg;
+
+  // Species initializations:
+  P = 1;
+  S = 1;
+  e = 1;
+  esink = 1;
+  esource = 1;
+  mR = 1;
+  mRsink = 1;
+  mRsource = 1;
+  x1 = 1;
+  x2 = 1;
+  x3 = 1;
+
+  // Variable initializations:
+  K1s = 0.05;
+  K1x1 = 1000;
+  K1x3 = 1;
+  K2x1 = 1;
+  K2x2 = 1;
+  K3x2 = 1;
+  K3x3 = 10;
+  K4P = 1;
+  K4x3 = 0.4;
+  Keq1 = 100;
+  Keq2 = 10;
+  Keq3 = 1;
+  Keq4 = 10;
+  Ktrx3 = 0.5;
+  L = 0.8;
+  V4 = 100;
+  cp = 0.0001;
+  cs = 0.0001;
+  k1 = 100;
+  k2 = 50;
+  k3 = 75;
+  ktrnldeg = 0.5;
+  ktrnlsyn = 1;
+  ktrscdeg = 0.5;
+  n = 3;
+  ntr = 2;
+
+  // Other declarations:
+  var K1s, K1x1, K1x3, K2x1, K2x2, K3x2, K3x3, K4P, K4x3, Keq1, Keq2, Keq3;
+  var Keq4, Ktrx3, L, V4, cp, cs, k1, k2, k3, ktrnldeg, ktrnlsyn, ktrscdeg;
+  var n, ntr;
+end
+
+bruggeman2 is "bruggeman2"

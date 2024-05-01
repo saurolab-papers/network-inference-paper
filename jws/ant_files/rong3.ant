@@ -1,0 +1,50 @@
+// Created by libAntimony v2.13.2
+model *rong3()
+
+  // Compartments and Species:
+  species L, T, T1, V, Vi, Vni;
+
+  // Assignment Rules:
+  ratio := ln(Vni/Vi)/ln(10);
+
+  // Reactions:
+  v1:  -> T; lambda;
+  v10: T1 -> L; alphaL*k*T*Vi;
+  v11: L -> T1; alphaL*epsilonRT*k*T*Vi;
+  v12:  -> V + Vi; delta*NN*T1;
+  v13: Vi -> Vni; delta*epsilonPI*NN*T1;
+  v2: T -> ; dT*T;
+  v3: T -> T1; k*T*Vi;
+  v4: L -> ; dL*L;
+  v5: L -> T1; a*L;
+  v6: T1 -> ; delta*T1;
+  v7: V + Vi -> ; c*Vi;
+  v8: V + Vni -> ; c*Vni;
+  v9: T1 -> T; epsilonRT*k*T*Vi;
+
+  // Species initializations:
+  L = 2;
+  T = 600000;
+  T1 = 0.3;
+  V = 50000;
+  Vi = 50000;
+  Vni = 0;
+
+  // Variable initializations:
+  NN = 4000;
+  a = 0.1;
+  alphaL = 0.001;
+  c = 23;
+  dL = 0.004;
+  dT = 0.01;
+  delta = 1;
+  epsilonPI = 0.65;
+  epsilonRT = 0;
+  k = 2.4e-08;
+  lambda = 10000;
+
+  // Other declarations:
+  var NN, a, alphaL, c, dL, dT, delta, epsilonPI, epsilonRT, k, lambda, ratio;
+end
+
+rong3 is "rong3"

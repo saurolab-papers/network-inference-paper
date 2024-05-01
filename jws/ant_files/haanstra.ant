@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *haanstra()
+
+  // Compartments and Species:
+  species PGKBmRNA, PGKBp, PGKCmRNA, PGKCp, $ext_, precur;
+
+  // Reactions:
+  v_1: $ext_ -> precur; vtranscr;
+  v_10: $ext_ -> PGKCp; ktransl*nribo*PGKCmRNA;
+  v_11: PGKBp -> $ext_; mu*PGKBp;
+  v_12: PGKCp -> $ext_; mu*PGKCp;
+  v_13: PGKBp -> $ext_; kdegrpB*PGKBp;
+  v_14: PGKCp -> $ext_; kdegrpC*PGKCp;
+  v_2: precur -> PGKBmRNA + PGKCmRNA; ksplic*precur;
+  v_3: precur -> $ext_; kdegrp*precur;
+  v_4: precur -> $ext_; mu*precur;
+  v_5: PGKBmRNA -> $ext_; mu*PGKBmRNA;
+  v_6: PGKBmRNA -> $ext_; kdegrB*PGKBmRNA;
+  v_7: PGKCmRNA -> $ext_; mu*PGKCmRNA;
+  v_8: PGKCmRNA -> $ext_; kdegrC*PGKCmRNA;
+  v_9: $ext_ -> PGKBp; ktransl*nribo*PGKBmRNA;
+
+  // Species initializations:
+  PGKBmRNA = 0;
+  PGKBp = 0;
+  PGKCmRNA = 0;
+  PGKCp = 0;
+  ext_ = 0;
+  precur = 0;
+
+  // Variable initializations:
+  kdegrB = 0.092;
+  kdegrC = 0.015;
+  kdegrp = 0.08;
+  kdegrpB = 1e-20;
+  kdegrpC = 1e-20;
+  ksplic = 0.41;
+  ktransl = 13.4;
+  mu = 0.0019;
+  nribo = 12;
+  vtranscr = 0.24;
+
+  // Other declarations:
+  var kdegrB, kdegrC, kdegrp, kdegrpB, kdegrpC, ksplic, ktransl, mu, nribo;
+  var vtranscr;
+end
+
+haanstra is "haanstra"

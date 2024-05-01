@@ -1,0 +1,32 @@
+// Created by libAntimony v2.13.2
+model *ortega()
+
+  // Compartments and Species:
+  species alpha, beta, gamma_;
+
+  // Reactions:
+  v_1: alpha -> beta; Vm1*(alpha/Ks1)/(1 + alpha/Ks1 + beta/Ks3);
+  v_2: beta -> alpha; (r24*Vm1/Chi14)*(beta/Ks2)/(1 + gamma_/Ks4 + beta/Ks2);
+  v_3: beta -> gamma_; r31*Vm1*(beta/Ks3)/(1 + alpha/Ks1 + beta/Ks3);
+  v_4: gamma_ -> beta; (Vm1/Chi14)*(gamma_/Ks4)/(1 + gamma_/Ks4 + beta/Ks2);
+
+  // Species initializations:
+  alpha = 0.462;
+  beta = 0.2;
+  gamma_ = 0.338;
+
+  // Variable initializations:
+  Chi14 = 1.1;
+  Ks1 = 0.01;
+  Ks2 = 0.01;
+  Ks3 = 0.01;
+  Ks4 = 0.01;
+  Vm1 = 1;
+  r24 = 6;
+  r31 = 6;
+
+  // Other declarations:
+  var Chi14, Ks1, Ks2, Ks3, Ks4, Vm1, r24, r31;
+end
+
+ortega is "ortega"

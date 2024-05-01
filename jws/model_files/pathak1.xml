@@ -1,0 +1,2439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="pathak1" name="pathak1">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="per_second" name="per_second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_4" id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_5" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_6" id="c1" name="Cytosol" spatialDimensions="3" size="1" units="volume" constant="true"/>
+      <compartment metaid="metaid_7" id="c2" name="Nucleus" spatialDimensions="3" size="1" units="volume" constant="true"/>
+      <compartment metaid="metaid_8" id="default" spatialDimensions="3" size="1" units="volume" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/go/GO:0005623"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_9" id="s1" name="Cold" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="s10" name="LecRK2" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="s11" name="ETR1" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="s12" name="ETR2" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="s13" name="MAPKKK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="s14" name="MAPKKK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="s15" name="MAPKKK1" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="s16" name="CTR1" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="s17" name="MAPKK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="s18" name="MAPKK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="s19" name="MAPKK1" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="s2" name="Salt" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="s20" name="MAPKK2" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="s21" name="MAPKK3" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="s22" name="MAPKK4" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="s23" name="MAPKK5" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="s24" name="MAPKK6" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="s25" name="MAPKK7" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="s26" name="MAPKK9" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_28" id="s27" name="MAPK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_29" id="s28" name="MAPK" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="s29" name="MAPK2" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="s3" name="Drought" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_32" id="s30" name="MAPK3" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_33" id="s31" name="MAPK4" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_34" id="s32" name="MAPK6" compartment="c1" initialAmount="1" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_35" id="s33" name="WRKY1" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_36" id="s34" name="WRKY1" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_37" id="s35" name="WRKY12" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_38" id="s36" name="WRKY12" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_39" id="s37" name="WRKY8" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_40" id="s38" name="WRKY8" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_41" id="s39" name="WRKY25" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_42" id="s4" name="H2O2" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_43" id="s40" name="WRKY25" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_44" id="s41" name="WRKY22" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_45" id="s42" name="WRKY22" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_46" id="s43" name="WRKY29" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_47" id="s44" name="WRKY29" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_48" id="s45" name="WRKY33" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_49" id="s46" name="WRKY33" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_50" id="s47" name="WRKY28" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_51" id="s48" name="WRKY28" compartment="c2" initialAmount="1.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_52" id="s49" name="MYB2" compartment="c2" initialAmount="1.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_53" id="s5" name="Heavy Metal" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_54" id="s50" name="MYB2" compartment="c2" initialAmount="1.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_55" id="s51" name="MYB4" compartment="c2" initialAmount="1.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_56" id="s52" name="MYB4" compartment="c2" initialAmount="1.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_57" id="s53" name="MYB44" compartment="c2" initialAmount="1.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_58" id="s54" name="NAC" compartment="c2" initialAmount="1.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_59" id="s55" name="bZIP" compartment="c2" initialAmount="2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_60" id="s56" name="AP2" compartment="c2" initialAmount="2.2" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_61" id="s57" name="Response" compartment="default" initialAmount="2.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_62" id="s6" name="Ethylene" compartment="default" initialAmount="0.5" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_63" id="s7" name="RLKs" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_64" id="s8" name="LRR" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_65" id="s9" name="CRKs" compartment="c1" initialAmount="0.8" substanceUnits="substance" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_66" sboTerm="SBO:0000337" id="kass_re1" name="Association constant of reaction re1" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_67" sboTerm="SBO:0000337" id="kass_re10" name="Association constant of reaction re10" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_68" sboTerm="SBO:0000337" id="kass_re11" name="Association constant of reaction re11" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_69" sboTerm="SBO:0000337" id="kass_re12" name="Association constant of reaction re12" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_70" sboTerm="SBO:0000337" id="kass_re13" name="Association constant of reaction re13" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_71" sboTerm="SBO:0000337" id="kass_re14" name="Association constant of reaction re14" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_72" sboTerm="SBO:0000337" id="kass_re15" name="Association constant of reaction re15" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_73" sboTerm="SBO:0000337" id="kass_re16" name="Association constant of reaction re16" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_74" sboTerm="SBO:0000337" id="kass_re17" name="Association constant of reaction re17" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_75" sboTerm="SBO:0000337" id="kass_re18" name="Association constant of reaction re18" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_76" sboTerm="SBO:0000337" id="kass_re19" name="Association constant of reaction re19" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_77" sboTerm="SBO:0000337" id="kass_re2" name="Association constant of reaction re2" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_78" sboTerm="SBO:0000337" id="kass_re20" name="Association constant of reaction re20" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_79" sboTerm="SBO:0000337" id="kass_re21" name="Association constant of reaction re21" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_80" sboTerm="SBO:0000337" id="kass_re22" name="Association constant of reaction re22" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_81" sboTerm="SBO:0000337" id="kass_re23" name="Association constant of reaction re23" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_82" sboTerm="SBO:0000337" id="kass_re24" name="Association constant of reaction re24" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_83" sboTerm="SBO:0000337" id="kass_re25" name="Association constant of reaction re25" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_84" sboTerm="SBO:0000337" id="kass_re26" name="Association constant of reaction re26" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_85" sboTerm="SBO:0000337" id="kass_re27" name="Association constant of reaction re27" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_86" sboTerm="SBO:0000337" id="kass_re28" name="Association constant of reaction re28" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_87" sboTerm="SBO:0000337" id="kass_re29" name="Association constant of reaction re29" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_88" sboTerm="SBO:0000337" id="kass_re3" name="Association constant of reaction re3" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_89" sboTerm="SBO:0000337" id="kass_re30" name="Association constant of reaction re30" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_90" sboTerm="SBO:0000337" id="kass_re31" name="Association constant of reaction re31" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_91" sboTerm="SBO:0000337" id="kass_re32" name="Association constant of reaction re32" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_92" sboTerm="SBO:0000337" id="kass_re33" name="Association constant of reaction re33" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_93" sboTerm="SBO:0000337" id="kass_re34" name="Association constant of reaction re34" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_94" sboTerm="SBO:0000337" id="kass_re35" name="Association constant of reaction re35" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_95" sboTerm="SBO:0000337" id="kass_re36" name="Association constant of reaction re36" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_96" sboTerm="SBO:0000337" id="kass_re37" name="Association constant of reaction re37" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_97" sboTerm="SBO:0000337" id="kass_re38" name="Association constant of reaction re38" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_98" sboTerm="SBO:0000337" id="kass_re39" name="Association constant of reaction re39" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_99" sboTerm="SBO:0000337" id="kass_re4" name="Association constant of reaction re4" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_100" sboTerm="SBO:0000337" id="kass_re40" name="Association constant of reaction re40" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_101" sboTerm="SBO:0000337" id="kass_re41" name="Association constant of reaction re41" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_102" sboTerm="SBO:0000337" id="kass_re42" name="Association constant of reaction re42" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_103" sboTerm="SBO:0000337" id="kass_re43" name="Association constant of reaction re43" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_104" sboTerm="SBO:0000337" id="kass_re44" name="Association constant of reaction re44" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_105" sboTerm="SBO:0000337" id="kass_re45" name="Association constant of reaction re45" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_106" sboTerm="SBO:0000337" id="kass_re46" name="Association constant of reaction re46" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_107" sboTerm="SBO:0000337" id="kass_re47" name="Association constant of reaction re47" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_108" sboTerm="SBO:0000337" id="kass_re48" name="Association constant of reaction re48" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_109" sboTerm="SBO:0000337" id="kass_re49" name="Association constant of reaction re49" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_110" sboTerm="SBO:0000337" id="kass_re5" name="Association constant of reaction re5" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_111" sboTerm="SBO:0000337" id="kass_re50" name="Association constant of reaction re50" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_112" sboTerm="SBO:0000337" id="kass_re51" name="Association constant of reaction re51" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_113" sboTerm="SBO:0000337" id="kass_re52" name="Association constant of reaction re52" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_114" sboTerm="SBO:0000337" id="kass_re53" name="Association constant of reaction re53" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_115" sboTerm="SBO:0000337" id="kass_re54" name="Association constant of reaction re54" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_116" sboTerm="SBO:0000337" id="kass_re55" name="Association constant of reaction re55" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_117" sboTerm="SBO:0000337" id="kass_re56" name="Association constant of reaction re56" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_118" sboTerm="SBO:0000337" id="kass_re57" name="Association constant of reaction re57" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_119" sboTerm="SBO:0000337" id="kass_re58" name="Association constant of reaction re58" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_120" sboTerm="SBO:0000337" id="kass_re59" name="Association constant of reaction re59" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_121" sboTerm="SBO:0000337" id="kass_re6" name="Association constant of reaction re6" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_122" sboTerm="SBO:0000337" id="kass_re60" name="Association constant of reaction re60" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_123" sboTerm="SBO:0000337" id="kass_re61" name="Association constant of reaction re61" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_124" sboTerm="SBO:0000337" id="kass_re62" name="Association constant of reaction re62" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_125" sboTerm="SBO:0000337" id="kass_re63" name="Association constant of reaction re63" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_126" sboTerm="SBO:0000337" id="kass_re64" name="Association constant of reaction re64" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_127" sboTerm="SBO:0000337" id="kass_re65" name="Association constant of reaction re65" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_128" sboTerm="SBO:0000337" id="kass_re66" name="Association constant of reaction re66" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_129" sboTerm="SBO:0000337" id="kass_re67" name="Association constant of reaction re67" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_130" sboTerm="SBO:0000337" id="kass_re68" name="Association constant of reaction re68" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_131" sboTerm="SBO:0000337" id="kass_re69" name="Association constant of reaction re69" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_132" sboTerm="SBO:0000337" id="kass_re7" name="Association constant of reaction re7" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_133" sboTerm="SBO:0000337" id="kass_re70" name="Association constant of reaction re70" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_134" sboTerm="SBO:0000337" id="kass_re71" name="Association constant of reaction re71" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_135" sboTerm="SBO:0000337" id="kass_re72" name="Association constant of reaction re72" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_136" sboTerm="SBO:0000337" id="kass_re73" name="Association constant of reaction re73" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_137" sboTerm="SBO:0000337" id="kass_re74" name="Association constant of reaction re74" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_138" sboTerm="SBO:0000337" id="kass_re75" name="Association constant of reaction re75" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_139" sboTerm="SBO:0000337" id="kass_re76" name="Association constant of reaction re76" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_140" sboTerm="SBO:0000337" id="kass_re77" name="Association constant of reaction re77" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_141" sboTerm="SBO:0000337" id="kass_re78" name="Association constant of reaction re78" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_142" sboTerm="SBO:0000337" id="kass_re79" name="Association constant of reaction re79" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_143" sboTerm="SBO:0000337" id="kass_re8" name="Association constant of reaction re8" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_144" sboTerm="SBO:0000337" id="kass_re80" name="Association constant of reaction re80" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_145" sboTerm="SBO:0000337" id="kass_re81" name="Association constant of reaction re81" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_146" sboTerm="SBO:0000337" id="kass_re82" name="Association constant of reaction re82" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_147" sboTerm="SBO:0000337" id="kass_re83" name="Association constant of reaction re83" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_148" sboTerm="SBO:0000337" id="kass_re84" name="Association constant of reaction re84" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_149" sboTerm="SBO:0000337" id="kass_re85" name="Association constant of reaction re85" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_150" sboTerm="SBO:0000337" id="kass_re86" name="Association constant of reaction re86" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_151" sboTerm="SBO:0000337" id="kass_re9" name="Association constant of reaction re9" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_152" sboTerm="SBO:0000282" id="kdiss_re1" name="Dissociation constant of reaction re1" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_153" sboTerm="SBO:0000282" id="kdiss_re10" name="Dissociation constant of reaction re10" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_154" sboTerm="SBO:0000282" id="kdiss_re11" name="Dissociation constant of reaction re11" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_155" sboTerm="SBO:0000282" id="kdiss_re12" name="Dissociation constant of reaction re12" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_156" sboTerm="SBO:0000282" id="kdiss_re13" name="Dissociation constant of reaction re13" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_157" sboTerm="SBO:0000282" id="kdiss_re14" name="Dissociation constant of reaction re14" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_158" sboTerm="SBO:0000282" id="kdiss_re15" name="Dissociation constant of reaction re15" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_159" sboTerm="SBO:0000282" id="kdiss_re16" name="Dissociation constant of reaction re16" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_160" sboTerm="SBO:0000282" id="kdiss_re17" name="Dissociation constant of reaction re17" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_161" sboTerm="SBO:0000282" id="kdiss_re18" name="Dissociation constant of reaction re18" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_162" sboTerm="SBO:0000282" id="kdiss_re19" name="Dissociation constant of reaction re19" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_163" sboTerm="SBO:0000282" id="kdiss_re2" name="Dissociation constant of reaction re2" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_164" sboTerm="SBO:0000282" id="kdiss_re20" name="Dissociation constant of reaction re20" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_165" sboTerm="SBO:0000282" id="kdiss_re21" name="Dissociation constant of reaction re21" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_166" sboTerm="SBO:0000282" id="kdiss_re22" name="Dissociation constant of reaction re22" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_167" sboTerm="SBO:0000282" id="kdiss_re23" name="Dissociation constant of reaction re23" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_168" sboTerm="SBO:0000282" id="kdiss_re24" name="Dissociation constant of reaction re24" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_169" sboTerm="SBO:0000282" id="kdiss_re25" name="Dissociation constant of reaction re25" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_170" sboTerm="SBO:0000282" id="kdiss_re26" name="Dissociation constant of reaction re26" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_171" sboTerm="SBO:0000282" id="kdiss_re27" name="Dissociation constant of reaction re27" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_172" sboTerm="SBO:0000282" id="kdiss_re28" name="Dissociation constant of reaction re28" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_173" sboTerm="SBO:0000282" id="kdiss_re29" name="Dissociation constant of reaction re29" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_174" sboTerm="SBO:0000282" id="kdiss_re3" name="Dissociation constant of reaction re3" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_175" sboTerm="SBO:0000282" id="kdiss_re30" name="Dissociation constant of reaction re30" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_176" sboTerm="SBO:0000282" id="kdiss_re31" name="Dissociation constant of reaction re31" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_177" sboTerm="SBO:0000282" id="kdiss_re32" name="Dissociation constant of reaction re32" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_178" sboTerm="SBO:0000282" id="kdiss_re33" name="Dissociation constant of reaction re33" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_179" sboTerm="SBO:0000282" id="kdiss_re34" name="Dissociation constant of reaction re34" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_180" sboTerm="SBO:0000282" id="kdiss_re35" name="Dissociation constant of reaction re35" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_181" sboTerm="SBO:0000282" id="kdiss_re36" name="Dissociation constant of reaction re36" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_182" sboTerm="SBO:0000282" id="kdiss_re37" name="Dissociation constant of reaction re37" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_183" sboTerm="SBO:0000282" id="kdiss_re38" name="Dissociation constant of reaction re38" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_184" sboTerm="SBO:0000282" id="kdiss_re39" name="Dissociation constant of reaction re39" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_185" sboTerm="SBO:0000282" id="kdiss_re4" name="Dissociation constant of reaction re4" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_186" sboTerm="SBO:0000282" id="kdiss_re40" name="Dissociation constant of reaction re40" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_187" sboTerm="SBO:0000282" id="kdiss_re41" name="Dissociation constant of reaction re41" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_188" sboTerm="SBO:0000282" id="kdiss_re42" name="Dissociation constant of reaction re42" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_189" sboTerm="SBO:0000282" id="kdiss_re43" name="Dissociation constant of reaction re43" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_190" sboTerm="SBO:0000282" id="kdiss_re44" name="Dissociation constant of reaction re44" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_191" sboTerm="SBO:0000282" id="kdiss_re45" name="Dissociation constant of reaction re45" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_192" sboTerm="SBO:0000282" id="kdiss_re46" name="Dissociation constant of reaction re46" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_193" sboTerm="SBO:0000337" id="kdiss_re47" name="Dissociation constant of reaction re47" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_194" sboTerm="SBO:0000282" id="kdiss_re48" name="Dissociation constant of reaction re48" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_195" sboTerm="SBO:0000282" id="kdiss_re49" name="Dissociation constant of reaction re49" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_196" sboTerm="SBO:0000282" id="kdiss_re5" name="Dissociation constant of reaction re5" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_197" sboTerm="SBO:0000282" id="kdiss_re50" name="Dissociation constant of reaction re50" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_198" sboTerm="SBO:0000282" id="kdiss_re51" name="Dissociation constant of reaction re51" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_199" sboTerm="SBO:0000282" id="kdiss_re52" name="Dissociation constant of reaction re52" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_200" sboTerm="SBO:0000282" id="kdiss_re53" name="Dissociation constant of reaction re53" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_201" sboTerm="SBO:0000282" id="kdiss_re54" name="Dissociation constant of reaction re54" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_202" sboTerm="SBO:0000282" id="kdiss_re55" name="Dissociation constant of reaction re55" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_203" sboTerm="SBO:0000282" id="kdiss_re56" name="Dissociation constant of reaction re56" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_204" sboTerm="SBO:0000282" id="kdiss_re57" name="Dissociation constant of reaction re57" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_205" sboTerm="SBO:0000282" id="kdiss_re58" name="Dissociation constant of reaction re58" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_206" sboTerm="SBO:0000282" id="kdiss_re59" name="Dissociation constant of reaction re59" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_207" sboTerm="SBO:0000282" id="kdiss_re6" name="Dissociation constant of reaction re6" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_208" sboTerm="SBO:0000282" id="kdiss_re60" name="Dissociation constant of reaction re60" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_209" sboTerm="SBO:0000282" id="kdiss_re61" name="Dissociation constant of reaction re61" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_210" sboTerm="SBO:0000282" id="kdiss_re62" name="Dissociation constant of reaction re62" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_211" sboTerm="SBO:0000282" id="kdiss_re63" name="Dissociation constant of reaction re63" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_212" sboTerm="SBO:0000282" id="kdiss_re64" name="Dissociation constant of reaction re64" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_213" sboTerm="SBO:0000282" id="kdiss_re65" name="Dissociation constant of reaction re65" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_214" sboTerm="SBO:0000282" id="kdiss_re66" name="Dissociation constant of reaction re66" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_215" sboTerm="SBO:0000282" id="kdiss_re67" name="Dissociation constant of reaction re67" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_216" sboTerm="SBO:0000282" id="kdiss_re68" name="Dissociation constant of reaction re68" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_217" sboTerm="SBO:0000282" id="kdiss_re69" name="Dissociation constant of reaction re69" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_218" sboTerm="SBO:0000282" id="kdiss_re7" name="Dissociation constant of reaction re7" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_219" sboTerm="SBO:0000282" id="kdiss_re70" name="Dissociation constant of reaction re70" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_220" sboTerm="SBO:0000282" id="kdiss_re71" name="Dissociation constant of reaction re71" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_221" sboTerm="SBO:0000282" id="kdiss_re72" name="Dissociation constant of reaction re72" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_222" sboTerm="SBO:0000282" id="kdiss_re73" name="Dissociation constant of reaction re73" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_223" sboTerm="SBO:0000282" id="kdiss_re74" name="Dissociation constant of reaction re74" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_224" sboTerm="SBO:0000282" id="kdiss_re75" name="Dissociation constant of reaction re75" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_225" sboTerm="SBO:0000282" id="kdiss_re76" name="Dissociation constant of reaction re76" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_226" sboTerm="SBO:0000282" id="kdiss_re77" name="Dissociation constant of reaction re77" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_227" sboTerm="SBO:0000282" id="kdiss_re78" name="Dissociation constant of reaction re78" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_228" sboTerm="SBO:0000282" id="kdiss_re79" name="Dissociation constant of reaction re79" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_229" sboTerm="SBO:0000282" id="kdiss_re8" name="Dissociation constant of reaction re8" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_230" sboTerm="SBO:0000282" id="kdiss_re80" name="Dissociation constant of reaction re80" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_231" sboTerm="SBO:0000282" id="kdiss_re81" name="Dissociation constant of reaction re81" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_232" sboTerm="SBO:0000282" id="kdiss_re82" name="Dissociation constant of reaction re82" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_233" sboTerm="SBO:0000282" id="kdiss_re83" name="Dissociation constant of reaction re83" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_234" sboTerm="SBO:0000282" id="kdiss_re84" name="Dissociation constant of reaction re84" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_235" sboTerm="SBO:0000282" id="kdiss_re85" name="Dissociation constant of reaction re85" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_236" sboTerm="SBO:0000282" id="kdiss_re86" name="Dissociation constant of reaction re86" value="1" units="per_second" constant="true"/>
+      <parameter metaid="metaid_237" sboTerm="SBO:0000282" id="kdiss_re9" name="Dissociation constant of reaction re9" value="1" units="per_second" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_240" id="re1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_238" species="s1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_239" species="s7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re1 </ci>
+                <ci> s1 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re1 </ci>
+                <ci> s7 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_243" id="re10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_241" species="s4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_242" species="s7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re10 </ci>
+                <ci> s4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re10 </ci>
+                <ci> s7 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_246" id="re11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_244" species="s5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_245" species="s7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re11 </ci>
+                <ci> s5 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re11 </ci>
+                <ci> s7 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_249" id="re12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_247" species="s13" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_248" species="s14" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re12 </ci>
+                <ci> s13 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re12 </ci>
+                <ci> s14 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_252" id="re13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_250" species="s7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_251" species="s13" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re13 </ci>
+                <ci> s7 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re13 </ci>
+                <ci> s13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_255" id="re14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_253" species="s8" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_254" species="s13" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re14 </ci>
+                <ci> s8 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re14 </ci>
+                <ci> s13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_258" id="re15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_256" species="s9" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_257" species="s13" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re15 </ci>
+                <ci> s9 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re15 </ci>
+                <ci> s13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_261" id="re16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_259" species="s10" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_260" species="s13" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re16 </ci>
+                <ci> s10 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re16 </ci>
+                <ci> s13 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_264" id="re17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_262" species="s14" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_263" species="s15" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re17 </ci>
+                <ci> s14 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re17 </ci>
+                <ci> s15 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_267" id="re18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_265" species="s7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_266" species="s15" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re18 </ci>
+                <ci> s7 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re18 </ci>
+                <ci> s15 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_270" id="re19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_268" species="s14" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_269" species="s16" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re19 </ci>
+                <ci> s14 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re19 </ci>
+                <ci> s16 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_273" id="re2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_271" species="s2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_272" species="s7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re2 </ci>
+                <ci> s2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re2 </ci>
+                <ci> s7 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_276" id="re20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_274" species="s11" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_275" species="s16" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re20 </ci>
+                <ci> s11 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re20 </ci>
+                <ci> s16 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_279" id="re21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_277" species="s12" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_278" species="s16" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re21 </ci>
+                <ci> s12 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re21 </ci>
+                <ci> s16 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_282" id="re22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_280" species="s17" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_281" species="s18" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re22 </ci>
+                <ci> s17 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re22 </ci>
+                <ci> s18 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_285" id="re23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_283" species="s14" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_284" species="s17" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re23 </ci>
+                <ci> s14 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re23 </ci>
+                <ci> s17 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_288" id="re24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_286" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_287" species="s19" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re24 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re24 </ci>
+                <ci> s19 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_291" id="re25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_289" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_290" species="s20" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re25 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re25 </ci>
+                <ci> s20 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_294" id="re26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_292" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_293" species="s21" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re26 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re26 </ci>
+                <ci> s21 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_297" id="re27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_295" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_296" species="s22" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re27 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re27 </ci>
+                <ci> s22 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_300" id="re28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_298" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_299" species="s23" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re28 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re28 </ci>
+                <ci> s23 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_303" id="re29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_301" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_302" species="s24" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re29 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re29 </ci>
+                <ci> s24 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_306" id="re3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_304" species="s2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_305" species="s8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re3 </ci>
+                <ci> s2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re3 </ci>
+                <ci> s8 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_309" id="re30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_307" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_308" species="s25" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re30 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re30 </ci>
+                <ci> s25 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_312" id="re31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_310" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_311" species="s26" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re31 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re31 </ci>
+                <ci> s26 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_315" id="re32" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_313" species="s27" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_314" species="s28" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re32 </ci>
+                <ci> s27 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re32 </ci>
+                <ci> s28 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_318" id="re33" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_316" species="s18" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_317" species="s27" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re33 </ci>
+                <ci> s18 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re33 </ci>
+                <ci> s27 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_321" id="re34" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_319" species="s15" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_320" species="s19" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re34 </ci>
+                <ci> s15 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re34 </ci>
+                <ci> s19 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_324" id="re35" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_322" species="s15" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_323" species="s20" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re35 </ci>
+                <ci> s15 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re35 </ci>
+                <ci> s20 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_327" id="re36" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_325" species="s16" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_326" species="s26" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re36 </ci>
+                <ci> s16 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re36 </ci>
+                <ci> s26 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_330" id="re37" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_328" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_329" species="s29" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re37 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re37 </ci>
+                <ci> s29 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_333" id="re38" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_331" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_332" species="s30" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re38 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re38 </ci>
+                <ci> s30 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_336" id="re39" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_334" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_335" species="s31" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re39 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re39 </ci>
+                <ci> s31 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_339" id="re4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_337" species="s2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_338" species="s9" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re4 </ci>
+                <ci> s2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re4 </ci>
+                <ci> s9 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_342" id="re40" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_340" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_341" species="s32" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re40 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re40 </ci>
+                <ci> s32 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_345" id="re41" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_343" species="s20" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_344" species="s30" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re41 </ci>
+                <ci> s20 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re41 </ci>
+                <ci> s30 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_348" id="re42" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_346" species="s20" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_347" species="s31" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re42 </ci>
+                <ci> s20 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re42 </ci>
+                <ci> s31 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_351" id="re43" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_349" species="s20" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_350" species="s32" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re43 </ci>
+                <ci> s20 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re43 </ci>
+                <ci> s32 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_354" id="re44" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_352" species="s26" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_353" species="s30" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re44 </ci>
+                <ci> s26 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re44 </ci>
+                <ci> s30 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_357" id="re45" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_355" species="s33" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_356" species="s34" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re45 </ci>
+                <ci> s33 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re45 </ci>
+                <ci> s34 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_360" id="re46" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_358" species="s35" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_359" species="s36" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re46 </ci>
+                <ci> s35 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re46 </ci>
+                <ci> s36 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_363" id="re47" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_361" species="s37" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_362" species="s38" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re47 </ci>
+                <ci> s37 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re47 </ci>
+                <ci> s38 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_366" id="re48" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_364" species="s39" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_365" species="s40" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re48 </ci>
+                <ci> s39 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re48 </ci>
+                <ci> s40 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_369" id="re49" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_367" species="s41" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_368" species="s42" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re49 </ci>
+                <ci> s41 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re49 </ci>
+                <ci> s42 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_372" id="re5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_370" species="s6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_371" species="s12" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re5 </ci>
+                <ci> s6 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re5 </ci>
+                <ci> s12 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_375" id="re50" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_373" species="s43" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_374" species="s44" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re50 </ci>
+                <ci> s43 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re50 </ci>
+                <ci> s44 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_378" id="re51" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_376" species="s45" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_377" species="s46" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re51 </ci>
+                <ci> s45 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re51 </ci>
+                <ci> s46 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_381" id="re52" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_379" species="s47" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_380" species="s48" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re52 </ci>
+                <ci> s47 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re52 </ci>
+                <ci> s48 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_384" id="re53" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_382" species="s49" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_383" species="s50" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re53 </ci>
+                <ci> s49 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re53 </ci>
+                <ci> s50 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_387" id="re54" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_385" species="s51" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_386" species="s52" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re54 </ci>
+                <ci> s51 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re54 </ci>
+                <ci> s52 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_390" id="re55" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_388" species="s29" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_389" species="s37" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re55 </ci>
+                <ci> s29 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re55 </ci>
+                <ci> s37 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_393" id="re56" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_391" species="s29" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_392" species="s33" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re56 </ci>
+                <ci> s29 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re56 </ci>
+                <ci> s33 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_396" id="re57" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_394" species="s30" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_395" species="s35" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re57 </ci>
+                <ci> s30 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re57 </ci>
+                <ci> s35 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_399" id="re58" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_397" species="s30" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_398" species="s41" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re58 </ci>
+                <ci> s30 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re58 </ci>
+                <ci> s41 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_402" id="re59" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_400" species="s30" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_401" species="s47" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re59 </ci>
+                <ci> s30 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re59 </ci>
+                <ci> s47 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_405" id="re6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_403" species="s6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_404" species="s11" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re6 </ci>
+                <ci> s6 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re6 </ci>
+                <ci> s11 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_408" id="re60" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_406" species="s31" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_407" species="s33" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re60 </ci>
+                <ci> s31 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re60 </ci>
+                <ci> s33 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_411" id="re61" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_409" species="s31" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_410" species="s45" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re61 </ci>
+                <ci> s31 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re61 </ci>
+                <ci> s45 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_414" id="re62" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_412" species="s31" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_413" species="s39" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re62 </ci>
+                <ci> s31 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re62 </ci>
+                <ci> s39 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_417" id="re63" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_415" species="s32" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_416" species="s47" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re63 </ci>
+                <ci> s32 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re63 </ci>
+                <ci> s47 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_420" id="re64" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_418" species="s32" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_419" species="s45" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re64 </ci>
+                <ci> s32 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re64 </ci>
+                <ci> s45 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_423" id="re65" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_421" species="s32" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_422" species="s35" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re65 </ci>
+                <ci> s32 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re65 </ci>
+                <ci> s35 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_426" id="re66" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_424" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_425" species="s56" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re66 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re66 </ci>
+                <ci> s56 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_429" id="re67" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_427" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_428" species="s49" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re67 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re67 </ci>
+                <ci> s49 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_432" id="re68" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_430" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_431" species="s51" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re68 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re68 </ci>
+                <ci> s51 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_435" id="re69" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_433" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_434" species="s53" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re69 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re69 </ci>
+                <ci> s53 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_438" id="re7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_436" species="s6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_437" species="s10" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re7 </ci>
+                <ci> s6 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re7 </ci>
+                <ci> s10 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_441" id="re70" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_439" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_440" species="s54" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re70 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re70 </ci>
+                <ci> s54 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_444" id="re71" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_442" species="s28" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_443" species="s55" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re71 </ci>
+                <ci> s28 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re71 </ci>
+                <ci> s55 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_447" id="re72" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_445" species="s40" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_446" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re72 </ci>
+                <ci> s40 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re72 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_450" id="re73" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_448" species="s53" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_449" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re73 </ci>
+                <ci> s53 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re73 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_453" id="re74" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_451" species="s54" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_452" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re74 </ci>
+                <ci> s54 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re74 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_456" id="re75" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_454" species="s52" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_455" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re75 </ci>
+                <ci> s52 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re75 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_459" id="re76" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_457" species="s50" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_458" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re76 </ci>
+                <ci> s50 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re76 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_462" id="re77" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_460" species="s56" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_461" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re77 </ci>
+                <ci> s56 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re77 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_465" id="re78" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_463" species="s48" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_464" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re78 </ci>
+                <ci> s48 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re78 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_468" id="re79" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_466" species="s30" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_467" species="s43" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re79 </ci>
+                <ci> s30 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re79 </ci>
+                <ci> s43 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_471" id="re8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_469" species="s3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_470" species="s9" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re8 </ci>
+                <ci> s3 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re8 </ci>
+                <ci> s9 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_474" id="re80" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_472" species="s55" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_473" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re80 </ci>
+                <ci> s55 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re80 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_477" id="re81" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_475" species="s42" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_476" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re81 </ci>
+                <ci> s42 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re81 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_480" id="re82" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_478" species="s44" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_479" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re82 </ci>
+                <ci> s44 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re82 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_483" id="re83" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_481" species="s38" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_482" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re83 </ci>
+                <ci> s38 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re83 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_486" id="re84" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_484" species="s36" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_485" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re84 </ci>
+                <ci> s36 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re84 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_489" id="re85" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_487" species="s34" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_488" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re85 </ci>
+                <ci> s34 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re85 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_492" id="re86" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_490" species="s46" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_491" species="s57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re86 </ci>
+                <ci> s46 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re86 </ci>
+                <ci> s57 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_495" id="re9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_493" species="s3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_494" species="s7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kass_re9 </ci>
+                <ci> s3 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kdiss_re9 </ci>
+                <ci> s7 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

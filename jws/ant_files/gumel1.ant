@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *gumel1()
+
+  // Compartments and Species:
+  species $EXT, Su, Yu, Yv;
+
+  // Assignment Rules:
+  lambda := (beta1*Yu + beta2*Yv)/(Su + Yu + Yv);
+
+  // Reactions:
+  v_1: $EXT -> Su; mu*Lambda;
+  v_2: Su -> $EXT; mu*Su;
+  v_3: Su -> Yu; c*lambda*Su;
+  v_4: Yu -> $EXT; mu*Yu;
+  v_5: Yu -> $EXT; gamma_*Yu;
+  v_6: Yu -> Yv; tau*Yu;
+  v_7: Yv -> $EXT; d*Yv;
+  v_8: Yv -> $EXT; mu*Yv;
+
+  // Species initializations:
+  EXT = 1;
+  Su = 500;
+  Yu = 300;
+  Yv = 200;
+
+  // Variable initializations:
+  Lambda = 1000;
+  beta1 = 0.6;
+  beta2 = 0.3;
+  c = 15;
+  d = 0.01;
+  gamma_ = 0.4;
+  mu = 0.03125;
+  tau = 0.2;
+
+  // Other declarations:
+  var Lambda, beta1, beta2, c, d, gamma_, lambda, mu, tau;
+
+  // Display Names:
+  Su is "Susceptible";
+  Yu is "Untreated infected";
+  Yv is "Treated infected";
+end
+
+gumel1 is "gumel1"

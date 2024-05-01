@@ -1,0 +1,40 @@
+// Created by libAntimony v2.13.2
+model *kouril4()
+
+  // Compartments and Species:
+  species ADP, ATP, BPG, P3G, pep, pyr;
+
+  // Reactions:
+  v1: ATP + P3G -> ADP + BPG; -(VmPGK*(KeqPGK*BPG*ADP - ATP*P3G))/(KmPGKATP*KmPGKP3G*(1 + ADP/KmPGKADP + ATP/KmPGKATP)*(1 + BPG/KmPGKBPG + P3G/KmPGKP3G));
+  v2: ADP + pep -> ATP + pyr; kPK*ADP*pep;
+
+  // Species initializations:
+  ADP = 0;
+  ATP = 10;
+  BPG = 0;
+  P3G = 4;
+  pep = 5;
+  pyr = 0;
+
+  // Variable initializations:
+  KeqPGK = 3200;
+  KmPGKADP = 0.2;
+  KmPGKATP = 0.3;
+  KmPGKBPG = 0.003;
+  KmPGKP3G = 0.53;
+  VmPGK = 4.61;
+  kPK = 50;
+
+  // Other declarations:
+  var KeqPGK, KmPGKADP, KmPGKATP, KmPGKBPG, KmPGKP3G, VmPGK, kPK;
+
+  // CV terms:
+  ADP identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+               "http://identifiers.org/kegg.compound/C00008"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  BPG identity "http://identifiers.org/obo.chebi/CHEBI%3A16001",
+               "http://identifiers.org/kegg.compound/C00236"
+  v1 identity "http://identifiers.org/ec-code/2.7.2.3"
+  v2 identity "http://identifiers.org/ec-code/2.7.1.40"
+end

@@ -1,0 +1,454 @@
+// Created by libAntimony v2.13.2
+model *schilling1()
+
+  // Compartments and Species:
+  compartment cell;
+  species Delay01_mSHP1 in cell, Delay02_mSHP1 in cell, Delay03_mSHP1 in cell;
+  species Delay04_mSHP1 in cell, Delay05_mSHP1 in cell, Delay06_mSHP1 in cell;
+  species Delay07_mSHP1 in cell, Delay08_mSHP1 in cell, ERK1 in cell, ERK2 in cell;
+  species Epo in cell, EpoR in cell, JAK2 in cell, MEK1 in cell, MEK2 in cell;
+  species Raf in cell, SHP1 in cell, SOS in cell, actSHP1 in cell, mSHP1 in cell;
+  species mSOS in cell, pERK1 in cell, pERK2 in cell, pEpoR in cell, pJAK2 in cell;
+  species pMEK1 in cell, pMEK2 in cell, pRaf in cell, pSOS in cell, ppERK1 in cell;
+  species ppERK2 in cell, ppMEK1 in cell, ppMEK2 in cell;
+
+  // Assignment Rules:
+  rescaled_SOS := scale_SOS*SOS;
+  rescaled_mSOS := scale_SOS*mSOS;
+  rescaled_pEpoR := scale_pEpoR*pEpoR;
+  rescaled_pJAK2 := scale_pJAK2*pJAK2;
+  rescaled_pSOS := scale_SOS*pSOS;
+  rescaled_ppERK1 := scale_ppERK*ppERK1;
+  rescaled_ppERK2 := scale_ppERK*ppERK2;
+  rescaled_ppMEK1 := scale_ppMEK*ppMEK1;
+  rescaled_ppMEK2 := scale_ppMEK*ppMEK2;
+
+  // Reactions:
+  reaction_1: JAK2 => pJAK2; JAK2_phosphorylation_by_Epo*JAK2*Epo*cell;
+  reaction_10: Delay06_mSHP1 => Delay07_mSHP1; SHP1_delay*Delay06_mSHP1*cell;
+  reaction_11: Delay07_mSHP1 => Delay08_mSHP1; SHP1_delay*Delay07_mSHP1*cell;
+  reaction_12: Delay08_mSHP1 => actSHP1; SHP1_delay*Delay08_mSHP1*cell;
+  reaction_13: actSHP1 => SHP1; actSHP1_deactivation*actSHP1*cell;
+  reaction_14: pEpoR => EpoR; pEpoR_dephosphorylation_by_actSHP1*pEpoR*actSHP1*cell;
+  reaction_15: pJAK2 => JAK2; pJAK2_dephosphorylation_by_actSHP1*pJAK2*actSHP1*cell;
+  reaction_16: SOS => mSOS; SOS_recruitment_by_pEpoR*SOS*pEpoR*cell;
+  reaction_17: mSOS => SOS; mSOS_release_from_membrane*mSOS*cell;
+  reaction_18: Raf => pRaf; mSOS_induced_Raf_phosphorylation*Raf*mSOS*cell;
+  reaction_19: pRaf => Raf; pRaf_dephosphorylation*pRaf*cell;
+  reaction_2: EpoR => pEpoR; EpoR_phosphorylation_by_pJAK2*EpoR*pJAK2*cell;
+  reaction_20: MEK2 => pMEK2; First_MEK2_phosphorylation_by_pRaf*MEK2*pRaf*cell;
+  reaction_21: MEK1 => pMEK1; First_MEK1_phosphorylation_by_pRaf*MEK1*pRaf*cell;
+  reaction_22: pMEK2 => ppMEK2; Second_MEK2_phosphorylation_by_pRaf*pMEK2*pRaf*cell;
+  reaction_23: pMEK1 => ppMEK1; Second_MEK1_phosphorylation_by_pRaf*pMEK1*pRaf*cell;
+  reaction_24: ppMEK2 => pMEK2; First_MEK_dephosphorylation*ppMEK2*cell;
+  reaction_25: ppMEK1 => pMEK1; First_MEK_dephosphorylation*ppMEK1*cell;
+  reaction_26: pMEK2 => MEK2; Second_MEK_dephosphorylation*pMEK2*cell;
+  reaction_27: pMEK1 => MEK1; Second_MEK_dephosphorylation*pMEK1*cell;
+  reaction_28: ERK1 => pERK1; First_ERK1_phosphorylation_by_ppMEK*ERK1*ppMEK2*cell;
+  reaction_29: ERK2 => pERK2; First_ERK2_phosphorylation_by_ppMEK*ERK2*ppMEK2*cell;
+  reaction_3: SHP1 => mSHP1; SHP1_activation_by_pEpoR*SHP1*pEpoR*cell;
+  reaction_30: ERK1 => pERK1; First_ERK1_phosphorylation_by_ppMEK*ERK1*ppMEK1*cell;
+  reaction_31: ERK2 => pERK2; First_ERK2_phosphorylation_by_ppMEK*ERK2*ppMEK1*cell;
+  reaction_32: pERK1 => ppERK1; Second_ERK1_phosphorylation_by_ppMEK*pERK1*ppMEK2*cell;
+  reaction_33: pERK2 => ppERK2; Second_ERK2_phosphorylation_by_ppMEK*pERK2*ppMEK2*cell;
+  reaction_34: pERK1 => ppERK1; Second_ERK1_phosphorylation_by_ppMEK*pERK1*ppMEK1*cell;
+  reaction_35: pERK2 => ppERK2; Second_ERK2_phosphorylation_by_ppMEK*pERK2*ppMEK1*cell;
+  reaction_36: ppERK1 => pERK1; First_ERK_dephosphorylation*ppERK1*cell;
+  reaction_37: ppERK2 => pERK2; First_ERK_dephosphorylation*ppERK2*cell;
+  reaction_38: pERK1 => ERK1; Second_ERK_dephosphorylation*pERK1*cell;
+  reaction_39: pERK2 => ERK2; Second_ERK_dephosphorylation*pERK2*cell;
+  reaction_4: mSHP1 => Delay01_mSHP1; SHP1_delay*mSHP1*cell;
+  reaction_40: mSOS => pSOS; ppERK_neg_feedback_on_mSOS*mSOS*ppERK1*cell;
+  reaction_41: mSOS => pSOS; ppERK_neg_feedback_on_mSOS*mSOS*ppERK2*cell;
+  reaction_42: pSOS => SOS; pSOS_dephosphorylation*pSOS*cell;
+  reaction_5: Delay01_mSHP1 => Delay02_mSHP1; SHP1_delay*Delay01_mSHP1*cell;
+  reaction_6: Delay02_mSHP1 => Delay03_mSHP1; SHP1_delay*Delay02_mSHP1*cell;
+  reaction_7: Delay03_mSHP1 => Delay04_mSHP1; SHP1_delay*Delay03_mSHP1*cell;
+  reaction_8: Delay04_mSHP1 => Delay05_mSHP1; SHP1_delay*Delay04_mSHP1*cell;
+  reaction_9: Delay05_mSHP1 => Delay06_mSHP1; SHP1_delay*Delay05_mSHP1*cell;
+
+  // Species initializations:
+  Delay01_mSHP1 = 0;
+  Delay02_mSHP1 = 0;
+  Delay03_mSHP1 = 0;
+  Delay04_mSHP1 = 0;
+  Delay05_mSHP1 = 0;
+  Delay06_mSHP1 = 0;
+  Delay07_mSHP1 = 0;
+  Delay08_mSHP1 = 0;
+  ERK1 = 7/cell;
+  ERK2 = 21/cell;
+  Epo = 50/cell;
+  Epo has U_per_volume;
+  EpoR = 1/cell;
+  JAK2 = 2/cell;
+  MEK1 = 24/cell;
+  MEK2 = 11/cell;
+  Raf = 3.7719/cell;
+  SHP1 = 10.7991/cell;
+  SOS = 2.5101/cell;
+  actSHP1 = 0;
+  mSHP1 = 0;
+  mSOS = 0;
+  pERK1 = 0;
+  pERK2 = 0;
+  pEpoR = 0;
+  pJAK2 = 0;
+  pMEK1 = 0;
+  pMEK2 = 0;
+  pRaf = 0;
+  pSOS = 0;
+  ppERK1 = 0;
+  ppERK2 = 0;
+  ppMEK1 = 0;
+  ppMEK2 = 0;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  EpoR_phosphorylation_by_pJAK2 = 3.15714;
+  First_ERK1_phosphorylation_by_ppMEK = 2.4927;
+  First_ERK2_phosphorylation_by_ppMEK = 2.44361;
+  First_ERK_dephosphorylation = 39.0886;
+  First_MEK1_phosphorylation_by_pRaf = 0.687193;
+  First_MEK2_phosphorylation_by_pRaf = 3.11919;
+  First_MEK_dephosphorylation = 0.130937;
+  JAK2_phosphorylation_by_Epo = 0.0122149;
+  SHP1_activation_by_pEpoR = 0.408408;
+  SHP1_delay = 0.408408;
+  SOS_recruitment_by_pEpoR = 0.10271;
+  Second_ERK1_phosphorylation_by_ppMEK = 59.5251;
+  Second_ERK2_phosphorylation_by_ppMEK = 53.0816;
+  Second_ERK_dephosphorylation = 3.00453;
+  Second_MEK1_phosphorylation_by_pRaf = 667.957;
+  Second_MEK2_phosphorylation_by_pRaf = 215.158;
+  Second_MEK_dephosphorylation = 0.0732724;
+  actSHP1_deactivation = 0.0248773;
+  mSOS_induced_Raf_phosphorylation = 0.144515;
+  mSOS_release_from_membrane = 15.5956;
+  pEpoR_dephosphorylation_by_actSHP1 = 1.19995;
+  pJAK2_dephosphorylation_by_actSHP1 = 0.368384;
+  pRaf_dephosphorylation = 0.374228;
+  pSOS_dephosphorylation = 0.124944;
+  ppERK_neg_feedback_on_mSOS = 5122.68;
+  scale_SOS = 1.10228;
+  scale_pEpoR = 0.493312;
+  scale_pJAK2 = 0.21008;
+  scale_ppERK = 13.5981;
+  scale_ppMEK = 40.5364;
+
+  // Other declarations:
+  var rescaled_SOS, rescaled_mSOS, rescaled_pEpoR, rescaled_pJAK2, rescaled_pSOS;
+  var rescaled_ppERK1, rescaled_ppERK2, rescaled_ppMEK1, rescaled_ppMEK2;
+  const cell, EpoR_phosphorylation_by_pJAK2, First_ERK1_phosphorylation_by_ppMEK;
+  const First_ERK2_phosphorylation_by_ppMEK, First_ERK_dephosphorylation;
+  const First_MEK1_phosphorylation_by_pRaf, First_MEK2_phosphorylation_by_pRaf;
+  const First_MEK_dephosphorylation, JAK2_phosphorylation_by_Epo, SHP1_activation_by_pEpoR;
+  const SHP1_delay, SOS_recruitment_by_pEpoR, Second_ERK1_phosphorylation_by_ppMEK;
+  const Second_ERK2_phosphorylation_by_ppMEK, Second_ERK_dephosphorylation;
+  const Second_MEK1_phosphorylation_by_pRaf, Second_MEK2_phosphorylation_by_pRaf;
+  const Second_MEK_dephosphorylation, actSHP1_deactivation, mSOS_induced_Raf_phosphorylation;
+  const mSOS_release_from_membrane, pEpoR_dephosphorylation_by_actSHP1, pJAK2_dephosphorylation_by_actSHP1;
+  const pRaf_dephosphorylation, pSOS_dephosphorylation, ppERK_neg_feedback_on_mSOS;
+  const scale_SOS, scale_pEpoR, scale_pJAK2, scale_ppERK, scale_ppMEK;
+
+  // Unit definitions:
+  unit second_order_rate_constant = 1e-3 litre / (60 second * 1e4 item);
+  unit per_minute = 1 / 60 second;
+  unit arb_unit_per_10000_molecule = dimensionless * 1e-3 litre / 1e4 item;
+  unit arb_unit = dimensionless;
+  unit per_min_per_Uml = 1e-3 litre / (60 second * dimensionless);
+  unit U_per_ml = dimensionless / 1e-3 litre;
+  unit U = dimensionless;
+  unit ml = 1e-3 litre;
+  unit minute = 60 second;
+  unit _10E4_molecule = 1e4 item;
+  unit U_per_volume = dimensionless / litre;
+
+  // Display Names:
+  second_order_rate_constant is "second order rate constant";
+  per_minute is "per minute";
+  arb_unit_per_10000_molecule is "arb. unit. per 10000 molecules";
+  arb_unit is "arb. units";
+  per_min_per_Uml is "per min per (Uml)";
+  minute is "minutes";
+  _10E4_molecule is "10E4 molecules";
+
+  // SBO terms:
+  cell.sboTerm = 290
+  Delay01_mSHP1.sboTerm = 252
+  Delay02_mSHP1.sboTerm = 252
+  Delay03_mSHP1.sboTerm = 252
+  Delay04_mSHP1.sboTerm = 252
+  Delay05_mSHP1.sboTerm = 252
+  Delay06_mSHP1.sboTerm = 252
+  Delay07_mSHP1.sboTerm = 252
+  Delay08_mSHP1.sboTerm = 252
+  ERK1.sboTerm = 252
+  ERK2.sboTerm = 252
+  Epo.sboTerm = 252
+  EpoR.sboTerm = 252
+  JAK2.sboTerm = 252
+  MEK1.sboTerm = 252
+  MEK2.sboTerm = 252
+  Raf.sboTerm = 252
+  SHP1.sboTerm = 252
+  SOS.sboTerm = 252
+  actSHP1.sboTerm = 252
+  mSHP1.sboTerm = 252
+  mSOS.sboTerm = 252
+  pERK1.sboTerm = 252
+  pERK2.sboTerm = 252
+  pEpoR.sboTerm = 252
+  pJAK2.sboTerm = 252
+  pMEK1.sboTerm = 252
+  pMEK2.sboTerm = 252
+  pRaf.sboTerm = 252
+  pSOS.sboTerm = 252
+  ppERK1.sboTerm = 252
+  ppERK2.sboTerm = 252
+  ppMEK1.sboTerm = 252
+  ppMEK2.sboTerm = 252
+  EpoR_phosphorylation_by_pJAK2.sboTerm = 36
+  First_ERK1_phosphorylation_by_ppMEK.sboTerm = 36
+  First_ERK2_phosphorylation_by_ppMEK.sboTerm = 36
+  First_ERK_dephosphorylation.sboTerm = 35
+  First_MEK1_phosphorylation_by_pRaf.sboTerm = 36
+  First_MEK2_phosphorylation_by_pRaf.sboTerm = 36
+  First_MEK_dephosphorylation.sboTerm = 35
+  JAK2_phosphorylation_by_Epo.sboTerm = 36
+  SHP1_activation_by_pEpoR.sboTerm = 36
+  SHP1_delay.sboTerm = 35
+  SOS_recruitment_by_pEpoR.sboTerm = 36
+  Second_ERK1_phosphorylation_by_ppMEK.sboTerm = 36
+  Second_ERK2_phosphorylation_by_ppMEK.sboTerm = 36
+  Second_ERK_dephosphorylation.sboTerm = 35
+  Second_MEK1_phosphorylation_by_pRaf.sboTerm = 36
+  Second_MEK2_phosphorylation_by_pRaf.sboTerm = 36
+  Second_MEK_dephosphorylation.sboTerm = 35
+  actSHP1_deactivation.sboTerm = 35
+  mSOS_induced_Raf_phosphorylation.sboTerm = 36
+  mSOS_release_from_membrane.sboTerm = 35
+  pEpoR_dephosphorylation_by_actSHP1.sboTerm = 36
+  pJAK2_dephosphorylation_by_actSHP1.sboTerm = 36
+  pRaf_dephosphorylation.sboTerm = 35
+  pSOS_dephosphorylation.sboTerm = 35
+  ppERK_neg_feedback_on_mSOS.sboTerm = 36
+  rescaled_SOS.sboTerm = 196
+  scale_SOS.sboTerm = 381
+  rescaled_mSOS.sboTerm = 196
+  rescaled_pEpoR.sboTerm = 196
+  scale_pEpoR.sboTerm = 381
+  rescaled_pJAK2.sboTerm = 196
+  scale_pJAK2.sboTerm = 381
+  rescaled_pSOS.sboTerm = 196
+  rescaled_ppERK1.sboTerm = 196
+  scale_ppERK.sboTerm = 381
+  rescaled_ppERK2.sboTerm = 196
+  rescaled_ppMEK1.sboTerm = 196
+  scale_ppMEK.sboTerm = 381
+  rescaled_ppMEK2.sboTerm = 196
+  reaction_1.sboTerm = 216
+  reaction_10.sboTerm = 397
+  reaction_11.sboTerm = 397
+  reaction_12.sboTerm = 396
+  reaction_13.sboTerm = 396
+  reaction_14.sboTerm = 330
+  reaction_15.sboTerm = 330
+  reaction_16.sboTerm = 177
+  reaction_17.sboTerm = 180
+  reaction_18.sboTerm = 216
+  reaction_19.sboTerm = 330
+  reaction_2.sboTerm = 216
+  reaction_20.sboTerm = 216
+  reaction_21.sboTerm = 216
+  reaction_22.sboTerm = 216
+  reaction_23.sboTerm = 216
+  reaction_24.sboTerm = 330
+  reaction_25.sboTerm = 330
+  reaction_26.sboTerm = 330
+  reaction_27.sboTerm = 330
+  reaction_28.sboTerm = 216
+  reaction_29.sboTerm = 216
+  reaction_3.sboTerm = 177
+  reaction_30.sboTerm = 216
+  reaction_31.sboTerm = 216
+  reaction_32.sboTerm = 216
+  reaction_33.sboTerm = 216
+  reaction_34.sboTerm = 216
+  reaction_35.sboTerm = 216
+  reaction_36.sboTerm = 216
+  reaction_37.sboTerm = 216
+  reaction_38.sboTerm = 216
+  reaction_39.sboTerm = 216
+  reaction_4.sboTerm = 397
+  reaction_40.sboTerm = 216
+  reaction_41.sboTerm = 216
+  reaction_42.sboTerm = 330
+  reaction_5.sboTerm = 397
+  reaction_6.sboTerm = 397
+  reaction_7.sboTerm = 397
+  reaction_8.sboTerm = 397
+  reaction_9.sboTerm = 397
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/fma/FMA:83517",
+                "http://identifiers.org/go/GO:0005623"
+  Delay01_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay02_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay03_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay04_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay05_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay06_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  Delay07_mSHP1 version "http://identifiers.org/uniprot/P29351"
+  Delay08_mSHP1 hypernym "http://identifiers.org/uniprot/P29351"
+  ERK1 hypernym "http://identifiers.org/uniprot/Q63844"
+  ERK2 hypernym "http://identifiers.org/uniprot/P63085"
+  Epo hypernym "http://identifiers.org/go/GO:0005128",
+               "http://identifiers.org/uniprot/P07321"
+  EpoR hypernym "http://identifiers.org/uniprot/P14753"
+  JAK2 hypernym "http://identifiers.org/uniprot/Q62120"
+  MEK1 hypernym "http://identifiers.org/uniprot/P31938"
+  MEK2 hypernym "http://identifiers.org/uniprot/Q63932"
+  Raf hypernym "http://identifiers.org/uniprot/Q99N57"
+  SHP1 hypernym "http://identifiers.org/uniprot/P29351",
+                "http://identifiers.org/interpro/IPR000387"
+  SOS version "http://identifiers.org/uniprot/Q62245"
+  actSHP1 hypernym "http://identifiers.org/go/GO:0004725",
+                   "http://identifiers.org/uniprot/P29351"
+  mSHP1 hypernym "http://identifiers.org/go/GO:0019897",
+                 "http://identifiers.org/uniprot/P29351"
+  mSOS hypernym "http://identifiers.org/go/GO:0005085",
+                "http://identifiers.org/go/GO:0019897",
+                "http://identifiers.org/uniprot/Q62245"
+  pERK1 part "http://identifiers.org/kegg.compound/C00562",
+             "http://identifiers.org/uniprot/Q63844",
+             "http://identifiers.org/mod/MOD%3A00048"
+  pERK2 part "http://identifiers.org/uniprot/P63085",
+             "http://identifiers.org/kegg.compound/C00562",
+             "http://identifiers.org/mod/MOD%3A00048"
+  pEpoR hypernym "http://identifiers.org/mod/MOD%3A00048",
+                 "http://identifiers.org/uniprot/P14753",
+                 "http://identifiers.org/kegg.compound/C00562"
+  pJAK2 version "http://identifiers.org/uniprot/Q62120",
+                "http://identifiers.org/go/GO:0004713",
+                "http://identifiers.org/reactome/REACT_24029",
+                "http://identifiers.org/kegg.compound/C00562",
+                "http://identifiers.org/mod/MOD%3A00048"
+  pMEK1 hypernym "http://identifiers.org/uniprot/P31938",
+                 "http://identifiers.org/kegg.compound/C00562"
+  pMEK2 hypernym "http://identifiers.org/uniprot/Q63932",
+                 "http://identifiers.org/kegg.compound/C00562"
+  pRaf hypernym "http://identifiers.org/go/GO:0004709",
+                "http://identifiers.org/reactome/REACT_3158",
+                "http://identifiers.org/mod/MOD%3A00046",
+                "http://identifiers.org/kegg.compound/C00562",
+                "http://identifiers.org/uniprot/Q99N57"
+  pSOS hypernym "http://identifiers.org/kegg.compound/C00562",
+                "http://identifiers.org/uniprot/Q62245"
+  ppERK1 part "http://identifiers.org/uniprot/Q63844",
+              "http://identifiers.org/go/GO:0004707",
+              "http://identifiers.org/kegg.compound/C00562",
+              "http://identifiers.org/mod/MOD%3A00048",
+              "http://identifiers.org/mod/MOD%3A00047"
+  ppERK2 part "http://identifiers.org/kegg.compound/C00562",
+              "http://identifiers.org/go/GO:0004707",
+              "http://identifiers.org/uniprot/P63085",
+              "http://identifiers.org/mod/MOD%3A00048",
+              "http://identifiers.org/mod/MOD%3A00047"
+  ppMEK1 part "http://identifiers.org/uniprot/P31938",
+              "http://identifiers.org/kegg.compound/C00562",
+              "http://identifiers.org/go/GO:0004709",
+              "http://identifiers.org/mod/MOD%3A00047",
+              "http://identifiers.org/mod/MOD%3A00048"
+  ppMEK2 hypernym "http://identifiers.org/go/GO:0004709",
+                  "http://identifiers.org/mod/MOD%3A00047",
+                  "http://identifiers.org/mod/MOD%3A00048",
+                  "http://identifiers.org/uniprot/Q63932",
+                  "http://identifiers.org/kegg.compound/C00562"
+  reaction_1 hypernym "http://identifiers.org/reactome/REACT_23935.1",
+                      "http://identifiers.org/go/GO:0004715",
+                      "http://identifiers.org/go/GO:0010535",
+                      "http://identifiers.org/ec-code/2.7.10.2"
+  reaction_14 hypernym "http://identifiers.org/go/GO:0004725",
+                       "http://identifiers.org/ec-code/3.1.3.48"
+  reaction_15 hypernym "http://identifiers.org/ec-code/3.1.3.48",
+                       "http://identifiers.org/go/GO:0004725"
+  reaction_16 hypernym "http://identifiers.org/go/GO:0006461"
+  reaction_18 hypernym "http://identifiers.org/go/GO:0000185",
+                       "http://identifiers.org/go/GO:0006468"
+  reaction_19 hypernym "http://identifiers.org/go/GO:0051390",
+                       "http://identifiers.org/go/GO:0006470"
+  reaction_2 hypernym "http://identifiers.org/ec-code/2.7.10.2",
+                      "http://identifiers.org/go/GO:0004715"
+  reaction_20 parthood "http://identifiers.org/ec-code/2.7.11.25",
+                       "http://identifiers.org/go/GO:0004709",
+                       "http://identifiers.org/reactome/REACT_1727.5"
+  reaction_21 parthood "http://identifiers.org/go/GO:0004709",
+                       "http://identifiers.org/ec-code/2.7.11.25",
+                       "http://identifiers.org/reactome/REACT_545.5"
+  reaction_22 parthood "http://identifiers.org/ec-code/2.7.11.25",
+                       "http://identifiers.org/go/GO:0000186",
+                       "http://identifiers.org/reactome/REACT_1727.5"
+  reaction_23 parthood "http://identifiers.org/ec-code/2.7.11.25",
+                       "http://identifiers.org/go/GO:0000186",
+                       "http://identifiers.org/reactome/REACT_545.5"
+  reaction_24 hypernym "http://identifiers.org/go/GO:0051389",
+                       "http://identifiers.org/go/GO:0006470"
+  reaction_25 hypernym "http://identifiers.org/go/GO:0051389",
+                       "http://identifiers.org/go/GO:0006470"
+  reaction_26 hypernym "http://identifiers.org/go/GO:0006470"
+  reaction_27 hypernym "http://identifiers.org/go/GO:0006470"
+  reaction_28 parthood "http://identifiers.org/go/GO:0004708",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/reactome/REACT_136.4"
+  reaction_29 hypernym "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/go/GO:0004708"
+  reaction_3 hypernym "http://identifiers.org/go/GO:0051668",
+                      "http://identifiers.org/go/GO:0006461"
+  reaction_30 parthood "http://identifiers.org/go/GO:0004708",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/reactome/REACT_136.4"
+  reaction_31 hypernym "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/go/GO:0004708"
+  reaction_32 parthood "http://identifiers.org/go/GO:0000187",
+                       "http://identifiers.org/go/GO:0004708",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/reactome/REACT_136.4"
+  reaction_33 hypernym "http://identifiers.org/go/GO:0000187",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/go/GO:0004708"
+  reaction_34 parthood "http://identifiers.org/go/GO:0000187",
+                       "http://identifiers.org/go/GO:0004708",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/reactome/REACT_136.4"
+  reaction_35 hypernym "http://identifiers.org/go/GO:0000187",
+                       "http://identifiers.org/ec-code/2.7.12.2",
+                       "http://identifiers.org/go/GO:0004708"
+  reaction_36 parthood "http://identifiers.org/go/GO:0017017",
+                       "http://identifiers.org/go/GO:0000188",
+                       "http://identifiers.org/go/GO:0006470",
+                       "http://identifiers.org/reactome/REACT_12439.1"
+  reaction_37 hypernym "http://identifiers.org/go/GO:0017017",
+                       "http://identifiers.org/reactome/REACT_12439.1",
+                       "http://identifiers.org/go/GO:0006470",
+                       "http://identifiers.org/go/GO:0000188"
+  reaction_38 hypernym "http://identifiers.org/go/GO:0017017",
+                       "http://identifiers.org/reactome/REACT_12439.1",
+                       "http://identifiers.org/go/GO:0006470"
+  reaction_39 hypernym "http://identifiers.org/go/GO:0006470",
+                       "http://identifiers.org/reactome/REACT_12439.1",
+                       "http://identifiers.org/go/GO:0017017"
+  reaction_40 identity "http://identifiers.org/reactome/REACT_1420.5",
+                       "http://identifiers.org/go/GO:0006468",
+                       "http://identifiers.org/ec-code/2.7.11.24",
+                       "http://identifiers.org/go/GO:0004707"
+  reaction_41 identity "http://identifiers.org/reactome/REACT_1420.5",
+                       "http://identifiers.org/go/GO:0006468",
+                       "http://identifiers.org/ec-code/2.7.11.24",
+                       "http://identifiers.org/go/GO:0004707"
+  reaction_42 hypernym "http://identifiers.org/go/GO:0006470"
+end
+
+schilling1 is "schilling1"

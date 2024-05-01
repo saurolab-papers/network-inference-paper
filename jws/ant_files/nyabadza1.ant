@@ -1,0 +1,69 @@
+// Created by libAntimony v2.13.2
+model *nyabadza1()
+
+  // Compartments and Species:
+  species A, $EXT, I, S, T;
+
+  // Assignment Rules:
+  lambda := (beta_1*I + beta_2*T + beta_3*A)/(S + I + T + A);
+
+  // Reactions:
+  v_1: $EXT -> S; pi_;
+  v_10: $EXT -> T; b*q*epsilon*exp(-mu_0*tau)*I;
+  v_11: A -> T; rho*A;
+  v_12: $EXT -> T; b*q*epsilon*exp(-mu_0*tau)*A;
+  v_13: T -> $EXT; mu*T;
+  v_14: T -> A; nu_2*T;
+  v_15: $EXT -> T; b*q*epsilon*exp(-mu_0*tau)*T;
+  v_16: $EXT -> A; b*(1 - q)*epsilon*exp(-mu_0*tau)*T;
+  v_17: $EXT -> A; b*(1 - q)*epsilon*exp(-mu_0*tau)*I;
+  v_18: A -> $EXT; mu*A;
+  v_19: A -> $EXT; d*A;
+  v_2: $EXT -> S; b*(1 - epsilon)*exp(-mu_0*tau)*I;
+  v_20: $EXT -> A; b*(1 - q)*epsilon*exp(-mu_0*tau)*A;
+  v_3: $EXT -> S; b*(1 - epsilon)*exp(-mu_0*tau)*T;
+  v_4: $EXT -> S; b*(1 - epsilon)*exp(-mu_0*tau)*A;
+  v_5: S -> I; c*(1 - p_1)*lambda*S;
+  v_6: S -> $EXT; mu*S;
+  v_7: I -> $EXT; mu*I;
+  v_8: I -> T; sigma*I;
+  v_9: I -> A; nu_1*I;
+
+  // Species initializations:
+  A = 0;
+  EXT = 1;
+  I = 1000;
+  S = 500000;
+  T = 0;
+
+  // Variable initializations:
+  b = 0.03;
+  beta_1 = 0.004;
+  beta_2 = 0.04;
+  beta_3 = 0.3;
+  c = 4;
+  d = 0.4;
+  epsilon = 0.06;
+  mu = 0.02;
+  mu_0 = 0.001;
+  nu_1 = 0.6;
+  nu_2 = 0.7;
+  p_1 = 0.5;
+  pi_ = 10000;
+  q = 0.01;
+  rho = 0;
+  sigma = 0.09;
+  tau = 15;
+
+  // Other declarations:
+  var b, beta_1, beta_2, beta_3, c, d, epsilon, lambda, mu, mu_0, nu_1, nu_2;
+  var p_1, pi_, q, rho, sigma, tau;
+
+  // Display Names:
+  A is "AIDS";
+  I is "HIV infected";
+  S is "Susceptible";
+  T is "Treated";
+end
+
+nyabadza1 is "nyabadza1"

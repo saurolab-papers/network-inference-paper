@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="benary2" name="Wnt/b-catenin pathway model with FWD1 and HOS feedbacks (APC mutant m7)" substanceUnits="nmol" timeUnits="min" volumeUnits="L" extentUnits="nM">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Rate_Law_for_reaction_27" name="Rate Law for reaction_27">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> vmax </ci>
+            </bvar>
+            <bvar>
+              <ci> Km </ci>
+            </bvar>
+            <bvar>
+              <ci> Inhibitor </ci>
+            </bvar>
+            <bvar>
+              <ci> Ki </ci>
+            </bvar>
+            <bvar>
+              <ci> Substrate </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> vmax </ci>
+                <apply>
+                  <plus/>
+                  <ci> Km </ci>
+                  <apply>
+                    <divide/>
+                    <ci> Inhibitor </ci>
+                    <ci> Ki </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> Substrate </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_reaction_23" name="Rate Law for reaction_23">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> vmax </ci>
+            </bvar>
+            <bvar>
+              <ci> Activator </ci>
+            </bvar>
+            <bvar>
+              <ci> Km </ci>
+            </bvar>
+            <bvar>
+              <ci> vbasal </ci>
+            </bvar>
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> vmax </ci>
+                  <apply>
+                    <power/>
+                    <ci> Activator </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <ci> Km </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <ci> Activator </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> vbasal </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_reaction_20_25_29" name="Rate Law for reaction_20_25_29">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> parameter </ci>
+            </bvar>
+            <bvar>
+              <ci> Activator </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> parameter </ci>
+              <ci> Activator </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_reaction_18" name="Rate Law for reaction_18">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Km </ci>
+            </bvar>
+            <bvar>
+              <ci> Ki </ci>
+            </bvar>
+            <bvar>
+              <ci> vmax </ci>
+            </bvar>
+            <bvar>
+              <ci> Inhibitor </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <ci> vmax </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <ci> Km </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> Inhibitor </ci>
+                    <ci> Ki </ci>
+                  </apply>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_reaction_1" name="Rate Law for reaction_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Parameter </ci>
+            </bvar>
+            <bvar>
+              <ci> Stimulus </ci>
+            </bvar>
+            <bvar>
+              <ci> Species </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Parameter </ci>
+              <ci> Stimulus </ci>
+              <ci> Species </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_reaction_3" name="Rate Law for reaction_3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Modifier </ci>
+            </bvar>
+            <bvar>
+              <ci> Substrat </ci>
+            </bvar>
+            <bvar>
+              <ci> Parameter </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Parameter </ci>
+              <ci> Modifier </ci>
+              <ci> Substrat </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Constant_flux__irreversible" name="Constant flux (irreversible)">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <ci> v </ci>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="min" name="min">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="nmol" name="nmol">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-9" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="L" name="L">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="nM" name="nM">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-9" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_4" id="Compartment" name="Compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_5" id="APC" name="APC" compartment="Compartment" initialConcentration="97.89681" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="APC_Axin" name="APC/Axin" compartment="Compartment" initialConcentration="0.00096373" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="APC_Axin_GSK3" name="APC/Axin/GSK3" compartment="Compartment" initialConcentration="0.0048149" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="APC__Axin__GSK3" name="APC*/Axin*/GSK3" compartment="Compartment" initialConcentration="0.0096659" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="APC__Axin__GSK3_b_catenin" name="APC*/Axin*/GSK3/b-catenin" compartment="Compartment" initialConcentration="0.0020218" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="APC__Axin__GSK3_b_catenin_0" name="APC*/Axin*/GSK3/b-catenin*" compartment="Compartment" initialConcentration="0.020559" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_11" id="APC__Axin__GSK3_b_catenin__FWD1" name="APC*/Axin*/GSK3/b-catenin*/FWD1" compartment="Compartment" initialConcentration="0.00013859" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="APC__Axin__GSK3_b_catenin__HOS" name="APC*/Axin*/GSK3/b-catenin*/HOS" compartment="Compartment" initialConcentration="0.0018833" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="APC_b_catenin" name="APC/b-catenin" compartment="Compartment" initialConcentration="2.06314" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_14" id="Axin" name="Axin" compartment="Compartment" initialConcentration="0.00049222" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="CRD_BP" name="CRD-BP" compartment="Compartment" initialConcentration="0.0065127" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="CRD_BPmRNA" name="CRD-BPmRNA" compartment="Compartment" initialConcentration="3.68215e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="Dsha" name="Dsha" compartment="Compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="Dshi" name="Dshi" compartment="Compartment" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_19" id="FWD1" name="FWD1" compartment="Compartment" initialConcentration="0.006741" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="FWD1mRNA" name="FWD1mRNA" compartment="Compartment" initialConcentration="1.30327e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="GSK3" name="GSK3" compartment="Compartment" initialConcentration="49.96092" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="HOS" name="HOS" compartment="Compartment" initialConcentration="0.091598" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="HOSmRNA" name="HOSmRNA" compartment="Compartment" initialConcentration="0.00011602" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="TCF" name="TCF" compartment="Compartment" initialConcentration="8.14286" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="b_catenin" name="b-catenin" compartment="Compartment" initialConcentration="25.28956" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="b_catenin_TCF" name="b-catenin/TCF" compartment="Compartment" initialConcentration="6.86431" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="b_catenin__ub" name="b-catenin*_ub" compartment="Compartment" initialConcentration="0.9988" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_28" id="APCtotal" name="APCtotal" value="100" constant="true"/>
+      <parameter metaid="metaid_29" id="Dshtotal" name="Dshtotal" value="100" constant="true"/>
+      <parameter metaid="metaid_30" id="GSKtotal" name="GSKtotal" value="50" constant="true"/>
+      <parameter metaid="metaid_31" id="Kcrd_bp" name="Kcrd-bp" value="585" constant="true"/>
+      <parameter metaid="metaid_32" id="Kfwd1" name="Kfwd1" value="3e-06" constant="true"/>
+      <parameter metaid="metaid_33" id="Khos" name="Khos" value="1" constant="true"/>
+      <parameter metaid="metaid_34" id="ModelValue_27" name="Initial for lambda" value="0.05" constant="true"/>
+      <parameter metaid="metaid_35" id="k1" name="k1" value="0.182" constant="true"/>
+      <parameter metaid="metaid_36" id="k10" name="k10" value="206" constant="true"/>
+      <parameter metaid="metaid_37" id="k10b" name="k10b" value="206" constant="true"/>
+      <parameter metaid="metaid_38" id="k11" name="k11" value="0.417" constant="true"/>
+      <parameter metaid="metaid_39" id="k13" name="k13" value="0.000257" constant="true"/>
+      <parameter metaid="metaid_40" id="k15" name="k15" value="0.167" constant="true"/>
+      <parameter metaid="metaid_41" id="k16" name="k16" value="1" constant="true"/>
+      <parameter metaid="metaid_42" id="k16r" name="k16r" value="30" constant="true"/>
+      <parameter metaid="metaid_43" id="k17" name="k17" value="1" constant="true"/>
+      <parameter metaid="metaid_44" id="k17r" name="k17r" value="1200" constant="true"/>
+      <parameter metaid="metaid_45" id="k19" name="k19" value="0.00048" constant="true"/>
+      <parameter metaid="metaid_46" id="k2" name="k2" value="0.0182" constant="true"/>
+      <parameter metaid="metaid_47" id="k20" name="k20" value="30" constant="true"/>
+      <parameter metaid="metaid_48" id="k21" name="k21" value="0.038" constant="true"/>
+      <parameter metaid="metaid_49" id="k22" name="k22" value="206" constant="true"/>
+      <parameter metaid="metaid_50" id="k22b" name="k22b" value="206" constant="true"/>
+      <parameter metaid="metaid_51" id="k24" name="k24" value="0.00246" constant="true"/>
+      <parameter metaid="metaid_52" id="k25" name="k25" value="0.013" constant="true"/>
+      <parameter metaid="metaid_53" id="k26" name="k26" value="7.35e-05" constant="true"/>
+      <parameter metaid="metaid_54" id="k27" name="k27" value="0.003" constant="true"/>
+      <parameter metaid="metaid_55" id="k29" name="k29" value="30" constant="true"/>
+      <parameter metaid="metaid_56" id="k3" name="k3" value="0.05" constant="true"/>
+      <parameter metaid="metaid_57" id="k30" name="k30" value="0.0058" constant="true"/>
+      <parameter metaid="metaid_58" id="k32" name="k32" value="0.0028" constant="true"/>
+      <parameter metaid="metaid_59" id="k4" name="k4" value="0.267" constant="true"/>
+      <parameter metaid="metaid_60" id="k5" name="k5" value="0.133" constant="true"/>
+      <parameter metaid="metaid_61" id="k6" name="k6" value="0.0909" constant="true"/>
+      <parameter metaid="metaid_62" id="k6r" name="k6r" value="0.909" constant="true"/>
+      <parameter metaid="metaid_63" id="k7" name="k7" value="1" constant="true"/>
+      <parameter metaid="metaid_64" id="k7r" name="k7r" value="2000" constant="true"/>
+      <parameter metaid="metaid_65" id="k8" name="k8" value="206" constant="true"/>
+      <parameter metaid="metaid_66" id="k8r" name="k8r" value="123394" constant="true"/>
+      <parameter metaid="metaid_67" id="k9" name="k9" value="206" constant="true"/>
+      <parameter metaid="metaid_68" id="ki" name="ki" value="1.667" constant="true"/>
+      <parameter metaid="metaid_69" id="ki2" name="ki2" value="1.667" constant="true"/>
+      <parameter metaid="metaid_70" id="lambda" name="lambda" value="0.05" constant="true"/>
+      <parameter metaid="metaid_71" id="v12" name="v12" value="0.423" constant="true"/>
+      <parameter metaid="metaid_72" id="v14" name="v14" value="8.22e-05" constant="true"/>
+      <parameter metaid="metaid_73" id="v28" name="v28" value="1e-06" constant="true"/>
+      <parameter metaid="metaid_74" id="v31" name="v31" value="0.0228" constant="true"/>
+      <parameter metaid="metaid_75" id="vbasal" name="vbasal" value="9e-08" constant="true"/>
+      <parameter metaid="metaid_76" id="vmax18" name="vmax18" value="1e-06" constant="true"/>
+      <parameter metaid="metaid_77" id="vmax23" name="vmax23" value="4.22e-06" constant="true"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment metaid="metaid_78" symbol="Dsha">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment metaid="metaid_79" symbol="ModelValue_27">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> lambda </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule metaid="metaid_80" variable="APC_b_catenin">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <ci> APCtotal </ci>
+                  <ci> GSKtotal </ci>
+                </apply>
+                <ci> GSK3 </ci>
+              </apply>
+              <ci> APC_Axin </ci>
+            </apply>
+            <ci> APC </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_81" variable="Dshi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> Dshtotal </ci>
+            <ci> Dsha </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_82" variable="APC__Axin__GSK3_b_catenin_0">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> GSKtotal </ci>
+            <apply>
+              <plus/>
+              <ci> APC_Axin_GSK3 </ci>
+              <ci> APC__Axin__GSK3 </ci>
+              <ci> GSK3 </ci>
+              <ci> APC__Axin__GSK3_b_catenin </ci>
+              <ci> APC__Axin__GSK3_b_catenin__HOS </ci>
+              <ci> APC__Axin__GSK3_b_catenin__FWD1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_85" id="reaction_1" name="reaction_1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_83" species="Dshi" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_84" species="Dsha" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k1 </ci>
+              <piecewise>
+                <piece>
+                  <cn type="integer"> 0 </cn>
+                  <apply>
+                    <lt/>
+                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                    <cn type="integer"> 100000 </cn>
+                  </apply>
+                </piece>
+                <otherwise>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> ModelValue_27 </ci>
+                      </apply>
+                      <apply>
+                        <minus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <cn type="integer"> 100000 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                </otherwise>
+              </piecewise>
+              <ci> Dshi </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_90" id="reaction_10" name="reaction_10" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_86" species="APC__Axin__GSK3_b_catenin__HOS" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_87" species="APC__Axin__GSK3" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_88" species="b_catenin__ub" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_89" species="HOS" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k10 </ci>
+              <ci> APC__Axin__GSK3_b_catenin__HOS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_95" id="reaction_10b" name="reaction_10b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="APC__Axin__GSK3_b_catenin__FWD1" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_92" species="APC__Axin__GSK3" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_93" species="b_catenin__ub" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_94" species="FWD1" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k10b </ci>
+              <ci> APC__Axin__GSK3_b_catenin__FWD1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_97" id="reaction_11" name="reaction_11" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_96" species="b_catenin__ub" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k11 </ci>
+              <ci> b_catenin__ub </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="reaction_12" name="reaction_12" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_98" species="b_catenin" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v12 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_101" id="reaction_13" name="reaction_13" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_100" species="b_catenin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k13 </ci>
+              <ci> b_catenin </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_103" id="reaction_14" name="reaction_14" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_102" species="Axin" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v14 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_105" id="reaction_15" name="reaction_15" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="Axin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k15 </ci>
+              <ci> Axin </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_109" id="reaction_16" name="reaction_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_106" species="TCF" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_107" species="b_catenin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_108" species="b_catenin_TCF" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k16 </ci>
+                  <ci> TCF </ci>
+                  <ci> b_catenin </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k16r </ci>
+                  <ci> b_catenin_TCF </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_113" id="reaction_17" name="reaction_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_110" species="APC" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_111" species="b_catenin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_112" species="APC_b_catenin" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k17 </ci>
+                  <ci> APC </ci>
+                  <ci> b_catenin </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k17r </ci>
+                  <ci> APC_b_catenin </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_116" id="reaction_18" name="reaction_18" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_114" species="HOSmRNA" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_115" species="b_catenin_TCF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_18 </ci>
+                <ci> Khos </ci>
+                <ci> ki </ci>
+                <ci> vmax18 </ci>
+                <ci> b_catenin_TCF </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_118" id="reaction_19" name="reaction_19" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_117" species="HOSmRNA" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k19 </ci>
+              <ci> HOSmRNA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="reaction_2" name="reaction_2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_119" species="Dsha" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_120" species="Dshi" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k2 </ci>
+              <ci> Dsha </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_124" id="reaction_20" name="reaction_20" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_122" species="HOS" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_123" species="HOSmRNA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_20_25_29 </ci>
+                <ci> k20 </ci>
+                <ci> HOSmRNA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_126" id="reaction_21" name="reaction_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="HOS" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k21 </ci>
+              <ci> HOS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_130" id="reaction_22" name="reaction_22" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_127" species="HOS" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_128" species="APC__Axin__GSK3_b_catenin_0" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="APC__Axin__GSK3_b_catenin__HOS" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k22 </ci>
+              <ci> HOS </ci>
+              <ci> APC__Axin__GSK3_b_catenin_0 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_134" id="reaction_22b" name="reaction_22b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_131" species="FWD1" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_132" species="APC__Axin__GSK3_b_catenin_0" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_133" species="APC__Axin__GSK3_b_catenin__FWD1" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k22b </ci>
+              <ci> FWD1 </ci>
+              <ci> APC__Axin__GSK3_b_catenin_0 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_137" id="reaction_23" name="reaction_23" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="CRD_BPmRNA" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_136" species="b_catenin_TCF"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_23 </ci>
+                <ci> vmax23 </ci>
+                <ci> b_catenin_TCF </ci>
+                <ci> Kcrd_bp </ci>
+                <ci> vbasal </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_139" id="reaction_24" name="reaction_24" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_138" species="CRD_BPmRNA" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k24 </ci>
+              <ci> CRD_BPmRNA </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_142" id="reaction_25" name="reaction_25" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_140" species="CRD_BP" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_141" species="CRD_BPmRNA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_20_25_29 </ci>
+                <ci> k25 </ci>
+                <ci> CRD_BPmRNA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_144" id="reaction_26" name="reaction_26" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_143" species="CRD_BP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k26 </ci>
+              <ci> CRD_BP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_147" id="reaction_27" name="reaction_27" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_145" species="FWD1mRNA" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_146" species="CRD_BP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_27 </ci>
+                <ci> k27 </ci>
+                <ci> Kfwd1 </ci>
+                <ci> CRD_BP </ci>
+                <ci> ki2 </ci>
+                <ci> FWD1mRNA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_149" id="reaction_28" name="reaction_28" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_148" species="FWD1mRNA" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v28 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_152" id="reaction_29" name="reaction_29" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="FWD1" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_151" species="FWD1mRNA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_20_25_29 </ci>
+                <ci> k29 </ci>
+                <ci> FWD1mRNA </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_157" id="reaction_3" name="reaction_3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="APC_Axin_GSK3" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="APC_Axin" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_155" species="GSK3" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_156" species="Dsha"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_reaction_3 </ci>
+                <ci> Dsha </ci>
+                <ci> APC_Axin_GSK3 </ci>
+                <ci> k3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_159" id="reaction_30" name="reaction_30" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_158" species="FWD1" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k30 </ci>
+              <ci> FWD1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_161" id="reaction_31" name="reaction_31" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_160" species="TCF" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v31 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_163" id="reaction_32" name="reaction_32" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_162" species="TCF" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k32 </ci>
+              <ci> TCF </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_166" id="reaction_4" name="reaction_4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_164" species="APC_Axin_GSK3" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_165" species="APC__Axin__GSK3" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k4 </ci>
+              <ci> APC_Axin_GSK3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_169" id="reaction_5" name="reaction_5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_167" species="APC__Axin__GSK3" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_168" species="APC_Axin_GSK3" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k5 </ci>
+              <ci> APC__Axin__GSK3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_173" id="reaction_6" name="reaction_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_170" species="GSK3" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_171" species="APC_Axin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_172" species="APC_Axin_GSK3" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k6 </ci>
+                  <ci> GSK3 </ci>
+                  <ci> APC_Axin </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k6r </ci>
+                  <ci> APC_Axin_GSK3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_177" id="reaction_7" name="reaction_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_174" species="APC" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_175" species="Axin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_176" species="APC_Axin" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k7 </ci>
+                  <ci> APC </ci>
+                  <ci> Axin </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k7r </ci>
+                  <ci> APC_Axin </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_181" id="reaction_8" name="reaction_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_178" species="APC__Axin__GSK3" stoichiometry="1" constant="false"/>
+          <speciesReference metaid="metaid_179" species="b_catenin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_180" species="APC__Axin__GSK3_b_catenin" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k8 </ci>
+                  <ci> APC__Axin__GSK3 </ci>
+                  <ci> b_catenin </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k8r </ci>
+                  <ci> APC__Axin__GSK3_b_catenin </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_184" id="reaction_9" name="reaction_9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_182" species="APC__Axin__GSK3_b_catenin" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_183" species="APC__Axin__GSK3_b_catenin_0" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Compartment </ci>
+              <ci> k9 </ci>
+              <ci> APC__Axin__GSK3_b_catenin </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

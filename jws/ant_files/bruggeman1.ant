@@ -1,0 +1,161 @@
+// Created by libAntimony v2.13.2
+model *bruggeman1()
+
+  // Compartments and Species:
+  species ADP, ATP, AZGLN, AZGLU, $AZgln, $AZglu, GLN, GLU, GS, GSAMP, $KG;
+  species $NADP, $NADPH, $NH, PII, PIIUMP, PIIUMP2, PIIUMP3, $PPi, $UMP, $UTP;
+
+  // Reactions:
+  v_1: PII + $UTP -> PIIUMP + $PPi; kcatut*UT*UTP*PII/(Kutipii*Kututp*(1 + GLN/Kglnut)*(1 + UTP/Kututp + (PII + PIIUMP + PIIUMP2)/Kutipii + UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kututp) + PPi*UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kutippi*Kututp) + Kutpii*(PIIUMP + PIIUMP2 + PIIUMP3)/(Kutipii*Kutpiiump)));
+  v_10: GLN + $NADPH + $KG -> 2 GLU + $NADP; KG*NADPH*Vgog*GLN/(Kgoggln*Kgogkg*Kgognadph*(1 + NADP/Kgognadp + NADPH/Kgognadph)*(1 + AZGLU/Kgogaz)*(1 + KG/Kgogkg + GLU/Kgogglu)*(1 + GLN/Kgoggln + GLU/Kgogglu));
+  v_11: GLU + ATP + $NH -> GLN + ADP; aamp*camp*Vgs*(-(PI*ADP*GLN/Keq) + NH*ATP*GLU)/(Kgsatp*Kgsglu*Kgsnh*(1 + PI/Kgspi + ADP/Kgsadp + PI*ADP/(Kgsadp*Kgspi) + ATP/Kgsatp)*(1 + NH/Kgsnh + GLN/Kgsgln + NH*GLN/(Kgsgln*Kgsnh) + GLU/Kgsglu + NH*GLU/(Kgsglu*Kgsnh))*(1 + 12^n1amp*(GSAMP/(bamp*GStot))^n1amp)*(1 + 12^n2amp*(GSAMP/(damp*GStot))^n2amp));
+  v_12: GLU -> AZGLU; Vgludem*(-(AZGLU/Kgludemeq) + GLU)/(Kgludemglu*(1 + AZGLU/Kgludemazglu + GLU/Kgludemglu));
+  v_13: AZGLU -> $AZglu; Vazgludem*(-(azinter/Kazgludemeq) + AZGLU)/(Kazgludemazglu*(1 + azinter/Kazgludemazinter + AZGLU/Kazgludemazglu));
+  v_14: GLN -> AZGLN; Vglndem*(-(AZGLN/Kglndemeq) + GLN)/(Kglndemgln*(1 + AZGLN/Kglndemazgln + GLN/Kglndemgln));
+  v_15: AZGLN -> $AZgln; Vazglndem*(-(azinter/Kazglndemeq) + AZGLN)/(Kazglndemazgln*(1 + azinter/Kazglndemazinter + AZGLN/Kazglndemazgln));
+  v_16: ADP -> ATP; Vadp*ADP/(Kadp + ADP);
+  v_2: PIIUMP -> PII + $UMP; kcatur*UR*PIIUMP/(Kurpiiump*(1 + Kglnur/GLN)*(1 + (1 + UMP/Kurump)*(PIIUMP + PIIUMP2 + PIIUMP3)/Kurpiiump));
+  v_3: PIIUMP + $UTP -> PIIUMP2 + $PPi; kcatut*UT*UTP*PIIUMP/(Kutipii*Kututp*(1 + GLN/Kglnut)*(1 + UTP/Kututp + (PII + PIIUMP + PIIUMP2)/Kutipii + UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kututp) + PPi*UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kutippi*Kututp) + Kutpii*(PIIUMP + PIIUMP2 + PIIUMP3)/(Kutipii*Kutpiiump)));
+  v_4: PIIUMP2 -> PIIUMP + $UMP; kcatur*UR*PIIUMP2/(Kurpiiump*(1 + Kglnur/GLN)*(1 + (1 + UMP/Kurump)*(PIIUMP + PIIUMP2 + PIIUMP3)/Kurpiiump));
+  v_5: PIIUMP2 + $UTP -> PIIUMP3 + $PPi; kcatut*UT*UTP*PIIUMP2/(Kutipii*Kututp*(1 + GLN/Kglnut)*(1 + UTP/Kututp + (PII + PIIUMP + PIIUMP2)/Kutipii + UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kututp) + PPi*UTP*(PII + PIIUMP + PIIUMP2)/(Kutipii*Kutippi*Kututp) + Kutpii*(PIIUMP + PIIUMP2 + PIIUMP3)/(Kutipii*Kutpiiump)));
+  v_6: PIIUMP3 -> PIIUMP2 + $UMP; kcatur*UR*PIIUMP3/(Kurpiiump*(1 + Kglnur/GLN)*(1 + (1 + UMP/Kurump)*(PIIUMP + PIIUMP2 + PIIUMP3)/Kurpiiump));
+  v_7: GS -> GSAMP; Vad*GS*(b1*GLN/Kadgln + 3*a1*KG*PII/(Kadpiikg*Kd1*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))) + 3*c1*KG*GLN*PII/(Kadgln*Kadpiikg*Kd1*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))))/((Kadgs + GS)*(1 + GLN/Kadgln + 3*KG*PII/(Kadpiikg*Kd1*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))) + 3*KG*GLN*PII/(d1*Kadgln*Kadpiikg*Kd1*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3)))));
+  v_8: GSAMP -> GS; Vdead*GSAMP*(f1*GLN/Kdeadgln + 3*e1*KG*PII/(Kd1*Kdeadpiikg*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))) + 3*h1*KG*GLN*PII/(Kd1*Kdeadgln*Kdeadpiikg*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))) + g1*KG^3*PIIUMP3/(Kd1piiump*Kd2piiump*Kd3piiump*Kdeadpiiu*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))) + j1*KG^3*GLN*PIIUMP3/(Kd1piiump*Kd2piiump*Kd3piiump*Kdeadgln*Kdeadpiiu*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))) + 3*i1*KG^4*PII*PIIUMP3/(Kd1*Kd1piiump*Kd2piiump*Kd3piiump*Kdeadpiikg*Kdeadpiiu*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))) + 3*k1*KG^4*GLN*PII*PIIUMP3/(Kd1*Kd1piiump*Kd2piiump*Kd3piiump*Kdeadgln*Kdeadpiikg*Kdeadpiiu*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))))/((Kdeadgsa + GSAMP)*(1 + GLN/Kdeadgln + 3*KG*PII/(Kd1*Kdeadpiikg*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))) + 3*KG*GLN*PII/(Kd1*Kdeadgln*Kdeadpiikg*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))*l1) + KG^3*PIIUMP3/(Kd1piiump*Kd2piiump*Kd3piiump*Kdeadpiiu*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))) + KG^3*GLN*PIIUMP3/(Kd1piiump*Kd2piiump*Kd3piiump*Kdeadgln*Kdeadpiiu*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))*n1) + 3*KG^4*PII*PIIUMP3/(Kd1*Kd1piiump*Kd2piiump*Kd3piiump*Kdeadpiikg*Kdeadpiiu*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))*m1) + 3*KG^4*GLN*PII*PIIUMP3/(Kd1*Kd1piiump*Kd2piiump*Kd3piiump*Kdeadgln*Kdeadpiikg*Kdeadpiiu*(1 + 3*KG/Kd1 + 3*KG^2/(Kd1*Kd2) + KG^3/(Kd1*Kd2*Kd3))*(1 + 3*KG/Kd1piiump + 3*KG^2/(Kd1piiump*Kd2piiump) + KG^3/(Kd1piiump*Kd2piiump*Kd3piiump))*o1)));
+  v_9: $NH + $KG + $NADPH -> GLU + $NADP; Vgdh*(KG*NADPH*NH - NADP*GLU/Keqgdh)/(Kgdhkg*Kgdhnadph*Kgdhnh*(1 + NADP/Kgdhnadp + NADPH/Kgdhnadph)*(1 + NH/Kgdhnh)*(1 + KG/Kgdhkg + GLU/Kgdhglu));
+
+  // Species initializations:
+  ADP = 2.685;
+  ATP = 2.685;
+  AZGLN = 1;
+  AZGLU = 1;
+  AZgln = 1;
+  AZglu = 1;
+  GLN = 1;
+  GLU = 1;
+  GS = 0.014;
+  GSAMP = 0;
+  KG = 0.2;
+  NADP = 0.05;
+  NADPH = 0.15;
+  NH = 0.05;
+  PII = 0.003;
+  PIIUMP = 0;
+  PIIUMP2 = 0;
+  PIIUMP3 = 0;
+  PPi = 0.05;
+  UMP = 0.01;
+  UTP = 0.5;
+
+  // Variable initializations:
+  ATPtot = 5.37;
+  GStot = 0.014;
+  Kadgln = 0.9714;
+  Kadgs = 0.001703;
+  Kadp = 0.5;
+  Kadpiikg = 1.052e-05;
+  Kazglndemazgln = 1;
+  Kazglndemazinter = 0.5;
+  Kazglndemeq = 10000000000;
+  Kazgludemazglu = 0.3;
+  Kazgludemazinter = 0.5;
+  Kazgludemeq = 10000000000;
+  Kd1 = 0.005;
+  Kd1piiump = 0.025;
+  Kd2 = 0.15;
+  Kd2piiump = 0.15;
+  Kd3 = 0.15;
+  Kd3piiump = 0.15;
+  Kdeadgln = 0.04444;
+  Kdeadgsa = 0.0002015;
+  Kdeadpiikg = 2.274e-06;
+  Kdeadpiiu = 1.805e-05;
+  Keq = 460;
+  Keqgdh = 1290;
+  Kgdhazglu = 2.5;
+  Kgdhglu = 10;
+  Kgdhkg = 0.32;
+  Kgdhnadp = 0.042;
+  Kgdhnadph = 0.04;
+  Kgdhnh = 1.1;
+  Kglndemazgln = 0.25;
+  Kglndemeq = 10000000000;
+  Kglndemgln = 2;
+  Kglnur = 0.07;
+  Kglnut = 0.07;
+  Kgludemazglu = 0.5;
+  Kgludemeq = 10000000000;
+  Kgludemglu = 8;
+  Kgogaz = 0.65;
+  Kgoggln = 0.175;
+  Kgogglu = 11;
+  Kgogkg = 0.007;
+  Kgognadp = 0.0037;
+  Kgognadph = 0.0015;
+  Kgsadp = 0.0585;
+  Kgsatp = 0.35;
+  Kgseq = 460;
+  Kgsgln = 5.65;
+  Kgsglu = 4.1;
+  Kgsnh = 0.1;
+  Kgspi = 3.7;
+  Kurpiiump = 0.0023;
+  Kurump = 8.4;
+  Kutipii = 0.0018;
+  Kutippi = 0.1135;
+  Kutpii = 0.003;
+  Kutpiiump = 0.0035;
+  Kututp = 0.04;
+  PI = 10;
+  PIItot = 0.003;
+  UR = 0.0006;
+  UT = 0.0006;
+  Vad = 0.5;
+  Vadp = 100;
+  Vazglndem = 20;
+  Vazgludem = 30;
+  Vdead = 0.5;
+  Vgdh = 360;
+  Vglndem = 70;
+  Vgludem = 120;
+  Vgog = 85;
+  Vgs = 600;
+  a1 = 1e-22;
+  aamp = 10;
+  azinter = 0.1;
+  b1 = 0.5166;
+  bamp = 2.3667;
+  c1 = 0.5974;
+  camp = 0.1012;
+  d1 = 0.0387;
+  damp = 10.8688;
+  e1 = 1e-22;
+  f1 = 2.766;
+  g1 = 3.323;
+  h1 = 0.2148;
+  i1 = 1e-22;
+  j1 = 1e-22;
+  k1 = 1e-22;
+  kcatur = 5.5;
+  kcatut = 137;
+  l1 = 0.02316;
+  m1 = 0.8821;
+  n1 = 8.491;
+  n1amp = 1.1456;
+  n2amp = 19.2166;
+  o1 = 0.8791;
+
+  // Other declarations:
+  var ATPtot, GStot, Kadgln, Kadgs, Kadp, Kadpiikg, Kazglndemazgln, Kazglndemazinter;
+  var Kazglndemeq, Kazgludemazglu, Kazgludemazinter, Kazgludemeq, Kd1, Kd1piiump;
+  var Kd2, Kd2piiump, Kd3, Kd3piiump, Kdeadgln, Kdeadgsa, Kdeadpiikg, Kdeadpiiu;
+  var Keq, Keqgdh, Kgdhazglu, Kgdhglu, Kgdhkg, Kgdhnadp, Kgdhnadph, Kgdhnh;
+  var Kglndemazgln, Kglndemeq, Kglndemgln, Kglnur, Kglnut, Kgludemazglu, Kgludemeq;
+  var Kgludemglu, Kgogaz, Kgoggln, Kgogglu, Kgogkg, Kgognadp, Kgognadph, Kgsadp;
+  var Kgsatp, Kgseq, Kgsgln, Kgsglu, Kgsnh, Kgspi, Kurpiiump, Kurump, Kutipii;
+  var Kutippi, Kutpii, Kutpiiump, Kututp, PI, PIItot, UR, UT, Vad, Vadp, Vazglndem;
+  var Vazgludem, Vdead, Vgdh, Vglndem, Vgludem, Vgog, Vgs, a1, aamp, azinter;
+  var b1, bamp, c1, camp, d1, damp, e1, f1, g1, h1, i1, j1, k1, kcatur, kcatut;
+  var l1, m1, n1, n1amp, n2amp, o1;
+end
+
+bruggeman1 is "bruggeman1"

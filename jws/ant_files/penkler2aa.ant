@@ -1,0 +1,265 @@
+// Created by libAntimony v2.13.2
+model *penkler2aa()
+
+  // Compartments and Species:
+  species adpPF, atpPF, b13pgPF, dhapPF, f16bpPF, f6pPF, g3pPF, g6pPF, gapPF;
+  species glcEX, glcPF, glyEX, lacEX, lacPF, nadPF, nadhPF, p2gPF, p3gPF;
+  species pepPF, pyrEX, pyrPF;
+
+  // Assignment Rules:
+  hEX := pHConversionFactor/10^phEX;
+  hPF := pHConversionFactor/10^phPF;
+
+  // Reactions:
+  vPFvALD: f16bpPF -> dhapPF + gapPF; VPFvALD*f16bpPF*(1 - dhapPF*gapPF/(KeqPFvALD*Vpf*f16bpPF))/(Kf16bpPFvALD*(1 + dhapPF/(KdhapPFvALD*Vpf) + f16bpPF/(Kf16bpPFvALD*Vpf) + gapPF/(KgapPFvALD*Vpf) + dhapPF*gapPF/(KdhapPFvALD*KgapPFvALD*Vpf^2)));
+  vPFvATPASE: atpPF -> adpPF; VPFvATPASE*atpPF^5/(KmPFvATPASE^5*Vpf^4*(1 + atpPF^5/(KmPFvATPASE^5*Vpf^5)));
+  vPFvENO: p2gPF -> pepPF; VPFvENO*p2gPF*(1 - pepPF/(KeqPFvENO*p2gPF))/(Kp2gPFvENO*(1 + p2gPF/(Kp2gPFvENO*Vpf) + pepPF/(KpepPFvENO*Vpf)));
+  vPFvG3PDH: nadhPF + dhapPF -> g3pPF + nadPF; VfPFvG3PDH*dhapPF*nadhPF*(1 - g3pPF*nadPF/(KeqPFvG3PDH*dhapPF*nadhPF))/(KdhapPFvG3PDH*KnadhPFvG3PDH*Vpf*(1 + dhapPF/(KdhapPFvG3PDH*Vpf) + g3pPF/(Kg3pPFvG3PDH*Vpf))*(1 + nadhPF/(KnadhPFvG3PDH*Vpf) + nadPF/(KnadPFvG3PDH*Vpf)));
+  vPFvGAPDH: gapPF + nadPF -> nadhPF + b13pgPF; (-(VrPFvGAPDH*b13pgPF*nadhPF/(Kb13pgPFvGAPDH*KnadhPFvGAPDH*Vpf)) + VPFvGAPDH*gapPF*nadPF/(KgapPFvGAPDH*KnadPFvGAPDH*Vpf))/((1 + b13pgPF/(Kb13pgPFvGAPDH*Vpf) + gapPF/(KgapPFvGAPDH*Vpf))*(1 + nadhPF/(KnadhPFvGAPDH*Vpf) + nadPF/(KnadPFvGAPDH*Vpf)));
+  vPFvGLCtr: glcEX -> glcPF; Vpf*VPFvGLCtr*(glcEX/Vex - glcPF/Vpf)/(KmPFvGLCtr*(1 + glcEX/(KmPFvGLCtr*Vex) + glcPF/(KmPFvGLCtr*Vpf) + alphaPFvGLCtr*glcEX*glcPF/(KmPFvGLCtr^2*Vex*Vpf)));
+  vPFvGLYtr: g3pPF -> glyEX; kPFvGLYtr*Vpf*(g3pPF/Vpf - glyEX/Vex);
+  vPFvHK: glcPF + atpPF -> g6pPF + adpPF; VPFvHK*atpPF*(1 - adpPF*g6pPF/(KeqPFvHK*atpPF*glcPF))*glcPF/(KatpPFvHK*KglcPFvHK*Vpf*(1 + adpPF/(KadpPFvHK*Vpf) + atpPF/(KatpPFvHK*Vpf))*(1 + atpPF/(KiatpPFvHK*Vpf))*(1 + g6pPF/(Kg6pPFvHK*Vpf) + glcPF/(KglcPFvHK*Vpf)));
+  vPFvLACtr: lacPF -> lacEX; KdPFvLACtr*(1 - hEX*Vpf*lacEX/(hPF*Vex*lacPF))*lacPF + VPFvLACtr*(1 - hEX*Vpf*lacEX/(hPF*Vex*lacPF))*lacPF/(KlacPFvLACtr*(1 + lacEX/(KlacPFvLACtr*Vex) + lacPF/(KlacPFvLACtr*Vpf) + pyrEX/(KipyrPFvLACtr*Vex) + pyrPF/(KipyrPFvLACtr*Vpf)));
+  vPFvLDH: nadhPF + pyrPF -> lacPF + nadPF; (-(VrPFvLDH*lacPF*nadPF/(KlacPFvLDH*KnadPFvLDH*Vpf)) + VfPFvLDH*nadhPF*pyrPF/(KnadhPFvLDH*KpyrPFvLDH*Vpf))/((1 + nadhPF/(KnadhPFvLDH*Vpf) + nadPF/(KnadPFvLDH*Vpf))*(1 + lacPF/(KlacPFvLDH*Vpf) + pyrPF/(KpyrPFvLDH*Vpf)));
+  vPFvPFK: atpPF + f6pPF -> adpPF + f16bpPF; VPFvPFK*atpPF*f6pPF/(KatpPFvPFK*Kf6pPFvPFK*Vpf*(1 + atpPF/(KatpPFvPFK*Vpf))*(1 + adpPF/(KadpPFvPFK*Vpf) + atpPF/(KatpPFvPFK*Vpf))*(1 + f16bpPF/(Kf16bpPFvPFK*Vpf) + f6pPF/(Kf6pPFvPFK*Vpf)));
+  vPFvPGI: g6pPF -> f6pPF; VPFvPGI*(1 - f6pPF/(KeqPFvPGI*g6pPF))*g6pPF/(Kg6pPFvPGI*(1 + f6pPF/(Kf6pPFvPGI*Vpf) + g6pPF/(Kg6pPFvPGI*Vpf)));
+  vPFvPGK: adpPF + b13pgPF -> atpPF + p3gPF; KadpPFvPGK*Kb13pgPFvPGK*KeqPFvPGK*VrPFvPGK*atpPF*(-1 + KeqPFvPGK*adpPF*b13pgPF/(atpPF*p3gPF))*p3gPF/(KatpPFvPGK^2*Kp3gPFvPGK^2*Vpf*(1 + adpPF/(KadpPFvPGK*Vpf) + atpPF/(KatpPFvPGK*Vpf))*(1 + b13pgPF/(Kb13pgPFvPGK*Vpf) + p3gPF/(Kp3gPFvPGK*Vpf)));
+  vPFvPGM: p3gPF -> p2gPF; VPFvPGM*(1 - p2gPF/(KeqPFvPGM*p3gPF))*p3gPF/(Kp3gPFvPGM*(1 + p2gPF/(Kp2gPFvPGM*Vpf) + p3gPF/(Kp3gPFvPGM*Vpf)));
+  vPFvPK: adpPF + pepPF -> atpPF + pyrPF; VPFvPK*adpPF*pepPF/(KadpPFvPK*KpepPFvPK*Vpf*(1 + adpPF/(KadpPFvPK*Vpf))*(1 + pepPF/(KpepPFvPK*Vpf))*(1 + LPFvPK*(1 + (adpPF/(KiadpPFvPK*Vpf) + atpPF/(KiatpPFvPK*Vpf))^h)*(1 + (pepPF/(KipepPFvPK*Vpf) + pyrPF/(KipyrPFvPK*Vpf))^h)));
+  vPFvPYRtr: pyrPF -> pyrEX; KdPFvPYRtr*(1 - hEX*Vpf*pyrEX/(hPF*Vex*pyrPF))*pyrPF + VPFvPYRtr*(1 - hEX*Vpf*pyrEX/(hPF*Vex*pyrPF))*pyrPF/(KpyrPFvPYRtr*(1 + lacEX/(KilacPFvPYRtr*Vex) + lacPF/(KilacPFvPYRtr*Vpf) + pyrEX/(KpyrPFvPYRtr*Vex) + pyrPF/(KpyrPFvPYRtr*Vpf)));
+  vPFvTPI: dhapPF -> gapPF; VPFvTPI*dhapPF*(1 - gapPF/(KeqPFvTPI*dhapPF))/(KdhapPFvTPI*(1 + dhapPF/(KdhapPFvTPI*Vpf) + gapPF/(KgapPFvTPI*Vpf) + pepPF/(KipepPFvTPI*Vpf)));
+
+  // Species initializations:
+  adpPF = 0.042;
+  atpPF = 0.042;
+  b13pgPF = 0.0028;
+  dhapPF = 0.0028;
+  f16bpPF = 0.0028;
+  f6pPF = 0.0028;
+  g3pPF = 0.0028;
+  g6pPF = 0.0028;
+  gapPF = 0.0028;
+  glcEX = 13.1884;
+  glcPF = 0.0028;
+  glyEX = 0.0001;
+  lacEX = 0.0001;
+  lacPF = 0.0028;
+  nadPF = 0.042;
+  nadhPF = 0.042;
+  p2gPF = 0.0028;
+  p3gPF = 0.0028;
+  pepPF = 0.00028;
+  pyrEX = 0.0001;
+  pyrPF = 0.0028;
+
+  // Variable initializations:
+  ConcAdpPF = 0.0015;
+  ConcAtpPF = 0.0015;
+  ConcB13pgPF = 0.0001;
+  ConcDhapPF = 0.0001;
+  ConcF16bpPF = 0.0001;
+  ConcF6pPF = 0.0001;
+  ConcG6pPF = 0.0001;
+  ConcGapPF = 0.0001;
+  ConcGlcEX = 0.005;
+  ConcGlcPF = 0.0001;
+  ConcGly3pPF = 0.0001;
+  ConcGlyEX = 3.79121e-11;
+  ConcLacEX = 3.79121e-11;
+  ConcLacPF = 0.0001;
+  ConcNadPF = 0.0015;
+  ConcNadhPF = 0.0015;
+  ConcP2gPF = 0.0001;
+  ConcP3gPF = 0.0001;
+  ConcPepPF = 1e-05;
+  ConcPyrEX = 3.79121e-11;
+  ConcPyrPF = 0.0001;
+  KadpPFvHK = 0.000846735;
+  KadpPFvPFK = 0.00074176;
+  KadpPFvPGK = 0.00015;
+  KadpPFvPK = 0.000317;
+  KatpPFvHK = 0.00069647;
+  KatpPFvPFK = 0.0007862;
+  KatpPFvPGK = 0.00077;
+  Kb13pgPFvGAPDH = 2.359e-05;
+  Kb13pgPFvPGK = 1.34e-05;
+  KdPFvLACtr = 0.005;
+  KdPFvPYRtr = 0.0007;
+  KdhapPFvALD = 0.00011;
+  KdhapPFvG3PDH = 0.00034;
+  KdhapPFvTPI = 0.001954;
+  KeqPFvALD = 9e-05;
+  KeqPFvENO = 4.6;
+  KeqPFvG3PDH = 32600;
+  KeqPFvHK = 1310;
+  KeqPFvPGI = 0.33;
+  KeqPFvPGK = 3200;
+  KeqPFvPGM = 0.19;
+  KeqPFvTPI = 0.04545;
+  Kf16bpPFvALD = 6.84e-05;
+  Kf16bpPFvPFK = 0.003626;
+  Kf6pPFvPFK = 0.00109454;
+  Kf6pPFvPGI = 9.6651e-05;
+  Kg3pPFvG3PDH = 0.00398;
+  Kg6pPFvHK = 4.3e-05;
+  Kg6pPFvPGI = 0.00100774;
+  KgapPFvALD = 4.6e-05;
+  KgapPFvGAPDH = 0.000917;
+  KgapPFvTPI = 0.000337;
+  KglcPFvHK = 0.000168613;
+  KiadpPFvPK = 0.002;
+  KiatpPFvHK = 0.026;
+  KiatpPFvPK = 0.00182;
+  KilacPFvPYRtr = 0.000358;
+  KipepPFvPK = 0.00292;
+  KipepPFvTPI = 1.59e-05;
+  KipyrPFvLACtr = 0.00163;
+  KipyrPFvPK = 0.105;
+  KlacPFvLACtr = 0.0038;
+  KlacPFvLDH = 0.003611;
+  KmPFvATPASE = 0.0045;
+  KmPFvGLCtr = 0.000213;
+  KnadPFvG3PDH = 0.00051;
+  KnadPFvGAPDH = 0.0005662;
+  KnadPFvLDH = 0.000234;
+  KnadhPFvG3PDH = 9e-05;
+  KnadhPFvGAPDH = 2.87e-05;
+  KnadhPFvLDH = 4.6e-05;
+  Kp2gPFvENO = 0.000521;
+  Kp2gPFvPGM = 0.000318;
+  Kp3gPFvPGK = 0.000267;
+  Kp3gPFvPGM = 0.00173;
+  KpepPFvENO = 0.00129;
+  KpepPFvPK = 0.000406;
+  KpyrPFvLDH = 0.000133;
+  KpyrPFvPYRtr = 0.0157;
+  LPFvPK = 0.255;
+  VPFvALD = 0.0569593147718;
+  VPFvATPASE = 0.345;
+  VPFvENO = 0.286295503195;
+  VPFvGAPDH = 0.656263383259;
+  VPFvGLCtr = 0.0468;
+  VPFvHK = 0.083;
+  VPFvLACtr = 0.598;
+  VPFvPFK = 0.41;
+  VPFvPGI = 0.800428265477;
+  VPFvPGM = 0.186937901488;
+  VPFvPK = 0.762;
+  VPFvPYRtr = 0.216;
+  VPFvTPI = 1.50599571726;
+  Vex = 2637.68;
+  VfPFvG3PDH = 0.012;
+  VfPFvLDH = 0.542612419668;
+  Vpf = 28;
+  VrPFvGAPDH = 0.243199143455;
+  VrPFvLDH = 0.290792291203;
+  VrPFvPGK = 0.353533190557;
+  alphaPFvGLCtr = 0.91;
+  h = 4;
+  pHConversionFactor = 1;
+  phEX = 7.1;
+  phPF = 7.2;
+  kPFvGLYtr = 2;
+
+  // Other declarations:
+  var ConcAdpPF, ConcAtpPF, ConcB13pgPF, ConcDhapPF, ConcF16bpPF, ConcF6pPF;
+  var ConcG6pPF, ConcGapPF, ConcGlcEX, ConcGlcPF, ConcGly3pPF, ConcGlyEX;
+  var ConcLacEX, ConcLacPF, ConcNadPF, ConcNadhPF, ConcP2gPF, ConcP3gPF, ConcPepPF;
+  var ConcPyrEX, ConcPyrPF, KadpPFvHK, KadpPFvPFK, KadpPFvPGK, KadpPFvPK;
+  var KatpPFvHK, KatpPFvPFK, KatpPFvPGK, Kb13pgPFvGAPDH, Kb13pgPFvPGK, KdPFvLACtr;
+  var KdPFvPYRtr, KdhapPFvALD, KdhapPFvG3PDH, KdhapPFvTPI, KeqPFvALD, KeqPFvENO;
+  var KeqPFvG3PDH, KeqPFvHK, KeqPFvPGI, KeqPFvPGK, KeqPFvPGM, KeqPFvTPI, Kf16bpPFvALD;
+  var Kf16bpPFvPFK, Kf6pPFvPFK, Kf6pPFvPGI, Kg3pPFvG3PDH, Kg6pPFvHK, Kg6pPFvPGI;
+  var KgapPFvALD, KgapPFvGAPDH, KgapPFvTPI, KglcPFvHK, KiadpPFvPK, KiatpPFvHK;
+  var KiatpPFvPK, KilacPFvPYRtr, KipepPFvPK, KipepPFvTPI, KipyrPFvLACtr, KipyrPFvPK;
+  var KlacPFvLACtr, KlacPFvLDH, KmPFvATPASE, KmPFvGLCtr, KnadPFvG3PDH, KnadPFvGAPDH;
+  var KnadPFvLDH, KnadhPFvG3PDH, KnadhPFvGAPDH, KnadhPFvLDH, Kp2gPFvENO, Kp2gPFvPGM;
+  var Kp3gPFvPGK, Kp3gPFvPGM, KpepPFvENO, KpepPFvPK, KpyrPFvLDH, KpyrPFvPYRtr;
+  var LPFvPK, VPFvALD, VPFvATPASE, VPFvENO, VPFvGAPDH, VPFvGLCtr, VPFvHK;
+  var VPFvLACtr, VPFvPFK, VPFvPGI, VPFvPGM, VPFvPK, VPFvPYRtr, VPFvTPI, Vex;
+  var VfPFvG3PDH, VfPFvLDH, Vpf, VrPFvGAPDH, VrPFvLDH, VrPFvPGK, alphaPFvGLCtr;
+  var h, hEX, pHConversionFactor, phEX, hPF, phPF, kPFvGLYtr;
+
+  // CV terms:
+  adpPF identity "http://identifiers.org/3dmet/B01130",
+                 "http://identifiers.org/kegg.compound/C00008",
+                 "http://identifiers.org/pubchem.substance/3310"
+  atpPF identity "http://identifiers.org/3dmet/B01125",
+                 "http://identifiers.org/cas/56-65-5",
+                 "http://identifiers.org/kegg.compound/C00002",
+                 "http://identifiers.org/pubchem.substance/3304"
+  dhapPF identity "http://identifiers.org/3dmet/B00029",
+                  "http://identifiers.org/pubchem.substance/3411",
+                  "http://identifiers.org/kegg.compound/C00111"
+  f16bpPF identity "http://identifiers.org/kegg.compound/C00354",
+                   "http://identifiers.org/pubchem.substance/3647",
+                   "http://identifiers.org/3dmet/B04673",
+                   "http://identifiers.org/cas/488-69-7"
+  f6pPF identity "http://identifiers.org/pubchem.substance/5887",
+                 "http://identifiers.org/kegg.compound/C02976"
+  g3pPF identity "http://identifiers.org/3dmet/B01157",
+                 "http://identifiers.org/kegg.compound/C00093",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A15978",
+                 "http://identifiers.org/pubchem.substance/3393"
+  g6pPF identity "http://identifiers.org/3dmet/B04630",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A4170",
+                 "http://identifiers.org/pubchem.substance/3392",
+                 "http://identifiers.org/kegg.compound/C00092",
+                 "http://identifiers.org/cas/56-73-5"
+  gapPF identity "http://identifiers.org/obo.chebi/CHEBI%3A29052",
+                 "http://identifiers.org/cas/591-57-1",
+                 "http://identifiers.org/3dmet/B01163",
+                 "http://identifiers.org/kegg.compound/C00118",
+                 "http://identifiers.org/pubchem.substance/3418"
+  glcEX identity "http://identifiers.org/obo.chebi/CHEBI%3A17634"
+  glcPF identity "http://identifiers.org/obo.chebi/CHEBI%3A17634"
+  glyEX identity "http://identifiers.org/cas/56-81-5",
+                 "http://identifiers.org/3dmet/B00032",
+                 "http://identifiers.org/pubchem.substance/3416",
+                 "http://identifiers.org/kegg.compound/C00116",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A17754"
+  lacEX identity "http://identifiers.org/kegg.compound/C01432",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A28358",
+                 "http://identifiers.org/cas/50-21-5",
+                 "http://identifiers.org/pubchem.substance/4615"
+  lacPF identity "http://identifiers.org/obo.chebi/CHEBI%3A28358",
+                 "http://identifiers.org/cas/50-21-5",
+                 "http://identifiers.org/pubchem.substance/4615",
+                 "http://identifiers.org/kegg.compound/C01432"
+  nadPF identity "http://identifiers.org/3dmet/B01126",
+                 "http://identifiers.org/kegg.compound/C00003",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A15846",
+                 "http://identifiers.org/pubchem.substance/3305",
+                 "http://identifiers.org/cas/53-84-9"
+  nadhPF identity "http://identifiers.org/obo.chebi/CHEBI%3A16908",
+                  "http://identifiers.org/pubchem.substance/3306",
+                  "http://identifiers.org/kegg.compound/C00004",
+                  "http://identifiers.org/3dmet/B01127",
+                  "http://identifiers.org/cas/58-68-4"
+  p2gPF identity "http://identifiers.org/kegg.compound/C00631",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A17835",
+                 "http://identifiers.org/pubchem.substance/3904",
+                 "http://identifiers.org/3dmet/B01295"
+  p3gPF identity "http://identifiers.org/obo.chebi/CHEBI%3A17794",
+                 "http://identifiers.org/pubchem.substance/3497",
+                 "http://identifiers.org/3dmet/B01185",
+                 "http://identifiers.org/kegg.compound/C00197"
+  pepPF identity "http://identifiers.org/pubchem.substance/3374",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A44897",
+                 "http://identifiers.org/cas/138-08-9",
+                 "http://identifiers.org/kegg.compound/C00074",
+                 "http://identifiers.org/3dmet/B00019"
+  pyrEX identity "http://identifiers.org/3dmet/B00006",
+                 "http://identifiers.org/kegg.compound/C00022",
+                 "http://identifiers.org/cas/127-17-3",
+                 "http://identifiers.org/pubchem.substance/3324",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+  pyrPF identity "http://identifiers.org/kegg.compound/C00022",
+                 "http://identifiers.org/obo.chebi/CHEBI%3A32816",
+                 "http://identifiers.org/cas/127-17-3",
+                 "http://identifiers.org/3dmet/B00006",
+                 "http://identifiers.org/pubchem.substance/3324"
+  vPFvALD identity "http://identifiers.org/ec-code/4.1.2.13"
+  vPFvENO identity "http://identifiers.org/ec-code/4.2.1.11"
+  vPFvHK identity "http://identifiers.org/ec-code/2.7.1.1"
+end

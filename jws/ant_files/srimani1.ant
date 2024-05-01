@@ -1,0 +1,49 @@
+// Created by libAntimony v2.13.2
+model *srimani1()
+
+  // Compartments and Species:
+  species ain, c, ca, cap, n;
+
+  // Reactions:
+  v1:  -> c; k1*c/(V1 + c);
+  v2: c + ain -> ca; kf*c*ain;
+  v3: c -> ; ku*c;
+  v4: ca -> ain + c; kb*ca;
+  v5:  -> ain; kin*piecewise(a0, aStart < time < (aStart + d), 0);
+  v6: ain -> ; kout*ain;
+  v7: cap -> ain; kr*cap;
+  v8: ca -> cap; kd*ca;
+  v9:  -> n; (mu0*c/(V + c))*n*(1 - n/nm);
+
+  // Species initializations:
+  ain = 0;
+  c = 0.1;
+  ca = 0;
+  cap = 0;
+  n = 0.001;
+
+  // Variable initializations:
+  V = 1.5;
+  V1 = 0.2;
+  Vc = 1e-09;
+  Vm = 0.0001;
+  a0 = 20.62;
+  aStart = 0;
+  d = 120;
+  k1 = 0.2;
+  kb = 1.5;
+  kd = 0.1;
+  kf = 2.5;
+  kin = 0.007;
+  kout = 0.01;
+  kr = 0.02;
+  ku = 0.1;
+  mu0 = 0.05;
+  nm = 1;
+
+  // Other declarations:
+  var V, V1, Vc, Vm, a0, aStart, d, k1, kb, kd, kf, kin, kout, kr, ku, mu0;
+  var nm;
+end
+
+srimani1 is "srimani1"

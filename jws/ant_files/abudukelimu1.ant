@@ -1,0 +1,139 @@
+// Created by libAntimony v2.13.2
+function Rate_Law_for_BAFF_clipoff(k1, s1, s2)
+  k1*s1*s2;
+end
+
+Rate_Law_for_BAFF_clipoff is "Rate Law for BAFF clipoff"
+
+function Rate_Law_for_B_FLC_production(k1, s1, s2)
+  k1*s1*s2;
+end
+
+Rate_Law_for_B_FLC_production is "Rate Law for B_FLC_production"
+
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+
+model *abudukelimu1()
+
+  // Compartments and Species:
+  compartment compartment_;
+  species $Bcells in compartment_, CRA in compartment_, DyingBacteria in compartment_;
+  species DyingFibr in compartment_, FLC in compartment_, $FLC_drug in compartment_;
+  species HealthyBacteria in compartment_, HealthyFibr in compartment_, MMP7 in compartment_;
+  species MMP8 in compartment_, MastCells in compartment_, MastCells_FLC in compartment_;
+  species MastCells_FLC_CRA in compartment_, Protease in compartment_, TNFalpha in compartment_;
+  species $Total_space in compartment_, $drug in compartment_, $free_space in compartment_;
+  species washout in compartment_;
+
+  // Assignment Rules:
+  Total_space := Metabolite_18;
+  free_space := Metabolite_18 - (HealthyFibr + DyingFibr);
+
+  // Reactions:
+  R10_drug_washout: washout + $drug => washout; compartment_*R10_drug_washout_k1*drug*washout;
+  R11_FLC_drug_binding: FLC + $drug -> $FLC_drug; compartment_*(R11_FLC_drug_binding_k1*drug*FLC - R11_FLC_drug_binding_k2*FLC_drug);
+  R12_FLC_drug_washout: washout + $FLC_drug => washout; compartment_*R12_FLC_drug_washout_k1*FLC_drug*washout;
+  R13_CRA_Secretion_DyingFibr: DyingFibr => CRA; compartment_*R13_CRA_Secretion_DyingFibr_k1*DyingFibr;
+  R14_CRAClipOffHealthyFibr: MMP7 + HealthyFibr => HealthyFibr + MMP7 + CRA; compartment_*Rate_Law_for_BAFF_clipoff(R14_CRAClipOffHealthyFibr_k1, HealthyFibr, MMP7);
+  R15_DyingFibroblast_death: DyingFibr => ; compartment_*R15_DyingFibroblast_death_k1*DyingFibr;
+  R16_Healthy_to_Dying_fibroblast: TNFalpha + HealthyFibr => TNFalpha + DyingFibr; compartment_*R16_Healthy_to_Dying_fibroblast_k1*HealthyFibr*TNFalpha;
+  R17_HealthyBacteriaProduction: HealthyBacteria => 2 HealthyBacteria; compartment_*R17_HealthyBacteriaProduction_k1*HealthyBacteria;
+  R18_HealthyFibProduction: HealthyFibr + $free_space => 2 HealthyFibr; compartment_*R18_HealthyFibProduction_k1*free_space*HealthyFibr;
+  R19_MMP7_release_HealthyFibr: HealthyFibr => MMP7 + HealthyFibr; compartment_*R19_MMP7_release_HealthyFibr_k1*HealthyFibr;
+  R1_CRA_degradation: MMP8 + CRA => MMP8; compartment_*R1_CRA_degradation_k1*CRA*MMP8;
+  R20_MMP8_release_HealthyFibr: HealthyFibr => 100 MMP8 + HealthyFibr; compartment_*R20_MMP8_release_HealthyFibr_k1*HealthyFibr;
+  R21_Healthy_to_Dying_Bacteria: Protease + HealthyBacteria => Protease + DyingBacteria; compartment_*R21_Healthy_to_Dying_Bacteria_k1*HealthyBacteria*Protease;
+  R22_CRA_binding: CRA + MastCells_FLC -> MastCells_FLC_CRA; compartment_*(R22_CRA_binding_k1*MastCells_FLC*CRA - R22_CRA_binding_k2*MastCells_FLC_CRA);
+  R23_FLC_binding: MastCells + FLC -> MastCells_FLC; compartment_*(R23_FLC_binding_k1*FLC*MastCells - R23_FLC_binding_k2*MastCells_FLC);
+  R24_TNFalpha_production: MastCells_FLC_CRA => MastCells_FLC_CRA + TNFalpha; compartment_*R24_TNFalpha_production_k1*MastCells_FLC_CRA;
+  R25_Protease_production: MastCells_FLC_CRA => MastCells_FLC_CRA + Protease; compartment_*R25_Protease_production_k1*MastCells_FLC_CRA;
+  R26_DyingBacteria_secrete_CRA: DyingBacteria => 1000 CRA; compartment_*R26_DyingBacteria_secrete_CRA_k1*DyingBacteria;
+  R27_Dyingbacteria_die: DyingBacteria => ; compartment_*R27_Dyingbacteria_die_k1*DyingBacteria;
+  R28_Proteaseinflux:  => Protease; compartment_*Constant_flux__irreversible(k_protease_influx);
+  R2_CRA_washout: washout + CRA => washout; compartment_*R2_CRA_washout_k1*CRA*washout;
+  R3_CRAinflux:  => CRA; compartment_*Constant_flux__irreversible(k_CRA_influx);
+  R4_FLC_washout: washout + FLC => washout; compartment_*R4_FLC_washout_k1*FLC*washout;
+  R5_MMP7_washout: washout + MMP7 => washout; compartment_*R5_MMP7_washout_k1*MMP7*washout;
+  R6_MMP8_washout: washout + MMP8 => washout; compartment_*R6_MMP8_washout_k1*MMP8*washout;
+  R7_Protease_washout: washout + Protease => washout; compartment_*R7_Protease_washout_k1*Protease*washout;
+  R8_TNFalpha_washout: washout + TNFalpha => washout; compartment_*R8_TNFalpha_washout_k1*TNFalpha*washout;
+  R9_FLC_production: $Bcells + CRA => $Bcells + CRA + FLC; compartment_*Rate_Law_for_B_FLC_production(R9_FLC_production_k1, CRA, Bcells);
+
+  // Species initializations:
+  Bcells = 1;
+  CRA = 0.00999412/compartment_;
+  DyingBacteria = 0;
+  DyingFibr = 0;
+  FLC = 0.000999412/compartment_;
+  FLC_drug = 0;
+  HealthyBacteria = 1e-06/compartment_;
+  HealthyFibr = 999.509/compartment_;
+  MMP7 = 99951/compartment_;
+  MMP8 = 999509/compartment_;
+  MastCells = 0.0998992/compartment_;
+  MastCells_FLC = 9.98404e-05/compartment_;
+  MastCells_FLC_CRA = 9.97816000000001e-07/compartment_;
+  Protease = 1/compartment_;
+  TNFalpha = 4.75162/compartment_;
+  drug = 0;
+  washout = 1/compartment_;
+
+  // Compartment initializations:
+  compartment_ = 1;
+
+  // Variable initializations:
+  Metabolite_18 = 1000;
+  k_CRA_influx = 0;
+  k_protease_influx = 0;
+  R10_drug_washout_k1 = 0.0001;
+  R11_FLC_drug_binding_k2 = 1e-05;
+  R11_FLC_drug_binding_k1 = 1e-05;
+  R12_FLC_drug_washout_k1 = 0.0001;
+  R13_CRA_Secretion_DyingFibr_k1 = 0.001;
+  R14_CRAClipOffHealthyFibr_k1 = 1e-08;
+  R15_DyingFibroblast_death_k1 = 0.2;
+  R16_Healthy_to_Dying_fibroblast_k1 = 5e-07;
+  R17_HealthyBacteriaProduction_k1 = 0.01;
+  R18_HealthyFibProduction_k1 = 4.85e-07;
+  R19_MMP7_release_HealthyFibr_k1 = 1;
+  R1_CRA_degradation_k1 = 0.0001;
+  R20_MMP8_release_HealthyFibr_k1 = 0.1;
+  R21_Healthy_to_Dying_Bacteria_k1 = 0.005;
+  R22_CRA_binding_k2 = 0.1;
+  R22_CRA_binding_k1 = 0.1;
+  R23_FLC_binding_k2 = 0.1;
+  R23_FLC_binding_k1 = 0.1;
+  R24_TNFalpha_production_k1 = 5000;
+  R25_Protease_production_k1 = 65;
+  R26_DyingBacteria_secrete_CRA_k1 = 10;
+  R27_Dyingbacteria_die_k1 = 0.1;
+  R2_CRA_washout_k1 = 0.01;
+  R4_FLC_washout_k1 = 0.01;
+  R5_MMP7_washout_k1 = 0.01;
+  R6_MMP8_washout_k1 = 0.01;
+  R7_Protease_washout_k1 = 0.01;
+  R8_TNFalpha_washout_k1 = 0.01;
+  R9_FLC_production_k1 = 0.001;
+
+  // Other declarations:
+  const compartment_, Metabolite_18, k_CRA_influx, k_protease_influx;
+
+  // Unit definitions:
+  unit substance = 1e-15 mole;
+  unit time_unit = 60 second;
+
+  // Display Names:
+  time_unit is "time";
+  compartment_ is "compartment";
+  Total_space is "Total space";
+  Metabolite_18 is "Initial for Total space";
+  R26_DyingBacteria_secrete_CRA is "R26_DyingBacteria secrete CRA";
+  R27_Dyingbacteria_die is "R27_Dyingbacteria die";
+end
+
+abudukelimu1 is "abudukelimu1"

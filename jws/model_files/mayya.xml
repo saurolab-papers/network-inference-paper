@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="mayya" name="mayya">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="ps2c" name="ps2c" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="ps2n" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="psc" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="psn" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="sc" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="sn" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_7" id="Kcatde" value="1" constant="false"/>
+      <parameter metaid="metaid_8" id="Kcatp" value="1" constant="false"/>
+      <parameter metaid="metaid_9" id="Kfd" value="0.6" constant="false"/>
+      <parameter metaid="metaid_10" id="Kmde" value="2" constant="false"/>
+      <parameter metaid="metaid_11" id="Kmp" value="4" constant="false"/>
+      <parameter metaid="metaid_12" id="Kps2imp" value="0.3" constant="false"/>
+      <parameter metaid="metaid_13" id="Kpsexp" value="0.6" constant="false"/>
+      <parameter metaid="metaid_14" id="Kpsimp" value="3" constant="false"/>
+      <parameter metaid="metaid_15" id="Krd" value="0.03" constant="false"/>
+      <parameter metaid="metaid_16" id="Ksexp" value="0.6" constant="false"/>
+      <parameter metaid="metaid_17" id="Ksimp" value="3" constant="false"/>
+      <parameter metaid="metaid_18" id="SP" value="0.05" constant="false"/>
+      <parameter metaid="metaid_19" id="SVnm" value="1" constant="false"/>
+      <parameter metaid="metaid_20" id="Vc" value="0.935" constant="false"/>
+      <parameter metaid="metaid_21" id="Vn" value="0.064" constant="false"/>
+      <parameter metaid="metaid_22" id="ampl" value="0.01" constant="false"/>
+      <parameter metaid="metaid_23" id="lag" value="500" constant="false"/>
+      <parameter metaid="metaid_24" id="period" value="2000" constant="false"/>
+      <parameter metaid="metaid_25" id="ps2impmax" value="0.045" constant="false"/>
+      <parameter metaid="metaid_26" id="psexpmax" value="0.06" constant="false"/>
+      <parameter metaid="metaid_27" id="psimpmax" value="0.003" constant="false"/>
+      <parameter metaid="metaid_28" id="sexpmax" value="0.06" constant="false"/>
+      <parameter metaid="metaid_29" id="simpmax" value="0.003" constant="false"/>
+      <parameter metaid="metaid_30" id="sk" name="sk" value="0" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_31" variable="sk">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <cn type="integer"> 0 </cn>
+              <apply>
+                <lt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> lag </ci>
+              </apply>
+            </piece>
+            <piece>
+              <cn type="integer"> 0 </cn>
+              <apply>
+                <gt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <apply>
+                  <plus/>
+                  <ci> lag </ci>
+                  <ci> period </ci>
+                </apply>
+              </apply>
+            </piece>
+            <otherwise>
+              <apply>
+                <times/>
+                <ci> ampl </ci>
+                <apply>
+                  <sin/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <pi/>
+                      <ci> period </ci>
+                    </apply>
+                    <apply>
+                      <minus/>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <ci> lag </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_34" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_32" species="sn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_33" species="sc" stoichiometry="0.0684492" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> sexpmax </ci>
+                <ci> sn </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Ksexp </ci>
+                <ci> sn </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_37" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_35" species="sc" stoichiometry="0.0684492" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_36" species="sn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> simpmax </ci>
+                <ci> sc </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Ksimp </ci>
+                <ci> sc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_40" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_38" species="sc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_39" species="psc" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Kcatp </ci>
+                <ci> sk </ci>
+                <ci> sc </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Kmp </ci>
+                <ci> sc </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_43" id="v_4" name="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_41" species="psc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_42" species="ps2c" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Kfd </ci>
+              <apply>
+                <power/>
+                <ci> psc </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_46" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_44" species="ps2c" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_45" species="psc" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Krd </ci>
+              <ci> ps2c </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_49" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_47" species="ps2c" stoichiometry="0.0684492" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_48" species="ps2n" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ps2impmax </ci>
+                <ci> ps2c </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Kps2imp </ci>
+                <ci> ps2c </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_52" id="v_7" name="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_50" species="psn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_51" species="ps2n" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Kfd </ci>
+              <apply>
+                <power/>
+                <ci> psn </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_53" species="ps2n" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_54" species="psn" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Krd </ci>
+              <ci> ps2n </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_58" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="psn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_57" species="sn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Kcatde </ci>
+                <ci> SP </ci>
+                <ci> psn </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Kmde </ci>
+                <ci> psn </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

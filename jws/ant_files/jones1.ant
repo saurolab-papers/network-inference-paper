@@ -1,0 +1,45 @@
+// Created by libAntimony v2.13.2
+model *jones1()
+
+  // Compartments and Species:
+  species A, CC, T, Tstar, V;
+
+  // Reactions:
+  v1: A -> ; gamma_*A*T;
+  v10:  -> V; delta*NN*Tstar;
+  v11:  -> V; mu*NC*CC;
+  v2:  -> T; lambda;
+  v3:  -> T; a*A*T/(KK + A);
+  v4: T -> Tstar; k*T*V;
+  v5: T -> ; d*T;
+  v6: Tstar -> ; delta*Tstar;
+  v7: CC -> ; mu*CC;
+  v8: V -> ; c*V;
+  v9: Tstar -> CC; alpha*k*T*V;
+
+  // Species initializations:
+  A = 1;
+  CC = 18800;
+  T = 323000;
+  Tstar = 7800;
+  V = 120000;
+
+  // Variable initializations:
+  KK = 3.36;
+  NC = 4.11;
+  NN = 285;
+  a = 1.6;
+  alpha = 0.195;
+  c = 13;
+  d = 0.01;
+  delta = 0.7;
+  gamma_ = 1.7475e-06;
+  k = 1.7437e-07;
+  lambda = 10000;
+  mu = 0.07;
+
+  // Other declarations:
+  var KK, NC, NN, a, alpha, c, d, delta, gamma_, k, lambda, mu;
+end
+
+jones1 is "jones1"

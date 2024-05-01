@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *wilhelm1()
+
+  // Compartments and Species:
+  compartment batch;
+  species $P in batch, $S in batch, X in batch, Y in batch;
+
+  // Reactions:
+  r1: Y + $S => 2 X; r1_k1*S*Y;
+  r2: 2 X => Y + X; r2_k2*X^2;
+  r3: Y + X => Y + $P; r3_k3*X*Y;
+  r4: X => $P; r4_k4*X;
+
+  // Species initializations:
+  P = 1;
+  S = 1;
+  X = 1/batch;
+  Y = 1/batch;
+
+  // Compartment initializations:
+  batch = 1;
+
+  // Variable initializations:
+  r1_k1 = 8;
+  r2_k2 = 1;
+  r3_k3 = 1;
+  r4_k4 = 1.5;
+
+  // Other declarations:
+  const batch;
+
+  // SBO terms:
+  batch.sboTerm = 290
+  P.sboTerm = 285
+  S.sboTerm = 285
+  X.sboTerm = 285
+  Y.sboTerm = 285
+  r1.sboTerm = 182
+  r1_k1.sboTerm = 36
+  r2.sboTerm = 182
+  r2_k2.sboTerm = 36
+  r3.sboTerm = 182
+  r3_k3.sboTerm = 36
+  r4.sboTerm = 182
+  r4_k4.sboTerm = 154
+end
+
+wilhelm1 is "wilhelm1"

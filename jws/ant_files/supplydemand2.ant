@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *supplydemand2()
+
+  // Compartments and Species:
+  species p, $p2, $s, x2, x3;
+
+  // Reactions:
+  v_1: $s -> x2; (Vm1*s/K1s)*(1 - x2/(s*Keq1))*(s/K1s + x2/K1x2)^(h - 1)/((s/K1s + x2/K1x2)^h + (1 + (p/K1p)^h)/(1 + alpha*(p/K1p)^h));
+  v_2: x2 -> x3; (Vm2/K2x2)*(x2 - x3/Keq2)/(1 + x2/K2x2 + x3/K2x3);
+  v_3: x3 -> p; (Vm3/K3x3)*(x3 - p/Keq3)/(1 + x3/K3x3 + p/K3p);
+  v_4: p -> $p2; (Vm4/K4p)*p/(1 + p/K4p);
+
+  // Species initializations:
+  p = 0;
+  p2 = 0;
+  s = 1;
+  x2 = 0;
+  x3 = 0;
+
+  // Variable initializations:
+  K1p = 1;
+  K1s = 1;
+  K1x2 = 10000;
+  K2x2 = 1;
+  K2x3 = 1;
+  K3p = 1;
+  K3x3 = 1;
+  K4p = 0.01;
+  Keq1 = 400;
+  Keq2 = 10;
+  Keq3 = 10;
+  Vm1 = 200;
+  Vm2 = 1000;
+  Vm3 = 1000;
+  Vm4 = 10;
+  alpha = 0.001;
+  h = 4;
+
+  // Other declarations:
+  var K1p, K1s, K1x2, K2x2, K2x3, K3p, K3x3, K4p, Keq1, Keq2, Keq3, Vm1, Vm2;
+  var Vm3, Vm4, alpha, h;
+end
+
+supplydemand2 is "supplydemand2"

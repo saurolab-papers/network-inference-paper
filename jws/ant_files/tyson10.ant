@@ -1,0 +1,117 @@
+// Created by libAntimony v2.13.2
+model *tyson10()
+
+  // Compartments and Species:
+  compartment env;
+  species $R in env, Rp in env, $S in env, X in env, $Y in env, Yp in env;
+
+  // Assignment Rules:
+  R := Rt - Rp;
+  Y := Yt - Yp;
+
+  // Reactions:
+  r1:  => X; env*(k0 + k1*S);
+  r2: X => ; env*(k2 + k2_prime*Rp)*X;
+  r3: $Y => Yp; env*k3*X*(Yt - Yp)/(Km3 + (Yt - Yp));
+  r4: Yp => $Y; env*k4*Yp/(Km4 + Yp);
+  r5: $R => Rp; env*k5*Yp*(Rt - Rp)/(Km5 + (Rt - Rp));
+  r6: Rp => $R; env*k6*Rp/(Km6 + Rp);
+
+  // Species initializations:
+  Rp = 0;
+  S = 0;
+  X = 0;
+  Yp = 0;
+
+  // Compartment initializations:
+  env = 1;
+
+  // Variable initializations:
+  Rt = 1;
+  Rt has M;
+  Yt = 1;
+  Yt has M;
+  Km3 = 0.01;
+  Km3 has M;
+  Km4 = 0.01;
+  Km4 has M;
+  Km5 = 0.01;
+  Km5 has M;
+  Km6 = 0.01;
+  Km6 has M;
+  k0 = 0;
+  k0 has M_per_s;
+  k1 = 1;
+  k1 has per_s;
+  k2 = 0.01;
+  k2 has per_s;
+  k2_prime = 10;
+  k2_prime has per_M_per_s;
+  k3 = 0.1;
+  k3 has per_s;
+  k4 = 0.2;
+  k4 has M_per_s;
+  k5 = 0.1;
+  k5 has per_s;
+  k6 = 0.05;
+  k6 has M_per_s;
+
+  // Other declarations:
+  const env, Rt, Yt, Km3, Km4, Km5, Km6, k0, k1, k2, k2_prime, k3, k4, k5;
+  const k6;
+
+  // Unit definitions:
+  unit per_M_per_s = litre / (second * mole);
+  unit M = mole / litre;
+  unit M_per_s = mole / (litre * second);
+  unit per_s = 1 / second;
+  unit s = second;
+
+  // SBO terms:
+  env.sboTerm = 290
+  R.sboTerm = 252
+  Rt.sboTerm = 196
+  Rp.sboTerm = 252
+  S.sboTerm = 285
+  X.sboTerm = 252
+  Y.sboTerm = 252
+  Yt.sboTerm = 196
+  Yp.sboTerm = 252
+  Km3.sboTerm = 27
+  Km4.sboTerm = 196
+  Km5.sboTerm = 196
+  Km6.sboTerm = 196
+  k0.sboTerm = 485
+  k1.sboTerm = 35
+  k2.sboTerm = 35
+  k2_prime.sboTerm = 36
+  k3.sboTerm = 186
+  k4.sboTerm = 485
+  k5.sboTerm = 25
+  k6.sboTerm = 485
+  r1.sboTerm = 176
+  r2.sboTerm = 179
+  r3.sboTerm = 216
+  r4.sboTerm = 330
+  r5.sboTerm = 216
+  r6.sboTerm = 330
+
+  // CV terms:
+  env hypernym "http://identifiers.org/go/GO:0005623"
+  R hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  Rp hypernym "http://identifiers.org/psimod/MOD:00696",
+              "http://identifiers.org/kegg.compound/C00562"
+  X hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  Y hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  Yp hypernym "http://identifiers.org/go/GO:0016301",
+              "http://identifiers.org/psimod/MOD:00696",
+              "http://identifiers.org/kegg.compound/C00562"
+  r1 hypernym "http://identifiers.org/go/GO:0009058"
+  r2 hypernym "http://identifiers.org/go/GO:0009056"
+  r3 hypernym "http://identifiers.org/go/GO:0006468"
+  r4 hypernym "http://identifiers.org/go/GO:0006470"
+  r5 hypernym "http://identifiers.org/go/GO:0006468"
+  r6 hypernym "http://identifiers.org/go/GO:0006470"
+end
+
+tyson10 is "tyson10"

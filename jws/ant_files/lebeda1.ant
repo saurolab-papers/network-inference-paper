@@ -1,0 +1,74 @@
+// Created by libAntimony v2.13.2
+model *lebeda1()
+
+  // Compartments and Species:
+  compartment endosome, extracellular, neuroplasm;
+  species $BoNT in extracellular, bulk in extracellular, free in extracellular;
+  species bound in extracellular, lytic in neuroplasm, translocate in endosome;
+
+  // Assignment Rules:
+  BoNT := bulk + free;
+  tension := 1 - lytic;
+
+  // Reactions:
+  binding: free => bound; binding_kB*free*extracellular;
+  bulk_movement: bulk => free; bulk_movement_kS*bulk*extracellular;
+  endocytosis: bound => translocate; endocytosis_kT*bound*extracellular;
+  translocation: translocate => lytic; translocation_kL*translocate*endosome;
+
+  // Species initializations:
+  bulk = 1/extracellular;
+  free = 0;
+  bound = 0;
+  lytic = 0;
+  translocate = 0;
+
+  // Compartment initializations:
+  endosome = 1;
+  extracellular = 1;
+  neuroplasm = 1;
+
+  // Variable initializations:
+  binding_kB = 0.058;
+  bulk_movement_kS = 0.00015;
+  endocytosis_kT = 0.141;
+  translocation_kL = 0.013;
+
+  // Other declarations:
+  var tension;
+  const endosome, extracellular, neuroplasm;
+
+  // Unit definitions:
+  unit relative_concentration = dimensionless;
+  unit normalized_volume = dimensionless;
+  unit min = 60 second;
+  unit perminute = 1 / 60 second;
+
+  // Display Names:
+  relative_concentration is "relative concentration";
+  normalized_volume is "normalized volume";
+  BoNT is "tot_free_BoNT/A";
+  bulk is "bulk_BoNT/A";
+  free is "free_BoNT/A";
+  bound is "bound_BoNT/A";
+  lytic is "lytic_BoNT/A";
+  translocate is "transloc_BoNT/A";
+
+  // CV terms:
+  endosome identity "http://identifiers.org/go/GO:0031904"
+  extracellular identity "http://identifiers.org/go/GO:0005615"
+  neuroplasm hypernym "http://identifiers.org/go/GO:0005829",
+                      "http://identifiers.org/go/GO:0043679"
+  BoNT identity "http://identifiers.org/kegg.compound/C07946"
+  bulk identity "http://identifiers.org/kegg.compound/C07946"
+  free identity "http://identifiers.org/kegg.compound/C07946"
+  bound part "http://identifiers.org/kegg.compound/C07946"
+  lytic hypernym "http://identifiers.org/kegg.compound/C07946"
+  translocate part "http://identifiers.org/kegg.compound/C07946"
+  binding hypernym "http://identifiers.org/reactome/REACT_11084.1"
+  bulk_movement hypernym "http://identifiers.org/go/GO:0006858"
+  endocytosis homolog "http://identifiers.org/reactome/REACT_11086.1"
+  translocation hypernym "http://identifiers.org/reactome/REACT_11085.1"
+end
+
+lebeda1 is "lebeda1"

@@ -1,0 +1,129 @@
+// Created by libAntimony v2.13.2
+model *poolman()
+
+  // Compartments and Species:
+  species ADPch, ATPch, BPGAch, DHAPch, E4Pch, F6Pch, FBPch, G1Pch, G6Pch;
+  species GAPch, PGAch, Pich, R5Pch, Ru5Pch, RuBPch, S7Pch, SBPch, X5Pch;
+  species $xCO2, $xDHAPcyt, $xGAPcyt, $xNADPHch, $xNADPch, $xPGAcyt, $xPicyt;
+  species $xProtonch, $xStarchch;
+
+  // Reactions:
+  v_1: G1Pch + ATPch -> ADPch + 2 Pich + $xStarchch; Vstsynch*G1Pch*ATPch/((G1Pch + stsynchkm1)*(1 + ADPch/stsynchKi)*(ATPch + stsynchkm2) + stsynchkm2*Pich/(stsynchka1*PGAch) + stsynchka2*F6Pch + stsynchka3*FBPch);
+  v_10: SBPch -> S7Pch + Pich; SBPasechvm*SBPch/(SBPch + SBPasechkm*(1 + Pich/SBPasechKiPi));
+  v_11: GAPch + S7Pch -> X5Pch + R5Pch; EQMult*(GAPch*S7Pch - X5Pch*R5Pch/q10);
+  v_12: X5Pch -> Ru5Pch; EQMult*(X5Pch - Ru5Pch/q12);
+  v_13: R5Pch -> Ru5Pch; EQMult*(R5Pch - Ru5Pch/q11);
+  v_14: Ru5Pch + ATPch -> RuBPch + ADPch; Ru5Pkchvm*Ru5Pch*ATPch/((Ru5Pch + Ru5Pkchkm1*(1 + PGAch/Ru5PkchKiPGA + RuBPch/Ru5PkchKiRuBP + Pich/Ru5PkchKiPi))*(ATPch*(1 + ADPch/Ru5PkchKiADP1) + Ru5Pkchkm2*(1 + ADPch/Ru5PkchKiADP2)));
+  v_15: $xCO2 + RuBPch -> 2 PGAch; Rbcovm*RuBPch/(RuBPch + Rbcokm*(1 + PGAch/RbcoKiPGA + FBPch/RbcoKiFBP + SBPch/RbcoKiSBP + Pich/RbcoKiPi + xNADPHch/RbcoKiNADPH));
+  v_16: PGAch + ATPch -> BPGAch + ADPch; EQMult*(PGAch*ATPch - BPGAch*ADPch/q2);
+  v_17: BPGAch + $xNADPHch + $xProtonch -> $xNADPch + GAPch + Pich; EQMult*(BPGAch*xNADPHch*xProtonch - xNADPch*GAPch*Pich/q3);
+  v_18: GAPch + $xPicyt -> Pich + $xGAPcyt; TPPiapvm*GAPch/(TPPiapkGAPch*(1 + (1 + TPPiapkPicyt/xPicyt)*(Pich/TPPiapkPich + PGAch/TPPiapkPGAch + DHAPch/TPPiapkDHAPch + GAPch/TPPiapkGAPch)));
+  v_19: PGAch + $xPicyt -> Pich + $xPGAcyt; PGAxpMult*TPPiapvm*PGAch/(TPPiapkPGAch*(1 + (1 + TPPiapkPicyt/xPicyt)*(Pich/TPPiapkPich + PGAch/TPPiapkPGAch + DHAPch/TPPiapkDHAPch + GAPch/TPPiapkGAPch)));
+  v_2: $xStarchch + Pich -> G1Pch; StPaseVm*Pich/(Pich + StPasekm*(1 + G1Pch/StPasekiG1P));
+  v_20: DHAPch + $xPicyt -> Pich + $xDHAPcyt; TPPiapvm*DHAPch/(TPPiapkDHAPch*(1 + (1 + TPPiapkPicyt/xPicyt)*(Pich/TPPiapkPich + PGAch/TPPiapkPGAch + DHAPch/TPPiapkDHAPch + GAPch/TPPiapkGAPch)));
+  v_21: ADPch + Pich -> ATPch; LRvm*ADPch*Pich/((ADPch + LRkmADP)*(Pich + LRkmPi));
+  v_3: G6Pch -> G1Pch; EQMult*(G6Pch - G1Pch/q15);
+  v_4: F6Pch -> G6Pch; EQMult*(F6Pch - G6Pch/q14);
+  v_5: FBPch -> F6Pch + Pich; FBPasechvm*FBPch/(FBPch + FBPasechkm*(1 + F6Pch/FBPasechKiF6P + Pich/FBPasechKiPi));
+  v_6: DHAPch + GAPch -> FBPch; EQMult*(DHAPch*GAPch - FBPch/q5);
+  v_7: GAPch -> DHAPch; EQMult*(GAPch - DHAPch/q4);
+  v_8: F6Pch + GAPch -> E4Pch + X5Pch; EQMult*(F6Pch*GAPch - E4Pch*X5Pch/q7);
+  v_9: E4Pch + DHAPch -> SBPch; EQMult*(E4Pch*DHAPch - SBPch/q8);
+
+  // Species initializations:
+  ADPch = 0.00149;
+  ATPch = 0.49806;
+  BPGAch = 0.14825;
+  DHAPch = 0.29345;
+  E4Pch = 0.41021;
+  F6Pch = 1.36481;
+  FBPch = 0.02776;
+  G1Pch = 0.18206;
+  G6Pch = 3.1396;
+  GAPch = 0.01334;
+  PGAch = 3.35479;
+  Pich = 1.5662;
+  R5Pch = 0.00599;
+  Ru5Pch = 0.00235;
+  RuBPch = 0.33644;
+  S7Pch = 0.00541;
+  SBPch = 1.56486;
+  X5Pch = 0.00363;
+  xCO2 = 1;
+  xDHAPcyt = 1;
+  xGAPcyt = 1;
+  xNADPHch = 0.21;
+  xNADPch = 0.29;
+  xPGAcyt = 1;
+  xPicyt = 0.25;
+  xProtonch = 2.512e-05;
+  xStarchch = 1;
+
+  // Variable initializations:
+  EQMult = 900000000;
+  FBPasechKiF6P = 0.7;
+  FBPasechKiPi = 12;
+  FBPasechkm = 0.03;
+  FBPasechvm = 200;
+  LRkmADP = 0.014;
+  LRkmPi = 0.3;
+  LRvm = 3500;
+  PGAxpMult = 0.5;
+  RbcoKiFBP = 0.04;
+  RbcoKiNADPH = 0.07;
+  RbcoKiPGA = 0.84;
+  RbcoKiPi = 0.9;
+  RbcoKiSBP = 0.075;
+  Rbcokm = 0.02;
+  Rbcovm = 340;
+  Ru5PkchKiADP1 = 2.5;
+  Ru5PkchKiADP2 = 0.4;
+  Ru5PkchKiPGA = 2;
+  Ru5PkchKiPi = 4;
+  Ru5PkchKiRuBP = 0.7;
+  Ru5Pkchkm1 = 0.05;
+  Ru5Pkchkm2 = 0.05;
+  Ru5Pkchvm = 10000;
+  SBPasechKiPi = 12;
+  SBPasechkm = 0.013;
+  SBPasechvm = 40;
+  StPaseVm = 40;
+  StPasekiG1P = 0.05;
+  StPasekm = 0.1;
+  TPPiapkDHAPch = 0.077;
+  TPPiapkGAPch = 0.075;
+  TPPiapkPGAch = 0.25;
+  TPPiapkPich = 0.63;
+  TPPiapkPicyt = 0.74;
+  TPPiapvm = 250;
+  Vstsynch = 40;
+  q10 = 0.85;
+  q11 = 0.4;
+  q12 = 0.67;
+  q14 = 2.3;
+  q15 = 0.058;
+  q2 = 0.00031;
+  q3 = 16000000;
+  q4 = 22;
+  q5 = 7.1;
+  q7 = 0.084;
+  q8 = 13;
+  stsynchKi = 10;
+  stsynchka1 = 0.1;
+  stsynchka2 = 0.02;
+  stsynchka3 = 0.02;
+  stsynchkm1 = 0.08;
+  stsynchkm2 = 0.08;
+
+  // Other declarations:
+  var EQMult, FBPasechKiF6P, FBPasechKiPi, FBPasechkm, FBPasechvm, LRkmADP;
+  var LRkmPi, LRvm, PGAxpMult, RbcoKiFBP, RbcoKiNADPH, RbcoKiPGA, RbcoKiPi;
+  var RbcoKiSBP, Rbcokm, Rbcovm, Ru5PkchKiADP1, Ru5PkchKiADP2, Ru5PkchKiPGA;
+  var Ru5PkchKiPi, Ru5PkchKiRuBP, Ru5Pkchkm1, Ru5Pkchkm2, Ru5Pkchvm, SBPasechKiPi;
+  var SBPasechkm, SBPasechvm, StPaseVm, StPasekiG1P, StPasekm, TPPiapkDHAPch;
+  var TPPiapkGAPch, TPPiapkPGAch, TPPiapkPich, TPPiapkPicyt, TPPiapvm, Vstsynch;
+  var q10, q11, q12, q14, q15, q2, q3, q4, q5, q7, q8, stsynchKi, stsynchka1;
+  var stsynchka2, stsynchka3, stsynchkm1, stsynchkm2;
+end
+
+poolman is "poolman"

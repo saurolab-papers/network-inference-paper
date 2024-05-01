@@ -1,0 +1,106 @@
+// Created by libAntimony v2.13.2
+function goldbeter_koshland(v1, v2, J1, J2)
+  2*v1*J2/((v2 - v1) + J1*v2 + J2*v1 + (((v2 - v1) + J1*v2 + J2*v1)^2 - 4*(v2 - v1)*v1*J2)^(1/2));
+end
+
+
+model *tyson12()
+
+  // Compartments and Species:
+  compartment env;
+  species $E in env, R in env, $Ep in env, $S in env;
+
+  // Assignment Rules:
+  E := Et*goldbeter_koshland(k3, k4*R, J3, J4);
+  Ep := Et - E;
+  Km3 := J3*Et;
+  Km4 := J4*Et;
+
+  // Reactions:
+  r0:  => R; env*k0;
+  r1:  => R; env*k1*S;
+  r2: R => ; env*k2*R;
+  r2_prime: R => ; env*k2_prime*R*E;
+  r3: $Ep => $E; env*k3*Ep/(Km3 + Ep);
+  r4: $E => $Ep; env*k4*R*E/(Km4 + E);
+
+  // Species initializations:
+  R = 0;
+  S = 0;
+
+  // Compartment initializations:
+  env = 1;
+
+  // Variable initializations:
+  Et = 1;
+  Et has M;
+  k3 = 0.2;
+  k3 has M_per_s;
+  k4 = 1;
+  k4 has per_s;
+  J3 = 0.05;
+  J3 has dimensionless;
+  J4 = 0.05;
+  J4 has dimensionless;
+  Km3 has M;
+  Km4 has M;
+  k0 = 0;
+  k0 has M_per_s;
+  k1 = 0.05;
+  k1 has per_s;
+  k2 = 0.1;
+  k2 has per_s;
+  k2_prime = 0.5;
+  k2_prime has per_M_per_s;
+
+  // Other declarations:
+  var Km3, Km4;
+  const env, Et, k3, k4, J3, J4, k0, k1, k2, k2_prime;
+
+  // Unit definitions:
+  unit per_M_per_s = litre / (second * mole);
+  unit M = mole / litre;
+  unit M_per_s = mole / (litre * second);
+  unit per_s = 1 / second;
+  unit s = second;
+
+  // SBO terms:
+  env.sboTerm = 290
+  E.sboTerm = 252
+  Et.sboTerm = 196
+  k3.sboTerm = 186
+  k4.sboTerm = 25
+  R.sboTerm = 252
+  J3.sboTerm = 2
+  J4.sboTerm = 2
+  Ep.sboTerm = 252
+  S.sboTerm = 285
+  Km3.sboTerm = 27
+  Km4.sboTerm = 27
+  k0.sboTerm = 485
+  k1.sboTerm = 35
+  k2.sboTerm = 356
+  k2_prime.sboTerm = 36
+  r0.sboTerm = 176
+  r1.sboTerm = 176
+  r2.sboTerm = 179
+  r2_prime.sboTerm = 179
+  r3.sboTerm = 330
+  r4.sboTerm = 216
+
+  // CV terms:
+  env hypernym "http://identifiers.org/go/GO:0005623"
+  E hypernym "http://identifiers.org/chebi/CHEBI:36080"
+  R hypernym "http://identifiers.org/go/GO:0016301",
+             "http://identifiers.org/chebi/CHEBI:36080"
+  Ep hypernym "http://identifiers.org/psimod/MOD:00696",
+              "http://identifiers.org/kegg.compound/C00562"
+  r0 hypernym "http://identifiers.org/go/GO:0009058"
+  r1 hypernym "http://identifiers.org/go/GO:0009058"
+  r2 hypernym "http://identifiers.org/go/GO:0009056"
+  r2_prime hypernym "http://identifiers.org/go/GO:0009056"
+  r3 hypernym "http://identifiers.org/go/GO:0006470"
+  r4 hypernym "http://identifiers.org/go/GO:0006468"
+end
+
+tyson12 is "tyson12"

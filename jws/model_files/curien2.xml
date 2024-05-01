@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="curien2" name="curien2">
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="micromole" name="micromole">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="per_time" name="per_time">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_2" id="per_litre" name="per_litre">
+        <listOfUnits>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_3" id="umole_per_litre" name="umole_per_litre">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_4" id="umole_per_litre_per_time" name="umole_per_litre_per_time">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_5" id="umole2_per_litre2" name="umole2_per_litre2">
+        <listOfUnits>
+          <unit kind="mole" exponent="2" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_6" id="litre_per_umole_per_time" name="litre_per_umole_per_time">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="mole" exponent="-1" scale="-6" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_7" id="umole_per_time" name="umole_per_time">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_8" id="c1" name="chl" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0009570"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_9" sboTerm="SBO:0000252" id="AK1" name="AK1" compartment="c1" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9LYU8"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_10" sboTerm="SBO:0000252" id="AK2" name="AK2" compartment="c1" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/O23653"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_11" sboTerm="SBO:0000252" id="AKHSDHI" name="AKI-HSDHI" compartment="c1" initialConcentration="0.63" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9SA18"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_12" sboTerm="SBO:0000252" id="AKHSDHII" name="AKII-HSDHII" compartment="c1" initialConcentration="0.63" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/O81852"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_13" sboTerm="SBO:0000327" id="ASA" name="Aspartate semialdehyde" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:13086"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00441"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_14" sboTerm="SBO:0000252" id="ASADH" name="ASADH" compartment="c1" initialConcentration="11.6" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9FVC4"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_15" sboTerm="SBO:0000247" id="AdoMet" name="S-adenosyl-methionine" compartment="c1" initialConcentration="20" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15414"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00019"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_16" sboTerm="SBO:0000327" id="Asp" name="Aspartate" compartment="c1" initialConcentration="1500" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_16">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17053"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00049"/>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/47205730"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_17" sboTerm="SBO:0000327" id="AspP" name="Aspartyl_P" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15836"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C03082"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_18" sboTerm="SBO:0000252" id="CGS" name="CGS" compartment="c1" initialConcentration="0.7" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_18">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/P55217"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_19" sboTerm="SBO:0000247" id="Cys" name="Cysteine" compartment="c1" initialConcentration="15" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_19">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17561"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00097"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_20" sboTerm="SBO:0000247" id="Cysta" name="Cystathione" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_20">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17755"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00542"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_21" sboTerm="SBO:0000252" id="DHDPS1" name="DHDPS1" compartment="c1" initialConcentration="1.6" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_21">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9LZX6"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_22" sboTerm="SBO:0000252" id="DHDPS2" name="DHDPS2" compartment="c1" initialConcentration="1.6" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_22">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9FVC8"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_23" sboTerm="SBO:0000247" id="Gly" name="Glycine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_23">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15428"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00037"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_24" sboTerm="SBO:0000252" id="HSK" name="HSK" compartment="c1" initialConcentration="4" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_24">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9XEE0"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_25" sboTerm="SBO:0000247" id="Hser" name="Homoserine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_25">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15699"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00263"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_26" sboTerm="SBO:0000247" id="Ile" name="Isoleucine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_26">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:17191"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00407"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_27" sboTerm="SBO:0000245" id="IleTRNA" name="Ile-tRNA" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_27">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29160"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C03127"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_28" sboTerm="SBO:0000252" id="LKR" name="LKR" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_28">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9SMZ4"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_29" sboTerm="SBO:0000247" id="Lys" name="Lysine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18019"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00047"/>
+                  <rdf:li rdf:resource="http://identifiers.org/pubchem.substance/47205736"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_30" sboTerm="SBO:0000245" id="LysTRNA" name="Lys-tRNA" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_30">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16047"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C01931"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_31" sboTerm="SBO:0000327" id="PHser" name="Phosphohomoserine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_31">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:15961"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C01102"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_32" sboTerm="SBO:0000327" id="Phosphate" compartment="c1" initialConcentration="10000" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_32">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:18367"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_33" sboTerm="SBO:0000247" id="Sacc" name="Saccharopine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_33">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16927"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00449"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_34" sboTerm="SBO:0000252" id="TD" name="TD" compartment="c1" initialConcentration="0.36" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_34">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9ZSS6"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_35" sboTerm="SBO:0000252" id="THA" name="THA" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_35">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9FPH3"/>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q8RXU4"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_36" sboTerm="SBO:0000252" id="TS1" name="TS1" compartment="c1" initialConcentration="7.4" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_36">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/uniprot/Q9S7B5"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_37" sboTerm="SBO:0000247" id="Thr" name="Threonine" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_37">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16857"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00188"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_38" sboTerm="SBO:0000245" id="ThrTRNA" name="Thr-tRNA" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_38">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:29163"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C02992"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_39" sboTerm="SBO:0000247" id="Val" name="Valine" compartment="c1" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_39">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI:16414"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00183"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_40" id="V_AA_RS" name="Vmax_AA_RS" value="0.43" units="umole_per_litre_per_time" constant="true"/>
+      <parameter metaid="metaid_41" id="V_Ile_RS" value="0.43" units="umole_per_litre_per_time" constant="false"/>
+      <parameter metaid="metaid_42" id="V_Lys_RS" value="0.43" units="umole_per_litre_per_time" constant="false"/>
+      <parameter metaid="metaid_43" id="V_Thr_RS" value="0.43" units="umole_per_litre_per_time" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_44" variable="V_Ile_RS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> V_AA_RS </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_45" variable="V_Thr_RS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> V_AA_RS </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_46" variable="V_Lys_RS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> V_AA_RS </ci>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_57" sboTerm="SBO:0000402" id="Vak1" name="Aspartate kinase 1 react." reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_57">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004072"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.2.4"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00480"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_52" species="Asp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_53" species="AspP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_54" species="AK1"/>
+          <modifierSpeciesReference metaid="metaid_55" species="Lys"/>
+          <modifierSpeciesReference metaid="metaid_56" species="AdoMet"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> AK1 </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <ci> AK1_kforward_app_exp </ci>
+                  <apply>
+                    <times/>
+                    <ci> AK1_kreverse_app_exp </ci>
+                    <ci> AspP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Lys </ci>
+                      <apply>
+                        <divide/>
+                        <ci> AK1_Lys_Ki_app_exp </ci>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> AdoMet </ci>
+                            <ci> AK1_AdoMet_Ka_app_exp </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <ci> AK1_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_47" sboTerm="SBO:0000320" id="AK1_kforward_app_exp" value="5.65" units="per_time"/>
+            <parameter metaid="metaid_48" sboTerm="SBO:0000321" id="AK1_kreverse_app_exp" value="1.6" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_49" sboTerm="SBO:0000288" id="AK1_Lys_Ki_app_exp" value="550" units="umole_per_litre"/>
+            <parameter metaid="metaid_50" sboTerm="SBO:0000363" id="AK1_AdoMet_Ka_app_exp" value="3.5" units="umole_per_litre"/>
+            <parameter metaid="metaid_51" sboTerm="SBO:0000190" id="AK1_nH_exp" value="2" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" sboTerm="SBO:0000402" id="Vak2" name="Aspartate kinase 2 react." reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_66">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004072"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.2.4"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00480"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="Asp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_63" species="AspP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_64" species="AK2"/>
+          <modifierSpeciesReference metaid="metaid_65" species="Lys"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> AK2 </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <ci> AK2_kforward_app_exp </ci>
+                  <apply>
+                    <times/>
+                    <ci> AK2_kreverse_app_exp </ci>
+                    <ci> AspP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Lys </ci>
+                      <ci> AK2_Lys_Ki_app_exp </ci>
+                    </apply>
+                    <ci> AK2_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_58" sboTerm="SBO:0000320" id="AK2_kforward_app_exp" value="3.15" units="per_time"/>
+            <parameter metaid="metaid_59" sboTerm="SBO:0000321" id="AK2_kreverse_app_exp" value="0.86" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_60" sboTerm="SBO:0000363" id="AK2_Lys_Ki_app_exp" value="22" units="umole_per_litre"/>
+            <parameter metaid="metaid_61" sboTerm="SBO:0000190" id="AK2_nH_exp" value="1.1" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_75" sboTerm="SBO:0000402" id="VakI" name="aspartate kinase react. (AKI-HSDHI)" reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_75">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004072"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.2.4"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00480"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_71" species="Asp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_72" species="AspP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_73" species="AKHSDHI"/>
+          <modifierSpeciesReference metaid="metaid_74" species="Thr"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> AKHSDHI </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <ci> AKI_kforward_app_exp </ci>
+                  <apply>
+                    <times/>
+                    <ci> AKI_kreverse_app_exp </ci>
+                    <ci> AspP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Thr </ci>
+                      <ci> AKI_Thr_Ki_app_exp </ci>
+                    </apply>
+                    <ci> AKI_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_67" sboTerm="SBO:0000320" id="AKI_kforward_app_exp" value="0.36" units="per_time"/>
+            <parameter metaid="metaid_68" sboTerm="SBO:0000321" id="AKI_kreverse_app_exp" value="0.15" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_69" sboTerm="SBO:0000363" id="AKI_Thr_Ki_app_exp" value="124" units="umole_per_litre"/>
+            <parameter metaid="metaid_70" sboTerm="SBO:0000190" id="AKI_nH_exp" value="2" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_84" sboTerm="SBO:0000402" id="VakII" name="aspartate kinase react. (AKII-HSDHII)" reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_84">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004072"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.2.4"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00480"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="Asp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="AspP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_82" species="AKHSDHII"/>
+          <modifierSpeciesReference metaid="metaid_83" species="Thr"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> AKHSDHII </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <minus/>
+                  <ci> AKII_kforward_app_exp </ci>
+                  <apply>
+                    <times/>
+                    <ci> AKII_kreverse_app_exp </ci>
+                    <ci> AspP </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Thr </ci>
+                      <ci> AKII_Thr_Ki_app_exp </ci>
+                    </apply>
+                    <ci> AKII_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_76" sboTerm="SBO:0000320" id="AKII_kforward_app_exp" value="1.35" units="per_time"/>
+            <parameter metaid="metaid_77" sboTerm="SBO:0000321" id="AKII_kreverse_app_exp" value="0.22" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_78" sboTerm="SBO:0000363" id="AKII_Thr_Ki_app_exp" value="109" units="umole_per_litre"/>
+            <parameter metaid="metaid_79" sboTerm="SBO:0000190" id="AKII_nH_exp" value="2" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_90" sboTerm="SBO:0000200" id="Vasadh" name="Aspartate semialdehyde dehydrogenase react." reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_90">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004073"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.2.1.11"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R02291"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_87" species="AspP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_88" species="ASA" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_89" species="ASADH"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> ASADH </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> ASADH_kforward_app_exp </ci>
+                  <ci> AspP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ASADH_kreverse_app_exp </ci>
+                  <ci> ASA </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_85" sboTerm="SBO:0000320" id="ASADH_kforward_app_exp" value="0.9" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_86" sboTerm="SBO:0000321" id="ASADH_kreverse_app_exp" value="0.23" units="litre_per_umole_per_time"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_100" sboTerm="SBO:0000402" id="Vcgs" name="Cystathionine gamma synthase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_100">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.5.1.48"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03260"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="PHser" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_96" species="Cysta" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_97" species="CGS"/>
+          <modifierSpeciesReference metaid="metaid_98" species="Cys"/>
+          <modifierSpeciesReference metaid="metaid_99" species="Phosphate"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> CGS </ci>
+              <ci> PHser </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <divide/>
+                  <ci> CGS_kcat_exp </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> CGS_Cys_Km_exp </ci>
+                      <ci> Cys </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <ci> CGS_Phser_Km_exp </ci>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> CGS_Cys_Km_exp </ci>
+                          <ci> Cys </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> Phosphate </ci>
+                        <ci> CGS_Phosphate_Ki_exp </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <ci> PHser </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_91" id="CGS_kcat_exp" value="30" units="dimensionless"/>
+            <parameter metaid="metaid_92" id="CGS_Cys_Km_exp" value="460" units="dimensionless"/>
+            <parameter metaid="metaid_93" id="CGS_Phser_Km_exp" value="2500" units="dimensionless"/>
+            <parameter metaid="metaid_94" id="CGS_Phosphate_Ki_exp" value="2000" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_108" sboTerm="SBO:0000205" id="Vdhdps1" name="DHDPS1 react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_108">
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.2.1.52"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.3.1.26"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.6.1.83"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/5.1.1.7"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.1.1.20"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0009089"/>
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_104" species="ASA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_105" species="Lys" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_106" species="DHDPS1"/>
+          <modifierSpeciesReference metaid="metaid_107" species="Lys"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> DHDPS1_k_app_exp </ci>
+              <ci> DHDPS1 </ci>
+              <ci> ASA </ci>
+              <apply>
+                <divide/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Lys </ci>
+                      <ci> DHDPS1_Lys_Ki_app_exp </ci>
+                    </apply>
+                    <ci> DHDPS1_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_101" sboTerm="SBO:0000320" id="DHDPS1_k_app_exp" value="1" units="umole_per_litre"/>
+            <parameter metaid="metaid_102" sboTerm="SBO:0000363" id="DHDPS1_Lys_Ki_app_exp" value="10" units="umole_per_litre"/>
+            <parameter metaid="metaid_103" sboTerm="SBO:0000190" id="DHDPS1_nH_exp" value="2" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_116" sboTerm="SBO:0000205" id="Vdhdps2" name="DHDPS2 react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_116">
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.2.1.52"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.3.1.26"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.6.1.83"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/5.1.1.7"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.1.1.20"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0009089"/>
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_112" species="ASA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_113" species="Lys" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_114" species="DHDPS2"/>
+          <modifierSpeciesReference metaid="metaid_115" species="Lys"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> DHDPS2_k_app_exp </ci>
+              <ci> DHDPS2 </ci>
+              <ci> ASA </ci>
+              <apply>
+                <divide/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Lys </ci>
+                      <ci> DHDPS2_Lys_Ki_app_exp </ci>
+                    </apply>
+                    <ci> DHDPS2_nH_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_109" sboTerm="SBO:0000320" id="DHDPS2_k_app_exp" value="1" units="umole_per_litre"/>
+            <parameter metaid="metaid_110" sboTerm="SBO:0000363" id="DHDPS2_Lys_Ki_app_exp" value="33" units="umole_per_litre"/>
+            <parameter metaid="metaid_111" sboTerm="SBO:0000190" id="DHDPS2_nH_exp" value="2" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" sboTerm="SBO:0000200" id="Vhsdh1" name="homoserine dehydrogenase react. (AKI-HSDHI)" reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_125">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004412"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.1.1.3"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01775"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_121" species="ASA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_122" species="Hser" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_123" species="AKHSDHI"/>
+          <modifierSpeciesReference metaid="metaid_124" species="Thr"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> HSDHI_kforward_app_exp </ci>
+              <ci> AKHSDHI </ci>
+              <ci> ASA </ci>
+              <apply>
+                <plus/>
+                <ci> HSDHI_Thr_relative_residual_activity_app_exp </ci>
+                <apply>
+                  <divide/>
+                  <ci> HSDHI_Thr_relative_inhibition_app_exp </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Thr </ci>
+                      <ci> HSDHI_Thr_Ki_app_exp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_117" id="HSDHI_kforward_app_exp" value="0.84" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_118" id="HSDHI_Thr_relative_residual_activity_app_exp" value="0.14" units="dimensionless"/>
+            <parameter metaid="metaid_119" id="HSDHI_Thr_relative_inhibition_app_exp" value="0.86" units="dimensionless"/>
+            <parameter metaid="metaid_120" id="HSDHI_Thr_Ki_app_exp" value="400" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_134" sboTerm="SBO:0000200" id="Vhsdh2" name="homoserine dehydrogenase react. (AKII-HSDHII)" reversible="true" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_134">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004412"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.1.1.3"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01775"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_130" species="ASA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_131" species="Hser" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_132" species="AKHSDHII"/>
+          <modifierSpeciesReference metaid="metaid_133" species="Thr"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> HSDHII_kforward_app_exp </ci>
+              <ci> AKHSDHII </ci>
+              <ci> ASA </ci>
+              <apply>
+                <plus/>
+                <ci> HSDHII_Thr_relative_residual_activity_app_exp </ci>
+                <apply>
+                  <divide/>
+                  <ci> HSDHII_Thr_relative_inhibition_app_exp </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Thr </ci>
+                      <ci> HSDHII_Thr_Ki_app_exp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_126" id="HSDHII_kforward_app_exp" value="0.64" units="litre_per_umole_per_time"/>
+            <parameter metaid="metaid_127" id="HSDHII_Thr_relative_residual_activity_app_exp" value="0.25" units="dimensionless"/>
+            <parameter metaid="metaid_128" id="HSDHII_Thr_relative_inhibition_app_exp" value="0.75" units="dimensionless"/>
+            <parameter metaid="metaid_129" id="HSDHII_Thr_Ki_app_exp" value="8500" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_140" sboTerm="SBO:0000402" id="Vhsk" name="homoserine kinase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_140">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004413"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.7.1.39"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01771"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_137" species="Hser" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_138" species="PHser" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_139" species="HSK"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> HSK_kcat_app_exp </ci>
+                <ci> HSK </ci>
+                <ci> Hser </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> HSK_Hser_app_exp </ci>
+                <ci> Hser </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_135" id="HSK_kcat_app_exp" value="2.8" units="per_time"/>
+            <parameter metaid="metaid_136" id="HSK_Hser_app_exp" value="14" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_144" sboTerm="SBO:0000176" id="VileTRNA" name="Ile aminoacyl tRNA synthetase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_144">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/6.1.1.5"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03656"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0006428"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="Ile" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_143" species="IleTRNA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> V_Ile_RS </ci>
+                <ci> Ile </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Ile_tRNAS_Ile_Km </ci>
+                <ci> Ile </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_141" id="Ile_tRNAS_Ile_Km" value="20" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_150" sboTerm="SBO:0000176" id="VlysKR" name="Lys ketoglutarate reductase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_150">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.5.1.8"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00716"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0047130"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_147" species="Lys" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_148" species="Sacc" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_149" species="LKR"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> LKR_kcat_exp </ci>
+                <ci> LKR </ci>
+                <ci> Lys </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> LKR_Lys_Km_exp </ci>
+                <ci> Lys </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_145" id="LKR_kcat_exp" value="3.1" units="per_time"/>
+            <parameter metaid="metaid_146" id="LKR_Lys_Km_exp" value="13000" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_154" sboTerm="SBO:0000176" id="VlysTRNA" name="Lys aminoacyl tRNA synthetase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_154">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004824"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0006430"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/6.1.1.6"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03658"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="Lys" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_153" species="LysTRNA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> V_Lys_RS </ci>
+                <ci> Lys </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Lys_tRNAS_Lys_Km </ci>
+                <ci> Lys </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_151" id="Lys_tRNAS_Lys_Km" value="25" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" sboTerm="SBO:0000205" id="Vtd" name="Threonine deaminase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_165">
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.6.1.42"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.2.1.9"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.3.1.19"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/1.1.1.86"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/2.2.1.6"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0009097"/>
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_160" species="Thr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="Ile" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_162" species="TD"/>
+          <modifierSpeciesReference metaid="metaid_163" species="Val"/>
+          <modifierSpeciesReference metaid="metaid_164" species="Ile"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> TD </ci>
+              <ci> Thr </ci>
+              <apply>
+                <divide/>
+                <ci> TD_k_app_exp </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> Ile </ci>
+                      <apply>
+                        <plus/>
+                        <ci> TD_Ile_Ki_no_Val_app_exp </ci>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <times/>
+                            <ci> TD_Val_Ka1_app_exp </ci>
+                            <ci> Val </ci>
+                          </apply>
+                          <apply>
+                            <plus/>
+                            <ci> TD_Val_Ka2_app_exp </ci>
+                            <ci> Val </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <ci> TD_nH_app_exp </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_155" id="TD_k_app_exp" value="0.0124" units="dimensionless"/>
+            <parameter metaid="metaid_156" id="TD_Ile_Ki_no_Val_app_exp" value="30" units="dimensionless"/>
+            <parameter metaid="metaid_157" id="TD_Val_Ka1_app_exp" value="73" units="dimensionless"/>
+            <parameter metaid="metaid_158" id="TD_Val_Ka2_app_exp" value="615" units="umole_per_litre"/>
+            <parameter metaid="metaid_159" id="TD_nH_app_exp" value="3" units="dimensionless"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_171" sboTerm="SBO:0000178" id="Vtha" name="Thr aldolase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_171">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.1.2.5"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00751"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004793"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_168" species="Thr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_169" species="Gly" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_170" species="THA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> THA_kcat_exp </ci>
+                <ci> THA </ci>
+                <ci> Thr </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> THA_Thr_Km_exp </ci>
+                <ci> Thr </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_166" id="THA_kcat_exp" value="1.7" units="per_time"/>
+            <parameter metaid="metaid_167" id="THA_Thr_Km_exp" value="7100" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_175" sboTerm="SBO:0000176" id="VthrTRNA" name="Thr aminoacyl tRNA synthetase react." reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_175">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/6.1.1.3"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03663"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0006435"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004812"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_173" species="Thr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_174" species="ThrTRNA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> c1 </ci>
+                <ci> V_Thr_RS </ci>
+                <ci> Thr </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Thr_tRNAS_Thr_Km </ci>
+                <ci> Thr </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_172" id="Thr_tRNAS_Thr_Km" value="100" units="umole_per_litre"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_190" sboTerm="SBO:0000376" id="Vts1" name="Threonine synthase react. (TS1)" reversible="false" fast="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_190">
+              <bqbiol:isVersionOf>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.go/GO:0004795"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/4.2.3.1"/>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R01466"/>
+                </rdf:Bag>
+              </bqbiol:isVersionOf>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference metaid="metaid_185" species="PHser" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="Thr" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_187" species="TS1"/>
+          <modifierSpeciesReference metaid="metaid_188" species="Phosphate"/>
+          <modifierSpeciesReference metaid="metaid_189" species="AdoMet"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> c1 </ci>
+              <ci> TS1 </ci>
+              <ci> PHser </ci>
+              <apply>
+                <divide/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <plus/>
+                    <ci> TS1_kcatmin_exp </ci>
+                    <apply>
+                      <times/>
+                      <ci> TS1_AdoMet_kcatmax_exp </ci>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <power/>
+                          <ci> AdoMet </ci>
+                          <ci> TS1_nH_exp </ci>
+                        </apply>
+                        <ci> TS1_AdoMet_Ka1_exp </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <power/>
+                        <ci> AdoMet </ci>
+                        <ci> TS1_nH_exp </ci>
+                      </apply>
+                      <ci> TS1_AdoMet_Ka1_exp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> TS1_AdoMEt_Km_no_AdoMet_exp </ci>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> AdoMet </ci>
+                            <ci> TS1_AdoMet_Ka2_exp </ci>
+                          </apply>
+                        </apply>
+                        <apply>
+                          <plus/>
+                          <cn type="integer"> 1 </cn>
+                          <apply>
+                            <divide/>
+                            <ci> AdoMet </ci>
+                            <ci> TS1_AdoMet_Ka3_exp </ci>
+                          </apply>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <cn type="integer"> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <apply>
+                            <power/>
+                            <ci> AdoMet </ci>
+                            <ci> TS1_nH_exp </ci>
+                          </apply>
+                          <ci> TS1_AdoMet_Ka4_exp </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
+                      <apply>
+                        <divide/>
+                        <ci> Phosphate </ci>
+                        <ci> TS1_Phosphate_Ki_exp </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <ci> PHser </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_176" id="TS1_kcatmin_exp" value="0.42" units="dimensionless"/>
+            <parameter metaid="metaid_177" id="TS1_AdoMet_kcatmax_exp" value="3.5" units="dimensionless"/>
+            <parameter metaid="metaid_178" id="TS1_AdoMet_Ka1_exp" value="73" units="umole2_per_litre2"/>
+            <parameter metaid="metaid_179" id="TS1_nH_exp" value="2" units="dimensionless"/>
+            <parameter metaid="metaid_180" id="TS1_Phosphate_Ki_exp" value="1000" units="umole_per_litre"/>
+            <parameter metaid="metaid_181" id="TS1_AdoMEt_Km_no_AdoMet_exp" value="250" units="dimensionless"/>
+            <parameter metaid="metaid_182" id="TS1_AdoMet_Ka2_exp" value="0.5" units="dimensionless"/>
+            <parameter metaid="metaid_183" id="TS1_AdoMet_Ka3_exp" value="1.09" units="dimensionless"/>
+            <parameter metaid="metaid_184" id="TS1_AdoMet_Ka4_exp" value="140" units="umole2_per_litre2"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

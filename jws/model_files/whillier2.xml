@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="whillier2" name="whillier2">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="aketoe" compartment="default_compartment" initialConcentration="9.02664e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:encodes>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A30915"/>
+                </rdf:Bag>
+              </bqbiol:encodes>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_2" id="aketoi" compartment="default_compartment" initialConcentration="2.3643e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_2">
+              <bqbiol:encodes>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A30915"/>
+                </rdf:Bag>
+              </bqbiol:encodes>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_3" id="alae" compartment="default_compartment" initialConcentration="9.02664e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="alai" compartment="default_compartment" initialConcentration="1.39021e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="glui" compartment="default_compartment" initialConcentration="1.9671e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:encodes>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00051"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A16856"/>
+                </rdf:Bag>
+              </bqbiol:encodes>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="metaid_6" id="pyri" compartment="default_compartment" initialConcentration="2.83716e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:encodes>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00022"/>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi/CHEBI%3A32816"/>
+                </rdf:Bag>
+              </bqbiol:encodes>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_7" id="ALATRASE" value="0" constant="false"/>
+      <parameter metaid="metaid_8" id="Kdalae" value="0" constant="false"/>
+      <parameter metaid="metaid_9" id="Kdalai" value="0" constant="false"/>
+      <parameter metaid="metaid_10" id="Kmtransaketoe" value="0.00034" constant="false"/>
+      <parameter metaid="metaid_11" id="Kmtransaketoi" value="0.00034" constant="false"/>
+      <parameter metaid="metaid_12" id="Kmtransalae" value="0.00034" constant="false"/>
+      <parameter metaid="metaid_13" id="Kmtransalai" value="0.00034" constant="false"/>
+      <parameter metaid="metaid_14" id="Vmaxtransaketoe" value="0" constant="false"/>
+      <parameter metaid="metaid_15" id="Vmaxtransaketoi" value="0" constant="false"/>
+      <parameter metaid="metaid_16" id="Vmaxtransalae" value="0" constant="false"/>
+      <parameter metaid="metaid_17" id="Vmaxtransalai" value="0" constant="false"/>
+      <parameter metaid="metaid_18" id="aketoec" value="0" constant="false"/>
+      <parameter metaid="metaid_19" id="aketoic" value="0" constant="false"/>
+      <parameter metaid="metaid_20" id="alaec" value="0" constant="false"/>
+      <parameter metaid="metaid_21" id="alaic" value="0" constant="false"/>
+      <parameter metaid="metaid_22" id="gluic" value="0" constant="false"/>
+      <parameter metaid="metaid_23" id="k13f1" value="17410" constant="false"/>
+      <parameter metaid="metaid_24" id="k13f2" value="17600" constant="false"/>
+      <parameter metaid="metaid_25" id="k13f3" value="3827" constant="false"/>
+      <parameter metaid="metaid_26" id="k13f4" value="84.34" constant="false"/>
+      <parameter metaid="metaid_27" id="k13r1" value="54.95" constant="false"/>
+      <parameter metaid="metaid_28" id="k13r2" value="68380000" constant="false"/>
+      <parameter metaid="metaid_29" id="k13r3" value="100000" constant="false"/>
+      <parameter metaid="metaid_30" id="k13r4" value="18190" constant="false"/>
+      <parameter metaid="metaid_31" id="pyric" value="0" constant="false"/>
+      <parameter metaid="metaid_32" id="vole" value="0.1134" constant="false"/>
+      <parameter metaid="metaid_33" id="volhbn" value="0.019314" constant="false"/>
+      <parameter metaid="metaid_34" id="voli" value="0.0666" constant="false"/>
+      <parameter metaid="metaid_35" id="voliw" value="0.047286" constant="false"/>
+      <parameter metaid="metaid_36" id="voltotalw" value="0.160686" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_37" variable="aketoic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> aketoi </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> voliw </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_38" variable="alaec">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> alae </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> vole </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_39" variable="Vmaxtransalae">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 7.93 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_40" variable="alaic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> alai </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> voliw </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_41" variable="Vmaxtransaketoi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 7.93 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_42" variable="Vmaxtransalai">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 7.93 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_43" variable="Vmaxtransaketoe">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 7.93 <sep/> -8 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_44" variable="Kdalai">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 0.000119 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_45" variable="Kdalae">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 0.000119 </cn>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_46" variable="ALATRASE">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 7 <sep/> -9 </cn>
+            <ci> voliw </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_47" variable="aketoec">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> aketoe </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> vole </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_48" variable="pyric">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> pyri </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> voliw </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_49" variable="gluic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> glui </ci>
+              <cn type="integer"> 1000000 </cn>
+            </apply>
+            <ci> voli </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_52" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_50" species="alai" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_51" species="alae" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vmaxtransalai </ci>
+                    <ci> alai </ci>
+                  </apply>
+                  <ci> voliw </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <divide/>
+                    <ci> alai </ci>
+                    <ci> voliw </ci>
+                  </apply>
+                  <ci> Kmtransalai </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Kdalai </ci>
+                  <ci> alai </ci>
+                </apply>
+                <ci> voliw </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_55" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_53" species="alae" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_54" species="alai" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vmaxtransalae </ci>
+                    <ci> alae </ci>
+                  </apply>
+                  <ci> vole </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <divide/>
+                    <ci> alae </ci>
+                    <ci> vole </ci>
+                  </apply>
+                  <ci> Kmtransalae </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Kdalae </ci>
+                  <ci> alai </ci>
+                </apply>
+                <ci> voliw </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_58" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_56" species="aketoi" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_57" species="aketoe" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vmaxtransaketoi </ci>
+                  <ci> aketoi </ci>
+                </apply>
+                <ci> voliw </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> aketoi </ci>
+                  <ci> voliw </ci>
+                </apply>
+                <ci> Kmtransaketoi </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_61" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_59" species="aketoe" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_60" species="aketoi" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vmaxtransaketoe </ci>
+                  <ci> aketoe </ci>
+                </apply>
+                <ci> vole </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <divide/>
+                  <ci> aketoe </ci>
+                  <ci> vole </ci>
+                </apply>
+                <ci> Kmtransaketoe </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" id="v_5" name="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_62" species="alai" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_63" species="aketoi" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_64" species="glui" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_65" species="pyri" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> ALATRASE </ci>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <ci> alai </ci>
+                          <ci> voliw </ci>
+                        </apply>
+                        <ci> aketoi </ci>
+                      </apply>
+                      <ci> voliw </ci>
+                    </apply>
+                    <ci> k13r4 </ci>
+                    <ci> k13r3 </ci>
+                    <ci> k13r2 </ci>
+                    <ci> k13r1 </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <divide/>
+                          <ci> pyri </ci>
+                          <ci> voliw </ci>
+                        </apply>
+                        <ci> glui </ci>
+                      </apply>
+                      <ci> voliw </ci>
+                    </apply>
+                    <ci> k13f1 </ci>
+                    <ci> k13f2 </ci>
+                    <ci> k13f3 </ci>
+                    <ci> k13f4 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> alai </ci>
+                    <ci> voliw </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> k13r4 </ci>
+                      <ci> k13r3 </ci>
+                      <ci> k13r1 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> aketoi </ci>
+                        <ci> voliw </ci>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <apply>
+                          <times/>
+                          <ci> k13r4 </ci>
+                          <ci> k13r3 </ci>
+                          <ci> k13r2 </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> k13r4 </ci>
+                          <ci> k13r2 </ci>
+                          <ci> k13r1 </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> k13r4 </ci>
+                      <ci> k13r3 </ci>
+                      <ci> k13f2 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> pyri </ci>
+                        <ci> voliw </ci>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <apply>
+                          <times/>
+                          <ci> k13r4 </ci>
+                          <ci> k13r1 </ci>
+                          <ci> k13f3 </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> k13r4 </ci>
+                          <ci> k13f2 </ci>
+                          <ci> k13f3 </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> aketoi </ci>
+                    <ci> voliw </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> k13r3 </ci>
+                      <ci> k13r2 </ci>
+                      <ci> k13r1 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> k13r2 </ci>
+                      <ci> k13r1 </ci>
+                      <ci> k13f4 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> pyri </ci>
+                    <ci> voliw </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> k13r1 </ci>
+                      <ci> k13f3 </ci>
+                      <ci> k13f4 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> k13f2 </ci>
+                      <ci> k13f3 </ci>
+                      <ci> k13f4 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> glui </ci>
+                    <ci> voliw </ci>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> k13r3 </ci>
+                      <ci> k13f1 </ci>
+                      <ci> k13f2 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> k13f1 </ci>
+                      <ci> k13f2 </ci>
+                      <ci> k13f4 </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> aketoi </ci>
+                        <ci> voliw </ci>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <apply>
+                          <times/>
+                          <ci> k13r3 </ci>
+                          <ci> k13r2 </ci>
+                          <ci> k13f1 </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> k13r2 </ci>
+                          <ci> k13f1 </ci>
+                          <ci> k13f4 </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <divide/>
+                        <ci> pyri </ci>
+                        <ci> voliw </ci>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <apply>
+                          <times/>
+                          <ci> k13f1 </ci>
+                          <ci> k13f2 </ci>
+                          <ci> k13f3 </ci>
+                        </apply>
+                        <apply>
+                          <times/>
+                          <ci> k13f1 </ci>
+                          <ci> k13f3 </ci>
+                          <ci> k13f4 </ci>
+                        </apply>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

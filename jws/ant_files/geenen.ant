@@ -1,0 +1,685 @@
+// Created by libAntimony v2.13.2
+function function4glutathionesynthetase2(OPA, cGSH, cglc, cgly, compartment_, gluAB, kGSOPA, kGScGSH, kGScglc, kGScgly, kGSgluAB, keqGS2, vGSf1)
+  vGSf1*cgly*gluAB*(1 - OPA/(keqGS2*cgly*gluAB))/(kGScglc*kGScgly*(1 + cgly/kGScgly + gluAB/kGSgluAB)*(1 + cglc/kGScglc + cGSH/kGScGSH + OPA/kGSOPA))/compartment_;
+end
+
+function4glutathionesynthetase2 is "function4glutathionesynthetase2"
+
+function function4gammaglutamylcyclotransferase(ccys, cglc, compartment_, kGCTAoxo, kcgctccys, kcgctcglc, kegGCTA, oxo, vGCTA)
+  vGCTA*cglc*(1 - ccys*oxo/(kegGCTA*cglc))/(kcgctcglc*(1 + ccys/kcgctccys + cglc/kcgctcglc + oxo/kGCTAoxo + ccys*oxo/(kcgctccys*kGCTAoxo)))/compartment_;
+end
+
+function4gammaglutamylcyclotransferase is "function4gammaglutamylcyclotransferase"
+
+function function7(bGSH, bgluAA, compartment_, cysgly, kGGTbGSH, kGGTbgluAA, kGGTcysgly, keqGGT, vGGT)
+  vGGT*bGSH*(1 - bgluAA*cysgly/(keqGGT*bGSH))/(kGGTbGSH*(1 + bgluAA/kGGTbgluAA + bGSH/kGGTbGSH + cysgly/kGGTcysgly + bgluAA*cysgly/(kGGTbgluAA*kGGTcysgly)))/compartment_;
+end
+
+function7 is "function7"
+
+function function4v21(KmcSHMTcCH2THF, KmcSHMTcTHF, KmcSHMTcgly, KmcSHMTcser, VmfcSHMT, VmrcSHMT, cCH2THF, cTHF, cgly, compartment_, cser)
+  (-(VmrcSHMT*cCH2THF*cgly/(KmcSHMTcCH2THF*KmcSHMTcgly*(1 + cCH2THF/KmcSHMTcCH2THF + cgly/KmcSHMTcgly + cCH2THF*cgly/(KmcSHMTcCH2THF*KmcSHMTcgly)))) + cser*VmfcSHMT*cTHF/(KmcSHMTcser*KmcSHMTcTHF*(1 + cser/KmcSHMTcser + cTHF/KmcSHMTcTHF + cser*cTHF/(KmcSHMTcser*KmcSHMTcTHF))))/compartment_;
+end
+
+function4v21 is "function4v21"
+
+function function2(SAH, SAM, Vmmet, c5mTHFSUM, cCH2THF, cTHF, cgly, compartment_, kmGNMTSAH, kmGNMTcgly)
+  4.8*Vmmet*cgly*SAM/((kmGNMTcgly + cgly)*(0.35 + c5mTHFSUM - cCH2THF - cTHF)*(1 + SAH/kmGNMTSAH)*(63 + SAM))/compartment_;
+end
+
+function2 is "function2"
+
+function function4aminopeptidase(bcys, compartment_, cysgly, kAPbcys, kAPcysgly, keqAP, vAP)
+  vAP*(1 - bcys/(keqAP*cysgly))*cysgly/(kAPcysgly*(1 + bcys/kAPbcys + cysgly/kAPcysgly))/compartment_;
+end
+
+function4aminopeptidase is "function4aminopeptidase"
+
+function function4methioninesynthase(H2O2, H2O2ss, c5mTHFSUM, cCH2THF, cTHF, compartment_, hcy, kiMSH2O2, kmMShcy, kmMSmTH4, vmMS)
+  (H2O2ss + kiMSH2O2)*vmMS*(c5mTHFSUM - cCH2THF - cTHF)*hcy/((H2O2 + kiMSH2O2)*kmMShcy*kmMSmTH4*(1 + (c5mTHFSUM - cCH2THF - cTHF)/kmMSmTH4)*(1 + hcy/kmMShcy))/compartment_;
+end
+
+function4methioninesynthase is "function4methioninesynthase"
+
+function function6(cglut, compartment_, kopcglut, kopoxo, oxo, vop)
+  vop*oxo/(kopoxo*(1 + cglut/kopcglut + oxo/kopoxo))/compartment_;
+end
+
+function6 is "function6"
+
+function function4v38(boxo, compartment_, ktrsoxo, oxo)
+  ktrsoxo*(-boxo + oxo)/compartment_;
+end
+
+function4v38 is "function4v38"
+
+function function4glutathionesynthetase(OPA, cGSH, cglc, cgly, compartment_, gluAB, kGSOPA, kGScGSH, kGScglc, kGScgly, kGSgluAB, keqGS1, vGSf1)
+  vGSf1*cglc*cgly*(1 - cGSH/(keqGS1*cglc*cgly))/(kGScglc*kGScgly*(1 + cgly/kGScgly + gluAB/kGSgluAB)*(1 + cglc/kGScglc + cGSH/kGScGSH + OPA/kGSOPA))/compartment_;
+end
+
+function4glutathionesynthetase is "function4glutathionesynthetase"
+
+function function4v19(bcys, ccys, compartment_, kccysin, kcysinbcys, vmcysin)
+  (vmcysin*bcys/(kcysinbcys + bcys) - kccysin*ccys)/compartment_;
+end
+
+function4v19 is "function4v19"
+
+function function4glutamylcysteinesynthetase(AB, cGSH, ccys, cglc, cglut, compartment_, gluAB, kGCLAB, kGCLccys, kGCLcglc, kGCLcglut, kGCLgluAB, keqGCL, kiGCL, vGCLf1)
+  vGCLf1*ccys*(1 - cglc/(keqGCL*ccys*cglut))*cglut/(kGCLccys*kGCLcglut*(1 + AB/kGCLAB + ccys/kGCLccys)*(1 + cglc/kGCLcglc + cglut/kGCLcglut + cGSH/kiGCL + gluAB/kGCLgluAB))/compartment_;
+end
+
+function4glutamylcysteinesynthetase is "function4glutamylcysteinesynthetase"
+
+function function4v14(H2O2, H2O2ss, cGSSG, compartment_, kaGSSGl, kmGSSGl, vmGSSGl)
+  (H2O2 + kaGSSGl)*vmGSSGl*cGSSG/((H2O2ss + kaGSSGl)*(kmGSSGl + cGSSG))/compartment_;
+end
+
+function4v14 is "function4v14"
+
+function function1(KmmethSAH, KmmethSAM, SAH, SAM, Vmmeth, compartment_)
+  Vmmeth*SAM/(KmmethSAM*(1 + SAH/KmmethSAH) + SAM)/compartment_;
+end
+
+function1 is "function1"
+
+function function4v22(KmcMTHFRcCH2THF, KmcMTHFRcNADPH, SAH, SAM, VmcMTHFR, cCH2THF, cNADPH, compartment_)
+  63.72*cCH2THF*cNADPH*(cCH2THF + KmcMTHFRcCH2THF)^-1*(cNADPH + KmcMTHFRcNADPH)^-1*VmcMTHFR*(10 + piecewise(0, SAM < SAH, -1*SAH + SAM))^-1/compartment_;
+end
+
+function4v22 is "function4v22"
+
+function function4v18(bglut, cglut, compartment_, kglutin, kmbglut, vmglutin)
+  (bglut*vmglutin/(bglut + kmbglut) - kglutin*cglut)/compartment_;
+end
+
+function4v18 is "function4v18"
+
+function function4v32(OPA, bOPA, compartment_, ktrsOPA)
+  ktrsOPA*(-bOPA + OPA)/compartment_;
+end
+
+function4v32 is "function4v32"
+
+function function4v15(H2O2, H2O2ss, cGSSG, compartment_, kaGSSGh, kmGSSGh, vmGSSGh)
+  (H2O2 + kaGSSGh)*vmGSSGh*cGSSG/((H2O2ss + kaGSSGh)*(kmGSSGh + cGSSG))/compartment_;
+end
+
+function4v15 is "function4v15"
+
+function function4glutathionereductase(cGSSG, cNADPH, compartment_, kmgrGSSG, kmgrNADPH, vmgr)
+  cNADPH*vmgr*cGSSG/(kmgrGSSG*kmgrNADPH*(1 + cNADPH/kmgrNADPH + cGSSG/kmgrGSSG + cNADPH*cGSSG/(kmgrGSSG*kmgrNADPH)))/compartment_;
+end
+
+function4glutathionereductase is "function4glutathionereductase"
+
+function function12(cgly, compartment_, cysASG, glyASG, kAPbcys, kAPbgly, kAPcysgly, keqAP, vAP)
+  vAP*(1 - cgly*cysASG/(keqAP*glyASG))*glyASG/(kAPcysgly*(1 + cgly/kAPbgly + cysASG/kAPbcys + cgly*cysASG/(kAPbcys*kAPbgly) + glyASG/kAPcysgly))/compartment_;
+end
+
+function12 is "function12"
+
+function function10(ASG, VmP450A2, cGSH, compartment_, kP450A2ASG, kP450A2cGSH, kP450A2para, para)
+  para*VmP450A2*cGSH/(kP450A2cGSH*kP450A2para*(1 + para/kP450A2para + ASG/kP450A2ASG + cGSH/kP450A2cGSH))/compartment_;
+end
+
+function10 is "function10"
+
+function function5(H2O2, H2O2ss, Kmcbshcy, Kmcbsserine, SAH, SAM, Vmcbs, compartment_, cser, hcy, kaH2O2)
+  1.08551*cser*(H2O2 + kaH2O2)*Vmcbs*hcy/((H2O2ss + kaH2O2)*Kmcbshcy*(cser + Kmcbsserine)*(1 + hcy/Kmcbshcy)*(1 + 900/(SAH + SAM)^2))/compartment_;
+end
+
+function5 is "function5"
+
+function function4v40(bGSSG, compartment_, vbGSSGexp)
+  vbGSSGexp*bGSSG/compartment_;
+end
+
+function4v40 is "function4v40"
+
+function function4methionineadenosyltransferaseI(SAM, cGSSG, compartment_, kiMATiGSSG, kmMATimet, met, vmMATi)
+  0.4*(0.23 + 0.8/exp(0.0026*SAM))*(66.71 + kiMATiGSSG)*vmMATi*met/(kmMATimet*(kiMATiGSSG + cGSSG)*(1 + met/kmMATimet))/compartment_;
+end
+
+function4methionineadenosyltransferaseI is "function4methionineadenosyltransferaseI"
+
+function function11(ASG, cgluAA, compartment_, glyASG, kGGTbGSH, kGGTbgluAA, kGGTcysgly, keqGGT, vGGT)
+  vGGT*ASG*(1 - cgluAA*glyASG/(keqGGT*ASG))/(kGGTbGSH*(1 + ASG/kGGTbGSH + cgluAA/kGGTbgluAA + glyASG/kGGTcysgly + cgluAA*glyASG/(kGGTbgluAA*kGGTcysgly)))/compartment_;
+end
+
+function11 is "function11"
+
+function function4(BET, H2O2, H2O2ss, KibhmtH2O2, Kmbhmtbet, Kmbhmthcy, SAH, SAM, Vmbhmt, compartment_, hcy)
+  1.24041*BET*(H2O2ss + KibhmtH2O2)*Vmbhmt*hcy/(exp(0.0021*(SAH + SAM))*(H2O2 + KibhmtH2O2)*(BET + Kmbhmtbet)*Kmbhmthcy*(1 + hcy/Kmbhmthcy))/compartment_;
+end
+
+function4 is "function4"
+
+function function4glutamylcysteinesynthetase2(AB, cGSH, ccys, cglc, cglut, compartment_, gluAB, kGCLAB, kGCLccys, kGCLcglc, kGCLcglut, kGCLgluAB, keqGCL, kiGCL, vGCLf1)
+  AB*vGCLf1*(1 - 1/(keqGCL*cglut))*cglut/(kGCLAB*kGCLcglut*(1 + AB/kGCLAB + ccys/kGCLccys)*(1 + cglc/kGCLcglc + cglut/kGCLcglut + cGSH/kiGCL + gluAB/kGCLgluAB))/compartment_;
+end
+
+function4glutamylcysteinesynthetase2 is "function4glutamylcysteinesynthetase2"
+
+function function4glutathioneperoxidase(H2O2, cGSH, compartment_, kmGPXH2O2, kmGPXgsh, vmGPX)
+  H2O2*vmGPX*cGSH^2/((H2O2 + 9*kmGPXH2O2)*(kmGPXgsh + cGSH)^2)/compartment_;
+end
+
+function4glutathioneperoxidase is "function4glutathioneperoxidase"
+
+function function8(cgluAA, compartment_, kGCTAcgluAA, kGCTAoxo, kegGCTA, oxo, vGCTA)
+  vGCTA*cgluAA*(1 - oxo/(kegGCTA*cgluAA))/(kGCTAcgluAA*(1 + cgluAA/kGCTAcgluAA + oxo/kGCTAoxo))/compartment_;
+end
+
+function8 is "function8"
+
+function function4v39(bmet, compartment_, kmetincmethionine, kmmetinoutmethionine, met, vmmetin)
+  (bmet*vmmetin/(bmet + kmmetinoutmethionine) - kmetincmethionine*met)/compartment_;
+end
+
+function4v39 is "function4v39"
+
+function function9(ASG, VmP450E1, cGSH, compartment_, kP450E1ASG, kP450E1cGSH, kP450E1para, para)
+  para*VmP450E1*cGSH/(kP450E1cGSH*kP450E1para*(1 + para/kP450E1para + ASG/kP450E1ASG + cGSH/kP450E1cGSH))/compartment_;
+end
+
+function9 is "function9"
+
+function function4cystathionase(compartment_, cyt, kmctglcyt, vmctgl)
+  vmctgl*cyt/(kmctglcyt*(1 + cyt/kmctglcyt))/compartment_;
+end
+
+function4cystathionase is "function4cystathionase"
+
+function function4v23(compartment_, vocCH2HF)
+  vocCH2HF/compartment_;
+end
+
+function4v23 is "function4v23"
+
+function function4v20(bgly, cgly, compartment_, kcgly, kmbgly, vmglyin)
+  (bgly*vmglyin/(bgly + kmbgly) - kcgly*cgly)/compartment_;
+end
+
+function4v20 is "function4v20"
+
+function function4v30(bgluAA, cgluAA, compartment_, kTRSbgluAA, kTRScgluAA, keqTRS, vTRS)
+  vTRS*bgluAA*(1 - cgluAA/(keqTRS*bgluAA))/(kTRSbgluAA*(1 + bgluAA/kTRSbgluAA + cgluAA/kTRScgluAA))/compartment_;
+end
+
+function4v30 is "function4v30"
+
+function function4v41(bcys, compartment_, kbcys)
+  kbcys*bcys/compartment_;
+end
+
+function4v41 is "function4v41"
+
+function function4v16(cGSH, compartment_, kmgshoutl, vmgshoutl)
+  vmgshoutl*cGSH^3/(kmgshoutl^3 + cGSH^3)/compartment_;
+end
+
+function4v16 is "function4v16"
+
+function function4methionineadenosyltransferaseIII(SAM, cGSSG, compartment_, kiMATiiiGSSG, kmMATiiiSAM, kmMATiiimet, met, vmMATiii)
+  (66.71 + kiMATiiiGSSG)*vmMATiii*met^1.21*(1 + 7.2*SAM^2/(kmMATiiiSAM + SAM^2))/((kiMATiiiGSSG + cGSSG)*(kmMATiiimet + met^1.21))/compartment_;
+end
+
+function4methionineadenosyltransferaseIII is "function4methionineadenosyltransferaseIII"
+
+function function4v37(compartment_, cysASG, kcysASG, merc)
+  kcysASG*(-merc + cysASG)/compartment_;
+end
+
+function4v37 is "function4v37"
+
+function function4v17(cGSH, compartment_, kmgshouth, vmgshouth)
+  vmgshouth*cGSH/(kmgshouth + cGSH)/compartment_;
+end
+
+function4v17 is "function4v17"
+
+function function3(KmahSAH, Kmahhcy, SAH, Vmfah, compartment_, hcy, keqmet)
+  Vmfah*(1 - hcy/(keqmet*SAH))*SAH/(KmahSAH*(1 + hcy/Kmahhcy + SAH/KmahSAH))/compartment_;
+end
+
+function3 is "function3"
+
+
+model *geenen()
+
+  // Compartments and Species:
+  species ASG, OPA, SAH, SAM, bGSH, bGSSG, $bOPA, bcys, bgluAA, $boxo, cCH2THF;
+  species cGSH, cGSSG, cTHF, ccys, cglc, cgluAA, cglut, cgly, $cys, cysASG;
+  species cysgly, cyt, $ext_, gluAB, glyASG, hcy, met, oxo;
+
+  // Reactions:
+  v_v1: met -> SAM; compartment_*function4methionineadenosyltransferaseI(SAM, cGSSG, compartment_, kiMATiGSSG, kmMATimet, met, vmMATi);
+  v_v10: cglut + ccys -> cglc; compartment_*function4glutamylcysteinesynthetase(AB, cGSH, ccys, cglc, cglut, compartment_, gluAB, kGCLAB, kGCLccys, kGCLcglc, kGCLcglut, kGCLgluAB, keqGCL, kiGCL, vGCLf1);
+  v_v11: cgly + cglc -> cGSH; compartment_*function4glutathionesynthetase(OPA, cGSH, cglc, cgly, compartment_, gluAB, kGSOPA, kGScGSH, kGScglc, kGScgly, kGSgluAB, keqGS1, vGSf1);
+  v_v12: 2 cGSH -> cGSSG; compartment_*function4glutathioneperoxidase(H2O2, cGSH, compartment_, kmGPXH2O2, kmGPXgsh, vmGPX);
+  v_v13: cGSSG -> 2 cGSH; compartment_*function4glutathionereductase(cGSSG, cNADPH, compartment_, kmgrGSSG, kmgrNADPH, vmgr);
+  v_v14: cGSSG -> bGSSG; compartment_*function4v14(H2O2, H2O2ss, cGSSG, compartment_, kaGSSGl, kmGSSGl, vmGSSGl);
+  v_v15: cGSSG -> bGSSG; compartment_*function4v15(H2O2, H2O2ss, cGSSG, compartment_, kaGSSGh, kmGSSGh, vmGSSGh);
+  v_v16: cGSH -> bGSH; compartment_*function4v16(cGSH, compartment_, kmgshoutl, vmgshoutl);
+  v_v17: cGSH -> bGSH; compartment_*function4v17(cGSH, compartment_, kmgshouth, vmgshouth);
+  v_v18: $ext_ -> cglut; compartment_*function4v18(bglut, cglut, compartment_, kglutin, kmbglut, vmglutin);
+  v_v19: bcys -> ccys; compartment_*function4v19(bcys, ccys, compartment_, kccysin, kcysinbcys, vmcysin);
+  v_v2: met -> SAM; compartment_*function4methionineadenosyltransferaseIII(SAM, cGSSG, compartment_, kiMATiiiGSSG, kmMATiiiSAM, kmMATiiimet, met, vmMATiii);
+  v_v20: $ext_ -> cgly; compartment_*function4v20(bgly, cgly, compartment_, kcgly, kmbgly, vmglyin);
+  v_v21: cTHF -> cgly + cCH2THF; compartment_*function4v21(KmcSHMTcCH2THF, KmcSHMTcTHF, KmcSHMTcgly, KmcSHMTcser, VmfcSHMT, VmrcSHMT, cCH2THF, cTHF, cgly, compartment_, cser);
+  v_v22: cCH2THF -> $ext_; compartment_*function4v22(KmcMTHFRcCH2THF, KmcMTHFRcNADPH, SAH, SAM, VmcMTHFR, cCH2THF, cNADPH, compartment_);
+  v_v23: cTHF -> cCH2THF; compartment_*function4v23(compartment_, vocCH2HF);
+  v_v24: cglc -> oxo + ccys; compartment_*function4gammaglutamylcyclotransferase(ccys, cglc, compartment_, kGCTAoxo, kcgctccys, kcgctcglc, kegGCTA, oxo, vGCTA);
+  v_v25: oxo -> cglut; compartment_*function6(cglut, compartment_, kopcglut, kopoxo, oxo, vop);
+  v_v26: cglut -> gluAB; compartment_*function4glutamylcysteinesynthetase2(AB, cGSH, ccys, cglc, cglut, compartment_, gluAB, kGCLAB, kGCLccys, kGCLcglc, kGCLcglut, kGCLgluAB, keqGCL, kiGCL, vGCLf1);
+  v_v27: gluAB + cgly -> OPA; compartment_*function4glutathionesynthetase2(OPA, cGSH, cglc, cgly, compartment_, gluAB, kGSOPA, kGScGSH, kGScglc, kGScgly, kGSgluAB, keqGS2, vGSf1);
+  v_v28: bGSH -> cysgly + bgluAA; compartment_*function7(bGSH, bgluAA, compartment_, cysgly, kGGTbGSH, kGGTbgluAA, kGGTcysgly, keqGGT, vGGT);
+  v_v29: cysgly -> bcys; compartment_*function4aminopeptidase(bcys, compartment_, cysgly, kAPbcys, kAPcysgly, keqAP, vAP);
+  v_v3: SAM -> SAH; compartment_*function1(KmmethSAH, KmmethSAM, SAH, SAM, Vmmeth, compartment_);
+  v_v30: bgluAA -> cgluAA; compartment_*function4v30(bgluAA, cgluAA, compartment_, kTRSbgluAA, kTRScgluAA, keqTRS, vTRS);
+  v_v31: cgluAA -> oxo; compartment_*function8(cgluAA, compartment_, kGCTAcgluAA, kGCTAoxo, kegGCTA, oxo, vGCTA);
+  v_v32: OPA -> $bOPA; compartment_*function4v32(OPA, bOPA, compartment_, ktrsOPA);
+  v_v33: cGSH -> ASG; compartment_*function9(ASG, VmP450E1, cGSH, compartment_, kP450E1ASG, kP450E1cGSH, kP450E1para, para);
+  v_v34: cGSH -> ASG; compartment_*function10(ASG, VmP450A2, cGSH, compartment_, kP450A2ASG, kP450A2cGSH, kP450A2para, para);
+  v_v35: ASG -> glyASG + cgluAA; compartment_*function11(ASG, cgluAA, compartment_, glyASG, kGGTbGSH, kGGTbgluAA, kGGTcysgly, keqGGT, vGGT);
+  v_v36: glyASG -> cysASG + cgly; compartment_*function12(cgly, compartment_, cysASG, glyASG, kAPbcys, kAPbgly, kAPcysgly, keqAP, vAP);
+  v_v37: cysASG -> $ext_; compartment_*function4v37(compartment_, cysASG, kcysASG, merc);
+  v_v38: oxo -> $boxo; compartment_*function4v38(boxo, compartment_, ktrsoxo, oxo);
+  v_v39: $ext_ -> met; compartment_*function4v39(bmet, compartment_, kmetincmethionine, kmmetinoutmethionine, met, vmmetin);
+  v_v4: SAM + cgly -> SAH; compartment_*function2(SAH, SAM, Vmmet, c5mTHFSUM, cCH2THF, cTHF, cgly, compartment_, kmGNMTSAH, kmGNMTcgly);
+  v_v40: bGSSG -> 2 bcys; compartment_*function4v40(bGSSG, compartment_, vbGSSGexp);
+  v_v41: bcys -> $cys; compartment_*function4v41(bcys, compartment_, kbcys);
+  v_v5: SAH -> hcy; compartment_*function3(KmahSAH, Kmahhcy, SAH, Vmfah, compartment_, hcy, keqmet);
+  v_v6: hcy -> met; compartment_*function4(BET, H2O2, H2O2ss, KibhmtH2O2, Kmbhmtbet, Kmbhmthcy, SAH, SAM, Vmbhmt, compartment_, hcy);
+  v_v7: hcy -> met + cTHF; compartment_*function4methioninesynthase(H2O2, H2O2ss, c5mTHFSUM, cCH2THF, cTHF, compartment_, hcy, kiMSH2O2, kmMShcy, kmMSmTH4, vmMS);
+  v_v8: hcy -> cyt; compartment_*function5(H2O2, H2O2ss, Kmcbshcy, Kmcbsserine, SAH, SAM, Vmcbs, compartment_, cser, hcy, kaH2O2);
+  v_v9: cyt -> ccys; compartment_*function4cystathionase(compartment_, cyt, kmctglcyt, vmctgl);
+
+  // Species initializations:
+  ASG = 5;
+  OPA = 1;
+  SAH = 19.1433;
+  SAM = 81.1685;
+  bGSH = 12.6996;
+  bGSSG = 0.484329;
+  bOPA = 1;
+  bcys = 185.504;
+  bgluAA = 1;
+  boxo = 1;
+  cCH2THF = 0.673887;
+  cGSH = 6590.57;
+  cGSSG = 61.302;
+  cTHF = 8.2;
+  ccys = 194.967;
+  cglc = 9.80842;
+  cgluAA = 1;
+  cglut = 3219.4;
+  cgly = 902.907;
+  cys = 192;
+  cysASG = 5;
+  cysgly = 1;
+  cyt = 36.8826;
+  ext_ = 1;
+  gluAB = 1;
+  glyASG = 5;
+  hcy = 1.12248;
+  met = 49.1868;
+  oxo = 10;
+
+  // Variable initializations:
+  AB = 10;
+  BET = 50;
+  DUMP = 20;
+  EXTERNAL = 0;
+  GARP = 10;
+  Gpara = 10;
+  H2O2 = 0.01;
+  H2O2ss = 0.01;
+  HCHO = 500;
+  KibhmtH2O2 = 0.01;
+  KmahSAH = 6.5;
+  Kmahhcy = 150;
+  Kmbhmtbet = 100;
+  Kmbhmthcy = 12;
+  KmcARTaic = 100;
+  KmcARTc10fTHF = 5.9;
+  KmcDHFRcDHF = 0.5;
+  KmcDHFRcNADPH = 4;
+  KmcFTScHCOOH = 43;
+  KmcFTScTHF = 3;
+  KmcMTCHc10fTHF = 100;
+  KmcMTCHcCHTHF = 250;
+  KmcMTDcCH2THF = 2;
+  KmcMTDcCHTHF = 10;
+  KmcMTHFRcCH2THF = 50;
+  KmcMTHFRcNADPH = 16;
+  KmcPGTGARP = 520;
+  KmcPGTc10fTHF = 4.9;
+  KmcSHMTcCH2THF = 3200;
+  KmcSHMTcTHF = 50;
+  KmcSHMTcgly = 10000;
+  KmcSHMTcser = 600;
+  KmcTSDUMP = 6.3;
+  KmcTScCH2THF = 14;
+  Kmcbshcy = 1000;
+  Kmcbsserine = 2000;
+  Kmcdoccys = 3100;
+  KmmDMGDdmg = 50;
+  KmmDMGDmTHF = 50;
+  KmmFTSm10fTHF = 22;
+  KmmFTSmHCOOH = 43;
+  KmmFTSmTHF = 3;
+  KmmGDCmTHF = 50;
+  KmmGDCmgly = 3400;
+  KmmMTCHm10fTHF = 100;
+  KmmMTCHmCHTHF = 250;
+  KmmMTDmCH2THF = 2;
+  KmmMTDmCHTHF = 10;
+  KmmSDHmTHF = 50;
+  KmmSDHsarc = 320;
+  KmmSHMTmCH2THF = 3200;
+  KmmSHMTmTHF = 50;
+  KmmSHMTmgly = 10000;
+  KmmSHMTmser = 600;
+  KmmethSAH = 1.4;
+  KmmethSAM = 1.4;
+  Kmsermser = 5700;
+  OPAext = 1;
+  Spara = 10;
+  VmP4503A4 = 27000;
+  VmP450A2 = 2098.5;
+  VmP450E1 = 2731.5;
+  Vmbhmt = 2047.00989641;
+  VmcART = 55000;
+  VmcDHFR = 2000;
+  VmcFTD = 500;
+  VmcFTS = 3900;
+  VmcMTHFR = 3384.86097442;
+  VmcPGT = 24300;
+  VmcTS = 5000;
+  Vmcbs = 464266.4558161;
+  Vmcdo = 1327.15;
+  Vmfah = 2823.85613706;
+  VmfcMTCH = 500000;
+  VmfcMTD = 80000;
+  VmfcSHMT = 5200;
+  VmfmFTS = 2000;
+  VmfmMTCH = 790000;
+  VmfmMTD = 180000;
+  VmfmSHMT = 11440;
+  VmmDMGD = 15000;
+  VmmFTD = 1050;
+  VmmGDC = 15000;
+  VmmSDH = 15000;
+  Vmmet = 571.25490777;
+  Vmmeth = 203.78981903;
+  Vmrah = 755;
+  VmrcMTCH = 20000;
+  VmrcMTD = 600000;
+  VmrcSHMT = 13200756.263;
+  VmrmFTS = 6300;
+  VmrmMTCH = 20000;
+  VmrmMTD = 594000;
+  VmrmSHMT = 30000000;
+  Vmser = 10000;
+  bglut = 60;
+  bgly = 1300;
+  bmet = 30;
+  bser = 150;
+  c5mTHFSUM = 13.373887;
+  cNADPH = 50;
+  compartment_ = 1;
+  cser = 540;
+  k0 = 0;
+  kAPbcys = 9988.69133327;
+  kAPbgly = 10000;
+  kAPcysgly = 2500;
+  kGCLAB = 2300;
+  kGCLccys = 100;
+  kGCLcglc = 300;
+  kGCLcglut = 1900;
+  kGCLgluAB = 10000;
+  kGCTAcgluAA = 2200;
+  kGCTAoxo = 10002.50595974;
+  kGGTbGSH = 670;
+  kGGTbgluAA = 979.80173595;
+  kGGTcysgly = 1090;
+  kGSOPA = 100;
+  kGScGSH = 30;
+  kGScglc = 22;
+  kGScgly = 300;
+  kGSgluAB = 200;
+  kGpara = 915;
+  kOPAOPA = 1000;
+  kOPAext = 0.034232034;
+  kP4503A4para = 150;
+  kP450A2ASG = 10000;
+  kP450A2cGSH = 270;
+  kP450A2para = 1300;
+  kP450E1ASG = 10000;
+  kP450E1cGSH = 270;
+  kP450E1para = 6500;
+  kSpara = 109;
+  kTRSbgluAA = 1000;
+  kTRScgluAA = 1000;
+  kaGSSGh = 0.01;
+  kaGSSGl = 0.01;
+  kaH2O2 = 0.035;
+  kagcl = 0.01;
+  kbcys = 0.5;
+  kbser = 150;
+  kccysin = 0.398490844;
+  kcgctccys = 2177.76442631;
+  kcgctcglc = 7.9782874;
+  kcgctoxo = 0.998749;
+  kcgly = 0.077440299;
+  kcglyext = 10;
+  kcysASG = 49.99680845;
+  kcysin = 70;
+  kcysinbcys = 2100;
+  kegGCTA = 2.80372589;
+  keqAP = 98.37646982;
+  keqGCL = 0.002364413;
+  keqGCL2 = 0.000252884;
+  keqGGT = 99915.61352679;
+  keqGS1 = 0.217779881;
+  keqGS2 = 0.002203477;
+  keqOP = 10;
+  keqOPA = 100;
+  keqTRS = 9999.89898787;
+  keqgc = 26.8;
+  keqgcl = 5597;
+  keqgs = 5600;
+  keqmet = 0.0602;
+  kfcNE = 0.03;
+  kfmNE = 0.03;
+  kgccglut = 200000;
+  kgclgsh = 8200;
+  kgcoxo = 90000;
+  kglutin = 0.001329221;
+  kgly = 5700;
+  kglyin = 630;
+  khcooh = 100;
+  kiGCL = 8200;
+  kiMATiGSSG = 2140;
+  kiMATiiiGSSG = 4030;
+  kiMSH2O2 = 0.01;
+  kmGNMTSAH = 18;
+  kmGNMTcgly = 130;
+  kmGPXH2O2 = 0.01;
+  kmGPXgsh = 1330;
+  kmGSSGh = 1250;
+  kmGSSGl = 7110;
+  kmMATiSAM = 50;
+  kmMATiiiSAM = 129600;
+  kmMATiiimet = 300;
+  kmMATimet = 41;
+  kmMShcy = 1;
+  kmMSmTH4 = 25;
+  kmbglut = 300;
+  kmbgly = 150;
+  kmcFTDc10fTHF = 20;
+  kmctglcyt = 500;
+  kmetin = 30;
+  kmetincmethionine = 1;
+  kmgrGSSG = 107;
+  kmgrNADPH = 10.4;
+  kmgshe = 3300;
+  kmgshout = 240;
+  kmgshouth = 150;
+  kmgshoutl = 3000;
+  kmmFTDm10fTHF = 20;
+  kmmetinoutmethionine = 150;
+  kopcglut = 1.18024605;
+  kopoxo = 5;
+  koxoext = 342.52555827;
+  kpcgsh = 30;
+  krcNE = 22;
+  krmNE = 20;
+  krserin = 1;
+  kserin = 150;
+  ktrsOPA = 900.92467952;
+  ktrsoxo = 0.372955056;
+  merc = 5;
+  oxoext = 1;
+  para = 0;
+  vAP = 145394.44495834;
+  vGCLf1 = 36000;
+  vGCLf2 = 36000;
+  vGCLr1 = 100;
+  vGCLr2 = 100;
+  vGCTA = 59840.3681762;
+  vGGT = 8745.3214997;
+  vGSf1 = 948.15288557;
+  vGSf2 = 54000;
+  vGSr1 = 10;
+  vGSr2 = 10;
+  vGpara = 41.4;
+  vSpara = 73.8;
+  vTRS = 97881.27257024;
+  vbGSSGexp = 10.22060474;
+  vbcysexp = 0.823708856;
+  vgc = 0;
+  vmGPX = 1923.63569867;
+  vmGSSGh = 21.51690699;
+  vmGSSGl = 402.5;
+  vmMATi = 596.74134609;
+  vmMATiii = 232.88065282;
+  vmMS = 309.76805869;
+  vmOPA = 0.0001;
+  vmctgl = 1435.6231332;
+  vmcysin = 1382.04384062;
+  vmfgly = 10000;
+  vmgcl = 3600;
+  vmgct = 51000;
+  vmglutin = 76.73077358;
+  vmglyin = 320.99344813;
+  vmgr = 154.14039786;
+  vmgshe = 304;
+  vmgshout = 1000;
+  vmgshouth = 68.56973565;
+  vmgshoutl = 355.77087812;
+  vmmetin = 823.54513031;
+  vmrgly = 10000;
+  vmserin = 2700;
+  vocCH2HF = 13.52015045;
+  vocser = 516;
+  vocysb = 70;
+  voglub = 273;
+  voglyb = 630;
+  voglyfolate = 1817.68;
+  vop = 846929.64530381;
+  voserin = 803.174;
+
+  // Other declarations:
+  var AB, BET, DUMP, EXTERNAL, GARP, Gpara, H2O2, H2O2ss, HCHO, KibhmtH2O2;
+  var KmahSAH, Kmahhcy, Kmbhmtbet, Kmbhmthcy, KmcARTaic, KmcARTc10fTHF, KmcDHFRcDHF;
+  var KmcDHFRcNADPH, KmcFTScHCOOH, KmcFTScTHF, KmcMTCHc10fTHF, KmcMTCHcCHTHF;
+  var KmcMTDcCH2THF, KmcMTDcCHTHF, KmcMTHFRcCH2THF, KmcMTHFRcNADPH, KmcPGTGARP;
+  var KmcPGTc10fTHF, KmcSHMTcCH2THF, KmcSHMTcTHF, KmcSHMTcgly, KmcSHMTcser;
+  var KmcTSDUMP, KmcTScCH2THF, Kmcbshcy, Kmcbsserine, Kmcdoccys, KmmDMGDdmg;
+  var KmmDMGDmTHF, KmmFTSm10fTHF, KmmFTSmHCOOH, KmmFTSmTHF, KmmGDCmTHF, KmmGDCmgly;
+  var KmmMTCHm10fTHF, KmmMTCHmCHTHF, KmmMTDmCH2THF, KmmMTDmCHTHF, KmmSDHmTHF;
+  var KmmSDHsarc, KmmSHMTmCH2THF, KmmSHMTmTHF, KmmSHMTmgly, KmmSHMTmser, KmmethSAH;
+  var KmmethSAM, Kmsermser, OPAext, Spara, VmP4503A4, VmP450A2, VmP450E1;
+  var Vmbhmt, VmcART, VmcDHFR, VmcFTD, VmcFTS, VmcMTHFR, VmcPGT, VmcTS, Vmcbs;
+  var Vmcdo, Vmfah, VmfcMTCH, VmfcMTD, VmfcSHMT, VmfmFTS, VmfmMTCH, VmfmMTD;
+  var VmfmSHMT, VmmDMGD, VmmFTD, VmmGDC, VmmSDH, Vmmet, Vmmeth, Vmrah, VmrcMTCH;
+  var VmrcMTD, VmrcSHMT, VmrmFTS, VmrmMTCH, VmrmMTD, VmrmSHMT, Vmser, bglut;
+  var bgly, bmet, bser, c5mTHFSUM, cNADPH, compartment_, cser, k0, kAPbcys;
+  var kAPbgly, kAPcysgly, kGCLAB, kGCLccys, kGCLcglc, kGCLcglut, kGCLgluAB;
+  var kGCTAcgluAA, kGCTAoxo, kGGTbGSH, kGGTbgluAA, kGGTcysgly, kGSOPA, kGScGSH;
+  var kGScglc, kGScgly, kGSgluAB, kGpara, kOPAOPA, kOPAext, kP4503A4para;
+  var kP450A2ASG, kP450A2cGSH, kP450A2para, kP450E1ASG, kP450E1cGSH, kP450E1para;
+  var kSpara, kTRSbgluAA, kTRScgluAA, kaGSSGh, kaGSSGl, kaH2O2, kagcl, kbcys;
+  var kbser, kccysin, kcgctccys, kcgctcglc, kcgctoxo, kcgly, kcglyext, kcysASG;
+  var kcysin, kcysinbcys, kegGCTA, keqAP, keqGCL, keqGCL2, keqGGT, keqGS1;
+  var keqGS2, keqOP, keqOPA, keqTRS, keqgc, keqgcl, keqgs, keqmet, kfcNE;
+  var kfmNE, kgccglut, kgclgsh, kgcoxo, kglutin, kgly, kglyin, khcooh, kiGCL;
+  var kiMATiGSSG, kiMATiiiGSSG, kiMSH2O2, kmGNMTSAH, kmGNMTcgly, kmGPXH2O2;
+  var kmGPXgsh, kmGSSGh, kmGSSGl, kmMATiSAM, kmMATiiiSAM, kmMATiiimet, kmMATimet;
+  var kmMShcy, kmMSmTH4, kmbglut, kmbgly, kmcFTDc10fTHF, kmctglcyt, kmetin;
+  var kmetincmethionine, kmgrGSSG, kmgrNADPH, kmgshe, kmgshout, kmgshouth;
+  var kmgshoutl, kmmFTDm10fTHF, kmmetinoutmethionine, kopcglut, kopoxo, koxoext;
+  var kpcgsh, krcNE, krmNE, krserin, kserin, ktrsOPA, ktrsoxo, merc, oxoext;
+  var para, vAP, vGCLf1, vGCLf2, vGCLr1, vGCLr2, vGCTA, vGGT, vGSf1, vGSf2;
+  var vGSr1, vGSr2, vGpara, vSpara, vTRS, vbGSSGexp, vbcysexp, vgc, vmGPX;
+  var vmGSSGh, vmGSSGl, vmMATi, vmMATiii, vmMS, vmOPA, vmctgl, vmcysin, vmfgly;
+  var vmgcl, vmgct, vmglutin, vmglyin, vmgr, vmgshe, vmgshout, vmgshouth;
+  var vmgshoutl, vmmetin, vmrgly, vmserin, vocCH2HF, vocser, vocysb, voglub;
+  var voglyb, voglyfolate, vop, voserin;
+
+  // Display Names:
+  ext_ is "ext";
+  compartment_ is "compartment";
+
+  // CV terms:
+  ASG identity "http://identifiers.org/obo.chebi:CHEBI/32639"
+  SAH identity "http://identifiers.org/obo.chebi:CHEBI/16680"
+  SAM identity "http://identifiers.org/obo.chebi:CHEBI/15414"
+  bGSH identity "http://identifiers.org/obo.chebi:CHEBI/16856"
+  bGSSG identity "http://identifiers.org/obo.chebi:CHEBI/17858"
+  bcys identity "http://identifiers.org/obo.chebi:CHEBI/15356"
+  cCH2THF identity "http://identifiers.org/obo.chebi:CHEBI/20502"
+  cGSH identity "http://identifiers.org/obo.chebi:CHEBI/16856"
+  cGSSG identity "http://identifiers.org/obo.chebi:CHEBI/17858"
+  cTHF identity "http://identifiers.org/obo.chebi:CHEBI/20506"
+  ccys identity "http://identifiers.org/obo.chebi:CHEBI/15356"
+  cglc identity "http://identifiers.org/obo.chebi:CHEBI/17515"
+  cglut identity "http://identifiers.org/obo.chebi:CHEBI/14321"
+  cgly identity "http://identifiers.org/obo.chebi:CHEBI/15428"
+  cysASG identity "http://identifiers.org/obo.chebi:CHEBI/24337"
+  cysgly identity "http://identifiers.org/obo.chebi:CHEBI/4047"
+  cyt identity "http://identifiers.org/obo.chebi:CHEBI/17755"
+  glyASG identity "http://identifiers.org/obo.chebi:CHEBI/24337"
+  hcy identity "http://identifiers.org/obo.chebi:CHEBI/17230"
+  met identity "http://identifiers.org/obo.chebi:CHEBI/16811"
+  oxo identity "http://identifiers.org/obo.chebi:CHEBI/16010"
+  v_v1 identity "http://identifiers.org/ec-code/2.5.1.6"
+  v_v10 identity "http://identifiers.org/ec-code/6.3.2.2"
+  v_v11 identity "http://identifiers.org/ec-code/6.3.2.3"
+  v_v12 identity "http://identifiers.org/ec-code/1.11.1.9"
+  v_v13 identity "http://identifiers.org/ec-code/1.8.1.7"
+  v_v2 identity "http://identifiers.org/ec-code/2.5.1.6"
+  v_v24 identity "http://identifiers.org/ec-code/2.3.2.4"
+  v_v25 identity "http://identifiers.org/ec-code/3.5.2.9"
+  v_v26 identity "http://identifiers.org/ec-code/6.3.2.2"
+  v_v27 identity "http://identifiers.org/ec-code/6.3.2.3"
+  v_v28 identity "http://identifiers.org/ec-code/2.3.2.2"
+  v_v29 identity "http://identifiers.org/ec-code/3.4.11.2"
+  v_v3 identity "http://identifiers.org/ec-code/2.1.1.20"
+  v_v31 identity "http://identifiers.org/ec-code/2.3.2.4"
+  v_v33 identity "http://identifiers.org/ec-code/2.5.1.18"
+  v_v34 identity "http://identifiers.org/ec-code/2.5.1.18"
+  v_v35 identity "http://identifiers.org/ec-code/2.3.2.2"
+  v_v36 identity "http://identifiers.org/ec-code/2.3.1.80"
+  v_v4 identity "http://identifiers.org/ec-code/2.1.1.72"
+  v_v5 identity "http://identifiers.org/ec-code/3.3.1.1"
+  v_v6 identity "http://identifiers.org/ec-code/2.1.1.5"
+  v_v7 identity "http://identifiers.org/ec-code/2.1.1.13"
+  v_v8 identity "http://identifiers.org/ec-code/4.2.1.22"
+  v_v9 identity "http://identifiers.org/ec-code/4.4.1.1"
+end
+
+geenen is "geenen"

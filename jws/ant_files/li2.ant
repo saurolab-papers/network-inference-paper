@@ -1,0 +1,51 @@
+// Created by libAntimony v2.13.2
+model *li2()
+
+  // Compartments and Species:
+  species E, H, I, M;
+
+  // Reactions:
+  v1:  -> H; lambda;
+  v10:  -> E; k1*I*E/(1 + beta*I);
+  v11:  -> E; k2*M*E/(1 + gamma_*M);
+  v2: H -> ; d1*H;
+  v3: H -> I; alfa*H*M;
+  v4: I -> ; delta*I;
+  v5: I -> ; p1*I*E/(1 + beta*I);
+  v6:  -> M; r*I;
+  v7: M -> ; mu*M;
+  v8: M -> ; p2*M*E/(1 + gamma_*M);
+  v9: E -> ; d2*E;
+
+  // Species initializations:
+  E = 0.0001;
+  H = 5000000;
+  I = 0;
+  M = 10000;
+
+  // Variable initializations:
+  alfa = 9e-07;
+  beta = 0.0005;
+  d1 = 0.0083;
+  d2 = 0.04;
+  delta = 1;
+  gamma_ = 0.000667;
+  k1 = 2.5e-05;
+  k2 = 1.03e-05;
+  lambda = 41500;
+  mu = 48;
+  p1 = 1e-08;
+  p2 = 1e-08;
+  r = 12;
+
+  // Other declarations:
+  var alfa, beta, d1, d2, delta, gamma_, k1, k2, lambda, mu, p1, p2, r;
+
+  // Display Names:
+  E is "Population of Immune effectors";
+  H is "Population of RBCs";
+  I is "Population of iRBCs";
+  M is "Population of malaria parasites";
+end
+
+li2 is "li2"

@@ -1,0 +1,81 @@
+// Created by libAntimony v2.13.2
+model *nyabadza3()
+
+  // Compartments and Species:
+  species An, As, $EXT, Ins, Is, It, Sn, Ss;
+
+  // Assignment Rules:
+  Lambda := c*(1 - Theta)*Beta*exp(-m*(Delta_1*An + Delta_2*As)/(Sn + Ss + Ins + Is + It + An + As))*((Ins + Eta_1*(Is + Phi_1*It) + Eta_2*(An + Phi_2*As))/(Sn + Ss + Ins + Is + It + An + As));
+  people_with_HIV := Ins + Is + It;
+
+  // Reactions:
+  v_1: $EXT -> Sn; Pi_n;
+  v_10: Ins -> An; Rho_1*Ins;
+  v_11: Ss -> Is; p*(1 - Psi)*Lambda*Ss;
+  v_12: Is -> $EXT; Mu*Is;
+  v_13: Is -> It; Sigma*Is;
+  v_14: Is -> As; Rho_2*Is;
+  v_15: It -> $EXT; Mu*It;
+  v_16: It -> As; Rho_3*It;
+  v_17: An -> $EXT; Mu*An;
+  v_18: An -> $EXT; Delta_1*An;
+  v_19: As -> $EXT; Mu*As;
+  v_2: Sn -> Ins; Lambda*Sn;
+  v_20: As -> $EXT; Delta_2*As;
+  v_3: Sn -> $EXT; Mu*Sn;
+  v_4: Sn -> Ss; k*Sn;
+  v_5: $EXT -> Ss; Pi_s;
+  v_6: Ss -> Ins; q*(1 - Psi)*Lambda*Ss;
+  v_7: Ss -> $EXT; Mu*Ss;
+  v_8: Ins -> $EXT; Mu*Ins;
+  v_9: Ins -> Is; k*Ins;
+
+  // Species initializations:
+  An = 20000;
+  As = 0;
+  EXT = 1;
+  Ins = 145000;
+  Is = 0;
+  It = 0;
+  Sn = 18373000;
+  Ss = 0;
+
+  // Variable initializations:
+  Beta = 0.4584;
+  Delta_1 = 0.293;
+  Delta_2 = 0.3379;
+  Eta_1 = 0.7203;
+  Eta_2 = 1.3785;
+  c = 1.5892;
+  Theta = 0.1605;
+  m = 45.1202;
+  Phi_1 = 0.1;
+  Phi_2 = 7.3471e-05;
+  Mu = 0.032;
+  Pi_n = 920540;
+  Pi_s = 750000;
+  Psi = 0.2915;
+  Rho_1 = 0.2372;
+  Rho_2 = 0.1828;
+  Rho_3 = 0.13;
+  Sigma = 0.0655;
+  k = 0.0388;
+  p = 0.1;
+  q = 0.9;
+
+  // Other declarations:
+  var Beta, Delta_1, Delta_2, Eta_1, Eta_2, Lambda, c, Theta, m, Phi_1, Phi_2;
+  var Mu, Pi_n, Pi_s, Psi, Rho_1, Rho_2, Rho_3, Sigma, k, p, people_with_HIV;
+  var q;
+
+  // Display Names:
+  An is "Unscreened AIDS";
+  As is "Screened AIDS";
+  Ins is "Unscreened HIV infected";
+  Is is "Screened HIV infected";
+  It is "Treated HIV infected";
+  Sn is "Unscreened susceptible";
+  Ss is "Screened susceptible";
+end
+
+nyabadza3 is "nyabadza3"

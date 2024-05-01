@@ -1,0 +1,27 @@
+// Created by libAntimony v2.13.2
+model *bier1()
+
+  // Compartments and Species:
+  species T, g, $s;
+
+  // Reactions:
+  v_1: $s -> g; k1;
+  v_2: g -> 2 T; k2*g*T;
+  v_3: T -> $s; k3*T/(T + k4);
+
+  // Species initializations:
+  T = 0.0489547;
+  g = 12.2751;
+  s = 1;
+
+  // Variable initializations:
+  k1 = 0.36;
+  k2 = 0.02;
+  k3 = 6;
+  k4 = 13;
+
+  // Other declarations:
+  var k1, k2, k3, k4;
+end
+
+bier1 is "bier1"

@@ -1,0 +1,42 @@
+// Created by libAntimony v2.13.2
+model *heinrich()
+
+  // Compartments and Species:
+  species $ADP, ATP, BPG, BPG2, PEP, $fATP, $xvar;
+
+  // Assignment Rules:
+  ADP := A*(-qAK/2 + (qAK^2/4 + (qAK*ATP/A)*(1 - ATP/A))^0.5);
+  fATP := (1 + (ATP/Kiatp)^nH)^-1;
+
+  // Reactions:
+  v_1: 2 ATP -> 2 BPG; kHKtoPFK*ATP*(1 + (ATP/Kiatp)^nH)^-1;
+  v_2: BPG -> BPG2; kP2GM*BPG;
+  v_3: BPG2 -> PEP; kP2Gase*BPG2;
+  v_4: BPG -> ATP + PEP; kPGK*BPG*ADP;
+  v_5: PEP -> ATP; kPK*PEP*ADP;
+  v_6: ATP -> $xvar; kATPase*ATP;
+
+  // Species initializations:
+  ATP = 1.2;
+  BPG = 0.0005;
+  BPG2 = 5;
+  PEP = 0.02;
+  xvar = 0;
+
+  // Variable initializations:
+  A = 1.5;
+  qAK = 2;
+  Kiatp = 1;
+  nH = 4;
+  kATPase = 1.46;
+  kHKtoPFK = 3.2;
+  kP2GM = 1500;
+  kP2Gase = 0.15;
+  kPGK = 15700;
+  kPK = 559;
+
+  // Other declarations:
+  var A, qAK, Kiatp, nH, kATPase, kHKtoPFK, kP2GM, kP2Gase, kPGK, kPK;
+end
+
+heinrich is "heinrich"

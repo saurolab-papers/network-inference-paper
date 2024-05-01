@@ -1,0 +1,77 @@
+// Created by libAntimony v2.13.2
+model *srivastava2()
+
+  // Compartments and Species:
+  species T, T1rstar, T1sstar, Trstar, Tsstar, $V, VIr, VIs, VNIr, VNIs, $VI;
+  species $VNI, $Vr, $Vs;
+
+  // Assignment Rules:
+  V := VIr + VIs + VNIr + VNIs;
+  VI := VIr + VIs;
+  VNI := VNIr + VNIs;
+  Vr := VIr + VNIr;
+  Vs := VIs + VNIs;
+
+  // Reactions:
+  v1:  -> T; s;
+  v10: T1sstar -> Tsstar; alphas*T1sstar;
+  v11: Tsstar -> Trstar; alphas*pi_*T1sstar;
+  v12: Trstar -> Tsstar; alphas*etas*pi_*T1sstar;
+  v13: Tsstar -> ; deltas*Tsstar;
+  v14:  -> VIs; deltas*NN*Tsstar;
+  v15: VIs -> ; deltas*epsilons*NN*Tsstar;
+  v16: VIs -> ; c*VIs;
+  v17: T1rstar -> ; mu1*T1rstar;
+  v18: T1rstar -> Trstar; alphar*T1rstar;
+  v19: Trstar -> ; deltar*Trstar;
+  v2: T -> ; mu*T;
+  v20:  -> VIr; deltar*NN*Trstar;
+  v21: VIr -> VNIr; deltar*epsilonr*NN*Trstar;
+  v22: VIr -> ; c*VIr;
+  v23:  -> VNIs; deltas*epsilons*NN*Tsstar;
+  v24: VNIs -> ; c*VNIs;
+  v25: VNIr -> ; c*VNIr;
+  v3: T -> T1sstar; k*T*VIs;
+  v4: T -> T1rstar; k*T*VIr;
+  v5: T1sstar -> T; bs*T1sstar;
+  v6: Tsstar -> T; alphas*etas*T1sstar;
+  v7: T1rstar -> T; br*T1rstar;
+  v8: Trstar -> T; alphar*etar*T1rstar;
+  v9: T1sstar -> ; mu1*T1sstar;
+
+  // Species initializations:
+  T = 400;
+  T1rstar = 10;
+  T1sstar = 10;
+  Trstar = 10;
+  Tsstar = 10;
+  VIr = 50;
+  VIs = 10;
+  VNIr = 0;
+  VNIs = 0;
+
+  // Variable initializations:
+  NN = 1500;
+  alphar = 2;
+  alphas = 7;
+  br = 0.06;
+  bs = 0.1;
+  c = 16;
+  deltar = 0.16;
+  deltas = 0.26;
+  epsilonr = 0.2;
+  epsilons = 0.45;
+  etar = 0.5;
+  etas = 0.55;
+  k = 2.4e-05;
+  mu = 0.01;
+  mu1 = 0.015;
+  pi_ = 0.03;
+  s = 10;
+
+  // Other declarations:
+  var NN, alphar, alphas, br, bs, c, deltar, deltas, epsilonr, epsilons, etar;
+  var etas, k, mu, mu1, pi_, s;
+end
+
+srivastava2 is "srivastava2"

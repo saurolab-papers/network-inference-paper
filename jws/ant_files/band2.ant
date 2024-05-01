@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *band2()
+
+  // Compartments and Species:
+  compartment cell;
+  species VENUS in cell;
+
+  // Reactions:
+  VENUSdecayduetoauxin: VENUS => ; p2*VENUS/(p1_star*VENUS + qj_star);
+  VENUSdecayduetophotobleaching: VENUS => ; lambda_star*p2*VENUS;
+  VENUSproduction:  => VENUS; p2;
+
+  // Species initializations:
+  VENUS = 1/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  lambda_star = 0.52;
+  p1_star = 0.056;
+  p2 = 0.0053;
+  qj_star = 0.16;
+
+  // Other declarations:
+  const cell, lambda_star, p1_star, p2, qj_star;
+
+  // SBO terms:
+  cell.sboTerm = 290
+  VENUS.sboTerm = 297
+  VENUSdecayduetoauxin.sboTerm = 179
+  VENUSdecayduetophotobleaching.sboTerm = 179
+  VENUSproduction.sboTerm = 393
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  VENUS part "http://identifiers.org/uniprot/Q940U6",
+             "http://identifiers.org/uniprot/Q9XFM0"
+  VENUSdecayduetoauxin hypernym "http://identifiers.org/go/GO:0030163"
+  VENUSdecayduetophotobleaching hypernym "http://identifiers.org/go/GO:0030163"
+  VENUSproduction hypernym "http://identifiers.org/go/GO:0006412"
+end
+
+band2 is "band2"

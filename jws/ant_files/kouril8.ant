@@ -1,0 +1,58 @@
+// Created by libAntimony v2.13.2
+model *kouril8()
+
+  // Compartments and Species:
+  species ADP, ATP, BPG, $GA, P3G, gap, glc, nadp, nadph, pep, $pi_, pyr;
+  species $sink;
+
+  // Reactions:
+  v1: ATP + P3G -> ADP + BPG; protPGK*(-VmrPGK*ADP*BPG/(KpgkADP*KpgkBPG) + VmfPGK*ATP*P3G/(KpgkATP*KpgkP3G))/((1 + ADP/KiADP)*(1 + (P3G/KpgkP3G)*(1 + ATP/KpgkATP) + (BPG/KpgkBPG)*(1 + ADP/KpgkADP)));
+  v2: ADP + pep -> ATP + pyr; kPK*ADP*pep;
+  v3: BPG -> $pi_ + P3G; kdbpg*BPG;
+  v4: nadph + BPG -> $pi_ + nadp + gap; protGAPdh*((-Vmarev*(gap*nadp/(Kgap*Knadp))*(pi_/Kpi) + Vmfor*BPG*nadph/(KBPG*Knadph))/((1 + nadp/Knadp + nadph/Knadph)*((1 + gap/Kgap)*(1 + pi_/Kpi) + BPG/KBPG)));
+  v5: nadp + glc -> nadph + $GA; kGDH*glc*nadp;
+  v6: gap -> $sink; kdgap*gap;
+
+  // Species initializations:
+  ADP = 0;
+  ATP = 10;
+  BPG = 0;
+  GA = 0;
+  P3G = 3;
+  gap = 0;
+  glc = 10;
+  nadp = 0;
+  nadph = 0.2;
+  pep = 5;
+  pi_ = 0;
+  pyr = 0.4;
+  sink = 0;
+
+  // Variable initializations:
+  KBPG = 0.0895997307185501;
+  Kgap = 3.09006;
+  KiADP = 1.01661161972841;
+  Knadp = 0.204381;
+  Knadph = 0.092444;
+  KpgkADP = 0.374683891073216;
+  KpgkATP = 9.30939957007288;
+  KpgkBPG = 0.00824346710166223;
+  KpgkP3G = 0.567800672197298;
+  Kpi = 112.39;
+  Vmarev = 35.871;
+  VmfPGK = 17.2125572084323;
+  Vmfor = 23.3991;
+  VmrPGK = 37.9602642543915;
+  kGDH = 10;
+  kPK = 50;
+  kdbpg = 0.736416;
+  kdgap = 0.0559;
+  protGAPdh = 0.0421;
+  protPGK = 0.0045;
+  sink2 = 0;
+
+  // Other declarations:
+  var KBPG, Kgap, KiADP, Knadp, Knadph, KpgkADP, KpgkATP, KpgkBPG, KpgkP3G;
+  var Kpi, Vmarev, VmfPGK, Vmfor, VmrPGK, kGDH, kPK, kdbpg, kdgap, protGAPdh;
+  var protPGK, sink2;
+end

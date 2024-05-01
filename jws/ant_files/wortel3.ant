@@ -1,0 +1,41 @@
+// Created by libAntimony v2.13.2
+model *wortel3()
+
+  // Compartments and Species:
+  species x2, x3;
+
+  // Reactions:
+  v_1:  -> x2; e1*kcat1*x/(kmxe1*(1 + x/kmxe1 + x2/kpx2e1));
+  v_2: x2 -> x3; e2*kcat2*x2/(kmx2e2*(1 + x2/kmx2e2 + x3/kpx3e2));
+  v_3: x3 -> ; e3*kcat3*x3/(kmx3e3*(1 + x2/kix2e3)*(1 + x3/kmx3e3));
+  v_4: x3 -> ; e4*kcat4*x3/(kmx3e4 + x3);
+
+  // Species initializations:
+  x2 = 20;
+  x3 = 5;
+
+  // Variable initializations:
+  EXTERNAL = 1;
+  e1 = 0.377217564947699;
+  e2 = 0.527217564100357;
+  e3 = 0;
+  e4 = 0.519563193566709;
+  kcat1 = 3;
+  kcat2 = 2;
+  kcat3 = 8;
+  kcat4 = 2;
+  kix2e3 = 4;
+  kmx2e2 = 0.5;
+  kmx3e3 = 8;
+  kmx3e4 = 0.5;
+  kmxe1 = 5;
+  kpx2e1 = 20;
+  kpx3e2 = 5;
+  x = 100;
+
+  // Other declarations:
+  var EXTERNAL, e1, e2, e3, e4, kcat1, kcat2, kcat3, kcat4, kix2e3, kmx2e2;
+  var kmx3e3, kmx3e4, kmxe1, kpx2e1, kpx3e2, x;
+end
+
+wortel3 is "wortel3"

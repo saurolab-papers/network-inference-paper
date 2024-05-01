@@ -1,0 +1,36 @@
+// Created by libAntimony v2.13.2
+model *kirschner1()
+
+  // Compartments and Species:
+  species T, V;
+
+  // Assignment Rules:
+  VMULTIPLIED := 1000*V;
+
+  // Reactions:
+  v1:  -> T; s1;
+  v2: T -> ; s2*V/(b1 + V);
+  v3: T -> ; mu*T;
+  v4: T -> ; k*T*V;
+  v5:  -> V; g*V/(b2 + V);
+  v6: V -> ; c*T*V;
+
+  // Species initializations:
+  T = 1000;
+  V = 3;
+
+  // Variable initializations:
+  b1 = 14;
+  b2 = 1;
+  c = 0.007;
+  g = 30;
+  k = 0.00025;
+  mu = 0.002;
+  s1 = 2;
+  s2 = 1.5;
+
+  // Other declarations:
+  var VMULTIPLIED, b1, b2, c, g, k, mu, s1, s2;
+end
+
+kirschner1 is "kirschner1"

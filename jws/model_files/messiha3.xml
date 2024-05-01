@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="messiha3" name="messiha3">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="E4P" compartment="default" initialConcentration="0.029" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="G6L" compartment="default" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="NADPH" compartment="default" initialConcentration="0.16" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="P6G" compartment="default" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="R5P" compartment="default" initialConcentration="0.118" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="Ru5P" compartment="default" initialConcentration="0.033" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="S7P" compartment="default" initialConcentration="0.082" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="X5P" compartment="default" initialConcentration="0.041" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_9" id="E4Psinkk" value="0.01" constant="false"/>
+      <parameter metaid="metaid_10" id="EXTERNAL" value="0" constant="false"/>
+      <parameter metaid="metaid_11" id="F6P" value="0.325" constant="false"/>
+      <parameter metaid="metaid_12" id="G6P" value="0" constant="false"/>
+      <parameter metaid="metaid_13" id="GAP" value="0.067" constant="false"/>
+      <parameter metaid="metaid_14" id="GND1" value="0.013" constant="false"/>
+      <parameter metaid="metaid_15" id="GND2" value="0.003" constant="false"/>
+      <parameter metaid="metaid_16" id="Ke4pTAL" value="0.946" constant="false"/>
+      <parameter metaid="metaid_17" id="Ke4pTAL1" value="0.362" constant="false"/>
+      <parameter metaid="metaid_18" id="Kf6pTAL" value="1.1" constant="false"/>
+      <parameter metaid="metaid_19" id="Kf6pTAL1" value="1.44" constant="false"/>
+      <parameter metaid="metaid_20" id="KgapTAL" value="0.1" constant="false"/>
+      <parameter metaid="metaid_21" id="KgapTAL1" value="0.272" constant="false"/>
+      <parameter metaid="metaid_22" id="KnadpGND1" value="0.094" constant="false"/>
+      <parameter metaid="metaid_23" id="KnadpGND2" value="0.094" constant="false"/>
+      <parameter metaid="metaid_24" id="KnadphGND1" value="0.055" constant="false"/>
+      <parameter metaid="metaid_25" id="KnadphGND2" value="0.055" constant="false"/>
+      <parameter metaid="metaid_26" id="Kp6gGND1" value="0.062" constant="false"/>
+      <parameter metaid="metaid_27" id="Kp6gGND2" value="0.115" constant="false"/>
+      <parameter metaid="metaid_28" id="Kr5pTAL" value="0.235" constant="false"/>
+      <parameter metaid="metaid_29" id="Kru5pGND1" value="0.1" constant="false"/>
+      <parameter metaid="metaid_30" id="Kru5pGND2" value="0.1" constant="false"/>
+      <parameter metaid="metaid_31" id="Ks7pTAL" value="0.15" constant="false"/>
+      <parameter metaid="metaid_32" id="Ks7pTAL1" value="0.786" constant="false"/>
+      <parameter metaid="metaid_33" id="Kx5pTAL" value="0.67" constant="false"/>
+      <parameter metaid="metaid_34" id="NADP" value="0" constant="false"/>
+      <parameter metaid="metaid_35" id="NADPHoxidasek" value="100" constant="false"/>
+      <parameter metaid="metaid_36" id="NQM1" value="0.02" constant="false"/>
+      <parameter metaid="metaid_37" id="R5Psinkk" value="0.01" constant="false"/>
+      <parameter metaid="metaid_38" id="RKI1" value="0.05" constant="false"/>
+      <parameter metaid="metaid_39" id="RKIKeq" value="4" constant="false"/>
+      <parameter metaid="metaid_40" id="RKIKiru5p" value="9.88" constant="false"/>
+      <parameter metaid="metaid_41" id="RKIKr5p" value="5.7" constant="false"/>
+      <parameter metaid="metaid_42" id="RKIKru5p" value="2.47" constant="false"/>
+      <parameter metaid="metaid_43" id="RKIkcat" value="335" constant="false"/>
+      <parameter metaid="metaid_44" id="RPE1" value="0.03" constant="false"/>
+      <parameter metaid="metaid_45" id="RPEKeq" value="1.4" constant="false"/>
+      <parameter metaid="metaid_46" id="RPEKru5p" value="5.97" constant="false"/>
+      <parameter metaid="metaid_47" id="RPEKx5p" value="7.7" constant="false"/>
+      <parameter metaid="metaid_48" id="RPEkcat" value="4020" constant="false"/>
+      <parameter metaid="metaid_49" id="SOL3" value="0.0296" constant="false"/>
+      <parameter metaid="metaid_50" id="SOLKg6l" value="0.8" constant="false"/>
+      <parameter metaid="metaid_51" id="SOLKp6g" value="0.5" constant="false"/>
+      <parameter metaid="metaid_52" id="SOLkcat" value="4.3" constant="false"/>
+      <parameter metaid="metaid_53" id="TAL1" value="0.144" constant="false"/>
+      <parameter metaid="metaid_54" id="TALKe4pNQM1" value="0.305" constant="false"/>
+      <parameter metaid="metaid_55" id="TALKeq" value="1.05" constant="false"/>
+      <parameter metaid="metaid_56" id="TALKf6pNQM1" value="1.04" constant="false"/>
+      <parameter metaid="metaid_57" id="TALKgapNQM1" value="0.272" constant="false"/>
+      <parameter metaid="metaid_58" id="TALKs7pNQM1" value="0.786" constant="false"/>
+      <parameter metaid="metaid_59" id="TALkcatNQM1" value="0.694" constant="false"/>
+      <parameter metaid="metaid_60" id="TKL1" value="0.455" constant="false"/>
+      <parameter metaid="metaid_61" id="TKLE4PKeq" value="10" constant="false"/>
+      <parameter metaid="metaid_62" id="TKLE4Pkcat" value="47.1" constant="false"/>
+      <parameter metaid="metaid_63" id="TKLR5PKeq" value="1.2" constant="false"/>
+      <parameter metaid="metaid_64" id="TKLR5Pkcat" value="40.5" constant="false"/>
+      <parameter metaid="metaid_65" id="ZWF1" value="0.02" constant="false"/>
+      <parameter metaid="metaid_66" id="ZWFKg6l" value="0.01" constant="false"/>
+      <parameter metaid="metaid_67" id="ZWFKg6p" value="0.042" constant="false"/>
+      <parameter metaid="metaid_68" id="ZWFKnadp" value="0.045" constant="false"/>
+      <parameter metaid="metaid_69" id="ZWFKnadph" value="0.017" constant="false"/>
+      <parameter metaid="metaid_70" id="ZWFkcat" value="189" constant="false"/>
+      <parameter metaid="metaid_71" id="cell" value="1" constant="false"/>
+      <parameter metaid="metaid_72" id="kcatGND1" value="28" constant="false"/>
+      <parameter metaid="metaid_73" id="kcatGND2" value="27.3" constant="false"/>
+      <parameter metaid="metaid_74" id="kcatTAL1" value="0.694" constant="false"/>
+      <parameter metaid="metaid_75" id="sumNADP" value="0.33" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_76" variable="NADP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> sumNADP </ci>
+            <ci> NADPH </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_77" variable="G6P">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn> 0.9 </cn>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_79" id="v_E4Psink" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_78" species="E4P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> E4Psinkk </ci>
+              <ci> E4P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_83" id="v_GND" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_80" species="P6G" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_81" species="Ru5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_82" species="NADPH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GND1 </ci>
+                  <ci> kcatGND1 </ci>
+                  <ci> NADP </ci>
+                  <ci> P6G </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> KnadpGND1 </ci>
+                  <ci> Kp6gGND1 </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NADP </ci>
+                      <ci> KnadpGND1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> NADPH </ci>
+                      <ci> KnadphGND1 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> P6G </ci>
+                      <ci> Kp6gGND1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> Ru5P </ci>
+                      <ci> Kru5pGND1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GND2 </ci>
+                  <ci> kcatGND2 </ci>
+                  <ci> NADP </ci>
+                  <ci> P6G </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NADP </ci>
+                      <ci> KnadpGND2 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> NADPH </ci>
+                      <ci> KnadphGND2 </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> P6G </ci>
+                      <ci> Kp6gGND2 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> Ru5P </ci>
+                      <ci> Kru5pGND2 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_85" id="v_NADPHoxidase" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_84" species="NADPH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> NADPHoxidasek </ci>
+              <ci> NADPH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_87" id="v_R5Psink" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_86" species="R5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> R5Psinkk </ci>
+              <ci> R5P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_90" id="v_RKI" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_88" species="Ru5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_89" species="R5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> RKI1 </ci>
+                <ci> RKIkcat </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <ci> R5P </ci>
+                      <ci> RKIKeq </ci>
+                    </apply>
+                  </apply>
+                  <ci> Ru5P </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> RKIKru5p </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> R5P </ci>
+                    <ci> RKIKr5p </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> Ru5P </ci>
+                    <ci> RKIKru5p </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_93" id="v_RPE" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_91" species="Ru5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_92" species="X5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> RPE1 </ci>
+                <ci> RPEkcat </ci>
+                <apply>
+                  <minus/>
+                  <ci> Ru5P </ci>
+                  <apply>
+                    <divide/>
+                    <ci> X5P </ci>
+                    <ci> RPEKeq </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> RPEKru5p </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> Ru5P </ci>
+                    <ci> RPEKru5p </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> X5P </ci>
+                    <ci> RPEKx5p </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_96" id="v_SOL" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_94" species="G6L" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_95" species="P6G" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> SOL3 </ci>
+                <ci> SOLkcat </ci>
+                <ci> G6L </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> SOLKg6l </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> G6L </ci>
+                    <ci> SOLKg6l </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> P6G </ci>
+                    <ci> SOLKp6g </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_99" id="v_TAL" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_97" species="S7P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_98" species="E4P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatTAL1 </ci>
+                  <ci> TAL1 </ci>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> F6P </ci>
+                          <ci> E4P </ci>
+                        </apply>
+                        <ci> TALKeq </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> GAP </ci>
+                      <ci> S7P </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> F6P </ci>
+                      <ci> Kf6pTAL1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GAP </ci>
+                      <ci> KgapTAL1 </ci>
+                    </apply>
+                  </apply>
+                  <ci> KgapTAL1 </ci>
+                  <ci> Ks7pTAL1 </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> E4P </ci>
+                      <ci> Ke4pTAL1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> S7P </ci>
+                      <ci> Ks7pTAL1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> NQM1 </ci>
+                  <ci> TALkcatNQM1 </ci>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <divide/>
+                        <apply>
+                          <times/>
+                          <ci> F6P </ci>
+                          <ci> E4P </ci>
+                        </apply>
+                        <ci> TALKeq </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> GAP </ci>
+                      <ci> S7P </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> F6P </ci>
+                      <ci> TALKf6pNQM1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GAP </ci>
+                      <ci> TALKgapNQM1 </ci>
+                    </apply>
+                  </apply>
+                  <ci> TALKgapNQM1 </ci>
+                  <ci> TALKs7pNQM1 </ci>
+                  <apply>
+                    <plus/>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> E4P </ci>
+                      <ci> TALKe4pNQM1 </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> S7P </ci>
+                      <ci> TALKs7pNQM1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="v_TKLE4P" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_100" species="X5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_101" species="E4P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_102" species="R5P"/>
+          <modifierSpeciesReference metaid="metaid_103" species="S7P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> TKL1 </ci>
+                <ci> TKLE4Pkcat </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> F6P </ci>
+                        <ci> GAP </ci>
+                      </apply>
+                      <ci> TKLE4PKeq </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> E4P </ci>
+                    <ci> X5P </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Ke4pTAL </ci>
+                <ci> Kx5pTAL </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> F6P </ci>
+                    <ci> Kf6pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> E4P </ci>
+                    <ci> Ke4pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> R5P </ci>
+                    <ci> Kr5pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> S7P </ci>
+                    <ci> Ks7pTAL </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GAP </ci>
+                    <ci> KgapTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> X5P </ci>
+                    <ci> Kx5pTAL </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_109" id="v_TKLR5P" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_105" species="X5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_106" species="R5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_107" species="S7P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_108" species="E4P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> TKL1 </ci>
+                <ci> TKLR5Pkcat </ci>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> GAP </ci>
+                        <ci> S7P </ci>
+                      </apply>
+                      <ci> TKLR5PKeq </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> R5P </ci>
+                    <ci> X5P </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kr5pTAL </ci>
+                <ci> Kx5pTAL </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> F6P </ci>
+                    <ci> Kf6pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> E4P </ci>
+                    <ci> Ke4pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> R5P </ci>
+                    <ci> Kr5pTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> S7P </ci>
+                    <ci> Ks7pTAL </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> GAP </ci>
+                    <ci> KgapTAL </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> X5P </ci>
+                    <ci> Kx5pTAL </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_112" id="v_ZWF" reversible="true" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_110" species="NADPH" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_111" species="G6L" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> G6P </ci>
+                <ci> NADP </ci>
+                <ci> ZWF1 </ci>
+                <ci> ZWFkcat </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> ZWFKg6p </ci>
+                <ci> ZWFKnadp </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> G6P </ci>
+                    <ci> ZWFKg6p </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> G6L </ci>
+                    <ci> ZWFKg6l </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> NADP </ci>
+                    <ci> ZWFKnadp </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> NADPH </ci>
+                    <ci> ZWFKnadph </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

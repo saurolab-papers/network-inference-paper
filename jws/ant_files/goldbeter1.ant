@@ -1,0 +1,36 @@
+// Created by libAntimony v2.13.2
+model *goldbeter1()
+
+  // Compartments and Species:
+  species alpha, gamma_, $p, $s;
+
+  // Reactions:
+  v1: $s -> alpha; k1;
+  v2: alpha -> gamma_; k2*(alpha*es*(1 + alpha*es)*(1 + gamma_)^2 + el*ve*alpha*c*ep*(1 + alpha*c*ep))/(el*(1 + alpha*c*ep)^2 + (1 + gamma_)^2*(1 + alpha*es)^2);
+  v3: gamma_ -> $p; k3*gamma_;
+
+  // Species initializations:
+  alpha = 100;
+  gamma_ = 20;
+  p = 0;
+  s = 0;
+
+  // Variable initializations:
+  EXTERNAL = 0;
+  c = 1e-05;
+  el = 1000000;
+  ep = 0.9090909;
+  es = 0.9090909;
+  k1 = 0.7;
+  k2 = 3.98;
+  k3 = 0.1;
+  ve = 1;
+
+  // Other declarations:
+  var EXTERNAL, c, el, ep, es, k1, k2, k3, ve;
+
+  // Display Names:
+  gamma_ is "gamma";
+end
+
+goldbeter1 is "goldbeter1"

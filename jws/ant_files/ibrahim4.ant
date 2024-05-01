@@ -1,0 +1,89 @@
+// Created by libAntimony v2.13.2
+model *ibrahim4()
+
+  // Compartments and Species:
+  compartment Cytoplasm;
+  species Cdc20 in Cytoplasm, Cdc20_CMad2 in Cytoplasm, Mad1_CMad2 in Cytoplasm;
+  species Mad1_CMad2_OMad2 in Cytoplasm, OMad2 in Cytoplasm;
+
+  // Reactions:
+  R6: Mad1_CMad2 + OMad2 -> Mad1_CMad2_OMad2; Cytoplasm*(u*alpha_T*Mad1_CMad2*OMad2 - beta_T*Mad1_CMad2_OMad2);
+  R7: Mad1_CMad2_OMad2 + Cdc20 => Mad1_CMad2 + Cdc20_CMad2; Cytoplasm*u*gamma_T*Mad1_CMad2_OMad2*Cdc20;
+  R8: Cdc20_CMad2 => Cdc20 + OMad2; Cytoplasm*eta_T*Cdc20_CMad2;
+
+  // Events:
+  mt_attachment: at time > 2000: u = const_val_0;
+
+  // Species initializations:
+  Cdc20 = 2.2e-07/Cytoplasm;
+  Cdc20 has mole_per_volume;
+  Cdc20_CMad2 = 0;
+  Cdc20_CMad2 has mole_per_volume;
+  Mad1_CMad2 = 5e-08/Cytoplasm;
+  Mad1_CMad2 has mole_per_volume;
+  Mad1_CMad2_OMad2 = 0;
+  Mad1_CMad2_OMad2 has mole_per_volume;
+  OMad2 = 1.5e-07/Cytoplasm;
+  OMad2 has mole_per_volume;
+
+  // Compartment initializations:
+  Cytoplasm = 1;
+
+  // Variable initializations:
+  u = 1;
+  u has dimensionless;
+  const_val_0 = 0;
+  const_val_0 has dimensionless;
+  alpha_T = 200000;
+  beta_T = 0.2;
+  const_val_1 = 1;
+  const_val_1 has dimensionless;
+  eta_T = 0.01;
+  gamma_T = 1000000000;
+
+  // Other declarations:
+  var u;
+  const Cytoplasm, const_val_0, alpha_T, beta_T, const_val_1, eta_T, gamma_T;
+
+  // Unit definitions:
+  unit per_second = 1 / second;
+  unit liter_per_mole_per_second = litre / (mole * second);
+  unit mole_per_volume = mole / litre;
+
+  // Display Names:
+  per_second is "per second";
+  liter_per_mole_per_second is " liter per mole per second";
+  Cdc20_CMad2 is "Cdc20:C-Mad2";
+  Mad1_CMad2 is "Mad1:C-Mad2";
+  Mad1_CMad2_OMad2 is "Mad1:C-Mad2:O-Mad2*";
+  OMad2 is "O-Mad2";
+  mt_attachment is "Microtubule attachment";
+
+  // SBO terms:
+  Cdc20_CMad2.sboTerm = 297
+  Mad1_CMad2.sboTerm = 297
+  Mad1_CMad2_OMad2.sboTerm = 297
+  alpha_T.sboTerm = 339
+  beta_T.sboTerm = 338
+  eta_T.sboTerm = 338
+  gamma_T.sboTerm = 36
+
+  // CV terms:
+  Cytoplasm identity "http://identifiers.org/obo.go/GO:0005737"
+  Cdc20 hypernym "http://identifiers.org/uniprot/Q12834"
+  Cdc20_CMad2 part "http://identifiers.org/uniprot/Q12834",
+                   "http://identifiers.org/uniprot/Q13257"
+  Mad1_CMad2 part "http://identifiers.org/uniprot/Q9Y6D9",
+                  "http://identifiers.org/uniprot/Q13257"
+  Mad1_CMad2_OMad2 part "http://identifiers.org/uniprot/Q9Y6D9",
+                        "http://identifiers.org/uniprot/Q13257"
+  OMad2 hypernym "http://identifiers.org/uniprot/Q13257"
+  R6 hypernym "http://identifiers.org/obo.go/GO:0006461",
+              "http://identifiers.org/obo.go/GO:0043241",
+              "http://identifiers.org/obo.go/GO:0032092"
+  R7 hypernym "http://identifiers.org/obo.go/GO:0006461",
+              "http://identifiers.org/obo.go/GO:0032092"
+  R8 hypernym "http://identifiers.org/obo.go/GO:0043241"
+end
+
+ibrahim4 is "ibrahim4"

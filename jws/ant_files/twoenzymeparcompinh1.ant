@@ -1,0 +1,48 @@
+// Created by libAntimony v2.13.2
+model *twoEnzymeParCompInh1()
+
+  // Compartments and Species:
+  species $i1, $p, $s, xH, xP;
+
+  // Reactions:
+  v1H: $s -> xH; (Vmax1H*s/Km1S1)*(1 - xH/(s*Keq1))/(1 + s/Km1S1 + xH/Km1X + i1/K1I1);
+  v1P: $s -> xP; (Vmax1P*s/Km1S1)*(1 - xP/(s*Keq1))/(1 + s/Km1S1 + xP/Km1X + i1/K1I1);
+  v2H: xH -> $p; Vmax2*xH/Km2X/(1 + xH/Km2X);
+  v2P: xP -> $p; Vmax2*xP/Km2X/(1 + xP/Km2X);
+
+  // Species initializations:
+  i1 = 0;
+  p = 0;
+  s = 5;
+  xH = 0;
+  xP = 0;
+
+  // Variable initializations:
+  K1I1 = 1;
+  Keq1 = 10;
+  Km1S1 = 1;
+  Km1X = 2;
+  Km2X = 1;
+  Vmax1H = 10;
+  Vmax1P = 10;
+  Vmax2 = 10;
+
+  // Other declarations:
+  var K1I1, Keq1, Km1S1, Km1X, Km2X, Vmax1H, Vmax1P, Vmax2;
+
+  // Display Names:
+  i1 is "inhibitor";
+  p is "product";
+  s is "substrate";
+  xH is "intermediate host";
+  xP is "intermediate parasite";
+  K1I1 is "Affinity enzyme 1 for inhibitor I";
+  Keq1 is "Equilibrium constant reaction 1";
+  Km1S1 is "Affinity enzyme 1 for S1";
+  Km1X is "Affinity enzyme 1 for X";
+  Km2X is "Affinity enzyme 2 for X";
+  Vmax1H is "Max velocity enzyme 1";
+  Vmax2 is "Max velocity enzyme 2";
+end
+
+twoEnzymeParCompInh1 is "two enzyme pathway with inhibitor, host-parasite"

@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *miao1()
+
+  // Compartments and Species:
+  species T, Tm, Tmw, Tw;
+
+  // Reactions:
+  v1:  -> T; rho*T;
+  v2: T -> Tm; kM*T*Tm;
+  v3: T -> Tw; kW*T*Tw;
+  v4: T -> 0.25 Tm + 0.5 Tmw + 0.25 Tw; kR*T*Tmw;
+  v5:  -> Tm; rhoM*Tm;
+  v6: Tm -> Tmw; qM*Tm*Tw;
+  v7:  -> Tw; rhoW*Tw;
+  v8: Tw -> Tmw; qW*Tm*Tw;
+  v9:  -> Tmw; rhoMW*Tmw;
+
+  // Species initializations:
+  T = 32554830;
+  Tm = 134173;
+  Tmw = 9818;
+  Tw = 26180;
+
+  // Variable initializations:
+  kM = 1.51e-09;
+  kR = 4.3e-10;
+  kW = 1.11e-09;
+  qM = 4.15e-09;
+  qW = 1.1e-09;
+  rho = 0.015;
+  rhoM = -0.0229;
+  rhoMW = 0.000568;
+  rhoW = 0.00713;
+
+  // Other declarations:
+  var kM, kR, kW, qM, qW, rho, rhoM, rhoMW, rhoW;
+end
+
+miao1 is "miao1"

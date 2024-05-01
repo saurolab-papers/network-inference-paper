@@ -1,0 +1,73 @@
+// Created by libAntimony v2.13.2
+model *whillier2()
+
+  // Compartments and Species:
+  species aketoe, aketoi, alae, alai, glui, pyri;
+
+  // Assignment Rules:
+  ALATRASE := 7e-9*voliw;
+  Kdalae := 0.000119*voli;
+  Kdalai := 0.000119*voli;
+  Vmaxtransaketoe := 7.93e-8*voli;
+  Vmaxtransaketoi := 7.93e-8*voli;
+  Vmaxtransalae := 7.93e-8*voli;
+  Vmaxtransalai := 7.93e-8*voli;
+  aketoec := aketoe*1000000/vole;
+  aketoic := aketoi*1000000/voliw;
+  alaec := alae*1000000/vole;
+  alaic := alai*1000000/voliw;
+  gluic := glui*1000000/voli;
+  pyric := pyri*1000000/voliw;
+
+  // Reactions:
+  v_1: alai -> alae; Vmaxtransalai*alai/voliw/(alai/voliw + Kmtransalai) + Kdalai*alai/voliw;
+  v_2: alae -> alai; Vmaxtransalae*alae/vole/(alae/vole + Kmtransalae) + Kdalae*alai/voliw;
+  v_3: aketoi -> aketoe; Vmaxtransaketoi*aketoi/voliw/(aketoi/voliw + Kmtransaketoi);
+  v_4: aketoe -> aketoi; Vmaxtransaketoe*aketoe/vole/(aketoe/vole + Kmtransaketoe);
+  v_5: alai + aketoi -> glui + pyri; ALATRASE*(((alai/voliw)*aketoi/voliw)*k13r4*k13r3*k13r2*k13r1 - ((pyri/voliw)*glui/voliw)*k13f1*k13f2*k13f3*k13f4)/((alai/voliw)*(k13r4*k13r3*k13r1 + (aketoi/voliw)*(k13r4*k13r3*k13r2 + k13r4*k13r2*k13r1) + k13r4*k13r3*k13f2 + (pyri/voliw)*(k13r4*k13r1*k13f3 + k13r4*k13f2*k13f3)) + (aketoi/voliw)*(k13r3*k13r2*k13r1 + k13r2*k13r1*k13f4) + (pyri/voliw)*(k13r1*k13f3*k13f4 + k13f2*k13f3*k13f4) + (glui/voliw)*(k13r3*k13f1*k13f2 + k13f1*k13f2*k13f4 + (aketoi/voliw)*(k13r3*k13r2*k13f1 + k13r2*k13f1*k13f4) + (pyri/voliw)*(k13f1*k13f2*k13f3 + k13f1*k13f3*k13f4)));
+
+  // Species initializations:
+  aketoe = 9.02664e-05;
+  aketoi = 2.3643e-07;
+  alae = 9.02664e-05;
+  alai = 1.39021e-05;
+  glui = 1.9671e-05;
+  pyri = 2.83716e-06;
+
+  // Variable initializations:
+  voliw = 0.047286;
+  voli = 0.0666;
+  Kmtransaketoe = 0.00034;
+  Kmtransaketoi = 0.00034;
+  Kmtransalae = 0.00034;
+  Kmtransalai = 0.00034;
+  vole = 0.1134;
+  k13f1 = 17410;
+  k13f2 = 17600;
+  k13f3 = 3827;
+  k13f4 = 84.34;
+  k13r1 = 54.95;
+  k13r2 = 68380000;
+  k13r3 = 100000;
+  k13r4 = 18190;
+  volhbn = 0.019314;
+  voltotalw = 0.160686;
+
+  // Other declarations:
+  var ALATRASE, voliw, Kdalae, voli, Kdalai, Kmtransaketoe, Kmtransaketoi;
+  var Kmtransalae, Kmtransalai, Vmaxtransaketoe, Vmaxtransaketoi, Vmaxtransalae;
+  var Vmaxtransalai, aketoec, vole, aketoic, alaec, alaic, gluic, k13f1, k13f2;
+  var k13f3, k13f4, k13r1, k13r2, k13r3, k13r4, pyric, volhbn, voltotalw;
+
+  // CV terms:
+  aketoe encodement "http://identifiers.org/kegg.compound/C00026",
+                    "http://identifiers.org/obo.chebi/CHEBI%3A30915"
+  aketoi encodement "http://identifiers.org/kegg.compound/C00026",
+                    "http://identifiers.org/obo.chebi/CHEBI%3A30915"
+  glui encodement "http://identifiers.org/kegg.compound/C00051",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A16856"
+  pyri encodement "http://identifiers.org/kegg.compound/C00022",
+                  "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+end
+
+whillier2 is "whillier2"

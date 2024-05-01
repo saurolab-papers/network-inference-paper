@@ -1,0 +1,81 @@
+// Created by libAntimony v2.13.2
+model *okrinya1()
+
+  // Compartments and Species:
+  species A, G, M, P, X, Y;
+
+  // Reactions:
+  v1:  -> X; lambdaX;
+  v10: G -> ; muG*G;
+  v11: G -> ; kG*P*G*(1 + kC*A);
+  v12:  -> P; bM;
+  v13:  -> P; eta1*Y + eta1phi*M;
+  v14: P -> ; muP*P;
+  v15: P -> ; P*(kD*Y + kN*M);
+  v16:  -> A; eta2*(Y + g2*M);
+  v17:  -> A; muA*(A0 - A);
+  v18: A -> ; A*(eta3*Y + eta4*M);
+  v2: X + M -> Y; betaX*X*M/(1 + c0*A);
+  v3: X -> ; muX*X;
+  v4: Y -> ; (muY + muN)*Y;
+  v5: Y -> ; kY*P*Y*(1 + kA*A);
+  v6:  -> M; r*muY*(1 - theta)*Y/(1 + c1*A);
+  v7: M -> ; muM*M;
+  v8: M -> ; kM*P*M*(1 + kB*A);
+  v9:  -> G; r*muY*theta*Y/(1 + c1*A);
+
+  // Species initializations:
+  A = 0;
+  G = 0;
+  M = 0.105;
+  P = 0.127;
+  X = 5000000;
+  Y = 0;
+
+  // Variable initializations:
+  A0 = 0;
+  bM = 0.038;
+  betaX = 4.9e-06;
+  c0 = 0.6;
+  c1 = 1.12;
+  eta1 = 1.3e-07;
+  eta1phi = 2.6e-07;
+  eta2 = 3e-07;
+  eta3 = 4.5e-08;
+  eta4 = 3.4e-08;
+  g2 = 0.85;
+  kA = 1.38;
+  kB = 12;
+  kC = 1.26;
+  kD = 2.8e-09;
+  kG = 1.4;
+  kM = 118;
+  kN = 3.1e-09;
+  kY = 0.9;
+  lambdaX = 41500;
+  muA = 0.3;
+  muG = 0.02;
+  muM = 48;
+  muN = 0.055;
+  muP = 0.3;
+  muX = 0.0083;
+  muY = 0.5;
+  phi = 2;
+  r = 16;
+  theta = 0.0064;
+
+  // Other declarations:
+  var A0, bM, betaX, c0, c1, eta1, eta1phi, eta2, eta3, eta4, g2, kA, kB;
+  var kC, kD, kG, kM, kN, kY, lambdaX, muA, muG, muM, muN, muP, muX, muY;
+  var phi, r, theta;
+
+  // Display Names:
+  A is "Antibodies";
+  G is "Gametocytes";
+  M is "Merozoites";
+  P is "Innate immune cells";
+  X is "RBC";
+  Y is "iRBC";
+end
+
+okrinya1 is "okrinya1"

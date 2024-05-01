@@ -1,0 +1,54 @@
+// Created by libAntimony v2.13.2
+model *valero()
+
+  // Compartments and Species:
+  species ADP, AMP, ATP, $Lac, NADH, Pyr;
+
+  // Reactions:
+  v_1: ATP -> AMP; Vmapp1*ATP/(Kmapp1 + ATP);
+  v_2: ATP + AMP -> 2 ADP; Vm2*ATP*AMP/(K + Km2ATP*AMP + Km2AMP*ATP + ATP*AMP);
+  v_3: ADP -> ATP + Pyr; Vmapp3*ADP/(Kmapp3 + ADP);
+  v_4: Pyr + NADH -> $Lac; k4*Pyr;
+
+  // Species initializations:
+  ADP = 0;
+  AMP = 0;
+  ATP = 16.3;
+  Lac = 0;
+  NADH = 1;
+  Pyr = 0;
+
+  // Variable initializations:
+  K = 71000;
+  Km2AMP = 110;
+  Km2ATP = 25;
+  Kmapp1 = 700;
+  Kmapp3 = 260;
+  Vm2 = 170;
+  Vmapp1 = 2.3;
+  Vmapp3 = 65;
+  k4 = 5;
+
+  // Other declarations:
+  var K, Km2AMP, Km2ATP, Kmapp1, Kmapp3, Vm2, Vmapp1, Vmapp3, k4;
+
+  // Unit definitions:
+  unit umol = 1e-6 mole;
+  unit s = second;
+  unit L = litre;
+  unit uM = 1e-6 mole / litre;
+  unit volume = L;
+  unit substance = umol;
+  unit extent = uM;
+  unit time_unit = s;
+
+  // CV terms:
+  ADP identity "http://identifiers.org/obo.chebi/CHEBI%3A16761"
+  AMP identity "http://identifiers.org/obo.chebi/CHEBI%3A16027"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI%3A15422"
+  Lac identity "http://identifiers.org/obo.chebi/CHEBI%3A28358"
+  NADH identity "http://identifiers.org/obo.chebi/CHEBI%3A16908"
+  Pyr identity "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+end
+
+valero is "valero"

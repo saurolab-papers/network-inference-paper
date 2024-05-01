@@ -1,0 +1,224 @@
+// Created by libAntimony v2.13.2
+model *akman1()
+
+  // Compartments and Species:
+  compartment cytosol, nucleus;
+  species E1F in cytosol, E1Fp in cytosol, E1W in cytosol, E2F in cytosol;
+  species E2Fp in cytosol, E2W in cytosol, $Frq_tot in nucleus, $sFrq_tot in nucleus;
+  species $lFrq_tot in nucleus, MF in nucleus, MW in nucleus, PF in nucleus;
+  species PFp in nucleus, PW in nucleus, PWL in nucleus, $WC1_tot in nucleus;
+
+  // Assignment Rules:
+  Frq_tot := sFrq_tot + lFrq_tot;
+  sFrq_tot := PF + E2F + E1F;
+  lFrq_tot := PFp + E2Fp + E1Fp;
+  WC1_tot := PW + PWL + E1W + E2W;
+
+  // Reactions:
+  E1Fdeg: E1F => ; gam1*E1F;
+  E1Fpdeg: E1Fp => ; gam1p*E1Fp;
+  E1Fptrl:  => E1Fp; a3p*MF;
+  E1Ftrl:  => E1F; a3*MF;
+  E1Wdeg: E1W => ; gam2*E1W;
+  E1Wtrl:  => E1W; (a6 + a7*(PF + PFp))*MW;
+  E2Fdeg: E2F => ; gam1*E2F;
+  E2Fpdeg: E2Fp => ; gam1p*E2Fp;
+  E2Fptrl: E1Fp => E2Fp; f1p*E1Fp;
+  E2Ftrl: E1F => E2F; f1*E1F;
+  E2Wdeg: E2W => ; gam2*E2W;
+  E2Wtrl: E1W => E2W; f2*E1W;
+  MFdeg: MF => ; d1*MF/(MF + b5);
+  MFtrn:  => MF; a1*PWL^n/((1 + (PF + PFp)/b1)*(PWL^n + b2^n)) + a2*PW^m/((1 + (PF + PFp)/b3)*(PW^m + b4^m));
+  MWdeg: MW => ; d3*MW/(MW + b8);
+  MWtrn:  => MW; a4 + a5*PWL^k/(PWL^k + b7^k);
+  PFdeg: PF => ; d2*PF;
+  PFpdeg: PFp => ; d2p*PFp;
+  PFptrl: E2Fp => PFp; f1p*E2Fp;
+  PFtrl: E2F => PF; f1*E2F;
+  PWLdeg: PWL => ; d5*PWL/(PWL + b10);
+  PWdeg: PW => ; d4*PW/(PW + b9);
+  PWtrl: E2W => PW; f2*E2W;
+  PWtrs: PW -> PWL; r1*amp*PW*(1 + tanh(24*(time - 24*floor(time/24) - dawn)))*(1 - tanh(24*(time - 24*floor(time/24) - dusk)))/4 - r2*PWL;
+
+  // Species initializations:
+  E1F = 0.43076/cytosol;
+  E1Fp = 0.45583/cytosol;
+  E1W = 5.84748/cytosol;
+  E2F = 0.10647/cytosol;
+  E2Fp = 0.09872/cytosol;
+  E2W = 5.70265/cytosol;
+  MF = 0.6935/nucleus;
+  MW = 1.2689/nucleus;
+  PF = 0.06565/nucleus;
+  PFp = 0.07719/nucleus;
+  PW = 26.4393/nucleus;
+  PWL = 0;
+
+  // Compartment initializations:
+  cytosol = 1;
+  nucleus = 1;
+
+  // Variable initializations:
+  a1 = 24.9736;
+  a2 = 3.59797;
+  a3 = 0.2834;
+  a3p = 0.34578;
+  a4 = 0.46227;
+  a5 = 0.02917;
+  a6 = 0.20695;
+  a7 = 3.02856;
+  amp = 0;
+  b1 = 0.00209;
+  b10 = 93.03664;
+  b2 = 2.13476;
+  b3 = 0.08039;
+  b4 = 0.45859;
+  b5 = 0.13056;
+  b6 = 0;
+  b7 = 2.96739;
+  b8 = 0.11167;
+  b9 = 81.10381;
+  d1 = 1.43549;
+  d2 = 0.21251;
+  d2p = 0.18191;
+  d3 = 0.50309;
+  d4 = 3.36641;
+  d5 = 0.41085;
+  dawn = 12;
+  dusk = 24;
+  f1 = 0.09292;
+  f1p = 0.09588;
+  f2 = 0.14979;
+  gam1 = 0.34603;
+  gam1p = 0.40119;
+  gam2 = 0.00028;
+  k = 2.18234;
+  m = 1.34979;
+  n = 1.02419;
+  r1 = 2.71574;
+  r2 = 35.40005;
+
+  // Other declarations:
+  const cytosol, nucleus, a1, a2, a3, a3p, a4, a5, a6, a7, amp, b1, b10, b2;
+  const b3, b4, b5, b6, b7, b8, b9, d1, d2, d2p, d3, d4, d5, dawn, dusk, f1;
+  const f1p, f2, gam1, gam1p, gam2, k, m, n, r1, r2;
+
+  // Unit definitions:
+  unit hour = 3600 second;
+  unit arbitrary_unit = dimensionless;
+
+  // Display Names:
+  hour is "hours";
+  arbitrary_unit is "arbitrary_units";
+  E1F is "s-Frq_1";
+  E1Fp is "l-Frq_1";
+  E1W is "WC-1_1";
+  E2F is "s-Frq_2";
+  E2Fp is "l-Frq_2";
+  E2W is "WC-1_2";
+  Frq_tot is "tot Frq";
+  sFrq_tot is "tot s-Frq";
+  lFrq_tot is "tot l-Frq";
+  MF is "Frq mRNA";
+  MW is "WC-1 mRNA";
+  PF is "s-Frq";
+  PFp is "l-Frq";
+  PW is "WC-1";
+  PWL is "WC-1*";
+  WC1_tot is "tot WC-1";
+
+  // SBO terms:
+  cytosol.sboTerm = 290
+  nucleus.sboTerm = 290
+  E1F.sboTerm = 252
+  E1Fp.sboTerm = 252
+  E1W.sboTerm = 252
+  E2F.sboTerm = 252
+  E2Fp.sboTerm = 252
+  E2W.sboTerm = 252
+  Frq_tot.sboTerm = 252
+  sFrq_tot.sboTerm = 252
+  lFrq_tot.sboTerm = 252
+  MF.sboTerm = 250
+  MW.sboTerm = 250
+  PF.sboTerm = 252
+  PFp.sboTerm = 252
+  PW.sboTerm = 252
+  PWL.sboTerm = 252
+  WC1_tot.sboTerm = 252
+  E1Fdeg.sboTerm = 179
+  E1Fpdeg.sboTerm = 179
+  E1Fptrl.sboTerm = 184
+  E1Ftrl.sboTerm = 184
+  E1Wdeg.sboTerm = 179
+  E1Wtrl.sboTerm = 184
+  E2Fdeg.sboTerm = 179
+  E2Fpdeg.sboTerm = 179
+  E2Fptrl.sboTerm = 181
+  E2Ftrl.sboTerm = 181
+  E2Wdeg.sboTerm = 179
+  E2Wtrl.sboTerm = 181
+  MFdeg.sboTerm = 179
+  MFtrn.sboTerm = 183
+  MWdeg.sboTerm = 179
+  MWtrn.sboTerm = 183
+  PFdeg.sboTerm = 179
+  PFpdeg.sboTerm = 179
+  PFptrl.sboTerm = 185
+  PFtrl.sboTerm = 185
+  PWLdeg.sboTerm = 179
+  PWdeg.sboTerm = 179
+  PWtrl.sboTerm = 185
+  PWtrs.sboTerm = 181
+
+  // CV terms:
+  cytosol identity "http://identifiers.org/go/GO:0005829"
+  nucleus identity "http://identifiers.org/go/GO:0005634"
+  E1F hypernym "http://identifiers.org/uniprot/P19970"
+  E1Fp hypernym "http://identifiers.org/uniprot/P19970"
+  E1W hypernym "http://identifiers.org/uniprot/Q01371"
+  E2F hypernym "http://identifiers.org/uniprot/P19970"
+  E2Fp hypernym "http://identifiers.org/uniprot/P19970"
+  E2W hypernym "http://identifiers.org/uniprot/Q01371"
+  Frq_tot hypernym "http://identifiers.org/uniprot/P19970"
+  sFrq_tot hypernym "http://identifiers.org/uniprot/P19970"
+  lFrq_tot hypernym "http://identifiers.org/uniprot/P19970"
+  MF hypernym "http://identifiers.org/chebi/CHEBI:33699",
+              "http://identifiers.org/kegg.compound/C00046",
+              "http://identifiers.org/uniprot/P19970"
+  MW hypernym "http://identifiers.org/chebi/CHEBI:33699",
+              "http://identifiers.org/kegg.compound/C00046",
+              "http://identifiers.org/uniprot/Q01371"
+  PF hypernym "http://identifiers.org/uniprot/P19970"
+  PFp hypernym "http://identifiers.org/uniprot/P19970"
+  PW hypernym "http://identifiers.org/uniprot/Q01371"
+  PWL hypernym "http://identifiers.org/uniprot/Q01371"
+  WC1_tot hypernym "http://identifiers.org/uniprot/Q01371"
+  E1Fdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E1Fpdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E1Fptrl hypernym "http://identifiers.org/go/GO:0006412"
+  E1Ftrl hypernym "http://identifiers.org/go/GO:0006412"
+  E1Wdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E1Wtrl hypernym "http://identifiers.org/go/GO:0006412"
+  E2Fdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E2Fpdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E2Fptrl hypernym "http://identifiers.org/go/GO:0016485"
+  E2Ftrl hypernym "http://identifiers.org/go/GO:0016485"
+  E2Wdeg hypernym "http://identifiers.org/go/GO:0030163"
+  E2Wtrl hypernym "http://identifiers.org/go/GO:0016485"
+  MFdeg hypernym "http://identifiers.org/go/GO:0006402"
+  MFtrn hypernym "http://identifiers.org/go/GO:0006351"
+  MWdeg hypernym "http://identifiers.org/go/GO:0006402"
+  MWtrn hypernym "http://identifiers.org/go/GO:0006351"
+  PFdeg hypernym "http://identifiers.org/go/GO:0030163"
+  PFpdeg hypernym "http://identifiers.org/go/GO:0030163"
+  PFptrl hypernym "http://identifiers.org/go/GO:0006606"
+  PFtrl hypernym "http://identifiers.org/go/GO:0006606"
+  PWLdeg hypernym "http://identifiers.org/go/GO:0030163"
+  PWdeg hypernym "http://identifiers.org/go/GO:0030163"
+  PWtrl hypernym "http://identifiers.org/go/GO:0006606"
+  PWtrs hypernym "http://identifiers.org/go/GO:0051091",
+                 "http://identifiers.org/go/GO:0016037"
+end
+
+akman1 is "akman1"

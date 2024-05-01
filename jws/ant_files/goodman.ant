@@ -1,0 +1,46 @@
+// Created by libAntimony v2.13.2
+model *goodman()
+
+  // Compartments and Species:
+  species Flu, NS1, P58a, $P58total, PKRp, $PKRtotal, eIF2ap, $eIF2atotal;
+  species $ext_;
+
+  // Reactions:
+  v_1: $P58total -> P58a; r2*Flu*(P58total - P58a);
+  v_2: P58a -> $P58total; r4*P58a;
+  v_3: $PKRtotal -> PKRp; r1f*Flu*(PKRtotal - PKRp);
+  v_4: PKRp + NS1 -> $PKRtotal; r1rNS1*NS1*PKRp;
+  v_5: PKRp -> $PKRtotal; r1r*P58a*PKRp;
+  v_6: $eIF2atotal -> eIF2ap; r3f*(eIF2atotal - eIF2ap)*PKRp;
+  v_7: eIF2ap -> $eIF2atotal; r3r*eIF2ap;
+  v_8: $ext_ -> Flu; Cflu*Flu*(1 - Flu/K);
+  v_9: $ext_ -> NS1; Cns1*Flu*(eIF2atotal - eIF2ap);
+
+  // Species initializations:
+  Flu = 5;
+  NS1 = 0;
+  P58a = 0;
+  P58total = 10;
+  PKRp = 0;
+  PKRtotal = 2;
+  eIF2ap = 0;
+  eIF2atotal = 2;
+  ext_ = 1;
+
+  // Variable initializations:
+  Cflu = 0.075;
+  Cns1 = 0.05;
+  K = 100;
+  r1f = 0.1263;
+  r1r = 0.3;
+  r1rNS1 = 0.025;
+  r2 = 0.0879;
+  r3f = 0.0793;
+  r3r = 0.0243;
+  r4 = 0.052;
+
+  // Other declarations:
+  var Cflu, Cns1, K, r1f, r1r, r1rNS1, r2, r3f, r3r, r4;
+end
+
+goodman is "goodman"

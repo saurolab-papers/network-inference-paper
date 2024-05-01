@@ -1,0 +1,70 @@
+// Created by libAntimony v2.13.2
+model *dano2()
+
+  // Compartments and Species:
+  species ACA, ACAX, ADP, ATP, BPG, Glc, GlcX, NAD, NADH, $sink, $source;
+  species trioseP;
+
+  // Reactions:
+  v_1: $source -> GlcX; (k0/yvol)*(GlcX0 - GlcX);
+  v_10: ACAX -> $sink; ((k0 + k10)/yvol)*ACAX;
+  v_11: ATP -> ADP; k6*ATP;
+  v_2: GlcX -> 59 Glc; (V1/yvol)*GlcX/(Ktrans + GlcX);
+  v_3: Glc + 2 ATP -> 2 ADP; k7*Glc*ATP;
+  v_4: Glc + 2 ATP -> 2 trioseP + 2 ADP; V2*Glc*ATP/(1 + (ATP/Ki)^q);
+  v_5: trioseP + NADH -> NAD; k8*trioseP*NADH;
+  v_6: trioseP + NAD -> BPG + NADH; k3*trioseP*NAD;
+  v_7: BPG + 2 ADP -> ACA + 2 ATP; k4*BPG*ADP;
+  v_8: ACA + NADH -> NAD; k5*ACA*NADH;
+  v_9: 59 ACA -> ACAX; (k9/yvol)*(ACA - ACAX);
+
+  // Species initializations:
+  ACA = 8.332760788;
+  ACAX = 1.312175379;
+  ADP = 1.49716;
+  ATP = 2.102839204;
+  BPG = 0.0002755110834;
+  Glc = 5;
+  GlcX = 6.719449303;
+  NAD = 0.65;
+  NADH = 0.3300001555;
+  sink = 0;
+  source = 0;
+  trioseP = 7.847433523;
+
+  // Variable initializations:
+  Atot = 3.6;
+  GlcX0 = 24;
+  Ki = 1.24464;
+  Ktrans = 0.04;
+  Ntot = 0.98;
+  V1 = 49.1132;
+  V2 = 10.5992;
+  k0 = 2.82529;
+  k10 = 0.869329;
+  k3 = 10.2311;
+  k4 = 126519;
+  k5 = 17.2154;
+  k6 = 3.2;
+  k7 = 1.5115;
+  k8 = 1.87206;
+  k9 = 0.690539;
+  q = 2.64;
+  yvol = 59;
+
+  // Other declarations:
+  var Atot, GlcX0, Ki, Ktrans, Ntot, V1, V2, k0, k10, k3, k4, k5, k6, k7;
+  var k8, k9, q, yvol;
+
+  // Unit definitions:
+  unit L = litre;
+  unit min = 60 second;
+  unit mmol = 1e-3 mole;
+  unit mM = 1e-3 mole / litre;
+  unit volume = L;
+  unit substance = mmol;
+  unit extent = mM;
+  unit time_unit = min;
+end
+
+dano2 is "dano2"

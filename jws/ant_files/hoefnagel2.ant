@@ -1,0 +1,278 @@
+// Created by libAntimony v2.13.2
+model *hoefnagel2()
+
+  // Compartments and Species:
+  species $AC, ACAL, ACCOA, ACET, $ACETOUT, ACLAC, ACP, ADP, ATP, $BUT, COA;
+  species $Cellwall, DHAP, DPG, $ETOH, F6P, FBP, $FOR, G1P, G3P, G6P, $Gluc;
+  species Glucin, $Lac, NAD, NADH, $O2, P2G, P3G, PEP, PYR, Phos, $TDP, $UDP;
+
+  // Reactions:
+  v_1: $Gluc + PEP -> G6P + PYR; Vmax1*(Gluc/km1Gluc)*(PEP/km1PEP)/((1 + Gluc/km1Gluc + G6P/km1G6P)*(1 + PEP/km1PEP + PYR/km1PYR));
+  v_10: G3P + NAD + Phos -> DPG + NADH; Vmax6*(1 - DPG*NADH/(G3P*NAD*Phos*Keq6))*(G3P/km6G3P)*(NAD/km6NAD)*(Phos/km6P)/((1 + G3P/km6G3P + DPG/km6DPG)*(1 + Phos/km6P)*(1 + NAD/km6NAD + NADH/km6NADH));
+  v_11: DPG + ADP -> P3G + ATP; Vmax7*(DPG/km7DPG)*(ADP/km7ADP)*(1 - P3G*ATP/(DPG*ADP*Keq7))/((1 + DPG/km7DPG + P3G/km7P3G)*(1 + ADP/km7ADP + ATP/km7ATP));
+  v_12: P3G -> P2G; Vmax8*(P3G/km8P3G)*(1 - P2G/(P3G*Keq8))/(1 + P3G/km8P3G + P2G/km8P2G);
+  v_13: P2G -> PEP; Vmax9*(P2G/km9P2G)*(1 - PEP/(P2G*Keq9))/(1 + P2G/km9P2G + PEP/km9PEP);
+  v_14: PEP + ADP -> PYR + ATP; (Vmax10*(PEP/km10PEP)^n10*(ADP/km10ADP)*(1 - PYR*ATP/(PEP*ADP*Keq10))/((1 + (PEP/km10PEP)^n10 + PYR/km10PYR)*(1 + ADP/km10ADP + ATP/km10ATP)))*(1/(1 + Phos^3/(Ki10*(1 + FBP/K10FBP + G6P/K10G6P)^3)));
+  v_15: 2 PYR -> ACLAC; Vmax12*(PYR/K12PYR)*(1 - ACLAC/(PYR*Keq12))*(PYR/K12PYR + ACLAC/K12ACLAC)^(h12 - 1)/(1 + (PYR/K12PYR + ACLAC/K12ACLAC)^h12);
+  v_16: ACLAC -> ACET; (Vmax13*ACLAC/Km13ACLAC)*(1 - ACET/(ACLAC*Keq13))*(ACLAC/Km13ACLAC + ACET/Km13ACET)^(h13 - 1)/(1 + (ACLAC/Km13ACLAC + ACET/Km13ACET)^h13);
+  v_17: ACLAC -> ACET; Vmax15*ACLAC;
+  v_18: ACET -> $ACETOUT; Vmax14*(ACET/Km14ACET)/(1 + ACET/Km14ACET);
+  v_19: ACET + NADH -> $BUT + NAD; Vmax16*(ACET/km16ACET)*(NADH/km16NADH)*(1 - BUT*NAD/(ACET*NADH*Keq16))/((1 + ACET/km16ACET + BUT/km16BUT)*(1 + NADH/km16NADH + NAD/km16NAD));
+  v_2: Glucin + ATP -> G6P + ADP; Vmax29*(Glucin/km29Glucin)*(ATP/km29ATP)/((1 + Glucin/km29Glucin + G6P/km29G6P)*(1 + ATP/km29ATP + ADP/km29ADP));
+  v_20: PYR + NAD + COA -> NADH + ACCOA; (Vmax20*(PYR/k20PYR)*(NAD/k20NAD)*(COA/k20COA)/((1 + PYR/k20PYR)*(1 + NAD/k20NAD + NADH/k20NADH)*(1 + COA/k20COA + ACCOA/k20ACCOA)))*(1/(1 + Ki20*(NADH/NAD)));
+  v_21: ACCOA + Phos -> ACP + COA; Vmax18*(ACCOA/km18ACCOA)*(Phos/km18P)*(1 - ACP*COA/(ACCOA*Phos*Keq18))/((1 + ACCOA/km18ACCOA + ACP/km18ACP)*(1 + Phos/km18P + COA/km18COA));
+  v_22: ACP + ADP -> $AC + ATP; Vmax19*(ACP/km19ACP)*(ADP/km19ADP)*(1 - AC*ATP/(ACP*ADP*Keq19))/((1 + ACP/km19ACP + AC/km19AC)*(1 + ADP/km19ADP + ATP/km19ATP));
+  v_23: PYR + COA -> $FOR + ACCOA; Vmax17*(PYR/km17PYR)*(COA/km17COA)*(1 - FOR*ACCOA/(PYR*COA*Keq17))/((1 + (G3P + DHAP)/ki17)*(1 + PYR/km17PYR + FOR/km17FOR)*(1 + COA/km17COA + ACCOA/km17ACCOA));
+  v_24: NADH + ACCOA -> NAD + COA + ACAL; (Vmax21*NADH*ACCOA/(K21NADH*K21ACCOA) - Vmax21*NAD*COA*ACAL/(K21NADH*K21ACCOA*KEQ21))/((1 + NADH/K21NADH + NAD/K21NAD)*(1 + ACCOA/K21ACCOA + COA/K21COA)*(1 + ACAL/K21ACAL));
+  v_25: ACAL + NADH -> $ETOH + NAD; Vmax22*(ACAL/km22ACAL)*(NADH/km22NADH)*(1 - ETOH*NAD/(ACAL*NADH*Keq22))/((1 + ACAL/km22ACAL + ETOH/km22ETOH)*(1 + NADH/km22NADH + NAD/km22NAD));
+  v_26: PYR + NADH -> $Lac + NAD; (FBP/(FBP + k11FBP))*Vmax11*(PYR/km11PYR)*(NADH/km11NADH)*(1 - Lac*NAD/(PYR*NADH*Keq11))/((1 + PYR/km11PYR + Lac/km11Lac)*(1 + NADH/km11NADH + NAD/km11NAD));
+  v_27: NADH + $O2 -> NAD; (Vmax24*NADH/KM24OXNADH)*O2/KM24OXO/((1 + NADH/KM24OXNADH + NAD/KM24OXNAD)*(1 + O2/KM24OXO));
+  v_28: G6P -> G1P; Vmax27*(G6P/km27G6P)*(1 - G1P/(G6P*Keq27))/(1 + G6P/km27G6P + G1P/km27G1P);
+  v_29: 5 G1P + 5 ATP + 2 NADH + 3 $UDP + 2 $TDP -> 5 ADP + 10 Phos + 2 NAD + $Cellwall; Vmax28*(G1P/k28g1p)*(ATP/k28atp)*(NADH/k28nadh)/((1 + G1P/k28g1p + Phos/k28p)*(1 + ATP/k28atp + ADP/k28ADP)*(1 + NADH/k28nadh + NAD/k28nad));
+  v_3: G6P -> Glucin + Phos; Vmax26*(G6P/K26G6P)/(1 + G6P/K26G6P);
+  v_4: G6P -> F6P; Vmax2*(G6P/km2G6P)*(1 - F6P/(G6P*Keq2))/(1 + G6P/km2G6P + F6P/km2F6P);
+  v_5: FBP -> F6P + Phos; Vmax25*(FBP/km25FBP)/(1 + FBP/km25FBP + F6P/km25F6P);
+  v_6: F6P + ATP -> FBP + ADP; Vmax3*(1 - PEP^n3PEP/(k3PEP^n3PEP + PEP^n3PEP))*1*(F6P^n3/km3F6P^n3)*(ATP/km3ATP)/((1 + F6P^n3/km3F6P^n3 + FBP/km3FBP)*(1 + ATP/km3ATP + ADP/km3ADP));
+  v_7: ATP -> ADP + Phos; Vmax23*(ATP/ADP)^N23/(K23ATP^N23 + (ATP/ADP)^N23);
+  v_8: FBP -> G3P + DHAP; (Vmax4*FBP/K4FBP)*(1 - G3P*DHAP/(FBP*Keq4))/(1 + FBP/K4FBP + DHAP/K4DHAP + G3P/K4G3P + FBP*G3P/(K4FBP*Ki4G3P) + DHAP*G3P/(K4DHAP*K4G3P));
+  v_9: DHAP -> G3P; Vmax5*(DHAP/km5DHAP)*(1 - G3P/(DHAP*Keq5))/(1 + DHAP/km5DHAP + G3P/km5G3P);
+
+  // Species initializations:
+  AC = 0.02;
+  ACAL = 0.11;
+  ACCOA = 0.11;
+  ACET = 0.1;
+  ACETOUT = 0.1;
+  ACLAC = 0.01;
+  ACP = 0.03145;
+  ADP = 5;
+  ATP = 5;
+  BUT = 0;
+  COA = 0.89;
+  Cellwall = 1e-05;
+  DHAP = 11;
+  DPG = 0.1;
+  ETOH = 0;
+  F6P = 0.7;
+  FBP = 30;
+  FOR = 0.02;
+  G1P = 0.02;
+  G3P = 1;
+  G6P = 3;
+  Gluc = 2;
+  Glucin = 1e-05;
+  Lac = 0.1;
+  NAD = 5.2;
+  NADH = 0.35;
+  O2 = 0.1;
+  P2G = 1.8;
+  P3G = 20;
+  PEP = 0.05;
+  PYR = 0.3;
+  Phos = 5;
+  TDP = 0.1;
+  UDP = 0.1;
+
+  // Variable initializations:
+  K10FBP = 9.1;
+  K10G6P = 0.48;
+  K12ACLAC = 100;
+  K12PYR = 50;
+  K21ACAL = 10;
+  K21ACCOA = 0.007;
+  K21COA = 0.008;
+  K21NAD = 0.08;
+  K21NADH = 0.025;
+  K23ATP = 6.196;
+  K26G6P = 20;
+  K4DHAP = 0.13;
+  K4FBP = 0.17;
+  K4G3P = 0.03;
+  KEQ21 = 1;
+  KM24OXNAD = 0.2;
+  KM24OXNADH = 0.041;
+  KM24OXO = 0.01;
+  Keq10 = 6500;
+  Keq11 = 360000;
+  Keq12 = 900000;
+  Keq13 = 900000;
+  Keq16 = 1400;
+  Keq17 = 650;
+  Keq18 = 0.0281;
+  Keq19 = 174.22;
+  Keq2 = 0.314;
+  Keq22 = 12355;
+  Keq27 = 0.0585;
+  Keq4 = 0.056;
+  Keq5 = 0.045;
+  Keq6 = 0.0007;
+  Keq7 = 3200;
+  Keq8 = 0.1;
+  Keq9 = 4.6;
+  Ki10 = 0.77;
+  Ki20 = 49.36;
+  Ki4G3P = 0.23;
+  Km13ACET = 100;
+  Km13ACLAC = 10;
+  Km14ACET = 5;
+  N23 = 2.58;
+  Vmax1 = 160;
+  Vmax10 = 2030;
+  Vmax11 = 3300;
+  Vmax12 = 600;
+  Vmax13 = 106;
+  Vmax14 = 83.3;
+  Vmax15 = 0.0003;
+  Vmax16 = 43.3;
+  Vmax17 = 114;
+  Vmax18 = 720;
+  Vmax19 = 500;
+  Vmax2 = 1280;
+  Vmax20 = 60;
+  Vmax21 = 100;
+  Vmax22 = 270;
+  Vmax23 = 1000;
+  Vmax24 = 30;
+  Vmax25 = 0.01;
+  Vmax26 = 0.1;
+  Vmax27 = 35;
+  Vmax28 = 10;
+  Vmax29 = 60;
+  Vmax3 = 227;
+  Vmax4 = 1100;
+  Vmax5 = 17500;
+  Vmax6 = 4984;
+  Vmax7 = 920;
+  Vmax8 = 1340;
+  Vmax9 = 1600;
+  h12 = 2.4;
+  h13 = 1;
+  k11FBP = 0.003;
+  k20ACCOA = 0.008;
+  k20COA = 0.014;
+  k20NAD = 0.4;
+  k20NADH = 0.1;
+  k20PYR = 1;
+  k28ADP = 1;
+  k28atp = 7;
+  k28g1p = 0.05;
+  k28nad = 1;
+  k28nadh = 0.02;
+  k28p = 30;
+  k3PEP = 2;
+  ki17 = 0.2;
+  km10ADP = 1;
+  km10ATP = 10;
+  km10PEP = 0.17;
+  km10PYR = 21;
+  km11Lac = 100;
+  km11NAD = 2.4;
+  km11NADH = 0.2;
+  km11PYR = 1.5;
+  km16ACET = 0.06;
+  km16BUT = 2.6;
+  km16NAD = 0.16;
+  km16NADH = 0.02;
+  km17ACCOA = 0.05;
+  km17COA = 0.007;
+  km17FOR = 24;
+  km17PYR = 1;
+  km18ACCOA = 0.06;
+  km18ACP = 0.48;
+  km18COA = 0.1;
+  km18P = 5;
+  km19AC = 7;
+  km19ACP = 0.16;
+  km19ADP = 0.5;
+  km19ATP = 7;
+  km1G6P = 500;
+  km1Gluc = 0.015;
+  km1PEP = 0.3;
+  km1PYR = 2;
+  km22ACAL = 0.03;
+  km22ETOH = 1;
+  km22NAD = 0.08;
+  km22NADH = 0.05;
+  km25F6P = 2;
+  km25FBP = 10;
+  km27G1P = 0.004;
+  km27G6P = 0.05;
+  km29ADP = 5;
+  km29ATP = 0.05;
+  km29G6P = 5;
+  km29Glucin = 0.2;
+  km2F6P = 0.2;
+  km2G6P = 1.5;
+  km3ADP = 0.3;
+  km3ATP = 0.18;
+  km3F6P = 0.25;
+  km3FBP = 5.8;
+  km5DHAP = 2.8;
+  km5G3P = 0.3;
+  km6DPG = 0.05;
+  km6G3P = 0.25;
+  km6NAD = 0.2;
+  km6NADH = 0.067;
+  km6P = 2.35;
+  km7ADP = 0.2;
+  km7ATP = 0.3;
+  km7DPG = 0.003;
+  km7P3G = 0.53;
+  km8P2G = 0.1;
+  km8P3G = 1.2;
+  km9P2G = 0.04;
+  km9PEP = 0.5;
+  n10 = 1.4;
+  n3 = 2.9;
+  n3PEP = 1;
+
+  // Other declarations:
+  var K10FBP, K10G6P, K12ACLAC, K12PYR, K21ACAL, K21ACCOA, K21COA, K21NAD;
+  var K21NADH, K23ATP, K26G6P, K4DHAP, K4FBP, K4G3P, KEQ21, KM24OXNAD, KM24OXNADH;
+  var KM24OXO, Keq10, Keq11, Keq12, Keq13, Keq16, Keq17, Keq18, Keq19, Keq2;
+  var Keq22, Keq27, Keq4, Keq5, Keq6, Keq7, Keq8, Keq9, Ki10, Ki20, Ki4G3P;
+  var Km13ACET, Km13ACLAC, Km14ACET, N23, Vmax1, Vmax10, Vmax11, Vmax12, Vmax13;
+  var Vmax14, Vmax15, Vmax16, Vmax17, Vmax18, Vmax19, Vmax2, Vmax20, Vmax21;
+  var Vmax22, Vmax23, Vmax24, Vmax25, Vmax26, Vmax27, Vmax28, Vmax29, Vmax3;
+  var Vmax4, Vmax5, Vmax6, Vmax7, Vmax8, Vmax9, h12, h13, k11FBP, k20ACCOA;
+  var k20COA, k20NAD, k20NADH, k20PYR, k28ADP, k28atp, k28g1p, k28nad, k28nadh;
+  var k28p, k3PEP, ki17, km10ADP, km10ATP, km10PEP, km10PYR, km11Lac, km11NAD;
+  var km11NADH, km11PYR, km16ACET, km16BUT, km16NAD, km16NADH, km17ACCOA;
+  var km17COA, km17FOR, km17PYR, km18ACCOA, km18ACP, km18COA, km18P, km19AC;
+  var km19ACP, km19ADP, km19ATP, km1G6P, km1Gluc, km1PEP, km1PYR, km22ACAL;
+  var km22ETOH, km22NAD, km22NADH, km25F6P, km25FBP, km27G1P, km27G6P, km29ADP;
+  var km29ATP, km29G6P, km29Glucin, km2F6P, km2G6P, km3ADP, km3ATP, km3F6P;
+  var km3FBP, km5DHAP, km5G3P, km6DPG, km6G3P, km6NAD, km6NADH, km6P, km7ADP;
+  var km7ATP, km7DPG, km7P3G, km8P2G, km8P3G, km9P2G, km9PEP, n10, n3, n3PEP;
+
+  // CV terms:
+  ACCOA identity "http://identifiers.org/kegg.compound/C00024"
+  ACET identity "http://identifiers.org/kegg.compound/C00033"
+  ACETOUT identity "http://identifiers.org/kegg.compound/C00033"
+  ACP identity "http://identifiers.org/kegg.compound/C00227"
+  ADP encodement "http://identifiers.org/kegg.compound/C00008"
+  ATP identity "http://identifiers.org/kegg.compound/C00002"
+  COA identity "http://identifiers.org/kegg.compound/C00010"
+  DHAP identity "http://identifiers.org/kegg.compound/C00111"
+  DPG identity "http://identifiers.org/kegg.compound/C00236"
+  ETOH identity "http://identifiers.org/kegg.compound/C00469"
+  F6P identity "http://identifiers.org/kegg.compound/C00085"
+  FBP identity "http://identifiers.org/kegg.compound/C00354"
+  G1P identity "http://identifiers.org/kegg.compound/C00103"
+  G3P identity "http://identifiers.org/kegg.compound/C00118"
+  G6P identity "http://identifiers.org/kegg.compound/C00092"
+  Gluc identity "http://identifiers.org/kegg.compound/C00293"
+  Glucin identity "http://identifiers.org/kegg.compound/C00293"
+  Lac identity "http://identifiers.org/kegg.compound/C01432"
+  NAD identity "http://identifiers.org/kegg.compound/C00003"
+  NADH identity "http://identifiers.org/kegg.compound/C00004"
+  O2 identity "http://identifiers.org/kegg.compound/C00007"
+  P2G identity "http://identifiers.org/kegg.compound/C00631"
+  P3G identity "http://identifiers.org/kegg.compound/C00197"
+  PEP identity "http://identifiers.org/kegg.compound/C00074"
+  PYR identity "http://identifiers.org/kegg.compound/C00022"
+  TDP identity "http://identifiers.org/kegg.compound/C00363"
+  UDP identity "http://identifiers.org/kegg.compound/C00015"
+end
+
+hoefnagel2 is "hoefnagel2"

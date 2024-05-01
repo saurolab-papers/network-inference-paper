@@ -1,0 +1,112 @@
+// Created by libAntimony v2.13.2
+model *becker2()
+
+  // Compartments and Species:
+  compartment cell, cellsurface, medium;
+  species EpoR in cellsurface, SAv in medium, SAv_EpoR in cellsurface, SAv_EpoRi in cell;
+  species dSAve in medium, dSAvi in cell;
+
+  // Assignment Rules:
+  SAv_cells := SAv_EpoRi + dSAvi;
+  SAv_medium := SAv + dSAve;
+
+  // Reactions:
+  reaction_1:  => EpoR; kt*Bmax_SAv*cell;
+  reaction_2: EpoR => ; kt*EpoR*cell;
+  reaction_3: SAv + EpoR => SAv_EpoR; kon_SAv*SAv*EpoR*cell;
+  reaction_4: SAv_EpoR => SAv + EpoR; koff_SAv*SAv_EpoR*cell;
+  reaction_5: SAv_EpoR => SAv_EpoRi; kt*SAv_EpoR*cell;
+  reaction_6: SAv_EpoRi => SAv; kex_SAv*SAv_EpoRi*cell;
+  reaction_7: SAv_EpoRi => dSAvi; kdi*SAv_EpoRi*cell;
+  reaction_8: SAv_EpoRi => dSAve; kde*SAv_EpoRi*cell;
+
+  // Species initializations:
+  EpoR = 76/cellsurface;
+  SAv = 999.293/medium;
+  SAv_EpoR = 0;
+  SAv_EpoRi = 0;
+  dSAve = 0;
+  dSAvi = 0;
+
+  // Compartment initializations:
+  cell = 1;
+  cellsurface = 1;
+  medium = 1;
+
+  // Variable initializations:
+  Bmax_SAv = 76;
+  Bmax_SAv has pM;
+  kde = 0.0164042;
+  kde has per_minute;
+  kdi = 0.00317871;
+  kdi has per_minute;
+  kex_SAv = 0.01101;
+  kex_SAv has per_minute;
+  koff_SAv = 0.00679946;
+  koff_SAv has per_minute;
+  kon_SAv = 2.29402e-06;
+  kon_SAv has per_minute_per_pM;
+  kt = 0.0329366;
+  kt has per_minute;
+
+  // Other declarations:
+  var SAv_cells, SAv_medium;
+  const cell, cellsurface, medium, Bmax_SAv, kde, kdi, kex_SAv, koff_SAv;
+  const kon_SAv, kt;
+
+  // Unit definitions:
+  unit minute = 60 second;
+  unit picomole = 1e-12 mole;
+  unit per_minute = 1 / 60 second;
+  unit pM = 1e-12 mole / litre;
+  unit per_minute_per_pM = litre / (60 second * 1e-12 mole);
+
+  // SBO terms:
+  cell.sboTerm = 290
+  cellsurface.sboTerm = 290
+  medium.sboTerm = 290
+  EpoR.sboTerm = 244
+  SAv.sboTerm = 280
+  SAv_EpoR.sboTerm = 297
+  SAv_EpoRi.sboTerm = 297
+  dSAve.sboTerm = 291
+  dSAvi.sboTerm = 291
+  Bmax_SAv.sboTerm = 256
+  kde.sboTerm = 356
+  kdi.sboTerm = 356
+  kex_SAv.sboTerm = 256
+  koff_SAv.sboTerm = 338
+  kon_SAv.sboTerm = 341
+  kt.sboTerm = 256
+  reaction_1.sboTerm = 176
+  reaction_2.sboTerm = 179
+  reaction_3.sboTerm = 177
+  reaction_4.sboTerm = 180
+  reaction_5.sboTerm = 185
+  reaction_6.sboTerm = 180
+  reaction_7.sboTerm = 179
+  reaction_8.sboTerm = 179
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/obo.go/GO:0005623"
+  cellsurface hypernym "http://identifiers.org/obo.go/GO:0009986"
+  medium hypernym "http://identifiers.org/obo.bto/BTO:0000316"
+  EpoR hypernym "http://identifiers.org/uniprot/P14753",
+                "http://identifiers.org/kegg.orthology/K05079"
+  SAv hypernym "http://identifiers.org/uniprot/P22629"
+  SAv_EpoR part "http://identifiers.org/uniprot/P14753",
+                "http://identifiers.org/uniprot/P22629"
+  SAv_EpoRi part "http://identifiers.org/uniprot/P14753",
+                 "http://identifiers.org/uniprot/P22629"
+  reaction_1 hypernym "http://identifiers.org/obo.go/GO:0032800"
+  reaction_2 hypernym "http://identifiers.org/obo.go/GO:0032801"
+  reaction_3 hypernym "http://identifiers.org/obo.go/GO:0005102",
+                      "http://identifiers.org/obo.go/GO:0005128"
+  reaction_4 hypernym "http://identifiers.org/obo.go/GO:0043241"
+  reaction_5 hypernym "http://identifiers.org/obo.go/GO:0015031"
+  reaction_6 hypernym "http://identifiers.org/obo.go/GO:0043241"
+  reaction_7 hypernym "http://identifiers.org/obo.go/GO:0030163"
+  reaction_8 hypernym "http://identifiers.org/obo.go/GO:0030163"
+end
+
+becker2 is "becker2"

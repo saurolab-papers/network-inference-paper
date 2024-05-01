@@ -1,0 +1,169 @@
+// Created by libAntimony v2.13.2
+model *novak()
+
+  // Compartments and Species:
+  species CA, CD, CDc20, CDc20T, CDh1, CE, CYCA, CYCB, CYCD, CYCE, DRG, E2F;
+  species ERG, GM, IEP, MASS, P27, PPX, $p, $s;
+
+  // Assignment Rules:
+  E2RBC := 2*E2FT*RBH/(E2FT + RBH + L + ((E2FT + RBH + L)^2 - 4*E2FT*RBH)^0.5);
+  RBH := RBT/(K20*(LD*CYCD + LE*CYCE + LA*CYCA + LB*CYCB)/(K19a*(PP1T - PP1A) + K19*PP1A) + 1);
+  L := (K26R + K20*(LD*CYCD + LE*CYCE + LA*CYCA + LB*CYCB))/K26;
+  PP1A := PP1T/(K21*(FE*(CYCE + CYCA) + FB*CYCB) + 1);
+
+  // Reactions:
+  v_1: ERG -> $p; k16*ERG;
+  v_10: CA -> P27; K30*CDc20*CA;
+  v_11: CE -> P27 + CYCE; K25R*CE;
+  v_12: CA -> P27 + CYCA; K25R*CA;
+  v_13: CE -> P27; v_8*CE;
+  v_8: CD -> P27 + CYCD; k24r*CD;
+  v_14: CYCE -> $p; v_8*CYCE;
+  v_15: P27 -> $p; v_6*P27;
+  v_6: P27 + CYCA -> CA; K25*P27*CYCA;
+  v_16: CE -> CYCE; v_6*CE;
+  v_17: CD -> CYCD; v_6*CD;
+  v_18: CA -> CYCA; v_6*CA;
+  v_19: CYCB -> $p; v_2*CYCB;
+  v_2: DRG -> $p; k18*DRG;
+  v_20: $s -> CDh1; (K3a + K3*CDc20)*(1 - CDh1)/(J3 + 1 - CDh1);
+  v_21: CDh1 -> $p; v_4*CDh1/(J4 + CDh1);
+  v_4: CYCD -> $p; K10*CYCD;
+  v_22: PPX -> $p; K34*PPX;
+  v_23: $s -> IEP; K31*CYCB*(1 - IEP)/(J31 + 1 - IEP);
+  v_24: IEP -> $p; K32*PPX*IEP/(J32 + IEP);
+  v_25: CDc20T -> $p; K12*CDc20T;
+  v_26: $s -> CDc20; K13*IEP*(CDc20T - CDc20)/(J13 + CDc20T - CDc20);
+  v_27: CDc20 -> $p; K14*CDc20/(J14 + CDc20);
+  v_28: CDc20 -> $p; K12*CDc20;
+  v_29: $s -> E2F; K22*(E2FT - E2F);
+  v_3: CD -> P27; K10*CD;
+  v_30: E2F -> $p; (K23a + K23*(CYCA + CYCB))*E2F;
+  v_31: $s -> GM; K27*MASS*piecewise(0, (RBH/RBT) > 0.8, 1);
+  v_32: GM -> $p; K28*GM;
+  v_33: $s -> MASS; eps*MU*GM;
+  v_34: $s -> ERG; eps*k15/(1 + (DRG/J15)^2);
+  v_35: $s -> CDc20T; eps*(K11a + K11*CYCB);
+  v_36: $s -> CYCA; eps*K29*E2FA*MASS;
+  v_37: $s -> PPX; eps*K33;
+  v_38: $s -> CYCE; eps*(K7a + K7*E2FA);
+  v_39: $s -> CYCD; eps*K9*DRG;
+  v_40: $s -> P27; eps*K5;
+  v_41: $s -> DRG; eps*(k17a*ERG + k17*(DRG/J17)^2/(1 + (DRG/J17)^2));
+  v_42: $s -> CYCB; eps*(K1a + K1*(CYCB/J1)^2/(1 + (CYCB/J1)^2));
+  v_5: P27 + CYCE -> CE; K25*P27*CYCE;
+  v_7: P27 + CYCD -> CD; k24*CYCD*P27;
+  v_9: CYCA -> $p; K30*CDc20*CYCA;
+
+  // Species initializations:
+  CA = 0.0434486;
+  CD = 0.0488772;
+  CDc20 = 1e-07;
+  CDc20T = 0.006466;
+  CDh1 = 0.98702;
+  CE = 0.1380924;
+  CYCA = 0.3411;
+  CYCB = 0.00514;
+  CYCD = 0.401389;
+  CYCE = 1.09959;
+  DRG = 0.9005328;
+  E2F = 4.25991;
+  ERG = 0.0121808;
+  GM = 1.032033;
+  IEP = 1.98e-05;
+  MASS = 1.28486;
+  P27 = 0.011877;
+  PPX = 1;
+  p = 1;
+  s = 1;
+
+  // Variable initializations:
+  E2FA = 0;
+  E2FT = 5;
+  FB = 2;
+  FE = 25;
+  GA = 0.3;
+  GB = 1;
+  GE = 0;
+  HA = 0.5;
+  HB = 1;
+  HE = 0.5;
+  J1 = 0.1;
+  J13 = 0.005;
+  J14 = 0.005;
+  J15 = 0.1;
+  J17 = 0.3;
+  J3 = 0.01;
+  J31 = 0.01;
+  J32 = 0.01;
+  J4 = 0.01;
+  J8 = 0.1;
+  K1 = 0.06;
+  K10 = 0.5;
+  K11 = 0.15;
+  K11a = 0;
+  K12 = 0.15;
+  K13 = 0.5;
+  K14 = 0.25;
+  K19 = 2;
+  K19a = 0;
+  K1a = 0.01;
+  K2 = 2;
+  K20 = 1;
+  K21 = 1;
+  K22 = 0.1;
+  K23 = 0.1;
+  K23a = 0.0005;
+  K25 = 100;
+  K25R = 1;
+  K26 = 1000;
+  K26R = 20;
+  K27 = 0.02;
+  K28 = 0.02;
+  K29 = 0.005;
+  K2a = 0.005;
+  K2aa = 0.1;
+  K3 = 14;
+  K30 = 2;
+  K31 = 0.07;
+  K32 = 0.18;
+  K33 = 0.005;
+  K34 = 0.005;
+  K3a = 0.75;
+  K4 = 4;
+  K5 = 2;
+  K6 = 10;
+  K6a = 1;
+  K7 = 0.06;
+  K7a = 0;
+  K8 = 0.2;
+  K8a = 0.01;
+  K9 = 0.25;
+  LD = 3.3;
+  LE = 5;
+  LA = 3;
+  LB = 5;
+  MU = 0.0061;
+  PP1T = 1;
+  RBT = 10;
+  YB = 0.05;
+  YE = 1;
+  eps = 1;
+  k15 = 0.025;
+  k16 = 0.025;
+  k17 = 1;
+  k17a = 0.035;
+  k18 = 1;
+  k24 = 100;
+  k24r = 1;
+
+  // Other declarations:
+  var E2FA, E2FT, E2RBC, RBH, L, FB, FE, GA, GB, GE, HA, HB, HE, J1, J13;
+  var J14, J15, J17, J3, J31, J32, J4, J8, K1, K10, K11, K11a, K12, K13, K14;
+  var K19, K19a, K1a, K2, K20, K21, K22, K23, K23a, K25, K25R, K26, K26R;
+  var K27, K28, K29, K2a, K2aa, K3, K30, K31, K32, K33, K34, K3a, K4, K5;
+  var K6, K6a, K7, K7a, K8, K8a, K9, LD, LE, LA, LB, MU, PP1A, PP1T, RBT;
+  var YB, YE, eps, k15, k16, k17, k17a, k18, k24, k24r;
+end
+
+novak is "novak"

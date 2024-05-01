@@ -1,0 +1,434 @@
+// Created by libAntimony v2.13.2
+model *proctor1()
+
+  // Compartments and Species:
+  compartment cell;
+  substanceOnly species $ADP in cell, $AMP in cell, ATMA in cell, ATMI in cell;
+  substanceOnly species $ATP in cell, Abeta in cell, AbetaDimer in cell, AbetaDimer_antiAb in cell;
+  substanceOnly species AbetaPlaque in cell, AbetaPlaque_GliaA in cell, Abeta_antiAb in cell;
+  substanceOnly species AggAbeta_Proteasome in cell, AggTau in cell, AggTau_Proteasome in cell;
+  substanceOnly species DUB in cell, E1 in cell, E1_Ub in cell, E2 in cell;
+  substanceOnly species E2_Ub in cell, GSK3b in cell, GSK3b_p53 in cell, GSK3b_p53_P in cell;
+  substanceOnly species GliaA in cell, GliaI in cell, GliaM1 in cell, GliaM2 in cell;
+  substanceOnly species IR in cell, MT_Tau in cell, Mdm2 in cell, Mdm2DUB in cell;
+  substanceOnly species Mdm2_P in cell, Mdm2_P1_p53_Ub4 in cell, Mdm2_P_Ub in cell;
+  substanceOnly species Mdm2_P_Ub2 in cell, Mdm2_P_Ub3 in cell, Mdm2_P_Ub4 in cell;
+  substanceOnly species Mdm2_P_Ub4_Proteasome in cell, Mdm2_Ub in cell, Mdm2_Ub2 in cell;
+  substanceOnly species Mdm2_Ub3 in cell, Mdm2_Ub4 in cell, Mdm2_Ub4_Proteasome in cell;
+  substanceOnly species Mdm2_mRNA in cell, Mdm2_p53 in cell, Mdm2_p53_Ub in cell;
+  substanceOnly species Mdm2_p53_Ub2 in cell, Mdm2_p53_Ub3 in cell, Mdm2_p53_Ub4 in cell;
+  substanceOnly species NFT in cell, PP1 in cell, Proteasome in cell, Proteasome_Tau in cell;
+  substanceOnly species ROS in cell, $Sink in cell, $Source in cell, Tau in cell;
+  substanceOnly species Tau_P1 in cell, Tau_P2 in cell, Ub in cell, antiAb in cell;
+  substanceOnly species damDNA in cell, degAbetaGlia in cell, disaggPlaque1 in cell;
+  substanceOnly species disaggPlaque2 in cell, p53 in cell, p53DUB in cell;
+  substanceOnly species p53_P in cell, p53_Ub4_Proteasome in cell, p53_mRNA in cell;
+
+  // Reactions:
+  ATMInactivation: ATMA => ATMI; kinactATM*ATMA;
+  ATMactivation: ATMI + damDNA => ATMA + damDNA; kactATM*damDNA*ATMI;
+  AbetaAggregation1: 2 Abeta => AbetaDimer; kaggAbeta*Abeta^2*0.5;
+  AbetaBindingToGlia: GliaA + AbetaPlaque => AbetaPlaque_GliaA; kbinAbetaGlia*AbetaPlaque*GliaA;
+  AbetaDegradation: Abeta => $Sink; kdegAbeta*Abeta;
+  AbetaDimer_antiAbBinding: antiAb + AbetaDimer => AbetaDimer_antiAb; kbinAbantiAb*AbetaDimer*antiAb;
+  AbetaDimer_antiAbDegredation: AbetaDimer_antiAb => antiAb; 10*kdegAbeta*AbetaDimer_antiAb;
+  AbetaDisaggregation1: AbetaDimer => 2 Abeta; kdisaggAbeta*AbetaDimer;
+  AbetaDisaggregation3: AbetaPlaque => disaggPlaque1 + AbetaDimer; kdisaggAbeta1*AbetaPlaque;
+  AbetaDisaggregation4: antiAb + AbetaPlaque => disaggPlaque2 + antiAb + AbetaDimer; kdisaggAbeta2*antiAb*AbetaPlaque;
+  AbetaPlaqueClearanceByGlia: AbetaPlaque_GliaA => degAbetaGlia + GliaA; kdegAbetaGlia*AbetaPlaque_GliaA;
+  AbetaPlaqueFormation1: 2 AbetaDimer => AbetaPlaque; kpf*AbetaDimer^2*0.5;
+  AbetaPlaqueGrowth: AbetaPlaque + AbetaDimer => 2 AbetaPlaque; kpg*AbetaDimer*AbetaPlaque^2/(kpghalf^2 + AbetaPlaque^2);
+  AbetaROSproduction1: Abeta => ROS + Abeta; kgenROSAbeta*Abeta;
+  AbetaReleaseFromGlia: AbetaPlaque_GliaA => GliaA + AbetaPlaque; krelAbetaGlia*AbetaPlaque_GliaA;
+  Abeta_antiAbBinding: antiAb + Abeta => Abeta_antiAb; kbinAbantiAb*Abeta*antiAb;
+  Abeta_antiAbDegredation: Abeta_antiAb => antiAb; 10*kdegAbeta*Abeta_antiAb;
+  Abetaproduction1: $Source => Abeta; kprodAbeta*Source;
+  Abetaproduction2: GSK3b_p53 => GSK3b_p53 + Abeta; kprodAbeta2*GSK3b_p53;
+  Abetaproduction3: GSK3b_p53_P => GSK3b_p53_P + Abeta; kprodAbeta2*GSK3b_p53_P;
+  AggAbetaROSproduction2: AggAbeta_Proteasome => ROS + AggAbeta_Proteasome; kgenROSAbeta*AggAbeta_Proteasome;
+  DNAdamage: IR => damDNA + IR; kdam*IR;
+  DNArepair: damDNA => $Sink; krepair*damDNA;
+  Degradationp53_Ub4: $ATP + p53_Ub4_Proteasome => $ADP + Proteasome + 4 Ub; kdegp53*kproteff*p53_Ub4_Proteasome*ATP/(5000 + ATP);
+  E1UbBinding: $ATP + Ub + E1 => $AMP + E1_Ub; kbinE1Ub*E1*Ub*ATP/(5000 + ATP);
+  E2UbBinding: E1_Ub + E2 => E1 + E2_Ub; kbinE2Ub*E2*E1_Ub;
+  GSK3_p53PRelease: GSK3b_p53_P => p53_P + GSK3b; krelGSK3bp53*GSK3b_p53_P;
+  GSK3p53Binding: p53 + GSK3b => GSK3b_p53; kbinGSK3bp53*GSK3b*p53;
+  GSK3p53PBinding: p53_P + GSK3b => GSK3b_p53_P; kbinGSK3bp53*GSK3b*p53_P;
+  GSK3p53Release: GSK3b_p53 => p53 + GSK3b; krelGSK3bp53*GSK3b_p53;
+  GliaActivationStep1: AbetaPlaque + GliaI => AbetaPlaque + GliaM1; kactglia1*GliaI*AbetaPlaque;
+  GliaActivationStep2: AbetaPlaque + GliaM1 => AbetaPlaque + GliaM2; kactglia1*GliaM1*AbetaPlaque;
+  GliaActivationStep3: antiAb + GliaM2 => antiAb + GliaA; kactglia2*GliaM2*antiAb;
+  GliaInactivationStep1: GliaA => GliaM2; kinactglia1*GliaA;
+  GliaInactivationStep2: GliaM2 => GliaM1; kinactglia2*GliaM2;
+  GliaInactivationStep3: GliaM1 => GliaI; kinactglia2*GliaM1;
+  Mdm2Degradation: Mdm2_Ub4_Proteasome => 4 Ub + Proteasome; kdegMdm2*Mdm2_Ub4_Proteasome*kproteff;
+  Mdm2Deubiquitination1: Mdm2DUB + Mdm2_Ub => Ub + Mdm2DUB + Mdm2; kactDUBMdm2*Mdm2_Ub*Mdm2DUB;
+  Mdm2Deubiquitination2: Mdm2DUB + Mdm2_Ub2 => Ub + Mdm2DUB + Mdm2_Ub; kactDUBMdm2*Mdm2_Ub2*Mdm2DUB;
+  Mdm2Deubiquitination3: Mdm2DUB + Mdm2_Ub3 => Ub + Mdm2DUB + Mdm2_Ub2; kactDUBMdm2*Mdm2_Ub3*Mdm2DUB;
+  Mdm2Deubiquitination4: Mdm2DUB + Mdm2_Ub4 => Ub + Mdm2DUB + Mdm2_Ub3; kactDUBMdm2*Mdm2_Ub4*Mdm2DUB;
+  Mdm2GSK3phosphorylation1: GSK3b + Mdm2_p53_Ub4 => GSK3b + Mdm2_P1_p53_Ub4; kphosMdm2GSK3b*Mdm2_p53_Ub4*GSK3b;
+  Mdm2GSK3phosphorylation2: GSK3b_p53 + Mdm2_p53_Ub4 => GSK3b_p53 + Mdm2_P1_p53_Ub4; kphosMdm2GSK3bp53*Mdm2_p53_Ub4*GSK3b_p53;
+  Mdm2GSK3phosphorylation3: GSK3b_p53_P + Mdm2_p53_Ub4 => GSK3b_p53_P + Mdm2_P1_p53_Ub4; kphosMdm2GSK3bp53*Mdm2_p53_Ub4*GSK3b_p53_P;
+  Mdm2PDegradation: Mdm2_P_Ub4_Proteasome => 4 Ub + Proteasome; kdegMdm2*Mdm2_P_Ub4_Proteasome*kproteff;
+  Mdm2PDeubiquitination1: Mdm2DUB + Mdm2_P_Ub => Ub + Mdm2DUB + Mdm2_P; kactDUBMdm2*Mdm2_P_Ub*Mdm2DUB;
+  Mdm2PDeubiquitination2: Mdm2DUB + Mdm2_P_Ub2 => Ub + Mdm2DUB + Mdm2_P_Ub; kactDUBMdm2*Mdm2_P_Ub2*Mdm2DUB;
+  Mdm2PDeubiquitination3: Mdm2DUB + Mdm2_P_Ub3 => Ub + Mdm2DUB + Mdm2_P_Ub2; kactDUBMdm2*Mdm2_P_Ub3*Mdm2DUB;
+  Mdm2PDeubiquitination4: Mdm2DUB + Mdm2_P_Ub4 => Ub + Mdm2DUB + Mdm2_P_Ub3; kactDUBMdm2*Mdm2_P_Ub4*Mdm2DUB;
+  Mdm2PProteasomeBinding1: Proteasome + Mdm2_P_Ub4 => Mdm2_P_Ub4_Proteasome; kbinProt*Mdm2_P_Ub4*Proteasome;
+  Mdm2PUbiquitination: E2_Ub + Mdm2_P => E2 + Mdm2_P_Ub; kMdm2PUb*Mdm2_P*E2_Ub;
+  Mdm2PpolyUbiquitination1: E2_Ub + Mdm2_P_Ub => E2 + Mdm2_P_Ub2; kMdm2PolyUb*Mdm2_P_Ub*E2_Ub;
+  Mdm2PpolyUbiquitination2: E2_Ub + Mdm2_P_Ub2 => E2 + Mdm2_P_Ub3; kMdm2PolyUb*Mdm2_P_Ub2*E2_Ub;
+  Mdm2PpolyUbiquitination3: E2_Ub + Mdm2_P_Ub3 => E2 + Mdm2_P_Ub4; kMdm2PolyUb*Mdm2_P_Ub3*E2_Ub;
+  Mdm2ProteasomeBinding1: Proteasome + Mdm2_Ub4 => Mdm2_Ub4_Proteasome; kbinProt*Mdm2_Ub4*Proteasome;
+  Mdm2Synthesis: Mdm2_mRNA => Mdm2 + Mdm2_mRNA; ksynMdm2*Mdm2_mRNA;
+  Mdm2Ubiquitination: E2_Ub + Mdm2 => E2 + Mdm2_Ub; kMdm2Ub*Mdm2*E2_Ub;
+  Mdm2dephosphorylation: Mdm2_P => Mdm2; kdephosMdm2*Mdm2_P;
+  Mdm2mRNADegradation: Mdm2_mRNA => $Sink; kdegMdm2mRNA*Mdm2_mRNA;
+  Mdm2mRNASynthesis1: p53 => Mdm2_mRNA + p53; ksynMdm2mRNA*p53;
+  Mdm2mRNASynthesis2: p53_P => Mdm2_mRNA + p53_P; ksynMdm2mRNA*p53_P;
+  Mdm2mRNASynthesis3: GSK3b_p53 => Mdm2_mRNA + GSK3b_p53; ksynMdm2mRNAGSK3bp53*GSK3b_p53;
+  Mdm2mRNASynthesis4: GSK3b_p53_P => Mdm2_mRNA + GSK3b_p53_P; ksynMdm2mRNAGSK3bp53*GSK3b_p53_P;
+  Mdm2phosphorylation: ATMA + Mdm2 => ATMA + Mdm2_P; kphosMdm2*Mdm2*ATMA;
+  Mdm2polyUbiquitination1: E2_Ub + Mdm2_Ub => E2 + Mdm2_Ub2; kMdm2PolyUb*Mdm2_Ub*E2_Ub;
+  Mdm2polyUbiquitination2: E2_Ub + Mdm2_Ub2 => E2 + Mdm2_Ub3; kMdm2PolyUb*Mdm2_Ub2*E2_Ub;
+  Mdm2polyUbiquitination3: E2_Ub + Mdm2_Ub3 => E2 + Mdm2_Ub4; kMdm2PolyUb*Mdm2_Ub3*E2_Ub;
+  P53Mdm2Binding: Mdm2 + p53 => Mdm2_p53; kbinMdm2p53*p53*Mdm2;
+  P53Mdm2Release: Mdm2_p53 => Mdm2 + p53; krelMdm2p53*Mdm2_p53;
+  PlaqueROSproduction: AbetaPlaque => ROS + AbetaPlaque; kgenROSPlaque*AbetaPlaque;
+  ProteasomeInhibitionAbeta: Proteasome + AbetaDimer => AggAbeta_Proteasome; kinhibprot*AbetaDimer*Proteasome;
+  ProteasomeInhibitionAggTau: Proteasome + AggTau => AggTau_Proteasome; kinhibprot*AggTau*Proteasome;
+  ROSDNAdamage: ROS => damDNA + ROS; kdamROS*ROS;
+  ROSgenerationByGlia: AbetaPlaque_GliaA => ROS + AbetaPlaque_GliaA; kgenROSGlia*AbetaPlaque_GliaA;
+  ROSremoval: ROS => $Sink; kremROS*ROS;
+  TangleFormation1: 2 AggTau => 2 NFT; ktangfor*AggTau^2*0.5;
+  TangleFormation2: NFT + AggTau => 2 NFT; ktangfor*AggTau*NFT;
+  Tau20SProteasomeDegradation: Proteasome_Tau => Proteasome; kdegTau20SProt*Proteasome_Tau;
+  TauAggregation1: 2 Tau => 2 AggTau; kaggTau*Tau^2*0.5;
+  TauAggregation2: AggTau + Tau => 2 AggTau; kaggTau*Tau*AggTau;
+  TauMTbinding: Tau => MT_Tau; kbinMTTau*Tau;
+  TauMTrelease: MT_Tau => Tau; krelMTTau*MT_Tau;
+  TauP1Aggregation1: 2 Tau_P1 => 2 AggTau; kaggTauP1*Tau_P1^2*0.5;
+  TauP1Aggregation2: AggTau + Tau_P1 => 2 AggTau; kaggTauP1*Tau_P1*AggTau;
+  TauP2Aggregation1: 2 Tau_P2 => 2 AggTau; kaggTauP2*Tau_P2^2*0.5;
+  TauP2Aggregation2: AggTau + Tau_P2 => 2 AggTau; kaggTauP2*Tau_P2*AggTau;
+  TauProteasomeBinding: Proteasome + Tau => Proteasome_Tau; kbinTauProt*Tau*Proteasome;
+  TauSynthesis: $Source => Tau; ksynTau*Source;
+  Taudephosphorylation1: PP1 + Tau_P2 => PP1 + Tau_P1; kdephospTau*Tau_P2*PP1;
+  Taudephosphorylation2: PP1 + Tau_P1 => PP1 + Tau; kdephospTau*Tau_P1*PP1;
+  Tauphosphorylation1: Tau + GSK3b_p53 => Tau_P1 + GSK3b_p53; kphospTauGSK3bp53*GSK3b_p53*Tau;
+  Tauphosphorylation2: Tau_P1 + GSK3b_p53 => Tau_P2 + GSK3b_p53; kphospTauGSK3bp53*GSK3b_p53*Tau_P1;
+  Tauphosphorylation3: Tau + GSK3b_p53_P => Tau_P1 + GSK3b_p53_P; kphospTauGSK3bp53*GSK3b_p53_P*Tau;
+  Tauphosphorylation4: Tau_P1 + GSK3b_p53_P => Tau_P2 + GSK3b_p53_P; kphospTauGSK3bp53*GSK3b_p53_P*Tau_P1;
+  Tauphosphorylation5: Tau + GSK3b => Tau_P1 + GSK3b; kphospTauGSK3b*GSK3b*Tau;
+  Tauphosphorylation6: Tau_P1 + GSK3b => Tau_P2 + GSK3b; kphospTauGSK3b*GSK3b*Tau_P1;
+  antiAbRemoval: antiAb => $Sink; kdegAntiAb*antiAb;
+  p53Deubiquitination1: p53DUB + Mdm2_p53_Ub => Ub + p53DUB + Mdm2_p53; kactDUBp53*Mdm2_p53_Ub*p53DUB;
+  p53Deubiquitination2: p53DUB + Mdm2_p53_Ub2 => Ub + p53DUB + Mdm2_p53_Ub; kactDUBp53*Mdm2_p53_Ub2*p53DUB;
+  p53Deubiquitination3: p53DUB + Mdm2_p53_Ub3 => Ub + p53DUB + Mdm2_p53_Ub2; kactDUBp53*Mdm2_p53_Ub3*p53DUB;
+  p53Deubiqutination4: p53DUB + Mdm2_p53_Ub4 => Ub + p53DUB + Mdm2_p53_Ub3; kactDUBp53*Mdm2_p53_Ub4*p53DUB;
+  p53Monoubiquitination: Mdm2_p53 + E2_Ub => E2 + Mdm2_p53_Ub; kp53Ub*E2_Ub*Mdm2_p53;
+  p53Polyubiquitination1: E2_Ub + Mdm2_p53_Ub => E2 + Mdm2_p53_Ub2; kp53PolyUb*Mdm2_p53_Ub*E2_Ub;
+  p53Polyubiquitination2: E2_Ub + Mdm2_p53_Ub2 => E2 + Mdm2_p53_Ub3; kp53PolyUb*Mdm2_p53_Ub2*E2_Ub;
+  p53Polyubiquitination3: E2_Ub + Mdm2_p53_Ub3 => E2 + Mdm2_p53_Ub4; kp53PolyUb*Mdm2_p53_Ub3*E2_Ub;
+  p53ProteasomeBinding1: Proteasome + Mdm2_P1_p53_Ub4 => Mdm2 + p53_Ub4_Proteasome; kbinProt*Mdm2_P1_p53_Ub4*Proteasome;
+  p53Synthesis: p53_mRNA => p53_mRNA + p53; ksynp53*p53_mRNA;
+  p53dephosphorylation: p53_P => p53; kdephosp53*p53_P;
+  p53mRNADegradation: p53_mRNA => $Sink; kdegp53mRNA*p53_mRNA;
+  p53mRNASynthesis: $Source => p53_mRNA; ksynp53mRNA*Source;
+  p53phosphorylation: ATMA + p53 => ATMA + p53_P; kphosp53*p53*ATMA;
+  p53transcriptionViaAbeta: Abeta => Abeta + p53_mRNA; ksynp53mRNAAbeta*Abeta;
+
+  // Events:
+  ImmunizeCell: at time >= 345600: antiAb = 50;
+
+  // Species initializations:
+  ADP = 1000/cell;
+  AMP = 1000/cell;
+  ATMA = 0;
+  ATMI = 200/cell;
+  ATP = 10000/cell;
+  Abeta = 0;
+  AbetaDimer = 0;
+  AbetaDimer_antiAb = 0;
+  AbetaPlaque = 0;
+  AbetaPlaque_GliaA = 0;
+  Abeta_antiAb = 0;
+  AggAbeta_Proteasome = 0;
+  AggTau = 0;
+  AggTau_Proteasome = 0;
+  DUB = 200/cell;
+  E1 = 100/cell;
+  E1_Ub = 0;
+  E2 = 100/cell;
+  E2_Ub = 0;
+  GSK3b = 500/cell;
+  GSK3b_p53 = 0;
+  GSK3b_p53_P = 0;
+  GliaA = 0;
+  GliaI = 100/cell;
+  GliaM1 = 0;
+  GliaM2 = 0;
+  IR = 0;
+  MT_Tau = 100/cell;
+  Mdm2 = 5/cell;
+  Mdm2DUB = 200/cell;
+  Mdm2_P = 0;
+  Mdm2_P1_p53_Ub4 = 0;
+  Mdm2_P_Ub = 0;
+  Mdm2_P_Ub2 = 0;
+  Mdm2_P_Ub3 = 0;
+  Mdm2_P_Ub4 = 0;
+  Mdm2_P_Ub4_Proteasome = 0;
+  Mdm2_Ub = 0;
+  Mdm2_Ub2 = 0;
+  Mdm2_Ub3 = 0;
+  Mdm2_Ub4 = 0;
+  Mdm2_Ub4_Proteasome = 0;
+  Mdm2_mRNA = 10/cell;
+  Mdm2_p53 = 95/cell;
+  Mdm2_p53_Ub = 0;
+  Mdm2_p53_Ub2 = 0;
+  Mdm2_p53_Ub3 = 0;
+  Mdm2_p53_Ub4 = 0;
+  NFT = 0;
+  PP1 = 50/cell;
+  Proteasome = 500/cell;
+  Proteasome_Tau = 0;
+  ROS = 0;
+  Sink = 1/cell;
+  Source = 1/cell;
+  Tau = 0;
+  Tau_P1 = 0;
+  Tau_P2 = 0;
+  Ub = 4000/cell;
+  antiAb = 0;
+  damDNA = 0;
+  degAbetaGlia = 0;
+  disaggPlaque1 = 0;
+  disaggPlaque2 = 0;
+  p53 = 5/cell;
+  p53DUB = 200/cell;
+  p53_P = 0;
+  p53_Ub4_Proteasome = 0;
+  p53_mRNA = 10/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  kMdm2PUb = 6.84e-06;
+  kMdm2PolyUb = 0.00456;
+  kMdm2Ub = 4.56e-06;
+  kactATM = 0.0001;
+  kactDUBMdm2 = 1e-07;
+  kactDUBProtp53 = 0.0001;
+  kactDUBp53 = 1e-07;
+  kactglia1 = 6e-07;
+  kactglia2 = 6e-07;
+  kaggAbeta = 3e-06;
+  kaggTau = 1e-08;
+  kaggTauP1 = 1e-08;
+  kaggTauP2 = 1e-07;
+  kbinAbantiAb = 1e-06;
+  kbinAbetaGlia = 1e-05;
+  kbinE1Ub = 0.0002;
+  kbinE2Ub = 0.001;
+  kbinGSK3bp53 = 2e-06;
+  kbinMTTau = 0.1;
+  kbinMdm2p53 = 0.001155;
+  kbinProt = 2e-06;
+  kbinTauProt = 1.925e-07;
+  kdam = 0.08;
+  kdamROS = 1e-05;
+  kdegAbeta = 1.5e-05;
+  kdegAbetaGlia = 0.005;
+  kdegAntiAb = 2.75e-06;
+  kdegMdm2 = 0.01;
+  kdegMdm2mRNA = 0.0005;
+  kdegTau20SProt = 0.01;
+  kdegp53 = 0.005;
+  kdegp53mRNA = 0.0001;
+  kdephosMdm2 = 0.5;
+  kdephosp53 = 0.5;
+  kdephospTau = 0.01;
+  kdisaggAbeta = 1e-06;
+  kdisaggAbeta1 = 0.0002;
+  kdisaggAbeta2 = 1e-06;
+  kgenROSAbeta = 2e-05;
+  kgenROSGlia = 1e-05;
+  kgenROSPlaque = 1e-05;
+  kinactATM = 0.0005;
+  kinactglia1 = 5e-06;
+  kinactglia2 = 5e-06;
+  kinhibprot = 1e-07;
+  kp53PolyUb = 0.01;
+  kp53Ub = 5e-05;
+  kpf = 0.2;
+  kpg = 0.15;
+  kpghalf = 10;
+  kphosMdm2 = 2;
+  kphosMdm2GSK3b = 0.005;
+  kphosMdm2GSK3bp53 = 0.5;
+  kphosp53 = 0.0002;
+  kphospTauGSK3b = 0.0002;
+  kphospTauGSK3bp53 = 0.1;
+  kprodAbeta = 1.86e-05;
+  kprodAbeta2 = 1.86e-05;
+  kproteff = 1;
+  krelAbetaGlia = 5e-05;
+  krelGSK3bp53 = 0.002;
+  krelMTTau = 0.0001;
+  krelMdm2p53 = 1.155e-05;
+  kremROS = 7e-05;
+  krepair = 2e-05;
+  ksynMdm2 = 0.000495;
+  ksynMdm2mRNA = 0.0005;
+  ksynMdm2mRNAGSK3bp53 = 0.0007;
+  ksynTau = 8e-05;
+  ksynp53 = 0.007;
+  ksynp53mRNA = 0.001;
+  ksynp53mRNAAbeta = 1e-05;
+  ktangfor = 0.001;
+
+  // Other declarations:
+  var kproteff;
+  const cell, kMdm2PUb, kMdm2PolyUb, kMdm2Ub, kactATM, kactDUBMdm2, kactDUBProtp53;
+  const kactDUBp53, kactglia1, kactglia2, kaggAbeta, kaggTau, kaggTauP1, kaggTauP2;
+  const kbinAbantiAb, kbinAbetaGlia, kbinE1Ub, kbinE2Ub, kbinGSK3bp53, kbinMTTau;
+  const kbinMdm2p53, kbinProt, kbinTauProt, kdam, kdamROS, kdegAbeta, kdegAbetaGlia;
+  const kdegAntiAb, kdegMdm2, kdegMdm2mRNA, kdegTau20SProt, kdegp53, kdegp53mRNA;
+  const kdephosMdm2, kdephosp53, kdephospTau, kdisaggAbeta, kdisaggAbeta1;
+  const kdisaggAbeta2, kgenROSAbeta, kgenROSGlia, kgenROSPlaque, kinactATM;
+  const kinactglia1, kinactglia2, kinhibprot, kp53PolyUb, kp53Ub, kpf, kpg;
+  const kpghalf, kphosMdm2, kphosMdm2GSK3b, kphosMdm2GSK3bp53, kphosp53, kphospTauGSK3b;
+  const kphospTauGSK3bp53, kprodAbeta, kprodAbeta2, krelAbetaGlia, krelGSK3bp53;
+  const krelMTTau, krelMdm2p53, kremROS, krepair, ksynMdm2, ksynMdm2mRNA;
+  const ksynMdm2mRNAGSK3bp53, ksynTau, ksynp53, ksynp53mRNA, ksynp53mRNAAbeta;
+  const ktangfor;
+
+  // Unit definitions:
+  unit substance = item;
+
+  // SBO terms:
+  Sink.sboTerm = 291
+  Source.sboTerm = 291
+
+  // CV terms:
+  cell hypernym "http://identifiers.org/go/GO:0005623"
+  ADP hypernym "http://identifiers.org/chebi/CHEBI:16761"
+  AMP hypernym "http://identifiers.org/chebi/CHEBI:16027"
+  ATMA hypernym "http://identifiers.org/pato/PATO%3A000234",
+                "http://identifiers.org/uniprot/Q13315"
+  ATMI hypernym "http://identifiers.org/pato/PATO:0002355",
+                "http://identifiers.org/uniprot/Q13315"
+  ATP hypernym "http://identifiers.org/chebi/CHEBI:15422"
+  Abeta hypernym "http://identifiers.org/uniprot/P05067"
+  AbetaDimer part "http://identifiers.org/uniprot/P05067"
+  AbetaDimer_antiAb part "http://identifiers.org/fma/FMA:62871",
+                         "http://identifiers.org/uniprot/P05067"
+  AbetaPlaque hypernym "http://identifiers.org/sbo/SBO%3A0000543",
+                       "http://identifiers.org/uniprot/P05067"
+  AbetaPlaque_GliaA part "http://identifiers.org/sbo/SBO%3A0000543",
+                         "http://identifiers.org/cl/CL:0000129",
+                         "http://identifiers.org/uniprot/P05067"
+  Abeta_antiAb part "http://identifiers.org/fma/FMA:62871",
+                    "http://identifiers.org/uniprot/P05067"
+  AggAbeta_Proteasome part "http://identifiers.org/sbo/SBO%3A0000543",
+                           "http://identifiers.org/go/GO:0000502",
+                           "http://identifiers.org/uniprot/P05067"
+  AggTau hypernym "http://identifiers.org/sbo/SBO%3A0000543",
+                  "http://identifiers.org/interpro/IPR002955"
+  AggTau_Proteasome part "http://identifiers.org/sbo/SBO%3A0000543",
+                         "http://identifiers.org/go/GO:0000502",
+                         "http://identifiers.org/interpro/IPR002955"
+  DUB hypernym "http://identifiers.org/interpro/IPR001394"
+  E1 hypernym "http://identifiers.org/interpro/IPR000011"
+  E1_Ub part "http://identifiers.org/interpro/IPR000011",
+             "http://identifiers.org/uniprot/P0CG47"
+  E2 hypernym "http://identifiers.org/interpro/IPR000608"
+  E2_Ub part "http://identifiers.org/interpro/IPR000608",
+             "http://identifiers.org/uniprot/P0CG47"
+  GSK3b hypernym "http://identifiers.org/uniprot/P49841"
+  GSK3b_p53 part "http://identifiers.org/uniprot/P49841",
+                 "http://identifiers.org/uniprot/P04637"
+  GSK3b_p53_P part "http://identifiers.org/uniprot/P49841",
+                   "http://identifiers.org/uniprot/P04637"
+  GliaA hypernym "http://identifiers.org/cl/CL:0000129"
+  GliaI hypernym "http://identifiers.org/cl/CL:0000129"
+  GliaM1 hypernym "http://identifiers.org/cl/CL:0000129"
+  GliaM2 hypernym "http://identifiers.org/cl/CL:0000129"
+  MT_Tau hypernym "http://identifiers.org/interpro/IPR015562"
+  Mdm2 hypernym "http://identifiers.org/uniprot/Q00987"
+  Mdm2DUB part "http://identifiers.org/interpro/IPR001394",
+               "http://identifiers.org/uniprot/Q00987"
+  Mdm2_P hypernym "http://identifiers.org/pr/PR:000037070",
+                  "http://identifiers.org/uniprot/Q00987"
+  Mdm2_P1_p53_Ub4 part "http://identifiers.org/uniprot/Q00987",
+                       "http://identifiers.org/uniprot/P04637",
+                       "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_P_Ub part "http://identifiers.org/pr/PR:000037070",
+                 "http://identifiers.org/uniprot/Q00987",
+                 "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_P_Ub2 part "http://identifiers.org/pr/PR:000037070",
+                  "http://identifiers.org/uniprot/Q00987",
+                  "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_P_Ub3 part "http://identifiers.org/pr/PR:000037070",
+                  "http://identifiers.org/uniprot/Q00987",
+                  "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_P_Ub4 part "http://identifiers.org/pr/PR:000037070",
+                  "http://identifiers.org/uniprot/Q00987",
+                  "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_P_Ub4_Proteasome part "http://identifiers.org/pr/PR:000037070",
+                             "http://identifiers.org/go/GO:0000502",
+                             "http://identifiers.org/uniprot/Q00987",
+                             "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_Ub part "http://identifiers.org/uniprot/Q00987",
+               "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_Ub2 part "http://identifiers.org/uniprot/P0CG47",
+                "http://identifiers.org/uniprot/Q00987"
+  Mdm2_Ub3 part "http://identifiers.org/uniprot/Q00987",
+                "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_Ub4 part "http://identifiers.org/uniprot/Q00987",
+                "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_Ub4_Proteasome part "http://identifiers.org/go/GO:0000502",
+                           "http://identifiers.org/uniprot/Q00987",
+                           "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_mRNA encodement "http://identifiers.org/uniprot/Q00987"
+  Mdm2_p53 part "http://identifiers.org/uniprot/P04637",
+                "http://identifiers.org/uniprot/Q00987"
+  Mdm2_p53_Ub part "http://identifiers.org/uniprot/P0CG47",
+                   "http://identifiers.org/uniprot/Q00987",
+                   "http://identifiers.org/uniprot/P04637"
+  Mdm2_p53_Ub2 part "http://identifiers.org/uniprot/P0CG47",
+                    "http://identifiers.org/uniprot/Q00987",
+                    "http://identifiers.org/uniprot/P04637"
+  Mdm2_p53_Ub3 part "http://identifiers.org/uniprot/Q00987",
+                    "http://identifiers.org/uniprot/P04637",
+                    "http://identifiers.org/uniprot/P0CG47"
+  Mdm2_p53_Ub4 part "http://identifiers.org/uniprot/P0CG47",
+                    "http://identifiers.org/uniprot/Q00987",
+                    "http://identifiers.org/uniprot/P04637"
+  NFT hypernym "http://identifiers.org/interpro/IPR002955"
+  PP1 hypernym "http://identifiers.org/uniprot/P62136"
+  Proteasome hypernym "http://identifiers.org/go/GO:0000502"
+  Proteasome_Tau part "http://identifiers.org/go/GO:0000502",
+                      "http://identifiers.org/interpro/IPR002955"
+  ROS hypernym "http://identifiers.org/chebi/CHEBI:26523"
+  Tau hypernym "http://identifiers.org/interpro/IPR002955"
+  Tau_P1 hypernym "http://identifiers.org/interpro/IPR002955"
+  Tau_P2 hypernym "http://identifiers.org/interpro/IPR002955"
+  Ub hypernym "http://identifiers.org/uniprot/P0CG47"
+  antiAb hypernym "http://identifiers.org/fma/FMA:62871"
+  damDNA hypernym "http://identifiers.org/chebi/CHEBI:16991"
+  p53 hypernym "http://identifiers.org/uniprot/P04637"
+  p53DUB part "http://identifiers.org/interpro/IPR001394",
+              "http://identifiers.org/uniprot/P04637"
+  p53_P hypernym "http://identifiers.org/pr/PR:000037070",
+                 "http://identifiers.org/uniprot/P04637"
+  p53_Ub4_Proteasome part "http://identifiers.org/go/GO:0000502",
+                          "http://identifiers.org/uniprot/P04637",
+                          "http://identifiers.org/uniprot/P0CG47"
+  p53_mRNA encodement "http://identifiers.org/uniprot/P04637"
+end
+
+proctor1 is "proctor1"

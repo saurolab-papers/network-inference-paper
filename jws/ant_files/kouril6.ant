@@ -1,0 +1,39 @@
+// Created by libAntimony v2.13.2
+model *kouril6()
+
+  // Compartments and Species:
+  species ADP, ATP, BPG, P3G, pep, phos, pyr;
+
+  // Reactions:
+  v1: ATP + P3G -> ADP + BPG; protPGK*(-VmrPGK*ADP*BPG/(KpgkADP*KpgkBPG) + VmfPGK*ATP*P3G/(KpgkATP*KpgkP3G))/((1 + ADP/KiADP)*(1 + (P3G/KpgkP3G)*(1 + ATP/KpgkATP) + (BPG/KpgkBPG)*(1 + ADP/KpgkADP)));
+  v2: ADP + pep -> ATP + pyr; kPK*ADP*pep;
+  v3: BPG -> phos + P3G; kd*BPG;
+
+  // Species initializations:
+  ADP = 0;
+  ATP = 10;
+  BPG = 0;
+  P3G = 4.5;
+  pep = 5;
+  phos = 0;
+  pyr = 0.1;
+
+  // Variable initializations:
+  KiADP = 1.01661161972841;
+  KpgkADP = 0.374683891073216;
+  KpgkATP = 9.30939957007288;
+  KpgkBPG = 0.00824346710166223;
+  KpgkP3G = 0.567800672197298;
+  VmfPGK = 17.2125572084323;
+  VmrPGK = 37.9602642543915;
+  kPK = 10;
+  kd = 0.736416;
+  protPGK = 0.0034;
+
+  // Other declarations:
+  var KiADP, KpgkADP, KpgkATP, KpgkBPG, KpgkP3G, VmfPGK, VmrPGK, kPK, kd;
+  var protPGK;
+
+  // CV terms:
+  v2 identity "http://identifiers.org/ec-code/2.7.1.40"
+end

@@ -1,0 +1,37 @@
+// Created by libAntimony v2.13.2
+model *speirs1()
+
+  // Compartments and Species:
+  species x, xD, y, yD;
+
+  // Assignment Rules:
+  v := (x + y)/(x + xD + y + yD);
+
+  // Reactions:
+  v1:  -> x; lambda*x;
+  v2: x -> y; a*x;
+  v3: x -> xD; mu*x;
+  v4:  -> y; lambda*p*y;
+  v5: y -> yD; mu*q*y;
+  v6: xD -> ; gamma_*xD;
+  v7: yD -> ; gamma_*yD;
+
+  // Species initializations:
+  x = 500000;
+  xD = 55000;
+  y = 0;
+  yD = 0;
+
+  // Variable initializations:
+  a = 0;
+  gamma_ = 0.00785;
+  lambda = 0.026;
+  mu = 0.000764;
+  p = 1;
+  q = 100;
+
+  // Other declarations:
+  var a, gamma_, lambda, mu, p, q, v;
+end
+
+speirs1 is "speirs1"

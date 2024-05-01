@@ -1,0 +1,335 @@
+// Created by libAntimony v2.13.2
+function Henri_Michaelis_Menten__irreversible(substrate, Km, V)
+  V*substrate/(Km + substrate);
+end
+
+Henri_Michaelis_Menten__irreversible is "Henri-Michaelis-Menten (irreversible)"
+
+function Catalytic_activation__irrev(substrate, Activator, Kms, V, Ka)
+  V*substrate*Activator/((Kms + substrate)*(Ka + Activator));
+end
+
+Catalytic_activation__irrev is "Catalytic activation (irrev)"
+
+function TNFa_transcription_initiation(kbasal, vA, A, kA)
+  kbasal + vA*A/(A + kA);
+end
+
+TNFa_transcription_initiation is "TNFa_transcription_initiation"
+
+function activated_Transcription__1(k1, k2, Modifier, k3, Modifier2, Modifier3, k4)
+  k1 + k2*Modifier + k3*Modifier2 + k4*Modifier3;
+end
+
+activated_Transcription__1 is "activated Transcription [1]"
+
+
+model *beuke29()
+
+  // Compartments and Species:
+  compartment EL, LSEC, MC, c1, default;
+  species IkBa_cytoplasm in default, IkBa_mRNA_cytoplasm in default, IkBa_mRNA_nucleus in c1;
+  species IkBa_pre_mRNA_1 in c1, IkBa_pre_mRNA_2 in c1, JNK in default, JNK_P in default;
+  species LPS in EL, MSK1 in c1, MSK1_P in c1, TNFR1_EL in EL, TNFR1_cytoplasm in default;
+  species TNFa_TNFR1_EL in EL, TNFa_TNFR1_cytoplasm in default, TNFa_mRNA_LSEC in LSEC;
+  species TNFa_mRNA_MC in MC, TNFa_pre_mRNA_LSEC in LSEC, TNFa_pre_mRNA_MC in MC;
+  species p38 in default, p38_P in default, p65_2P in c1, p65_IkBa_nucleus in c1;
+  species p65_cytoplasm in default, $p65_mRNA in default, p65_nucleus in c1;
+  species s11 in c1, s14 in default, s15 in default, s16 in EL, s19 in default;
+  species s3 in default, s5 in default, s8 in c1;
+
+  // Assignment Rules:
+  IkBa_nuclear_export_k := IkBa_nuclear_import_k*0.5;
+  IkBa_p65_dissociation_k := IkBa_p65_association_k*0.003;
+  IkBa_p65_phosphorylation_vmax := IkBa_p65_phosphorylation_kcat*s15;
+  IkBa_phosphorylation_kcat := IkBa_p65_phosphorylation_kcat;
+  IkBa_phosphorylation_vmax := IkBa_phosphorylation_kcat*s15;
+  JNK_active_phosphorylation_vmax := JNK_active_phosphorylation_kcat*TNFa_TNFR1_EL;
+  MSK1_activation_vmax := MSK1_phosphorylation_kcat*p38_P;
+  k_TNFa_TNFR1_dissociation := k_TNFa_TNFR1_association*1.9e-5;
+  p38_active_phosphorylation_vmax := p38_active_phosphorylation_kcat*TNFa_TNFR1_EL;
+  p65_2P_dephosphorylation := p65_P_dephosphorylation_k*1;
+  p65_MSK1_phosphrylation_vmax := p65_MSK1_phosphrylation_kcat*MSK1_P;
+  p65_P_MSK1_phosphrylation_kM := p65_MSK1_phosphorylation_kM*1;
+  p65_P_MSK1_phosphrylation_kcat := p65_MSK1_phosphrylation_kcat*1;
+  p65_P_MSK1_phosphrylation_vmax := p65_P_MSK1_phosphrylation_kcat*MSK1_P;
+  p65_nuclear_export_k := p65_nuclear_import_k*0.02;
+  scaled_IkBa := k_IkBa*unscaled_IkBa;
+  unscaled_IkBa := (s11 + p65_IkBa_nucleus)*c1 + (s5 + s19 + IkBa_cytoplasm)*default;
+  scaled_IkBa_P := k_IkBa_P*unscaled_IkBa_P;
+  unscaled_IkBa_P := s5*default;
+  scaled_IkBa_mRNA := k_IkBa_mRNA*unscaled_IkBa_mRNA;
+  unscaled_IkBa_mRNA := IkBa_mRNA_cytoplasm*default + c1*IkBa_mRNA_nucleus;
+  scaled_JNK_P := k_JNK_P*unscaled_JNK_P;
+  unscaled_JNK_P := default*JNK_P;
+  scaled_MSK_P := k_MSK_P*unscaled_MSK_P;
+  unscaled_MSK_P := c1*MSK1_P;
+  scaled_p38_P := k_p38_P*unscaled_p38_P;
+  unscaled_p38_P := default*p38_P;
+  scaled_p65 := k_p65*unscaled_p65;
+  unscaled_p65 := (s3 + s19 + p65_cytoplasm)*default + c1*(s8 + p65_IkBa_nucleus + p65_nucleus + p65_2P);
+  scaled_p65_P := k_p65_P*unscaled_p65_P;
+  unscaled_p65_P := c1*s8 + default*s3;
+
+  // Reactions:
+  Complex_association_c: p65_cytoplasm + IkBa_cytoplasm -> s19; default*(IkBa_p65_association_k*IkBa_cytoplasm*p65_cytoplasm - IkBa_p65_dissociation_k*s19);
+  Complex_degradation_IkBa_c: s19 => p65_cytoplasm; default*IkBa_deg_complex_cyt_k*s19;
+  Complex_degradation_IkBa_n: p65_IkBa_nucleus => p65_nucleus; c1*IkBa_deg_complex_nuc_k*p65_IkBa_nucleus;
+  Complex_degradation_p65_c: s19 => IkBa_cytoplasm; default*p65_degradation_k*s19;
+  Complex_degradation_p65_n: p65_IkBa_nucleus => s11; c1*p65_degradation_k*p65_IkBa_nucleus;
+  Complex_nuclear_shuttle: p65_IkBa_nucleus -> s19; IkBa_p65_nuclear_export_k*p65_IkBa_nucleus - IkBa_p65_nuclear_import_k*s19;
+  IKK_phosphorylation: s14 => s15; default*Catalytic_activation__irrev(s14, TNFa_TNFR1_EL, IKKb_active_phosphorylation_kM, IKKb_active_phosphorylation_vmax, IKKb_active_phosphorylation_kA);
+  IkBa_degradation_c: IkBa_cytoplasm => ; default*IkBa_deg_cyt_k*IkBa_cytoplasm;
+  IkBa_degradation_n: s11 => ; c1*IkBa_deg_nuc_k*s11;
+  IkBa_mRNA_degradation_c: IkBa_mRNA_cytoplasm => ; default*IkBa_mRNA_deg_cyt_k*IkBa_mRNA_cytoplasm;
+  IkBa_mRNA_degradation_n: IkBa_mRNA_nucleus => ; c1*IkBa_mRNA_deg_nuc_k*IkBa_mRNA_nucleus;
+  IkBa_mRNA_transport: IkBa_mRNA_nucleus => IkBa_mRNA_cytoplasm; IkBa_mRNA_transport_k*IkBa_mRNA_nucleus;
+  IkBa_nuclear_shuttle: IkBa_cytoplasm -> s11; IkBa_nuclear_import_k*IkBa_cytoplasm - IkBa_nuclear_export_k*s11;
+  IkBa_phosphorylation: IkBa_cytoplasm => s5; default*Henri_Michaelis_Menten__irreversible(IkBa_cytoplasm, IkBa_phosphorylation_kM, IkBa_phosphorylation_vmax);
+  IkBa_transcription_elongation_1: IkBa_pre_mRNA_1 => IkBa_pre_mRNA_2; c1*IkBa_transcription_elongation_kbasal*IkBa_pre_mRNA_1;
+  IkBa_transcription_elongation_2: IkBa_pre_mRNA_2 => IkBa_mRNA_nucleus; c1*IkBa_transcription_elongation_kbasal*IkBa_pre_mRNA_2;
+  IkBa_translation: IkBa_mRNA_cytoplasm => IkBa_mRNA_cytoplasm + IkBa_cytoplasm; default*Henri_Michaelis_Menten__irreversible(IkBa_mRNA_cytoplasm, IkBa_translation_Km, IkBa_translation_vmax);
+  JNK_active_phosphorylation: JNK => JNK_P; default*Henri_Michaelis_Menten__irreversible(JNK, JNK_active_phoshorylation_Km, JNK_active_phosphorylation_vmax);
+  JNK_basal_phosphorylation: JNK => JNK_P; default*JNK_basal_phosphorylation_k*JNK;
+  JNK_dephosphorylation: JNK_P => JNK; default*JNK_dephosphorylation_k*JNK_P;
+  LPS_LSEC_degradation: LPS => ; EL*LPS_LSEC_degradation_k*LPS;
+  LPS_MC_degradation: LPS => ; EL*LPS_MC_degradation_k*LPS;
+  MSK1_activation: MSK1 => MSK1_P; c1*Henri_Michaelis_Menten__irreversible(MSK1, MSK1_activation_kM, MSK1_activation_vmax);
+  MSK1_deactivation: MSK1_P => MSK1; c1*MSK1_dephosphorylation_k*MSK1_P;
+  TNFR1_shuttle: TNFR1_cytoplasm -> TNFR1_EL; k_TNFR1_vessicle2outer_membrane_shuttle*TNFR1_cytoplasm - k_TNFR1_outer_membrane2vessicle_shuttle*TNFR1_EL;
+  TNFa_LSEC_transcription_elongation: TNFa_pre_mRNA_LSEC => TNFa_mRNA_LSEC; LSEC*TNFa_LSEC_transcription_elongation_k*TNFa_pre_mRNA_LSEC;
+  TNFa_LSEC_transcription_initiation:  => 2 TNFa_pre_mRNA_LSEC; LSEC*TNFa_transcription_initiation(TNFa_LSEC_transcription_initiation_kbasal, TNFa_LSEC_transcription_initiation_vA_LPS, LPS, TNFa_LSEC_transcription_initiation_kA_LPS);
+  TNFa_LSEC_translation: TNFa_mRNA_LSEC => TNFa_mRNA_LSEC + s16; TNFa_LSEC_translation_k*TNFa_mRNA_LSEC;
+  TNFa_MC_transcription_elongation: TNFa_pre_mRNA_MC => TNFa_mRNA_MC; MC*TNFa_MC_transcription_elongation_k*TNFa_pre_mRNA_MC;
+  TNFa_MC_transcription_initiation:  => 2 TNFa_pre_mRNA_MC; MC*TNFa_transcription_initiation(TNFa_MC_transcription_initiation_kbasal, TNFa_MC_transcription_initiation_vA_LPS, LPS, TNFa_MC_transcription_initiation_kA_LPS);
+  TNFa_MC_translation: TNFa_mRNA_MC => TNFa_mRNA_MC + s16; TNFa_MC_translation_k*TNFa_mRNA_MC;
+  TNFa_TNFR1_association: TNFR1_EL + s16 -> TNFa_TNFR1_EL; EL*(k_TNFa_TNFR1_association*TNFR1_EL*s16 - k_TNFa_TNFR1_dissociation*TNFa_TNFR1_EL);
+  TNFa_TNFR1_internalisation: TNFa_TNFR1_EL => TNFa_TNFR1_cytoplasm; k_TNFa_TNFR1_internalisation*TNFa_TNFR1_EL;
+  TNFa_degradation: s16 => ; EL*TNFa_degradation_k*s16;
+  TNFa_internal_degradation: TNFa_TNFR1_cytoplasm => TNFR1_cytoplasm; default*k_TNFa_internal_degradation*TNFa_TNFR1_cytoplasm;
+  TNFa_mRNA_LSEC_degradation: TNFa_mRNA_LSEC => ; LSEC*TNFa_mRNA_LSEC_degradation_k*TNFa_mRNA_LSEC;
+  TNFa_mRNA_MC_degradation: TNFa_mRNA_MC => ; MC*TNFa_mRNA_MC_degradation_k*TNFa_mRNA_MC;
+  basal_IKKb_phosphorylation: s14 => s15; default*IKKb_basal_phosphoylation_k*s14;
+  p38_active_phosphorylation: p38 => p38_P; default*Henri_Michaelis_Menten__irreversible(p38, p38_active_phoshorylation_Km, p38_active_phosphorylation_vmax);
+  p38_basal_phosphorylation: p38 => p38_P; default*p38_basal_phosphorylation_k*p38;
+  p38_dephosphorylation: p38_P => p38; default*p38_dephosphorylation_k*p38_P;
+  p65_2P_degradation: p65_2P => ; c1*p65_degradation_k*p65_2P;
+  p65_2P_dephosphorylation_0: p65_2P => p65_nucleus; c1*p65_2P_dephosphorylation*p65_2P;
+  p65_P_degradation_c: s3 => ; default*p65_degradation_k*s3;
+  p65_P_degradation_n: s8 => ; c1*p65_degradation_k*s8;
+  p65_P_dephosphorylation_c: s8 => p65_nucleus; c1*p65_P_dephosphorylation_k*s8;
+  p65_P_dephosphorylation_n: s3 => p65_cytoplasm; default*p65_P_dephosphorylation_k*s3;
+  p65_P_phosphorylation_MSK1: s8 => p65_2P; c1*Henri_Michaelis_Menten__irreversible(s8, p65_P_MSK1_phosphrylation_kM, p65_P_MSK1_phosphrylation_vmax);
+  p65_nuclear_shuttle: p65_cytoplasm -> p65_nucleus; p65_nuclear_import_k*p65_cytoplasm - p65_nuclear_export_k*p65_nucleus;
+  p65_phosphorylation_MSK1: p65_nucleus => p65_2P; c1*Henri_Michaelis_Menten__irreversible(p65_nucleus, p65_MSK1_phosphorylation_kM, p65_MSK1_phosphrylation_vmax);
+  p65_translation: $p65_mRNA => $p65_mRNA + p65_cytoplasm; default*p65_translation_k*p65_mRNA;
+  re10:  => IkBa_pre_mRNA_1; c1*activated_Transcription__1(IkBa_transcription_initiation_kbasal, IkBa_transcription_kA2_p65_P, s8, IkBa_transcription_kA_p65, p65_nucleus, p65_2P, IkBa_transcription_kA3_p65_2P);
+  re14: s5 => ; default*IkBa_p_active_degradation_k*s5;
+  re15: s19 => s3 + s5; default*Henri_Michaelis_Menten__irreversible(s19, IkBa_p65_phosphorylation_kM, IkBa_p65_phosphorylation_vmax);
+  re17: s15 => s14; default*IKKb_dephopshorylation_k*s15;
+  re19: p65_nucleus + s11 -> p65_IkBa_nucleus; c1*(IkBa_p65_association_k*p65_nucleus*s11 - IkBa_p65_dissociation_k*p65_IkBa_nucleus);
+  re3: s3 -> s8; p65_nuclear_import_k*s3 - p65_nuclear_export_k*s8;
+
+  // Species initializations:
+  IkBa_cytoplasm = 7.95128377874328e-06/default;
+  IkBa_mRNA_cytoplasm = 3.43234158209765e-05/default;
+  IkBa_mRNA_nucleus = 6.14344315318874e-11/c1;
+  IkBa_pre_mRNA_1 = 3.08980195929466e-06/c1;
+  IkBa_pre_mRNA_2 = 3.08980195929466e-06/c1;
+  JNK = 1.23386844428597e-05/default;
+  JNK_P = 6.61315557140254e-07/default;
+  LPS = 1.295e-05/EL;
+  MSK1 = 1.19999028153721e-05/c1;
+  MSK1_P = 9.71846279455776e-11/c1;
+  TNFR1_EL = 3.18141732283466e-09/EL;
+  TNFR1_cytoplasm = 7.18582677165356e-10/default;
+  TNFa_TNFR1_EL = 0;
+  TNFa_TNFR1_cytoplasm = 0;
+  TNFa_mRNA_LSEC = 0;
+  TNFa_mRNA_MC = 0;
+  TNFa_pre_mRNA_LSEC = 0;
+  TNFa_pre_mRNA_MC = 0;
+  p38 = 1.13857770169154e-05/default;
+  p38_P = 1.61422298308461e-06/default;
+  p65_2P = 1.17028421607296e-13/c1;
+  p65_IkBa_nucleus = 7.70725220804446e-07/c1;
+  p65_cytoplasm = 1.07883178728358e-08/default;
+  p65_mRNA = 1;
+  p65_nucleus = 3.31899438361603e-08/c1;
+  s11 = 9.78619454536504e-07/c1;
+  s14 = 3.89994815763862e-06/default;
+  s15 = 5.18423613799875e-11/default;
+  s16 = 0;
+  s19 = 6.26212579027061e-07/default;
+  s3 = 6.04691910272307e-08/default;
+  s5 = 1.03184389081751e-06/default;
+  s8 = 1.86042446343367e-07/c1;
+
+  // Compartment initializations:
+  EL = 2.59e-06;
+  LSEC = 4.7e-07;
+  MC = 3.5e-07;
+  c1 = 8e-07;
+  default = 1.3e-05;
+
+  // Variable initializations:
+  IKKb_active_phosphorylation_kA = 0.00100049993219463;
+  IKKb_active_phosphorylation_kM = 5;
+  IKKb_active_phosphorylation_vmax = 999.618472467302;
+  IKKb_basal_phosphoylation_k = 8.4685594647111e-05;
+  IKKb_dephopshorylation_k = 6.37064786465568;
+  IkBa_deg_complex_cyt_k = 1e-05;
+  IkBa_deg_complex_nuc_k = 1.00000000002221e-05;
+  IkBa_deg_cyt_k = 4.9999999999778e-05;
+  IkBa_deg_nuc_k = 1e-05;
+  IkBa_mRNA_deg_cyt_k = 0.000223733674455349;
+  IkBa_mRNA_deg_nuc_k = 5e-05;
+  IkBa_mRNA_transport_k = 0.0001;
+  IkBa_nuclear_import_k = 0.005;
+  IkBa_p65_association_k = 0.00715041926694733;
+  IkBa_p65_nuclear_export_k = 0.000100000000000222;
+  IkBa_p65_nuclear_import_k = 0.00199999999999978;
+  IkBa_p65_phosphorylation_kM = 0.5;
+  IkBa_p65_phosphorylation_kcat = 60.3633563701644;
+  IkBa_p_active_degradation_k = 0.00287313622456919;
+  IkBa_phosphorylation_kM = 0.1;
+  IkBa_transcription_elongation_kbasal = 0.00248537191521509;
+  IkBa_transcription_initiation_kbasal = 1e-06;
+  IkBa_transcription_kA2_p65_P = 0.000100000000000222;
+  IkBa_transcription_kA3_p65_2P = 0.0332883871708336;
+  IkBa_transcription_kA_p65 = 0.23078975097693;
+  IkBa_translation_Km = 5.11778272039317;
+  IkBa_translation_vmax = 0.000765318269055189;
+  JNK_active_phoshorylation_Km = 3.64519647823931;
+  JNK_active_phosphorylation_kcat = 81755.1756817036;
+  JNK_basal_phosphorylation_k = 3.65053737292425e-05;
+  JNK_dephosphorylation_k = 0.000681109467410062;
+  LPS_LSEC_degradation_k = 0.000286327351338322;
+  LPS_MC_degradation_k = 0.000134222335654719;
+  MSK1_activation_kM = 0.332175;
+  MSK1_phosphorylation_kcat = 1.00000000002221e-05;
+  MSK1_dephosphorylation_k = 0.00999999999999978;
+  TNFa_LSEC_transcription_elongation_k = 1.00000000022204e-06;
+  TNFa_LSEC_transcription_initiation_kA_LPS = 1.01946935491952;
+  TNFa_LSEC_transcription_initiation_kbasal = 0;
+  TNFa_LSEC_transcription_initiation_vA_LPS = 1.19442068301028e-05;
+  TNFa_LSEC_translation_k = 2.12097709570581e-05;
+  TNFa_MC_transcription_elongation_k = 1.00000000022204e-06;
+  TNFa_MC_transcription_initiation_kA_LPS = 0.779647735999342;
+  TNFa_MC_transcription_initiation_kbasal = 0;
+  TNFa_MC_transcription_initiation_vA_LPS = 5.58937873557825e-06;
+  TNFa_MC_translation_k = 2.04807503662123e-06;
+  TNFa_degradation_k = 0.000123071369702432;
+  TNFa_mRNA_LSEC_degradation_k = 0.606468073645097;
+  TNFa_mRNA_MC_degradation_k = 0.0542622915223259;
+  k_IkBa = 113188.719346509;
+  k_IkBa_P = 476079.961679861;
+  k_IkBa_mRNA = 10617.1061075283;
+  k_JNK_P = 1031051.26234826;
+  k_MSK_P = 6702153681.80187;
+  k_TNFR1_outer_membrane2vessicle_shuttle = 1.8e-05;
+  k_TNFR1_vessicle2outer_membrane_shuttle = 0.0004;
+  k_TNFa_TNFR1_association = 16.833;
+  k_TNFa_TNFR1_internalisation = 0.00077;
+  k_TNFa_internal_degradation = 7.07950163589236e-05;
+  k_p38_P = 509861.12366414;
+  k_p65 = 0.102372088824604;
+  k_p65_P = 2271230.70525992;
+  p38_active_phoshorylation_Km = 9.98981919644216;
+  p38_active_phosphorylation_kcat = 549742.821158932;
+  p38_basal_phosphorylation_k = 0.000141598507320776;
+  p38_dephosphorylation_k = 0.000998752370135167;
+  p65_P_dephosphorylation_k = 0.00110224692648821;
+  p65_MSK1_phosphorylation_kM = 0.0519654324248564;
+  p65_MSK1_phosphrylation_kcat = 1.06502619410312e-06;
+  p65_degradation_k = 1.328912101e-05;
+  p65_nuclear_import_k = 0.0005;
+  p65_translation_k = 1.68e-06;
+
+  // Other declarations:
+  var IkBa_nuclear_export_k, IkBa_p65_dissociation_k, IkBa_p65_phosphorylation_vmax;
+  var IkBa_phosphorylation_kcat, IkBa_phosphorylation_vmax, JNK_active_phosphorylation_vmax;
+  var MSK1_activation_vmax, k_TNFa_TNFR1_dissociation, p38_active_phosphorylation_vmax;
+  var p65_2P_dephosphorylation, p65_MSK1_phosphrylation_vmax, p65_P_MSK1_phosphrylation_kM;
+  var p65_P_MSK1_phosphrylation_kcat, p65_P_MSK1_phosphrylation_vmax, p65_nuclear_export_k;
+  var scaled_IkBa, unscaled_IkBa, scaled_IkBa_P, unscaled_IkBa_P, scaled_IkBa_mRNA;
+  var unscaled_IkBa_mRNA, scaled_JNK_P, unscaled_JNK_P, scaled_MSK_P, unscaled_MSK_P;
+  var scaled_p38_P, unscaled_p38_P, scaled_p65, unscaled_p65, scaled_p65_P;
+  var unscaled_p65_P;
+  const EL, LSEC, MC, c1, default, IKKb_active_phosphorylation_kA, IKKb_active_phosphorylation_kM;
+  const IKKb_active_phosphorylation_vmax, IKKb_basal_phosphoylation_k, IKKb_dephopshorylation_k;
+  const IkBa_deg_complex_cyt_k, IkBa_deg_complex_nuc_k, IkBa_deg_cyt_k, IkBa_deg_nuc_k;
+  const IkBa_mRNA_deg_cyt_k, IkBa_mRNA_deg_nuc_k, IkBa_mRNA_transport_k, IkBa_nuclear_import_k;
+  const IkBa_p65_association_k, IkBa_p65_nuclear_export_k, IkBa_p65_nuclear_import_k;
+  const IkBa_p65_phosphorylation_kM, IkBa_p65_phosphorylation_kcat, IkBa_p_active_degradation_k;
+  const IkBa_phosphorylation_kM, IkBa_transcription_elongation_kbasal, IkBa_transcription_initiation_kbasal;
+  const IkBa_transcription_kA2_p65_P, IkBa_transcription_kA3_p65_2P, IkBa_transcription_kA_p65;
+  const IkBa_translation_Km, IkBa_translation_vmax, JNK_active_phoshorylation_Km;
+  const JNK_active_phosphorylation_kcat, JNK_basal_phosphorylation_k, JNK_dephosphorylation_k;
+  const LPS_LSEC_degradation_k, LPS_MC_degradation_k, MSK1_activation_kM;
+  const MSK1_phosphorylation_kcat, MSK1_dephosphorylation_k, TNFa_LSEC_transcription_elongation_k;
+  const TNFa_LSEC_transcription_initiation_kA_LPS, TNFa_LSEC_transcription_initiation_kbasal;
+  const TNFa_LSEC_transcription_initiation_vA_LPS, TNFa_LSEC_translation_k;
+  const TNFa_MC_transcription_elongation_k, TNFa_MC_transcription_initiation_kA_LPS;
+  const TNFa_MC_transcription_initiation_kbasal, TNFa_MC_transcription_initiation_vA_LPS;
+  const TNFa_MC_translation_k, TNFa_degradation_k, TNFa_mRNA_LSEC_degradation_k;
+  const TNFa_mRNA_MC_degradation_k, k_IkBa, k_IkBa_P, k_IkBa_mRNA, k_JNK_P;
+  const k_MSK_P, k_TNFR1_outer_membrane2vessicle_shuttle, k_TNFR1_vessicle2outer_membrane_shuttle;
+  const k_TNFa_TNFR1_association, k_TNFa_TNFR1_internalisation, k_TNFa_internal_degradation;
+  const k_p38_P, k_p65, k_p65_P, p38_active_phoshorylation_Km, p38_active_phosphorylation_kcat;
+  const p38_basal_phosphorylation_k, p38_dephosphorylation_k, p65_P_dephosphorylation_k;
+  const p65_MSK1_phosphorylation_kM, p65_MSK1_phosphrylation_kcat, p65_degradation_k;
+  const p65_nuclear_import_k, p65_translation_k;
+
+  // Unit definitions:
+  unit volume = 1e-6 litre;
+  unit substance = 1e-12 mole;
+
+  // Display Names:
+  c1 is "nucleus";
+  default is "cytoplasm";
+  IkBa_cytoplasm is "IkBa";
+  IkBa_mRNA_cytoplasm is "IkBa_mRNA";
+  IkBa_mRNA_nucleus is "IkBa_mRNA";
+  TNFR1_EL is "TNFR1";
+  TNFR1_cytoplasm is "TNFR1";
+  TNFa_TNFR1_EL is "TNFa:TNFR1";
+  TNFa_TNFR1_cytoplasm is "TNFa:TNFR1";
+  TNFa_mRNA_LSEC is "TNFa_mRNA";
+  TNFa_mRNA_MC is "TNFa_mRNA";
+  TNFa_pre_mRNA_LSEC is "TNFa_pre_mRNA";
+  TNFa_pre_mRNA_MC is "TNFa_pre_mRNA";
+  p65_IkBa_nucleus is "p65-IkBa";
+  p65_cytoplasm is "p65";
+  p65_nucleus is "p65";
+  s11 is "IkBa";
+  s14 is "IKKb";
+  s15 is "IKKb_p";
+  s16 is "TNFa";
+  s19 is "p65-IkBa";
+  s3 is "p65_P";
+  s5 is "IkBa_p";
+  s8 is "p65_P";
+  IkBa_p65_association_k is "IkBa:p65_association_k";
+  IkBa_p65_dissociation_k is "IkBa:p65_dissociation_k";
+  IkBa_p65_nuclear_export_k is "IkBa:p65_nuclear_export_k";
+  IkBa_p65_nuclear_import_k is "IkBa:p65_nuclear_import_k";
+  IkBa_p65_phosphorylation_kM is "IkBa:p65_phosphorylation_kM";
+  IkBa_p65_phosphorylation_kcat is "IkBa:p65_phosphorylation_kcat";
+  IkBa_p65_phosphorylation_vmax is "IkBa:p65_phosphorylation_vmax";
+  k_TNFa_TNFR1_association is "k_TNFa:TNFR1_association";
+  k_TNFa_TNFR1_dissociation is "k_TNFa:TNFR1_dissociation";
+  k_TNFa_TNFR1_internalisation is "k_TNFa:TNFR1_internalisation";
+  TNFa_TNFR1_association is "TNFa:TNFR1_association";
+  TNFa_TNFR1_internalisation is "TNFa:TNFR1_internalisation";
+  TNFa_degradation is "TNFa degradation";
+  p65_2P_dephosphorylation_0 is "p65_2P_dephosphorylation";
+  re10 is "IkBa_transcription_initiation";
+  re14 is "IkBa_p_active_degradation";
+  re15 is "Complex_phosphorylation";
+  re17 is "dephosphorylation IKK";
+  re19 is "Complex_association_n";
+  re3 is "p65_P_nuclear_shuttle";
+end
+
+beuke29 is "beuke29"

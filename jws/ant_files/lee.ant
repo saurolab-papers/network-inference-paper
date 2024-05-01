@@ -1,0 +1,74 @@
+// Created by libAntimony v2.13.2
+model *lee()
+
+  // Compartments and Species:
+  species w, $x, x1, x10, x11, x12, x13, x14, x15, x2, x3, x4, x5, x6, x7;
+  species x8, x9;
+
+  // Reactions:
+  v_0: w -> $x; lambda*exp(-lambda*time);
+  v_1: x1 -> x2; k1*w*x1;
+  v_10: x9 -> x10 + x3; k10*x9;
+  v_11: x10 -> $x; k11*x10;
+  v_12: $x -> x11; k12;
+  v_13: x11 -> $x; k13*x11;
+  v_14: $x -> x12; k14;
+  v_15: x12 -> $x; k15*x12;
+  v_16: x11 + x13 -> x14; EqMult*(x11*x13 - K16*x14);
+  v_17: x11 + x7 -> x15; EqMult*(x11*x7 - K17*x15);
+  v_2: x2 -> x1; k2*x2;
+  v_3: x4 -> x5 + x6; k3*x2*x4;
+  v_4: x4 -> x3; k4*x4;
+  v_5: x3 -> x4; k5*x3;
+  v_6: x5 + x6 -> x4; k6*x5*x6 - k6r*x4;
+  v_7: x7 + x12 -> x6; EqMult*(x7*x12 - K7*x6);
+  v_8: x11 + x3 -> x8; EqMult*(x11*x3 - K8*x8);
+  v_9: x8 -> x9; k9*x8;
+
+  // Species initializations:
+  w = 1;
+  x = 0;
+  x1 = 100;
+  x10 = 1;
+  x11 = 25;
+  x12 = 0.0005;
+  x13 = 8.17;
+  x14 = 6.83;
+  x15 = 2.05;
+  x2 = 0;
+  x3 = 0.01;
+  x4 = 0.005;
+  x5 = 50;
+  x6 = 0.001;
+  x7 = 97.95;
+  x8 = 0.002;
+  x9 = 0.002;
+
+  // Variable initializations:
+  EqMult = 10000;
+  K16 = 30;
+  K17 = 1200;
+  K7 = 50;
+  K8 = 120;
+  k1 = 0.182;
+  k10 = 206;
+  k11 = 0.417;
+  k12 = 0.423;
+  k13 = 0.000257;
+  k14 = 8.22e-05;
+  k15 = 0.167;
+  k2 = 0.0182;
+  k3 = 0.05;
+  k4 = 0.267;
+  k5 = 0.133;
+  k6 = 0.0909;
+  k6r = 0.909;
+  k9 = 206;
+  lambda = 0.05;
+
+  // Other declarations:
+  var EqMult, K16, K17, K7, K8, k1, k10, k11, k12, k13, k14, k15, k2, k3;
+  var k4, k5, k6, k6r, k9, lambda;
+end
+
+lee is "lee"

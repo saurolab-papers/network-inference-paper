@@ -1,0 +1,166 @@
+// Created by libAntimony v2.13.2
+model *santolini1()
+
+  // Compartments and Species:
+  compartment cytosol;
+  species FeII in cytosol, FeIII in cytosol, FeIII_NO in cytosol, FeIII_star in cytosol;
+  species $FeIII_t in cytosol, FeII_NO in cytosol, FeII_O2 in cytosol, FeII_star in cytosol;
+  species FeII_star_O2 in cytosol, $NADPH in cytosol, $NADPplus in cytosol;
+  species $NO in cytosol, $NO3 in cytosol, $O2 in cytosol, $citrulline in cytosol;
+
+  // Assignment Rules:
+  FeIII_t := FeIII + FeIII_star;
+
+  // Reactions:
+  r1: $NADPH + FeIII => $NADPplus + FeII; cytosol*k1*FeIII;
+  r10: $O2 + FeII_NO => $NO3 + FeIII; cytosol*k10*FeII_NO*O2;
+  r2: $O2 + FeII => FeII_O2; cytosol*k2*FeII*O2;
+  r3: FeII_O2 => FeIII_star; cytosol*k3*FeII_O2;
+  r4: 0.5 $NADPH + FeIII_star => 0.5 $NADPplus + FeII_star; cytosol*k4*FeIII_star;
+  r5: $O2 + FeII_star => FeII_star_O2; cytosol*k5*FeII_star*O2;
+  r6: FeII_star_O2 => $citrulline + FeIII_NO; cytosol*k6*FeII_star_O2;
+  r9: FeII_NO => $NO + FeII; cytosol*k9*FeII_NO;
+  rF: FeIII_NO => $NO + FeIII; cytosol*k7*FeIII_NO;
+  rG: 0.5 $NADPH + FeIII_NO => 0.5 $NADPplus + FeII_NO; cytosol*k8*FeIII_NO;
+
+  // Species initializations:
+  FeII = 0;
+  FeIII = 1/cytosol;
+  FeIII_NO = 0;
+  FeIII_star = 0;
+  FeII_NO = 0;
+  FeII_O2 = 0;
+  FeII_star = 0;
+  FeII_star_O2 = 0;
+  NADPH = 40;
+  NADPplus = 0;
+  NO = 0;
+  NO3 = 0;
+  O2 = 140;
+  citrulline = 0;
+
+  // Compartment initializations:
+  cytosol = 1;
+
+  // Variable initializations:
+  k1 = 2.6;
+  k1 has persec;
+  k10 = 0.0013;
+  k10 has peruMpersec;
+  k2 = 0.9;
+  k2 has peruMpersec;
+  k3 = 26;
+  k3 has persec;
+  k4 = 2.6;
+  k4 has persec;
+  k5 = 0.9;
+  k5 has peruMpersec;
+  k6 = 26;
+  k6 has persec;
+  k7 = 5;
+  k7 has persec;
+  k8 = 2.6;
+  k8 has persec;
+  k9 = 0.0001;
+  k9 has persec;
+
+  // Other declarations:
+  const cytosol, k1, k10, k2, k3, k4, k5, k6, k7, k8, k9;
+
+  // Unit definitions:
+  unit persec = 1 / second;
+  unit uM = 1e-6 mole / litre;
+  unit peruMpersec = litre / (second * 1e-6 mole);
+  unit micromole = 1e-6 mole;
+
+  // Display Names:
+  citrulline is "citruline";
+
+  // SBO terms:
+  FeII.sboTerm = 297
+  FeIII.sboTerm = 297
+  FeIII_NO.sboTerm = 297
+  FeIII_star.sboTerm = 297
+  FeIII_t.sboTerm = 297
+  FeII_NO.sboTerm = 297
+  FeII_O2.sboTerm = 297
+  FeII_star.sboTerm = 297
+  FeII_star_O2.sboTerm = 297
+  NADPH.sboTerm = 247
+  NADPplus.sboTerm = 327
+  NO.sboTerm = 247
+  NO3.sboTerm = 247
+  O2.sboTerm = 247
+  citrulline.sboTerm = 247
+  k1.sboTerm = 35
+  k10.sboTerm = 339
+  k2.sboTerm = 339
+  k3.sboTerm = 35
+  k4.sboTerm = 35
+  k5.sboTerm = 339
+  k6.sboTerm = 35
+  k7.sboTerm = 35
+  k8.sboTerm = 35
+  k9.sboTerm = 35
+  r1.sboTerm = 200
+  r10.sboTerm = 200
+  r2.sboTerm = 177
+  r3.sboTerm = 201
+  r4.sboTerm = 200
+  r5.sboTerm = 177
+  r6.sboTerm = 182
+  r9.sboTerm = 180
+  rF.sboTerm = 180
+  rG.sboTerm = 200
+
+  // CV terms:
+  cytosol identity "http://identifiers.org/go/GO:0005829"
+  FeII part "http://identifiers.org/uniprot/P29476",
+            "http://identifiers.org/chebi/CHEBI:29033",
+            "http://identifiers.org/chebi/CHEBI:17627"
+  FeIII part "http://identifiers.org/uniprot/P29476",
+             "http://identifiers.org/chebi/CHEBI:17627",
+             "http://identifiers.org/chebi/CHEBI:29034"
+  FeIII_NO part "http://identifiers.org/uniprot/P29476",
+                "http://identifiers.org/chebi/CHEBI:29034",
+                "http://identifiers.org/chebi/CHEBI:17627",
+                "http://identifiers.org/chebi/CHEBI:16480"
+  FeIII_star part "http://identifiers.org/uniprot/P29476",
+                  "http://identifiers.org/chebi/CHEBI:29034",
+                  "http://identifiers.org/chebi/CHEBI:17627"
+  FeIII_t part "http://identifiers.org/uniprot/P29476",
+               "http://identifiers.org/chebi/CHEBI:17627",
+               "http://identifiers.org/chebi/CHEBI:29034"
+  FeII_NO part "http://identifiers.org/uniprot/P29476",
+               "http://identifiers.org/chebi/CHEBI:29033",
+               "http://identifiers.org/chebi/CHEBI:17627",
+               "http://identifiers.org/chebi/CHEBI:16480"
+  FeII_O2 identity "http://identifiers.org/uniprot/P29476",
+                   "http://identifiers.org/chebi/CHEBI:17627",
+                   "http://identifiers.org/chebi/CHEBI:29033",
+                   "http://identifiers.org/chebi/CHEBI:15379"
+  FeII_star part "http://identifiers.org/uniprot/P29476",
+                 "http://identifiers.org/chebi/CHEBI:29033",
+                 "http://identifiers.org/chebi/CHEBI:17627"
+  FeII_star_O2 part "http://identifiers.org/uniprot/P29476",
+                    "http://identifiers.org/chebi/CHEBI:29033",
+                    "http://identifiers.org/chebi/CHEBI:17627",
+                    "http://identifiers.org/chebi/CHEBI:15379"
+  NADPH identity "http://identifiers.org/kegg.compound/C00005",
+                 "http://identifiers.org/chebi/CHEBI:16474"
+  NADPplus identity "http://identifiers.org/kegg.compound/C00006",
+                    "http://identifiers.org/chebi/CHEBI:18009"
+  NO identity "http://identifiers.org/kegg.compound/C00533",
+              "http://identifiers.org/chebi/CHEBI:16480"
+  NO3 identity "http://identifiers.org/kegg.compound/C00244",
+               "http://identifiers.org/chebi/CHEBI:17632"
+  O2 identity "http://identifiers.org/kegg.compound/C00007",
+              "http://identifiers.org/chebi/CHEBI:15379"
+  citrulline identity "http://identifiers.org/kegg.compound/C00327",
+                      "http://identifiers.org/chebi/CHEBI:16349"
+  r1 hypernym "http://identifiers.org/go/GO:0016651"
+  r4 hypernym "http://identifiers.org/go/GO:0016651"
+  rG hypernym "http://identifiers.org/go/GO:0016651"
+end
+
+santolini1 is "santolini1"

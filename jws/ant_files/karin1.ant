@@ -1,0 +1,28 @@
+// Created by libAntimony v2.13.2
+model *karin1()
+
+  // Compartments and Species:
+  species y, z;
+
+  // Assignment Rules:
+  lambdaPlus := y/10;
+
+  // Reactions:
+  v1:  -> z; z*lambdaPlus;
+  v2: z -> ; z*lambdaMinus;
+  v3:  -> y; mu*(M - z*y);
+
+  // Species initializations:
+  y = 5;
+  z = 5;
+
+  // Variable initializations:
+  M = 25;
+  lambdaMinus = 0.5;
+  mu = 0.25;
+
+  // Other declarations:
+  var M, lambdaMinus, lambdaPlus, mu;
+end
+
+karin1 is "karin1"

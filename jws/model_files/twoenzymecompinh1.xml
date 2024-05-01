@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="twoEnzymeCompInh1" name="two enzyme pathway with inhibitor">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="i1" name="inhibitor" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" id="p" name="product" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_3" id="s" name="substrate" compartment="default" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_4" id="x" name="intermediate" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_5" id="K1I1" name="Affinity enzyme 1 for inhibitor I" value="1" constant="false"/>
+      <parameter metaid="metaid_6" id="Keq1" name="Equilibrium constant reaction 1" value="10" constant="false"/>
+      <parameter metaid="metaid_7" id="Km1S1" name="Affinity enzyme 1 for S1" value="1" constant="false"/>
+      <parameter metaid="metaid_8" id="Km1X" name="Affinity enzyme 1 for X" value="2" constant="false"/>
+      <parameter metaid="metaid_9" id="Km2X" name="Affinity enzyme 2 for X" value="1" constant="false"/>
+      <parameter metaid="metaid_10" id="Vmax1" name="Max velocity enzyme 1" value="10" constant="false"/>
+      <parameter metaid="metaid_11" id="Vmax2" name="Max velocity enzyme 2" value="10" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_15" id="v1" name="reaction 1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_12" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_13" species="x" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_14" sboTerm="SBO:0000206" species="i1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vmax1 </ci>
+                    <ci> s </ci>
+                  </apply>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <divide/>
+                    <ci> x </ci>
+                    <apply>
+                      <times/>
+                      <ci> s </ci>
+                      <ci> Keq1 </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> s </ci>
+                  <ci> Km1S1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> x </ci>
+                  <ci> Km1X </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> i1 </ci>
+                  <ci> K1I1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_18" id="v2" name="reaction 2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_16" species="x" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_17" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vmax2 </ci>
+                  <ci> x </ci>
+                </apply>
+                <ci> Km2X </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> x </ci>
+                  <ci> Km2X </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

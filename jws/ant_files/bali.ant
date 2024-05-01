@@ -1,0 +1,190 @@
+// Created by libAntimony v2.13.2
+model *bali()
+
+  // Compartments and Species:
+  species ADP, AMP, ATP, DHAP, F6P, FBP, G6P, GAP, $GLU, $LAC, Mg, MgADP;
+  species MgAMP, MgATP, $NAD, $NADH, PEP, PG13, PG2, PG23, PG3, PYR, $Phi;
+
+  // Reactions:
+  v_1: $GLU + MgATP -> G6P + MgADP; (Vmax1HK/KHKMgATP)*(MgATP + (Vmax2HK/Vmax1HK)*(MgATP*Mg/KHKMgATPMg) - G6P*MgADP/KeqHK)/((1 + MgATP/KHKMgATP)*(1 + Mg/KHKMgATPMg) + Mg/KHKMg + (G6P/KHKG6P + 1.55)*(1 + Mg/KHKMg) + PG23/KHKPG23 + Mg*PG23/(KHKMg*KHKMgPG23));
+  v_10: PG3 -> PG2; VmaxPGLM*(PG3 - PG2/KeqPGLM)/(PG3 + KPGLMPG3*(1 + PG2/KPGLMPG2));
+  v_11: PG2 -> PEP; VmaxENO*(PG2 - PEP/KeqENO)/(PG2 + KENOPG2*(1 + PEP/KENOPEP));
+  v_12: PEP + MgADP -> PYR + MgATP; VmaxPK*(PEP*MgADP - PYR*MgATP/KeqPK)/((PEP + KPKPEP)*(MgADP + KPKMgADP)*(1 + L0PK*((1 + ATP/KPKATP)^4/((1 + PEP/KPKPEP)^4*(1 + FBP/KPKFBP)^4))));
+  v_13: PYR + $NADH -> $LAC + $NAD; kLDH*(KeqLDH*PYR*NADH - LAC*NAD);
+  v_14: MgATP + AMP -> MgADP + ADP; (VmaxAK/(KAKATP*KAKAMP))*(MgATP*AMP - MgADP*ADP/KeqAK)/((1 + MgATP/KAKATP)*(1 + AMP/KAKAMP) + (MgADP + ADP)/KAKADP + MgADP*ADP/KAKADP^2);
+  v_15: MgATP -> MgADP; kATPase*MgATP;
+  v_16: MgATP -> Mg + ATP; kMgATPdiss*(MgATP*KeqMgATPdiss - Mg*ATP);
+  v_17: MgADP -> Mg + ADP; kMgADPdiss*(MgADP*KeqMgADPdiss - Mg*ADP);
+  v_18: MgAMP -> Mg + AMP; kMgAMPdiss*(MgAMP*KeqMgAMPdiss - Mg*AMP);
+  v_19: 0.21 G6P -> 0.071 F6P + 0.071 GAP; 1*kPS;
+  v_2: G6P -> F6P; VmaxPGI*(G6P - F6P/KeqPGI)/(G6P + KPGIG6P*(1 + F6P/KPGIF6P));
+  v_3: F6P + MgATP -> FBP + MgADP; VmaxPFK*(F6P*MgATP - FBP*MgADP/KeqPFK)/((F6P + KPFKF6P)*(MgATP + KPFKMgATP)*(1 + L0PFK*(1 + ATP/KPFKATP)^4*(1 + Mg/KPFKMg)^4/((1 + AMP/KPFKAMP)^4*(1 + F6P/KPFKF6P)^4)));
+  v_4: FBP -> GAP + DHAP; (VmaxALD/KmALDFBP)*(FBP - GAP*DHAP/KeqALD)/(1 + FBP/KmALDFBP + GAP/KiALDGAP + DHAP*(GAP + KmALDGAP)/(KmALDDHAP*KiALDGAP) + FBP*GAP/(KmALDFBP*KiiALDGAP));
+  v_5: DHAP -> GAP; VmaxTPI*(DHAP - GAP/KeqTPI)/(DHAP + KTPIDHAP*(1 + GAP/KTPIGAP));
+  v_6: GAP + $NAD + $Phi -> PG13 + $NADH; (VmaxGPDH/(KGPDHNAD*KGPDHGAP*KGPDHPhi))*(NAD*GAP*Phi - PG13*NADH/KeqGPDH)/(-1 + (1 + NAD/KGPDHNAD)*(1 + GAP/KGPDHGAP)*(1 + Phi/KGPDHPhi) + (1 + NADH/KGPDHNADH)*(1 + PG13/KGPDHPG13));
+  v_7: PG13 + MgADP -> PG3 + MgATP; (VmaxPGK/(KPGKMgADP*KPGKPG13))*(MgADP*PG13 - MgATP*PG3/KeqPGK)/(-1 + (1 + MgADP/KPGKMgADP)*(1 + PG13/KPGKPG13) + (1 + MgATP/KPGKMgATP)*(1 + PG3/KPGKPG3));
+  v_8: PG13 -> PG23; kPGM23*(PG13 - PG23/KeqPGM23)/(1 + PG23/KPGMPG23);
+  v_9: PG23 -> PG3; VmaxPGP23*(PG23 - PG3/KeqPGP23)/(PG23 + KPGP23);
+
+  // Species initializations:
+  ADP = 0.19704;
+  AMP = 0.05534;
+  ATP = 0.15312;
+  DHAP = 0.09614;
+  F6P = 0.02251;
+  FBP = 0.00511;
+  G6P = 0.05102;
+  GAP = 0.00489;
+  GLU = 1;
+  LAC = 1.1;
+  Mg = 0.754;
+  MgADP = 0.18343;
+  MgAMP = 0.00188;
+  MgATP = 1.4254;
+  NAD = 0.0886;
+  NADH = 0.0004;
+  PEP = 0.0076;
+  PG13 = 0.000581;
+  PG2 = 0.00793;
+  PG23 = 4.676;
+  PG3 = 0.16473;
+  PYR = 0.01435;
+  Phi = 0.5;
+
+  // Variable initializations:
+  KAKADP = 0.11;
+  KAKAMP = 0.08;
+  KAKATP = 0.09;
+  KENOPEP = 1;
+  KENOPG2 = 1;
+  KGPDHGAP = 0.005;
+  KGPDHNAD = 0.05;
+  KGPDHNADH = 0.0083;
+  KGPDHPG13 = 0.0035;
+  KGPDHPhi = 3.9;
+  KHKG6P = 0.0045;
+  KHKMg = 1.03;
+  KHKMgATP = 1.44;
+  KHKMgATPMg = 1.14;
+  KHKMgPG23 = 2.44;
+  KHKPG23 = 2.7;
+  KPFKAMP = 0.033;
+  KPFKATP = 0.01;
+  KPFKF6P = 0.1;
+  KPFKMg = 0.44;
+  KPFKMgATP = 0.069;
+  KPGIF6P = 0.071;
+  KPGIG6P = 0.182;
+  KPGKMgADP = 0.35;
+  KPGKMgATP = 0.48;
+  KPGKPG13 = 0.002;
+  KPGKPG3 = 1.2;
+  KPGLMPG2 = 1;
+  KPGLMPG3 = 5;
+  KPGMPG23 = 0.04;
+  KPGP23 = 0.2;
+  KPKATP = 3.39;
+  KPKFBP = 0.005;
+  KPKMgADP = 0.474;
+  KPKPEP = 0.225;
+  KTPIDHAP = 0.838;
+  KTPIGAP = 0.428;
+  KeqAK = 0.4582;
+  KeqALD = 0.114;
+  KeqENO = 1.2;
+  KeqGPDH = 0.00109;
+  KeqHK = 10433;
+  KeqLDH = 16979;
+  KeqMgADPdiss = 0.81;
+  KeqMgAMPdiss = 22.2;
+  KeqMgATPdiss = 0.081;
+  KeqPFK = 1075;
+  KeqPGI = 0.444;
+  KeqPGK = 2232;
+  KeqPGLM = 0.05;
+  KeqPGM23 = 100000;
+  KeqPGP23 = 100000;
+  KeqPK = 3349;
+  KeqTPI = 0.051;
+  KiALDGAP = 0.0572;
+  KiiALDGAP = 0.176;
+  KmALDDHAP = 0.0364;
+  KmALDFBP = 0.0071;
+  KmALDGAP = 0.1906;
+  L0PFK = 0.001072;
+  L0PK = 19;
+  Vmax1HK = 15.8;
+  Vmax2HK = 33.2;
+  VmaxAK = 1380;
+  VmaxALD = 89.91;
+  VmaxENO = 1500;
+  VmaxGPDH = 4300;
+  VmaxPFK = 239;
+  VmaxPGI = 935;
+  VmaxPGK = 5000;
+  VmaxPGLM = 2000;
+  VmaxPGP23 = 0.52;
+  VmaxPK = 570;
+  VmaxTPI = 5456.6;
+  kATPase = 1.26;
+  kLDH = 1000000;
+  kMgADPdiss = 1000000;
+  kMgAMPdiss = 1000000;
+  kMgATPdiss = 1000000;
+  kPGM23 = 110000;
+  kPS = 1;
+
+  // Other declarations:
+  var KAKADP, KAKAMP, KAKATP, KENOPEP, KENOPG2, KGPDHGAP, KGPDHNAD, KGPDHNADH;
+  var KGPDHPG13, KGPDHPhi, KHKG6P, KHKMg, KHKMgATP, KHKMgATPMg, KHKMgPG23;
+  var KHKPG23, KPFKAMP, KPFKATP, KPFKF6P, KPFKMg, KPFKMgATP, KPGIF6P, KPGIG6P;
+  var KPGKMgADP, KPGKMgATP, KPGKPG13, KPGKPG3, KPGLMPG2, KPGLMPG3, KPGMPG23;
+  var KPGP23, KPKATP, KPKFBP, KPKMgADP, KPKPEP, KTPIDHAP, KTPIGAP, KeqAK;
+  var KeqALD, KeqENO, KeqGPDH, KeqHK, KeqLDH, KeqMgADPdiss, KeqMgAMPdiss;
+  var KeqMgATPdiss, KeqPFK, KeqPGI, KeqPGK, KeqPGLM, KeqPGM23, KeqPGP23, KeqPK;
+  var KeqTPI, KiALDGAP, KiiALDGAP, KmALDDHAP, KmALDFBP, KmALDGAP, L0PFK, L0PK;
+  var Vmax1HK, Vmax2HK, VmaxAK, VmaxALD, VmaxENO, VmaxGPDH, VmaxPFK, VmaxPGI;
+  var VmaxPGK, VmaxPGLM, VmaxPGP23, VmaxPK, VmaxTPI, kATPase, kLDH, kMgADPdiss;
+  var kMgAMPdiss, kMgATPdiss, kPGM23, kPS;
+
+  // CV terms:
+  ADP identity "http://identifiers.org/obo.chebi/CHEBI%3A16761",
+               "http://identifiers.org/kegg.compound/C00008"
+  AMP identity "http://identifiers.org/obo.chebi/CHEBI%3A16027",
+               "http://identifiers.org/kegg.compound/C00020"
+  ATP identity "http://identifiers.org/obo.chebi/CHEBI%3A15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  DHAP identity "http://identifiers.org/kegg.compound/C00111",
+                "http://identifiers.org/obo.chebi/CHEBI%3A16108"
+  F6P identity "http://identifiers.org/obo.chebi/CHEBI%3A15946",
+               "http://identifiers.org/kegg.compound/C00085"
+  FBP identity "http://identifiers.org/kegg.compound/C00354",
+               "http://identifiers.org/obo.chebi/CHEBI%3A16905"
+  G6P identity "http://identifiers.org/kegg.compound/C00092",
+               "http://identifiers.org/obo.chebi/CHEBI%3A4170"
+  GAP identity "http://identifiers.org/kegg.compound/C00118",
+               "http://identifiers.org/obo.chebi/CHEBI%3A29052"
+  GLU identity "http://identifiers.org/kegg.compound/C00293",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17234"
+  LAC identity "http://identifiers.org/kegg.compound/C01432"
+  Mg identity "http://identifiers.org/kegg.compound/C00305",
+              "http://identifiers.org/obo.chebi/CHEBI%3A18420"
+  NAD identity "http://identifiers.org/kegg.compound/C00003",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15846"
+  NADH identity "http://identifiers.org/kegg.compound/C00004",
+                "http://identifiers.org/obo.chebi/CHEBI%3A16908"
+  PEP identity "http://identifiers.org/kegg.compound/C00074",
+               "http://identifiers.org/obo.chebi/CHEBI%3A44897"
+  PG13 identity "http://identifiers.org/kegg.compound/C00236",
+                "http://identifiers.org/obo.chebi/CHEBI%3A16001"
+  PG2 identity "http://identifiers.org/kegg.compound/C00631",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17835"
+  PG23 identity "http://identifiers.org/kegg.compound/C01159",
+                "http://identifiers.org/obo.chebi/CHEBI%3A17720"
+  PG3 identity "http://identifiers.org/kegg.compound/C00197",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17794"
+  PYR identity "http://identifiers.org/kegg.compound/C00022",
+               "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+end
+
+bali is "bali"

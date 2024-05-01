@@ -1,0 +1,103 @@
+// Created by libAntimony v2.13.2
+model *kouril9()
+
+  // Compartments and Species:
+  species adp, atp, bpg, dhap, f6p, $ga, gap, glc, nadp, nadph, p3g, pep;
+  species pyr;
+
+  // Reactions:
+  v1: p3g + atp -> bpg + adp; protPGK*(-(VmrPGK*adp*bpg/(KpgkADP*KpgkbisP)) + VmfPGK*atp*p3g/(KpgkATP*KpgkP3G))/((1 + adp/KiADP)*(1 + (1 + adp/KpgkADP)*bpg/KpgkbisP + (1 + atp/KpgkATP)*p3g/KpgkP3G));
+  v10: nadph -> nadp; kdnadph*nadph;
+  v2: nadph + bpg -> nadp + gap; protGAPDH*((-Vmarev*(gap*nadp/(Kgap*Knadp))*(pi_/Kpi) + Vmfor*bpg*nadph/(KbisP*Knadph))/((1 + nadp/Knadp + nadph/Knadph)*((1 + gap/Kgap)*(1 + pi_/Kpi) + bpg/KbisP)));
+  v3: gap -> dhap; protTIM*(-(VmrTIM*dhap/KtimDHAP) + VmfTIM*gap/KtimGAP)/(1 + dhap/KtimDHAP + gap/KtimGAP + p3g/KtimP3G + pep/KtimPEP);
+  v4: gap + dhap -> f6p; protALDPase*VmfALD*dhap*gap/(KaldDHAP*KaldGAP*(1 + dhap/KaldDHAP + gap/KaldGAP + dhap*gap/(KaldDHAP*KaldGAP)));
+  v5: gap -> ; kdgap*gap;
+  v6: dhap -> ; kddhap*dhap;
+  v7: bpg -> p3g; kdbpg*bpg;
+  v8: nadp + glc -> $ga + nadph; kGDH*glc*nadp;
+  v9: pep + adp -> pyr + atp; kPK*adp*pep;
+
+  // Species initializations:
+  adp = 0;
+  atp = 10;
+  bpg = 0;
+  dhap = 0.03;
+  f6p = 0.12;
+  ga = 0;
+  gap = 0.09;
+  glc = 10;
+  nadp = 0;
+  nadph = 0.2;
+  p3g = 1.8;
+  pep = 5;
+  pyr = 0.4;
+
+  // Variable initializations:
+  KaldDHAP = 0.170995;
+  KaldF6P = 1;
+  KaldGAP = 0.0522437;
+  KbisP = 0.0893220957464803;
+  Kgap = 3.09006371633294;
+  KiADP = 1.01661161972841;
+  Knadp = 0.204380701872924;
+  Knadph = 0.0924440211839792;
+  KpgkADP = 0.374683891073216;
+  KpgkATP = 9.30939957007288;
+  KpgkP3G = 0.567800672197298;
+  KpgkbisP = 0.00824322714336446;
+  Kpi = 112.389907248788;
+  KtimDHAP = 0.811626;
+  KtimGAP = 0.245106;
+  KtimP3G = 0.399822;
+  KtimPEP = 0.660519;
+  Vmarev = 35.8710280267934;
+  VmfALD = 2.64096;
+  VmfPGK = 17.2125572084323;
+  VmfTIM = 239.835;
+  Vmfor = 23.3990563531313;
+  VmrPGK = 37.9602642543915;
+  VmrTIM = 239.414;
+  kGDH = 10;
+  kPK = 10;
+  kdbpg = 0.736416;
+  kddhap = 0.0225;
+  kdgap = 0.0559;
+  kdnadph = 0.01986;
+  pi_ = 0;
+  protALDPase = 0.0036;
+  protGAPDH = 0.0421;
+  protPGK = 0.0034;
+  protTIM = 0.00085;
+
+  // Other declarations:
+  var KaldDHAP, KaldF6P, KaldGAP, KbisP, Kgap, KiADP, Knadp, Knadph, KpgkADP;
+  var KpgkATP, KpgkP3G, KpgkbisP, Kpi, KtimDHAP, KtimGAP, KtimP3G, KtimPEP;
+  var Vmarev, VmfALD, VmfPGK, VmfTIM, Vmfor, VmrPGK, VmrTIM, kGDH, kPK, kdbpg;
+  var kddhap, kdgap, kdnadph, pi_, protALDPase, protGAPDH, protPGK, protTIM;
+
+  // CV terms:
+  adp identity "http://identifiers.org/kegg.compound/C00008",
+               "http://identifiers.org/obo.chebi/CHEBI%3A16761"
+  atp identity "http://identifiers.org/obo.chebi:CHEBI/15422",
+               "http://identifiers.org/kegg.compound/C00002"
+  bpg identity "http://identifiers.org/obo.chebi/CHEBI%3A28907",
+               "http://identifiers.org/kegg.compound/C00236"
+  dhap identity "http://identifiers.org/obo.chebi/CHEBI%3A16108",
+                "http://identifiers.org/kegg.compound/C00111"
+  f6p identity "http://identifiers.org/kegg.compound/C00085",
+               "http://identifiers.org/obo.chebi/CHEBI%3A15946"
+  gap identity "http://identifiers.org/obo.chebi:CHEBI/17138",
+               "http://identifiers.org/kegg.compound/C00661"
+  glc identity "http://identifiers.org/obo.chebi/CHEBI%3A17234",
+               "http://identifiers.org/kegg.compound/C00031"
+  nadp identity "http://identifiers.org/obo.chebi/CHEBI%3A18009",
+                "http://identifiers.org/kegg.compound/C00006"
+  nadph identity "http://identifiers.org/obo.chebi/CHEBI%3A16474",
+                 "http://identifiers.org/kegg.compound/C00005"
+  p3g identity "http://identifiers.org/kegg.compound/C00197",
+               "http://identifiers.org/obo.chebi/CHEBI%3A17794"
+  pep identity "http://identifiers.org/obo.chebi/CHEBI%3A44897",
+               "http://identifiers.org/kegg.compound/C00074"
+  pyr identity "http://identifiers.org/kegg.compound/C00022",
+               "http://identifiers.org/obo.chebi/CHEBI%3A32816"
+end

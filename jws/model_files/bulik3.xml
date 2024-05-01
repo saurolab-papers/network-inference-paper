@@ -1,0 +1,2107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="bulik3" name="bulik3">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default" spatialDimensions="0" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="A" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_2" id="AMP" compartment="default" initialConcentration="0.0731419" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="ATP" compartment="default" initialConcentration="1.60599" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="DHAP" compartment="default" initialConcentration="0.149043" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="E4P" compartment="default" initialConcentration="0.00636436" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="Fru16P2" compartment="default" initialConcentration="0.00965135" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="Fru6P" compartment="default" initialConcentration="0.0157482" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="GSH" compartment="default" initialConcentration="3.11363" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="Glc6P" compartment="default" initialConcentration="0.0405192" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="Glcin" compartment="default" initialConcentration="4.56903" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="Glcout" compartment="default" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_12" id="GraP" compartment="default" initialConcentration="0.00605521" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="Lac" compartment="default" initialConcentration="1.6803" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="Lacusex" compartment="default" initialConcentration="1.68" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_15" id="NAD" compartment="default" initialConcentration="0.0653836" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="NADP" compartment="default" initialConcentration="0.001992" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="Nvar" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_18" id="P2G13" compartment="default" initialConcentration="0.000480308" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="P2G23" compartment="default" initialConcentration="2.62221" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="PEP" compartment="default" initialConcentration="0.0109207" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="PG2" compartment="default" initialConcentration="0.00841992" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="PG3" compartment="default" initialConcentration="0.0655694" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="PG6" compartment="default" initialConcentration="0.025489" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="Piusex" compartment="default" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_25" id="Pvar" compartment="default" initialConcentration="0.999219" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_26" id="Pyr" compartment="default" initialConcentration="0.08399" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_27" id="Pyrusex" compartment="default" initialConcentration="0.084" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_28" id="R5P" compartment="default" initialConcentration="0.014142" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_29" id="Ru5P" compartment="default" initialConcentration="0.00476769" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_30" id="S7P" compartment="default" initialConcentration="0.0160654" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_31" id="X5P" compartment="default" initialConcentration="0.0128673" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_32" id="Austot" value="2" constant="false"/>
+      <parameter metaid="metaid_33" id="EXTERNAL" value="0" constant="false"/>
+      <parameter metaid="metaid_34" id="GSustot" value="3.114" constant="false"/>
+      <parameter metaid="metaid_35" id="Kequsv0" value="1" constant="false"/>
+      <parameter metaid="metaid_36" id="Kequsv1" value="3900" constant="false"/>
+      <parameter metaid="metaid_37" id="Kequsv10" value="0.145" constant="false"/>
+      <parameter metaid="metaid_38" id="Kequsv11" value="1.7" constant="false"/>
+      <parameter metaid="metaid_39" id="Kequsv12" value="13790" constant="false"/>
+      <parameter metaid="metaid_40" id="Kequsv13" value="9090" constant="false"/>
+      <parameter metaid="metaid_41" id="Kequsv14" value="14181.8" constant="false"/>
+      <parameter metaid="metaid_42" id="Kequsv16" value="1.13789" constant="false"/>
+      <parameter metaid="metaid_43" id="Kequsv17" value="2000" constant="false"/>
+      <parameter metaid="metaid_44" id="Kequsv18" value="141.7" constant="false"/>
+      <parameter metaid="metaid_45" id="Kequsv19" value="100000" constant="false"/>
+      <parameter metaid="metaid_46" id="Kequsv2" value="0.3925" constant="false"/>
+      <parameter metaid="metaid_47" id="Kequsv21" value="2.7" constant="false"/>
+      <parameter metaid="metaid_48" id="Kequsv22" value="3" constant="false"/>
+      <parameter metaid="metaid_49" id="Kequsv23" value="1.05" constant="false"/>
+      <parameter metaid="metaid_50" id="Kequsv24" value="1.05" constant="false"/>
+      <parameter metaid="metaid_51" id="Kequsv25" value="100000" constant="false"/>
+      <parameter metaid="metaid_52" id="Kequsv26" value="1.2" constant="false"/>
+      <parameter metaid="metaid_53" id="Kequsv27" value="1" constant="false"/>
+      <parameter metaid="metaid_54" id="Kequsv28" value="1" constant="false"/>
+      <parameter metaid="metaid_55" id="Kequsv29" value="1" constant="false"/>
+      <parameter metaid="metaid_56" id="Kequsv3" value="100000" constant="false"/>
+      <parameter metaid="metaid_57" id="Kequsv4" value="0.114" constant="false"/>
+      <parameter metaid="metaid_58" id="Kequsv5" value="0.0407" constant="false"/>
+      <parameter metaid="metaid_59" id="Kequsv6" value="0.000192" constant="false"/>
+      <parameter metaid="metaid_60" id="Kequsv7" value="1455" constant="false"/>
+      <parameter metaid="metaid_61" id="Kequsv8" value="100000" constant="false"/>
+      <parameter metaid="metaid_62" id="Kequsv9" value="100000" constant="false"/>
+      <parameter metaid="metaid_63" id="M" value="1" constant="false"/>
+      <parameter metaid="metaid_64" id="NADPustot" value="0.052" constant="false"/>
+      <parameter metaid="metaid_65" id="NADustot" value="0.06554" constant="false"/>
+      <parameter metaid="metaid_66" id="PRPP" value="1" constant="false"/>
+      <parameter metaid="metaid_67" id="expus1usv0" value="-0.309664" constant="false"/>
+      <parameter metaid="metaid_68" id="expus1usv1" value="-0.976322" constant="false"/>
+      <parameter metaid="metaid_69" id="expus1usv10" value="-0.0137998" constant="false"/>
+      <parameter metaid="metaid_70" id="expus1usv11" value="-0.00867558" constant="false"/>
+      <parameter metaid="metaid_71" id="expus1usv12" value="0.0102525" constant="false"/>
+      <parameter metaid="metaid_72" id="expus1usv13" value="0" constant="false"/>
+      <parameter metaid="metaid_73" id="expus1usv14" value="-2.68803e-05" constant="false"/>
+      <parameter metaid="metaid_74" id="expus1usv16" value="2.28989" constant="false"/>
+      <parameter metaid="metaid_75" id="expus1usv17" value="0.0268579" constant="false"/>
+      <parameter metaid="metaid_76" id="expus1usv18" value="-0.0128693" constant="false"/>
+      <parameter metaid="metaid_77" id="expus1usv19" value="-3.59318" constant="false"/>
+      <parameter metaid="metaid_78" id="expus1usv2" value="-0.156894" constant="false"/>
+      <parameter metaid="metaid_79" id="expus1usv21" value="-0.0250002" constant="false"/>
+      <parameter metaid="metaid_80" id="expus1usv22" value="-0.00639623" constant="false"/>
+      <parameter metaid="metaid_81" id="expus1usv23" value="-0.833263" constant="false"/>
+      <parameter metaid="metaid_82" id="expus1usv24" value="-0.124143" constant="false"/>
+      <parameter metaid="metaid_83" id="expus1usv25" value="-0.0285775" constant="false"/>
+      <parameter metaid="metaid_84" id="expus1usv26" value="-0.016381" constant="false"/>
+      <parameter metaid="metaid_85" id="expus1usv27" value="0" constant="false"/>
+      <parameter metaid="metaid_86" id="expus1usv28" value="0" constant="false"/>
+      <parameter metaid="metaid_87" id="expus1usv29" value="0" constant="false"/>
+      <parameter metaid="metaid_88" id="expus1usv3" value="0.225712" constant="false"/>
+      <parameter metaid="metaid_89" id="expus1usv4" value="-0.106512" constant="false"/>
+      <parameter metaid="metaid_90" id="expus1usv5" value="-0.00956829" constant="false"/>
+      <parameter metaid="metaid_91" id="expus1usv6" value="-0.512437" constant="false"/>
+      <parameter metaid="metaid_92" id="expus1usv7" value="0.0484252" constant="false"/>
+      <parameter metaid="metaid_93" id="expus1usv8" value="0" constant="false"/>
+      <parameter metaid="metaid_94" id="expus1usv9" value="0" constant="false"/>
+      <parameter metaid="metaid_95" id="expus2usv0" value="0" constant="false"/>
+      <parameter metaid="metaid_96" id="expus2usv1" value="-0.649302" constant="false"/>
+      <parameter metaid="metaid_97" id="expus2usv10" value="-0.0087009" constant="false"/>
+      <parameter metaid="metaid_98" id="expus2usv11" value="-0.0109676" constant="false"/>
+      <parameter metaid="metaid_99" id="expus2usv12" value="-0.0113919" constant="false"/>
+      <parameter metaid="metaid_100" id="expus2usv13" value="0" constant="false"/>
+      <parameter metaid="metaid_101" id="expus2usv14" value="-3.47505e-05" constant="false"/>
+      <parameter metaid="metaid_102" id="expus2usv16" value="0" constant="false"/>
+      <parameter metaid="metaid_103" id="expus2usv17" value="-0.0167749" constant="false"/>
+      <parameter metaid="metaid_104" id="expus2usv18" value="-0.0863377" constant="false"/>
+      <parameter metaid="metaid_105" id="expus2usv19" value="-0.0314666" constant="false"/>
+      <parameter metaid="metaid_106" id="expus2usv2" value="-0.154791" constant="false"/>
+      <parameter metaid="metaid_107" id="expus2usv21" value="-0.0255123" constant="false"/>
+      <parameter metaid="metaid_108" id="expus2usv22" value="-0.00670051" constant="false"/>
+      <parameter metaid="metaid_109" id="expus2usv23" value="-0.134139" constant="false"/>
+      <parameter metaid="metaid_110" id="expus2usv24" value="-0.225163" constant="false"/>
+      <parameter metaid="metaid_111" id="expus2usv25" value="-0.979561" constant="false"/>
+      <parameter metaid="metaid_112" id="expus2usv26" value="-0.172408" constant="false"/>
+      <parameter metaid="metaid_113" id="expus2usv27" value="0" constant="false"/>
+      <parameter metaid="metaid_114" id="expus2usv28" value="0" constant="false"/>
+      <parameter metaid="metaid_115" id="expus2usv29" value="0" constant="false"/>
+      <parameter metaid="metaid_116" id="expus2usv3" value="-0.0467296" constant="false"/>
+      <parameter metaid="metaid_117" id="expus2usv4" value="-0.0527269" constant="false"/>
+      <parameter metaid="metaid_118" id="expus2usv5" value="-0.152384" constant="false"/>
+      <parameter metaid="metaid_119" id="expus2usv6" value="-0.0162964" constant="false"/>
+      <parameter metaid="metaid_120" id="expus2usv7" value="-0.313688" constant="false"/>
+      <parameter metaid="metaid_121" id="expus2usv8" value="0" constant="false"/>
+      <parameter metaid="metaid_122" id="expus2usv9" value="0" constant="false"/>
+      <parameter metaid="metaid_123" id="expus3usv1" value="-0.220021" constant="false"/>
+      <parameter metaid="metaid_124" id="expus3usv12" value="0.0607631" constant="false"/>
+      <parameter metaid="metaid_125" id="expus3usv13" value="0" constant="false"/>
+      <parameter metaid="metaid_126" id="expus3usv14" value="-0.0023093" constant="false"/>
+      <parameter metaid="metaid_127" id="expus3usv16" value="0.610776" constant="false"/>
+      <parameter metaid="metaid_128" id="expus3usv17" value="0.153511" constant="false"/>
+      <parameter metaid="metaid_129" id="expus3usv18" value="0.306334" constant="false"/>
+      <parameter metaid="metaid_130" id="expus3usv19" value="-0.000867388" constant="false"/>
+      <parameter metaid="metaid_131" id="expus3usv23" value="-0.0703606" constant="false"/>
+      <parameter metaid="metaid_132" id="expus3usv24" value="-0.230982" constant="false"/>
+      <parameter metaid="metaid_133" id="expus3usv25" value="9.77325e-05" constant="false"/>
+      <parameter metaid="metaid_134" id="expus3usv26" value="-0.0616653" constant="false"/>
+      <parameter metaid="metaid_135" id="expus3usv3" value="-10.264" constant="false"/>
+      <parameter metaid="metaid_136" id="expus3usv4" value="-0.81682" constant="false"/>
+      <parameter metaid="metaid_137" id="expus3usv6" value="0.894633" constant="false"/>
+      <parameter metaid="metaid_138" id="expus3usv7" value="-2.46637" constant="false"/>
+      <parameter metaid="metaid_139" id="expus4usv1" value="-0.00208877" constant="false"/>
+      <parameter metaid="metaid_140" id="expus4usv12" value="-0.0786909" constant="false"/>
+      <parameter metaid="metaid_141" id="expus4usv13" value="0" constant="false"/>
+      <parameter metaid="metaid_142" id="expus4usv14" value="-0.603413" constant="false"/>
+      <parameter metaid="metaid_143" id="expus4usv17" value="-0.388912" constant="false"/>
+      <parameter metaid="metaid_144" id="expus4usv18" value="-0.398826" constant="false"/>
+      <parameter metaid="metaid_145" id="expus4usv19" value="-1.27782" constant="false"/>
+      <parameter metaid="metaid_146" id="expus4usv23" value="-0.00551928" constant="false"/>
+      <parameter metaid="metaid_147" id="expus4usv24" value="-0.655237" constant="false"/>
+      <parameter metaid="metaid_148" id="expus4usv25" value="1" constant="false"/>
+      <parameter metaid="metaid_149" id="expus4usv26" value="-0.80703" constant="false"/>
+      <parameter metaid="metaid_150" id="expus4usv3" value="-1.60553" constant="false"/>
+      <parameter metaid="metaid_151" id="expus4usv6" value="0.00386482" constant="false"/>
+      <parameter metaid="metaid_152" id="expus4usv7" value="-0.488107" constant="false"/>
+      <parameter metaid="metaid_153" id="factor1" value="1.03029" constant="false"/>
+      <parameter metaid="metaid_154" id="factor10" value="1" constant="false"/>
+      <parameter metaid="metaid_155" id="factor11" value="1.00242" constant="false"/>
+      <parameter metaid="metaid_156" id="factor12" value="1.00204" constant="false"/>
+      <parameter metaid="metaid_157" id="factor13" value="0.95705" constant="false"/>
+      <parameter metaid="metaid_158" id="factor14" value="1" constant="false"/>
+      <parameter metaid="metaid_159" id="factor15" value="1.00041" constant="false"/>
+      <parameter metaid="metaid_160" id="factor16" value="1.00031" constant="false"/>
+      <parameter metaid="metaid_161" id="factor17" value="1" constant="false"/>
+      <parameter metaid="metaid_162" id="factor18" value="1.0024" constant="false"/>
+      <parameter metaid="metaid_163" id="factor19" value="0.964103" constant="false"/>
+      <parameter metaid="metaid_164" id="factor2" value="1.02934" constant="false"/>
+      <parameter metaid="metaid_165" id="factor20" value="0.999556" constant="false"/>
+      <parameter metaid="metaid_166" id="factor22" value="1.00569" constant="false"/>
+      <parameter metaid="metaid_167" id="factor23" value="1.00146" constant="false"/>
+      <parameter metaid="metaid_168" id="factor24" value="1.00996" constant="false"/>
+      <parameter metaid="metaid_169" id="factor25" value="1.0752" constant="false"/>
+      <parameter metaid="metaid_170" id="factor26" value="1.00156" constant="false"/>
+      <parameter metaid="metaid_171" id="factor27" value="1.03845" constant="false"/>
+      <parameter metaid="metaid_172" id="factor28" value="1" constant="false"/>
+      <parameter metaid="metaid_173" id="factor29" value="1" constant="false"/>
+      <parameter metaid="metaid_174" id="factor3" value="1.03403" constant="false"/>
+      <parameter metaid="metaid_175" id="factor30" value="1" constant="false"/>
+      <parameter metaid="metaid_176" id="factor4" value="0.538747" constant="false"/>
+      <parameter metaid="metaid_177" id="factor5" value="1.02807" constant="false"/>
+      <parameter metaid="metaid_178" id="factor6" value="1.01649" constant="false"/>
+      <parameter metaid="metaid_179" id="factor7" value="0.959906" constant="false"/>
+      <parameter metaid="metaid_180" id="factor8" value="0.0802109" constant="false"/>
+      <parameter metaid="metaid_181" id="factor9" value="1" constant="false"/>
+      <parameter metaid="metaid_182" id="kusv0" value="5.43025" constant="false"/>
+      <parameter metaid="metaid_183" id="kusv1" value="0.121383" constant="false"/>
+      <parameter metaid="metaid_184" id="kusv10" value="-360.892" constant="false"/>
+      <parameter metaid="metaid_185" id="kusv11" value="1340.82" constant="false"/>
+      <parameter metaid="metaid_186" id="kusv12" value="794.584" constant="false"/>
+      <parameter metaid="metaid_187" id="kusv13" value="2800000" constant="false"/>
+      <parameter metaid="metaid_188" id="kusv14" value="3.84913" constant="false"/>
+      <parameter metaid="metaid_189" id="kusv15" value="1.49217" constant="false"/>
+      <parameter metaid="metaid_190" id="kusv16" value="3533.66" constant="false"/>
+      <parameter metaid="metaid_191" id="kusv17" value="1000" constant="false"/>
+      <parameter metaid="metaid_192" id="kusv18" value="2500" constant="false"/>
+      <parameter metaid="metaid_193" id="kusv19" value="10000" constant="false"/>
+      <parameter metaid="metaid_194" id="kusv2" value="-1093.96" constant="false"/>
+      <parameter metaid="metaid_195" id="kusv20" value="0.03" constant="false"/>
+      <parameter metaid="metaid_196" id="kusv21" value="18068.9" constant="false"/>
+      <parameter metaid="metaid_197" id="kusv22" value="866.843" constant="false"/>
+      <parameter metaid="metaid_198" id="kusv23" value="1.49725" constant="false"/>
+      <parameter metaid="metaid_199" id="kusv24" value="31.8335" constant="false"/>
+      <parameter metaid="metaid_200" id="kusv25" value="1.61517" constant="false"/>
+      <parameter metaid="metaid_201" id="kusv26" value="46.7884" constant="false"/>
+      <parameter metaid="metaid_202" id="kusv27" value="100" constant="false"/>
+      <parameter metaid="metaid_203" id="kusv28" value="10000" constant="false"/>
+      <parameter metaid="metaid_204" id="kusv29" value="10000" constant="false"/>
+      <parameter metaid="metaid_205" id="kusv3" value="4580.42" constant="false"/>
+      <parameter metaid="metaid_206" id="kusv4" value="-80.4026" constant="false"/>
+      <parameter metaid="metaid_207" id="kusv5" value="-3829.16" constant="false"/>
+      <parameter metaid="metaid_208" id="kusv6" value="-500000" constant="false"/>
+      <parameter metaid="metaid_209" id="kusv7" value="428630" constant="false"/>
+      <parameter metaid="metaid_210" id="kusv8" value="1028" constant="false"/>
+      <parameter metaid="metaid_211" id="kusv9" value="0.178" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_214" id="v_0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_212" species="Glcout" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_213" species="Glcin" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor1 </ci>
+              <ci> kusv0 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glcout </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv0 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glcin </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv0 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Glcout </ci>
+                <apply>
+                  <divide/>
+                  <ci> Glcin </ci>
+                  <ci> Kequsv0 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_219" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_215" species="Glcin" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_216" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_217" species="Glc6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_218" species="AMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor2 </ci>
+              <ci> kusv1 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glc6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glcin </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <minus/>
+                          <ci> Austot </ci>
+                          <ci> AMP </ci>
+                        </apply>
+                        <ci> ATP </ci>
+                      </apply>
+                      <ci> Glc6P </ci>
+                    </apply>
+                    <ci> Kequsv1 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> Glcin </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_222" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_220" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_221" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor11 </ci>
+              <ci> kusv10 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG2 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv10 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG3 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv10 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> PG2 </ci>
+                    <ci> Kequsv10 </ci>
+                  </apply>
+                </apply>
+                <ci> PG3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_225" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_223" species="PG2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_224" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor12 </ci>
+              <ci> kusv11 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PEP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv11 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG2 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv11 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> PEP </ci>
+                    <ci> Kequsv11 </ci>
+                  </apply>
+                </apply>
+                <ci> PG2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_230" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_226" species="PEP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_227" species="Pyr" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_228" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_229" species="AMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor13 </ci>
+              <ci> kusv12 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv12 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv12 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PEP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv12 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pyr </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv12 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> PEP </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> ATP </ci>
+                    <ci> Pyr </ci>
+                  </apply>
+                  <ci> Kequsv12 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_234" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_231" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_232" species="NAD" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_233" species="Lac" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor14 </ci>
+              <ci> kusv13 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Lac </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv13 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADustot </ci>
+                    <ci> NAD </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv13 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> NAD </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv13 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pyr </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv13 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Lac </ci>
+                      <ci> NAD </ci>
+                    </apply>
+                    <ci> Kequsv13 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <ci> NADustot </ci>
+                    <ci> NAD </ci>
+                  </apply>
+                  <ci> Pyr </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_238" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_235" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_236" species="NADP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_237" species="Lac" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor15 </ci>
+              <ci> kusv14 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Lac </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv14 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADPustot </ci>
+                    <ci> NADP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv14 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> NADP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv14 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pyr </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv14 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Lac </ci>
+                      <ci> NADP </ci>
+                    </apply>
+                    <ci> Kequsv14 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <ci> NADPustot </ci>
+                    <ci> NADP </ci>
+                  </apply>
+                  <ci> Pyr </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_241" id="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_239" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_240" species="Pvar" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor16 </ci>
+              <ci> kusv15 </ci>
+              <ci> ATP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_245" id="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_242" species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_243" species="ATP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_244" species="AMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor17 </ci>
+              <ci> kusv16 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> AMP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv16 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv16 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv16 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <power/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> AMP </ci>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> Kequsv16 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_249" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_246" species="NADP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_247" species="Glc6P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_248" species="PG6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor18 </ci>
+              <ci> kusv17 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glc6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv17 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADPustot </ci>
+                    <ci> NADP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv17 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> NADP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv17 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG6 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv17 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> Glc6P </ci>
+                  <ci> NADP </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> NADPustot </ci>
+                      <ci> NADP </ci>
+                    </apply>
+                    <ci> PG6 </ci>
+                  </apply>
+                  <ci> Kequsv17 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_253" id="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_250" species="PG6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_251" species="NADP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_252" species="Ru5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor19 </ci>
+              <ci> kusv18 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADPustot </ci>
+                    <ci> NADP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv18 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> NADP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv18 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG6 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv18 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Ru5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv18 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> NADP </ci>
+                  <ci> PG6 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> NADPustot </ci>
+                      <ci> NADP </ci>
+                    </apply>
+                    <ci> Ru5P </ci>
+                  </apply>
+                  <ci> Kequsv18 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_257" id="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_254" species="Nvar" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_255" species="GSH" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_256" species="NADP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> factor20 </ci>
+                <ci> kusv19 </ci>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> GSustot </ci>
+                      <ci> GSH </ci>
+                    </apply>
+                    <ci> M </ci>
+                  </apply>
+                  <ci> expus2usv19 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> GSH </ci>
+                    <ci> M </ci>
+                  </apply>
+                  <ci> expus1usv19 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <ci> NADPustot </ci>
+                      <ci> NADP </ci>
+                    </apply>
+                    <ci> M </ci>
+                  </apply>
+                  <ci> expus4usv19 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> NADP </ci>
+                    <ci> M </ci>
+                  </apply>
+                  <ci> expus3usv19 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> GSustot </ci>
+                        <ci> GSH </ci>
+                      </apply>
+                      <apply>
+                        <minus/>
+                        <ci> NADPustot </ci>
+                        <ci> NADP </ci>
+                      </apply>
+                    </apply>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> GSH </ci>
+                        <cn type="integer"> 2 </cn>
+                      </apply>
+                      <ci> NADP </ci>
+                    </apply>
+                    <ci> Kequsv19 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <power/>
+                <cn type="integer"> 2 </cn>
+                <ci> expus2usv19 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_260" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_258" species="Fru6P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_259" species="Glc6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor3 </ci>
+              <ci> kusv2 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv2 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Glc6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> Fru6P </ci>
+                    <ci> Kequsv2 </ci>
+                  </apply>
+                </apply>
+                <ci> Glc6P </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_263" id="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_261" species="GSH" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_262" species="Nvar" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kusv20 </ci>
+              <ci> GSH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_266" id="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_264" species="Ru5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_265" species="X5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor22 </ci>
+              <ci> kusv21 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Ru5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv21 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> X5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv21 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Ru5P </ci>
+                <apply>
+                  <divide/>
+                  <ci> X5P </ci>
+                  <ci> Kequsv21 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_269" id="v_22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_267" species="Ru5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_268" species="R5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor23 </ci>
+              <ci> kusv22 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> R5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv22 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Ru5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv22 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <ci> R5P </ci>
+                    <ci> Kequsv22 </ci>
+                  </apply>
+                </apply>
+                <ci> Ru5P </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_274" id="v_23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_270" species="X5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_271" species="R5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_272" species="S7P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_273" species="GraP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor24 </ci>
+              <ci> kusv23 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv23 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> R5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv23 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> S7P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv23 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> X5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv23 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> GraP </ci>
+                      <ci> S7P </ci>
+                    </apply>
+                    <ci> Kequsv23 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> R5P </ci>
+                  <ci> X5P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_279" id="v_24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_275" species="S7P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_276" species="GraP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_277" species="Fru6P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_278" species="E4P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor25 </ci>
+              <ci> kusv24 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> E4P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv24 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv24 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv24 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> S7P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv24 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> E4P </ci>
+                      <ci> Fru6P </ci>
+                    </apply>
+                    <ci> Kequsv24 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> GraP </ci>
+                  <ci> S7P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_283" id="v_25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_280" species="R5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_281" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_282" species="AMP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor26 </ci>
+              <ci> kusv25 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PRPP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv25 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> AMP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv25 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv25 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> R5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv25 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> PRPP </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> Kequsv25 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> R5P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_288" id="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_284" species="X5P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_285" species="E4P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_286" species="GraP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_287" species="Fru6P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor27 </ci>
+              <ci> kusv26 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> E4P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv26 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv26 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv26 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> X5P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv26 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <ci> Fru6P </ci>
+                      <ci> GraP </ci>
+                    </apply>
+                    <ci> Kequsv26 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> E4P </ci>
+                  <ci> X5P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_291" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_289" species="Piusex" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_290" species="Pvar" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor28 </ci>
+              <ci> kusv27 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Piusex </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv27 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pvar </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv27 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Piusex </ci>
+                <apply>
+                  <divide/>
+                  <ci> Pvar </ci>
+                  <ci> Kequsv27 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_294" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_292" species="Lacusex" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_293" species="Lac" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor29 </ci>
+              <ci> kusv28 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Lacusex </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv28 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Lac </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv28 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Lacusex </ci>
+                <apply>
+                  <divide/>
+                  <ci> Lac </ci>
+                  <ci> Kequsv28 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_297" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_295" species="Pyrusex" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_296" species="Pyr" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor30 </ci>
+              <ci> kusv29 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pyrusex </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv29 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Pyr </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv29 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Pyrusex </ci>
+                <apply>
+                  <divide/>
+                  <ci> Pyr </ci>
+                  <ci> Kequsv29 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_302" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_298" species="Fru6P" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_299" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_300" species="Fru16P2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_301" species="AMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor4 </ci>
+              <ci> kusv3 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv3 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv3 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru16P2 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv3 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru6P </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <minus/>
+                          <ci> Austot </ci>
+                          <ci> AMP </ci>
+                        </apply>
+                        <ci> ATP </ci>
+                      </apply>
+                      <ci> Fru16P2 </ci>
+                    </apply>
+                    <ci> Kequsv3 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> ATP </ci>
+                  <ci> Fru6P </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_306" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_303" species="GraP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_304" species="DHAP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_305" species="Fru16P2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor5 </ci>
+              <ci> kusv4 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> DHAP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv4 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Fru16P2 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv4 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv4 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> Fru16P2 </ci>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> DHAP </ci>
+                    <ci> GraP </ci>
+                  </apply>
+                  <ci> Kequsv4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_309" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_307" species="GraP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_308" species="DHAP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor6 </ci>
+              <ci> kusv5 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> DHAP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv5 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv5 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> DHAP </ci>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> Kequsv5 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_314" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_310" species="P2G13" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_311" species="Pvar" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_312" species="NAD" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_313" species="GraP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor7 </ci>
+              <ci> kusv6 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> GraP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv6 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <ci> NADustot </ci>
+                    <ci> NAD </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv6 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> NAD </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv6 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> P2G13 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv6 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> GraP </ci>
+                  <ci> NAD </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <ci> NADustot </ci>
+                      <ci> NAD </ci>
+                    </apply>
+                    <ci> P2G13 </ci>
+                  </apply>
+                  <ci> Kequsv6 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_319" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_315" species="P2G13" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_316" species="PG3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_317" species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_318" species="AMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor8 </ci>
+              <ci> kusv7 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus4usv7 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus3usv7 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> P2G13 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv7 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG3 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv7 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <minus/>
+                      <ci> Austot </ci>
+                      <ci> AMP </ci>
+                    </apply>
+                    <ci> ATP </ci>
+                  </apply>
+                  <ci> P2G13 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> ATP </ci>
+                    <ci> PG3 </ci>
+                  </apply>
+                  <ci> Kequsv7 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_322" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_320" species="P2G13" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_321" species="P2G23" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor9 </ci>
+              <ci> kusv8 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> P2G13 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv8 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> P2G23 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv8 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> P2G13 </ci>
+                <apply>
+                  <divide/>
+                  <ci> P2G23 </ci>
+                  <ci> Kequsv8 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_326" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_323" species="P2G23" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_324" species="Pvar" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_325" species="PG3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> factor10 </ci>
+              <ci> kusv9 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> P2G23 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus1usv9 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> PG3 </ci>
+                  <ci> M </ci>
+                </apply>
+                <ci> expus2usv9 </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> P2G23 </ci>
+                <apply>
+                  <divide/>
+                  <ci> PG3 </ci>
+                  <ci> Kequsv9 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

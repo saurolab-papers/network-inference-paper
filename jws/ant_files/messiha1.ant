@@ -1,0 +1,113 @@
+// Created by libAntimony v2.13.2
+model *messiha1()
+
+  // Compartments and Species:
+  species E4P, G6L, NADPH, P6G, R5P, Ru5P, S7P, X5P;
+
+  // Assignment Rules:
+  G6P := piecewise(0.9, time < 3600, 0.9 + 44.1*(time - 3600)/(48 + (time - 3600) + 0.45*(time - 3600)^2));
+  NADP := sumNADP - NADPH;
+
+  // Reactions:
+  v_E4Psink: E4P -> ; E4Psinkk*E4P;
+  v_GND: P6G -> Ru5P + NADPH; GND1*kcatGND1*NADP*P6G/(KnadpGND1*Kp6gGND1*(1 + NADP/KnadpGND1 + NADPH/KnadphGND1)*(1 + P6G/Kp6gGND1 + Ru5P/Kru5pGND1)) + GND2*kcatGND2*NADP*P6G/((1 + NADP/KnadpGND2 + NADPH/KnadphGND2)*(1 + P6G/Kp6gGND2 + Ru5P/Kru5pGND2));
+  v_NADPHoxidase: NADPH -> ; NADPHoxidasek*NADPH;
+  v_R5Psink: R5P -> ; R5Psinkk*R5P;
+  v_RKI: Ru5P -> R5P; RKI1*RKIkcat*(-(R5P/RKIKeq) + Ru5P)/(RKIKru5p*(1 + R5P/RKIKr5p + Ru5P/RKIKru5p));
+  v_RPE: Ru5P -> X5P; RPE1*RPEkcat*(Ru5P - X5P/RPEKeq)/(RPEKru5p*(1 + Ru5P/RPEKru5p + X5P/RPEKx5p));
+  v_SOL: G6L -> P6G; SOL3*SOLkcat*G6L/(SOLKg6l*(1 + G6L/SOLKg6l + P6G/SOLKp6g));
+  v_TAL: S7P -> E4P; kcatTAL1*TAL1*(-(F6P*E4P/TALKeq) + GAP*S7P)/((1 + F6P/Kf6pTAL1 + GAP/KgapTAL1)*KgapTAL1*Ks7pTAL1*(1 + E4P/Ke4pTAL1 + S7P/Ks7pTAL1)) + NQM1*TALkcatNQM1*(-(F6P*E4P/TALKeq) + GAP*S7P)/((1 + F6P/TALKf6pNQM1 + GAP/TALKgapNQM1)*TALKgapNQM1*TALKs7pNQM1*(1 + E4P/TALKe4pNQM1 + S7P/TALKs7pNQM1));
+  v_TKLE4P: X5P + E4P -> ; TKL1*TKLE4Pkcat*(-(F6P*GAP/TKLE4PKeq) + E4P*X5P)/(Ke4pTAL*Kx5pTAL*(1 + F6P/Kf6pTAL + E4P/Ke4pTAL + R5P/Kr5pTAL + S7P/Ks7pTAL)*(1 + GAP/KgapTAL + X5P/Kx5pTAL));
+  v_TKLR5P: X5P + R5P -> S7P; TKL1*TKLR5Pkcat*(-(GAP*S7P/TKLR5PKeq) + R5P*X5P)/(Kr5pTAL*Kx5pTAL*(1 + F6P/Kf6pTAL + E4P/Ke4pTAL + R5P/Kr5pTAL + S7P/Ks7pTAL)*(1 + GAP/KgapTAL + X5P/Kx5pTAL));
+  v_ZWF:  -> NADPH + G6L; G6P*NADP*ZWF1*ZWFkcat/(ZWFKg6p*ZWFKnadp*(1 + G6P/ZWFKg6p + G6L/ZWFKg6l)*(1 + NADP/ZWFKnadp + NADPH/ZWFKnadph));
+
+  // Species initializations:
+  E4P = 0.029;
+  G6L = 0.1;
+  NADPH = 0.16;
+  P6G = 0.25;
+  R5P = 0.118;
+  Ru5P = 0.033;
+  S7P = 0.082;
+  X5P = 0.041;
+
+  // Variable initializations:
+  E4Psinkk = 1;
+  EXTERNAL = 0;
+  F6P = 0.325;
+  GAP = 0.067;
+  GND1 = 0.013;
+  GND2 = 0.003;
+  Ke4pTAL = 0.946;
+  Ke4pTAL1 = 0.362;
+  Kf6pTAL = 1.1;
+  Kf6pTAL1 = 1.44;
+  KgapTAL = 0.1;
+  KgapTAL1 = 0.272;
+  KnadpGND1 = 0.094;
+  KnadpGND2 = 0.094;
+  KnadphGND1 = 0.055;
+  KnadphGND2 = 0.055;
+  Kp6gGND1 = 0.062;
+  Kp6gGND2 = 0.115;
+  Kr5pTAL = 0.235;
+  Kru5pGND1 = 0.1;
+  Kru5pGND2 = 0.1;
+  Ks7pTAL = 0.15;
+  Ks7pTAL1 = 0.786;
+  Kx5pTAL = 0.67;
+  sumNADP = 0.33;
+  NADPHoxidasek = 1;
+  NQM1 = 0.02;
+  R5Psinkk = 1;
+  RKI1 = 0.05;
+  RKIKeq = 4;
+  RKIKiru5p = 9.88;
+  RKIKr5p = 5.7;
+  RKIKru5p = 2.47;
+  RKIkcat = 335;
+  RPE1 = 0.03;
+  RPEKeq = 1.4;
+  RPEKru5p = 5.97;
+  RPEKx5p = 7.7;
+  RPEkcat = 4020;
+  SOL3 = 0.0296;
+  SOLKg6l = 0.8;
+  SOLKp6g = 0.5;
+  SOLkcat = 4.3;
+  TAL1 = 0.144;
+  TALKe4pNQM1 = 0.305;
+  TALKeq = 1.05;
+  TALKf6pNQM1 = 1.04;
+  TALKgapNQM1 = 0.272;
+  TALKs7pNQM1 = 0.786;
+  TALkcatNQM1 = 0.694;
+  TKL1 = 0.455;
+  TKLE4PKeq = 10;
+  TKLE4Pkcat = 47.1;
+  TKLR5PKeq = 1.2;
+  TKLR5Pkcat = 40.5;
+  ZWF1 = 0.02;
+  ZWFKg6l = 0.01;
+  ZWFKg6p = 0.042;
+  ZWFKnadp = 0.045;
+  ZWFKnadph = 0.017;
+  ZWFkcat = 189;
+  cell = 1;
+  kcatGND1 = 28;
+  kcatGND2 = 27.3;
+  kcatTAL1 = 0.694;
+
+  // Other declarations:
+  var E4Psinkk, EXTERNAL, F6P, G6P, GAP, GND1, GND2, Ke4pTAL, Ke4pTAL1, Kf6pTAL;
+  var Kf6pTAL1, KgapTAL, KgapTAL1, KnadpGND1, KnadpGND2, KnadphGND1, KnadphGND2;
+  var Kp6gGND1, Kp6gGND2, Kr5pTAL, Kru5pGND1, Kru5pGND2, Ks7pTAL, Ks7pTAL1;
+  var Kx5pTAL, NADP, sumNADP, NADPHoxidasek, NQM1, R5Psinkk, RKI1, RKIKeq;
+  var RKIKiru5p, RKIKr5p, RKIKru5p, RKIkcat, RPE1, RPEKeq, RPEKru5p, RPEKx5p;
+  var RPEkcat, SOL3, SOLKg6l, SOLKp6g, SOLkcat, TAL1, TALKe4pNQM1, TALKeq;
+  var TALKf6pNQM1, TALKgapNQM1, TALKs7pNQM1, TALkcatNQM1, TKL1, TKLE4PKeq;
+  var TKLE4Pkcat, TKLR5PKeq, TKLR5Pkcat, ZWF1, ZWFKg6l, ZWFKg6p, ZWFKnadp;
+  var ZWFKnadph, ZWFkcat, cell, kcatGND1, kcatGND2, kcatTAL1;
+end
+
+messiha1 is "messiha1"

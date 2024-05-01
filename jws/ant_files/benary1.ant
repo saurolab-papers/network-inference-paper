@@ -1,0 +1,204 @@
+// Created by libAntimony v2.13.2
+function Constant_flux__irreversible(v)
+  v;
+end
+
+Constant_flux__irreversible is "Constant flux (irreversible)"
+
+function Rate_Law_for_reaction_3(Modifier, Substrat, Parameter)
+  Parameter*Modifier*Substrat;
+end
+
+Rate_Law_for_reaction_3 is "Rate Law for reaction_3"
+
+function Rate_Law_for_reaction_18(Km, Ki, vmax, Inhibitor)
+  vmax/(Km^2 + (Inhibitor/Ki)^2);
+end
+
+Rate_Law_for_reaction_18 is "Rate Law for reaction_18"
+
+function Rate_Law_for_reaction_20_25_29(parameter, Activator)
+  parameter*Activator;
+end
+
+Rate_Law_for_reaction_20_25_29 is "Rate Law for reaction_20_25_29"
+
+function Rate_Law_for_reaction_23(vmax, Activator, Km, vbasal)
+  vmax*Activator^2/(Km^2 + Activator^2) + vbasal;
+end
+
+Rate_Law_for_reaction_23 is "Rate Law for reaction_23"
+
+function Rate_Law_for_reaction_27(vmax, Km, Inhibitor, Ki, Substrate)
+  (vmax/(Km + Inhibitor/Ki))*Substrate;
+end
+
+Rate_Law_for_reaction_27 is "Rate Law for reaction_27"
+
+
+model *benary1()
+
+  // Compartments and Species:
+  compartment Compartment;
+  species APC in Compartment, APC_Axin in Compartment, APC_Axin_GSK3 in Compartment;
+  species APC__Axin__GSK3 in Compartment, APC__Axin__GSK3_b_catenin in Compartment;
+  species $APC__Axin__GSK3_b_catenin_0 in Compartment, GSK3 in Compartment;
+  species APC__Axin__GSK3_b_catenin__HOS in Compartment, APC__Axin__GSK3_b_catenin__FWD1 in Compartment;
+  species $APC_b_catenin in Compartment, Axin in Compartment, CRD_BP in Compartment;
+  species CRD_BPmRNA in Compartment, Dsha in Compartment, $Dshi in Compartment;
+  species FWD1 in Compartment, FWD1mRNA in Compartment, HOS in Compartment;
+  species HOSmRNA in Compartment, TCF in Compartment, b_catenin in Compartment;
+  species b_catenin_TCF in Compartment, b_catenin__ub in Compartment;
+
+  // Assignment Rules:
+  APC__Axin__GSK3_b_catenin_0 := GSKtotal - (APC_Axin_GSK3 + APC__Axin__GSK3 + GSK3 + APC__Axin__GSK3_b_catenin + APC__Axin__GSK3_b_catenin__HOS + APC__Axin__GSK3_b_catenin__FWD1);
+  APC_b_catenin := (APCtotal - GSKtotal) + GSK3 - APC_Axin - APC;
+  Dshi := Dshtotal - Dsha;
+
+  // Reactions:
+  reaction_1: $Dshi => Dsha; Compartment*k1*piecewise(0, time < 100000, exp(-ModelValue_27*(time - 100000)))*Dshi;
+  reaction_10: APC__Axin__GSK3_b_catenin__HOS => APC__Axin__GSK3 + b_catenin__ub + HOS; Compartment*k10*APC__Axin__GSK3_b_catenin__HOS;
+  reaction_10b: APC__Axin__GSK3_b_catenin__FWD1 => APC__Axin__GSK3 + b_catenin__ub + FWD1; Compartment*k10b*APC__Axin__GSK3_b_catenin__FWD1;
+  reaction_11: b_catenin__ub => ; Compartment*k11*b_catenin__ub;
+  reaction_12:  => b_catenin; Compartment*Constant_flux__irreversible(v12);
+  reaction_13: b_catenin => ; Compartment*k13*b_catenin;
+  reaction_14:  => Axin; Compartment*Constant_flux__irreversible(v14);
+  reaction_15: Axin => ; Compartment*k15*Axin;
+  reaction_16: TCF + b_catenin -> b_catenin_TCF; Compartment*(k16*TCF*b_catenin - k16r*b_catenin_TCF);
+  reaction_17: APC + b_catenin -> $APC_b_catenin; Compartment*(k17*APC*b_catenin - k17r*APC_b_catenin);
+  reaction_18:  => HOSmRNA; Compartment*Rate_Law_for_reaction_18(Khos, ki, vmax18, b_catenin_TCF);
+  reaction_19: HOSmRNA => ; Compartment*k19*HOSmRNA;
+  reaction_2: Dsha => $Dshi; Compartment*k2*Dsha;
+  reaction_20:  => HOS; Compartment*Rate_Law_for_reaction_20_25_29(k20, HOSmRNA);
+  reaction_21: HOS => ; Compartment*k21*HOS;
+  reaction_22: HOS + $APC__Axin__GSK3_b_catenin_0 => APC__Axin__GSK3_b_catenin__HOS; Compartment*k22*HOS*APC__Axin__GSK3_b_catenin_0;
+  reaction_22b: FWD1 + $APC__Axin__GSK3_b_catenin_0 => APC__Axin__GSK3_b_catenin__FWD1; Compartment*k22b*FWD1*APC__Axin__GSK3_b_catenin_0;
+  reaction_23:  => CRD_BPmRNA; Compartment*Rate_Law_for_reaction_23(vmax23, b_catenin_TCF, Kcrd_bp, vbasal);
+  reaction_24: CRD_BPmRNA => ; Compartment*k24*CRD_BPmRNA;
+  reaction_25:  => CRD_BP; Compartment*Rate_Law_for_reaction_20_25_29(k25, CRD_BPmRNA);
+  reaction_26: CRD_BP => ; Compartment*k26*CRD_BP;
+  reaction_27: FWD1mRNA => ; Compartment*Rate_Law_for_reaction_27(k27, Kfwd1, CRD_BP, ki2, FWD1mRNA);
+  reaction_28:  => FWD1mRNA; Compartment*Constant_flux__irreversible(v28);
+  reaction_29:  => FWD1; Compartment*Rate_Law_for_reaction_20_25_29(k29, FWD1mRNA);
+  reaction_3: APC_Axin_GSK3 => APC_Axin + GSK3; Compartment*Rate_Law_for_reaction_3(Dsha, APC_Axin_GSK3, k3);
+  reaction_30: FWD1 => ; Compartment*k30*FWD1;
+  reaction_31:  => TCF; Compartment*Constant_flux__irreversible(v31);
+  reaction_32: TCF => ; Compartment*k32*TCF;
+  reaction_4: APC_Axin_GSK3 => APC__Axin__GSK3; Compartment*k4*APC_Axin_GSK3;
+  reaction_5: APC__Axin__GSK3 => APC_Axin_GSK3; Compartment*k5*APC__Axin__GSK3;
+  reaction_6: GSK3 + APC_Axin -> APC_Axin_GSK3; Compartment*(k6*GSK3*APC_Axin - k6r*APC_Axin_GSK3);
+  reaction_7: APC + Axin -> APC_Axin; Compartment*(k7*APC*Axin - k7r*APC_Axin);
+  reaction_8: APC__Axin__GSK3 + b_catenin -> APC__Axin__GSK3_b_catenin; Compartment*(k8*APC__Axin__GSK3*b_catenin - k8r*APC__Axin__GSK3_b_catenin);
+  reaction_9: APC__Axin__GSK3_b_catenin => $APC__Axin__GSK3_b_catenin_0; Compartment*k9*APC__Axin__GSK3_b_catenin;
+
+  // Species initializations:
+  APC = 97.89681/Compartment;
+  APC_Axin = 0.00096373/Compartment;
+  APC_Axin_GSK3 = 0.0048149/Compartment;
+  APC__Axin__GSK3 = 0.0096659/Compartment;
+  APC__Axin__GSK3_b_catenin = 0.0020218/Compartment;
+  GSK3 = 49.96092/Compartment;
+  APC__Axin__GSK3_b_catenin__HOS = 0.0018833/Compartment;
+  APC__Axin__GSK3_b_catenin__FWD1 = 0.00013859/Compartment;
+  Axin = 0.00049222/Compartment;
+  CRD_BP = 0.0065127/Compartment;
+  CRD_BPmRNA = 3.68215e-05/Compartment;
+  Dsha = 0;
+  FWD1 = 0.006741/Compartment;
+  FWD1mRNA = 1.30327e-06/Compartment;
+  HOS = 0.091598/Compartment;
+  HOSmRNA = 0.00011602/Compartment;
+  TCF = 8.14286/Compartment;
+  b_catenin = 25.28956/Compartment;
+  b_catenin_TCF = 6.86431/Compartment;
+  b_catenin__ub = 0.9988/Compartment;
+
+  // Compartment initializations:
+  Compartment = 1;
+
+  // Variable initializations:
+  GSKtotal = 50;
+  APCtotal = 100;
+  Dshtotal = 100;
+  Kcrd_bp = 585;
+  Kfwd1 = 3e-06;
+  Khos = 1;
+  ModelValue_27 = lambda;
+  lambda = 0.05;
+  k1 = 0.182;
+  k10 = 206;
+  k10b = 206;
+  k11 = 0.417;
+  k13 = 0.000257;
+  k15 = 0.167;
+  k16 = 1;
+  k16r = 30;
+  k17 = 1;
+  k17r = 1200;
+  k19 = 0.00048;
+  k2 = 0.0182;
+  k20 = 30;
+  k21 = 0.038;
+  k22 = 206;
+  k22b = 206;
+  k24 = 0.00246;
+  k25 = 0.013;
+  k26 = 7.35e-05;
+  k27 = 0.003;
+  k29 = 30;
+  k3 = 0.05;
+  k30 = 0.0058;
+  k32 = 0.0028;
+  k4 = 0.267;
+  k5 = 0.133;
+  k6 = 0.0909;
+  k6r = 0.909;
+  k7 = 1;
+  k7r = 50;
+  k8 = 206;
+  k8r = 24700;
+  k9 = 206;
+  ki = 1.667;
+  ki2 = 1.667;
+  stability = 1e-09;
+  v12 = 0.423;
+  v14 = 8.22e-05;
+  v28 = 1e-06;
+  v31 = 0.0228;
+  vbasal = 9e-08;
+  vmax18 = 1e-06;
+  vmax23 = 4.22e-06;
+
+  // Other declarations:
+  var stability;
+  const Compartment, GSKtotal, APCtotal, Dshtotal, Kcrd_bp, Kfwd1, Khos, ModelValue_27;
+  const lambda, k1, k10, k10b, k11, k13, k15, k16, k16r, k17, k17r, k19, k2;
+  const k20, k21, k22, k22b, k24, k25, k26, k27, k29, k3, k30, k32, k4, k5;
+  const k6, k6r, k7, k7r, k8, k8r, k9, ki, ki2, v12, v14, v28, v31, vbasal;
+  const vmax18, vmax23;
+
+  // Unit definitions:
+  unit nmol = 1e-9 mole;
+  unit L = litre;
+  unit min = 60 second;
+  unit nM = 1e-9 mole / litre;
+
+  // Display Names:
+  APC_Axin is "APC/Axin";
+  APC_Axin_GSK3 is "APC/Axin/GSK3";
+  APC__Axin__GSK3 is "APC*/Axin*/GSK3";
+  APC__Axin__GSK3_b_catenin is "APC*/Axin*/GSK3/b-catenin";
+  APC__Axin__GSK3_b_catenin_0 is "APC*/Axin*/GSK3/b-catenin*";
+  APC__Axin__GSK3_b_catenin__HOS is "APC*/Axin*/GSK3/b-catenin*/HOS";
+  APC__Axin__GSK3_b_catenin__FWD1 is "APC*/Axin*/GSK3/b-catenin*/FWD1";
+  APC_b_catenin is "APC/b-catenin";
+  CRD_BP is "CRD-BP";
+  CRD_BPmRNA is "CRD-BPmRNA";
+  b_catenin is "b-catenin";
+  b_catenin_TCF is "b-catenin/TCF";
+  b_catenin__ub is "b-catenin*_ub";
+  Kcrd_bp is "Kcrd-bp";
+  ModelValue_27 is "Initial for lambda";
+end
+
+benary1 is "Wnt/b-catenin pathway model with FWD1 and HOS feedbacks (wildtype)"

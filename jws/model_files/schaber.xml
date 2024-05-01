@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="schaber" name="schaber">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="FREP" name="FREP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="Fus3" name="Fus3" compartment="default_compartment" initialConcentration="217" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="Fus3PP" name="Fus3PP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="Gbg" name="Gbg" compartment="default_compartment" initialConcentration="53" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="Kss1" name="Kss1" compartment="default_compartment" initialConcentration="54.4" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="Kss1PP" name="Kss1PP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="PREP" name="PREP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="Ste11" name="Ste11" compartment="default_compartment" initialConcentration="13.3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_9" id="Ste11P" name="Ste11P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="Ste11Ubi" name="Ste11Ubi" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="Ste12" name="Ste12" compartment="default_compartment" initialConcentration="0.07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="Ste12Kss1" name="Ste12Kss1" compartment="default_compartment" initialConcentration="35.9" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="Ste12P" name="Ste12P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="Ste12TeSte5" name="Ste12TeSte5" compartment="default_compartment" initialConcentration="0.25" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="Ste12TeSte5Kss1" name="Ste12TeSte5Kss1" compartment="default_compartment" initialConcentration="13.7" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="Ste12TeSte5P" name="Ste12TeSte5P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="Ste5" name="Ste5" compartment="default_compartment" initialConcentration="42.3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="Ste5Ste11" name="Ste5Ste11" compartment="default_compartment" initialConcentration="5.6" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_19" id="Ste5Ste11Gbg" name="Ste5Ste11Gbg" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_20" id="Ste5Ste11GbgFus3" name="Ste5Ste11GbgFus3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_21" id="Ste5Ste11GbgFus3P" name="Ste5Ste11GbgFus3P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_22" id="Ste5Ste11GbgKss1" name="Ste5Ste11GbgKss1" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_23" id="Ste5Ste11GbgKss1P" name="Ste5Ste11GbgKss1P" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_24" id="Ste5Ste11GbgP" name="Ste5Ste11GbgP" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_25" id="p" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_26" id="s" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_27" id="alpha" name="alpha" value="0" constant="false"/>
+      <parameter metaid="metaid_28" id="alphaA" value="1" constant="false"/>
+      <parameter metaid="metaid_29" id="alphae" value="10" constant="false"/>
+      <parameter metaid="metaid_30" id="alphas" value="2" constant="false"/>
+      <parameter metaid="metaid_31" id="alphastim" value="1" constant="false"/>
+      <parameter metaid="metaid_32" id="alphat" value="0" constant="false"/>
+      <parameter metaid="metaid_33" id="beta" name="beta" value="0" constant="false"/>
+      <parameter metaid="metaid_34" id="betaA" value="1" constant="false"/>
+      <parameter metaid="metaid_35" id="betae" value="360" constant="false"/>
+      <parameter metaid="metaid_36" id="betas" value="20" constant="false"/>
+      <parameter metaid="metaid_37" id="betastim" value="1" constant="false"/>
+      <parameter metaid="metaid_38" id="betat" value="0" constant="false"/>
+      <parameter metaid="metaid_39" id="k1" value="0.01" constant="false"/>
+      <parameter metaid="metaid_40" id="k10" value="1" constant="false"/>
+      <parameter metaid="metaid_41" id="k11" value="1" constant="false"/>
+      <parameter metaid="metaid_42" id="k12" value="1" constant="false"/>
+      <parameter metaid="metaid_43" id="k13" value="1" constant="false"/>
+      <parameter metaid="metaid_44" id="k14" value="0.1" constant="false"/>
+      <parameter metaid="metaid_45" id="k15" value="0.1" constant="false"/>
+      <parameter metaid="metaid_46" id="k16" value="0.1" constant="false"/>
+      <parameter metaid="metaid_47" id="k17" value="1" constant="false"/>
+      <parameter metaid="metaid_48" id="k18" value="10" constant="false"/>
+      <parameter metaid="metaid_49" id="k19" value="1" constant="false"/>
+      <parameter metaid="metaid_50" id="k2" value="0.01" constant="false"/>
+      <parameter metaid="metaid_51" id="k20" value="1" constant="false"/>
+      <parameter metaid="metaid_52" id="k21" value="1" constant="false"/>
+      <parameter metaid="metaid_53" id="k22" value="1" constant="false"/>
+      <parameter metaid="metaid_54" id="k23" value="1" constant="false"/>
+      <parameter metaid="metaid_55" id="k24" value="0.01" constant="false"/>
+      <parameter metaid="metaid_56" id="k25" value="1" constant="false"/>
+      <parameter metaid="metaid_57" id="k26" value="0.1" constant="false"/>
+      <parameter metaid="metaid_58" id="k27" value="1" constant="false"/>
+      <parameter metaid="metaid_59" id="k28" value="0.01" constant="false"/>
+      <parameter metaid="metaid_60" id="k29" value="0.01" constant="false"/>
+      <parameter metaid="metaid_61" id="k3" value="1" constant="false"/>
+      <parameter metaid="metaid_62" id="k30" value="0.1" constant="false"/>
+      <parameter metaid="metaid_63" id="k31" value="1" constant="false"/>
+      <parameter metaid="metaid_64" id="k32" value="1" constant="false"/>
+      <parameter metaid="metaid_65" id="k33" value="1" constant="false"/>
+      <parameter metaid="metaid_66" id="k34" value="1" constant="false"/>
+      <parameter metaid="metaid_67" id="k4" value="1" constant="false"/>
+      <parameter metaid="metaid_68" id="k5" value="1" constant="false"/>
+      <parameter metaid="metaid_69" id="k6" value="1" constant="false"/>
+      <parameter metaid="metaid_70" id="k7" value="10" constant="false"/>
+      <parameter metaid="metaid_71" id="k8" value="0.1" constant="false"/>
+      <parameter metaid="metaid_72" id="k9" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_73" variable="beta">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> betastim </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <piecewise>
+                  <piece>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <geq/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <minus/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> betat </ci>
+                        </apply>
+                        <apply>
+                          <minus/>
+                          <ci> betae </ci>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 0 </cn>
+                    </apply>
+                  </piece>
+                  <otherwise>
+                    <cn type="integer"> 0 </cn>
+                  </otherwise>
+                </piecewise>
+                <ci> betaA </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <minus/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> betat </ci>
+                        </apply>
+                      </apply>
+                      <ci> betas </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <piecewise>
+                  <piece>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <geq/>
+                      <apply>
+                        <minus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <ci> betae </ci>
+                      </apply>
+                      <cn type="integer"> 0 </cn>
+                    </apply>
+                  </piece>
+                  <otherwise>
+                    <cn type="integer"> 0 </cn>
+                  </otherwise>
+                </piecewise>
+                <ci> betaA </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <minus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <ci> betae </ci>
+                      </apply>
+                    </apply>
+                    <ci> betas </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_74" variable="alpha">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> alphastim </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <piecewise>
+                  <piece>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <geq/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <minus/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> alphat </ci>
+                        </apply>
+                        <apply>
+                          <minus/>
+                          <ci> alphae </ci>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        </apply>
+                      </apply>
+                      <cn type="integer"> 0 </cn>
+                    </apply>
+                  </piece>
+                  <otherwise>
+                    <cn type="integer"> 0 </cn>
+                  </otherwise>
+                </piecewise>
+                <ci> alphaA </ci>
+                <apply>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <minus/>
+                          <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                          <ci> alphat </ci>
+                        </apply>
+                      </apply>
+                      <ci> alphas </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <piecewise>
+                  <piece>
+                    <cn type="integer"> 1 </cn>
+                    <apply>
+                      <geq/>
+                      <apply>
+                        <minus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <ci> alphae </ci>
+                      </apply>
+                      <cn type="integer"> 0 </cn>
+                    </apply>
+                  </piece>
+                  <otherwise>
+                    <cn type="integer"> 0 </cn>
+                  </otherwise>
+                </piecewise>
+                <ci> alphaA </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <divide/>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <minus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <ci> alphae </ci>
+                      </apply>
+                    </apply>
+                    <ci> alphas </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_78" id="v_1" name="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_75" species="Ste5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_76" species="Ste11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_77" species="Ste5Ste11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Ste5 </ci>
+              <ci> Ste11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_81" id="v_10" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_79" species="Ste5Ste11GbgKss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_80" species="Ste5Ste11GbgKss1P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k10 </ci>
+              <ci> Ste5Ste11GbgKss1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_85" id="v_11" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_82" species="Ste5Ste11GbgKss1P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_83" species="Ste5Ste11GbgP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_84" species="Kss1PP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k11 </ci>
+              <ci> Ste5Ste11GbgKss1P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_89" id="v_12" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_86" species="Ste5Ste11GbgP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_87" species="Kss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_88" species="Ste5Ste11GbgKss1P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k12 </ci>
+              <ci> Ste5Ste11GbgP </ci>
+              <ci> Kss1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_92" id="v_13" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_90" species="Ste11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_91" species="Ste11P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k13 </ci>
+              <ci> Ste11 </ci>
+              <ci> beta </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_95" id="v_14" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_93" species="Ste11P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_94" species="Ste11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k14 </ci>
+              <ci> Ste11P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_100" id="v_15" name="v_15" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_96" species="Kss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_97" species="Kss1PP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_98" species="Ste11Ubi"/>
+          <modifierSpeciesReference metaid="metaid_99" species="Ste11P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k15 </ci>
+                <ci> Kss1 </ci>
+                <ci> Ste11P </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k30 </ci>
+                <ci> Kss1 </ci>
+                <ci> Ste11Ubi </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="v_16" name="v_16" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_101" species="Kss1PP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_102" species="Kss1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_103" species="Fus3PP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k16 </ci>
+                <ci> Kss1PP </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k28 </ci>
+                <ci> Kss1PP </ci>
+                <ci> Fus3PP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_108" id="v_17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_105" species="Ste12Kss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_106" species="Kss1" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_107" species="Ste12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k17 </ci>
+              <ci> Ste12Kss1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_112" id="v_18" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_109" species="Kss1" stoichiometry="2" constant="true"/>
+          <speciesReference metaid="metaid_110" species="Ste12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_111" species="Ste12Kss1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k18 </ci>
+              <ci> Kss1 </ci>
+              <ci> Ste12 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_117" id="v_19" name="v_19" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_113" species="Ste12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_114" species="Ste12P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_115" species="Kss1PP"/>
+          <modifierSpeciesReference metaid="metaid_116" species="Fus3PP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> k19 </ci>
+                <ci> Ste12 </ci>
+                <ci> Fus3PP </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k29 </ci>
+                <ci> Ste12 </ci>
+                <ci> Kss1PP </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_118" species="Ste5Ste11" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_119" species="Gbg" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_120" species="Ste5Ste11Gbg" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> Ste5Ste11 </ci>
+              <ci> Gbg </ci>
+              <ci> alpha </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_125" id="v_20" name="v_20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_122" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_123" species="PREP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_124" species="Ste12P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k20 </ci>
+              <ci> Ste12P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_129" id="v_21" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_126" species="Ste12TeSte5Kss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="Kss1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_128" species="Ste12TeSte5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k21 </ci>
+              <ci> Ste12TeSte5Kss1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_133" id="v_22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_130" species="Kss1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_131" species="Ste12TeSte5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_132" species="Ste12TeSte5Kss1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k22 </ci>
+              <ci> Kss1 </ci>
+              <ci> Ste12TeSte5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_137" id="v_23" name="v_23" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_134" species="Ste12TeSte5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_135" species="Ste12TeSte5P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_136" species="Kss1PP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k23 </ci>
+              <ci> Ste12TeSte5 </ci>
+              <ci> Kss1PP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_141" id="v_24" name="v_24" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_138" species="Ste12TeSte5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_139" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_140" species="Fus3PP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k24 </ci>
+              <ci> Ste12TeSte5 </ci>
+              <ci> Fus3PP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="v_25" name="v_25" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="s" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_143" species="FREP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference metaid="metaid_144" species="Ste12TeSte5P"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k25 </ci>
+              <ci> Ste12TeSte5P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_148" id="v_26" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_146" species="Fus3PP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_147" species="Fus3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k26 </ci>
+              <ci> Fus3PP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_152" id="v_27" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_149" species="Ste5Ste11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_150" species="Ste5" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_151" species="Ste11" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k27 </ci>
+              <ci> Ste5Ste11 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_155" id="v_28" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_153" species="Ste12P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="Ste12" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k31 </ci>
+              <ci> Ste12P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_158" id="v_29" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_156" species="PREP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_157" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k32 </ci>
+              <ci> PREP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_162" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_159" species="Ste5Ste11Gbg" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_160" species="Fus3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_161" species="Ste5Ste11GbgFus3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> Ste5Ste11Gbg </ci>
+              <ci> Fus3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_165" id="v_30" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_163" species="Ste12TeSte5P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_164" species="Ste12TeSte5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k33 </ci>
+              <ci> Ste12TeSte5P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_168" id="v_31" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_166" species="FREP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_167" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k34 </ci>
+              <ci> FREP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_171" id="v_4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_169" species="Ste5Ste11GbgFus3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_170" species="Ste5Ste11GbgFus3P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> Ste5Ste11GbgFus3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_175" id="v_5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_172" species="Ste5Ste11GbgFus3P" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_173" species="Fus3PP" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_174" species="Ste5Ste11GbgP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k5 </ci>
+              <ci> Ste5Ste11GbgFus3P </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_179" id="v_6" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_176" species="Fus3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_177" species="Ste5Ste11GbgP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_178" species="Ste5Ste11GbgFus3P" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k6 </ci>
+              <ci> Fus3 </ci>
+              <ci> Ste5Ste11GbgP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_184" id="v_7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_180" species="Ste5Ste11GbgP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_181" species="Gbg" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_182" species="Ste11Ubi" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_183" species="Ste5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k7 </ci>
+              <ci> Ste5Ste11GbgP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_187" id="v_8" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_185" species="Ste11Ubi" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_186" species="p" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k8 </ci>
+              <ci> Ste11Ubi </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_191" id="v_9" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_188" species="Ste5Ste11Gbg" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_189" species="Kss1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_190" species="Ste5Ste11GbgKss1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k9 </ci>
+              <ci> Ste5Ste11Gbg </ci>
+              <ci> Kss1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

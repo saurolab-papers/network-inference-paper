@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="kintuta" name="kintuta">
+    <listOfCompartments>
+      <compartment metaid="metaid_0" sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_1" id="S1" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_2" id="S2" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_3" id="S3" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_4" id="S4" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="X0" compartment="default_compartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_6" id="X5" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_7" id="X6" compartment="default_compartment" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_8" id="X7" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_9" id="k1f" value="1" constant="false"/>
+      <parameter metaid="metaid_10" id="k1r" value="1" constant="false"/>
+      <parameter metaid="metaid_11" id="k2f" value="1" constant="false"/>
+      <parameter metaid="metaid_12" id="k2r" value="1" constant="false"/>
+      <parameter metaid="metaid_13" id="k3f" value="1" constant="false"/>
+      <parameter metaid="metaid_14" id="k3r" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction metaid="metaid_19" id="v_1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_15" species="X0" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_16" species="S1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_17" species="S2" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_18" species="X5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1f </ci>
+                <ci> X0 </ci>
+                <ci> S1 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k1r </ci>
+                <ci> X5 </ci>
+                <ci> S2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_24" id="v_2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_20" species="S3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_21" species="S2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_22" species="S1" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_23" species="S4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k2f </ci>
+                <ci> S2 </ci>
+                <ci> S3 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2r </ci>
+                <ci> S1 </ci>
+                <ci> S4 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_29" id="v_3" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_25" species="X6" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_26" species="S4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_27" species="S3" stoichiometry="1" constant="true"/>
+          <speciesReference metaid="metaid_28" species="X7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k3f </ci>
+                <ci> S4 </ci>
+                <ci> X6 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k3r </ci>
+                <ci> X7 </ci>
+                <ci> S3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

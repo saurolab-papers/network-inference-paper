@@ -1,0 +1,36 @@
+// Created by libAntimony v2.13.2
+model *revilla1()
+
+  // Compartments and Species:
+  species v, x, y;
+
+  // Reactions:
+  v1:  -> x; lambda;
+  v2: x -> ; d*x;
+  v3: x -> y; beta*v*x;
+  v4: y -> ; a*y;
+  v5:  -> v; k*y;
+  v6: v -> ; u*v;
+
+  // Species initializations:
+  v = 1e-06;
+  x = 200;
+  y = 0;
+
+  // Variable initializations:
+  a = 0.33;
+  alpha = 0.004;
+  b = 2;
+  beta = 0.004;
+  c = 2000;
+  d = 0.01;
+  k = 50;
+  lambda = 2;
+  q = 2;
+  u = 2;
+
+  // Other declarations:
+  var a, alpha, b, beta, c, d, k, lambda, q, u;
+end
+
+revilla1 is "revilla1"

@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model id="abudukelimu1" name="abudukelimu1">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Rate_Law_for_BAFF_clipoff" name="Rate Law for BAFF clipoff">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> s1 </ci>
+            </bvar>
+            <bvar>
+              <ci> s2 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s1 </ci>
+              <ci> s2 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Rate_Law_for_B_FLC_production" name="Rate Law for B_FLC_production">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> k1 </ci>
+            </bvar>
+            <bvar>
+              <ci> s1 </ci>
+            </bvar>
+            <bvar>
+              <ci> s2 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> s1 </ci>
+              <ci> s2 </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Constant_flux__irreversible" name="Constant flux (irreversible)">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <ci> v </ci>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition metaid="metaid_0" id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-15" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition metaid="metaid_1" id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="metaid_2" id="compartment" name="compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="metaid_3" id="Bcells" name="Bcells" compartment="compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_4" id="CRA" name="CRA" compartment="compartment" initialConcentration="0.00999412" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_5" id="DyingBacteria" name="DyingBacteria" compartment="compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_6" id="DyingFibr" name="DyingFibr" compartment="compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_7" id="FLC" name="FLC" compartment="compartment" initialConcentration="0.000999412" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_8" id="FLC_drug" name="FLC_drug" compartment="compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_9" id="HealthyBacteria" name="HealthyBacteria" compartment="compartment" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_10" id="HealthyFibr" name="HealthyFibr" compartment="compartment" initialConcentration="999.509" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_11" id="MMP7" name="MMP7" compartment="compartment" initialConcentration="99951" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_12" id="MMP8" name="MMP8" compartment="compartment" initialConcentration="999509" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_13" id="MastCells" name="MastCells" compartment="compartment" initialConcentration="0.0998992" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_14" id="MastCells_FLC" name="MastCells_FLC" compartment="compartment" initialConcentration="9.98404e-05" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_15" id="MastCells_FLC_CRA" name="MastCells_FLC_CRA" compartment="compartment" initialConcentration="9.97816000000001e-07" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_16" id="Protease" name="Protease" compartment="compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_17" id="TNFalpha" name="TNFalpha" compartment="compartment" initialConcentration="4.75162" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="metaid_18" id="Total_space" name="Total space" compartment="compartment" initialConcentration="1000" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_19" id="drug" name="drug" compartment="compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_20" id="free_space" name="free_space" compartment="compartment" initialConcentration="0.491000000000099" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species metaid="metaid_21" id="washout" name="washout" compartment="compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter metaid="metaid_22" id="Metabolite_18" name="Initial for Total space" value="1000" constant="true"/>
+      <parameter metaid="metaid_23" id="k_CRA_influx" name="k_CRA_influx" value="0" constant="true"/>
+      <parameter metaid="metaid_24" id="k_protease_influx" name="k_protease_influx" value="0" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule metaid="metaid_25" variable="Total_space">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> Metabolite_18 </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule metaid="metaid_26" variable="free_space">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> Metabolite_18 </ci>
+            <apply>
+              <plus/>
+              <ci> HealthyFibr </ci>
+              <ci> DyingFibr </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="metaid_31" id="R10_drug_washout" name="R10_drug_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_28" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_29" species="drug" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_30" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> drug </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_27" id="k1" name="k1" value="0.0001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_37" id="R11_FLC_drug_binding" name="R11_FLC_drug_binding" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_34" species="FLC" stoichiometry="1"/>
+          <speciesReference metaid="metaid_35" species="drug" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_36" species="FLC_drug" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> drug </ci>
+                  <ci> FLC </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> FLC_drug </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_32" id="k2" name="k2" value="1e-05"/>
+            <parameter metaid="metaid_33" id="k1" name="k1" value="1e-05"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_42" id="R12_FLC_drug_washout" name="R12_FLC_drug_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_39" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_40" species="FLC_drug" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_41" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> FLC_drug </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_38" id="k1" name="k1" value="0.0001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_46" id="R13_CRA_Secretion_DyingFibr" name="R13_CRA_Secretion_DyingFibr" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_44" species="DyingFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_45" species="CRA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> DyingFibr </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_43" id="k1" name="k1" value="0.001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_53" id="R14_CRAClipOffHealthyFibr" name="R14_CRAClipOffHealthyFibr" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_48" species="MMP7" stoichiometry="1"/>
+          <speciesReference metaid="metaid_49" species="HealthyFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_50" species="HealthyFibr" stoichiometry="1"/>
+          <speciesReference metaid="metaid_51" species="MMP7" stoichiometry="1"/>
+          <speciesReference metaid="metaid_52" species="CRA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_BAFF_clipoff </ci>
+                <ci> k1 </ci>
+                <ci> HealthyFibr </ci>
+                <ci> MMP7 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_47" id="k1" name="k1" value="1e-08"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_56" id="R15_DyingFibroblast_death" name="R15_DyingFibroblast_death" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_55" species="DyingFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> DyingFibr </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_54" id="k1" name="k1" value="0.2"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_62" id="R16_Healthy_to_Dying_fibroblast" name="R16_Healthy_to_Dying_fibroblast" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_58" species="TNFalpha" stoichiometry="1"/>
+          <speciesReference metaid="metaid_59" species="HealthyFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_60" species="TNFalpha" stoichiometry="1"/>
+          <speciesReference metaid="metaid_61" species="DyingFibr" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> HealthyFibr </ci>
+              <ci> TNFalpha </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_57" id="k1" name="k1" value="5e-07"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_66" id="R17_HealthyBacteriaProduction" name="R17_HealthyBacteriaProduction" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_64" species="HealthyBacteria" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_65" species="HealthyBacteria" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> HealthyBacteria </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_63" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_71" id="R18_HealthyFibProduction" name="R18_HealthyFibProduction" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_68" species="HealthyFibr" stoichiometry="1"/>
+          <speciesReference metaid="metaid_69" species="free_space" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_70" species="HealthyFibr" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> free_space </ci>
+              <ci> HealthyFibr </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_67" id="k1" name="k1" value="4.85e-07"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_76" id="R19_MMP7_release_HealthyFibr" name="R19_MMP7_release_HealthyFibr" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_73" species="HealthyFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_74" species="MMP7" stoichiometry="1"/>
+          <speciesReference metaid="metaid_75" species="HealthyFibr" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> HealthyFibr </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_72" id="k1" name="k1" value="1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_81" id="R1_CRA_degradation" name="R1_CRA_degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_78" species="MMP8" stoichiometry="1"/>
+          <speciesReference metaid="metaid_79" species="CRA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_80" species="MMP8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> CRA </ci>
+              <ci> MMP8 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_77" id="k1" name="k1" value="0.0001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_86" id="R20_MMP8_release_HealthyFibr" name="R20_MMP8_release_HealthyFibr" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_83" species="HealthyFibr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_84" species="MMP8" stoichiometry="100"/>
+          <speciesReference metaid="metaid_85" species="HealthyFibr" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> HealthyFibr </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_82" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_92" id="R21_Healthy_to_Dying_Bacteria" name="R21_Healthy_to_Dying_Bacteria" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_88" species="Protease" stoichiometry="1"/>
+          <speciesReference metaid="metaid_89" species="HealthyBacteria" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_90" species="Protease" stoichiometry="1"/>
+          <speciesReference metaid="metaid_91" species="DyingBacteria" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> HealthyBacteria </ci>
+              <ci> Protease </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_87" id="k1" name="k1" value="0.005"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_98" id="R22_CRA_binding" name="R22_CRA_binding" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_95" species="CRA" stoichiometry="1"/>
+          <speciesReference metaid="metaid_96" species="MastCells_FLC" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_97" species="MastCells_FLC_CRA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> MastCells_FLC </ci>
+                  <ci> CRA </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> MastCells_FLC_CRA </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_93" id="k2" name="k2" value="0.1"/>
+            <parameter metaid="metaid_94" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_104" id="R23_FLC_binding" name="R23_FLC_binding" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_101" species="MastCells" stoichiometry="1"/>
+          <speciesReference metaid="metaid_102" species="FLC" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_103" species="MastCells_FLC" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> FLC </ci>
+                  <ci> MastCells </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> MastCells_FLC </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_99" id="k2" name="k2" value="0.1"/>
+            <parameter metaid="metaid_100" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_109" id="R24_TNFalpha_production" name="R24_TNFalpha_production" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_106" species="MastCells_FLC_CRA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_107" species="MastCells_FLC_CRA" stoichiometry="1"/>
+          <speciesReference metaid="metaid_108" species="TNFalpha" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> MastCells_FLC_CRA </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_105" id="k1" name="k1" value="5000"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_114" id="R25_Protease_production" name="R25_Protease_production" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_111" species="MastCells_FLC_CRA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_112" species="MastCells_FLC_CRA" stoichiometry="1"/>
+          <speciesReference metaid="metaid_113" species="Protease" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> MastCells_FLC_CRA </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_110" id="k1" name="k1" value="65"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_118" id="R26_DyingBacteria_secrete_CRA" name="R26_DyingBacteria secrete CRA" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_116" species="DyingBacteria" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_117" species="CRA" stoichiometry="1000"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> DyingBacteria </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_115" id="k1" name="k1" value="10"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_121" id="R27_Dyingbacteria_die" name="R27_Dyingbacteria die" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_120" species="DyingBacteria" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> DyingBacteria </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_119" id="k1" name="k1" value="0.1"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_123" id="R28_Proteaseinflux" name="R28_Proteaseinflux" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_122" species="Protease" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> k_protease_influx </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_128" id="R2_CRA_washout" name="R2_CRA_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_125" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_126" species="CRA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_127" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> CRA </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_124" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_130" id="R3_CRAinflux" name="R3_CRAinflux" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference metaid="metaid_129" species="CRA" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> k_CRA_influx </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_135" id="R4_FLC_washout" name="R4_FLC_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_132" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_133" species="FLC" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_134" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> FLC </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_131" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_140" id="R5_MMP7_washout" name="R5_MMP7_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_137" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_138" species="MMP7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_139" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> MMP7 </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_136" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_145" id="R6_MMP8_washout" name="R6_MMP8_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_142" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_143" species="MMP8" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_144" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> MMP8 </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_141" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_150" id="R7_Protease_washout" name="R7_Protease_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_147" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_148" species="Protease" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_149" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> Protease </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_146" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_155" id="R8_TNFalpha_washout" name="R8_TNFalpha_washout" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_152" species="washout" stoichiometry="1"/>
+          <speciesReference metaid="metaid_153" species="TNFalpha" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_154" species="washout" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <ci> k1 </ci>
+              <ci> TNFalpha </ci>
+              <ci> washout </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_151" id="k1" name="k1" value="0.01"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="metaid_162" id="R9_FLC_production" name="R9_FLC_production" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference metaid="metaid_157" species="Bcells" stoichiometry="1"/>
+          <speciesReference metaid="metaid_158" species="CRA" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference metaid="metaid_159" species="Bcells" stoichiometry="1"/>
+          <speciesReference metaid="metaid_160" species="CRA" stoichiometry="1"/>
+          <speciesReference metaid="metaid_161" species="FLC" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment </ci>
+              <apply>
+                <ci> Rate_Law_for_B_FLC_production </ci>
+                <ci> k1 </ci>
+                <ci> CRA </ci>
+                <ci> Bcells </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter metaid="metaid_156" id="k1" name="k1" value="0.001"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

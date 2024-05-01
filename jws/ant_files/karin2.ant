@@ -1,0 +1,34 @@
+// Created by libAntimony v2.13.2
+model *karin2()
+
+  // Compartments and Species:
+  species y, z, zmut;
+
+  // Assignment Rules:
+  lambdaPlus := y/10;
+
+  // Reactions:
+  v1:  -> z; z*lambdaPlus;
+  v2: z -> ; z*lambdaMinus;
+  v3:  -> y; mu*(M - (z + zmut)*y);
+  v4:  -> zmut; zmut*(k*y/10 - 0.5);
+
+  // Events:
+  _E0: at 0 after time == 10, t0=false, persistent=false, fromTrigger=false: zmut = 1;
+
+  // Species initializations:
+  y = 5;
+  z = 5;
+  zmut = 0;
+
+  // Variable initializations:
+  M = 25;
+  k = 4;
+  lambdaMinus = 0.5;
+  mu = 0.25;
+
+  // Other declarations:
+  var M, k, lambdaMinus, lambdaPlus, mu;
+end
+
+karin2 is "karin2"

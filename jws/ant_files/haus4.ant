@@ -1,0 +1,82 @@
+// Created by libAntimony v2.13.2
+model *haus4()
+
+  // Compartments and Species:
+  species A, AC, Aa, AaC, Ad, Ah, An, B, BC, Bn, Cf, En, $extVariable;
+
+  // Reactions:
+  v_1: $extVariable -> AC; 2*V1*G/(K1 + G);
+  v_10: $extVariable -> Ad; rAd + rAdplus*(1 - tanh(n*((5.7 - 0.6*tanh(137.4886*1.6507)) + 0.6*tanh(1.6507*(time - 137.4886)) - pstar))) - Dvar*Ad;
+  v_11: $extVariable -> Cf; rCf + rCfplus*(1 - tanh(n*((5.7 - 0.6*tanh(137.4886*1.6507)) + 0.6*tanh(1.6507*(time - 137.4886)) - pstar))) - Dvar*Cf;
+  v_12: $extVariable -> Ah; rAh + rAhplus*(1 - tanh(n*((5.7 - 0.6*tanh(137.4886*1.6507)) + 0.6*tanh(1.6507*(time - 137.4886)) - pstar))) - Dvar*Ah;
+  v_13: AaC -> BC; V10*AaC/(K10 + AaC);
+  v_14: AC -> $extVariable; Dvar*AC;
+  v_15: A -> $extVariable; Dvar*A;
+  v_16: En -> $extVariable; Dvar*En;
+  v_17: AaC -> $extVariable; Dvar*AaC;
+  v_18: Aa -> $extVariable; Dvar*Aa;
+  v_19: BC -> $extVariable; Dvar*BC;
+  v_2: AC -> A; V2*AC/(K2 + AC);
+  v_20: B -> $extVariable; Dvar*B;
+  v_21: An -> $extVariable; Dvar*An;
+  v_22: Bn -> $extVariable; Dvar*Bn;
+  v_3: A + AaC -> AC + Aa; alpha3*A*AaC*Cf;
+  v_4: AC -> AaC; V4*AC/(K4 + AC);
+  v_5: AC -> En; alpha5*AC*Ah;
+  v_6: AaC + B -> Aa + BC; alpha6*B*AaC*Cf;
+  v_7: Aa -> An; alpha7*Aa*Ad;
+  v_8: BC -> B; V8*BC/(K8 + BC);
+  v_9: BC -> Bn; alpha9*BC*Ah;
+
+  // Species initializations:
+  A = 17.23;
+  AC = 0;
+  Aa = 0;
+  AaC = 0;
+  Ad = 0;
+  Ah = 0;
+  An = 2.52;
+  B = 26.43;
+  BC = 0;
+  Bn = 1.28;
+  Cf = 0;
+  En = 2.48;
+  extVariable = 0;
+
+  // Variable initializations:
+  Chemostat = 1;
+  Dvar = 0.075;
+  G = 40;
+  K1 = 0.00158;
+  K10 = 1.4e-05;
+  K2 = 0.00181;
+  K4 = 1.87;
+  K8 = 7.92e-06;
+  V1 = 4.94;
+  V10 = 4.75;
+  V2 = 2.92;
+  V4 = 22.8;
+  V8 = 64.8;
+  alpha3 = 0.00517;
+  alpha5 = 0.014;
+  alpha6 = 0.00537;
+  alpha7 = 4790;
+  alpha9 = 347000;
+  compartment_ = 1;
+  k0 = 0;
+  n = 485;
+  pstar = 4.5;
+  rAd = 0.00547;
+  rAdplus = 0.1037;
+  rAh = 0.289;
+  rAhplus = 2.5594;
+  rCf = 0.000324;
+  rCfplus = 1.063;
+
+  // Other declarations:
+  var Chemostat, Dvar, G, K1, K10, K2, K4, K8, V1, V10, V2, V4, V8, alpha3;
+  var alpha5, alpha6, alpha7, alpha9, compartment_, k0, n, pstar, rAd, rAdplus;
+  var rAh, rAhplus, rCf, rCfplus;
+end
+
+haus4 is "haus4"

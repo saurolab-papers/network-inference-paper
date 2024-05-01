@@ -1,0 +1,132 @@
+// Created by libAntimony v2.13.2
+model *yildirim1()
+
+  // Compartments and Species:
+  compartment cell;
+  species A in cell, B in cell, I1 in cell, I2 in cell, I3 in cell, L in cell;
+  species $L_e in cell, M in cell, P in cell;
+
+  // Reactions:
+  r_a1: A => ; cell*A*(gamma_A + mu);
+  r_a2: A => ; cell*beta_A*B*(A/(K_A + A));
+  r_a3_l1: L => A; cell*alpha_A*B*(L/(K_L + L));
+  r_b1: B => ; cell*B*(gamma_B + mu);
+  r_b2_i2: I2 => B; cell*I2/tau_B;
+  r_i1:  => I1; cell*alpha_M*((K_1*exp(mu*tau_M*-2)*A^2 + 1)/(K + K_1*exp(-2*mu*tau_M)*A^2));
+  r_i2:  => I2; cell*alpha_B*M*exp(-(mu*tau_B));
+  r_i3:  => I3; cell*alpha_P*M*exp(-1*mu*(tau_B + tau_P));
+  r_l2: L => ; cell*L*(gamma_L + mu);
+  r_l3: L => ; cell*beta_L1*P*(L/(K_L1 + L));
+  r_l4:  => L; cell*alpha_L*P*(L_e/(K_Le + L_e));
+  r_m1:  => M; cell*gamma_0;
+  r_m2: M => ; cell*M*(gamma_M + mu);
+  r_m3_i1: I1 => M; cell*I1/tau_M;
+  r_p1: P => ; cell*P*(gamma_P + mu);
+  r_p2_i3: I3 => P; cell*I3/(tau_B + tau_P);
+
+  // Species initializations:
+  A = 0.038/cell;
+  B = 0;
+  I1 = 0;
+  I2 = 0;
+  I3 = 0;
+  L = 0.372/cell;
+  L_e = 0.08;
+  M = 0.000626/cell;
+  P = 0.0149/cell;
+
+  // Compartment initializations:
+  cell = 1;
+
+  // Variable initializations:
+  K = 7200;
+  K_1 = 25200;
+  K_A = 1.95;
+  K_L = 0.97;
+  K_L1 = 1.81;
+  K_Le = 0.26;
+  alpha_A = 17600;
+  alpha_B = 0.0166;
+  alpha_L = 2880;
+  alpha_M = 0.000997;
+  alpha_P = 10;
+  beta_A = 21500;
+  beta_L1 = 2650;
+  gamma_0 = 7.25e-07;
+  gamma_A = 0.52;
+  gamma_B = 0.000833;
+  gamma_L = 0;
+  gamma_M = 0.411;
+  gamma_P = 0.65;
+  mu = 0.0226;
+  tau_B = 2;
+  tau_M = 0.1;
+  tau_P = 0.83;
+
+  // Other declarations:
+  const cell, K, K_1, K_A, K_L, K_L1, K_Le, alpha_A, alpha_B, alpha_L, alpha_M;
+  const alpha_P, beta_A, beta_L1, gamma_0, gamma_A, gamma_B, gamma_L, gamma_M;
+  const gamma_P, mu, tau_B, tau_M, tau_P;
+
+  // Unit definitions:
+  unit millimole = 1e-3 mole;
+  unit minute = 60 second;
+
+  // Display Names:
+  millimole is "millimoles";
+  A is "allolactose";
+  B is "Betagalactosidase";
+  I1 is "PartialmRNA";
+  I2 is "PartialBetagalactosidase";
+  I3 is "PartialPermease";
+  L is "lactose_internal";
+  L_e is "External_Lactose";
+  M is "mRNA";
+  P is "permease";
+  r_a1 is "Basal_Allolactose_Degradation";
+  r_a2 is "Betagalactosidase_mediated_Allolactose_Degradation";
+  r_a3_l1 is "Beta_galactosidase_reaction";
+  r_b1 is "Beta_galactosidase_Degradation";
+  r_b2_i2 is "Beta_galactosidase_synthesis";
+  r_i1 is "allolactose_controlled_partial_mRNA_synthesis";
+  r_i2 is "Partial_Beta_galactosidase_synthesis";
+  r_i3 is "partial_permease_synthesis";
+  r_l2 is "lactose_degradation";
+  r_l3 is "Lactose_transport_out";
+  r_l4 is "Lactose_transport_in";
+  r_m1 is "Basal_mRNA_Synthesis";
+  r_m2 is "mRNA_Degradation";
+  r_m3_i1 is "allolactose_controlled_mRNA_synthesis";
+  r_p1 is "permease_degradation";
+  r_p2_i3 is "permease_synthesis";
+
+  // CV terms:
+  cell identity "http://identifiers.org/go/GO:0005623"
+  A part "http://identifiers.org/chebi/CHEBI:36229"
+  B identity "http://identifiers.org/uniprot/P00722"
+  L identity "http://identifiers.org/kegg.compound/C00243",
+             "http://identifiers.org/chebi/CHEBI:17716"
+  L_e identity "http://identifiers.org/kegg.compound/C00243",
+               "http://identifiers.org/chebi/CHEBI:17716"
+  M identity "http://identifiers.org/chebi/CHEBI:33699"
+  P identity "http://identifiers.org/uniprot/P02920"
+  r_a1 hypernym "http://identifiers.org/go/GO:0046352"
+  r_a2 hypernym "http://identifiers.org/go/GO:0046352"
+  r_a3_l1 identity "http://identifiers.org/go/GO:0004565",
+                   "http://identifiers.org/ec-code/3.2.1.108"
+  r_b1 hypernym "http://identifiers.org/go/GO:0044257"
+  r_b2_i2 hypernym "http://identifiers.org/go/GO:0006412"
+  r_i1 hypernym "http://identifiers.org/go/GO:0009299"
+  r_i2 hypernym "http://identifiers.org/go/GO:0006412"
+  r_i3 hypernym "http://identifiers.org/go/GO:0006412"
+  r_l2 identity "http://identifiers.org/go/GO:0005990"
+  r_l3 identity "http://identifiers.org/go/GO:0015155"
+  r_l4 identity "http://identifiers.org/go/GO:0015155"
+  r_m1 hypernym "http://identifiers.org/go/GO:0006351"
+  r_m2 identity "http://identifiers.org/go/GO:0006402"
+  r_m3_i1 hypernym "http://identifiers.org/go/GO:0009299"
+  r_p1 hypernym "http://identifiers.org/go/GO:0044257"
+  r_p2_i3 hypernym "http://identifiers.org/go/GO:0006412"
+end
+
+yildirim1 is "yildirim1"

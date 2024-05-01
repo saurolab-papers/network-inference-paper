@@ -1,0 +1,44 @@
+// Created by libAntimony v2.13.2
+model *koster()
+
+  // Compartments and Species:
+  species Prot, RNA, $XX;
+
+  // Assignment Rules:
+  DNA_ := piecewise(2, time < 0.917, 4*2.71828^(1.188*(-1.5 + time)), time < 8.1, 4*2.71828^(1.188*(-1.5 + time)), nfac == 0, 1000*(10.1 + 12.1*(-8.1 + time) + 4.02e-5*(-8.1 + time)^coef));
+  LogDNA := ln(DNA_);
+  kRS := piecewise(540, time < 11.35, 540/ktranscriptionattenuation);
+
+  // Reactions:
+  v_1: $XX -> RNA; kRS*ng*DNA_;
+  v_2: RNA -> $XX; kRd*RNA;
+  v_3: $XX -> Prot; kPs*RNA;
+  v_4: Prot -> $XX; kPd*Prot;
+
+  // Species initializations:
+  Prot = 1330000000000;
+  RNA = 570000000;
+  XX = 0;
+
+  // Variable initializations:
+  nfac = 1;
+  coef = 3.6;
+  kPd = 0.0077;
+  kPs = 343;
+  ktranscriptionattenuation = 14;
+  kRd = 0.231;
+  mDNA = 3.15e-12;
+  mProt = 15300;
+  nA = 6.02e+23;
+  ng = 50;
+  wfr = 0.236;
+
+  // Other declarations:
+  var DNA_, nfac, coef, LogDNA, kPd, kPs, kRS, ktranscriptionattenuation;
+  var kRd, mDNA, mProt, nA, ng, wfr;
+
+  // Display Names:
+  DNA_ is "DNA";
+end
+
+koster is "koster"
